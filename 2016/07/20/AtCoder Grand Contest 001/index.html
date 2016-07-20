@@ -1,0 +1,739 @@
+
+<!doctype html>
+<html class="theme-next use-motion theme-next-mala">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+
+
+  <meta name="keywords" content="AtCoder," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="上周末做了rng_58他们办的AtCoder Grand Contest 001，比赛的时候只做出了两道题，第二题还一直wa，导致第三题没时间了，博主比较弱。。。。后来自己慢慢补题，发现D E F都是很神的题。。。在这里记一下总结吧。
+A BBQ Easy题意是给出2*n个长度，每两个在一起，这两个的长度算两个中短的那个，之后算总的最大长度。
+直接排序，把奇数位的加起来就是总的最大长度。
+1234">
+<meta property="og:type" content="article">
+<meta property="og:title" content="post">
+<meta property="og:url" content="http://2997ms.github.io/2016/07/20/AtCoder Grand Contest 001/index.html">
+<meta property="og:site_name" content="WangChong’s blog">
+<meta property="og:description" content="上周末做了rng_58他们办的AtCoder Grand Contest 001，比赛的时候只做出了两道题，第二题还一直wa，导致第三题没时间了，博主比较弱。。。。后来自己慢慢补题，发现D E F都是很神的题。。。在这里记一下总结吧。
+A BBQ Easy题意是给出2*n个长度，每两个在一起，这两个的长度算两个中短的那个，之后算总的最大长度。
+直接排序，把奇数位的加起来就是总的最大长度。
+1234">
+<meta property="og:image" content="https://github.com/2997ms/My_Algorithm/blob/master/blog_source/D_1.png">
+<meta property="og:updated_time" content="2016-07-20T14:33:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="post">
+<meta name="twitter:description" content="上周末做了rng_58他们办的AtCoder Grand Contest 001，比赛的时候只做出了两道题，第二题还一直wa，导致第三题没时间了，博主比较弱。。。。后来自己慢慢补题，发现D E F都是很神的题。。。在这里记一下总结吧。
+A BBQ Easy题意是给出2*n个长度，每两个在一起，这两个的长度算两个中短的那个，之后算总的最大长度。
+直接排序，把奇数位的加起来就是总的最大长度。
+1234">
+<meta name="twitter:image" content="https://github.com/2997ms/My_Algorithm/blob/master/blog_source/D_1.png">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mala',
+    sidebar: 'always'
+  };
+</script>
+
+  <title> post | WangChong’s blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">299794258m/s</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    
+      
+
+      
+
+    
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              post
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-07-20T21:49:49+08:00" content="2016-07-20">
+            2016-07-20
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/所想/" itemprop="url" rel="index">
+                  <span itemprop="name">所想</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <!--
+              <a href="/2016/07/20/AtCoder Grand Contest 001/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/20/AtCoder Grand Contest 001/" itemprop="commentsCount"></span>
+              </a>
+              -->
+              <a href="/2016/07/20/AtCoder Grand Contest 001/#comments" itemprop="discussionUrl">
+                <span>评论</span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>上周末做了<a href="http://codeforces.com/profile/rng_58" target="_blank" rel="external">rng_58</a>他们办的<a href="http://agc001.contest.atcoder.jp/" target="_blank" rel="external">AtCoder Grand Contest 001</a>，比赛的时候只做出了两道题，第二题还一直wa，导致第三题没时间了，博主比较弱。。。。后来自己慢慢补题，发现D E F都是很神的题。。。在这里记一下总结吧。</p>
+<h2 id="A-BBQ-Easy"><a href="#A-BBQ-Easy" class="headerlink" title="A BBQ Easy"></a>A BBQ Easy</h2><p>题意是给出2*n个长度，每两个在一起，这两个的长度算两个中短的那个，之后算总的最大长度。</p>
+<p>直接排序，把奇数位的加起来就是总的最大长度。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line">#include &lt;fstream&gt;</div><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &lt;functional&gt;</div><div class="line">#include &lt;algorithm&gt;</div><div class="line">#include &lt;cstring&gt;</div><div class="line">#include &lt;vector&gt;</div><div class="line">#include &lt;string&gt;</div><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;cmath&gt;</div><div class="line">#include &lt;queue&gt;</div><div class="line">#include &lt;stack&gt;</div><div class="line">#include &lt;deque&gt;</div><div class="line">#include &lt;ctime&gt;</div><div class="line">#include &lt;list&gt;</div><div class="line">#include &lt;set&gt;</div><div class="line">#include &lt;map&gt;</div><div class="line">using namespace std;</div><div class="line">typedef long long ll;</div><div class="line">typedef pair&lt;int, ll&gt; pill;</div><div class="line"> </div><div class="line">#define eps 1e-10</div><div class="line">#define LL_INF 0x3fffffffffffffff</div><div class="line">#define INF 0x3f3f3f3f</div><div class="line">#define mem(a, b) memset(a, b, sizeof(a))</div><div class="line">#define pper(i,n,m) for(int i = n;i &gt;= m; i--)</div><div class="line">#define repp(i, n, m) for (int i = n; i &lt;= m; i++)</div><div class="line">#define rep(i, n, m) for (int i = n; i &lt; m; i++)</div><div class="line">#define sa(n) scanf("%d", &amp;(n))</div><div class="line">#define mp make_pair</div><div class="line">#define ff first</div><div class="line">#define ss second</div><div class="line">#define pb push_back</div><div class="line"> </div><div class="line">const int maxn = 405;</div><div class="line">const ll mod = 1000000007;</div><div class="line">const double PI = acos(-1.0);</div><div class="line"> </div><div class="line">int n;</div><div class="line">int val[maxn];</div><div class="line"> </div><div class="line">void solve()</div><div class="line">&#123;</div><div class="line">	int res = 0;</div><div class="line">	int i, j, k;</div><div class="line">	repp(i, 1, 2 * n)</div><div class="line">	&#123;</div><div class="line">		sa(val[i]);</div><div class="line">	&#125;</div><div class="line">	sort(val + 1, val + 2*n + 1);</div><div class="line">	for (i = 1; i &lt;= 2 * n - 1; i = i + 2)</div><div class="line">	&#123;</div><div class="line">		res += val[i];</div><div class="line">	&#125;</div><div class="line">	printf("%d\n", res);</div><div class="line">&#125;</div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	while (scanf("%d", &amp;n) != EOF)</div><div class="line">	&#123;</div><div class="line">		solve();</div><div class="line">	&#125;</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="B-Mysterious-Light"><a href="#B-Mysterious-Light" class="headerlink" title="B Mysterious Light"></a>B Mysterious Light</h2><p>B题比较好玩，等边三角形，长度为n，一束光从位置x处发出，遇到边会发生反射，遇到自己的路径也会发生反射，问这束光走过的路程。</p>
+<p>会发现这束光就是在一个平行四边形里面走，而且这个平行四边形越走越小，越走越小。边长设为a,b(a&gt;b),之后如果继续走的话，平行四边形就变为b，a%b。于是乎，写一个递归算当前四边形走过的路程。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line">#include &lt;fstream&gt;</div><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &lt;functional&gt;</div><div class="line">#include &lt;algorithm&gt;</div><div class="line">#include &lt;cstring&gt;</div><div class="line">#include &lt;vector&gt;</div><div class="line">#include &lt;string&gt;</div><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;cmath&gt;</div><div class="line">#include &lt;queue&gt;</div><div class="line">#include &lt;stack&gt;</div><div class="line">#include &lt;deque&gt;</div><div class="line">#include &lt;ctime&gt;</div><div class="line">#include &lt;list&gt;</div><div class="line">#include &lt;set&gt;</div><div class="line">#include &lt;map&gt;</div><div class="line">using namespace std;</div><div class="line">typedef long long ll;</div><div class="line">typedef pair&lt;int, ll&gt; pill;</div><div class="line"> </div><div class="line">#define eps 1e-10</div><div class="line">#define LL_INF 0x3fffffffffffffff</div><div class="line">#define INF 0x3f3f3f3f</div><div class="line">#define mem(a, b) memset(a, b, sizeof(a))</div><div class="line">#define pper(i,n,m) for(int i = n;i &gt;= m; i--)</div><div class="line">#define repp(i, n, m) for (int i = n; i &lt;= m; i++)</div><div class="line">#define rep(i, n, m) for (int i = n; i &lt; m; i++)</div><div class="line">#define sa(n) scanf("%d", &amp;(n))</div><div class="line">#define mp make_pair</div><div class="line">#define ff first</div><div class="line">#define ss second</div><div class="line">#define pb push_back</div><div class="line"> </div><div class="line">const int maxn = 405;</div><div class="line">const ll mod = 1000000007;</div><div class="line">const double PI = acos(-1.0);</div><div class="line"> </div><div class="line">ll n, x;</div><div class="line"> </div><div class="line">ll cal(ll n, ll x)</div><div class="line">&#123;</div><div class="line">	if (x &lt;= 0)</div><div class="line">	&#123;</div><div class="line">		return 3 * n;</div><div class="line">	&#125;</div><div class="line">	if (n % x == 0 )</div><div class="line">	&#123;</div><div class="line">		return n * 3LL;</div><div class="line">	&#125;</div><div class="line">	else</div><div class="line">	&#123;</div><div class="line">		return n / x*x * 3LL + cal(x, n%x);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line">void solve()</div><div class="line">&#123;</div><div class="line">	ll res = 0;</div><div class="line">	if (x * 2LL &gt;= n)</div><div class="line">	&#123;</div><div class="line">		res = cal(x, n - x);</div><div class="line">	&#125;</div><div class="line">	else</div><div class="line">	&#123;</div><div class="line">		res = cal(n - x, x);</div><div class="line">	&#125;</div><div class="line">	printf("%lld\n", res);</div><div class="line">&#125;</div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	while (cin &gt;&gt; n &gt;&gt; x)</div><div class="line">	&#123;</div><div class="line">		solve();</div><div class="line">	&#125;</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="C-Shorten-Diameter"><a href="#C-Shorten-Diameter" class="headerlink" title="C Shorten Diameter"></a>C Shorten Diameter</h2><p>题意是给出一棵树，要求树中最长的路径为k，问要达到要求的话，至少要删除多少个点。</p>
+<p>n一共才1000，直接分k是奇数还是偶数来爆搜，k如果是奇数，那么按照边来爆搜，每个点最多(k-1)/2个。如果k是偶数，那么按照点来搜，每个方向最多k/2个。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div></pre></td><td class="code"><pre><div class="line">#include &lt;fstream&gt;</div><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &lt;functional&gt;</div><div class="line">#include &lt;algorithm&gt;</div><div class="line">#include &lt;cstring&gt;</div><div class="line">#include &lt;vector&gt;</div><div class="line">#include &lt;string&gt;</div><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;cmath&gt;</div><div class="line">#include &lt;queue&gt;</div><div class="line">#include &lt;stack&gt;</div><div class="line">#include &lt;deque&gt;</div><div class="line">#include &lt;ctime&gt;</div><div class="line">#include &lt;list&gt;</div><div class="line">#include &lt;set&gt;</div><div class="line">#include &lt;map&gt;</div><div class="line">using namespace std;</div><div class="line"> </div><div class="line">typedef long long ll;</div><div class="line">#define eps 1e-10</div><div class="line">#define LL_INF 0x33ffffffffffffff</div><div class="line">#define INF 0x3f3f3f3f</div><div class="line">#define mem(a, b) memset(a, b, sizeof(a))</div><div class="line">#define pper(i,n,m) for(int i = n;i &gt;= m; i--)</div><div class="line">#define repp(i, n, m) for (int i = n; i &lt;= m; i++)</div><div class="line">#define rep(i, n, m) for (int i = n; i &lt; m; i++)</div><div class="line">#define sa(n) scanf("%d", &amp;(n))</div><div class="line">#define mp make_pair</div><div class="line">#define ff first</div><div class="line">#define ss second</div><div class="line">#define pb push_back</div><div class="line"> </div><div class="line">const int maxn = 500005;</div><div class="line">const ll mod = 998244353;</div><div class="line">const double PI = acos(-1.0);</div><div class="line"> </div><div class="line">int n, k;</div><div class="line">vector&lt;int&gt;edge[maxn];</div><div class="line">int u[maxn], v[maxn];</div><div class="line"> </div><div class="line">int dfs(int x, int fa, int dis)</div><div class="line">&#123;</div><div class="line">	int res = (dis&lt;0);</div><div class="line">	int sz = edge[x].size();</div><div class="line"> </div><div class="line">	int k = 0;</div><div class="line">	rep(i, 0, sz)</div><div class="line">	&#123;</div><div class="line">		k = edge[x][i];</div><div class="line">		if (k == fa)continue;</div><div class="line"> </div><div class="line">		res += dfs(k, x, dis - 1);</div><div class="line">	&#125;</div><div class="line">	return res;</div><div class="line">&#125;</div><div class="line"> </div><div class="line">void solve()</div><div class="line">&#123;</div><div class="line">	sa(n), sa(k);</div><div class="line">	int i, j;</div><div class="line"> </div><div class="line">	repp(i, 1, n - 1)</div><div class="line">	&#123;</div><div class="line">		sa(u[i]), sa(v[i]);</div><div class="line">		edge[u[i]].push_back(v[i]);</div><div class="line">		edge[v[i]].push_back(u[i]);</div><div class="line">	&#125;</div><div class="line"> </div><div class="line">	int res = n;</div><div class="line"> </div><div class="line">	if ((k &amp; 1) == 0)</div><div class="line">	&#123;</div><div class="line">		repp(i, 1, n)</div><div class="line">		&#123;</div><div class="line">			res = min(res, dfs(i, -1, k / 2));</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	else</div><div class="line">	&#123;</div><div class="line">		repp(i, 1, n - 1)</div><div class="line">		&#123;</div><div class="line">			res = min(res, dfs(u[i], v[i], (k - 1) / 2) + dfs(v[i], u[i], (k - 1) / 2));</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	printf("%d\n", res);</div><div class="line">&#125;</div><div class="line"> </div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	solve();</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="D-Arrays-and-Palindrome"><a href="#D-Arrays-and-Palindrome" class="headerlink" title="D Arrays and Palindrome"></a>D Arrays and Palindrome</h2><p>题意很拗口，有两个数组a和b，a数组元素的和与b数组元素的和都是n。</p>
+<p>有一个字符串长度为n，如果满足了下面(1)(2)的条件，那么能推出第三个条件：</p>
+<p>(1)起始的a1个字符，接下来的a2个字符，接下来的a3个字符。。。。都是回文串。</p>
+<p>(2)起始的b1个字符，接下来的b2个字符，接下来的b3个字符。。。。都是回文串。</p>
+<p>(3)这个字符串的每一个字符都是相等的。</p>
+<p>然后给出a数组的一个排列，需要你去求a数组，和b数组。</p>
+<p>这个题于我而言很神了。。。</p>
+<p>可以发现当a数组只有一个元素x的时候，</p>
+<p> <img src="https://github.com/2997ms/My_Algorithm/blob/master/blog_source/D_1.png" alt="D_1"></p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/AtCoder/" rel="tag">#AtCoder</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/17/7月-是的是的/" rel="next">7月_是的是的</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div>
+      
+    </div>
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/07/20/AtCoder Grand Contest 001/"
+     data-title="post"
+     data-content=""
+     data-url="http://2997ms.github.io/2016/07/20/AtCoder Grand Contest 001/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2016/07/20/AtCoder Grand Contest 001/"
+                   data-title="post" data-url="http://2997ms.github.io/2016/07/20/AtCoder Grand Contest 001/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="Wang Chong" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Wang Chong</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        <div class="links-of-friendly motion-element">
+          
+        </div>
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-BBQ-Easy"><span class="nav-number">1.</span> <span class="nav-text">A BBQ Easy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-Mysterious-Light"><span class="nav-number">2.</span> <span class="nav-text">B Mysterious Light</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-Shorten-Diameter"><span class="nav-number">3.</span> <span class="nav-text">C Shorten Diameter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D-Arrays-and-Palindrome"><span class="nav-number">4.</span> <span class="nav-text">D Arrays and Palindrome</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wang Chong</span>
+
+  <div class="powered-by"></div>
+  <div class="powered-by">
+    Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+  </div>
+
+
+
+  <!-- busuanzi -->
+  
+    <div class="powered-by">
+    <div class="theme-info">
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+    <span id="busuanzi_container_site_pv">
+        我已经被访问<a class="theme-link"><span id="busuanzi_value_site_pv"></span></a>次啦~
+    </span>
+</div>
+    </div>
+  
+
+</div>
+
+<!--
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mala
+  </a>
+</div>
+-->
+
+<!--
+<div class="powered-by"></div>
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+-->
+
+<!-- busuanzi -->
+<!--
+
+  <div class="theme-info">
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+    <span id="busuanzi_container_site_pv">
+        我已经被访问<a class="theme-link"><span id="busuanzi_value_site_pv"></span></a>次啦~
+    </span>
+</div>
+
+-->
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"wangchong756"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+  	  <script type="text/javascript">
+  		var duoshuo_user_ID = wangchong756
+  	  </script>
+     
+  	<script src="/js/ua-parser.min.js"></script>
+  	<script src="/js/hook-duoshuo.js"></script>
+  
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
