@@ -38,20 +38,23 @@
 
 <meta name="description" content="很早的一轮了，一直没写，主要是因为笨，然后还有懒。。。
 仔细想想一个div2的题目，充其量够写的也就3道题，然后自己还一直补不完，我的天。。。
-C:Lorenzo Von Matterhorn">
+代码在这里
+C:Lorenzo Von Matterhorn题意是对于一个图来说，该图每一个节点i会连接到 2  i 与2  i + 1。然后现在有两种操作，第一种操作是给出v、u、w，表示v到u的路径上所有边的权值都加上w，第二种操作是询问v和u路径上所">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Codeforces 362 Div2">
 <meta property="og:url" content="http://2997ms.github.io/2016/08/22/Codeforces-362-Div2/index.html">
 <meta property="og:site_name" content="2997ms">
 <meta property="og:description" content="很早的一轮了，一直没写，主要是因为笨，然后还有懒。。。
 仔细想想一个div2的题目，充其量够写的也就3道题，然后自己还一直补不完，我的天。。。
-C:Lorenzo Von Matterhorn">
-<meta property="og:updated_time" content="2016-08-22T08:01:35.000Z">
+代码在这里
+C:Lorenzo Von Matterhorn题意是对于一个图来说，该图每一个节点i会连接到 2  i 与2  i + 1。然后现在有两种操作，第一种操作是给出v、u、w，表示v到u的路径上所有边的权值都加上w，第二种操作是询问v和u路径上所">
+<meta property="og:updated_time" content="2016-08-22T10:43:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Codeforces 362 Div2">
 <meta name="twitter:description" content="很早的一轮了，一直没写，主要是因为笨，然后还有懒。。。
 仔细想想一个div2的题目，充其量够写的也就3道题，然后自己还一直补不完，我的天。。。
-C:Lorenzo Von Matterhorn">
+代码在这里
+C:Lorenzo Von Matterhorn题意是对于一个图来说，该图每一个节点i会连接到 2  i 与2  i + 1。然后现在有两种操作，第一种操作是给出v、u、w，表示v到u的路径上所有边的权值都加上w，第二种操作是询问v和u路径上所">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -240,7 +243,13 @@ C:Lorenzo Von Matterhorn">
       
         <span itemprop="articleBody"><p>很早的一轮了，一直没写，主要是因为笨，然后还有懒。。。</p>
 <p>仔细想想一个div2的题目，充其量够写的也就3道题，然后自己还一直补不完，我的天。。。</p>
-<h3 id="C-Lorenzo-Von-Matterhorn"><a href="#C-Lorenzo-Von-Matterhorn" class="headerlink" title="C:Lorenzo Von Matterhorn"></a>C:Lorenzo Von Matterhorn</h3></span>
+<p>代码在<a href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/362_Div2" target="_blank" rel="external">这里</a></p>
+<h3 id="C-Lorenzo-Von-Matterhorn"><a href="#C-Lorenzo-Von-Matterhorn" class="headerlink" title="C:Lorenzo Von Matterhorn"></a>C:Lorenzo Von Matterhorn</h3><p>题意是对于一个图来说，该图每一个节点i会连接到 2 <em> i 与2 </em> i + 1。然后现在有两种操作，第一种操作是给出v、u、w，表示v到u的路径上所有边的权值都加上w，第二种操作是询问v和u路径上所有边的权值之和。</p>
+<p>这个问题就是map+暴力，不用考虑边，只考虑对于其父节点的权值相加。每次查询也是直接暴力查询。所以就是考虑如何标记点，找父节点就好了。</p>
+<h3 id="D-Puzzles"><a href="#D-Puzzles" class="headerlink" title="D:Puzzles"></a>D:Puzzles</h3><p>题意是给定一个树，根节点是1，然后从根节点开始dfs，对于每一个子节点来说，每次访问的先后概率是相等的，问最终每一个节点访问步数的期望。</p>
+<p>其实不是很理解这个做法，看答案的那个意思是说u和v都作为子节点的话，那么u排在v前面的概率和排在v后面的概率都是0.5，所以根据这个的话就有<br>$$<br>dp[i]=\frac{num[fa[i]]-num[i]-1}{2}+dp[fa[i]]<br>$$</p>
+<p>num[x]表示包括节点x在内的x所有子节点的数量。</p>
+<h3 id="E-PLEASE"><a href="#E-PLEASE" class="headerlink" title="E:PLEASE"></a>E:PLEASE</h3></span>
       
     </div>
 
@@ -392,7 +401,7 @@ C:Lorenzo Von Matterhorn">
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Lorenzo-Von-Matterhorn"><span class="nav-number">1.</span> <span class="nav-text">C:Lorenzo Von Matterhorn</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Lorenzo-Von-Matterhorn"><span class="nav-number">1.</span> <span class="nav-text">C:Lorenzo Von Matterhorn</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Puzzles"><span class="nav-number">2.</span> <span class="nav-text">D:Puzzles</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-PLEASE"><span class="nav-number">3.</span> <span class="nav-text">E:PLEASE</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
