@@ -50,7 +50,7 @@ C:Lorenzo Von Matterhorn
 代码在这里
 C:Lorenzo Von Matterhorn
 题意是对于一个图来说，该图每一个节点i会连接到 2  i 与2  i + 1。然后现在有两种操作，第一种操作是给出v、u、w，表示v到u的路径上所有边的权值都加上w，第二种操作是询问v和u路径上">
-<meta property="og:updated_time" content="2016-08-22T12:06:45.000Z">
+<meta property="og:updated_time" content="2016-08-22T12:17:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Codeforces 362 Div2">
 <meta name="twitter:description" content="很早的一轮了，一直没写，主要是因为笨，然后还有懒。。。
@@ -257,10 +257,8 @@ C:Lorenzo Von Matterhorn
 <h2 id="E-PLEASE"><a href="#E-PLEASE" class="headerlink" title="E:PLEASE"></a>E:PLEASE</h2><hr>
 <p>题意是有三个杯子，一开始把东西放到了中间的杯子下面。每一轮Barney随机选两边的某个杯子，与中间的杯子交换。在第n轮之后，问这个东西还在中间的概率。</p>
 <p>问题先到这里的话，可以假设dp[i]表示第i轮东西在中间的概率，然后有dp[1]=0,对于i&gt;0有<br>$$<br>dp[i]=\frac{1-dp[i-1]}{2}<br>$$<br>但是不幸的是，n不会这么轻易的告诉你，n用k个ai的乘积表示的，即<br>$$<br>n=\prod_{i=1}^{k}{a_i}<br>$$<br>然后最后的结果要输出分数的形式,p/q，p和q互质，p和q本身对1e9+7取模。</p>
-<p>接下来就是变形了，对下面的式子<br>$$<br>dp[i]=\frac{1-dp[i-1]}{2}<br>$$<br>这个式子是可以构造等比数列的，该法适用于递推式形如</p>
-<p>$$<br>a<em>{n+1}=ba</em>{n}+c<br>$$</p>
-<p>$$<br>a<em>{n+1}=ba</em>{n}+f(n)<br>$$</p>
-<p>其中b、c为不相等的常数，f(n)为一次式<br>所以假设</p>
+<p>接下来就是变形了，对下面的式子<br>$$<br>dp[i]=\frac{1-dp[i-1]}{2}<br>$$<br>这个式子是可以构造等比数列的，该法适用于递推式形如a(n+1)=b*a(n)+c 或者a(n+1)=b*a(n)+f(n)其中b、c为不相等的常数，f(n)为一次式</p>
+<p>所以假设</p>
 <p>$$<br>dp[i]+p=-\frac{1}{2}*(dp[i-1]+p)<br>$$</p>
 <p>求解这个p，解得p=-1/3，即</p>
 <p>$$<br>dp[i]-\frac{1}{3}=-\frac{1}{2}*(dp[i-1]-\frac{1}{3})<br>$$</p>
@@ -273,7 +271,6 @@ C:Lorenzo Von Matterhorn
 <p>$$<br>p=\frac{2^{n-1}-1}{3} 然后q=2^{n-1}<br>$$</p>
 <p>易证p和q互质，p是奇数，q是2的幂，所以一定没有大于1的公约数。</p>
 <p>剩下的就是快速幂和费马小定理的东西了。</p>
-<p>$$<br>a<em>{n+1}=ba</em>{n}+c<br>$$</p>
 <h2 id="F-Legen…"><a href="#F-Legen…" class="headerlink" title="F:Legen…"></a>F:Legen…</h2><hr>
 <p>这个题个人觉得很SXBK。。。</p>
 <p>有n个单词，每个单词有相应的权值，然后你要组成一个长度为l的字符串，在这里面匹配到一个单词就加上相应的权值，可重叠匹配。问最终能够得到的最大值是多少。</p>
