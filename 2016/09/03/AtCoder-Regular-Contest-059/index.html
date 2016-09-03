@@ -27,7 +27,7 @@
 
 
 
-  <meta name="keywords" content="Hexo,world" />
+  <meta name="keywords" content="AtCoder,DP," />
 
 
 
@@ -36,46 +36,37 @@
   <link rel="shorticon icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="本To_do_list采取队列的方式，先进先出，看看拖延如我，能攒多少事情。
-Atcoder regular contest 058
-Codeforces 362
-BestCoder85 
-BestCoder 2nd Anniversary
-AtCoder ACG002
-Multiuniversity 
-Topcoder 695
-Codeforces 363
-Bestcoder84
-hackerr">
+<meta name="description" content="这一期的后两道DP很好玩。
+代码在这里。
+C Be Together
+题意是给出n个数，它们要统一变成同一个数，代价是差的平方，问最小代价。
+由于数量和范围都很小，直接暴力。
+D Unbalanced
+题意是给出一个字符串，找出这个字符串的子串中是否存在不平衡串，并输出其位置。所谓不平衡串，就是该串中一个字符的数量大于该串长度的一半。
+发现最小规模的不平衡串就是在三个以内有超过两个的相同字符，任何">
 <meta property="og:type" content="article">
-<meta property="og:title" content="To_do_list">
-<meta property="og:url" content="http://2997ms.github.io/2016/07/30/To-do-list/index.html">
+<meta property="og:title" content="AtCoder Regular Contest 059">
+<meta property="og:url" content="http://2997ms.github.io/2016/09/03/AtCoder-Regular-Contest-059/index.html">
 <meta property="og:site_name" content="2997ms">
-<meta property="og:description" content="本To_do_list采取队列的方式，先进先出，看看拖延如我，能攒多少事情。
-Atcoder regular contest 058
-Codeforces 362
-BestCoder85 
-BestCoder 2nd Anniversary
-AtCoder ACG002
-Multiuniversity 
-Topcoder 695
-Codeforces 363
-Bestcoder84
-hackerr">
-<meta property="og:updated_time" content="2016-08-31T13:57:30.000Z">
+<meta property="og:description" content="这一期的后两道DP很好玩。
+代码在这里。
+C Be Together
+题意是给出n个数，它们要统一变成同一个数，代价是差的平方，问最小代价。
+由于数量和范围都很小，直接暴力。
+D Unbalanced
+题意是给出一个字符串，找出这个字符串的子串中是否存在不平衡串，并输出其位置。所谓不平衡串，就是该串中一个字符的数量大于该串长度的一半。
+发现最小规模的不平衡串就是在三个以内有超过两个的相同字符，任何">
+<meta property="og:updated_time" content="2016-09-03T15:35:26.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="To_do_list">
-<meta name="twitter:description" content="本To_do_list采取队列的方式，先进先出，看看拖延如我，能攒多少事情。
-Atcoder regular contest 058
-Codeforces 362
-BestCoder85 
-BestCoder 2nd Anniversary
-AtCoder ACG002
-Multiuniversity 
-Topcoder 695
-Codeforces 363
-Bestcoder84
-hackerr">
+<meta name="twitter:title" content="AtCoder Regular Contest 059">
+<meta name="twitter:description" content="这一期的后两道DP很好玩。
+代码在这里。
+C Be Together
+题意是给出n个数，它们要统一变成同一个数，代价是差的平方，问最小代价。
+由于数量和范围都很小，直接暴力。
+D Unbalanced
+题意是给出一个字符串，找出这个字符串的子串中是否存在不平衡串，并输出其位置。所谓不平衡串，就是该串中一个字符的数量大于该串长度的一半。
+发现最小规模的不平衡串就是在三个以内有超过两个的相同字符，任何">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -85,7 +76,7 @@ hackerr">
   };
 </script>
 
-  <title> To_do_list | 2997ms </title>
+  <title> AtCoder Regular Contest 059 | 2997ms </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -207,7 +198,7 @@ hackerr">
           
           
             
-              To_do_list
+              AtCoder Regular Contest 059
             
           
         </h1>
@@ -216,8 +207,8 @@ hackerr">
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2016-07-30T09:49:30+08:00" content="2016-07-30">
-            2016-07-30
+          <time itemprop="dateCreated" datetime="2016-09-03T23:23:16+08:00" content="2016-09-03">
+            2016-09-03
           </time>
         </span>
 
@@ -226,8 +217,8 @@ hackerr">
             &nbsp; | &nbsp; 分类于
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/To-do-list/" itemprop="url" rel="index">
-                  <span itemprop="name">To_do_list</span>
+                <a href="/categories/题记/" itemprop="url" rel="index">
+                  <span itemprop="name">题记</span>
                 </a>
               </span>
 
@@ -243,11 +234,11 @@ hackerr">
             <span class="post-comments-count">
               &nbsp; | &nbsp;
               <!--
-              <a href="/2016/07/30/To-do-list/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/30/To-do-list/" itemprop="commentsCount"></span>
+              <a href="/2016/09/03/AtCoder-Regular-Contest-059/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/03/AtCoder-Regular-Contest-059/" itemprop="commentsCount"></span>
               </a>
               -->
-              <a href="/2016/07/30/To-do-list/#comments" itemprop="discussionUrl">
+              <a href="/2016/09/03/AtCoder-Regular-Contest-059/#comments" itemprop="discussionUrl">
                 <span>评论</span>
               </a>
             </span>
@@ -262,41 +253,39 @@ hackerr">
       
 
       
-        <span itemprop="articleBody"><p>本To_do_list采取队列的方式，先进先出，看看拖延如我，能攒多少事情。</p>
-<p><del>Atcoder regular contest 058</del></p>
-<p><del>Codeforces 362</del></p>
-<p><del>BestCoder85</del> </p>
-<p>BestCoder 2nd Anniversary</p>
-<p>AtCoder ACG002</p>
-<p>Multiuniversity </p>
-<p>Topcoder 695</p>
-<p>Codeforces 363</p>
-<p>Bestcoder84</p>
-<p>hackerrank world spirit</p>
-<p>Z-algorithm- Atcoder Regular Contest F</p>
-<p>(整体二分)</p>
-<p>7月30日9：50：</p>
-<p>七月份自己过得还是一坨屎，建立这个To_do_list也是为了提醒自己。</p>
-<p>8月31日21：55</p>
-<p>八月份冒个泡，回家呆(……)了十二天，计划就是以后还是多做一些真题，LC，hiho，GG上面的，别的还是当娱乐吧(尽管这么说，但感觉自己越陷越深)。。。</p>
+        <span itemprop="articleBody"><p>这一期的后两道DP很好玩。</p>
+<p>代码在<a href="https://github.com/2997ms/My_Algorithm/tree/master/AtCoder/Regular_Contest_059" target="_blank" rel="external">这里</a>。</p>
+<h3 id="C-Be-Together"><a href="#C-Be-Together" class="headerlink" title="C Be Together"></a>C Be Together</h3><hr>
+<p>题意是给出n个数，它们要统一变成同一个数，代价是差的平方，问最小代价。</p>
+<p>由于数量和范围都很小，直接暴力。</p>
+<h3 id="D-Unbalanced"><a href="#D-Unbalanced" class="headerlink" title="D Unbalanced"></a>D Unbalanced</h3><hr>
+<p>题意是给出一个字符串，找出这个字符串的子串中是否存在不平衡串，并输出其位置。所谓不平衡串，就是该串中一个字符的数量大于该串长度的一半。</p>
+<p>发现最小规模的不平衡串就是在三个以内有超过两个的相同字符，任何不平衡串都要以此为基础。所以一个一个字符暴力就好了。</p>
+<h3 id="E-Children-and-Candies"><a href="#E-Children-and-Candies" class="headerlink" title="E Children and Candies"></a>E Children and Candies</h3><hr>
 </span>
       
     </div>
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/AtCoder/" rel="tag">#AtCoder</a>
+          
+            <a href="/tags/DP/" rel="tag">#DP</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/07/30/AtCoder-Regular-Contest-058/" rel="prev">AtCoder Regular Contest 058</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/20/AtCoder Grand Contest 001/" rel="next">AtCoder Grand Contest 001</a>
+              <a href="/2016/09/03/August-Lunchtime-2016/" rel="next">August Lunchtime 2016</a>
             
           </div>
         </div>
@@ -315,10 +304,10 @@ hackerr">
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/07/30/To-do-list/"
-     data-title="To_do_list"
+        <div class="ds-share flat" data-thread-key="2016/09/03/AtCoder-Regular-Contest-059/"
+     data-title="AtCoder Regular Contest 059"
      data-content=""
-     data-url="http://2997ms.github.io/2016/07/30/To-do-list/">
+     data-url="http://2997ms.github.io/2016/09/03/AtCoder-Regular-Contest-059/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -344,8 +333,8 @@ hackerr">
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2016/07/30/To-do-list/"
-                   data-title="To_do_list" data-url="http://2997ms.github.io/2016/07/30/To-do-list/">
+              <div class="ds-thread" data-thread-key="2016/09/03/AtCoder-Regular-Contest-059/"
+                   data-title="AtCoder Regular Contest 059" data-url="http://2997ms.github.io/2016/09/03/AtCoder-Regular-Contest-059/">
               </div>
             
           </div>
@@ -427,7 +416,7 @@ hackerr">
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Be-Together"><span class="nav-number">1.</span> <span class="nav-text">C Be Together</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Unbalanced"><span class="nav-number">2.</span> <span class="nav-text">D Unbalanced</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-Children-and-Candies"><span class="nav-number">3.</span> <span class="nav-text">E Children and Candies</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
