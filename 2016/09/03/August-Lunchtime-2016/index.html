@@ -27,7 +27,7 @@
 
 
 
-  <meta name="keywords" content="咿呀咿呀," />
+  <meta name="keywords" content="Codechef,51nod,树上直径," />
 
 
 
@@ -36,40 +36,19 @@
   <link rel="shorticon icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="这次我是真的要好好写博客了~没开玩笑啦~
-
-之前在csdn上的那个博客发现要么就是题太简单了，要么自己总结得也不够，总而言之全是坑害别人的玩意~。。。希望在这里对一些好玩的算法题目能够有针对地进行总结。
-另外就是总在csdn上面说最近的二逼心情也不太合氛围，索性挪到这里来矫情了~
-
-最近的感悟就是智商又低了…可能一直也没有上涨过…
-
-世界真的很大，想做的事情很多~
-123456789#inclu">
+<meta name="description" content="做了Codechef上面的August Lunchtime 2016，上面的题都有中文题面，还有解答，还有代码。觉得这个网站也不错呀。。。
+然后这次做完发现是三道easy，一道medium。一想也没用什么数据结构，好像是差不多哈，但是第四个树上直径这个和51nod上面树上最远点对是一样的想法，做得时候自己感觉还是挺难的。第三题数组开小了，然而一直返回WA，找了很久。第二个有相同的数字也WA了一个晚">
 <meta property="og:type" content="article">
-<meta property="og:title" content="7月_是的是的">
-<meta property="og:url" content="http://2997ms.github.io/2016/07/17/7月-是的是的/index.html">
+<meta property="og:title" content="August Lunchtime 2016">
+<meta property="og:url" content="http://2997ms.github.io/2016/09/03/August-Lunchtime-2016/index.html">
 <meta property="og:site_name" content="2997ms">
-<meta property="og:description" content="这次我是真的要好好写博客了~没开玩笑啦~
-
-之前在csdn上的那个博客发现要么就是题太简单了，要么自己总结得也不够，总而言之全是坑害别人的玩意~。。。希望在这里对一些好玩的算法题目能够有针对地进行总结。
-另外就是总在csdn上面说最近的二逼心情也不太合氛围，索性挪到这里来矫情了~
-
-最近的感悟就是智商又低了…可能一直也没有上涨过…
-
-世界真的很大，想做的事情很多~
-123456789#inclu">
-<meta property="og:updated_time" content="2016-08-22T07:56:15.000Z">
+<meta property="og:description" content="做了Codechef上面的August Lunchtime 2016，上面的题都有中文题面，还有解答，还有代码。觉得这个网站也不错呀。。。
+然后这次做完发现是三道easy，一道medium。一想也没用什么数据结构，好像是差不多哈，但是第四个树上直径这个和51nod上面树上最远点对是一样的想法，做得时候自己感觉还是挺难的。第三题数组开小了，然而一直返回WA，找了很久。第二个有相同的数字也WA了一个晚">
+<meta property="og:updated_time" content="2016-09-03T07:46:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="7月_是的是的">
-<meta name="twitter:description" content="这次我是真的要好好写博客了~没开玩笑啦~
-
-之前在csdn上的那个博客发现要么就是题太简单了，要么自己总结得也不够，总而言之全是坑害别人的玩意~。。。希望在这里对一些好玩的算法题目能够有针对地进行总结。
-另外就是总在csdn上面说最近的二逼心情也不太合氛围，索性挪到这里来矫情了~
-
-最近的感悟就是智商又低了…可能一直也没有上涨过…
-
-世界真的很大，想做的事情很多~
-123456789#inclu">
+<meta name="twitter:title" content="August Lunchtime 2016">
+<meta name="twitter:description" content="做了Codechef上面的August Lunchtime 2016，上面的题都有中文题面，还有解答，还有代码。觉得这个网站也不错呀。。。
+然后这次做完发现是三道easy，一道medium。一想也没用什么数据结构，好像是差不多哈，但是第四个树上直径这个和51nod上面树上最远点对是一样的想法，做得时候自己感觉还是挺难的。第三题数组开小了，然而一直返回WA，找了很久。第二个有相同的数字也WA了一个晚">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -79,7 +58,7 @@
   };
 </script>
 
-  <title> 7月_是的是的 | 2997ms </title>
+  <title> August Lunchtime 2016 | 2997ms </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -201,7 +180,7 @@
           
           
             
-              7月_是的是的
+              August Lunchtime 2016
             
           
         </h1>
@@ -210,8 +189,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2016-07-17T14:35:03+08:00" content="2016-07-17">
-            2016-07-17
+          <time itemprop="dateCreated" datetime="2016-09-03T14:54:44+08:00" content="2016-09-03">
+            2016-09-03
           </time>
         </span>
 
@@ -220,8 +199,8 @@
             &nbsp; | &nbsp; 分类于
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/所说/" itemprop="url" rel="index">
-                  <span itemprop="name">所说</span>
+                <a href="/categories/题记/" itemprop="url" rel="index">
+                  <span itemprop="name">题记</span>
                 </a>
               </span>
 
@@ -237,11 +216,11 @@
             <span class="post-comments-count">
               &nbsp; | &nbsp;
               <!--
-              <a href="/2016/07/17/7月-是的是的/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/17/7月-是的是的/" itemprop="commentsCount"></span>
+              <a href="/2016/09/03/August-Lunchtime-2016/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/03/August-Lunchtime-2016/" itemprop="commentsCount"></span>
               </a>
               -->
-              <a href="/2016/07/17/7月-是的是的/#comments" itemprop="discussionUrl">
+              <a href="/2016/09/03/August-Lunchtime-2016/#comments" itemprop="discussionUrl">
                 <span>评论</span>
               </a>
             </span>
@@ -256,16 +235,19 @@
       
 
       
-        <span itemprop="articleBody"><blockquote>
-<p>这次我是真的要好好写博客了~没开玩笑啦~</p>
-</blockquote>
-<p>之前在csdn上的那个<a href="http://blog.csdn.net/u010885899" target="_blank" rel="external">博客</a>发现要么就是题太简单了，要么自己总结得也不够，总而言之全是坑害别人的玩意~。。。希望在这里对一些好玩的算法题目能够有针对地进行总结。</p>
-<p>另外就是总在csdn上面说最近的二逼心情也不太合氛围，索性挪到这里来矫情了~</p>
-<blockquote>
-<p>最近的感悟就是智商又低了…可能一直也没有上涨过…</p>
-</blockquote>
-<p>世界真的很大，想做的事情很多~</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"One day you'll leave this world behind. "</span>&lt;&lt; <span class="built_in">endl</span>;</div><div class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"So live a life you will remember."</span>&lt;&lt; <span class="built_in">endl</span>;</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></span>
+        <span itemprop="articleBody"><p>做了Codechef上面的<a href="https://www.codechef.com/LTIME39" target="_blank" rel="external">August Lunchtime 2016</a>，上面的题都有中文题面，还有解答，还有代码。觉得这个网站也不错呀。。。</p>
+<p>然后这次做完发现是三道easy，一道medium。一想也没用什么数据结构，好像是差不多哈，但是第四个树上直径这个和51nod上面树上最远点对是一样的想法，做得时候自己感觉还是挺难的。第三题数组开小了，然而一直返回WA，找了很久。第二个有相同的数字也WA了一个晚上。这样想来觉得也不那么简单了。</p>
+<p>代码在<a href="https://github.com/2997ms/My_Algorithm/tree/master/Codechef/August-Lunchtime-2016" target="_blank" rel="external">这里</a>。</p>
+<p>A题Studying Alphabet不用写了。。。</p>
+<h3 id="B题Lock-Free-Stack"><a href="#B题Lock-Free-Stack" class="headerlink" title="B题Lock-Free Stack"></a>B题Lock-Free Stack</h3><hr>
+<p>因为有P = (A1 + 1) × (A2 + 1) × … × (AN + 1)，然后P&lt;=10^6，所以最多20个进程，那就对每个进程的输出都要符合压栈顺序。(一开始自己一位一位找，发现有相同的数字，所以WA了一晚上，后来还是对每个进程都满足顺序就可以了)。</p>
+<h3 id="C题-Short-in-Average"><a href="#C题-Short-in-Average" class="headerlink" title="C题 Short in Average"></a>C题 Short in Average</h3><hr>
+<p>这个题自己搞过原题，感触就是平均值问题很容易搞成二分，然后对每一个值减去二分的值，然后去判断。<a href="http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1711" target="_blank" rel="external">51nod 1711平均数</a>也是这样，二分这个平均数x，然后每个数减去x，那么这样的话就是算区间和&lt;0的个数与k去相比，区间和[le,ri]小于0，相当于前缀和sum[ri]-sum[le-1]&lt;0，sum[ri]&lt;sum[le-1]，这个不就是逆序对的数目嘛，发现离散化+树状数组就可以做了。</p>
+<p>这个题的思路也是这样，每个边减去二分值x，然后直接判环就好了。</p>
+<h3 id="D题-Product-of-Diameters"><a href="#D题-Product-of-Diameters" class="headerlink" title="D题 Product of Diameters"></a>D题 Product of Diameters</h3><hr>
+<p>这个题目赞在要逆向考虑，往里面加边，然后输出结果。那么往里面加边，就是除以每颗树直径的直径的乘积，这个可以维护，然后求出这两棵树内部的直径，这个维护相当于需要维护一个集合里面的最远距离，想了一下和<a href="http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1766" target="_blank" rel="external">51nod 1766树上的最远点对</a>本质上是一样的题目，也是维护一个集合里面距离最远的两个点，然后两个集合的合并，只可能在这四个点里面出，倍增求lca，求距离。</p>
+<p>这个题思想还是挺简单的，要想清楚过程，自己写起来一些细节写得还是不够好。</p>
+</span>
       
     </div>
 
@@ -273,7 +255,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/咿呀咿呀/" rel="tag">#咿呀咿呀</a>
+            <a href="/tags/Codechef/" rel="tag">#Codechef</a>
+          
+            <a href="/tags/51nod/" rel="tag">#51nod</a>
+          
+            <a href="/tags/树上直径/" rel="tag">#树上直径</a>
           
         </div>
       
@@ -282,11 +268,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/07/20/AtCoder Grand Contest 001/" rel="prev">AtCoder Grand Contest 001</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/31/Codeforces-369-Div2/" rel="next">Codeforces 369 Div2</a>
             
           </div>
         </div>
@@ -305,10 +291,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/07/17/7月-是的是的/"
-     data-title="7月_是的是的"
+        <div class="ds-share flat" data-thread-key="2016/09/03/August-Lunchtime-2016/"
+     data-title="August Lunchtime 2016"
      data-content=""
-     data-url="http://2997ms.github.io/2016/07/17/7月-是的是的/">
+     data-url="http://2997ms.github.io/2016/09/03/August-Lunchtime-2016/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -334,8 +320,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2016/07/17/7月-是的是的/"
-                   data-title="7月_是的是的" data-url="http://2997ms.github.io/2016/07/17/7月-是的是的/">
+              <div class="ds-thread" data-thread-key="2016/09/03/August-Lunchtime-2016/"
+                   data-title="August Lunchtime 2016" data-url="http://2997ms.github.io/2016/09/03/August-Lunchtime-2016/">
               </div>
             
           </div>
@@ -417,7 +403,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#B题Lock-Free-Stack"><span class="nav-number">1.</span> <span class="nav-text">B题Lock-Free Stack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C题-Short-in-Average"><span class="nav-number">2.</span> <span class="nav-text">C题 Short in Average</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D题-Product-of-Diameters"><span class="nav-number">3.</span> <span class="nav-text">D题 Product of Diameters</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
