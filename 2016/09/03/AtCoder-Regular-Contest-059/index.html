@@ -56,7 +56,7 @@ C Be Together
 D Unbalanced
 题意是给出一个字符串，找出这个字符串的子串中是否存在不平衡串，并输出其位置。所谓不平衡串，就是该串中一个字符的数量大于该串长度的一半。
 发现最小规模的不平衡串就是在三个以内有超过两个的相同字符，任何">
-<meta property="og:updated_time" content="2016-09-03T15:35:26.000Z">
+<meta property="og:updated_time" content="2016-09-04T00:23:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AtCoder Regular Contest 059">
 <meta name="twitter:description" content="这一期的后两道DP很好玩。
@@ -262,6 +262,13 @@ D Unbalanced
 <p>题意是给出一个字符串，找出这个字符串的子串中是否存在不平衡串，并输出其位置。所谓不平衡串，就是该串中一个字符的数量大于该串长度的一半。</p>
 <p>发现最小规模的不平衡串就是在三个以内有超过两个的相同字符，任何不平衡串都要以此为基础。所以一个一个字符暴力就好了。</p>
 <h3 id="E-Children-and-Candies"><a href="#E-Children-and-Candies" class="headerlink" title="E Children and Candies"></a>E Children and Candies</h3><hr>
+<p>题意是有n个小孩子，c个糖果，将c个糖果分配给n个小孩子，假设孩子得到的糖果数量为a，兴奋值为xi，这个小孩的快乐值为xi^a，幼儿园总的活动值为所有小孩子快乐值的乘积。</p>
+<p>现在每一个小孩的兴奋值取值范围为Ai~Bi，问所有情况的幼儿园活动值(…….)的和。</p>
+<p>dp[i][c]表示i个小孩分配c个糖果的活动值总和，那么仔细分析这个函数，当到i+1的时候，转移的情况为<br>$$<br>dp[i+1][c]=\sum_{j=0}^{c}dp[i][j]*(\sum_{x=A[i+1]}^{B[i+1]}x^{c-j})<br>$$<br>所以预处理出x的前缀和，直接转移即可。</p>
+<h3 id="F-Unhappy-Hacking"><a href="#F-Unhappy-Hacking" class="headerlink" title="F Unhappy Hacking"></a>F Unhappy Hacking</h3><hr>
+<p>题意是这个电脑键盘上只有三个键：0，1和delete键，现在按了n次键盘，有一个字符串，问有多少种按键情况能够形成改字符串。</p>
+<p>dp[n][c]表示按了n次键盘，形成字符串长度为c的方法数，对第n+1次按键盘，可能是delete，转移方程为：<br>$$<br>dp[n+1][max(c-1,0)]+=dp[n][c]<br>$$<br>如果是按0，转移方程为：<br>$$<br>dp[n+1][c+1]+=dp[n][c]<br>$$<br>按1同理，在上式基础上再加一遍dp[n][c]。</p>
+<p>最终因为是固定了0、1，所以除以2^len。</p>
 </span>
       
     </div>
@@ -416,7 +423,7 @@ D Unbalanced
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Be-Together"><span class="nav-number">1.</span> <span class="nav-text">C Be Together</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Unbalanced"><span class="nav-number">2.</span> <span class="nav-text">D Unbalanced</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-Children-and-Candies"><span class="nav-number">3.</span> <span class="nav-text">E Children and Candies</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Be-Together"><span class="nav-number">1.</span> <span class="nav-text">C Be Together</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Unbalanced"><span class="nav-number">2.</span> <span class="nav-text">D Unbalanced</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-Children-and-Candies"><span class="nav-number">3.</span> <span class="nav-text">E Children and Candies</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#F-Unhappy-Hacking"><span class="nav-number">4.</span> <span class="nav-text">F Unhappy Hacking</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
