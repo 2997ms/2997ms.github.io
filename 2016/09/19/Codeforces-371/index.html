@@ -52,7 +52,7 @@ Div2A Meeting of Old Friends
 题意是给出两个区间，求交集的区间的长度，如果k在这个交集里面，那么结果再减1。
 Div2B  Filya and Homework
 题意是给出n个数，现在能在一些数上(可以是0)上加x，也可以在一些数上减x，问">
-<meta property="og:updated_time" content="2016-09-19T03:32:19.000Z">
+<meta property="og:updated_time" content="2016-09-19T06:54:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Codeforces 371">
 <meta name="twitter:description" content="题目链接与代码链接
@@ -282,6 +282,9 @@ Div2B  Filya and Homework
 <p>第i个人向右跑，要求dp[i-1]大于等于A[i]-1。dp[i]=max(dp[i],A[i]+x)</p>
 <p>第i个人向左跑，可能会是第i-1个人向右跑，为了覆盖该段区间，要求dp[i-1]&gt;=A[i]-x-1,dp[i]=max(dp[i],A[i])</p>
 <p>第i个人向左跑，可能会是第i-2向右跑，为了覆盖该段区间，要求dp[i-2]&gt;=A[i]-x-1，dp[i]=max(dp[i],A[i-1]+x)</p>
+<blockquote>
+<p>学习到了rotate函数，rotate(begin,middle,end)把该数组[begin,middle) 与区间[middle,end]内的元素做了交换</p>
+</blockquote>
 </span>
       
     </div>
@@ -304,6 +307,8 @@ Div2B  Filya and Homework
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/19/Google-APAC-Test-2017-Round-C/" rel="prev">Google APAC Test 2017 Round C</a>
             
           </div>
 
@@ -398,7 +403,7 @@ Div2B  Filya and Homework
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -412,7 +417,7 @@ Div2B  Filya and Homework
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
