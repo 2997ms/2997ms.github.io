@@ -27,7 +27,7 @@
 
 
 
-  <meta name="keywords" content="Codechef,51nod,树上直径," />
+  <meta name="keywords" content="LeetCode," />
 
 
 
@@ -36,19 +36,28 @@
   <link rel="shorticon icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="做了Codechef上面的August Lunchtime 2016，上面的题都有中文题面，还有解答，还有代码。觉得这个网站也不错呀。。。
-然后这次做完发现是三道easy，一道medium。一想也没用什么数据结构，好像是差不多哈，但是第四个树上直径这个和51nod上面树上最远点对是一样的想法，做得时候自己感觉还是挺难的。第三题数组开小了，然而一直返回WA，找了很久。第二个有相同的数字也WA了一个晚">
+<meta name="description" content="LeetCode11 Container With Most Water
+题意是给出$N$个整数$a_1,a_2…a_n$，代表在对应位置有一条$(i,0)$到$(i,a_i)$的边。问这里面两条边加x轴所围成的面积最大值。
+
+之后也有一道类似的题，左右贪心，每次将较小的边去掉，时间复杂度$O(n)$。
+12345678910111213141516171819202122232425262728">
 <meta property="og:type" content="article">
-<meta property="og:title" content="August Lunchtime 2016">
-<meta property="og:url" content="http://2997ms.github.io/2016/09/03/August-Lunchtime-2016/index.html">
+<meta property="og:title" content="LeetCode 11-20">
+<meta property="og:url" content="http://2997ms.github.io/2016/09/23/LeetCode-11-20/index.html">
 <meta property="og:site_name" content="2997ms">
-<meta property="og:description" content="做了Codechef上面的August Lunchtime 2016，上面的题都有中文题面，还有解答，还有代码。觉得这个网站也不错呀。。。
-然后这次做完发现是三道easy，一道medium。一想也没用什么数据结构，好像是差不多哈，但是第四个树上直径这个和51nod上面树上最远点对是一样的想法，做得时候自己感觉还是挺难的。第三题数组开小了，然而一直返回WA，找了很久。第二个有相同的数字也WA了一个晚">
-<meta property="og:updated_time" content="2016-09-03T07:46:14.000Z">
+<meta property="og:description" content="LeetCode11 Container With Most Water
+题意是给出$N$个整数$a_1,a_2…a_n$，代表在对应位置有一条$(i,0)$到$(i,a_i)$的边。问这里面两条边加x轴所围成的面积最大值。
+
+之后也有一道类似的题，左右贪心，每次将较小的边去掉，时间复杂度$O(n)$。
+12345678910111213141516171819202122232425262728">
+<meta property="og:updated_time" content="2016-09-23T06:44:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="August Lunchtime 2016">
-<meta name="twitter:description" content="做了Codechef上面的August Lunchtime 2016，上面的题都有中文题面，还有解答，还有代码。觉得这个网站也不错呀。。。
-然后这次做完发现是三道easy，一道medium。一想也没用什么数据结构，好像是差不多哈，但是第四个树上直径这个和51nod上面树上最远点对是一样的想法，做得时候自己感觉还是挺难的。第三题数组开小了，然而一直返回WA，找了很久。第二个有相同的数字也WA了一个晚">
+<meta name="twitter:title" content="LeetCode 11-20">
+<meta name="twitter:description" content="LeetCode11 Container With Most Water
+题意是给出$N$个整数$a_1,a_2…a_n$，代表在对应位置有一条$(i,0)$到$(i,a_i)$的边。问这里面两条边加x轴所围成的面积最大值。
+
+之后也有一道类似的题，左右贪心，每次将较小的边去掉，时间复杂度$O(n)$。
+12345678910111213141516171819202122232425262728">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -58,7 +67,7 @@
   };
 </script>
 
-  <title> August Lunchtime 2016 | 2997ms </title>
+  <title> LeetCode 11-20 | 2997ms </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -180,7 +189,7 @@
           
           
             
-              August Lunchtime 2016
+              LeetCode 11-20
             
           
         </h1>
@@ -189,8 +198,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2016-09-03T14:54:44+08:00" content="2016-09-03">
-            2016-09-03
+          <time itemprop="dateCreated" datetime="2016-09-23T10:31:39+08:00" content="2016-09-23">
+            2016-09-23
           </time>
         </span>
 
@@ -199,8 +208,8 @@
             &nbsp; | &nbsp; 分类于
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/题记/" itemprop="url" rel="index">
-                  <span itemprop="name">题记</span>
+                <a href="/categories/待完成/" itemprop="url" rel="index">
+                  <span itemprop="name">待完成</span>
                 </a>
               </span>
 
@@ -216,11 +225,11 @@
             <span class="post-comments-count">
               &nbsp; | &nbsp;
               <!--
-              <a href="/2016/09/03/August-Lunchtime-2016/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/03/August-Lunchtime-2016/" itemprop="commentsCount"></span>
+              <a href="/2016/09/23/LeetCode-11-20/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/23/LeetCode-11-20/" itemprop="commentsCount"></span>
               </a>
               -->
-              <a href="/2016/09/03/August-Lunchtime-2016/#comments" itemprop="discussionUrl">
+              <a href="/2016/09/23/LeetCode-11-20/#comments" itemprop="discussionUrl">
                 <span>评论</span>
               </a>
             </span>
@@ -235,19 +244,21 @@
       
 
       
-        <span itemprop="articleBody"><p>做了Codechef上面的<a href="https://www.codechef.com/LTIME39" target="_blank" rel="external">August Lunchtime 2016</a>，上面的题都有中文题面，还有解答，还有代码。觉得这个网站也不错呀。。。</p>
-<p>然后这次做完发现是三道easy，一道medium。一想也没用什么数据结构，好像是差不多哈，但是第四个树上直径这个和51nod上面树上最远点对是一样的想法，做得时候自己感觉还是挺难的。第三题数组开小了，然而一直返回WA，找了很久。第二个有相同的数字也WA了一个晚上。这样想来觉得也不那么简单了。</p>
-<p>代码在<a href="https://github.com/2997ms/My_Algorithm/tree/master/Codechef/August-Lunchtime-2016" target="_blank" rel="external">这里</a>。</p>
-<p>A题Studying Alphabet不用写了。。。</p>
-<h3 id="B题Lock-Free-Stack"><a href="#B题Lock-Free-Stack" class="headerlink" title="B题Lock-Free Stack"></a>B题Lock-Free Stack</h3><hr>
-<p>因为有P = (A1 + 1) × (A2 + 1) × … × (AN + 1)，然后P&lt;=10^6，所以最多20个进程，那就对每个进程的输出都要符合压栈顺序。(一开始自己一位一位找，发现有相同的数字，所以WA了一晚上，后来还是对每个进程都满足顺序就可以了)。</p>
-<h3 id="C题-Short-in-Average"><a href="#C题-Short-in-Average" class="headerlink" title="C题 Short in Average"></a>C题 Short in Average</h3><hr>
-<p>这个题自己搞过原题，感触就是平均值问题很容易搞成二分，然后对每一个值减去二分的值，然后去判断。<a href="http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1711" target="_blank" rel="external">51nod 1711平均数</a>也是这样，二分这个平均数x，然后每个数减去x，那么这样的话就是算区间和&lt;0的个数与k去相比，区间和[le,ri]小于0，相当于前缀和sum[ri]-sum[le-1]&lt;0，sum[ri]&lt;sum[le-1]，这个不就是逆序对的数目嘛，发现离散化+树状数组就可以做了。</p>
-<p>这个题的思路也是这样，每个边减去二分值x，然后直接判环就好了。</p>
-<h3 id="D题-Product-of-Diameters"><a href="#D题-Product-of-Diameters" class="headerlink" title="D题 Product of Diameters"></a>D题 Product of Diameters</h3><hr>
-<p>这个题目赞在要逆向考虑，往里面加边，然后输出结果。那么往里面加边，就是除以每颗树直径的直径的乘积，这个可以维护，然后求出这两棵树内部的直径，这个维护相当于需要维护一个集合里面的最远距离，想了一下和<a href="http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1766" target="_blank" rel="external">51nod 1766树上的最远点对</a>本质上是一样的题目，也是维护一个集合里面距离最远的两个点，然后两个集合的合并，只可能在这四个点里面出，倍增求lca，求距离。</p>
-<p>这个题思想还是挺简单的，要想清楚过程，自己写起来一些细节写得还是不够好。</p>
-</span>
+        <span itemprop="articleBody"><h3 id="LeetCode11-Container-With-Most-Water"><a href="#LeetCode11-Container-With-Most-Water" class="headerlink" title="LeetCode11 Container With Most Water"></a>LeetCode11 Container With Most Water</h3><blockquote>
+<p>题意是给出$N$个整数$a_1,a_2…a_n$，代表在对应位置有一条$(i,0)$到$(i,a_i)$的边。问这里面两条边加x轴所围成的面积最大值。</p>
+</blockquote>
+<p>之后也有一道类似的题，左右贪心，每次将较小的边去掉，时间复杂度$O(n)$。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution </div><div class="line">&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxArea</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; height)</span> </span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> sz=height.size();</div><div class="line">        <span class="keyword">if</span>(sz==<span class="number">0</span>||sz==<span class="number">1</span>)<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> le=<span class="number">0</span>,ri=sz<span class="number">-1</span>;</div><div class="line">        <span class="keyword">int</span> res=<span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> weight=sz<span class="number">-1</span>;</div><div class="line">        <span class="keyword">while</span>(le&lt;ri)</div><div class="line">        &#123;</div><div class="line">        	res=max(res,min(height[le],height[ri])*weight);</div><div class="line">        	<span class="keyword">int</span> h1=height[le];</div><div class="line">        	<span class="keyword">int</span> h2=height[ri];</div><div class="line">        	<span class="keyword">if</span>(h1&lt;h2)</div><div class="line">        	&#123;</div><div class="line">        		le++;</div><div class="line">        	&#125;</div><div class="line">        	<span class="keyword">else</span></div><div class="line">        	&#123;</div><div class="line">        		ri--;</div><div class="line">        	&#125;</div><div class="line">        	weight--;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line">&#125;t;</div></pre></td></tr></table></figure>
+<h3 id="LeetCode12-Integer-to-Roman"><a href="#LeetCode12-Integer-to-Roman" class="headerlink" title="LeetCode12 Integer to Roman"></a>LeetCode12 Integer to Roman</h3><blockquote>
+<p>题意是将整形数字转成罗马数字(字符串)。</p>
+</blockquote>
+<p>考虑每一位，0到3是一种，4是一种，5到8是一种，9是一种。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution</div><div class="line">&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="function"><span class="built_in">string</span> <span class="title">intToRoman</span><span class="params">(<span class="keyword">int</span> num)</span></span></div><div class="line">	&#123;</div><div class="line">		<span class="keyword">int</span> n[<span class="number">4</span>] = &#123; <span class="number">1000</span>,<span class="number">100</span>,<span class="number">10</span>,<span class="number">1</span> &#125;;</div><div class="line">		<span class="keyword">char</span> r5[<span class="number">4</span>] = &#123; <span class="string">' '</span>,<span class="string">'D'</span>,<span class="string">'L'</span>,<span class="string">'V'</span> &#125;;</div><div class="line">		<span class="keyword">char</span> r1[<span class="number">4</span>] = &#123; <span class="string">'M'</span>,<span class="string">'C'</span>,<span class="string">'X'</span>,<span class="string">'I'</span> &#125;;</div><div class="line"></div><div class="line">		<span class="built_in">string</span> res = <span class="string">""</span>;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">int</span> k = num / n[i];</div><div class="line"></div><div class="line">			<span class="keyword">if</span> (k == <span class="number">9</span>)</div><div class="line">			&#123;</div><div class="line">				res = res + r1[i] + r1[i - <span class="number">1</span>];</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (k == <span class="number">4</span>)</div><div class="line">			&#123;</div><div class="line">				res = res + r1[i] + r5[i];</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (k &gt;= <span class="number">5</span> &amp;&amp; k &lt;= <span class="number">8</span>)</div><div class="line">			&#123;</div><div class="line">				res = res + r5[i];</div><div class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; k - <span class="number">5</span>; j++)</div><div class="line">				&#123;</div><div class="line">					res = res + r1[i];</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">else</span></div><div class="line">			&#123;</div><div class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; k; j++)</div><div class="line">				&#123;</div><div class="line">					res = res + r1[i];</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			num = num%n[i];</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> res;</div><div class="line">	&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="LeetCode19-Remove-Nth-Node-From-End-of-List"><a href="#LeetCode19-Remove-Nth-Node-From-End-of-List" class="headerlink" title="LeetCode19 Remove Nth Node From End of List"></a>LeetCode19 Remove Nth Node From End of List</h3><blockquote>
+<p>移除链表结尾的第n个节点。</p>
+</blockquote>
+<p>一前一后距离为n-1，当后一个节点到了结尾的时候，那么前一个节点就是要删除的节点。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function">ListNode* <span class="title">removeNthFromEnd</span><span class="params">(ListNode* head, <span class="keyword">int</span> n)</span></span></div><div class="line">    &#123;</div><div class="line">    	<span class="keyword">if</span>(head==<span class="literal">NULL</span>)</div><div class="line">    	&#123;</div><div class="line">    		<span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">    	&#125;</div><div class="line">    	ListNode *pre = <span class="literal">NULL</span>;</div><div class="line">    	ListNode *p = head;</div><div class="line">    	ListNode *q = head;</div><div class="line">    	ListNode *res = head;</div><div class="line">    	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n<span class="number">-1</span>;i++)</div><div class="line">    	&#123;</div><div class="line">    		q=q-&gt;next;</div><div class="line">    	&#125;</div><div class="line"></div><div class="line">    	<span class="keyword">while</span>(q-&gt;next)</div><div class="line">    	&#123;</div><div class="line">    		pre=p;</div><div class="line">    		p=p-&gt;next;</div><div class="line">    		q=q-&gt;next;</div><div class="line">    	&#125;</div><div class="line">    	<span class="keyword">if</span>(pre)</div><div class="line">    	&#123;</div><div class="line">    	     pre-&gt;next=p-&gt;next;   </div><div class="line">    	&#125;</div><div class="line">    	<span class="keyword">else</span></div><div class="line">    	&#123;</div><div class="line">    	     res=head-&gt;next;</div><div class="line">    	&#125;</div><div class="line">    	<span class="keyword">return</span> res;</div><div class="line">	&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></span>
       
     </div>
 
@@ -255,11 +266,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Codechef/" rel="tag">#Codechef</a>
-          
-            <a href="/tags/51nod/" rel="tag">#51nod</a>
-          
-            <a href="/tags/树上直径/" rel="tag">#树上直径</a>
+            <a href="/tags/LeetCode/" rel="tag">#LeetCode</a>
           
         </div>
       
@@ -268,13 +275,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/09/03/AtCoder-Regular-Contest-059/" rel="prev">AtCoder Regular Contest 059</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/31/Codeforces-369-Div2/" rel="next">Codeforces 369 Div2</a>
+              <a href="/2016/09/21/LeetCode-1-10/" rel="next">LeetCode 1-10</a>
             
           </div>
         </div>
@@ -293,10 +298,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/09/03/August-Lunchtime-2016/"
-     data-title="August Lunchtime 2016"
+        <div class="ds-share flat" data-thread-key="2016/09/23/LeetCode-11-20/"
+     data-title="LeetCode 11-20"
      data-content=""
-     data-url="http://2997ms.github.io/2016/09/03/August-Lunchtime-2016/">
+     data-url="http://2997ms.github.io/2016/09/23/LeetCode-11-20/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -322,8 +327,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2016/09/03/August-Lunchtime-2016/"
-                   data-title="August Lunchtime 2016" data-url="http://2997ms.github.io/2016/09/03/August-Lunchtime-2016/">
+              <div class="ds-thread" data-thread-key="2016/09/23/LeetCode-11-20/"
+                   data-title="LeetCode 11-20" data-url="http://2997ms.github.io/2016/09/23/LeetCode-11-20/">
               </div>
             
           </div>
@@ -405,7 +410,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#B题Lock-Free-Stack"><span class="nav-number">1.</span> <span class="nav-text">B题Lock-Free Stack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C题-Short-in-Average"><span class="nav-number">2.</span> <span class="nav-text">C题 Short in Average</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D题-Product-of-Diameters"><span class="nav-number">3.</span> <span class="nav-text">D题 Product of Diameters</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#LeetCode11-Container-With-Most-Water"><span class="nav-number">1.</span> <span class="nav-text">LeetCode11 Container With Most Water</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LeetCode12-Integer-to-Roman"><span class="nav-number">2.</span> <span class="nav-text">LeetCode12 Integer to Roman</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LeetCode19-Remove-Nth-Node-From-End-of-List"><span class="nav-number">3.</span> <span class="nav-text">LeetCode19 Remove Nth Node From End of List</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
