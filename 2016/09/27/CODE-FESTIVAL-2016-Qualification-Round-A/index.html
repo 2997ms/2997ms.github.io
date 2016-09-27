@@ -27,7 +27,7 @@
 
 
 
-  <meta name="keywords" content="AtCoder,DP,倍增,KMP," />
+  <meta name="keywords" content="AtCoder," />
 
 
 
@@ -36,34 +36,43 @@
   <link rel="shorticon icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="这一期的Regular Contest我也是肥肠喜欢啊，题目都很好玩啊，题目链接。
-代码链接
-C Tak and Cards
-C题题意是给出N(N&amp;lt;=50)个数，每个数的范围在1到50之间，然后给一个值A。从这N个数任意选择数字，要求选取的这些数字的平均值是A，问有多少种选取的方法。
-dp[i][j][x]表示到第i个数时，有j个数组成和为x的方法数量。
-D Digit Sum
-D题题意是给">
+<meta name="description" content="题目链接与代码链接
+还是那句话吧，好好思考，并且希望自己能坚持下去。
+A - CODEFESTIVAL 2016
+题意是给一个长度为12的字符串，输出前4个字符+空格+后四个字符。
+
+B - 仲良しうさぎ / Friendly Rabbits
+题意是给出N个兔子，每个兔子有自己喜欢的兔子$A_i$，问互相喜欢的兔子有多少对。
+
+直接模拟计算。
+C - 次のアルファベット / Next Letter">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AtCoder Regular Contest 060">
-<meta property="og:url" content="http://2997ms.github.io/2016/09/05/AtCoder-Regular-Contest-060/index.html">
+<meta property="og:title" content="CODE FESTIVAL 2016 Qualification Round A">
+<meta property="og:url" content="http://2997ms.github.io/2016/09/27/CODE-FESTIVAL-2016-Qualification-Round-A/index.html">
 <meta property="og:site_name" content="2997ms">
-<meta property="og:description" content="这一期的Regular Contest我也是肥肠喜欢啊，题目都很好玩啊，题目链接。
-代码链接
-C Tak and Cards
-C题题意是给出N(N&amp;lt;=50)个数，每个数的范围在1到50之间，然后给一个值A。从这N个数任意选择数字，要求选取的这些数字的平均值是A，问有多少种选取的方法。
-dp[i][j][x]表示到第i个数时，有j个数组成和为x的方法数量。
-D Digit Sum
-D题题意是给">
-<meta property="og:updated_time" content="2016-09-05T15:46:22.000Z">
+<meta property="og:description" content="题目链接与代码链接
+还是那句话吧，好好思考，并且希望自己能坚持下去。
+A - CODEFESTIVAL 2016
+题意是给一个长度为12的字符串，输出前4个字符+空格+后四个字符。
+
+B - 仲良しうさぎ / Friendly Rabbits
+题意是给出N个兔子，每个兔子有自己喜欢的兔子$A_i$，问互相喜欢的兔子有多少对。
+
+直接模拟计算。
+C - 次のアルファベット / Next Letter">
+<meta property="og:updated_time" content="2016-09-27T15:09:10.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AtCoder Regular Contest 060">
-<meta name="twitter:description" content="这一期的Regular Contest我也是肥肠喜欢啊，题目都很好玩啊，题目链接。
-代码链接
-C Tak and Cards
-C题题意是给出N(N&amp;lt;=50)个数，每个数的范围在1到50之间，然后给一个值A。从这N个数任意选择数字，要求选取的这些数字的平均值是A，问有多少种选取的方法。
-dp[i][j][x]表示到第i个数时，有j个数组成和为x的方法数量。
-D Digit Sum
-D题题意是给">
+<meta name="twitter:title" content="CODE FESTIVAL 2016 Qualification Round A">
+<meta name="twitter:description" content="题目链接与代码链接
+还是那句话吧，好好思考，并且希望自己能坚持下去。
+A - CODEFESTIVAL 2016
+题意是给一个长度为12的字符串，输出前4个字符+空格+后四个字符。
+
+B - 仲良しうさぎ / Friendly Rabbits
+题意是给出N个兔子，每个兔子有自己喜欢的兔子$A_i$，问互相喜欢的兔子有多少对。
+
+直接模拟计算。
+C - 次のアルファベット / Next Letter">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -73,7 +82,7 @@ D题题意是给">
   };
 </script>
 
-  <title> AtCoder Regular Contest 060 | 2997ms </title>
+  <title> CODE FESTIVAL 2016 Qualification Round A | 2997ms </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -195,7 +204,7 @@ D题题意是给">
           
           
             
-              AtCoder Regular Contest 060
+              CODE FESTIVAL 2016 Qualification Round A
             
           
         </h1>
@@ -204,8 +213,8 @@ D题题意是给">
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2016-09-05T22:39:38+08:00" content="2016-09-05">
-            2016-09-05
+          <time itemprop="dateCreated" datetime="2016-09-27T21:49:04+08:00" content="2016-09-27">
+            2016-09-27
           </time>
         </span>
 
@@ -231,11 +240,11 @@ D题题意是给">
             <span class="post-comments-count">
               &nbsp; | &nbsp;
               <!--
-              <a href="/2016/09/05/AtCoder-Regular-Contest-060/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/05/AtCoder-Regular-Contest-060/" itemprop="commentsCount"></span>
+              <a href="/2016/09/27/CODE-FESTIVAL-2016-Qualification-Round-A/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/27/CODE-FESTIVAL-2016-Qualification-Round-A/" itemprop="commentsCount"></span>
               </a>
               -->
-              <a href="/2016/09/05/AtCoder-Regular-Contest-060/#comments" itemprop="discussionUrl">
+              <a href="/2016/09/27/CODE-FESTIVAL-2016-Qualification-Round-A/#comments" itemprop="discussionUrl">
                 <span>评论</span>
               </a>
             </span>
@@ -250,28 +259,34 @@ D题题意是给">
       
 
       
-        <span itemprop="articleBody"><p>这一期的Regular Contest我也是肥肠喜欢啊，题目都很好玩啊，<a href="http://arc060.contest.atcoder.jp/assignments" target="_blank" rel="external">题目链接</a>。</p>
-<p><a href="https://github.com/2997ms/My_Algorithm/tree/master/AtCoder/Regular_Contest_060" target="_blank" rel="external">代码链接</a></p>
-<h3 id="C-Tak-and-Cards"><a href="#C-Tak-and-Cards" class="headerlink" title="C Tak and Cards"></a>C Tak and Cards</h3><hr>
-<p>C题题意是给出N(N&lt;=50)个数，每个数的范围在1到50之间，然后给一个值A。从这N个数任意选择数字，要求选取的这些数字的平均值是A，问有多少种选取的方法。</p>
-<p>dp[i][j][x]表示到第i个数时，有j个数组成和为x的方法数量。</p>
-<h3 id="D-Digit-Sum"><a href="#D-Digit-Sum" class="headerlink" title="D Digit Sum"></a>D Digit Sum</h3><hr>
-<p>D题题意是给出了一种函数f(b,n)，<br>$$<br>f(b,n)=n   \    \  \  \ when\ \  n&lt;b<br>$$</p>
-<p>$$<br>f(b,n)=f(b,floor(\frac{n}{b}))+(n\%b)<br>$$</p>
-<p>然后给出了n和s，求是最小的b，使得f(b,n)=s。如果不存在这样的b，输出-1。</p>
-<p>下次看到n,b范围在10^11,10^12这种题，直接考虑O(sqrt(n))啊啊啊。</p>
-<p>首先考虑b&lt;sqrt(n)的这种情况，直接暴力算。</p>
-<p>然后考虑b&gt;sqrt(n),那这样n=pb+q，有p+q=s。得到n-s=b*(p-1)因为b&gt;sqrt(n),所以p是小于sqrt(n)的，枚举p，注意q也要符合条件即可。</p>
-<h3 id="E-Tak-and-Hotels"><a href="#E-Tak-and-Hotels" class="headerlink" title="E Tak and Hotels"></a>E Tak and Hotels</h3><hr>
-<p>E题题意是给出了n个旅馆的坐标，然后有一个人旅行一天的时间行走的距离不超过L，晚上必须在旅馆睡。然后有Q个询问，问从a走到b至少需要几天，保证是可以到达的。</p>
-<p>倍增的想法，dp[x][a]表示从x经过2^a天能够达到的最远旅馆，之后每次询问从最高次往低次暴力。</p>
-<h3 id="F-Best-Representation"><a href="#F-Best-Representation" class="headerlink" title="F Best Representation"></a>F Best Representation</h3><hr>
-<p><del>发现AtCoder日本人很喜欢出这种题，关于这种是哪种我也说不太好</del></p>
-<p>字符串X如果能够被表示成k(k&gt;=2)个字符串a连接而成的话，就不是好字符串，否则就是好字符串。</p>
-<p>现给出一个字符串，要求把这个字符串分解成都是好字符串的字符串。。。问在所有分解成功的集合中，分解出来的最少的字符串数量是多少，设为ans，有多少种分法，使得最少字符串数量为ans，输出ans和这个多少种分法。= =。突然发现我语言能力如此捉急，看不懂的看英文吧，当然我觉得那个也挺难懂的。</p>
-<p>这个题就好玩在，排除所有字符相等的情况(这种情况输出的是strlen(w)，1,不用多说)，分解出来的最少字符串数量一定不是1就是2。当这个字符串本身就是好字符串的时候就是1。当这个字符串可以表示成k(k&gt;=2)个字符串a连接而成的话，那么此时，嘿嘿嘿(……)，一拆的话，前者多一个，后者少一个，就可以分成两个好字符串啦。</p>
-<p>所以这个题判断出是1的情况之后，说白了就是判断一个字符串可不可以分解成由k(k&gt;=2)个字符串a连接而成，POJ上面有一道类似的题目，kmp直接可以解，前后如果都满足，方法的数量就+1。那个1e9+7纯属唬人。。。</p>
-<p>这个题目也挺好玩(真是智障儿童欢乐多。。。)</p>
+        <span itemprop="articleBody"><p><a href="http://code-festival-2016-quala.contest.atcoder.jp/assignments" target="_blank" rel="external">题目链接</a>与<a href="https://github.com/2997ms/My_Algorithm/tree/master/AtCoder/CODE%20FESTIVAL%202016%20Qualification%20Round%20A" target="_blank" rel="external">代码链接</a></p>
+<p>还是那句话吧，好好思考，并且希望自己能坚持下去。</p>
+<h3 id="A-CODEFESTIVAL-2016"><a href="#A-CODEFESTIVAL-2016" class="headerlink" title="A - CODEFESTIVAL 2016"></a>A - CODEFESTIVAL 2016</h3><blockquote>
+<p>题意是给一个长度为12的字符串，输出前4个字符+空格+后四个字符。</p>
+</blockquote>
+<h3 id="B-仲良しうさぎ-Friendly-Rabbits"><a href="#B-仲良しうさぎ-Friendly-Rabbits" class="headerlink" title="B - 仲良しうさぎ / Friendly Rabbits"></a>B - 仲良しうさぎ / Friendly Rabbits</h3><blockquote>
+<p>题意是给出N个兔子，每个兔子有自己喜欢的兔子$A_i$，问互相喜欢的兔子有多少对。</p>
+</blockquote>
+<p>直接模拟计算。</p>
+<h3 id="C-次のアルファベット-Next-Letter"><a href="#C-次のアルファベット-Next-Letter" class="headerlink" title="C - 次のアルファベット / Next Letter"></a>C - 次のアルファベット / Next Letter</h3><blockquote>
+<p>题意是给出一个字符串，字符串中的每一个字符可以循环向后移，但是一共必须循环向后移动K次，问改变后的字典序最小的字符串。</p>
+</blockquote>
+<p>对每一个字符贪心搞，剩下的操作在最后一个字符上。</p>
+<h3 id="D-マス目と整数-Grid-and-Integers"><a href="#D-マス目と整数-Grid-and-Integers" class="headerlink" title="D - マス目と整数 / Grid and Integers"></a>D - マス目と整数 / Grid and Integers</h3><blockquote>
+<p>题意是给出了R*C的格子，然后有N个格子($r_i,c_i$)已经有值了$a_i$，现在要求让你判断是否每一个格子在都是大于等于零的情况下，满足在任意一个2*2的格子中，两个对角线的和是相等的。</p>
+</blockquote>
+<p>又是这种要你将题目转化的题。</p>
+<p>首先对于任意一个2*2的方格，要满足<br>$$<br>b_{i,j}+b_{i+1,j+1}=b_{i+1,j}+b_{i,j+1}<br>$$<br>等式挪一下变成差的形式，会发现对于固定的一行i来说，其差值是要相等的。对于固定的一列j来说，其差值也是相等的。那么这个时候思考，可以将上述条件转变为是否存在两个数列$(x_1,x_2,…,x_R)$和$(y_1,y_2,…,y_C)$，使得$x_rk+y_ck=a_k$。</p>
+<p>所以根据题中所给的条件可以构建图，每一个边的权值就是$a_k$，当形成环的时候判断是否相等。</p>
+<p>最后，要判断是否都满足是大于等于0，我们先假设最开始的值x是最小值0，根据这个基准，算其余点的值，计算最小正值与最小负值，如果最小负值的绝对值大于了最小正值，画图可知，这个时候就到了不可调和的地步，不符合要求。</p>
+<h3 id="E-LRU-パズル-LRU-Puzzle"><a href="#E-LRU-パズル-LRU-Puzzle" class="headerlink" title="E - LRU パズル / LRU Puzzle"></a>E - LRU パズル / LRU Puzzle</h3><blockquote>
+<p>题意是有N个1到M递增的数组，给出了一系列的操作，每次操作将从N个数组中选出一个数组，并将这个数组中的$a_i$拿到最前面。现在题目是问是否满足在进行Q次操作之后，得到的结果是相等的。</p>
+</blockquote>
+<p>假设操作在(1,2,…,M)上，那么在进行了Q次操作之后得到的结果，就是从后往前看，当这个数第一次出现的时候，将这个数放到结果的队列末尾，如果出现过，忽略掉。之后将没有出现在结果队列中的数字依次插入到结尾。</p>
+<p>那么问题现在相当于将这个操作的数组a，分成N个子串，要求这N个子串在1..M上的操作是相等的结果。问是否可能。</p>
+<p>那首先考虑N=2的情况。贪心去取，碰到没出现过的，给第一个。碰到第一个出现的，给第二个。都出现的，忽略掉。最终看两个数组得到的是否相等。</p>
+<p>当N大于2的时候，思路也是一样的，类似于推箱子。。。</p>
+<p>首先记长度为0的有N个数组，然后得到一个数字判断当前面临的状态，往下面推，最后看箱子有没有剩下的。。。</p>
 </span>
       
     </div>
@@ -282,12 +297,6 @@ D题题意是给">
           
             <a href="/tags/AtCoder/" rel="tag">#AtCoder</a>
           
-            <a href="/tags/DP/" rel="tag">#DP</a>
-          
-            <a href="/tags/倍增/" rel="tag">#倍增</a>
-          
-            <a href="/tags/KMP/" rel="tag">#KMP</a>
-          
         </div>
       
 
@@ -295,13 +304,11 @@ D题题意是给">
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/09/07/AtCoder-Grand-Contest-002/" rel="prev">AtCoder Grand Contest 002</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/03/AtCoder-Regular-Contest-059/" rel="next">AtCoder Regular Contest 059</a>
+              <a href="/2016/09/23/LeetCode-11-20/" rel="next">LeetCode 11-20</a>
             
           </div>
         </div>
@@ -320,10 +327,10 @@ D题题意是给">
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/09/05/AtCoder-Regular-Contest-060/"
-     data-title="AtCoder Regular Contest 060"
+        <div class="ds-share flat" data-thread-key="2016/09/27/CODE-FESTIVAL-2016-Qualification-Round-A/"
+     data-title="CODE FESTIVAL 2016 Qualification Round A"
      data-content=""
-     data-url="http://2997ms.github.io/2016/09/05/AtCoder-Regular-Contest-060/">
+     data-url="http://2997ms.github.io/2016/09/27/CODE-FESTIVAL-2016-Qualification-Round-A/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -349,8 +356,8 @@ D题题意是给">
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2016/09/05/AtCoder-Regular-Contest-060/"
-                   data-title="AtCoder Regular Contest 060" data-url="http://2997ms.github.io/2016/09/05/AtCoder-Regular-Contest-060/">
+              <div class="ds-thread" data-thread-key="2016/09/27/CODE-FESTIVAL-2016-Qualification-Round-A/"
+                   data-title="CODE FESTIVAL 2016 Qualification Round A" data-url="http://2997ms.github.io/2016/09/27/CODE-FESTIVAL-2016-Qualification-Round-A/">
               </div>
             
           </div>
@@ -432,7 +439,7 @@ D题题意是给">
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Tak-and-Cards"><span class="nav-number">1.</span> <span class="nav-text">C Tak and Cards</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Digit-Sum"><span class="nav-number">2.</span> <span class="nav-text">D Digit Sum</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-Tak-and-Hotels"><span class="nav-number">3.</span> <span class="nav-text">E Tak and Hotels</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#F-Best-Representation"><span class="nav-number">4.</span> <span class="nav-text">F Best Representation</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-CODEFESTIVAL-2016"><span class="nav-number">1.</span> <span class="nav-text">A - CODEFESTIVAL 2016</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-仲良しうさぎ-Friendly-Rabbits"><span class="nav-number">2.</span> <span class="nav-text">B - 仲良しうさぎ / Friendly Rabbits</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-次のアルファベット-Next-Letter"><span class="nav-number">3.</span> <span class="nav-text">C - 次のアルファベット / Next Letter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-マス目と整数-Grid-and-Integers"><span class="nav-number">4.</span> <span class="nav-text">D - マス目と整数 / Grid and Integers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-LRU-パズル-LRU-Puzzle"><span class="nav-number">5.</span> <span class="nav-text">E - LRU パズル / LRU Puzzle</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
