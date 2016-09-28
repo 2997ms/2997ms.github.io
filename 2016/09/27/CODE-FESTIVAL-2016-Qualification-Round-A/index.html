@@ -60,7 +60,7 @@ B - 仲良しうさぎ / Friendly Rabbits
 
 直接模拟计算。
 C - 次のアルファベット / Next Letter">
-<meta property="og:updated_time" content="2016-09-27T15:09:10.000Z">
+<meta property="og:updated_time" content="2016-09-28T01:28:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CODE FESTIVAL 2016 Qualification Round A">
 <meta name="twitter:description" content="题目链接与代码链接
@@ -276,7 +276,7 @@ C - 次のアルファベット / Next Letter">
 <p>题意是给出了R*C的格子，然后有N个格子($r_i,c_i$)已经有值了$a_i$，现在要求让你判断是否每一个格子在都是大于等于零的情况下，满足在任意一个2*2的格子中，两个对角线的和是相等的。</p>
 </blockquote>
 <p>又是这种要你将题目转化的题。</p>
-<p>首先对于任意一个2*2的方格，要满足<br>$$<br>b_{i,j}+b_{i+1,j+1}=b_{i+1,j}+b_{i,j+1}<br>$$<br>等式挪一下变成差的形式，会发现对于固定的一行i来说，其差值是要相等的。对于固定的一列j来说，其差值也是相等的。那么这个时候思考，可以将上述条件转变为是否存在两个数列$(x_1,x_2,…,x_R)$和$(y_1,y_2,…,y_C)$，使得$x_rk+y_ck=a_k$。</p>
+<p>首先对于任意一个2*2的方格，要满足<br>$$<br>b_{i,j}+b_{i+1,j+1}=b_{i+1,j}+b_{i,j+1}<br>$$<br>等式挪一下变成差的形式，会发现对于固定的一行i来说，其差值是要相等的。对于固定的一列j来说，其差值也是相等的。那么这个时候思考，可以将上述条件转变为是否存在两个数列$(x_1,x_2,…,x_R)$和$(y_1,y_2,…,y_C)$，使得$x_{rk}+y_{ck}=a_k$。</p>
 <p>所以根据题中所给的条件可以构建图，每一个边的权值就是$a_k$，当形成环的时候判断是否相等。</p>
 <p>最后，要判断是否都满足是大于等于0，我们先假设最开始的值x是最小值0，根据这个基准，算其余点的值，计算最小正值与最小负值，如果最小负值的绝对值大于了最小正值，画图可知，这个时候就到了不可调和的地步，不符合要求。</p>
 <h3 id="E-LRU-パズル-LRU-Puzzle"><a href="#E-LRU-パズル-LRU-Puzzle" class="headerlink" title="E - LRU パズル / LRU Puzzle"></a>E - LRU パズル / LRU Puzzle</h3><blockquote>
