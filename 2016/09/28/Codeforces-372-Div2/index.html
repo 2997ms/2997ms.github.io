@@ -60,7 +60,7 @@ B. Complete the Word
 
 C. Plus and Square Root
 题意是一个游戏，当前数字是$x$，你可以在$x$">
-<meta property="og:updated_time" content="2016-09-28T02:31:21.000Z">
+<meta property="og:updated_time" content="2016-09-28T02:48:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Codeforces 372 Div2">
 <meta name="twitter:description" content="题目链接与代码链接
@@ -280,7 +280,7 @@ C. Plus and Square Root
 <p>题意是给定一棵树，每一条边上有一个0到9的数，然后给定一个$M$，满足$gcd(M,10)=1$。现在树上每两点通过边可以得到一个数值$\sum_{i=1}^{k-1}d_{i}*10^{k-1-i}$，问树上任意两点能够被M整除的有多少对。</p>
 </blockquote>
 <p>树分治，首先找重心，然后考虑所有经过重心的有多少对。</p>
-<p>假设通过深搜u点的值为123，即在该重心为根的情况下，深度为3。另一个点v的值为45，深度为2。那么能够知道u和v形成的点对的值是12354和45321。那么假设$A$代表从根节点正着计算得到的值，像上面得到的123，45，$B$代表从根节点每一个节点深搜反着得到的值，像321，54。那么被M整除的条件为，<br>$$<br>A_u\times 10^{d_{v}}+B_v\equiv 0\ mod\ m<br>$$<br>推过来就有<br>$$<br>A_u\equiv -B_v \times \frac{1}{10^{d_v}}\ mod\ m<br>$$<br>那这样在深搜的时候就知道记录什么了，然后以重心为根，前后深搜两边。就记录了经过改点的点对数量，之后再接着找重心，分治解。</p>
+<p>假设通过深搜u点的值为123，即在该重心为根的情况下，深度为3。另一个点v的值为45，深度为2。那么能够知道u和v形成的点对的值是12354和45321。那么假设$A$代表从根节点正着计算得到的值，像上面得到的123，45，$B$代表从根节点每一个节点深搜反着得到的值，像321，54。那么被M整除的条件为，<br>$$<br>A_u\times 10^{d_{v}}+B_v\equiv 0\ mod\ m<br>$$<br>推过来就有<br>$$<br>A_u\equiv -B_v \times \frac{1}{10^{d_v}}\ mod\ m<br>$$<br>那这样在深搜的时候就知道记录什么了，然后以重心为根，前后深搜两遍，就记录了经过该点的点对数量，之后再接着找重心，分治解。</p>
 </span>
       
     </div>
