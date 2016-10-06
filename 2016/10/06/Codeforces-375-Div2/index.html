@@ -36,34 +36,37 @@
   <link rel="shorticon icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="A,B,D都很简单很简单了，这场C题题意读偏了一些+没有判断数组的范围，GG。E和F两个构造，都没敢想。。。。E题一直在考虑网络流解，但是想不到怎么建图。
+<meta name="description" content="题目链接与代码链接
+A,B,D都很简单很简单了，这场C题题意读偏了一些+没有判断数组的范围，GG。E和F两个构造，都没敢想。。。。E题一直在考虑网络流解，但是想不到怎么建图。
 A The New Year: Meeting Friends
 三个点走到同一个点的最短距离。
 
 都减去中位数的绝对值的和。
 B Text Document Analysis
-给出一个字符串序列，问在括号里面的单词数量和在括号外面的单词最大长度">
+给出一个字符串序列，问在括号里面的单词数量和在括">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Codeforces 375 Div2">
 <meta property="og:url" content="http://2997ms.github.io/2016/10/06/Codeforces-375-Div2/index.html">
 <meta property="og:site_name" content="2997ms">
-<meta property="og:description" content="A,B,D都很简单很简单了，这场C题题意读偏了一些+没有判断数组的范围，GG。E和F两个构造，都没敢想。。。。E题一直在考虑网络流解，但是想不到怎么建图。
+<meta property="og:description" content="题目链接与代码链接
+A,B,D都很简单很简单了，这场C题题意读偏了一些+没有判断数组的范围，GG。E和F两个构造，都没敢想。。。。E题一直在考虑网络流解，但是想不到怎么建图。
 A The New Year: Meeting Friends
 三个点走到同一个点的最短距离。
 
 都减去中位数的绝对值的和。
 B Text Document Analysis
-给出一个字符串序列，问在括号里面的单词数量和在括号外面的单词最大长度">
-<meta property="og:updated_time" content="2016-10-06T13:30:33.000Z">
+给出一个字符串序列，问在括号里面的单词数量和在括">
+<meta property="og:updated_time" content="2016-10-06T13:42:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Codeforces 375 Div2">
-<meta name="twitter:description" content="A,B,D都很简单很简单了，这场C题题意读偏了一些+没有判断数组的范围，GG。E和F两个构造，都没敢想。。。。E题一直在考虑网络流解，但是想不到怎么建图。
+<meta name="twitter:description" content="题目链接与代码链接
+A,B,D都很简单很简单了，这场C题题意读偏了一些+没有判断数组的范围，GG。E和F两个构造，都没敢想。。。。E题一直在考虑网络流解，但是想不到怎么建图。
 A The New Year: Meeting Friends
 三个点走到同一个点的最短距离。
 
 都减去中位数的绝对值的和。
 B Text Document Analysis
-给出一个字符串序列，问在括号里面的单词数量和在括号外面的单词最大长度">
+给出一个字符串序列，问在括号里面的单词数量和在括">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -271,7 +274,8 @@ B Text Document Analysis
       
 
       
-        <span itemprop="articleBody"><p>A,B,D都很简单很简单了，这场C题题意读偏了一些+没有判断数组的范围，GG。E和F两个构造，都没敢想。。。。E题一直在考虑网络流解，但是想不到怎么建图。</p>
+        <span itemprop="articleBody"><p><a href="http://codeforces.com/contest/723" target="_blank" rel="external">题目链接</a>与<a href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/375_Div2" target="_blank" rel="external">代码链接</a></p>
+<p>A,B,D都很简单很简单了，这场C题题意读偏了一些+没有判断数组的范围，GG。E和F两个构造，都没敢想。。。。E题一直在考虑网络流解，但是想不到怎么建图。</p>
 <h3 id="A-The-New-Year-Meeting-Friends"><a href="#A-The-New-Year-Meeting-Friends" class="headerlink" title="A The New Year: Meeting Friends"></a>A The New Year: Meeting Friends</h3><blockquote>
 <p>三个点走到同一个点的最短距离。</p>
 </blockquote>
@@ -289,11 +293,11 @@ B Text Document Analysis
 <h3 id="D-Lakes-in-Berland"><a href="#D-Lakes-in-Berland" class="headerlink" title="D Lakes in Berland"></a>D Lakes in Berland</h3><blockquote>
 <p>题意是给出$n*m$的格子，’*’代表陆地，’.’代表水。lake是指被陆地包围的格子连通块。不被陆地包围在边界上的或者连接着便捷的水属于海洋。现在要求把lake数量变到$k$。问最小改变多少个格子。</p>
 </blockquote>
-<p>纯粹就是xjb深搜，找出面积最小的n-k个，算和。</p>
+<p>纯粹就是xjb深搜，找出面积最小的$n-k$个，算和。</p>
 <h3 id="E-One-Way-Reform"><a href="#E-One-Way-Reform" class="headerlink" title="*E One-Way Reform"></a>*E One-Way Reform</h3><blockquote>
 <p>给出$n$个点，$m$个边，现在这些边是没有方向的，要求你对每一条边定一个方向，使得出边=入边的点的数量最多。</p>
 </blockquote>
-<p>对每一个奇度点，连到n+1这个点上。然后跑欧拉回路，不断删边。</p>
+<p>对每一个奇度点，连到$n+1$这个点上。然后跑欧拉回路，不断删边。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> n, m;</div><div class="line"><span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt;ed[maxn];</div><div class="line"><span class="keyword">int</span> out[maxn], in[maxn];</div><div class="line"><span class="built_in">vector</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt;res;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">while</span> (ed[x].size())</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">auto</span> it = ed[x].begin();</div><div class="line">		<span class="keyword">int</span> p = *it;</div><div class="line">		res.push_back(mp(x, *it));</div><div class="line">		ed[x].erase(it);</div><div class="line">		ed[p].erase(x);</div><div class="line">		dfs(p);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);</div><div class="line">	<span class="built_in">memset</span>(in, <span class="number">0</span>, <span class="keyword">sizeof</span>(in));</div><div class="line">	<span class="built_in">memset</span>(out, <span class="number">0</span>, <span class="keyword">sizeof</span>(out));</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n + <span class="number">1</span>; i++)</div><div class="line">	&#123;</div><div class="line">		ed[i].clear();</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">int</span> x, y;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;x, &amp;y);</div><div class="line">		out[x]++;</div><div class="line">		in[y]++;</div><div class="line">		ed[x].insert(y);</div><div class="line">		ed[y].insert(x);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">int</span> ans = <span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span> ((out[i] + in[i]) % <span class="number">2</span>)</div><div class="line">		&#123;</div><div class="line">			ed[i].insert(n + <span class="number">1</span>);</div><div class="line">			ed[n + <span class="number">1</span>].insert(i);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		&#123;</div><div class="line">			ans++;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	res.clear();</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</div><div class="line">	&#123;</div><div class="line">		dfs(i);</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; res.size(); i++)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span> (res[i].first == n + <span class="number">1</span> || res[i].second == n + <span class="number">1</span>)<span class="keyword">continue</span>;		</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%d %d\n"</span>, res[i].first, res[i].second);		</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>建网络流也是可以的，我始终隐约觉得遇到过这题，结果看了<a href="http://blog.csdn.net/snowy_smile/article/details/52732805" target="_blank" rel="external">这篇博客</a>之后更加确信自己做过了(这种网络流的题目还是很常见的，下一次碰到类似的争取想出来~)。</p>
 <h3 id="F-st-Spanning-Tree"><a href="#F-st-Spanning-Tree" class="headerlink" title="*F st-Spanning Tree"></a>*F st-Spanning Tree</h3><blockquote>
@@ -318,6 +322,8 @@ B Text Document Analysis
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/06/Intel-Code-Chanllenge-Elimination-Round/" rel="prev">Intel Code Chanllenge Elimination Round</a>
             
           </div>
 
@@ -412,7 +418,7 @@ B Text Document Analysis
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">23</span>
+              <span class="site-state-item-count">24</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
