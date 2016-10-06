@@ -60,7 +60,7 @@ B Passwords
 
 将所有字符按照长度排序，算小于k的与小于等于k的。
 *C">
-<meta property="og:updated_time" content="2016-10-06T12:22:19.000Z">
+<meta property="og:updated_time" content="2016-10-06T12:24:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Codeforces 374 Div2">
 <meta name="twitter:description" content="这一轮就过了A和B，C题看见直接懵了，不会做。xjb写了一个宽搜，然后又被叉掉了。D题有思路又没有写完。
@@ -295,7 +295,7 @@ B Passwords
 <p>现在来考虑这道题，$dp[x][y]$表示搜到$x$点时，经过$y$个点所用的最短时间。然后这个深搜搜到第$n$个点为止。在搜的过程中记录前一个节点，代码如下：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">cal</span><span class="params">(<span class="keyword">int</span> x)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (vis[x])</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	vis[x] = <span class="number">1</span>;</div><div class="line">	<span class="keyword">if</span> (x == n)</div><div class="line">	&#123;</div><div class="line">		dp[x][<span class="number">1</span>] = <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = head[x]; i != <span class="number">-1</span>; i = edge[i].next)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">int</span> nxt = edge[i].to;</div><div class="line">		<span class="keyword">int</span> t = edge[i].tim;</div><div class="line">		cal(nxt);</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">if</span> (dp[x][j] &gt; t + dp[nxt][j - <span class="number">1</span>])</div><div class="line">			&#123;</div><div class="line">				dp[x][j] = t + dp[nxt][j - <span class="number">1</span>];</div><div class="line">				pre[x][j] = nxt;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>就这种问题肯定是要同时记录时间和数量的，考虑将其中一个作为数组下标，另一个作为变量。</p>
-<h3 id="D-Maxim-and-Array"><a href="#D-Maxim-and-Array" class="headerlink" title="*D. Maxim and Array"></a>*D. Maxim and Array</h3><blockquote>
+<h3 id="D-Maxim-and-Array"><a href="#D-Maxim-and-Array" class="headerlink" title="*D Maxim and Array"></a>*D Maxim and Array</h3><blockquote>
 <p>给出$n$个数，可以对其中任意一个数做$+x$或者$-x$的操作，现在最多能够操作$k$次，问使得这$n$个数相乘的最小的情况下，这$n$个数分别是多少。</p>
 </blockquote>
 <p>首先判断0的数量$x$，$x&gt;k$，只能是$0$。</p>
@@ -308,7 +308,7 @@ B Passwords
 <p>题意是给出了$L$范围内的$n$段区间，小朋友在这$n$段区间可以唱歌，每次唱歌走过的路程为$p$，当然也可以不唱。唱完歌走出一个区间至少要隔$t$长度才可以再唱，问最多能够唱几次。</p>
 </blockquote>
 <p>考虑每一个区间，$dp[x]$表示到第$x$区间的右端点时最多唱过的歌数。$en[x]$记录其位置。如果有相同数量的情况，记录其最左边的位置。</p>
-<p>这个题巧妙在于每一次只需记录利用该区间之后的最大数量和最左位置就好了，而不用每一次从1开始转移，原因<a href="http://www.cnblogs.com/sagitta/p/5925785.html" target="_blank" rel="external">这篇博客</a>说的很清楚了。</p>
+<p>这个题巧妙在于每一次只需记录利用该区间之后的最大数量和最左位置就好了，而不用每一次从1开始转移，原因<a href="http://www.cnblogs.com/sagitta/p/5925785.html" target="_blank" rel="external">这篇博客</a>说得很清楚了。</p>
 <blockquote>
 <p>你如果认真读过转移方程的话会发现 转移的时候是每次先休息再连续唱几遍歌 （先一段休息 再一段唱歌） 我们考虑唱歌段 如果唱歌段能继续延长一个周期 那么如果此时延长了肯定会使得从起点到当前区间的答案更优 <strong>而起点到每个区间的最优答案都是从起点到之前某个区间的最优答案转移过来的 如果某一区间少唱一首歌 那么空余出来的时间在这之后运气好也只能用来唱一首歌</strong> 所以只要按这种贪心思路 维护从起点到当前区间的最优解 最后得到的便是从起点到终点的最优解。</p>
 </blockquote>
@@ -471,7 +471,7 @@ B Passwords
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-One-dimensional-Japanese-Crossword"><span class="nav-number">1.</span> <span class="nav-text">A One-dimensional Japanese Crossword</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Passwords"><span class="nav-number">2.</span> <span class="nav-text">B Passwords</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Journey"><span class="nav-number">3.</span> <span class="nav-text">*C Journey</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Maxim-and-Array"><span class="nav-number">4.</span> <span class="nav-text">*D. Maxim and Array</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-Road-to-Home"><span class="nav-number">5.</span> <span class="nav-text">*E Road to Home</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-One-dimensional-Japanese-Crossword"><span class="nav-number">1.</span> <span class="nav-text">A One-dimensional Japanese Crossword</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Passwords"><span class="nav-number">2.</span> <span class="nav-text">B Passwords</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Journey"><span class="nav-number">3.</span> <span class="nav-text">*C Journey</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Maxim-and-Array"><span class="nav-number">4.</span> <span class="nav-text">*D Maxim and Array</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-Road-to-Home"><span class="nav-number">5.</span> <span class="nav-text">*E Road to Home</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
