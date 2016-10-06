@@ -36,6 +36,25 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Codeforces 374 Div2]]></title>
+      <url>http://2997ms.github.io/2016/10/06/Codeforces-374-Div2/</url>
+      <content type="html"><![CDATA[<p>这一轮就过了A和B，C题看见直接懵了，不会做。xjb写了一个宽搜，然后又被叉掉了。D题有思路又没有写完。</p>
+<p><a href="http://codeforces.com/contest/721" target="_blank" rel="external">题目链接</a>与<a href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/374_Div2" target="_blank" rel="external">代码链接</a></p>
+<h3 id="A-One-dimensional-Japanese-Crossword"><a href="#A-One-dimensional-Japanese-Crossword" class="headerlink" title="A One-dimensional Japanese Crossword"></a>A One-dimensional Japanese Crossword</h3><blockquote>
+<p>找成段的b的区间。</p>
+</blockquote>
+<h3 id="B-Passwords"><a href="#B-Passwords" class="headerlink" title="B Passwords"></a>B Passwords</h3><blockquote>
+<p>密码长度为k，从最小的长度开始试验，随机在该长度的字符串里面xjb找，问最小代价与最大代价。</p>
+</blockquote>
+<p>将所有字符按照长度排序，算小于k的与小于等于k的。</p>
+<h3 id="C-Journey"><a href="#C-Journey" class="headerlink" title="*C Journey"></a>*C Journey</h3><blockquote>
+<p>题意是给出</p>
+</blockquote>
+<p>拿一个线段树去维护最小值也是服，用优先队列啊。。。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Codeforces 372 Div2]]></title>
       <url>http://2997ms.github.io/2016/09/28/Codeforces-372-Div2/</url>
       <content type="html"><![CDATA[<p><a href="http://codeforces.com/contest/716" target="_blank" rel="external">题目链接</a>与<a href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/372_Div2" target="_blank" rel="external">代码链接</a></p>
