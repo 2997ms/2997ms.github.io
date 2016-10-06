@@ -37,33 +37,30 @@
 
 
 <meta name="description" content="题目链接与代码链接
+A题在自己知道坑的情况下还是挂了，D题在最后五分钟想出思路，又一次懵逼，没有时间敲完。。。
 *A Broken Clock
 题意是给出表的12计时方式与24计时方式，12计时方式时钟在1~12的范围内，分钟在0~59的范围内。24计时方式时钟在0~23的范围内，分钟在0~59的范围内。问改动最少的数字，使得给出的时间符合要求。
 
-注意12计时方式下的20：00这种情况，不是变成01：00而是10：00。。。。
-B Verse Pattern
-算每一个字符串数组中的元音">
+注意12计时方式下的20：00这种情况，不是变成">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Intel Code Chanllenge Elimination Round">
 <meta property="og:url" content="http://2997ms.github.io/2016/10/06/Intel-Code-Chanllenge-Elimination-Round/index.html">
 <meta property="og:site_name" content="2997ms">
 <meta property="og:description" content="题目链接与代码链接
+A题在自己知道坑的情况下还是挂了，D题在最后五分钟想出思路，又一次懵逼，没有时间敲完。。。
 *A Broken Clock
 题意是给出表的12计时方式与24计时方式，12计时方式时钟在1~12的范围内，分钟在0~59的范围内。24计时方式时钟在0~23的范围内，分钟在0~59的范围内。问改动最少的数字，使得给出的时间符合要求。
 
-注意12计时方式下的20：00这种情况，不是变成01：00而是10：00。。。。
-B Verse Pattern
-算每一个字符串数组中的元音">
-<meta property="og:updated_time" content="2016-10-06T13:49:10.000Z">
+注意12计时方式下的20：00这种情况，不是变成">
+<meta property="og:updated_time" content="2016-10-06T14:55:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Intel Code Chanllenge Elimination Round">
 <meta name="twitter:description" content="题目链接与代码链接
+A题在自己知道坑的情况下还是挂了，D题在最后五分钟想出思路，又一次懵逼，没有时间敲完。。。
 *A Broken Clock
 题意是给出表的12计时方式与24计时方式，12计时方式时钟在1~12的范围内，分钟在0~59的范围内。24计时方式时钟在0~23的范围内，分钟在0~59的范围内。问改动最少的数字，使得给出的时间符合要求。
 
-注意12计时方式下的20：00这种情况，不是变成01：00而是10：00。。。。
-B Verse Pattern
-算每一个字符串数组中的元音">
+注意12计时方式下的20：00这种情况，不是变成">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -272,18 +269,34 @@ B Verse Pattern
 
       
         <span itemprop="articleBody"><p><a href="http://codeforces.com/contest/722" target="_blank" rel="external">题目链接</a>与<a href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/Intel%20Code%20Challenge%20Elimination%20Round" target="_blank" rel="external">代码链接</a></p>
+<p>A题在自己知道坑的情况下还是挂了，D题在最后五分钟想出思路，又一次懵逼，没有时间敲完。。。</p>
 <h3 id="A-Broken-Clock"><a href="#A-Broken-Clock" class="headerlink" title="*A Broken Clock"></a>*A Broken Clock</h3><blockquote>
 <p>题意是给出表的12计时方式与24计时方式，12计时方式时钟在1~12的范围内，分钟在0~59的范围内。24计时方式时钟在0~23的范围内，分钟在0~59的范围内。问改动最少的数字，使得给出的时间符合要求。</p>
 </blockquote>
 <p>注意12计时方式下的20：00这种情况，不是变成01：00而是10：00。。。。</p>
 <h3 id="B-Verse-Pattern"><a href="#B-Verse-Pattern" class="headerlink" title="B Verse Pattern"></a>B Verse Pattern</h3><blockquote>
-<p>算每一个字符串数组中的元音字符是否与给定的数相等。。。</p>
+<p>算每一个字符串数组中的元音字符数量是否与给定的数相等。。。</p>
 </blockquote>
 <h3 id="C-Destroying-Array"><a href="#C-Destroying-Array" class="headerlink" title="C Destroying Array"></a>C Destroying Array</h3><blockquote>
 <p>给定一个数组，每次删掉一个数字，问每次删掉之后剩下的连续数字的最大和。</p>
 </blockquote>
 <p>反过来考虑就是添加数字，每次添加用并查集来合并左右数字，维护最大值。</p>
-<h3 id="D-Generating-Sets"><a href="#D-Generating-Sets" class="headerlink" title="D Generating Sets"></a>D Generating Sets</h3><p>明天填坑吧。。。</p>
+<h3 id="D-Generating-Sets"><a href="#D-Generating-Sets" class="headerlink" title="*D Generating Sets"></a>*D Generating Sets</h3><blockquote>
+<p>题意是有不同的$n$个数，可以任意选一个数$x$，有两种操作，1.$x*2$之后放回去。2.$x*2+1$之后放回去。经过若干次这样的变换之后，变成了给出的数组，要求就是找回最开始的n个数，使得这n个数里面最大的数最小。</p>
+</blockquote>
+<p>实际上是一颗二叉树，每一次选最大的数除以2，看可不可以占这个位子，不能的话再往上找，直到找不到向上的路径了。</p>
+<p>别人都是set就过了，我非得搞个优先队列+map。。。mdzz。</p>
+<h3 id="E-Research-Rover"><a href="#E-Research-Rover" class="headerlink" title="*E Research Rover"></a>*E Research Rover</h3><blockquote>
+<p>有$n*m$的格子，一开始站在$(1,1)$的点上，有$S$的油量，现在有一些点会让油量减半，问最终到达(n,m)这个格子所剩油的期望。化简之后分数表示成$\frac {P}{Q}$，给出$P*Q^{-1}$的结果，其中$Q^{-1}$代表$Q$模$10^9+7$的逆元。</p>
+</blockquote>
+<p>首先结果的分数是不用考虑化简的，因为假设$P$和$Q$都有公约数$d$，那么<br>$$<br>P_{d}*d*Q_{d}^{-1}*d^{-1}=P*Q^{-1}<br>$$<br>所以$Q$就是从$(1,1)$到$(n,m)$的方案数，$P$即是所有情况下到达的油量总和。</p>
+<p>这道题还要发现一点就是$S$最大值是$10^6$，也就是说如果经过了超过20个消耗点，那么就会一直是1了。所以只需要考虑小于等于20个消耗点的情况。</p>
+<p>这样的话和<a href="http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1486" target="_blank" rel="external">51nod上大大走格子</a>(这个也是codeforces上的。。。)思路就类似了。dp[i][v]表示第$v$个点到终点经过$i$个消耗点的方案数量。从后往前考虑，等于<br>$$<br>dp[i][v] = C(n+m-x_v-y_v,n-x_v) - \sum_{j=v+1}^{k}C(x_j+y_j-x_v-y_v,x_j-x_v)*dp[i][j] - \sum_{j=0}^{i-1} dp[j][v]<br>$$<br>解释一下上面的式子，$C(n+m-x_v-y_v,n-x_v) $是该点到终点的方案总数，减去前面的点经过$i$个点了乘以它到这里的方案数，这块和大大走格子的思路是一致的。这一部分等于它到终点经过$0$到$i$次的，减掉之前的，就是该点经过$i$个点的方案数。最后是(1,1)这个点的方案数乘以油量。</p>
+<p>最后考虑经过的数量大于20的情况，$C(n+m-2,n-1)$减去之前算出来的方案数就是剩下的情况，乘以1，添到结果内。</p>
+<p>最后这个题卡常，算逆元的话最好用递推式:<br>$$<br>inv[i]=(Mod-\frac {Mod}{i})*inv[Mod \%i]\%Mod<br>$$</p>
+<h3 id="F-Cyclic-Cipher"><a href="#F-Cyclic-Cipher" class="headerlink" title="F Cyclic Cipher"></a>F Cyclic Cipher</h3><blockquote>
+<p>题意是给出了$n$个序列，每个序列$k_i(1 \leq k_i \leq 40 )$个数，</p>
+</blockquote>
 </span>
       
     </div>
@@ -436,7 +449,7 @@ B Verse Pattern
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Broken-Clock"><span class="nav-number">1.</span> <span class="nav-text">*A Broken Clock</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Verse-Pattern"><span class="nav-number">2.</span> <span class="nav-text">B Verse Pattern</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Destroying-Array"><span class="nav-number">3.</span> <span class="nav-text">C Destroying Array</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Generating-Sets"><span class="nav-number">4.</span> <span class="nav-text">D Generating Sets</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Broken-Clock"><span class="nav-number">1.</span> <span class="nav-text">*A Broken Clock</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Verse-Pattern"><span class="nav-number">2.</span> <span class="nav-text">B Verse Pattern</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Destroying-Array"><span class="nav-number">3.</span> <span class="nav-text">C Destroying Array</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Generating-Sets"><span class="nav-number">4.</span> <span class="nav-text">*D Generating Sets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-Research-Rover"><span class="nav-number">5.</span> <span class="nav-text">*E Research Rover</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#F-Cyclic-Cipher"><span class="nav-number">6.</span> <span class="nav-text">F Cyclic Cipher</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
