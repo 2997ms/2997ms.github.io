@@ -52,7 +52,7 @@ A题在自己知道坑的情况下还是挂了，D题在最后五分钟想出思
 题意是给出表的12计时方式与24计时方式，12计时方式时钟在1~12的范围内，分钟在0~59的范围内。24计时方式时钟在0~23的范围内，分钟在0~59的范围内。问改动最少的数字，使得给出的时间符合要求。
 
 注意12计时方式下的20：00这种情况，不是变成">
-<meta property="og:updated_time" content="2016-10-07T02:53:40.000Z">
+<meta property="og:updated_time" content="2016-10-07T08:57:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Intel Code Chanllenge Elimination Round">
 <meta name="twitter:description" content="题目链接与代码链接
@@ -297,7 +297,12 @@ A题在自己知道坑的情况下还是挂了，D题在最后五分钟想出思
 <h3 id="F-Cyclic-Cipher"><a href="#F-Cyclic-Cipher" class="headerlink" title="F Cyclic Cipher"></a>F Cyclic Cipher</h3><blockquote>
 <p>题意是给出了$n$个序列，每个序列$k_i(1 \leq k_i \leq 40 )$个数，每次序列向右不断循环一位，取每个序列的第一个数再从上到下组成一个序列，算每一个数的最长连续序列，一共进行$10^100$次，问在这些中，每个数的最长连续序列是多少。</p>
 </blockquote>
-<p>会发现如果$x$在连续序列中碰到一起了，假设是在第$S$秒，在第$i$个序列中的位置为$p_i$，第$i$序列的长度为$k_i$，那么会满足下面的条件<br>$$<br>S\equiv p_i (mod\ k_i)<br>\<br>….<br>\<br>S\equiv p_j (mod\ k_j)<br>$$<br>发现这样的话就是<a href="http://blog.csdn.net/acdreamers/article/details/8050018" target="_blank" rel="external">中国剩余定理</a>的内容，参考这个的<a href="http://codeforces.com/blog/entry/47497?#comment-318621" target="_blank" rel="external">评论</a>，可以推出：<br>$$<br>p_i+k_i*x=p_j+k_j*y<br>\<br>\Rightarrow p_i-p_j\ = k_j*y-k_i*x<br>\<br>\Rightarrow p_i-p_j\equiv 0 (mod\ GCD(k_i,k_j))<br>$$<br>因为在连续序列里面的任意两个都要满足这样的关系，所以枚举右端点，更新左端点即可。</p>
+<p>会发现如果$x$在连续序列中碰到一起了，假设是在第$S$秒，在第$i$个序列中的位置为$p_i$，第$i$序列的长度为$k_i$，那么会满足下面的条件<br>$$<br>S\equiv p_i (mod\ k_i)<br>$$</p>
+<p>$$<br>S\equiv p_j (mod\ k_j)<br>$$</p>
+<p>发现这样的话就是<a href="http://blog.csdn.net/acdreamers/article/details/8050018" target="_blank" rel="external">中国剩余定理</a>的内容，参考这个的<a href="http://codeforces.com/blog/entry/47497?#comment-318621" target="_blank" rel="external">评论</a>，可以推出：<br>$$<br>p_i+k_i*x=p_j+k_j*y<br>$$</p>
+<p>$$<br>\Rightarrow p_i-p_j\ = k_j*y-k_i*x<br>$$</p>
+<p>$$<br>\Rightarrow p_i-p_j\equiv 0 (mod\ GCD(k_i,k_j))<br>$$</p>
+<p>因为在连续序列里面的任意两个都要满足这样的关系，所以枚举右端点，更新左端点即可。</p>
 </span>
       
     </div>
