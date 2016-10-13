@@ -22,10 +22,11 @@
 </blockquote>
 <p>这个是一个很经典的问题了，特意来记录一下。</p>
 <p>设$a=3+\sqrt{5}$，$b=3-\sqrt{5}$，$x_n=a^n+b^n$。</p>
-<p>因为$b_n&lt;1$，所以得到的$x_n$是大于结果的第一个整数。</p>
+<p>会发现得到的$x_n$是一个整数，另外由于$b_n&lt;1$，所以得到的$x_n$是大于结果的第一个整数。所以现在考虑求这个$x_n$。</p>
 <p>然后对于$x^{n+1}$来说，有$(3+\sqrt{5})(a_n+b_n*\sqrt{5})=(3a_n+5b_n)+(3b_n+a_n)*\sqrt{5}$，那么可以得到$a_{n+1}=3a_n+5b_n$，$b_{n+1}=3b_n+a_n$。</p>
 <p>这样可以化成矩阵的形式：<br>$$<br>\begin{pmatrix}<br>   a_{n} \\<br>   b_{n+1}<br>  \end{pmatrix}=A\begin{pmatrix}<br>   a_{n-1} \\<br>   b_{n-1}<br>  \end{pmatrix}=A_{n}\begin{pmatrix}<br>   a_{0} \\<br>   b_{0}<br>  \end{pmatrix}<br>$$<br>其中<br>$$<br>A=\begin{pmatrix}<br>   3&amp;5 \\<br>   1&amp;3<br>  \end{pmatrix}<br>$$<br>因为$a_0=1$,可以得到$(a_0,b_0)=(1,0)$</p>
-<p>太困了。。。明天接着填。。。。</p>
+<p><del>太困了。。。明天接着填。。。。</del></p>
+<p>这样就可以矩阵快速幂啦~</p>
 ]]></content>
     </entry>
     
