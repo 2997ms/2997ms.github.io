@@ -27,7 +27,7 @@
 
 
 
-  <meta name="keywords" content="AtCoder," />
+  <meta name="keywords" content="AtCoder,Trie," />
 
 
 
@@ -37,24 +37,24 @@
 
 
 <meta name="description" content="题目链接与代码链接
-比的时候只做出三道，后来感觉这一期的D题是可以出的，E题的思路还是神，就感觉这种题也不靠什么特定的算法，靠思维把问题转换，跟前面Atcoder的很多题一样，挺看智商的。。。至于F题。。。那个矩阵的构造，从答案推出矩阵的正确性我是搞懂了，但是如何通过一些递推关系搞出矩阵，感觉自己还需要练习吧= =。
-A Wanna go back home
-题意是Snuke走|s|次，每一次东西">
+非常难得这次做出四道题(A和B已经无法更水了)。大中午的特别困，中间睡了一个小时，之后把C和D搞出来了。E题的这个Trie很赞。。。
+C - Gr-idian MST
+题意是给出了$W \times H$的格子，然后每个格子之间都有一个相互连接的代价，格子$(i,j)$到格子$(i+1,j)$对于任意的$j$代价均为$p_i$，格子$(i,j)$到格子$(i,j+1)$对于任意">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AtCoder Grand Contest 003">
-<meta property="og:url" content="http://2997ms.github.io/2016/09/13/AtCoder-Grand-Contest-003/index.html">
+<meta property="og:title" content="CODE FESTIVAL 2016 Qualification Round B.md">
+<meta property="og:url" content="http://2997ms.github.io/2016/10/13/CODE-FESTIVAL-2016-Qualification-Round-B/index.html">
 <meta property="og:site_name" content="2997ms">
 <meta property="og:description" content="题目链接与代码链接
-比的时候只做出三道，后来感觉这一期的D题是可以出的，E题的思路还是神，就感觉这种题也不靠什么特定的算法，靠思维把问题转换，跟前面Atcoder的很多题一样，挺看智商的。。。至于F题。。。那个矩阵的构造，从答案推出矩阵的正确性我是搞懂了，但是如何通过一些递推关系搞出矩阵，感觉自己还需要练习吧= =。
-A Wanna go back home
-题意是Snuke走|s|次，每一次东西">
-<meta property="og:updated_time" content="2016-09-13T02:10:00.000Z">
+非常难得这次做出四道题(A和B已经无法更水了)。大中午的特别困，中间睡了一个小时，之后把C和D搞出来了。E题的这个Trie很赞。。。
+C - Gr-idian MST
+题意是给出了$W \times H$的格子，然后每个格子之间都有一个相互连接的代价，格子$(i,j)$到格子$(i+1,j)$对于任意的$j$代价均为$p_i$，格子$(i,j)$到格子$(i,j+1)$对于任意">
+<meta property="og:updated_time" content="2016-10-13T13:12:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AtCoder Grand Contest 003">
+<meta name="twitter:title" content="CODE FESTIVAL 2016 Qualification Round B.md">
 <meta name="twitter:description" content="题目链接与代码链接
-比的时候只做出三道，后来感觉这一期的D题是可以出的，E题的思路还是神，就感觉这种题也不靠什么特定的算法，靠思维把问题转换，跟前面Atcoder的很多题一样，挺看智商的。。。至于F题。。。那个矩阵的构造，从答案推出矩阵的正确性我是搞懂了，但是如何通过一些递推关系搞出矩阵，感觉自己还需要练习吧= =。
-A Wanna go back home
-题意是Snuke走|s|次，每一次东西">
+非常难得这次做出四道题(A和B已经无法更水了)。大中午的特别困，中间睡了一个小时，之后把C和D搞出来了。E题的这个Trie很赞。。。
+C - Gr-idian MST
+题意是给出了$W \times H$的格子，然后每个格子之间都有一个相互连接的代价，格子$(i,j)$到格子$(i+1,j)$对于任意的$j$代价均为$p_i$，格子$(i,j)$到格子$(i,j+1)$对于任意">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -64,7 +64,7 @@ A Wanna go back home
   };
 </script>
 
-  <title> AtCoder Grand Contest 003 | 2997ms </title>
+  <title> CODE FESTIVAL 2016 Qualification Round B.md | 2997ms </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -207,7 +207,7 @@ A Wanna go back home
           
           
             
-              AtCoder Grand Contest 003
+              CODE FESTIVAL 2016 Qualification Round B.md
             
           
         </h1>
@@ -216,8 +216,8 @@ A Wanna go back home
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2016-09-13T08:42:54+08:00" content="2016-09-13">
-            2016-09-13
+          <time itemprop="dateCreated" datetime="2016-10-13T21:07:20+08:00" content="2016-10-13">
+            2016-10-13
           </time>
         </span>
 
@@ -243,11 +243,11 @@ A Wanna go back home
             <span class="post-comments-count">
               &nbsp; | &nbsp;
               <!--
-              <a href="/2016/09/13/AtCoder-Grand-Contest-003/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/13/AtCoder-Grand-Contest-003/" itemprop="commentsCount"></span>
+              <a href="/2016/10/13/CODE-FESTIVAL-2016-Qualification-Round-B/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/13/CODE-FESTIVAL-2016-Qualification-Round-B/" itemprop="commentsCount"></span>
               </a>
               -->
-              <a href="/2016/09/13/AtCoder-Grand-Contest-003/#comments" itemprop="discussionUrl">
+              <a href="/2016/10/13/CODE-FESTIVAL-2016-Qualification-Round-B/#comments" itemprop="discussionUrl">
                 <span>评论</span>
               </a>
             </span>
@@ -262,44 +262,22 @@ A Wanna go back home
       
 
       
-        <span itemprop="articleBody"><p><a href="http://agc003.contest.atcoder.jp/assignments" target="_blank" rel="external">题目链接</a>与<a href="https://github.com/2997ms/My_Algorithm/tree/master/AtCoder/Grand_Contest_003" target="_blank" rel="external">代码链接</a></p>
-<p>比的时候只做出三道，后来感觉这一期的D题是可以出的，E题的思路还是神，就感觉这种题也不靠什么特定的算法，靠思维把问题转换，跟前面Atcoder的很多题一样，挺看智商的。。。至于F题。。。那个矩阵的构造，从答案推出矩阵的正确性我是搞懂了，但是如何通过一些递推关系搞出矩阵，感觉自己还需要练习吧= =。</p>
-<h3 id="A-Wanna-go-back-home"><a href="#A-Wanna-go-back-home" class="headerlink" title="A Wanna go back home"></a>A Wanna go back home</h3><hr>
-<p>题意是Snuke走|s|次，每一次东西南北四个方向，任意距离，给出走的方向，问最终能否回到原点。</p>
-<p>相对的方向要都出现或者都不出现，这样就能够保证在这两个方向上移动的距离为0。</p>
-<h3 id="B-Simplified-mahjong"><a href="#B-Simplified-mahjong" class="headerlink" title="B Simplified mahjong"></a>B Simplified mahjong</h3><hr>
-<p>题意是Snuke有一堆卡片，每张卡片上的数字为1~N，数字i的卡片有Ai个，两张卡片上数字相差不超过1的可以形成一对，问最多形成多少对。</p>
-<p>之前一直WA，后来就直接贪心，如果数字为i的为偶数，那就自己组成一对。如果为奇数，找后面的一个组成一对。</p>
-<h3 id="C-BBuBBBlesort"><a href="#C-BBuBBBlesort" class="headerlink" title="C BBuBBBlesort!"></a>C BBuBBBlesort!</h3><hr>
-<p>题意是给出N个数，想把这N个数按大小排成有序，交换方法有两种：1.交换相邻的2个;2.交换相邻的3个.</p>
-<p>问最少必须使用多少次操作1使得数字有序。</p>
-<p>能够发现将这N个数排序之后，如果一个数排序之前的位置与排序之后的位置之差如果是偶数的话，那么就可以通过操作2来实现，但如果是奇数的话，那没办法了，想要到达该状态就必须通过操作1来实现了。</p>
-<h3 id="D-Anticube"><a href="#D-Anticube" class="headerlink" title="D Anticube"></a>D Anticube</h3><hr>
-<p>题意是给出N个数，求一个集合，该集合两两数字之前相乘不是立方数，问该集合元素的最大数量。</p>
-<p><a href="https://async.icpc-camp.org/d/528-atcoder-grand-contest-003-d-anticube" target="_blank" rel="external">叉姐题解</a></p>
-<p>其实后来就是如何分解该数的问题，一直TLE。</p>
-<p>数字是在10^10级别的，将10^3级别的因子过滤一遍之后，就考虑只剩下了p,pq,p^2的形式了，考虑如何将它们处理。另外p^2形式还要注意一下精度问题。</p>
-<p>剩下的就是两者取大的问题了。</p>
-<h3 id="E-Sequential-operations-on-Sequence"><a href="#E-Sequential-operations-on-Sequence" class="headerlink" title="E Sequential operations on Sequence"></a>E Sequential operations on Sequence</h3><hr>
-<p>题意是当前有一个序列1…N，有Q次操作，每次操作中，该序列被原来序列的前Qi个数不断地重复替代。问最终序列每个元素的出现次数。</p>
-<p>能够发现规律，如果Qi&gt;Q(i+1),那么之前的Qi就没有意义了。</p>
-<p>这样就会变成所有的操作是一个递增的序列。</p>
-<p>还是发现数字小的元素出现次数一定比数字大的元素出现次数多，所以最终问题考虑使用后缀和，那从后往前考虑，把最后一个元素标为1，即所有元素都是1了。</p>
-<p>从后往前每一次操作相当于做了一次折叠，考虑将后面位置的这些贡献分别贡献到那里了，如果该位置pos&gt;Qi，那么会发现Qi位置上的值+=(pos/Qi)*(该pos的值)，pos%Qi位置上的值+=pos%Qi。</p>
-<p>这种问题感觉很难总结出一个系统的解决方法，每次碰到就靠跳大神，求问有没有类似的问题呢。。。？</p>
-<h3 id="F-Fraction-of-Fractal"><a href="#F-Fraction-of-Fractal" class="headerlink" title="F Fraction of Fractal"></a>F Fraction of Fractal</h3><hr>
-<p>题意是h*w的方格，每个格子要么是白点要么是黑点。所有这些黑点在上下左右四个方向是联通的。</p>
-<p>现在给出求第k等的图的方法，第k等的图从第k-1等的图来，如果该位置是白点，该位置替换成h*w的白点；如果是黑点，该位置替换成最开始的图。</p>
-<p>问第k等的图中黑点的联通块是多少个。</p>
-<p>先把其它简单的条件过滤掉，如果该图左右上下都可以连上，那么最终结果不管k多大都是1。</p>
-<p>如果该图左右上下都连不上，那么最终结果就是黑点数量a^(k-1)。</p>
-<p>现在只考虑一边连上，一边连不上的情况。比如说左右连通，上下不连通。</p>
-<p>现在这个图中黑点的数量为a，左右相连的点对数为b，边界上最左边和最右边都是黑点的对数为c。</p>
-<p>好，现在假设你已经知道了第k-1层有多少个连通块设为x，第k-1层有y个连接的数量，那么如何推出第k层？</p>
-<p>首先x*a，这个是完全不考虑相连的情况，假设每一个连通块就会分裂成a个，那么总和就是x*a个，之后减去x*b个，这b块不是新生成的连通块数量，要减去，是内部生成的。</p>
-<p>之后的这个y是上一轮连接的数量，那么上一轮如果连接上了的话，每一对y分裂而成就会有c对是新生成的连接着的块，这个是新的外部的连接的。</p>
-<p>这样总结得话可以得到一个矩阵，<br>$$<br>{\begin{pmatrix}<br>a&amp;-b\\<br>0 &amp;c<br>\end{pmatrix}}^{k-1}<br>{\begin{pmatrix}<br>1\\<br>1<br>\end{pmatrix}}<br>$$</p>
-<p>说的很乱很乱，也跑到论坛上面去问,发现讨论的东西和一开始想的也差不太多，给个<a href="https://async.icpc-camp.org/d/545-atcoder-grand-contest-003-f-fraction-of-fractal" target="_blank" rel="external">链接</a>，供参考。</p>
+        <span itemprop="articleBody"><p><a href="http://code-festival-2016-qualb.contest.atcoder.jp/assignments" target="_blank" rel="external">题目链接</a>与<a href="https://github.com/2997ms/My_Algorithm/tree/master/AtCoder/CODE%20FESTIVAL%202016%20Qualification%20Round%20B" target="_blank" rel="external">代码链接</a></p>
+<p>非常难得这次做出四道题(A和B已经无法更水了)。大中午的特别困，中间睡了一个小时，之后把C和D搞出来了。E题的这个Trie很赞。。。</p>
+<h3 id="C-Gr-idian-MST"><a href="#C-Gr-idian-MST" class="headerlink" title="C - Gr-idian MST"></a>C - Gr-idian MST</h3><blockquote>
+<p>题意是给出了$W \times H$的格子，然后每个格子之间都有一个相互连接的代价，格子$(i,j)$到格子$(i+1,j)$对于任意的$j$代价均为$p_i$，格子$(i,j)$到格子$(i,j+1)$对于任意的$i$代价均为$q_j$。问最终把格子连接成为一个整体需要的最小代价。</p>
+</blockquote>
+<p>一开始往并查集那里去考虑，发现数量级有一些大啊。。。之后找规律，不断找最小值，然后如果是x方向的，那么下一次y就少了1。如果是y方向的，下一次x就少了1。</p>
+<h3 id="D-Greedy-customers"><a href="#D-Greedy-customers" class="headerlink" title="D - Greedy customers"></a>D - Greedy customers</h3><blockquote>
+<p>题意是有$N$个顾客站成一排，每个顾客手里有$A_i$元钱，现在由你出价，从顾客1开始，如果出的价钱小于等于他手里的钱，那么他会买走你的物品。题目要求最后每个顾客手里的钱不能为0，问最多能够卖多少物品。</p>
+</blockquote>
+<p>在比赛结束一分钟之前，情况考虑得都不是很周全，慌乱中自己提交，竟然还过了。。。后来发现情况确实考虑得不好，只能说幸运。</p>
+<p>首先肯定是可以将卖的价钱最终变成一个升序的数列，而又不影响最终的买卖情况的。</p>
+<p>那就考虑从价钱1开始，卖给第一个用户，将其剩下1块。价钱$x$就从2开始，对于可以整除$x$的钱$N$，可以卖出去$N/x-1$件物品，而$x$不需要+1，因为最后一件可以卖成$x+1$，使得该位置剩下的钱小于$x$元。而如果遇到$val[i]=x$这种情况，那没办法了，$x$只能加1。</p>
+<h3 id="E-Lexicographical-disorder"><a href="#E-Lexicographical-disorder" class="headerlink" title="E - Lexicographical disorder"></a>E - Lexicographical disorder</h3><blockquote>
+<p>题意是给出了$N$个字符串，$Q$个询问$k_i, p$，每一个询问是算第$k_i$个字符串，在该字典序中所排列的位置。</p>
+</blockquote>
+<p>建立Trie树，记录每一个位置的值，查询的时候算每一个字符串在同一个位置上其他字符的数量，以及结束字符的数量。解法真的很亮。。。</p>
 </span>
       
     </div>
@@ -310,6 +288,8 @@ A Wanna go back home
           
             <a href="/tags/AtCoder/" rel="tag">#AtCoder</a>
           
+            <a href="/tags/Trie/" rel="tag">#Trie</a>
+          
         </div>
       
 
@@ -317,13 +297,11 @@ A Wanna go back home
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/09/14/AtCoder-Grand-Contest-004/" rel="prev">AtCoder Grand Contest 004</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/07/AtCoder-Grand-Contest-002/" rel="next">AtCoder Grand Contest 002</a>
+              <a href="/2016/10/12/Google-Code-Jam-Round-1A-2008/" rel="next">Google Code Jam Round 1A 2008</a>
             
           </div>
         </div>
@@ -342,10 +320,10 @@ A Wanna go back home
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/09/13/AtCoder-Grand-Contest-003/"
-     data-title="AtCoder Grand Contest 003"
+        <div class="ds-share flat" data-thread-key="2016/10/13/CODE-FESTIVAL-2016-Qualification-Round-B/"
+     data-title="CODE FESTIVAL 2016 Qualification Round B.md"
      data-content=""
-     data-url="http://2997ms.github.io/2016/09/13/AtCoder-Grand-Contest-003/">
+     data-url="http://2997ms.github.io/2016/10/13/CODE-FESTIVAL-2016-Qualification-Round-B/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -371,8 +349,8 @@ A Wanna go back home
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2016/09/13/AtCoder-Grand-Contest-003/"
-                   data-title="AtCoder Grand Contest 003" data-url="http://2997ms.github.io/2016/09/13/AtCoder-Grand-Contest-003/">
+              <div class="ds-thread" data-thread-key="2016/10/13/CODE-FESTIVAL-2016-Qualification-Round-B/"
+                   data-title="CODE FESTIVAL 2016 Qualification Round B.md" data-url="http://2997ms.github.io/2016/10/13/CODE-FESTIVAL-2016-Qualification-Round-B/">
               </div>
             
           </div>
@@ -454,7 +432,7 @@ A Wanna go back home
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Wanna-go-back-home"><span class="nav-number">1.</span> <span class="nav-text">A Wanna go back home</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Simplified-mahjong"><span class="nav-number">2.</span> <span class="nav-text">B Simplified mahjong</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-BBuBBBlesort"><span class="nav-number">3.</span> <span class="nav-text">C BBuBBBlesort!</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Anticube"><span class="nav-number">4.</span> <span class="nav-text">D Anticube</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-Sequential-operations-on-Sequence"><span class="nav-number">5.</span> <span class="nav-text">E Sequential operations on Sequence</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#F-Fraction-of-Fractal"><span class="nav-number">6.</span> <span class="nav-text">F Fraction of Fractal</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Gr-idian-MST"><span class="nav-number">1.</span> <span class="nav-text">C - Gr-idian MST</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Greedy-customers"><span class="nav-number">2.</span> <span class="nav-text">D - Greedy customers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-Lexicographical-disorder"><span class="nav-number">3.</span> <span class="nav-text">E - Lexicographical disorder</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
