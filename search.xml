@@ -33,7 +33,7 @@
 <h3 id="F-Polycarp’s-problems"><a href="#F-Polycarp’s-problems" class="headerlink" title="F Polycarp’s problems"></a>F Polycarp’s problems</h3><blockquote>
 <p>给出一个长度为$n$的数组$a_i$，然后起始的值为$b_i$，要求在起始的值为$b_i$的情况下，遇到一个$a_i$就相加，但不能有小于等于0的情况，问最后要去掉多少个值。现在有m个询问，对于每一个$b_i$都要求一次最小去掉的数量。</p>
 </blockquote>
-<p>二分去掉$1$到$n$个所要具备的最小值，然后在结果里面再次二分。</p>
+<p>二分取$1$到$n$个所要具备的最小值，然后在结果里面再次二分。</p>
 ]]></content>
     </entry>
     
