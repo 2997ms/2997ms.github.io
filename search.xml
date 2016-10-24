@@ -4,6 +4,42 @@
   
     
     <entry>
+      <title><![CDATA[Codeforces 376 Div2]]></title>
+      <url>http://2997ms.github.io/2016/10/24/Codeforces-376-Div2/</url>
+      <content type="html"><![CDATA[<p><a href="http://codeforces.com/contest/731" target="_blank" rel="external">题目链接</a>与<a href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/376_Div2" target="_blank" rel="external">代码链接</a></p>
+<p>晚上VP了这一场，并查集写脑残了，TLE47。F题关于数据应该注意数据范围，然后根据每一个数字来进行枚举。</p>
+<h3 id="A-Night-at-the-Museum"><a href="#A-Night-at-the-Museum" class="headerlink" title="A Night at the Museum"></a>A Night at the Museum</h3><blockquote>
+<p>$26$个字母放在一个圆盘上，然后可以顺时针逆时针方向找字母，问总和旋转次数最少是多少。</p>
+</blockquote>
+<p>每次贪心取最小值。res+=min(abs(k-cur),26-abs(k-cur))</p>
+<h3 id="B-Coupons-and-Discounts"><a href="#B-Coupons-and-Discounts" class="headerlink" title="B Coupons and Discounts"></a>B Coupons and Discounts</h3><blockquote>
+<p>有$n$天，对应每一天要购买相应数量的pizza，有两种购买方式，第一种一天买两个，第二种连续两天买一个。问该安排在这两种购买方式下是否可行。</p>
+</blockquote>
+<p>从第一天开始贪心，偶数不用管，如果是奇数，那么想要可行下一天必须减1。判断每一天的数量大于等于0，还有最后一天要是偶数。</p>
+<h3 id="C-Socks"><a href="#C-Socks" class="headerlink" title="C Socks"></a>C Socks</h3><blockquote>
+<p>有n个袜子，k种颜色，m个天。每一天有对应安排，要穿哪两只袜子。问想要满足每一天袜子都一致的情况下，最小更改袜子的颜色数量。</p>
+</blockquote>
+<p>并查集，把要穿的袜子放在一个集合里面。然后再在每一个集合里面选取出现颜色最多的那种，其他的袜子就要去改成这个颜色。。。</p>
+<h3 id="D-80-th-Level-Archeology"><a href="#D-80-th-Level-Archeology" class="headerlink" title="D 80-th Level Archeology"></a>D 80-th Level Archeology</h3><blockquote>
+<p>题意是给出了$n$个序列，然后可以对所有序列向后移一位，最后一个$C$的话就变为$1$。问最少移多少位可以满足序列是呈现字典序递增的顺序。</p>
+</blockquote>
+<p>对两个序列进行比较会发现，是一个合法区间。将所有合法区间进行合并，看有没有满足所有区间的数字。</p>
+<h3 id="E-Funny-Game"><a href="#E-Funny-Game" class="headerlink" title="E Funny Game"></a>E Funny Game</h3><blockquote>
+<p>题意是有$n$个数，Petya和Gena对这$n$个数按照如下规则去取：每次至少选择数列中最左面前$2$个数，其和计入分数，然后把这个和再次放入该数列的最左面，直到该数列只剩下一个数为止。每个人都希望自己的分数-对手的分数最大，Petya先取，问最优解。</p>
+</blockquote>
+<p>后来才知道这种博弈是有套路的。。。</p>
+<p>$DP[i]$表示对当前玩家来说，取前$[1..i]$数其最优值，那么这个最优值$DP[i]$从哪里转移过来，从左往右取的话，这个最优值是取决于对手取的最优值，即是从右面转移过来的。根据这个可以写一个$O(n^2)$的记忆化$DP$。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> n;</div><div class="line"><span class="keyword">int</span> val[maxn],sum[maxn],dp[maxn];</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">cal</span><span class="params">(<span class="keyword">int</span> x)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span>(dp[x]!=<span class="number">-1</span>)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">return</span> dp[x];</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">int</span> res = -INF;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=x+<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">	&#123;</div><div class="line">		res=max(res,cal(i));</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span>(res == -INF)</div><div class="line">		res = <span class="number">0</span>;</div><div class="line">	dp[x]=sum[x]-res;</div><div class="line">	<span class="keyword">return</span> dp[x];</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	<span class="built_in">memset</span>(dp,<span class="number">-1</span>,<span class="keyword">sizeof</span>(dp));</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;val[i]);</div><div class="line">		sum[i]=sum[i<span class="number">-1</span>]+val[i];</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">int</span> res = -INF;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</div><div class="line">	&#123;</div><div class="line">		res = max(res,cal(i));</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,res);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>观察转移，从后转移的话，可以从后往前走，维护这个最大值，得到结果。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">ll n;</div><div class="line">ll val[maxn], sum[maxn];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;n);</div><div class="line">	repp(i, <span class="number">1</span>, n)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;val[i]);</div><div class="line">		sum[i] = sum[i - <span class="number">1</span>] + val[i];</div><div class="line">	&#125;</div><div class="line">	ll res = <span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = n; i &gt;= <span class="number">2</span>; i--)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span> (i == n)res = sum[i];</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (res &lt; sum[i] - res)</div><div class="line">		&#123;</div><div class="line">			res = sum[i] - res;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, res);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="F-Video-Cards"><a href="#F-Video-Cards" class="headerlink" title="F Video Cards"></a>F Video Cards</h3><blockquote>
+<p>有$n$个数，可以以任意一个数作为开头，其余的数必须减小到是这个数的整数倍，记这个数列的和。问所有情况下的和的最大值。</p>
+</blockquote>
+<p>注意数的范围都是小于200000的，那么就可以求前缀和，枚举每一个数作为基底，其2倍,3倍…的数。复杂度$O(nlogn)$</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Technocup 2017 - Elimination Round 1]]></title>
       <url>http://2997ms.github.io/2016/10/19/Technocup-2017-Elimination-Round-1/</url>
       <content type="html"><![CDATA[<p>最近去参加了复旦大学举办的Hackx_FDU，收获满满~ 看到了很多大神，然后也赞叹于一群人在短时间内可以写出如此美妙的代码。</p>

@@ -27,7 +27,7 @@
 
 
 
-  <meta name="keywords" content="DP,Codeforces,AC自动机," />
+  <meta name="keywords" content="DP,Codeforces,博弈," />
 
 
 
@@ -36,25 +36,34 @@
   <link rel="shorticon icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="最近去参加了复旦大学举办的Hackx_FDU，收获满满~ 看到了很多大神，然后也赞叹于一群人在短时间内可以写出如此美妙的代码。
-这个Technocup是我Hackx比赛的时候没有吃晚饭，偷着两个小时打的。。。然而效果非常不好。。。自己脑袋犯困，另外也挺着急的。。。B题挂在精度上了。。。C题也脑残了好久啊。。。才出掉。。。
-题目链接与代码链接
-A  Transformation: from A to">
+<meta name="description" content="题目链接与代码链接
+晚上VP了这一场，并查集写脑残了，TLE47。F题关于数据应该注意数据范围，然后根据每一个数字来进行枚举。
+A Night at the Museum
+$26$个字母放在一个圆盘上，然后可以顺时针逆时针方向找字母，问总和旋转次数最少是多少。
+
+每次贪心取最小值。res+=min(abs(k-cur),26-abs(k-cur))
+B Coupons and Discounts">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Technocup 2017 - Elimination Round 1">
-<meta property="og:url" content="http://2997ms.github.io/2016/10/19/Technocup-2017-Elimination-Round-1/index.html">
+<meta property="og:title" content="Codeforces 376 Div2">
+<meta property="og:url" content="http://2997ms.github.io/2016/10/24/Codeforces-376-Div2/index.html">
 <meta property="og:site_name" content="2997ms">
-<meta property="og:description" content="最近去参加了复旦大学举办的Hackx_FDU，收获满满~ 看到了很多大神，然后也赞叹于一群人在短时间内可以写出如此美妙的代码。
-这个Technocup是我Hackx比赛的时候没有吃晚饭，偷着两个小时打的。。。然而效果非常不好。。。自己脑袋犯困，另外也挺着急的。。。B题挂在精度上了。。。C题也脑残了好久啊。。。才出掉。。。
-题目链接与代码链接
-A  Transformation: from A to">
-<meta property="og:updated_time" content="2016-10-22T10:11:29.000Z">
+<meta property="og:description" content="题目链接与代码链接
+晚上VP了这一场，并查集写脑残了，TLE47。F题关于数据应该注意数据范围，然后根据每一个数字来进行枚举。
+A Night at the Museum
+$26$个字母放在一个圆盘上，然后可以顺时针逆时针方向找字母，问总和旋转次数最少是多少。
+
+每次贪心取最小值。res+=min(abs(k-cur),26-abs(k-cur))
+B Coupons and Discounts">
+<meta property="og:updated_time" content="2016-10-24T11:24:03.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Technocup 2017 - Elimination Round 1">
-<meta name="twitter:description" content="最近去参加了复旦大学举办的Hackx_FDU，收获满满~ 看到了很多大神，然后也赞叹于一群人在短时间内可以写出如此美妙的代码。
-这个Technocup是我Hackx比赛的时候没有吃晚饭，偷着两个小时打的。。。然而效果非常不好。。。自己脑袋犯困，另外也挺着急的。。。B题挂在精度上了。。。C题也脑残了好久啊。。。才出掉。。。
-题目链接与代码链接
-A  Transformation: from A to">
+<meta name="twitter:title" content="Codeforces 376 Div2">
+<meta name="twitter:description" content="题目链接与代码链接
+晚上VP了这一场，并查集写脑残了，TLE47。F题关于数据应该注意数据范围，然后根据每一个数字来进行枚举。
+A Night at the Museum
+$26$个字母放在一个圆盘上，然后可以顺时针逆时针方向找字母，问总和旋转次数最少是多少。
+
+每次贪心取最小值。res+=min(abs(k-cur),26-abs(k-cur))
+B Coupons and Discounts">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -64,7 +73,7 @@ A  Transformation: from A to">
   };
 </script>
 
-  <title> Technocup 2017 - Elimination Round 1 | 2997ms </title>
+  <title> Codeforces 376 Div2 | 2997ms </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -207,7 +216,7 @@ A  Transformation: from A to">
           
           
             
-              Technocup 2017 - Elimination Round 1
+              Codeforces 376 Div2
             
           
         </h1>
@@ -216,8 +225,8 @@ A  Transformation: from A to">
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2016-10-19T18:03:25+08:00" content="2016-10-19">
-            2016-10-19
+          <time itemprop="dateCreated" datetime="2016-10-24T19:22:01+08:00" content="2016-10-24">
+            2016-10-24
           </time>
         </span>
 
@@ -243,11 +252,11 @@ A  Transformation: from A to">
             <span class="post-comments-count">
               &nbsp; | &nbsp;
               <!--
-              <a href="/2016/10/19/Technocup-2017-Elimination-Round-1/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/19/Technocup-2017-Elimination-Round-1/" itemprop="commentsCount"></span>
+              <a href="/2016/10/24/Codeforces-376-Div2/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/24/Codeforces-376-Div2/" itemprop="commentsCount"></span>
               </a>
               -->
-              <a href="/2016/10/19/Technocup-2017-Elimination-Round-1/#comments" itemprop="discussionUrl">
+              <a href="/2016/10/24/Codeforces-376-Div2/#comments" itemprop="discussionUrl">
                 <span>评论</span>
               </a>
             </span>
@@ -262,34 +271,36 @@ A  Transformation: from A to">
       
 
       
-        <span itemprop="articleBody"><p>最近去参加了复旦大学举办的Hackx_FDU，收获满满~ 看到了很多大神，然后也赞叹于一群人在短时间内可以写出如此美妙的代码。</p>
-<p>这个Technocup是我Hackx比赛的时候没有吃晚饭，偷着两个小时打的。。。然而效果非常不好。。。自己脑袋犯困，另外也挺着急的。。。B题挂在精度上了。。。C题也脑残了好久啊。。。才出掉。。。</p>
-<p><a href="http://codeforces.com/contest/727" target="_blank" rel="external">题目链接</a>与<a href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/Technocup%202017%20%E2%80%94%20Elimination%20Round%201" target="_blank" rel="external">代码链接</a></p>
-<h3 id="A-Transformation-from-A-to-B"><a href="#A-Transformation-from-A-to-B" class="headerlink" title="A  Transformation: from A to B"></a>A  Transformation: from A to B</h3><blockquote>
-<p>一个数字可以乘$2$，也可以乘$10+1$，问从$A$变到$B$的方案。</p>
+        <span itemprop="articleBody"><p><a href="http://codeforces.com/contest/731" target="_blank" rel="external">题目链接</a>与<a href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/376_Div2" target="_blank" rel="external">代码链接</a></p>
+<p>晚上VP了这一场，并查集写脑残了，TLE47。F题关于数据应该注意数据范围，然后根据每一个数字来进行枚举。</p>
+<h3 id="A-Night-at-the-Museum"><a href="#A-Night-at-the-Museum" class="headerlink" title="A Night at the Museum"></a>A Night at the Museum</h3><blockquote>
+<p>$26$个字母放在一个圆盘上，然后可以顺时针逆时针方向找字母，问总和旋转次数最少是多少。</p>
 </blockquote>
-<p>宽搜。</p>
-<h3 id="B-Bill-Total-Value"><a href="#B-Bill-Total-Value" class="headerlink" title="B Bill Total Value"></a>B Bill Total Value</h3><blockquote>
-<p>题意是给出一个字符串，里面是各个物品的价钱，如果小数点后面是两位的话，代表是小数。三位的话就是整数。问价钱总和。</p>
+<p>每次贪心取最小值。res+=min(abs(k-cur),26-abs(k-cur))</p>
+<h3 id="B-Coupons-and-Discounts"><a href="#B-Coupons-and-Discounts" class="headerlink" title="B Coupons and Discounts"></a>B Coupons and Discounts</h3><blockquote>
+<p>有$n$天，对应每一天要购买相应数量的pizza，有两种购买方式，第一种一天买两个，第二种连续两天买一个。问该安排在这两种购买方式下是否可行。</p>
 </blockquote>
-<p>莫名其妙地卡精度。。。本地运行OK，提交上去一直WA。下把这种情况直接乘以100，换成整数运算。。。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> x[maxn];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%s"</span>, x + <span class="number">1</span>);</div><div class="line">	ll res = <span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; x[i]; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span> (<span class="built_in">isalpha</span>(x[i]))<span class="keyword">continue</span>;</div><div class="line">		ll t = <span class="number">0</span>;</div><div class="line">		<span class="keyword">int</span> dot = <span class="number">-1</span>;</div><div class="line">		<span class="keyword">while</span> (x[i]&amp;&amp;!<span class="built_in">isalpha</span>(x[i]))</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">if</span> (x[i] == <span class="string">'.'</span>)</div><div class="line">			&#123;</div><div class="line">				dot = i;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">else</span></div><div class="line">			&#123;</div><div class="line">				t = t * <span class="number">10</span> + x[i] - <span class="string">'0'</span>;</div><div class="line">			&#125;</div><div class="line">			i++;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (dot == <span class="number">-1</span> || i - dot == <span class="number">4</span>)</div><div class="line">		&#123;</div><div class="line">			t *= <span class="number">100</span>;</div><div class="line">		&#125;</div><div class="line">		res += t;</div><div class="line">		i--;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> (res &lt; <span class="number">100</span>)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"0.%02lld\n"</span>, res);</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;r;</div><div class="line">	<span class="keyword">while</span> (res)</div><div class="line">	&#123;</div><div class="line">		r.push_back(res % <span class="number">10</span>);</div><div class="line">		res /= <span class="number">10</span>;</div><div class="line">	&#125;</div><div class="line">	reverse(r.begin(), r.end());</div><div class="line"></div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; r.size()<span class="number">-2</span>; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%d"</span>, r[i]);</div><div class="line">		<span class="keyword">if</span> ((r.size() - <span class="number">2</span> - (i+<span class="number">1</span>)) % <span class="number">3</span> == <span class="number">0</span> &amp;&amp; i != r.size() - <span class="number">3</span>)</div><div class="line">		&#123;</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"."</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> (r[r.size() - <span class="number">1</span>] == <span class="number">0</span> &amp;&amp; r[r.size() - <span class="number">2</span>] == <span class="number">0</span>)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span></div><div class="line">	&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">".%d%d\n"</span>, r[r.size() - <span class="number">2</span>], r[r.size() - <span class="number">1</span>]);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="C-Guess-the-Array"><a href="#C-Guess-the-Array" class="headerlink" title="C Guess the Array"></a>C Guess the Array</h3><blockquote>
-<p>题意对长度为$N$的数组，可以询问$N$个两个元素之间的和。最后输出这个数组。</p>
+<p>从第一天开始贪心，偶数不用管，如果是奇数，那么想要可行下一天必须减1。判断每一天的数量大于等于0，还有最后一天要是偶数。</p>
+<h3 id="C-Socks"><a href="#C-Socks" class="headerlink" title="C Socks"></a>C Socks</h3><blockquote>
+<p>有n个袜子，k种颜色，m个天。每一天有对应安排，要穿哪两只袜子。问想要满足每一天袜子都一致的情况下，最小更改袜子的颜色数量。</p>
 </blockquote>
-<p>又智障啊。。。思路一直是死的，询问1 2/2 3/3 4/../n..1，但其实这样是可以最后推出来的，也就是这样是多解啊。。所以说直接求 12/ 2 3/ 3 1把前三个元素干出来之后，剩余元素也就出来了。。真的智障。。。WA5次，最后才搞出来。</p>
-<h3 id="D-T-shirts-Distribution"><a href="#D-T-shirts-Distribution" class="headerlink" title="D T-shirts Distribution"></a>D T-shirts Distribution</h3><blockquote>
-<p>每个人穿衣服可以有固定的大小，也可以在两种型号(两种型号必相邻)之间选择一个。现在给出6种衣服的数量，问衣服的分配情况。</p>
+<p>并查集，把要穿的袜子放在一个集合里面。然后再在每一个集合里面选取出现颜色最多的那种，其他的袜子就要去改成这个颜色。。。</p>
+<h3 id="D-80-th-Level-Archeology"><a href="#D-80-th-Level-Archeology" class="headerlink" title="D 80-th Level Archeology"></a>D 80-th Level Archeology</h3><blockquote>
+<p>题意是给出了$n$个序列，然后可以对所有序列向后移一位，最后一个$C$的话就变为$1$。问最少移多少位可以满足序列是呈现字典序递增的顺序。</p>
 </blockquote>
-<p>水题。。直接从最小的开始贪。。</p>
-<h3 id="E-Games-on-a-CD"><a href="#E-Games-on-a-CD" class="headerlink" title="E Games on a CD"></a>E Games on a CD</h3><blockquote>
-<p>每个名字的长度是相等的，现在给出$g$个字符串，从这$g$个字符串里面选出$n$个，顺时针的情况下可以组成给定字符即可。。</p>
+<p>对两个序列进行比较会发现，是一个合法区间。将所有合法区间进行合并，看有没有满足所有区间的数字。</p>
+<h3 id="E-Funny-Game"><a href="#E-Funny-Game" class="headerlink" title="E Funny Game"></a>E Funny Game</h3><blockquote>
+<p>题意是有$n$个数，Petya和Gena对这$n$个数按照如下规则去取：每次至少选择数列中最左面前$2$个数，其和计入分数，然后把这个和再次放入该数列的最左面，直到该数列只剩下一个数为止。每个人都希望自己的分数-对手的分数最大，Petya先取，问最优解。</p>
 </blockquote>
-<p>AC自动机，因为长度等长，也不可能有覆盖的情况，所以直接跑一遍，看最终是否有重复+数量够不够。</p>
-<h3 id="F-Polycarp’s-problems"><a href="#F-Polycarp’s-problems" class="headerlink" title="F Polycarp’s problems"></a>F Polycarp’s problems</h3><blockquote>
-<p>给出一个长度为$n$的数组$a_i$，然后起始的值为$b_i$，要求在起始的值为$b_i$的情况下，遇到一个$a_i$就相加，但不能有小于等于0的情况，问最后要去掉多少个值。现在有m个询问，对于每一个$b_i$都要求一次最小去掉的数量。</p>
+<p>后来才知道这种博弈是有套路的。。。</p>
+<p>$DP[i]$表示对当前玩家来说，取前$[1..i]$数其最优值，那么这个最优值$DP[i]$从哪里转移过来，从左往右取的话，这个最优值是取决于对手取的最优值，即是从右面转移过来的。根据这个可以写一个$O(n^2)$的记忆化$DP$。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> n;</div><div class="line"><span class="keyword">int</span> val[maxn],sum[maxn],dp[maxn];</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">cal</span><span class="params">(<span class="keyword">int</span> x)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span>(dp[x]!=<span class="number">-1</span>)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">return</span> dp[x];</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">int</span> res = -INF;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=x+<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">	&#123;</div><div class="line">		res=max(res,cal(i));</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span>(res == -INF)</div><div class="line">		res = <span class="number">0</span>;</div><div class="line">	dp[x]=sum[x]-res;</div><div class="line">	<span class="keyword">return</span> dp[x];</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	<span class="built_in">memset</span>(dp,<span class="number">-1</span>,<span class="keyword">sizeof</span>(dp));</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;val[i]);</div><div class="line">		sum[i]=sum[i<span class="number">-1</span>]+val[i];</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">int</span> res = -INF;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</div><div class="line">	&#123;</div><div class="line">		res = max(res,cal(i));</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,res);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>观察转移，从后转移的话，可以从后往前走，维护这个最大值，得到结果。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">ll n;</div><div class="line">ll val[maxn], sum[maxn];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;n);</div><div class="line">	repp(i, <span class="number">1</span>, n)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;val[i]);</div><div class="line">		sum[i] = sum[i - <span class="number">1</span>] + val[i];</div><div class="line">	&#125;</div><div class="line">	ll res = <span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = n; i &gt;= <span class="number">2</span>; i--)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span> (i == n)res = sum[i];</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (res &lt; sum[i] - res)</div><div class="line">		&#123;</div><div class="line">			res = sum[i] - res;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, res);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="F-Video-Cards"><a href="#F-Video-Cards" class="headerlink" title="F Video Cards"></a>F Video Cards</h3><blockquote>
+<p>有$n$个数，可以以任意一个数作为开头，其余的数必须减小到是这个数的整数倍，记这个数列的和。问所有情况下的和的最大值。</p>
 </blockquote>
-<p>二分取$1$到$n$个所要具备的最小值，然后在结果里面再次二分。</p>
+<p>注意数的范围都是小于200000的，那么就可以求前缀和，枚举每一个数作为基底，其2倍,3倍…的数。复杂度$O(nlogn)$</p>
 </span>
       
     </div>
@@ -302,7 +313,7 @@ A  Transformation: from A to">
           
             <a href="/tags/Codeforces/" rel="tag">#Codeforces</a>
           
-            <a href="/tags/AC自动机/" rel="tag">#AC自动机</a>
+            <a href="/tags/博弈/" rel="tag">#博弈</a>
           
         </div>
       
@@ -311,13 +322,11 @@ A  Transformation: from A to">
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/10/24/Codeforces-376-Div2/" rel="prev">Codeforces 376 Div2</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/13/CODE-FESTIVAL-2016-Qualification-Round-B/" rel="next">CODE FESTIVAL 2016 Qualification Round B</a>
+              <a href="/2016/10/19/Technocup-2017-Elimination-Round-1/" rel="next">Technocup 2017 - Elimination Round 1</a>
             
           </div>
         </div>
@@ -336,10 +345,10 @@ A  Transformation: from A to">
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/10/19/Technocup-2017-Elimination-Round-1/"
-     data-title="Technocup 2017 - Elimination Round 1"
+        <div class="ds-share flat" data-thread-key="2016/10/24/Codeforces-376-Div2/"
+     data-title="Codeforces 376 Div2"
      data-content=""
-     data-url="http://2997ms.github.io/2016/10/19/Technocup-2017-Elimination-Round-1/">
+     data-url="http://2997ms.github.io/2016/10/24/Codeforces-376-Div2/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -365,8 +374,8 @@ A  Transformation: from A to">
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2016/10/19/Technocup-2017-Elimination-Round-1/"
-                   data-title="Technocup 2017 - Elimination Round 1" data-url="http://2997ms.github.io/2016/10/19/Technocup-2017-Elimination-Round-1/">
+              <div class="ds-thread" data-thread-key="2016/10/24/Codeforces-376-Div2/"
+                   data-title="Codeforces 376 Div2" data-url="http://2997ms.github.io/2016/10/24/Codeforces-376-Div2/">
               </div>
             
           </div>
@@ -448,7 +457,7 @@ A  Transformation: from A to">
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Transformation-from-A-to-B"><span class="nav-number">1.</span> <span class="nav-text">A  Transformation: from A to B</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Bill-Total-Value"><span class="nav-number">2.</span> <span class="nav-text">B Bill Total Value</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Guess-the-Array"><span class="nav-number">3.</span> <span class="nav-text">C Guess the Array</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-T-shirts-Distribution"><span class="nav-number">4.</span> <span class="nav-text">D T-shirts Distribution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-Games-on-a-CD"><span class="nav-number">5.</span> <span class="nav-text">E Games on a CD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#F-Polycarp’s-problems"><span class="nav-number">6.</span> <span class="nav-text">F Polycarp’s problems</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Night-at-the-Museum"><span class="nav-number">1.</span> <span class="nav-text">A Night at the Museum</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Coupons-and-Discounts"><span class="nav-number">2.</span> <span class="nav-text">B Coupons and Discounts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Socks"><span class="nav-number">3.</span> <span class="nav-text">C Socks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-80-th-Level-Archeology"><span class="nav-number">4.</span> <span class="nav-text">D 80-th Level Archeology</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-Funny-Game"><span class="nav-number">5.</span> <span class="nav-text">E Funny Game</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#F-Video-Cards"><span class="nav-number">6.</span> <span class="nav-text">F Video Cards</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
