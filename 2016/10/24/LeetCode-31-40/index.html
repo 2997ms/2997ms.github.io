@@ -50,7 +50,7 @@
 
 这个题直接next_permutation()函数就可以，在discuss里面看到一个二分解法，很赞。
 1234567891011121314151617181920class Solution &amp;#123;public:    void nextPermutation(vector&amp;lt;int&amp;gt;&amp;amp; nums)">
-<meta property="og:updated_time" content="2016-10-24T15:29:23.000Z">
+<meta property="og:updated_time" content="2016-10-24T15:34:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode 31-40">
 <meta name="twitter:description" content="31 Next Permutation
@@ -219,7 +219,7 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2016-10-24T22:15:16+08:00" content="2016-10-24">
+          <time itemprop="dateCreated" datetime="2016-10-24T23:34:16+08:00" content="2016-10-24">
             2016-10-24
           </time>
         </span>
@@ -294,7 +294,7 @@
 <h3 id="40-Combination-Sum-II"><a href="#40-Combination-Sum-II" class="headerlink" title="40 Combination Sum II"></a>40 Combination Sum II</h3><blockquote>
 <p>这里与上一题不同的是数组中的数字只能出现一次。</p>
 </blockquote>
-<p>注意使用begin判断。很多LeetCode题都是这个套路。</p>
+<p>注意使用begin判断。这里其实就是算在begin开始的target值，那么只要重复的，一律不管。因为重复的都在begin之前与begin这里重复了。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp;res, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; val, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;cur, <span class="keyword">int</span> tar, <span class="keyword">int</span> begin)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (tar == <span class="number">0</span>)</div><div class="line">	&#123;</div><div class="line">		res.push_back(cur);</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">int</span> sz = val.size();</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = begin; i &lt; sz; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span> (tar &lt; val[i])<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">if</span>(i!=begin&amp;&amp;val[i]==val[i<span class="number">-1</span>])<span class="keyword">continue</span>;</div><div class="line">		</div><div class="line">		cur.push_back(val[i]);</div><div class="line">		dfs(res, val, cur, tar - val[i], i+<span class="number">1</span>);</div><div class="line">		cur.pop_back();</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">class</span> Solution </div><div class="line">&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; combinationSum2(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; candidates, <span class="keyword">int</span> target)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;res;</div><div class="line">		<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; cur;</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (candidates.size() == <span class="number">0</span>)<span class="keyword">return</span> res;</div><div class="line">		sort(candidates.begin(), candidates.end());</div><div class="line"></div><div class="line">		dfs(res, candidates, cur, target, <span class="number">0</span>);</div><div class="line"></div><div class="line">		<span class="keyword">return</span> res;</div><div class="line">	&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></span>
       
     </div>
