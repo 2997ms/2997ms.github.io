@@ -4,6 +4,40 @@
   
     
     <entry>
+      <title><![CDATA[CodeChef October Lunchtime 2016]]></title>
+      <url>http://2997ms.github.io/2016/11/05/CodeChef-October-Lunchtime-2016/</url>
+      <content type="html"><![CDATA[<p><a href="https://www.codechef.com/LTIME41" target="_blank" rel="external">题目链接</a>与<a href="https://github.com/2997ms/My_Algorithm/tree/master/CodeChef/CodeChef-October-Lunchtime-2016" target="_blank" rel="external">代码链接</a></p>
+<p>访问CodeChef好慢啊。。。</p>
+<h3 id="A-The-Largest-Bouquet"><a href="#A-The-Largest-Bouquet" class="headerlink" title="A The Largest Bouquet"></a>A The Largest Bouquet</h3><blockquote>
+<p>取树叶，要么是同一颜色的，要么是同一棵树上的。问最大值。</p>
+</blockquote>
+<p>矩阵里面同一行同一列的最大值。</p>
+<h3 id="B-FastFood-Combos"><a href="#B-FastFood-Combos" class="headerlink" title="B FastFood Combos"></a>B FastFood Combos</h3><blockquote>
+<p>商店里的每个物品有自己的单价，有各种优惠活动，花$P_i$钱可以购买$Q_i$个产品，问想要购买所有$N$个产品，最少需要花多少钱。</p>
+</blockquote>
+<p>其实这道题还是要枚举，但是怎么枚举是一个问题。</p>
+<p>首先$dp1[x]$表示只通过单一渠道购买到的(要么单买，要么优惠)，然后这里对优惠下有一个$2^n$枚举，得到各种情况下优惠上的最小值。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">rep(i, <span class="number">0</span>, n)</div><div class="line">    &#123;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;val[i]);</div><div class="line">        dp1[<span class="number">1</span> &lt;&lt; i] = val[i];</div><div class="line">    &#125;</div><div class="line">    dp1[<span class="number">0</span>] = dp2[<span class="number">0</span>] = <span class="number">0</span>;</div><div class="line">    repp(i, <span class="number">1</span>, m)</div><div class="line">    &#123;</div><div class="line">        ll mask = <span class="number">0</span>;</div><div class="line">        ll p, q;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>, &amp;p, &amp;q);</div><div class="line">        rep(j, <span class="number">0</span>, q)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">int</span> x; <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;x);</div><div class="line">            x--;</div><div class="line">            mask |= (<span class="number">1</span> &lt;&lt; x);</div><div class="line">        &#125;</div><div class="line">        dp1[mask] = min(dp1[mask], (ll)p);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = (<span class="number">1</span> &lt;&lt; n) - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; n; k++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span> ((i &gt;&gt; k) &amp; <span class="number">1</span>)</div><div class="line">            &#123;</div><div class="line">                dp1[i ^ (<span class="number">1</span> &lt;&lt; k)] = min(dp1[i ^ (<span class="number">1</span> &lt;&lt; k)], dp1[i]);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>$dp2[x]$表示两种方式混合的最小值，枚举子集也学到了新姿势。。。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> mask = <span class="number">0</span>; mask &lt; (<span class="number">1</span> &lt;&lt; n); mask++)</div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> submask = (mask - <span class="number">1</span>)&amp;mask;</div><div class="line">    dp2[mask] = dp1[mask];</div><div class="line">    <span class="keyword">do</span></div><div class="line">    &#123;</div><div class="line">        dp2[mask] = min(dp2[mask], dp2[submask] + dp1[mask^submask]);</div><div class="line">        submask = (submask - <span class="number">1</span>)&amp;mask;</div><div class="line">    &#125;<span class="keyword">while</span> (submask &gt; <span class="number">0</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最终结果就是$dp2[(1&lt;&lt;n)-1]$。</p>
+<h3 id="C-Restore-the-Permutation"><a href="#C-Restore-the-Permutation" class="headerlink" title="C Restore the Permutation"></a>C Restore the Permutation</h3><blockquote>
+<p>$1$到$N$的排列，有两种询问：</p>
+<p>$1 \  X \  Y  \  D |A_x-A_y|能否被D整除$</p>
+<p>$2 \  X \  Y  \  X是否小于Y$</p>
+<p>最多可以提出$N*13$个1类询问，以及$N-1$个2类询问，要求还原数列。</p>
+</blockquote>
+<p>好难啊。。。$13*N$。。。$N$的范围是$10^4$级别的，很明显是要$log$一下，但是怎么分治呢。。。</p>
+<p>分治，先把所有数分成%2=1的，以及%2=0的，之后对%2=0的那部分%4又有两种情况，按照这个分类有什么好处呢，就是比较每个序列的最小值，最后可以直接*2还原。</p>
+<h3 id="D-The-Counties"><a href="#D-The-Counties" class="headerlink" title="D The Counties"></a>D The Counties</h3><blockquote>
+<p>给出一棵树，这棵树上的点隶属于某个国家，有$Q$个询问，每次问距离某一点$V$最近的一个国家$C$的城市是多远。</p>
+</blockquote>
+<p>如果是在$10^5$级别，<a href="http://codeforces.com/problemset/problem/342/E" target="_blank" rel="external">CF_342E</a>给出了一个分块的。</p>
+<p>这个题离线解，树分治，每次找树的重心，深搜一遍，如果是在不同的子树上，每次的结果最小值就是国家$C$在子树上的最小深度与该城市的最小深度之和。如果是在相同的子树上，递归求解。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[LeetCode 31-40]]></title>
       <url>http://2997ms.github.io/2016/10/24/LeetCode-31-40/</url>
       <content type="html"><![CDATA[<h3 id="31-Next-Permutation"><a href="#31-Next-Permutation" class="headerlink" title="31 Next Permutation"></a>31 Next Permutation</h3><blockquote>
@@ -841,8 +875,8 @@
     </entry>
     
     <entry>
-      <title><![CDATA[August Lunchtime 2016]]></title>
-      <url>http://2997ms.github.io/2016/09/03/August-Lunchtime-2016/</url>
+      <title><![CDATA[CodeChef August Lunchtime 2016]]></title>
+      <url>http://2997ms.github.io/2016/09/03/CodeChef-August-Lunchtime-2016/</url>
       <content type="html"><![CDATA[<p>做了Codechef上面的<a href="https://www.codechef.com/LTIME39" target="_blank" rel="external">August Lunchtime 2016</a>，上面的题都有中文题面，还有解答，还有代码。觉得这个网站也不错呀。。。</p>
 <p>然后这次做完发现是三道easy，一道medium。一想也没用什么数据结构，好像是差不多哈，但是第四个树上直径这个和51nod上面树上最远点对是一样的想法，做得时候自己感觉还是挺难的。第三题数组开小了，然而一直返回WA，找了很久。第二个有相同的数字也WA了一个晚上。这样想来觉得也不那么简单了。</p>
 <p>代码在<a href="https://github.com/2997ms/My_Algorithm/tree/master/Codechef/August-Lunchtime-2016" target="_blank" rel="external">这里</a>。</p>
