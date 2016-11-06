@@ -1,0 +1,800 @@
+
+<!doctype html>
+<html class="theme-next use-motion theme-next-mala">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+
+
+  <meta name="keywords" content="AtCoder," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="题目链接与代码链接
+比的时候只做出三道，后来感觉这一期的D题是可以出的，E题的思路还是神，就感觉这种题也不靠什么特定的算法，靠思维把问题转换，跟前面Atcoder的很多题一样，挺看智商的。。。至于F题。。。那个矩阵的构造，从答案推出矩阵的正确性我是搞懂了，但是如何通过一些递推关系搞出矩阵，感觉自己还需要练习吧= =。
+A Wanna go back home
+题意是Snuke走|s|次，每一次东西">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AtCoder Grand Contest 003">
+<meta property="og:url" content="http://2997ms.github.io/2016/09/13/AtCoder-Grand-Contest-003/index.html">
+<meta property="og:site_name" content="2997ms">
+<meta property="og:description" content="题目链接与代码链接
+比的时候只做出三道，后来感觉这一期的D题是可以出的，E题的思路还是神，就感觉这种题也不靠什么特定的算法，靠思维把问题转换，跟前面Atcoder的很多题一样，挺看智商的。。。至于F题。。。那个矩阵的构造，从答案推出矩阵的正确性我是搞懂了，但是如何通过一些递推关系搞出矩阵，感觉自己还需要练习吧= =。
+A Wanna go back home
+题意是Snuke走|s|次，每一次东西">
+<meta property="og:updated_time" content="2016-09-13T02:10:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AtCoder Grand Contest 003">
+<meta name="twitter:description" content="题目链接与代码链接
+比的时候只做出三道，后来感觉这一期的D题是可以出的，E题的思路还是神，就感觉这种题也不靠什么特定的算法，靠思维把问题转换，跟前面Atcoder的很多题一样，挺看智商的。。。至于F题。。。那个矩阵的构造，从答案推出矩阵的正确性我是搞懂了，但是如何通过一些递推关系搞出矩阵，感觉自己还需要练习吧= =。
+A Wanna go back home
+题意是Snuke走|s|次，每一次东西">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mala',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> AtCoder Grand Contest 003 | 2997ms </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">白驹过隙，策码奔腾</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <form class="site-search-form">
+    <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+  </form>
+
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'ZyrfypYveGYcPppiWyn9','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    
+      
+
+      
+
+    
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              AtCoder Grand Contest 003
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-09-13T08:42:54+08:00" content="2016-09-13">
+            2016-09-13
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/题记/" itemprop="url" rel="index">
+                  <span itemprop="name">题记</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <!--
+              <a href="/2016/09/13/AtCoder-Grand-Contest-003/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/13/AtCoder-Grand-Contest-003/" itemprop="commentsCount"></span>
+              </a>
+              -->
+              <a href="/2016/09/13/AtCoder-Grand-Contest-003/#comments" itemprop="discussionUrl">
+                <span>评论</span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p><a href="http://agc003.contest.atcoder.jp/assignments" target="_blank" rel="external">题目链接</a>与<a href="https://github.com/2997ms/My_Algorithm/tree/master/AtCoder/Grand_Contest_003" target="_blank" rel="external">代码链接</a></p>
+<p>比的时候只做出三道，后来感觉这一期的D题是可以出的，E题的思路还是神，就感觉这种题也不靠什么特定的算法，靠思维把问题转换，跟前面Atcoder的很多题一样，挺看智商的。。。至于F题。。。那个矩阵的构造，从答案推出矩阵的正确性我是搞懂了，但是如何通过一些递推关系搞出矩阵，感觉自己还需要练习吧= =。</p>
+<h3 id="A-Wanna-go-back-home"><a href="#A-Wanna-go-back-home" class="headerlink" title="A Wanna go back home"></a>A Wanna go back home</h3><hr>
+<p>题意是Snuke走|s|次，每一次东西南北四个方向，任意距离，给出走的方向，问最终能否回到原点。</p>
+<p>相对的方向要都出现或者都不出现，这样就能够保证在这两个方向上移动的距离为0。</p>
+<h3 id="B-Simplified-mahjong"><a href="#B-Simplified-mahjong" class="headerlink" title="B Simplified mahjong"></a>B Simplified mahjong</h3><hr>
+<p>题意是Snuke有一堆卡片，每张卡片上的数字为1~N，数字i的卡片有Ai个，两张卡片上数字相差不超过1的可以形成一对，问最多形成多少对。</p>
+<p>之前一直WA，后来就直接贪心，如果数字为i的为偶数，那就自己组成一对。如果为奇数，找后面的一个组成一对。</p>
+<h3 id="C-BBuBBBlesort"><a href="#C-BBuBBBlesort" class="headerlink" title="C BBuBBBlesort!"></a>C BBuBBBlesort!</h3><hr>
+<p>题意是给出N个数，想把这N个数按大小排成有序，交换方法有两种：1.交换相邻的2个;2.交换相邻的3个.</p>
+<p>问最少必须使用多少次操作1使得数字有序。</p>
+<p>能够发现将这N个数排序之后，如果一个数排序之前的位置与排序之后的位置之差如果是偶数的话，那么就可以通过操作2来实现，但如果是奇数的话，那没办法了，想要到达该状态就必须通过操作1来实现了。</p>
+<h3 id="D-Anticube"><a href="#D-Anticube" class="headerlink" title="D Anticube"></a>D Anticube</h3><hr>
+<p>题意是给出N个数，求一个集合，该集合两两数字之前相乘不是立方数，问该集合元素的最大数量。</p>
+<p><a href="https://async.icpc-camp.org/d/528-atcoder-grand-contest-003-d-anticube" target="_blank" rel="external">叉姐题解</a></p>
+<p>其实后来就是如何分解该数的问题，一直TLE。</p>
+<p>数字是在10^10级别的，将10^3级别的因子过滤一遍之后，就考虑只剩下了p,pq,p^2的形式了，考虑如何将它们处理。另外p^2形式还要注意一下精度问题。</p>
+<p>剩下的就是两者取大的问题了。</p>
+<h3 id="E-Sequential-operations-on-Sequence"><a href="#E-Sequential-operations-on-Sequence" class="headerlink" title="E Sequential operations on Sequence"></a>E Sequential operations on Sequence</h3><hr>
+<p>题意是当前有一个序列1…N，有Q次操作，每次操作中，该序列被原来序列的前Qi个数不断地重复替代。问最终序列每个元素的出现次数。</p>
+<p>能够发现规律，如果Qi&gt;Q(i+1),那么之前的Qi就没有意义了。</p>
+<p>这样就会变成所有的操作是一个递增的序列。</p>
+<p>还是发现数字小的元素出现次数一定比数字大的元素出现次数多，所以最终问题考虑使用后缀和，那从后往前考虑，把最后一个元素标为1，即所有元素都是1了。</p>
+<p>从后往前每一次操作相当于做了一次折叠，考虑将后面位置的这些贡献分别贡献到那里了，如果该位置pos&gt;Qi，那么会发现Qi位置上的值+=(pos/Qi)*(该pos的值)，pos%Qi位置上的值+=pos%Qi。</p>
+<p>这种问题感觉很难总结出一个系统的解决方法，每次碰到就靠跳大神，求问有没有类似的问题呢。。。？</p>
+<h3 id="F-Fraction-of-Fractal"><a href="#F-Fraction-of-Fractal" class="headerlink" title="F Fraction of Fractal"></a>F Fraction of Fractal</h3><hr>
+<p>题意是h*w的方格，每个格子要么是白点要么是黑点。所有这些黑点在上下左右四个方向是联通的。</p>
+<p>现在给出求第k等的图的方法，第k等的图从第k-1等的图来，如果该位置是白点，该位置替换成h*w的白点；如果是黑点，该位置替换成最开始的图。</p>
+<p>问第k等的图中黑点的联通块是多少个。</p>
+<p>先把其它简单的条件过滤掉，如果该图左右上下都可以连上，那么最终结果不管k多大都是1。</p>
+<p>如果该图左右上下都连不上，那么最终结果就是黑点数量a^(k-1)。</p>
+<p>现在只考虑一边连上，一边连不上的情况。比如说左右连通，上下不连通。</p>
+<p>现在这个图中黑点的数量为a，左右相连的点对数为b，边界上最左边和最右边都是黑点的对数为c。</p>
+<p>好，现在假设你已经知道了第k-1层有多少个连通块设为x，第k-1层有y个连接的数量，那么如何推出第k层？</p>
+<p>首先x*a，这个是完全不考虑相连的情况，假设每一个连通块就会分裂成a个，那么总和就是x*a个，之后减去x*b个，这b块不是新生成的连通块数量，要减去，是内部生成的。</p>
+<p>之后的这个y是上一轮连接的数量，那么上一轮如果连接上了的话，每一对y分裂而成就会有c对是新生成的连接着的块，这个是新的外部的连接的。</p>
+<p>这样总结得话可以得到一个矩阵，<br>$$<br>{\begin{pmatrix}<br>a&amp;-b\\<br>0 &amp;c<br>\end{pmatrix}}^{k-1}<br>{\begin{pmatrix}<br>1\\<br>1<br>\end{pmatrix}}<br>$$</p>
+<p>说的很乱很乱，也跑到论坛上面去问,发现讨论的东西和一开始想的也差不太多，给个<a href="https://async.icpc-camp.org/d/545-atcoder-grand-contest-003-f-fraction-of-fractal" target="_blank" rel="external">链接</a>，供参考。</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/AtCoder/" rel="tag">#AtCoder</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/14/AtCoder-Grand-Contest-004/" rel="prev">AtCoder Grand Contest 004</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/07/AtCoder-Grand-Contest-002/" rel="next">AtCoder Grand Contest 002</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div>
+      
+    </div>
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/09/13/AtCoder-Grand-Contest-003/"
+     data-title="AtCoder Grand Contest 003"
+     data-content=""
+     data-url="http://2997ms.github.io/2016/09/13/AtCoder-Grand-Contest-003/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2016/09/13/AtCoder-Grand-Contest-003/"
+                   data-title="AtCoder Grand Contest 003" data-url="http://2997ms.github.io/2016/09/13/AtCoder-Grand-Contest-003/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="2997ms" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">2997ms</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        <div class="links-of-friendly motion-element">
+          
+        </div>
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Wanna-go-back-home"><span class="nav-number">1.</span> <span class="nav-text">A Wanna go back home</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Simplified-mahjong"><span class="nav-number">2.</span> <span class="nav-text">B Simplified mahjong</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-BBuBBBlesort"><span class="nav-number">3.</span> <span class="nav-text">C BBuBBBlesort!</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Anticube"><span class="nav-number">4.</span> <span class="nav-text">D Anticube</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-Sequential-operations-on-Sequence"><span class="nav-number">5.</span> <span class="nav-text">E Sequential operations on Sequence</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#F-Fraction-of-Fractal"><span class="nav-number">6.</span> <span class="nav-text">F Fraction of Fractal</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">2997ms</span>
+
+  <div class="powered-by"></div>
+  <div class="powered-by">
+    Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+  </div>
+
+
+
+  <!-- busuanzi -->
+  
+    <div class="powered-by">
+    <div class="theme-info">
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+    <span id="busuanzi_container_site_pv">
+        我已经被访问<a class="theme-link"><span id="busuanzi_value_site_pv"></span></a>次啦~
+    </span>
+</div>
+    </div>
+  
+
+</div>
+
+<!--
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mala
+  </a>
+</div>
+-->
+
+<!--
+<div class="powered-by"></div>
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+-->
+
+<!-- busuanzi -->
+<!--
+
+  <div class="theme-info">
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+    <span id="busuanzi_container_site_pv">
+        我已经被访问<a class="theme-link"><span id="busuanzi_value_site_pv"></span></a>次啦~
+    </span>
+</div>
+
+-->
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"wangchong756"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+  	  <script type="text/javascript">
+  		var duoshuo_user_ID = wangchong756
+  	  </script>
+     
+  	<script src="/js/ua-parser.min.js"></script>
+  	<script src="/js/hook-duoshuo.js"></script>
+  
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

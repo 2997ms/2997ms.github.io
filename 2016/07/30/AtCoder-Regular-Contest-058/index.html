@@ -1,0 +1,792 @@
+
+<!doctype html>
+<html class="theme-next use-motion theme-next-mala">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+
+
+  <meta name="keywords" content="AtCoder,DP," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="C、D、E的代码在这里
+这周一直在忙老师要求写的一些东西，终于在周六的时候还是光荣地倒下了，太累了。
+原本是上周的比赛，自己一周的时间还是没有把F过掉，在Codeforces上面问了一些人，算是搞懂了原理，但是对于yosupo所说的Z-algorithm还是没有学过，这个也加入到了To_do_list里面，我一定会回来的。。。
+C Iroha’s Obsession
+C题题意，找到一个数x，大于等">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AtCoder Regular Contest 058">
+<meta property="og:url" content="http://2997ms.github.io/2016/07/30/AtCoder-Regular-Contest-058/index.html">
+<meta property="og:site_name" content="2997ms">
+<meta property="og:description" content="C、D、E的代码在这里
+这周一直在忙老师要求写的一些东西，终于在周六的时候还是光荣地倒下了，太累了。
+原本是上周的比赛，自己一周的时间还是没有把F过掉，在Codeforces上面问了一些人，算是搞懂了原理，但是对于yosupo所说的Z-algorithm还是没有学过，这个也加入到了To_do_list里面，我一定会回来的。。。
+C Iroha’s Obsession
+C题题意，找到一个数x，大于等">
+<meta property="og:image" content="http://ob47badfj.bkt.clouddn.com/R058_D.png">
+<meta property="og:image" content="http://ob47badfj.bkt.clouddn.com/R058_F_1.png">
+<meta property="og:updated_time" content="2016-09-03T06:52:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AtCoder Regular Contest 058">
+<meta name="twitter:description" content="C、D、E的代码在这里
+这周一直在忙老师要求写的一些东西，终于在周六的时候还是光荣地倒下了，太累了。
+原本是上周的比赛，自己一周的时间还是没有把F过掉，在Codeforces上面问了一些人，算是搞懂了原理，但是对于yosupo所说的Z-algorithm还是没有学过，这个也加入到了To_do_list里面，我一定会回来的。。。
+C Iroha’s Obsession
+C题题意，找到一个数x，大于等">
+<meta name="twitter:image" content="http://ob47badfj.bkt.clouddn.com/R058_D.png">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mala',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> AtCoder Regular Contest 058 | 2997ms </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">白驹过隙，策码奔腾</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <form class="site-search-form">
+    <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+  </form>
+
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'ZyrfypYveGYcPppiWyn9','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    
+      
+
+      
+
+    
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              AtCoder Regular Contest 058
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-07-30T14:02:24+08:00" content="2016-07-30">
+            2016-07-30
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/题记/" itemprop="url" rel="index">
+                  <span itemprop="name">题记</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <!--
+              <a href="/2016/07/30/AtCoder-Regular-Contest-058/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/30/AtCoder-Regular-Contest-058/" itemprop="commentsCount"></span>
+              </a>
+              -->
+              <a href="/2016/07/30/AtCoder-Regular-Contest-058/#comments" itemprop="discussionUrl">
+                <span>评论</span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>C、D、E的代码在<a href="https://github.com/2997ms/My_Algorithm/tree/master/AtCoder/Regular_Contest_058" target="_blank" rel="external">这里</a></p>
+<p>这周一直在忙老师要求写的一些东西，终于在周六的时候还是光荣地倒下了，太累了。</p>
+<p>原本是上周的比赛，自己一周的时间还是没有把F过掉，在Codeforces上面问了一些人，算是搞懂了原理，但是对于<a href="http://codeforces.com/profile/yosupo" target="_blank" rel="external">yosupo</a>所说的Z-algorithm还是没有学过，这个也加入到了<a href="http://2997ms.github.io/2016/07/30/To-do-list/">To_do_list</a>里面，我一定会回来的。。。</p>
+<h2 id="C-Iroha’s-Obsession"><a href="#C-Iroha’s-Obsession" class="headerlink" title="C Iroha’s Obsession"></a>C Iroha’s Obsession</h2><hr>
+<p>C题题意，找到一个数x，大于等于n，然后给出了k个数字是不能用的。</p>
+<p>暴力就好了，一个一个往上面涨，判断是否符合条件，自己做法有些麻烦。</p>
+<h2 id="D-roha-and-a-Grid"><a href="#D-roha-and-a-Grid" class="headerlink" title="D roha and a Grid"></a>D roha and a Grid</h2><hr>
+<p>D题题意是给出了一个长为H、宽为W的格子，要从左上角走到右下角，然后又给出了一块左下的区域，长为A、宽为B，不能到达，问最终的方法数。</p>
+<p>这个问题在于要考虑这个蓝色的区域，枚举蓝色线上面的点每一个从左上角到达该点有多少种方法，然后考虑这些点都是竖着穿过下面的横线，计算下面的点到终点有多少种方式，相加即可。</p>
+<p>起点(x,y)到终点(s,t)有c(x-s+y-t,x-s)种方法，算组合数就好了。</p>
+<p><img src="http://ob47badfj.bkt.clouddn.com/R058_D.png" alt="R058_D"></p>
+<h2 id="E-Iroha-and-Haiku"><a href="#E-Iroha-and-Haiku" class="headerlink" title="E Iroha and Haiku"></a>E Iroha and Haiku</h2><hr>
+<p>E题题意是给出了N个数(N&lt;=40)，每个数由1到10构成，问这些构成里面能找到相邻的三个子段，第一段和为X，第二段和为Y，第三段和为Z，满足这样条件的叫Haiku，问一共有多少个Haiku。</p>
+<p>这个题好神。。。。</p>
+<p>做法是找不符合的，把1写成1，把2写成10，把3写成100，那么最后的这段数就能写成一个01串，然后这个串包含xyz-Haiku，相当于与xyz构成的01串做与运算，结果不为0.</p>
+<h2 id="F-Iroha-Loves-Strings"><a href="#F-Iroha-Loves-Strings" class="headerlink" title="F Iroha Loves Strings"></a>F Iroha Loves Strings</h2><hr>
+<p>F题题意是给出了N个串，按照顺序组合为长度为k的串，保证可以找到。然后问字典序最小的字符串是多少。</p>
+<p>问了yosupo，他是这么说的，大致看懂了，但是z-algorithm不会。。。</p>
+<p> <img src="http://ob47badfj.bkt.clouddn.com/R058_F_1.png" alt="R058_F_1"></p>
+<p>看了其他人AC的代码，有一些是水过去的，然后自己也按照思路写了一下。始终WA掉4个数据，不懂为什么啊啊啊。。。</p>
+<p>求路过的人解释一下这道题啊。。。</p>
+<p>WA代码：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div></pre></td><td class="code"><pre><div class="line">//#pragma comment(linker, "/STACK:102400000,102400000") </div><div class="line">#pragma warning(disable:4996)</div><div class="line">#include &lt;fstream&gt;</div><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &lt;functional&gt;</div><div class="line">#include &lt;algorithm&gt;</div><div class="line">#include &lt;cstring&gt;</div><div class="line">#include &lt;vector&gt;</div><div class="line">#include &lt;string&gt;</div><div class="line">#include &lt;cstdio&gt;</div><div class="line">#include &lt;cmath&gt;</div><div class="line">#include &lt;queue&gt;</div><div class="line">#include &lt;stack&gt;</div><div class="line">#include &lt;deque&gt;</div><div class="line">#include &lt;ctime&gt;</div><div class="line">#include &lt;list&gt;</div><div class="line">#include &lt;set&gt;</div><div class="line">#include &lt;map&gt;</div><div class="line">using namespace std;</div><div class="line"> </div><div class="line">typedef long long ll;</div><div class="line">#define eps 1e-10</div><div class="line">#define LL_INF 0x33ffffffffffffff</div><div class="line">#define INF 0x3f3f3f3f</div><div class="line">#define mem(a, b) memset(a, b, sizeof(a))</div><div class="line">#define pper(i,n,m) for(int i = n;i &gt;= m; i--)</div><div class="line">#define repp(i, n, m) for (int i = n; i &lt;= m; i++)</div><div class="line">#define rep(i, n, m) for (int i = n; i &lt; m; i++)</div><div class="line">#define sa(n) scanf("%d", &amp;(n))</div><div class="line">#define mp make_pair</div><div class="line">#define ff first</div><div class="line">#define ss second</div><div class="line">#define pb push_back</div><div class="line"> </div><div class="line">const int maxn = 2e3 + 10;</div><div class="line">const ll mod = 1e9 + 7;</div><div class="line">const double PI = acos(-1.0);</div><div class="line">ll po(ll a, ll b) &#123; ll res = 1; a %= mod; for (; b; b &gt;&gt;= 1) &#123; if (b &amp; 1)res = res*a%mod; a = a*a%mod; &#125;return res; &#125;</div><div class="line"> </div><div class="line">int n, k;</div><div class="line">string val[maxn];</div><div class="line">int vis[maxn];</div><div class="line">int dp[maxn][10010];</div><div class="line">int loc[2][3005][2];</div><div class="line"> </div><div class="line">void solve()</div><div class="line">&#123;</div><div class="line">	int i, j;</div><div class="line"> </div><div class="line">	set&lt;char&gt;ch;</div><div class="line">	repp(i, 1, n)</div><div class="line">	&#123;</div><div class="line">		cin &gt;&gt; val[i];</div><div class="line">		rep(h, 0, val[i].length())</div><div class="line">		&#123;</div><div class="line">			ch.insert(val[i][h]);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	mem(dp, 0);</div><div class="line">	dp[n + 1][0] = 1;</div><div class="line"> </div><div class="line">	for (i = n; i &gt;= 1; i--)</div><div class="line">	&#123;</div><div class="line">		for (j = 0; j &lt;= k; j++)</div><div class="line">		&#123;</div><div class="line">			if (dp[i + 1][j])</div><div class="line">			&#123;</div><div class="line">				dp[i][j] = 1;</div><div class="line">			&#125;</div><div class="line">			if (dp[i + 1][j] &amp;&amp; j + val[i].length() &lt;= k )</div><div class="line">			&#123;</div><div class="line">				dp[i][j + val[i].length()] = 1;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	int now = 0, pre = 1;</div><div class="line">	int cnt = 0;</div><div class="line">	for (i = 1; i &lt;= n; i++)</div><div class="line">	&#123;</div><div class="line">		if (k - val[i].length()&gt;=0 &amp;&amp; dp[i + 1][k - val[i].length()])</div><div class="line">		&#123;</div><div class="line">			cnt++;</div><div class="line">			loc[pre][cnt][0] = i;</div><div class="line">			loc[pre][cnt][1] = 0;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	string res = "";</div><div class="line">	int remain = k;</div><div class="line">	for (i = 1; i &lt;= k; i++)</div><div class="line">	&#123;</div><div class="line">		mem(vis, 0);</div><div class="line">		char minx = 'z';</div><div class="line">		for (j = 1; j &lt;= cnt; j++)</div><div class="line">		&#123;</div><div class="line">			minx = min(minx, val[loc[pre][j][0]][loc[pre][j][1]]);</div><div class="line">		&#125;</div><div class="line">		int ncnt = 0;</div><div class="line">		int mn = n;</div><div class="line">		for (j = 1; j &lt;= cnt; j++)</div><div class="line">		&#123;</div><div class="line">			char x = val[loc[pre][j][0]][loc[pre][j][1]];</div><div class="line">			if (x != minx)continue;</div><div class="line">			if (loc[pre][j][1] == val[loc[pre][j][0]].length() - 1)</div><div class="line">			&#123;</div><div class="line">				mn = min(mn, loc[pre][j][0]);</div><div class="line">			&#125;</div><div class="line">			else</div><div class="line">			&#123;</div><div class="line">				vis[loc[pre][j][0]] = 1;</div><div class="line">				++ncnt;</div><div class="line">				loc[now][ncnt][0] = loc[pre][j][0];</div><div class="line">				loc[now][ncnt][1] = loc[pre][j][1] + 1;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		remain--;</div><div class="line">		for (j = mn + 1; j &lt;= n; j++)</div><div class="line">		&#123;</div><div class="line">			if (vis[j])continue;</div><div class="line">			if (remain - val[j].length() &gt;= 0 &amp;&amp; dp[j + 1][remain - val[j].length()])</div><div class="line">			&#123;</div><div class="line">				ncnt++;</div><div class="line">				loc[now][ncnt][0] = j;</div><div class="line">				loc[now][ncnt][1] = 0;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		res = res + minx;</div><div class="line">		cnt = ncnt;</div><div class="line">		pre = 1 - pre;</div><div class="line">		now = 1 - now;</div><div class="line">	&#125;</div><div class="line">	cout &lt;&lt; res &lt;&lt; endl;</div><div class="line">&#125;</div><div class="line"> </div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	while (scanf("%d%d", &amp;n, &amp;k) != EOF)</div><div class="line">	&#123;</div><div class="line">		solve();</div><div class="line">	&#125;</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/AtCoder/" rel="tag">#AtCoder</a>
+          
+            <a href="/tags/DP/" rel="tag">#DP</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/22/Codeforces-362-Div2/" rel="prev">Codeforces 362 Div2</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/30/To-do-list/" rel="next">To_do_list</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div>
+      
+    </div>
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/07/30/AtCoder-Regular-Contest-058/"
+     data-title="AtCoder Regular Contest 058"
+     data-content=""
+     data-url="http://2997ms.github.io/2016/07/30/AtCoder-Regular-Contest-058/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2016/07/30/AtCoder-Regular-Contest-058/"
+                   data-title="AtCoder Regular Contest 058" data-url="http://2997ms.github.io/2016/07/30/AtCoder-Regular-Contest-058/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="2997ms" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">2997ms</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        <div class="links-of-friendly motion-element">
+          
+        </div>
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#C-Iroha’s-Obsession"><span class="nav-number">1.</span> <span class="nav-text">C Iroha’s Obsession</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D-roha-and-a-Grid"><span class="nav-number">2.</span> <span class="nav-text">D roha and a Grid</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#E-Iroha-and-Haiku"><span class="nav-number">3.</span> <span class="nav-text">E Iroha and Haiku</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#F-Iroha-Loves-Strings"><span class="nav-number">4.</span> <span class="nav-text">F Iroha Loves Strings</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">2997ms</span>
+
+  <div class="powered-by"></div>
+  <div class="powered-by">
+    Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+  </div>
+
+
+
+  <!-- busuanzi -->
+  
+    <div class="powered-by">
+    <div class="theme-info">
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+    <span id="busuanzi_container_site_pv">
+        我已经被访问<a class="theme-link"><span id="busuanzi_value_site_pv"></span></a>次啦~
+    </span>
+</div>
+    </div>
+  
+
+</div>
+
+<!--
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mala
+  </a>
+</div>
+-->
+
+<!--
+<div class="powered-by"></div>
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+-->
+
+<!-- busuanzi -->
+<!--
+
+  <div class="theme-info">
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+    <span id="busuanzi_container_site_pv">
+        我已经被访问<a class="theme-link"><span id="busuanzi_value_site_pv"></span></a>次啦~
+    </span>
+</div>
+
+-->
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"wangchong756"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+  	  <script type="text/javascript">
+  		var duoshuo_user_ID = wangchong756
+  	  </script>
+     
+  	<script src="/js/ua-parser.min.js"></script>
+  	<script src="/js/hook-duoshuo.js"></script>
+  
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
