@@ -1,16 +1,12 @@
+
 <!doctype html>
-
-
-
+<html class="theme-next use-motion theme-next-mala">
+<head>
   
 
-
-<html class="theme-next mist use-motion">
-<head>
-  <meta charset="UTF-8"/>
+<meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
 
 
 <meta http-equiv="Cache-Control" content="no-transform" />
@@ -21,67 +17,23 @@
 
 
 
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+
+
+  <meta name="keywords" content="Hexo,world" />
 
 
 
 
 
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="2997ms" />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.0.2" />
-
-
-
-
+  <link rel="shorticon icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.1" />
 
 
 <meta property="og:type" content="website">
@@ -92,66 +44,47 @@
 <meta name="twitter:title" content="Live a life you will remember">
 
 
-
 <script type="text/javascript" id="hexo.configuration">
-  var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    }
+    scheme: 'Mala',
+    sidebar: 'post'
   };
 </script>
-
-
-
-
-  <link rel="canonical" href="http://2997ms.github.io/page/3/"/>
-
 
   <title> Live a life you will remember </title>
 </head>
 
-<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  
-
-
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
-
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Live a life you will remember</span>
-      <span class="logo-line-after"><i></i></span>
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
     </a>
   </div>
-  <p class="site-subtitle"></p>
-</div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column 
+   page-home 
+">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title"></span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
 
 <div class="site-nav-toggle">
   <button>
@@ -165,12 +98,12 @@
   
 
   
-    <ul id="menu" class="menu">
+    <ul id="menu" class="menu menu-left">
       
         
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
-            
+            <i class="menu-item-icon icon-next-home"></i> <br />
             首页
           </a>
         </li>
@@ -178,23 +111,15 @@
         
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
-            
+            <i class="menu-item-icon icon-next-archives"></i> <br />
             归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-            分类
           </a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
-            
+            <i class="menu-item-icon icon-next-tags"></i> <br />
             标签
           </a>
         </li>
@@ -202,21 +127,13 @@
         
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
-            
+            <i class="menu-item-icon icon-next-about"></i> <br />
             关于
           </a>
         </li>
       
 
       
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="st-search-show-outputs">
-          
-            
-            搜索
-          </a>
-        </li>
       
     </ul>
   
@@ -224,9 +141,11 @@
   
     <div class="site-search">
       
+  
   <form class="site-search-form">
-  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
-</form>
+    <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+  </form>
+
 
 <script type="text/javascript">
   (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
@@ -246,112 +165,97 @@
  </div>
     </header>
 
+    
+      
+
+      
+
+    
+
     <main id="main" class="main">
       <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
+        <div id="content" class="content"> 
   <section id="posts" class="posts-expand">
     
       
 
-  
-  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
-  
-  
-  
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2016/09/15/AtCoder-Regular-Contest-061/" itemprop="url">
+                AtCoder Regular Contest 061
+              </a>
+            
+          
+        </h1>
+      
 
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-09-15T15:50:21+08:00" content="2016-09-15">
+            2016-09-15
+          </time>
+        </span>
 
         
-        
-          <h1 class="post-title" itemprop="name headline">
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
             
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/15/AtCoder-Regular-Contest-061/" itemprop="url">
-                  AtCoder Regular Contest 061
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/题记/" itemprop="url" rel="index">
+                  <span itemprop="name">题记</span>
                 </a>
-              
-            
-          </h1>
-        
+              </span>
 
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-15T15:50:21+08:00" content="2016-09-15">
-              2016-09-15
-            </time>
+              
+              
+
+            
           </span>
+        
 
+        
           
-            <span class="post-category" >
+            <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/题记/" itemprop="url" rel="index">
-                    <span itemprop="name">题记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
+              <!--
+              <a href="/2016/09/15/AtCoder-Regular-Contest-061/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/15/AtCoder-Regular-Contest-061/" itemprop="commentsCount"></span>
+              </a>
+              -->
+              <a href="/2016/09/15/AtCoder-Regular-Contest-061/#comments" itemprop="discussionUrl">
+                <span>评论</span>
+              </a>
             </span>
           
+        
+      </div>
+    </header>
 
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/15/AtCoder-Regular-Contest-061/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/15/AtCoder-Regular-Contest-061/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body">
 
       
       
 
       
         
-          
-          题目链接与代码链接
+          <span itemprop="articleBody">
+            
+            题目链接与代码链接
 C Many Formulas
 题意是给出了由1到9组成的一个字符串，字符串长度最多是10，你可以在字符串中间添加+号，算所有方案得到的数的总和。
 因为长度最多只有10，直接暴力算。
 D Snuke’s Coloring
 题意是给出H*W的格子，在上面不是黑点就是白点，现在给出N
-          ...
-
+            ...
+          </span>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/09/15/AtCoder-Regular-Contest-061/#more" rel="contents">
               阅读全文 &raquo;
@@ -361,14 +265,6 @@ D Snuke’s Coloring
       
     </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
     <footer class="post-footer">
       
 
@@ -385,103 +281,83 @@ D Snuke’s Coloring
     
       
 
-  
-  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
-  
-  
-  
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2016/09/14/AtCoder-Grand-Contest-004/" itemprop="url">
+                AtCoder Grand Contest 004
+              </a>
+            
+          
+        </h1>
+      
 
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-09-14T13:56:23+08:00" content="2016-09-14">
+            2016-09-14
+          </time>
+        </span>
 
         
-        
-          <h1 class="post-title" itemprop="name headline">
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
             
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/14/AtCoder-Grand-Contest-004/" itemprop="url">
-                  AtCoder Grand Contest 004
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/题记/" itemprop="url" rel="index">
+                  <span itemprop="name">题记</span>
                 </a>
-              
-            
-          </h1>
-        
+              </span>
 
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-14T13:56:23+08:00" content="2016-09-14">
-              2016-09-14
-            </time>
+              
+              
+
+            
           </span>
+        
 
+        
           
-            <span class="post-category" >
+            <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/题记/" itemprop="url" rel="index">
-                    <span itemprop="name">题记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
+              <!--
+              <a href="/2016/09/14/AtCoder-Grand-Contest-004/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/14/AtCoder-Grand-Contest-004/" itemprop="commentsCount"></span>
+              </a>
+              -->
+              <a href="/2016/09/14/AtCoder-Grand-Contest-004/#comments" itemprop="discussionUrl">
+                <span>评论</span>
+              </a>
             </span>
           
+        
+      </div>
+    </header>
 
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/14/AtCoder-Grand-Contest-004/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/14/AtCoder-Grand-Contest-004/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body">
 
       
       
 
       
         
-          
-          题目链接与代码链接
+          <span itemprop="articleBody">
+            
+            题目链接与代码链接
 A Divide a Cuboid
 题意是给出一个A*B*C的立方体，以一个面来切分成两部分，要求这两部分体积之差最小。
 如果A、B、C有一个是偶数，那么直接就是0。都是奇数的话，从A*B、B*C、A*C里面选一个最小的。
 B Colorful Slimes
 题意是有N种颜色，有
-          ...
-
+            ...
+          </span>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/09/14/AtCoder-Grand-Contest-004/#more" rel="contents">
               阅读全文 &raquo;
@@ -491,14 +367,6 @@ B Colorful Slimes
       
     </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
     <footer class="post-footer">
       
 
@@ -515,99 +383,79 @@ B Colorful Slimes
     
       
 
-  
-  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
-  
-  
-  
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2016/09/13/AtCoder-Grand-Contest-003/" itemprop="url">
+                AtCoder Grand Contest 003
+              </a>
+            
+          
+        </h1>
+      
 
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-09-13T08:42:54+08:00" content="2016-09-13">
+            2016-09-13
+          </time>
+        </span>
 
         
-        
-          <h1 class="post-title" itemprop="name headline">
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
             
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/13/AtCoder-Grand-Contest-003/" itemprop="url">
-                  AtCoder Grand Contest 003
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/题记/" itemprop="url" rel="index">
+                  <span itemprop="name">题记</span>
                 </a>
-              
-            
-          </h1>
-        
+              </span>
 
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-13T08:42:54+08:00" content="2016-09-13">
-              2016-09-13
-            </time>
+              
+              
+
+            
           </span>
+        
 
+        
           
-            <span class="post-category" >
+            <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/题记/" itemprop="url" rel="index">
-                    <span itemprop="name">题记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
+              <!--
+              <a href="/2016/09/13/AtCoder-Grand-Contest-003/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/13/AtCoder-Grand-Contest-003/" itemprop="commentsCount"></span>
+              </a>
+              -->
+              <a href="/2016/09/13/AtCoder-Grand-Contest-003/#comments" itemprop="discussionUrl">
+                <span>评论</span>
+              </a>
             </span>
           
+        
+      </div>
+    </header>
 
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/13/AtCoder-Grand-Contest-003/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/13/AtCoder-Grand-Contest-003/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body">
 
       
       
 
       
         
-          
-          题目链接与代码链接
+          <span itemprop="articleBody">
+            
+            题目链接与代码链接
 比的时候只做出三道，后来感觉这一期的D题是可以出的，E题的思路还是神，就感觉这种题也不靠什么特定的算法，靠思维把问题转换，跟前面Atcoder的很多题一样，挺看智商的。。。至于F题。。。那个矩阵的构造，从答案推出矩阵的正确性我是搞懂了，但是如何通过一些递推关系搞出矩阵，感觉自己还
-          ...
-
+            ...
+          </span>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/09/13/AtCoder-Grand-Contest-003/#more" rel="contents">
               阅读全文 &raquo;
@@ -617,14 +465,6 @@ B Colorful Slimes
       
     </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
     <footer class="post-footer">
       
 
@@ -641,103 +481,83 @@ B Colorful Slimes
     
       
 
-  
-  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
-  
-  
-  
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2016/09/07/AtCoder-Grand-Contest-002/" itemprop="url">
+                AtCoder Grand Contest 002
+              </a>
+            
+          
+        </h1>
+      
 
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-09-07T16:32:28+08:00" content="2016-09-07">
+            2016-09-07
+          </time>
+        </span>
 
         
-        
-          <h1 class="post-title" itemprop="name headline">
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
             
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/07/AtCoder-Grand-Contest-002/" itemprop="url">
-                  AtCoder Grand Contest 002
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/题记/" itemprop="url" rel="index">
+                  <span itemprop="name">题记</span>
                 </a>
-              
-            
-          </h1>
-        
+              </span>
 
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-07T16:32:28+08:00" content="2016-09-07">
-              2016-09-07
-            </time>
+              
+              
+
+            
           </span>
+        
 
+        
           
-            <span class="post-category" >
+            <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/题记/" itemprop="url" rel="index">
-                    <span itemprop="name">题记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
+              <!--
+              <a href="/2016/09/07/AtCoder-Grand-Contest-002/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/07/AtCoder-Grand-Contest-002/" itemprop="commentsCount"></span>
+              </a>
+              -->
+              <a href="/2016/09/07/AtCoder-Grand-Contest-002/#comments" itemprop="discussionUrl">
+                <span>评论</span>
+              </a>
             </span>
           
+        
+      </div>
+    </header>
 
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/07/AtCoder-Grand-Contest-002/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/07/AtCoder-Grand-Contest-002/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body">
 
       
       
 
       
         
-          
-          题目链接，这场D题没接触过，整体二分，挺典型。E和F做得我好头痛，E题提交了好多次，F题那个DP。。。都很神。
+          <span itemprop="articleBody">
+            
+            题目链接，这场D题没接触过，整体二分，挺典型。E和F做得我好头痛，E题提交了好多次，F题那个DP。。。都很神。
 代码链接
 A Range Product
 题是给定一个范围，问乘积是正是负。。。。。。
 B Box and Ball
 题意是给出了n个盒子，第1个盒子里面有红球，其余的都有白球。现在有m次
-          ...
-
+            ...
+          </span>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/09/07/AtCoder-Grand-Contest-002/#more" rel="contents">
               阅读全文 &raquo;
@@ -747,14 +567,6 @@ B Box and Ball
       
     </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
     <footer class="post-footer">
       
 
@@ -771,102 +583,82 @@ B Box and Ball
     
       
 
-  
-  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
-  
-  
-  
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2016/09/05/AtCoder-Regular-Contest-060/" itemprop="url">
+                AtCoder Regular Contest 060
+              </a>
+            
+          
+        </h1>
+      
 
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-09-05T22:39:38+08:00" content="2016-09-05">
+            2016-09-05
+          </time>
+        </span>
 
         
-        
-          <h1 class="post-title" itemprop="name headline">
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
             
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/05/AtCoder-Regular-Contest-060/" itemprop="url">
-                  AtCoder Regular Contest 060
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/题记/" itemprop="url" rel="index">
+                  <span itemprop="name">题记</span>
                 </a>
-              
-            
-          </h1>
-        
+              </span>
 
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-05T22:39:38+08:00" content="2016-09-05">
-              2016-09-05
-            </time>
+              
+              
+
+            
           </span>
+        
 
+        
           
-            <span class="post-category" >
+            <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/题记/" itemprop="url" rel="index">
-                    <span itemprop="name">题记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
+              <!--
+              <a href="/2016/09/05/AtCoder-Regular-Contest-060/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/05/AtCoder-Regular-Contest-060/" itemprop="commentsCount"></span>
+              </a>
+              -->
+              <a href="/2016/09/05/AtCoder-Regular-Contest-060/#comments" itemprop="discussionUrl">
+                <span>评论</span>
+              </a>
             </span>
           
+        
+      </div>
+    </header>
 
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/05/AtCoder-Regular-Contest-060/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/05/AtCoder-Regular-Contest-060/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body">
 
       
       
 
       
         
-          
-          这一期的Regular Contest我也是肥肠喜欢啊，题目都很好玩啊，题目链接。
+          <span itemprop="articleBody">
+            
+            这一期的Regular Contest我也是肥肠喜欢啊，题目都很好玩啊，题目链接。
 代码链接
 C Tak and Cards
 C题题意是给出N(N&lt;=50)个数，每个数的范围在1到50之间，然后给一个值A。从这N个数任意选择数字，要求选取的这些数字的平均值是A，问有多少种选取的方法。
 dp[i
-          ...
-
+            ...
+          </span>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/09/05/AtCoder-Regular-Contest-060/#more" rel="contents">
               阅读全文 &raquo;
@@ -876,14 +668,6 @@ dp[i
       
     </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
     <footer class="post-footer">
       
 
@@ -900,104 +684,84 @@ dp[i
     
       
 
-  
-  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
-  
-  
-  
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2016/09/03/AtCoder-Regular-Contest-059/" itemprop="url">
+                AtCoder Regular Contest 059
+              </a>
+            
+          
+        </h1>
+      
 
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-09-03T23:23:16+08:00" content="2016-09-03">
+            2016-09-03
+          </time>
+        </span>
 
         
-        
-          <h1 class="post-title" itemprop="name headline">
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
             
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/03/AtCoder-Regular-Contest-059/" itemprop="url">
-                  AtCoder Regular Contest 059
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/题记/" itemprop="url" rel="index">
+                  <span itemprop="name">题记</span>
                 </a>
-              
-            
-          </h1>
-        
+              </span>
 
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-03T23:23:16+08:00" content="2016-09-03">
-              2016-09-03
-            </time>
+              
+              
+
+            
           </span>
+        
 
+        
           
-            <span class="post-category" >
+            <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/题记/" itemprop="url" rel="index">
-                    <span itemprop="name">题记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
+              <!--
+              <a href="/2016/09/03/AtCoder-Regular-Contest-059/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/03/AtCoder-Regular-Contest-059/" itemprop="commentsCount"></span>
+              </a>
+              -->
+              <a href="/2016/09/03/AtCoder-Regular-Contest-059/#comments" itemprop="discussionUrl">
+                <span>评论</span>
+              </a>
             </span>
           
+        
+      </div>
+    </header>
 
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/03/AtCoder-Regular-Contest-059/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/03/AtCoder-Regular-Contest-059/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body">
 
       
       
 
       
         
-          
-          这一期的后两道DP很好玩。
+          <span itemprop="articleBody">
+            
+            这一期的后两道DP很好玩。
 代码在这里。
 C Be Together
 题意是给出n个数，它们要统一变成同一个数，代价是差的平方，问最小代价。
 由于数量和范围都很小，直接暴力。
 D Unbalanced
 题意是给出一个字符串，找出这个字符串的子串中是否存在不平衡串，并输出其位置。所谓不平衡串，就是该串
-          ...
-
+            ...
+          </span>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/09/03/AtCoder-Regular-Contest-059/#more" rel="contents">
               阅读全文 &raquo;
@@ -1007,14 +771,6 @@ D Unbalanced
       
     </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
     <footer class="post-footer">
       
 
@@ -1031,99 +787,79 @@ D Unbalanced
     
       
 
-  
-  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
-  
-  
-  
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2016/09/03/CodeChef-August-Lunchtime-2016/" itemprop="url">
+                CodeChef August Lunchtime 2016
+              </a>
+            
+          
+        </h1>
+      
 
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-09-03T14:54:44+08:00" content="2016-09-03">
+            2016-09-03
+          </time>
+        </span>
 
         
-        
-          <h1 class="post-title" itemprop="name headline">
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
             
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/03/CodeChef-August-Lunchtime-2016/" itemprop="url">
-                  CodeChef August Lunchtime 2016
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/题记/" itemprop="url" rel="index">
+                  <span itemprop="name">题记</span>
                 </a>
-              
-            
-          </h1>
-        
+              </span>
 
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-03T14:54:44+08:00" content="2016-09-03">
-              2016-09-03
-            </time>
+              
+              
+
+            
           </span>
+        
 
+        
           
-            <span class="post-category" >
+            <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/题记/" itemprop="url" rel="index">
-                    <span itemprop="name">题记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
+              <!--
+              <a href="/2016/09/03/CodeChef-August-Lunchtime-2016/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/03/CodeChef-August-Lunchtime-2016/" itemprop="commentsCount"></span>
+              </a>
+              -->
+              <a href="/2016/09/03/CodeChef-August-Lunchtime-2016/#comments" itemprop="discussionUrl">
+                <span>评论</span>
+              </a>
             </span>
           
+        
+      </div>
+    </header>
 
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/03/CodeChef-August-Lunchtime-2016/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/03/CodeChef-August-Lunchtime-2016/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body">
 
       
       
 
       
         
-          
-          做了Codechef上面的August Lunchtime 2016，上面的题都有中文题面，还有解答，还有代码。觉得这个网站也不错呀。。。
+          <span itemprop="articleBody">
+            
+            做了Codechef上面的August Lunchtime 2016，上面的题都有中文题面，还有解答，还有代码。觉得这个网站也不错呀。。。
 然后这次做完发现是三道easy，一道medium。一想也没用什么数据结构，好像是差不多哈，但是第四个树上直径这个和51nod上面树上最远点对是一样的想法，做得时
-          ...
-
+            ...
+          </span>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/09/03/CodeChef-August-Lunchtime-2016/#more" rel="contents">
               阅读全文 &raquo;
@@ -1133,14 +869,6 @@ D Unbalanced
       
     </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
     <footer class="post-footer">
       
 
@@ -1157,98 +885,78 @@ D Unbalanced
     
       
 
-  
-  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
-  
-  
-  
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2016/08/31/Codeforces-369-Div2/" itemprop="url">
+                Codeforces 369 Div2
+              </a>
+            
+          
+        </h1>
+      
 
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-08-31T22:53:28+08:00" content="2016-08-31">
+            2016-08-31
+          </time>
+        </span>
 
         
-        
-          <h1 class="post-title" itemprop="name headline">
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
             
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/31/Codeforces-369-Div2/" itemprop="url">
-                  Codeforces 369 Div2
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/题记/" itemprop="url" rel="index">
+                  <span itemprop="name">题记</span>
                 </a>
-              
-            
-          </h1>
-        
+              </span>
 
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-31T22:53:28+08:00" content="2016-08-31">
-              2016-08-31
-            </time>
+              
+              
+
+            
           </span>
+        
 
+        
           
-            <span class="post-category" >
+            <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/题记/" itemprop="url" rel="index">
-                    <span itemprop="name">题记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
+              <!--
+              <a href="/2016/08/31/Codeforces-369-Div2/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/31/Codeforces-369-Div2/" itemprop="commentsCount"></span>
+              </a>
+              -->
+              <a href="/2016/08/31/Codeforces-369-Div2/#comments" itemprop="discussionUrl">
+                <span>评论</span>
+              </a>
             </span>
           
+        
+      </div>
+    </header>
 
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/31/Codeforces-369-Div2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/31/Codeforces-369-Div2/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body">
 
       
       
 
       
         
-          
-          刚刚做完51nod上面一道很恶心的题目，各种情况各种搞，打算早晚要写一下51nod上面的一些题目了。之后把这轮的E题补了，这轮题目很简单，简单到我都做出了四道，并且第四道是在1:59:47完成提交的，可谓惊心动魄。自认为打得不错，很幸运。此役之后，Codeforces的rating变成了1758，涨
-          ...
-
+          <span itemprop="articleBody">
+            
+            刚刚做完51nod上面一道很恶心的题目，各种情况各种搞，打算早晚要写一下51nod上面的一些题目了。之后把这轮的E题补了，这轮题目很简单，简单到我都做出了四道，并且第四道是在1:59:47完成提交的，可谓惊心动魄。自认为打得不错，很幸运。此役之后，Codeforces的rating变成了1758，涨
+            ...
+          </span>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/08/31/Codeforces-369-Div2/#more" rel="contents">
               阅读全文 &raquo;
@@ -1258,14 +966,6 @@ D Unbalanced
       
     </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
     <footer class="post-footer">
       
 
@@ -1282,102 +982,82 @@ D Unbalanced
     
       
 
-  
-  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
-  
-  
-  
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2016/08/22/Codeforces-362-Div2/" itemprop="url">
+                Codeforces 362 Div2
+              </a>
+            
+          
+        </h1>
+      
 
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-08-22T15:51:00+08:00" content="2016-08-22">
+            2016-08-22
+          </time>
+        </span>
 
         
-        
-          <h1 class="post-title" itemprop="name headline">
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
             
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/22/Codeforces-362-Div2/" itemprop="url">
-                  Codeforces 362 Div2
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/题记/" itemprop="url" rel="index">
+                  <span itemprop="name">题记</span>
                 </a>
-              
-            
-          </h1>
-        
+              </span>
 
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-22T15:51:00+08:00" content="2016-08-22">
-              2016-08-22
-            </time>
+              
+              
+
+            
           </span>
+        
 
+        
           
-            <span class="post-category" >
+            <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/题记/" itemprop="url" rel="index">
-                    <span itemprop="name">题记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
+              <!--
+              <a href="/2016/08/22/Codeforces-362-Div2/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/22/Codeforces-362-Div2/" itemprop="commentsCount"></span>
+              </a>
+              -->
+              <a href="/2016/08/22/Codeforces-362-Div2/#comments" itemprop="discussionUrl">
+                <span>评论</span>
+              </a>
             </span>
           
+        
+      </div>
+    </header>
 
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/22/Codeforces-362-Div2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/22/Codeforces-362-Div2/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body">
 
       
       
 
       
         
-          
-          很早的一轮了，一直没写，主要是因为笨，然后还有懒。。。
+          <span itemprop="articleBody">
+            
+            很早的一轮了，一直没写，主要是因为笨，然后还有懒。。。
 仔细想想一个div2的题目，充其量够写的也就3道题，然后自己还一直补不完，我的天。。。
 代码在这里
 C:Lorenzo Von Matterhorn
 题意是对于一个图来说，该图每一个节点i会连接到 2  i 与2  i + 1。然后现在有两种操
-          ...
-
+            ...
+          </span>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/08/22/Codeforces-362-Div2/#more" rel="contents">
               阅读全文 &raquo;
@@ -1387,14 +1067,6 @@ C:Lorenzo Von Matterhorn
       
     </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
     <footer class="post-footer">
       
 
@@ -1411,114 +1083,86 @@ C:Lorenzo Von Matterhorn
     
       
 
-  
-  
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
-  
-  
-  
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2016/07/30/AtCoder-Regular-Contest-058/" itemprop="url">
+                AtCoder Regular Contest 058
+              </a>
+            
+          
+        </h1>
+      
 
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-07-30T14:02:24+08:00" content="2016-07-30">
+            2016-07-30
+          </time>
+        </span>
 
         
-        
-          <h1 class="post-title" itemprop="name headline">
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
             
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/30/AtCoder-Regular-Contest-058/" itemprop="url">
-                  AtCoder Regular Contest 058
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/题记/" itemprop="url" rel="index">
+                  <span itemprop="name">题记</span>
                 </a>
-              
-            
-          </h1>
-        
+              </span>
 
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-30T14:02:24+08:00" content="2016-07-30">
-              2016-07-30
-            </time>
+              
+              
+
+            
           </span>
+        
 
+        
           
-            <span class="post-category" >
+            <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/题记/" itemprop="url" rel="index">
-                    <span itemprop="name">题记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
+              <!--
+              <a href="/2016/07/30/AtCoder-Regular-Contest-058/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/30/AtCoder-Regular-Contest-058/" itemprop="commentsCount"></span>
+              </a>
+              -->
+              <a href="/2016/07/30/AtCoder-Regular-Contest-058/#comments" itemprop="discussionUrl">
+                <span>评论</span>
+              </a>
             </span>
           
+        
+      </div>
+    </header>
 
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/30/AtCoder-Regular-Contest-058/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/30/AtCoder-Regular-Contest-058/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body">
 
       
       
 
       
         
-          
-          C、D、E的代码在这里
+          <span itemprop="articleBody">
+            
+            C、D、E的代码在这里
 这周一直在忙老师要求写的一些东西，终于在周六的时候还是光荣地倒下了，太累了。
 原本是上周的比赛，自己一周的时间还是没有把F过掉，在Codeforces上面问了一些人，算是搞懂了原理，但是对于yosupo所说的Z-algorithm还是没有学过，这个也加入到了To_do_lis
-          ...
-
+            ...
+          </span>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/07/30/AtCoder-Regular-Contest-058/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
         
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
       
     </div>
 
@@ -1540,20 +1184,17 @@ C:Lorenzo Von Matterhorn
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo;</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">&raquo;</a>
   </nav>
 
+ </div>
 
-
-          </div>
-          
-
-
-          
-
-        </div>
         
-          
+
+        
+      </div>
+
+      
   
   <div class="sidebar-toggle">
     <div class="sidebar-toggle-line-wrap">
@@ -1568,16 +1209,12 @@ C:Lorenzo Von Matterhorn
 
       
 
-      
-
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
-               alt="2997ms" />
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="2997ms" itemprop="image"/>
           <p class="site-author-name" itemprop="name">2997ms</p>
-          <p class="site-description motion-element" itemprop="description"></p>
         </div>
+        <p class="site-description motion-element" itemprop="description"></p>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
@@ -1586,23 +1223,19 @@ C:Lorenzo Von Matterhorn
             </a>
           </div>
 
-          
-            <div class="site-state-item site-state-categories">
-              <a href="/categories">
-                <span class="site-state-item-count">4</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
 
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">36</span>
-                <span class="site-state-item-name">标签</span>
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">标签</span>
               </a>
-            </div>
-          
+          </div>
 
         </nav>
 
@@ -1610,30 +1243,11 @@ C:Lorenzo Von Matterhorn
 
         <div class="links-of-author motion-element">
           
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/2997ms" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://www.weibo.com/u/3567374047?is_all=1" target="_blank" title="Weibo">
-                  
-                    <i class="fa fa-fw fa-weibo"></i>
-                  
-                  Weibo
-                </a>
-              </span>
-            
-          
         </div>
 
-        
-        
+        <div class="links-of-friendly motion-element">
+          
+        </div>
 
         
         
@@ -1646,121 +1260,82 @@ C:Lorenzo Von Matterhorn
   </aside>
 
 
-        
-      </div>
     </main>
 
     <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright" >
+      <div class="footer-inner"> <div class="copyright" >
   
-  &copy; 
+  &copy; &nbsp; 
   <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="icon-next-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">2997ms</span>
+
+  <div class="powered-by"></div>
+  <div class="powered-by">
+    Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+  </div>
+
+
+
+  <!-- busuanzi -->
+  
+    <div class="powered-by">
+    <div class="theme-info">
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+    <span id="busuanzi_container_site_pv">
+        我已经被访问<a class="theme-link"><span id="busuanzi_value_site_pv"></span></a>次啦~
+    </span>
+</div>
+    </div>
+  
+
 </div>
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
-
+<!--
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Mala
   </a>
 </div>
+-->
 
-        
+<!--
+<div class="powered-by"></div>
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+-->
 
-<div class="busuanzi-count">
+<!-- busuanzi -->
+<!--
 
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-  
-    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
-  
-
-  
-    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
-  
-  
+  <div class="theme-info">
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+    </script>
+    <span id="busuanzi_container_site_pv">
+        我已经被访问<a class="theme-link"><span id="busuanzi_value_site_pv"></span></a>次啦~
+    </span>
 </div>
 
+-->
 
 
-        
-      </div>
+ </div>
     </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    <div class="back-to-top"></div>
   </div>
 
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-  
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
-
-
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
 
   
   
-
   
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
-
-
-
-  
+    
 
   
     
@@ -1771,182 +1346,91 @@ C:Lorenzo Von Matterhorn
     (function() {
       var ds = document.createElement('script');
       ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
       ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
       ds.charset = 'UTF-8';
       (document.getElementsByTagName('head')[0]
       || document.getElementsByTagName('body')[0]).appendChild(ds);
     })();
   </script>
-
-  
     
-    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
+     
+  	  <script type="text/javascript">
+  		var duoshuo_user_ID = wangchong756
+  	  </script>
+     
+  	<script src="/js/ua-parser.min.js"></script>
+  	<script src="/js/hook-duoshuo.js"></script>
   
 
-
-
-
-
-
+    
   
   
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+
   <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length == 0) {
-       search_path = "search.xml";
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    function proceedsearch() {
-      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
-      $('.popup').toggle();
-
-    }
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-    'use strict';
-    $.ajax({
-        url: path,
-        dataType: "xml",
-        async: true,
-        success: function( xmlResponse ) {
-            // get the contents from search data
-            isfetched = true;
-            $('.popup').detach().appendTo('.header-inner');
-            var datas = $( "entry", xmlResponse ).map(function() {
-                return {
-                    title: $( "title", this ).text(),
-                    content: $("content",this).text(),
-                    url: $( "url" , this).text()
-                };
-            }).get();
-            var $input = document.getElementById(search_id);
-            var $resultContent = document.getElementById(content_id);
-            $input.addEventListener('input', function(){
-                var matchcounts = 0;
-                var str='<ul class=\"search-result-list\">';
-                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                $resultContent.innerHTML = "";
-                if (this.value.trim().length > 1) {
-                // perform local searching
-                datas.forEach(function(data) {
-                    var isMatch = false;
-                    var content_index = [];
-                    var data_title = data.title.trim().toLowerCase();
-                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
-                    var data_url = decodeURIComponent(data.url);
-                    var index_title = -1;
-                    var index_content = -1;
-                    var first_occur = -1;
-                    // only match artiles with not empty titles and contents
-                    if(data_title != '') {
-                        keywords.forEach(function(keyword, i) {
-                            index_title = data_title.indexOf(keyword);
-                            index_content = data_content.indexOf(keyword);
-                            if( index_title >= 0 || index_content >= 0 ){
-                                isMatch = true;
-								if (i == 0) {
-                                    first_occur = index_content;
-                                }
-                            } 
-							
-                        });
-                    }
-                    // show search results
-                    if (isMatch) {
-                        matchcounts += 1;
-                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
-                        var content = data.content.trim().replace(/<[^>]+>/g,"");
-                        if (first_occur >= 0) {
-                            // cut out 100 characters
-                            var start = first_occur - 20;
-                            var end = first_occur + 80;
-                            if(start < 0){
-                                start = 0;
-                            }
-                            if(start == 0){
-                                end = 50;
-                            }
-                            if(end > content.length){
-                                end = content.length;
-                            }
-                            var match_content = content.substring(start, end);
-                            // highlight all keywords
-                            keywords.forEach(function(keyword){
-                                var regS = new RegExp(keyword, "gi");
-                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
-                            });
-
-                            str += "<p class=\"search-result\">" + match_content +"...</p>"
-                        }
-                        str += "</li>";
-                    }
-                })};
-                str += "</ul>";
-                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
-                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
-                $resultContent.innerHTML = str;
-            });
-            proceedsearch();
-        }
-    });}
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched == false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-
-    });
-
-    $('.popup-btn-close').click(function(e){
-      $('.popup').hide();
-      $(".popoverlay").remove();
-      $('body').css('overflow', '');
-    });
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-  </script>
-
-
-  
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
       }
     });
   </script>
 
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
-      for (i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-      }
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
     });
   </script>
-  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-
-  
-
-  
-
-  
-
-
 </body>
 </html>
