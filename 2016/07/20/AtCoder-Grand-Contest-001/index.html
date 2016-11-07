@@ -1,12 +1,16 @@
-
 <!doctype html>
-<html class="theme-next use-motion theme-next-mala">
-<head>
+
+
+
   
 
-<meta charset="UTF-8"/>
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
 
 
 <meta http-equiv="Cache-Control" content="no-transform" />
@@ -17,14 +21,51 @@
 
 
 
-  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
 
 
 
 
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
 
 
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="AtCoder,拓扑," />
@@ -33,7 +74,14 @@
 
 
 
-  <link rel="shorticon icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.1" />
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.0.2" />
+
+
+
+
 
 
 <meta name="description" content="上周末做了rng_58办的AtCoder Grand Contest 001，英文题解在这里。比赛的时候只做出了两道题，第二题还一直wa，导致第三题没时间了，博主比较弱。。。。后来自己慢慢补题，发现D E F都是很神的题。。。在这里记一下总结吧。
@@ -58,45 +106,64 @@ A BBQ Easy题意是给出2*n个长度，每两个在一起，这两个的长度�
 <meta name="twitter:image" content="https://raw.githubusercontent.com/2997ms/My_Algorithm/master/source_pic/D_1.png">
 
 
+
 <script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mala',
-    sidebar: 'post'
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
   };
 </script>
+
+
+
+
+  <link rel="canonical" href="http://2997ms.github.io/2016/07/20/AtCoder-Grand-Contest-001/"/>
+
 
   <title> AtCoder Grand Contest 001 | Live a life you will remember </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
 
-  <!--[if lte IE 8]>
-  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
-    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
-           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
-           style='margin-left:auto;margin-right:auto;display: block;'/>
-    </a>
-  </div>
-<![endif]-->
   
 
 
 
-  <div class="container one-column page-post-detail">
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><h1 class="site-meta">
-  <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand" rel="start">
-      <span class="logo">
-        <i class="icon-next-logo"></i>
-      </span>
-      <span class="site-title"></span>
-  </a>
-  <span class="logo-line-after"><i></i></span>
-</h1>
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Live a life you will remember</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
 
 <div class="site-nav-toggle">
   <button>
@@ -110,12 +177,12 @@ A BBQ Easy题意是给出2*n个长度，每两个在一起，这两个的长度�
   
 
   
-    <ul id="menu" class="menu menu-left">
+    <ul id="menu" class="menu">
       
         
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
-            <i class="menu-item-icon icon-next-home"></i> <br />
+            
             首页
           </a>
         </li>
@@ -123,15 +190,23 @@ A BBQ Easy题意是给出2*n个长度，每两个在一起，这两个的长度�
         
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
-            <i class="menu-item-icon icon-next-archives"></i> <br />
+            
             归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
           </a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
-            <i class="menu-item-icon icon-next-tags"></i> <br />
+            
             标签
           </a>
         </li>
@@ -139,13 +214,21 @@ A BBQ Easy题意是给出2*n个长度，每两个在一起，这两个的长度�
         
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
-            <i class="menu-item-icon icon-next-about"></i> <br />
+            
             关于
           </a>
         </li>
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="st-search-show-outputs">
+          
+            
+            搜索
+          </a>
+        </li>
       
     </ul>
   
@@ -153,11 +236,9 @@ A BBQ Easy题意是给出2*n个长度，每两个在一起，这两个的长度�
   
     <div class="site-search">
       
-  
   <form class="site-search-form">
-    <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
-  </form>
-
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
 
 <script type="text/javascript">
   (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
@@ -177,85 +258,105 @@ A BBQ Easy题意是给出2*n个长度，每两个在一起，这两个的长度�
  </div>
     </header>
 
-    
-      
-
-      
-
-    
-
     <main id="main" class="main">
       <div class="main-inner">
-        <div id="content" class="content"> 
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
     
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
 
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              AtCoder Grand Contest 001
-            
-          
-        </h1>
-      
+  
+  
+  
 
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2016-07-20T21:49:49+08:00" content="2016-07-20">
-            2016-07-20
-          </time>
-        </span>
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
 
         
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
+        
+          <h1 class="post-title" itemprop="name headline">
             
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/题记/" itemprop="url" rel="index">
-                  <span itemprop="name">题记</span>
-                </a>
-              </span>
-
-              
-              
-
             
+              
+                AtCoder Grand Contest 001
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-20T21:49:49+08:00" content="2016-07-20">
+              2016-07-20
+            </time>
           </span>
-        
 
-        
           
-            <span class="post-comments-count">
+            <span class="post-category" >
               &nbsp; | &nbsp;
-              <!--
-              <a href="/2016/07/20/AtCoder-Grand-Contest-001/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/20/AtCoder-Grand-Contest-001/" itemprop="commentsCount"></span>
-              </a>
-              -->
-              <a href="/2016/07/20/AtCoder-Grand-Contest-001/#comments" itemprop="discussionUrl">
-                <span>评论</span>
-              </a>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/题记/" itemprop="url" rel="index">
+                    <span itemprop="name">题记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
             </span>
           
-        
-      </div>
-    </header>
 
-    <div class="post-body">
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/20/AtCoder-Grand-Contest-001/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/20/AtCoder-Grand-Contest-001/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
-        <span itemprop="articleBody"><p>上周末做了<a href="http://codeforces.com/profile/rng_58" target="_blank" rel="external">rng_58</a>办的<a href="http://agc001.contest.atcoder.jp/" target="_blank" rel="external">AtCoder Grand Contest 001</a>，英文题解在<a href="https://agc001.contest.atcoder.jp/data/agc/001/editorial.pdf" target="_blank" rel="external">这里</a>。比赛的时候只做出了两道题，第二题还一直wa，导致第三题没时间了，博主比较弱。。。。后来自己慢慢补题，发现D E F都是很神的题。。。在这里记一下总结吧。</p>
+        <p>上周末做了<a href="http://codeforces.com/profile/rng_58" target="_blank" rel="external">rng_58</a>办的<a href="http://agc001.contest.atcoder.jp/" target="_blank" rel="external">AtCoder Grand Contest 001</a>，英文题解在<a href="https://agc001.contest.atcoder.jp/data/agc/001/editorial.pdf" target="_blank" rel="external">这里</a>。比赛的时候只做出了两道题，第二题还一直wa，导致第三题没时间了，博主比较弱。。。。后来自己慢慢补题，发现D E F都是很神的题。。。在这里记一下总结吧。</p>
 <h2 id="A-BBQ-Easy"><a href="#A-BBQ-Easy" class="headerlink" title="A BBQ Easy"></a>A BBQ Easy</h2><p>题意是给出2*n个长度，每两个在一起，这两个的长度算两个中短的那个，之后算总的最大长度。</p>
 <p>直接排序，把奇数位的加起来就是总的最大长度。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;functional&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;deque&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;list&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> eps 1e-10</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> LL_INF 0x33ffffffffffffff</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 0x3f3f3f3f</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> mem(a, b) memset(a, b, sizeof(a))</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> sa(n) scanf(<span class="meta-string">"%d"</span>, &amp;(n))</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> mp make_pair</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ff first</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ss second</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> pb push_back</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">405</span>;</div><div class="line"><span class="keyword">const</span> ll mod = <span class="number">1000000007</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">double</span> PI = <span class="built_in">acos</span>(<span class="number">-1.0</span>);</div><div class="line"> </div><div class="line"><span class="keyword">int</span> n;</div><div class="line"><span class="keyword">int</span> val[maxn];</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> res = <span class="number">0</span>;</div><div class="line">	<span class="keyword">int</span> i, j, k;</div><div class="line">	<span class="keyword">for</span>(i = <span class="number">1</span>;i &lt;= <span class="number">2</span>*n; i++)</div><div class="line">	&#123;</div><div class="line">		sa(val[i]);</div><div class="line">	&#125;</div><div class="line">	sort(val + <span class="number">1</span>, val + <span class="number">2</span>*n + <span class="number">1</span>);</div><div class="line">	<span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= <span class="number">2</span> * n - <span class="number">1</span>; i = i + <span class="number">2</span>)</div><div class="line">	&#123;</div><div class="line">		res += val[i];</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, res);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">while</span> (<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n) != EOF)</div><div class="line">	&#123;</div><div class="line">		solve();</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -290,7 +391,21 @@ A BBQ Easy题意是给出2*n个长度，每两个在一起，这两个的长度�
 <h2 id="F-Wide-Swap"><a href="#F-Wide-Swap" class="headerlink" title="F Wide Swap"></a>F Wide Swap</h2><p>F题题意是给出了一个1到n的排列P，然后给出两个下标i,j，当j-i&gt;=k，且|Pj-Pi|=1的时候，两个元素可以交换，问达到给定排列的字典序最小的排列。</p>
 <p>考虑一个排列Q，Q[P[i]]=i，那么以上条件就可以转换成当Qj-Qi&gt;=k，且相邻的时候，两个元素可以交换。这样会发现当Oj-Qi&lt;k的时候，这两个元素的相对位置是固定的，问题转换为一个图，当Qj-Qi&lt;k的时候，Qj到Qi有一条边，然后求这个边的拓扑序列最小。</p>
 <p>求图的拓扑序列那个部分可以用优先队列优化，问题在于建边，对于一个元素来说，我们希望找到它周围最近的符合要求的元素，来建边，用线段树来搞，在符合条件的值上是其位置的值，具体看代码。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fstream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;functional&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;deque&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;list&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"> </div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> eps 1e-10</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> LL_INF 0x33ffffffffffffff</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 0x3f3f3f3f</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> mem(a, b) memset(a, b, sizeof(a))</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> sa(n) scanf(<span class="meta-string">"%d"</span>, &amp;(n))</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> mp make_pair</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ff first</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ss second</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> pb push_back</span></div><div class="line"> </div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">500005</span>;</div><div class="line"><span class="keyword">const</span> ll mod = <span class="number">998244353</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">double</span> PI = <span class="built_in">acos</span>(<span class="number">-1.0</span>);</div><div class="line"> </div><div class="line"><span class="keyword">struct</span> no</div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> le;</div><div class="line">	<span class="keyword">int</span> ri;</div><div class="line">	<span class="keyword">int</span> max_v;</div><div class="line">&#125;node[<span class="number">4</span> * maxn];</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> root, <span class="keyword">int</span> le, <span class="keyword">int</span> ri, <span class="keyword">int</span> v)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (le == ri)</div><div class="line">	&#123;</div><div class="line">		node[root].le = le;</div><div class="line">		node[root].ri = ri;</div><div class="line">		node[root].max_v = v;</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">int</span> mid = (le + ri) &gt;&gt; <span class="number">1</span>;</div><div class="line">	build(root &lt;&lt; <span class="number">1</span>, le, mid, v);</div><div class="line">	build((root &lt;&lt; <span class="number">1</span>) | <span class="number">1</span>, mid + <span class="number">1</span>, ri, v);</div><div class="line">	node[root].le = le;</div><div class="line">	node[root].ri = ri;</div><div class="line">	node[root].max_v = v;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> root, <span class="keyword">int</span> le, <span class="keyword">int</span> ri)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (node[root].le == le&amp;&amp;node[root].ri == ri)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">return</span> node[root].max_v;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">int</span> mid = (node[root].le + node[root].ri) &gt;&gt; <span class="number">1</span>;</div><div class="line">	<span class="keyword">if</span> (mid &gt;= ri)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">return</span> query(root &lt;&lt; <span class="number">1</span>, le, ri);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (mid + <span class="number">1</span> &lt;= le)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">return</span> query(root &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, le, ri);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span></div><div class="line">	&#123;</div><div class="line">		<span class="keyword">return</span> max(query(root &lt;&lt; <span class="number">1</span>, le, mid), query(root &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, mid + <span class="number">1</span>, ri));</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> root, <span class="keyword">int</span> k, <span class="keyword">int</span> v)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (node[root].le == k&amp;&amp;node[root].ri == k)</div><div class="line">	&#123;</div><div class="line">		node[root].max_v = v;</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">int</span> mid = (node[root].le + node[root].ri) &gt;&gt; <span class="number">1</span>;</div><div class="line">	<span class="keyword">if</span> (k &lt;= mid)</div><div class="line">	&#123;</div><div class="line">		update(root &lt;&lt; <span class="number">1</span>, k, v);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span></div><div class="line">	&#123;</div><div class="line">		update(root &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, k, v);</div><div class="line">	&#125;</div><div class="line">	node[root].max_v = max(node[root &lt;&lt; <span class="number">1</span>].max_v, node[root &lt;&lt; <span class="number">1</span> | <span class="number">1</span>].max_v);</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">int</span> n, k;</div><div class="line"><span class="keyword">int</span> pos[maxn], out[maxn], res[maxn];</div><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;ed[maxn];</div><div class="line">priority_queue&lt;<span class="keyword">int</span>&gt;que;</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> i, j, m;</div><div class="line">	sa(n), sa(k);</div><div class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">	&#123;</div><div class="line">		sa(m);</div><div class="line">		pos[m] = i;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	build(<span class="number">1</span>, <span class="number">1</span>, n, -INF);</div><div class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">	&#123;</div><div class="line">		m = query(<span class="number">1</span>, pos[i], min(n, pos[i] + k - <span class="number">1</span>));</div><div class="line">		<span class="keyword">if</span> (m != -INF)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">int</span> x = m;</div><div class="line">			out[pos[x]]++;</div><div class="line">			ed[pos[i]].push_back(pos[x]);</div><div class="line">		&#125;</div><div class="line">		update(<span class="number">1</span>, pos[i], i);</div><div class="line">	&#125;</div><div class="line"> </div><div class="line">	build(<span class="number">1</span>, <span class="number">1</span>, n, -INF);</div><div class="line">	<span class="keyword">for</span> (i = n; i &gt;= <span class="number">1</span>; i--)</div><div class="line">	&#123;</div><div class="line">		m = query(<span class="number">1</span>, pos[i], min(n, pos[i] + k - <span class="number">1</span>));</div><div class="line">		<span class="keyword">if</span> (m != -INF)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">int</span> x = -m;</div><div class="line">			out[pos[i]]++;</div><div class="line">			ed[pos[x]].push_back(pos[i]);</div><div class="line">		&#125;</div><div class="line">		update(<span class="number">1</span>, pos[i], -i);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span> (out[i] == <span class="number">0</span>)</div><div class="line">		&#123;</div><div class="line">			que.push(i);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span> (i = n; i &gt;= <span class="number">1</span>;i--)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">int</span> v = que.top();</div><div class="line">		que.pop();</div><div class="line">		res[v] = i;</div><div class="line">		</div><div class="line">		<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;ed[v].size();j++)</div><div class="line">		&#123;</div><div class="line">			out[ed[v][j]]--;</div><div class="line">			<span class="keyword">if</span> (out[ed[v][j]] == <span class="number">0</span>)</div><div class="line">			&#123;</div><div class="line">				que.push(ed[v][j]);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, res[i]);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	solve();</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></span>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fstream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;functional&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;deque&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;list&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"> </div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> eps 1e-10</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> LL_INF 0x33ffffffffffffff</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 0x3f3f3f3f</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> mem(a, b) memset(a, b, sizeof(a))</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> sa(n) scanf(<span class="meta-string">"%d"</span>, &amp;(n))</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> mp make_pair</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ff first</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ss second</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> pb push_back</span></div><div class="line"> </div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">500005</span>;</div><div class="line"><span class="keyword">const</span> ll mod = <span class="number">998244353</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">double</span> PI = <span class="built_in">acos</span>(<span class="number">-1.0</span>);</div><div class="line"> </div><div class="line"><span class="keyword">struct</span> no</div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> le;</div><div class="line">	<span class="keyword">int</span> ri;</div><div class="line">	<span class="keyword">int</span> max_v;</div><div class="line">&#125;node[<span class="number">4</span> * maxn];</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> root, <span class="keyword">int</span> le, <span class="keyword">int</span> ri, <span class="keyword">int</span> v)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (le == ri)</div><div class="line">	&#123;</div><div class="line">		node[root].le = le;</div><div class="line">		node[root].ri = ri;</div><div class="line">		node[root].max_v = v;</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">int</span> mid = (le + ri) &gt;&gt; <span class="number">1</span>;</div><div class="line">	build(root &lt;&lt; <span class="number">1</span>, le, mid, v);</div><div class="line">	build((root &lt;&lt; <span class="number">1</span>) | <span class="number">1</span>, mid + <span class="number">1</span>, ri, v);</div><div class="line">	node[root].le = le;</div><div class="line">	node[root].ri = ri;</div><div class="line">	node[root].max_v = v;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> root, <span class="keyword">int</span> le, <span class="keyword">int</span> ri)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (node[root].le == le&amp;&amp;node[root].ri == ri)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">return</span> node[root].max_v;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">int</span> mid = (node[root].le + node[root].ri) &gt;&gt; <span class="number">1</span>;</div><div class="line">	<span class="keyword">if</span> (mid &gt;= ri)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">return</span> query(root &lt;&lt; <span class="number">1</span>, le, ri);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (mid + <span class="number">1</span> &lt;= le)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">return</span> query(root &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, le, ri);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span></div><div class="line">	&#123;</div><div class="line">		<span class="keyword">return</span> max(query(root &lt;&lt; <span class="number">1</span>, le, mid), query(root &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, mid + <span class="number">1</span>, ri));</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> root, <span class="keyword">int</span> k, <span class="keyword">int</span> v)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (node[root].le == k&amp;&amp;node[root].ri == k)</div><div class="line">	&#123;</div><div class="line">		node[root].max_v = v;</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">int</span> mid = (node[root].le + node[root].ri) &gt;&gt; <span class="number">1</span>;</div><div class="line">	<span class="keyword">if</span> (k &lt;= mid)</div><div class="line">	&#123;</div><div class="line">		update(root &lt;&lt; <span class="number">1</span>, k, v);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span></div><div class="line">	&#123;</div><div class="line">		update(root &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, k, v);</div><div class="line">	&#125;</div><div class="line">	node[root].max_v = max(node[root &lt;&lt; <span class="number">1</span>].max_v, node[root &lt;&lt; <span class="number">1</span> | <span class="number">1</span>].max_v);</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">int</span> n, k;</div><div class="line"><span class="keyword">int</span> pos[maxn], out[maxn], res[maxn];</div><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;ed[maxn];</div><div class="line">priority_queue&lt;<span class="keyword">int</span>&gt;que;</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> i, j, m;</div><div class="line">	sa(n), sa(k);</div><div class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">	&#123;</div><div class="line">		sa(m);</div><div class="line">		pos[m] = i;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	build(<span class="number">1</span>, <span class="number">1</span>, n, -INF);</div><div class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">	&#123;</div><div class="line">		m = query(<span class="number">1</span>, pos[i], min(n, pos[i] + k - <span class="number">1</span>));</div><div class="line">		<span class="keyword">if</span> (m != -INF)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">int</span> x = m;</div><div class="line">			out[pos[x]]++;</div><div class="line">			ed[pos[i]].push_back(pos[x]);</div><div class="line">		&#125;</div><div class="line">		update(<span class="number">1</span>, pos[i], i);</div><div class="line">	&#125;</div><div class="line"> </div><div class="line">	build(<span class="number">1</span>, <span class="number">1</span>, n, -INF);</div><div class="line">	<span class="keyword">for</span> (i = n; i &gt;= <span class="number">1</span>; i--)</div><div class="line">	&#123;</div><div class="line">		m = query(<span class="number">1</span>, pos[i], min(n, pos[i] + k - <span class="number">1</span>));</div><div class="line">		<span class="keyword">if</span> (m != -INF)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">int</span> x = -m;</div><div class="line">			out[pos[i]]++;</div><div class="line">			ed[pos[x]].push_back(pos[i]);</div><div class="line">		&#125;</div><div class="line">		update(<span class="number">1</span>, pos[i], -i);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span> (out[i] == <span class="number">0</span>)</div><div class="line">		&#123;</div><div class="line">			que.push(i);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span> (i = n; i &gt;= <span class="number">1</span>;i--)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">int</span> v = que.top();</div><div class="line">		que.pop();</div><div class="line">		res[v] = i;</div><div class="line">		</div><div class="line">		<span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;ed[v].size();j++)</div><div class="line">		&#123;</div><div class="line">			out[ed[v][j]]--;</div><div class="line">			<span class="keyword">if</span> (out[ed[v][j]] == <span class="number">0</span>)</div><div class="line">			&#123;</div><div class="line">				que.push(ed[v][j]);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, res[i]);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	solve();</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
       
     </div>
 
@@ -307,15 +422,19 @@ A BBQ Easy题意是给出2*n个长度，每两个在一起，这两个的长度�
 
       
         <div class="post-nav">
-          <div class="post-nav-prev post-nav-item">
+          <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/30/To-do-list/" rel="prev">To_do_list</a>
+              <a href="/2016/07/17/7月-是的是的/" rel="next" title="7月_是的是的">
+                <i class="fa fa-chevron-left"></i> 7月_是的是的
+              </a>
             
           </div>
 
-          <div class="post-nav-next post-nav-item">
+          <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/07/17/7月-是的是的/" rel="next">7月_是的是的</a>
+              <a href="/2016/07/30/To-do-list/" rel="prev" title="To_do_list">
+                To_do_list <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -328,50 +447,29 @@ A BBQ Easy题意是给出2*n个长度，每两个在一起，这两个的长度�
 
 
 
-    <div>
-      
-    </div>
-
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/07/20/AtCoder-Grand-Contest-001/"
-     data-title="AtCoder Grand Contest 001"
-     data-content=""
-     data-url="http://2997ms.github.io/2016/07/20/AtCoder-Grand-Contest-001/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
-      
     </div>
   </div>
 
- </div>
 
-        
-
-        
-          <div class="comments" id="comments">
-            
-              <div class="ds-thread" data-thread-key="2016/07/20/AtCoder-Grand-Contest-001/"
-                   data-title="AtCoder Grand Contest 001" data-url="http://2997ms.github.io/2016/07/20/AtCoder-Grand-Contest-001/">
-              </div>
-            
           </div>
-        
-      </div>
+          
 
-      
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/20/AtCoder-Grand-Contest-001/"
+           data-title="AtCoder Grand Contest 001" data-url="http://2997ms.github.io/2016/07/20/AtCoder-Grand-Contest-001/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
   
   <div class="sidebar-toggle">
     <div class="sidebar-toggle-line-wrap">
@@ -385,6 +483,8 @@ A BBQ Easy题意是给出2*n个长度，每两个在一起，这两个的长度�
     <div class="sidebar-inner">
 
       
+
+      
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
             文章目录
@@ -395,12 +495,14 @@ A BBQ Easy题意是给出2*n个长度，每两个在一起，这两个的长度�
         </ul>
       
 
-      <section class="site-overview">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" src="/images/default_avatar.jpg" alt="2997ms" itemprop="image"/>
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="2997ms" />
           <p class="site-author-name" itemprop="name">2997ms</p>
+          <p class="site-description motion-element" itemprop="description"></p>
         </div>
-        <p class="site-description motion-element" itemprop="description"></p>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
@@ -409,19 +511,23 @@ A BBQ Easy题意是给出2*n个长度，每两个在一起，这两个的长度�
             </a>
           </div>
 
-          <div class="site-state-item site-state-categories">
-            
-              <span class="site-state-item-count">4</span>
-              <span class="site-state-item-name">分类</span>
-              
-          </div>
-
-          <div class="site-state-item site-state-tags">
-            <a href="/tags">
-              <span class="site-state-item-count">36</span>
-              <span class="site-state-item-name">标签</span>
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
               </a>
-          </div>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
 
         </nav>
 
@@ -429,11 +535,30 @@ A BBQ Easy题意是给出2*n个长度，每两个在一起，这两个的长度�
 
         <div class="links-of-author motion-element">
           
-        </div>
-
-        <div class="links-of-friendly motion-element">
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/2997ms" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/u/3567374047?is_all=1" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
           
         </div>
+
+        
+        
 
         
         
@@ -441,15 +566,15 @@ A BBQ Easy题意是给出2*n个长度，每两个在一起，这两个的长度�
       </section>
 
       
-        <section class="post-toc-wrap sidebar-panel-active">
-          <div class="post-toc-indicator-top post-toc-indicator"></div>
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
+            
+              
             
             
               <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-BBQ-Easy"><span class="nav-number">1.</span> <span class="nav-text">A BBQ Easy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-Mysterious-Light"><span class="nav-number">2.</span> <span class="nav-text">B Mysterious Light</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-Shorten-Diameter"><span class="nav-number">3.</span> <span class="nav-text">C Shorten Diameter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D-Arrays-and-Palindrome"><span class="nav-number">4.</span> <span class="nav-text">D Arrays and Palindrome</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#E-BBQ-Hard"><span class="nav-number">5.</span> <span class="nav-text">E BBQ Hard</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#F-Wide-Swap"><span class="nav-number">6.</span> <span class="nav-text">F Wide Swap</span></a></li></ol></div>
             
           </div>
-          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
         </section>
       
 
@@ -457,82 +582,125 @@ A BBQ Easy题意是给出2*n个长度，每两个在一起，这两个的长度�
   </aside>
 
 
+        
+      </div>
     </main>
 
     <footer id="footer" class="footer">
-      <div class="footer-inner"> <div class="copyright" >
+      <div class="footer-inner">
+        <div class="copyright" >
   
-  &copy; &nbsp; 
+  &copy; 
   <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
-    <i class="icon-next-heart"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">2997ms</span>
-
-  <div class="powered-by"></div>
-  <div class="powered-by">
-    Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
-  </div>
-
-
-
-  <!-- busuanzi -->
-  
-    <div class="powered-by">
-    <div class="theme-info">
-    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-    </script>
-    <span id="busuanzi_container_site_pv">
-        我已经被访问<a class="theme-link"><span id="busuanzi_value_site_pv"></span></a>次啦~
-    </span>
-</div>
-    </div>
-  
-
 </div>
 
-<!--
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mala
+    NexT.Mist
   </a>
 </div>
--->
 
-<!--
-<div class="powered-by"></div>
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
--->
+        
 
-<!-- busuanzi -->
-<!--
+<div class="busuanzi-count">
 
-  <div class="theme-info">
-    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-    </script>
-    <span id="busuanzi_container_site_pv">
-        我已经被访问<a class="theme-link"><span id="busuanzi_value_site_pv"></span></a>次啦~
-    </span>
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
 </div>
 
--->
 
 
- </div>
+        
+      </div>
     </footer>
 
-    <div class="back-to-top"></div>
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
   </div>
 
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
 
   
   
+
   
-    
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
 
   
     
@@ -543,250 +711,182 @@ A BBQ Easy题意是给出2*n个长度，每两个在一起，这两个的长度�
     (function() {
       var ds = document.createElement('script');
       ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
       ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
       ds.charset = 'UTF-8';
       (document.getElementsByTagName('head')[0]
       || document.getElementsByTagName('body')[0]).appendChild(ds);
     })();
   </script>
+
+  
     
-     
-  	  <script type="text/javascript">
-  		var duoshuo_user_ID = wangchong756
-  	  </script>
-     
-  	<script src="/js/ua-parser.min.js"></script>
-  	<script src="/js/hook-duoshuo.js"></script>
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
   
 
-    
-  
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
-
-
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
-  
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
 
 
 
 
-  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
   
-<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
-
-
-<script type="text/javascript" id="sidebar.toc.highlight">
-  $(document).ready(function () {
-    var tocSelector = '.post-toc';
-    var $tocSelector = $(tocSelector);
-    var activeCurrentSelector = '.active-current';
-
-    $tocSelector
-      .on('activate.bs.scrollspy', function () {
-        var $currentActiveElement = $(tocSelector + ' .active').last();
-
-        removeCurrentActiveClass();
-        $currentActiveElement.addClass('active-current');
-
-        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
-      })
-      .on('clear.bs.scrollspy', function () {
-        removeCurrentActiveClass();
-      });
-
-    function removeCurrentActiveClass () {
-      $(tocSelector + ' ' + activeCurrentSelector)
-        .removeClass(activeCurrentSelector.substring(1));
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
     }
+    var path = "/" + search_path;
+    // monitor main search box;
 
-    function processTOC () {
-      getTOCMaxHeight();
-      toggleTOCOverflowIndicators();
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
     }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = false;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = decodeURIComponent(data.url);
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title >= 0 || index_content >= 0 ){
+                                isMatch = true;
+								if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            } 
+							
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
 
-    function getTOCMaxHeight () {
-      var height = $('.sidebar').height() -
-                   $tocSelector.position().top -
-                   $('.post-toc-indicator-bottom').height();
-
-      $tocSelector.css('height', height);
-
-      return height;
-    }
-
-    function toggleTOCOverflowIndicators () {
-      tocOverflowIndicator(
-        '.post-toc-indicator-top',
-        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
-      );
-
-      tocOverflowIndicator(
-        '.post-toc-indicator-bottom',
-        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
-      )
-    }
-
-    $(document).on('sidebar.motion.complete', function () {
-      processTOC();
-    });
-
-    $('body').scrollspy({ target: tocSelector });
-    $(window).on('resize', function () {
-      if ( $('.sidebar').hasClass('sidebar-active') ) {
-        processTOC();
-      }
-    });
-
-    onScroll($tocSelector);
-
-    function onScroll (element) {
-      element.on('mousewheel DOMMouseScroll', function (event) {
-          var oe = event.originalEvent;
-          var delta = oe.wheelDelta || -oe.detail;
-
-          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
-          event.preventDefault();
-
-          toggleTOCOverflowIndicators();
-      });
-    }
-
-    function tocOverflowIndicator (indicator, action) {
-      var $indicator = $(indicator);
-      var opacity = action === 'show' ? 0.4 : 0;
-      $indicator.velocity ?
-        $indicator.velocity('stop').velocity({
-          opacity: opacity
-        }, { duration: 100 }) :
-        $indicator.stop().animate({
-          opacity: opacity
-        }, 100);
-    }
-
-  });
-</script>
-
-<script type="text/javascript" id="sidebar.nav">
-  $(document).ready(function () {
-    var html = $('html');
-    var TAB_ANIMATE_DURATION = 200;
-    var hasVelocity = $.isFunction(html.velocity);
-
-    $('.sidebar-nav li').on('click', function () {
-      var item = $(this);
-      var activeTabClassName = 'sidebar-nav-active';
-      var activePanelClassName = 'sidebar-panel-active';
-      if (item.hasClass(activeTabClassName)) {
-        return;
-      }
-
-      var currentTarget = $('.' + activePanelClassName);
-      var target = $('.' + item.data('target'));
-
-      hasVelocity ?
-        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
-          target
-            .velocity('stop')
-            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
-            .addClass(activePanelClassName);
-        }) :
-        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
-          currentTarget.hide();
-          target
-            .stop()
-            .css({'opacity': 0, 'display': 'block'})
-            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
-              currentTarget.removeClass(activePanelClassName);
-              target.addClass(activePanelClassName);
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
             });
-        });
+            proceedsearch();
+        }
+    });}
 
-      item.siblings().removeClass(activeTabClassName);
-      item.addClass(activeTabClassName);
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
     });
 
-    $('.post-toc a').on('click', function (e) {
-      e.preventDefault();
-      var targetSelector = escapeSelector(this.getAttribute('href'));
-      var offset = $(targetSelector).offset().top;
-      hasVelocity ?
-        html.velocity('stop').velocity('scroll', {
-          offset: offset  + 'px',
-          mobileHA: false
-        }) :
-        $('html, body').stop().animate({
-          scrollTop: offset
-        }, 500);
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
     });
-
-    // Expand sidebar on post detail page by default, when post has a toc.
-    var $tocContent = $('.post-toc-content');
-    if (isDesktop() && CONFIG.sidebar === 'post') {
-      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
-        displaySidebar();
-      }
-    }
-  });
-</script>
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
 
 
-
-  <script type="text/javascript">
-    $(document).ready(function () {
-      if (CONFIG.sidebar === 'always') {
-        displaySidebar();
-      }
-      if (isMobile()) {
-        FastClick.attach(document.body);
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
       }
     });
   </script>
 
-  
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-  });
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for (i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/lazyload.js"></script>
-  <script type="text/javascript">
-    $(function () {
-      $("#posts").find('img').lazyload({
-        placeholder: "/images/loading.gif",
-        effect: "fadeIn"
-      });
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
     });
   </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+
+  
+
+
 </body>
 </html>
