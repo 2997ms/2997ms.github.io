@@ -104,7 +104,7 @@ The Hurdle Race
 
 Organizing Containers of Balls
 题意是给出$n(n&amp;lt;100)$个颜色的球，$n$个盒子。每次可以对">
-<meta property="og:updated_time" content="2017-02-07T11:27:52.000Z">
+<meta property="og:updated_time" content="2017-02-07T11:29:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hackerrank HourRank 17">
 <meta name="twitter:description" content="好久好久没有做题了。。。去年定的目标，自己不算不努力，但还是没能完成。。。今年继续加油吧。。。
@@ -381,9 +381,7 @@ Organizing Containers of Balls
 <p>题意是给出集合A、B，集合元素数量$n(n&lt;10^5)$，集合元素的数值范围$x&lt;10^5$。现在两个集合中各取一个元素，问可以得到的GCD的种类。</p>
 </blockquote>
 <p>因为数值范围小于$10^5$，容斥一发。</p>
-<p>`</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> A[maxn], count[maxn], Ma[maxn], n;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++) </div><div class="line">    count[A[i]] ++;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=<span class="number">100000</span>; i++) &#123;</div><div class="line">    <span class="keyword">int</span> j = i;</div><div class="line">    <span class="keyword">while</span>(j &lt;= <span class="number">100000</span>) &#123;</div><div class="line">        Ma[i] += count[j];</div><div class="line">        j += i;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">int</span> Ma[maxn], Mb[maxn], ans[maxn];</div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">100000</span>; i&gt;=<span class="number">1</span>; i--) &#123;</div><div class="line">    ans[i] = Ma[i] * Mb[i];</div><div class="line">    <span class="keyword">int</span> j = i;</div><div class="line">    <span class="keyword">while</span>( j &lt;= <span class="number">100000</span> ) &#123;</div><div class="line">        <span class="keyword">if</span>(j &gt; i) ans[i] -= ans[j];</div><div class="line">        j += i;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>`</p>
 <h3 id="Number-Game-on-a-Tree"><a href="#Number-Game-on-a-Tree" class="headerlink" title="Number Game on a Tree"></a>Number Game on a Tree</h3><blockquote>
 <p>题意是给出了一个游戏规则，有一堆数，A和B，分别从这里面去除一个数，但是这次去除的数一定要不大于上一次去除的数。不能继续去除数字的人输。然后现在有一颗树，$n$个节点($n&lt;5*10^5$)，将每两个叶子节点路径上的数字作为一个list，问有多少个list可以保证A赢这个游戏，A先手。</p>
 </blockquote>
