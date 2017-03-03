@@ -1,0 +1,926 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="??," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="又是好久没写blog了。。。这周末要做kickstart，拿一个practice round练一练，发现这三道题还是挺简单的，主要很想记录一下B题Vote的，这个题和spoj上的INS14G - Kill them All是一样的思路，当初好不容易想明白，结果自己做的时候又有些忘记了。。。
+
+好累啊，一年又一年，没有活成我想要的样子，没有去我想去的地方。
+
+今年希望将自己的理想可以实现～
+A.Co">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kickstart Practice Round 2017">
+<meta property="og:url" content="http://2997ms.github.io/2017/03/03/Kickstart-Practice-Round-2017/index.html">
+<meta property="og:site_name" content="2997ms">
+<meta property="og:description" content="又是好久没写blog了。。。这周末要做kickstart，拿一个practice round练一练，发现这三道题还是挺简单的，主要很想记录一下B题Vote的，这个题和spoj上的INS14G - Kill them All是一样的思路，当初好不容易想明白，结果自己做的时候又有些忘记了。。。
+
+好累啊，一年又一年，没有活成我想要的样子，没有去我想去的地方。
+
+今年希望将自己的理想可以实现～
+A.Co">
+<meta property="og:updated_time" content="2017-03-03T07:08:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kickstart Practice Round 2017">
+<meta name="twitter:description" content="又是好久没写blog了。。。这周末要做kickstart，拿一个practice round练一练，发现这三道题还是挺简单的，主要很想记录一下B题Vote的，这个题和spoj上的INS14G - Kill them All是一样的思路，当初好不容易想明白，结果自己做的时候又有些忘记了。。。
+
+好累啊，一年又一年，没有活成我想要的样子，没有去我想去的地方。
+
+今年希望将自己的理想可以实现～
+A.Co">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://2997ms.github.io/2017/03/03/Kickstart-Practice-Round-2017/"/>
+
+
+  <title> Kickstart Practice Round 2017 | 2997ms </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">2997ms</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="st-search-show-outputs">
+          
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'ZyrfypYveGYcPppiWyn9','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Kickstart Practice Round 2017
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-03T14:25:28+08:00" content="2017-03-03">
+              2017-03-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/题记/" itemprop="url" rel="index">
+                    <span itemprop="name">题记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/03/Kickstart-Practice-Round-2017/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/03/Kickstart-Practice-Round-2017/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>又是好久没写blog了。。。这周末要做kickstart，拿一个practice round练一练，发现这三道题还是挺简单的，主要很想记录一下B题Vote的，这个题和spoj上的<a href="http://www.spoj.com/problems/INS14G/" target="_blank" rel="external">INS14G - Kill them All</a>是一样的思路，当初好不容易想明白，结果自己做的时候又有些忘记了。。。</p>
+<blockquote>
+<p>好累啊，一年又一年，没有活成我想要的样子，没有去我想去的地方。</p>
+</blockquote>
+<p>今年希望将自己的理想可以实现～</p>
+<h3 id="A-Country-Leader"><a href="#A-Country-Leader" class="headerlink" title="A.Country Leader"></a>A.Country Leader</h3><p>Problem</p>
+<p>The Constitution of a certain country states that the leader is the person with the name containing the greatest number of different alphabet letters. (The country uses the uppercase English alphabet from A through Z.) For example, the name GOOGLE has four different alphabet letters: E, G, L, and O. The name APAC CODE JAM has eight different letters. If the country only consists of these 2 persons, APAC CODE JAM would be the leader.</p>
+<p>If there is a tie, the person whose name comes earliest in alphabetical order is the leader.</p>
+<p>Given a list of names of the citizens of the country, can you determine who the leader is?<br>Input</p>
+<p>The first line of the input gives the number of test cases, T. T test cases follow. Each test case starts with a line with an interger N, the number of people in the country. Then N lines follow. The i-th line represents the name of the i-th person. Each name contains at most 20 characters and contains at least one alphabet letter.</p>
+<p>Output</p>
+<p>For each test case, output one line containing Case #x: y, where x is the test case number (starting from 1) and y is the name of the leader.<br>Limits</p>
+<p>1 ≤ T ≤ 100.<br>1 ≤ N ≤ 100.<br>Small dataset</p>
+<p>Each name consists of at most 20 characters and only consists of the uppercase English letters A through Z.</p>
+<p>Large dataset</p>
+<p>Each name consists of at most 20 characters and only consists of the uppercase English letters A through Z and ‘ ‘(space).<br>All names start and end with alphabet letters.<br>Sample</p>
+<p>Input<br>2<br>3<br>ADAM<br>BOB<br>JOHNSON<br>2<br>A AB C<br>DEF</p>
+<p>Output </p>
+<p>Case #1: JOHNSON<br>Case #2: A AB C</p>
+<p>In sample case #1, JOHNSON contains 5 different alphabet letters(‘H’, ‘J’, ‘N’, ‘O’, ‘S’), so he is the leader.</p>
+<p>Sample case #2 would only appear in Large data set. The name DEF contains 3 different alphabet letters, the name A AB C also contains 3 different alphabet letters. A AB C comes alphabetically earlier so he is the leader.</p>
+<blockquote>
+<p>题意就是找字符串中字符种类最多的那一个，如果同样多，那么选择字典序最少的那一个。</p>
+</blockquote>
+<p>直接模拟即可。主要就是getline(cin,t)。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> n;</div><div class="line">	sa(n);</div><div class="line">	<span class="built_in">string</span> res = <span class="string">""</span>;</div><div class="line">	<span class="built_in">string</span> res_nxt = <span class="string">""</span>;</div><div class="line">	<span class="keyword">int</span> cnt = <span class="number">0</span>;</div><div class="line">	<span class="keyword">char</span> tmp;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%c"</span>, &amp;tmp);</div><div class="line">	repp(i, <span class="number">1</span>, n)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">string</span> t;</div><div class="line">		getline(<span class="built_in">cin</span>, t);</div><div class="line">		<span class="built_in">map</span>&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt;hax;</div><div class="line">		<span class="built_in">string</span> nxt;</div><div class="line">		rep(i, <span class="number">0</span>, t.length())</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">if</span> (t[i] == <span class="string">' '</span>)<span class="keyword">continue</span>;</div><div class="line">			hax[t[i]]++;</div><div class="line">			nxt.push_back(t[i]);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (hax.size() &gt; cnt)</div><div class="line">		&#123;</div><div class="line">			cnt = hax.size();</div><div class="line">			res = t;</div><div class="line">			res_nxt = nxt;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (hax.size() == cnt)</div><div class="line">		&#123;</div><div class="line">			res = min(res, t);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; res &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></div><div class="line">	freopen(<span class="string">"i.txt"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line">	freopen(<span class="string">"o.txt"</span>, <span class="string">"w"</span>, <span class="built_in">stdout</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">	<span class="keyword">int</span> t;</div><div class="line">	sa(t);</div><div class="line">	repp(i, <span class="number">1</span>, t)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"Case #%d: "</span>, i);</div><div class="line">		solve();</div><div class="line">	&#125;<span class="comment">//system("pause");</span></div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="B-Vote"><a href="#B-Vote" class="headerlink" title="B.Vote"></a>B.Vote</h3><p>Problem</p>
+<p>A and B are the only two candidates competing in a certain election. We know from polls that exactly N voters support A, and exactly M voters support B. We also know that N is greater than M, so A will win.</p>
+<p>Voters will show up at the polling place one at a time, in an order chosen uniformly at random from all possible (N + M)! orders. After each voter casts their vote, the polling place worker will update the results and note which candidate (if any) is winning so far. (If the votes are tied, neither candidate is considered to be winning.)</p>
+<p>What is the probability that A stays in the lead the entire time – that is, that A will always be winning after every vote?</p>
+<p>Input</p>
+<p>The input starts with one line containing one integer T, which is the number of test cases. Each test case consists of one line with two integers N and M: the numbers of voters supporting A and B, respectively.</p>
+<p>Output</p>
+<p>For each test case, output one line containing Case #x: y, where x is the test case number (starting from 1) and y is the probability that A will always be winning after every vote.</p>
+<p>y will be considered correct if y is within an absolute or relative error of 10-6 of the correct answer. See the FAQ for an explanation of what that means, and what formats of real numbers we accept.</p>
+<p>Limits</p>
+<p>1 ≤ T ≤ 100.<br>Small dataset</p>
+<p>0 ≤ M &lt; N ≤ 10.<br>Large dataset</p>
+<p>0 ≤ M &lt; N ≤ 2000.<br>Sample</p>
+<p>Input </p>
+<p>2<br>2 1<br>1 0</p>
+<p>Output </p>
+<p>Case #1: 0.33333333<br>Case #2: 1.00000000</p>
+<p>In sample case #1, there are 3 voters. Two of them support A – we will call them A1 and A2 – and one of them supports B. They can come to vote in six possible orders: A1 A2 B, A2 A1 B, A1 B A2, A2 B A1, B A1 A2, B A2 A1. Only the first two of those orders guarantee that Candidate A is winning after every vote. (For example, if the order is A1 B A2, then Candidate A is winning after the first vote but tied after the second vote.) So the answer is 2/6 = 0.333333…</p>
+<p>In sample case #2, there is only 1 voter, and that voter supports A. There is only one possible order of arrival, and A will be winning after the one and only vote.</p>
+<blockquote>
+<p>题意是给出有n个1，m个0，要求这个字符串里面任意一个位置x，字符串[1..x]里面1都比0多，问有多少种方案。</p>
+</blockquote>
+<p>和每日一题是一样的思路，你假设从[1,1]走到[n+m,n-m]，里面向上走n-1次，向下走m次，不能碰到x坐标轴，正常的方案是<br>$$<br>C\begin{pmatrix}<br>n+m-1\<br>n-1<br>\end{pmatrix}<br>$$<br>然后减去不合法的方案数，就是相当于你这条走过的线碰到了x轴，那么以x轴为对称轴，将碰到x轴之前的那段路径做一个对称，会发现这部分不合法的方案就是从[1,-1]到[n+m,n-m]的方案数，这部分为<br>$$<br>C\begin{pmatrix}<br>n+m-1\<br>n<br>\end{pmatrix}<br>$$<br>然后乘以$m!*n!$除以$(m+n)!$。</p>
+<p>得到结果即是<br>$$<br>\frac{n-m}{n+m}<br>$$</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> m, n;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	sa(n), sa(m);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%.7lf\n"</span>, (<span class="number">1.0</span>*n - m) / (n + m));</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></div><div class="line">	freopen(<span class="string">"i.txt"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line">	freopen(<span class="string">"o.txt"</span>, <span class="string">"w"</span>, <span class="built_in">stdout</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">	<span class="keyword">int</span> t;</div><div class="line">	sa(t);</div><div class="line">	repp(i, <span class="number">1</span>, t)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"Case #%d: "</span>, i);</div><div class="line">		solve();</div><div class="line">	&#125;<span class="comment">//system("pause");</span></div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="C-Sherlock-and-Parentheses"><a href="#C-Sherlock-and-Parentheses" class="headerlink" title="C. Sherlock and Parentheses"></a>C. Sherlock and Parentheses</h3><p>Problem</p>
+<p>Sherlock and Watson have recently enrolled in a computer programming course. Today, the tutor taught them about the balanced parentheses problem. A string S consisting only of characters ( and/or ) is balanced if:<br>It is the empty string, or:<br>It has the form (S), where S is a balanced string, or:<br>It has the form S1S2, where S1 is a balanced string and S2 is a balanced string.</p>
+<p>Sherlock coded up the solution very quickly and started bragging about how good he is, so Watson gave him a problem to test his knowledge. He asked Sherlock to generate a string S of L + R characters, in which there are a total of L left parentheses ( and a total of R right parentheses ). Moreover, the string must have as many different balanced non-empty substrings as possible. (Two substrings are considered different as long as they start or end at different indexes of the string, even if their content happens to be the same). Note that S itself does not have to be balanced.</p>
+<p>Sherlock is sure that once he knows the maximum possible number of balanced non-empty substrings, he will be able to solve the problem. Can you help him find that maximum number?<br>Input</p>
+<p>The first line of the input gives the number of test cases, T. T test cases follow. Each test case consists of one line with two integers: L and R.</p>
+<p>Output</p>
+<p>For each test case, output one line containing Case #x: y, where x is the test case number (starting from 1) and y is the answer, as described above.</p>
+<p>Limits</p>
+<p>1 ≤ T ≤ 100.<br>Small dataset</p>
+<p>0 ≤ L ≤ 20.<br>0 ≤ R ≤ 20.<br>1 ≤ L + R ≤ 20.<br>Large dataset</p>
+<p>0 ≤ L ≤ 105.<br>0 ≤ R ≤ 105.<br>1 ≤ L + R ≤ 105.<br>Sample</p>
+<p>Input<br> 3<br>1 0<br>1 1<br>3 2<br>Output </p>
+<p>Case #1: 0<br>Case #2: 1<br>Case #3: 3</p>
+<p>In Case 1, the only possible string is (. There are no balanced non-empty substrings.<br>In Case 2, the optimal string is (). There is only one balanced non-empty substring: the entire string itself.<br>In Case 3, both strings ()()( and (()() give the same optimal answer.<br>For the case ()()(, for example, the three balanced substrings are () from indexes 1 to 2, () from indexes 3 to 4, and ()() from indexes 1 to 4.</p>
+<blockquote>
+<p>题意是给出左括号与右括号的数量，问最多可以组成多少合法括号的子串。</p>
+</blockquote>
+<p>求出左括号与右括号的值n，然后发现就是()()()…这样的，那即是<br>$$<br>\frac{n*(n+1)}{2}<br>$$</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">ll m, n;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</div><div class="line">	ll minn = min(n, m);</div><div class="line">	ll res = (minn + <span class="number">1</span>)*minn / <span class="number">2</span>;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; res &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></div><div class="line">	freopen(<span class="string">"i.txt"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line">	freopen(<span class="string">"o.txt"</span>, <span class="string">"w"</span>, <span class="built_in">stdout</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">	<span class="keyword">int</span> t;</div><div class="line">	sa(t);</div><div class="line">	repp(i, <span class="number">1</span>, t)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"Case #%d: "</span>, i);</div><div class="line">		solve();</div><div class="line">	&#125;</div><div class="line">  	<span class="comment">//system("pause");</span></div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/" rel="tag">#??</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/07/Hackerrank-HourRank-17/" rel="next" title="Hackerrank HourRank 17">
+                <i class="fa fa-chevron-left"></i> Hackerrank HourRank 17
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/03/Kickstart-Practice-Round-2017/"
+           data-title="Kickstart Practice Round 2017" data-url="http://2997ms.github.io/2017/03/03/Kickstart-Practice-Round-2017/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="2997ms" />
+          <p class="site-author-name" itemprop="name">2997ms</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">34</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/2997ms" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/u/3567374047?is_all=1" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Country-Leader"><span class="nav-number">1.</span> <span class="nav-text">A.Country Leader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Vote"><span class="nav-number">2.</span> <span class="nav-text">B.Vote</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Sherlock-and-Parentheses"><span class="nav-number">3.</span> <span class="nav-text">C. Sherlock and Parentheses</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">2997ms</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"wangchong756"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = false;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = decodeURIComponent(data.url);
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title >= 0 || index_content >= 0 ){
+                                isMatch = true;
+								if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            } 
+							
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
