@@ -39,18 +39,33 @@
 
 
 <meta name="description" content="挂在CF GYM的一套题，据说只有DIV2的难度，就做了一下，前面还好，后面做了好久，才清理干净。
-题目链接">
+暑期去Google实习，还有两个月，这两个月要做的事情有很多很多，多多看书，多多运动。
+题目链接
+A. Sherlock Bones
+给出一个由01组成的字符串，问有多少个三元组$i,j,k$，满足区间$i$到$j$中$1$的数量等于区间$j$到$k$中1的数量。
+
+算每两个连续的$1$中$0$的数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2017 ACM Arabella Collegiate Programming Contest">
 <meta property="og:url" content="http://2997ms.github.io/2017/05/01/2017-ACM-Arabella-Collegiate-Programming-Contest/index.html">
 <meta property="og:site_name" content="2997ms">
 <meta property="og:description" content="挂在CF GYM的一套题，据说只有DIV2的难度，就做了一下，前面还好，后面做了好久，才清理干净。
-题目链接">
-<meta property="og:updated_time" content="2017-05-01T12:45:20.000Z">
+暑期去Google实习，还有两个月，这两个月要做的事情有很多很多，多多看书，多多运动。
+题目链接
+A. Sherlock Bones
+给出一个由01组成的字符串，问有多少个三元组$i,j,k$，满足区间$i$到$j$中$1$的数量等于区间$j$到$k$中1的数量。
+
+算每两个连续的$1$中$0$的数">
+<meta property="og:updated_time" content="2017-05-01T13:17:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2017 ACM Arabella Collegiate Programming Contest">
 <meta name="twitter:description" content="挂在CF GYM的一套题，据说只有DIV2的难度，就做了一下，前面还好，后面做了好久，才清理干净。
-题目链接">
+暑期去Google实习，还有两个月，这两个月要做的事情有很多很多，多多看书，多多运动。
+题目链接
+A. Sherlock Bones
+给出一个由01组成的字符串，问有多少个三元组$i,j,k$，满足区间$i$到$j$中$1$的数量等于区间$j$到$k$中1的数量。
+
+算每两个连续的$1$中$0$的数">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -239,8 +254,28 @@
 
       
         <span itemprop="articleBody"><p>挂在CF GYM的一套题，据说只有DIV2的难度，就做了一下，前面还好，后面做了好久，才清理干净。</p>
+<p>暑期去Google实习，还有两个月，这两个月要做的事情有很多很多，多多看书，多多运动。</p>
 <p><a href="http://codeforces.com/gym/101350" target="_blank" rel="external">题目链接</a></p>
-</span>
+<h3 id="A-Sherlock-Bones"><a href="#A-Sherlock-Bones" class="headerlink" title="A. Sherlock Bones"></a>A. Sherlock Bones</h3><blockquote>
+<p>给出一个由01组成的字符串，问有多少个三元组$i,j,k$，满足区间$i$到$j$中$1$的数量等于区间$j$到$k$中1的数量。</p>
+</blockquote>
+<p>算每两个连续的$1$中$0$的数量，然后找规律。。。分段计算每一段产生的贡献。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> x[maxn];</div><div class="line"><span class="keyword">int</span>  last_le[maxn], suf[maxn];</div><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;val;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	val.clear();</div><div class="line">	<span class="built_in">memset</span>(suf, <span class="number">0</span>, <span class="keyword">sizeof</span>(suf));</div><div class="line"></div><div class="line">	<span class="keyword">int</span> len;</div><div class="line">	sa(len);</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%s"</span>, x + <span class="number">1</span>);</div><div class="line"></div><div class="line">	<span class="keyword">int</span> last = <span class="number">0</span>;</div><div class="line">	repp(i, <span class="number">1</span>, len)</div><div class="line">	&#123;</div><div class="line">		last_le[i] = last;</div><div class="line">		<span class="keyword">if</span> (x[i] == <span class="string">'1'</span>)</div><div class="line">		&#123;</div><div class="line">			last = <span class="number">0</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		&#123;</div><div class="line">			last++;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	repp(i, <span class="number">1</span>, len)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span> (x[i] == <span class="string">'1'</span>)</div><div class="line">		&#123;</div><div class="line">			val.push_back(last_le[i]);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> (x[len] == <span class="string">'0'</span>)</div><div class="line">		val.push_back(last_le[len] + <span class="number">1</span>);</div><div class="line">	<span class="keyword">else</span></div><div class="line">		val.push_back(<span class="number">0</span>);</div><div class="line">	ll ans = <span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; val.size(); i++)</div><div class="line">	&#123;</div><div class="line">		ans += <span class="number">1L</span>L * val[i] * val[i - <span class="number">1</span>];</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = val.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</div><div class="line">	&#123;</div><div class="line">		suf[i] = suf[i + <span class="number">2</span>] + val[i] + <span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; val.size(); i++)</div><div class="line">	&#123;</div><div class="line">		ans += <span class="number">1L</span>L*(val[i] + <span class="number">1</span>)*suf[i + <span class="number">3</span>];</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, ans);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="B-Unusual-Team"><a href="#B-Unusual-Team" class="headerlink" title="B. Unusual Team"></a>B. Unusual Team</h3><blockquote>
+<p>水题，判断大小。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> a,b;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	sa(a),sa(b);</div><div class="line">	<span class="keyword">if</span>(a&lt;b)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">puts</span>(<span class="string">"WeWillEatYou"</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span></div><div class="line">	&#123;</div><div class="line">		<span class="built_in">puts</span>(<span class="string">"FunkyMonkeys"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="C-Cheap-Kangaroo"><a href="#C-Cheap-Kangaroo" class="headerlink" title="C. Cheap Kangaroo"></a>C. Cheap Kangaroo</h3><blockquote>
+<p>一共$n$个人，每个人要吃$x_i$的食物，所用的盘子大小与食物的数量相等，花费与盘子的大小相等。每个人希望用相同大小的盘子，问最小花费和可以使用的最大盘子。</p>
+</blockquote>
+<p>说得很绕，又是一个水题。最小花费求和，最大盘子所有数的gcd。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> n;</div><div class="line"><span class="keyword">int</span> val[maxn];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	sa(n);</div><div class="line">	ll sum=<span class="number">0</span>;</div><div class="line">	repp(i,<span class="number">1</span>,n)</div><div class="line">	&#123;</div><div class="line">		sa(val[i]);</div><div class="line">		sum+=val[i];</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">int</span> res=val[<span class="number">1</span>];</div><div class="line">	repp(i,<span class="number">1</span>,n)</div><div class="line">	&#123;</div><div class="line">		res=gcd(res,val[i]);</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%lld %d\n"</span>,sum,res);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="D-Magical-Bamboos"><a href="#D-Magical-Bamboos" class="headerlink" title="D. Magical Bamboos"></a>D. Magical Bamboos</h3><blockquote>
+<p>$n$个竹子，每个竹子高度$h_i$，现在你可以对其中一个竹子的高度减$1$，其余竹子高度均加$1$，问能否最终所有竹子的高度相等。</p>
+</blockquote>
+<p>挺有意思的题目，那天晚上把这个题想复杂了。首先多个相同的竹子就可以当成一个竹子了，然后考虑从最高的竹子减1，其余竹子加1，为了最高与次高的竹子相等，需要他们同奇同偶。之后这两个竹子可以当成一个竹子了，往下递推下去就好了。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> n;</div><div class="line"><span class="keyword">int</span> val[maxn];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	sa(n);</div><div class="line"></div><div class="line">	repp(i,<span class="number">1</span>,n)</div><div class="line">	&#123;</div><div class="line">		sa(val[i]);</div><div class="line">	&#125;</div><div class="line">	sort(val+<span class="number">1</span>,val+n+<span class="number">1</span>);</div><div class="line">	repp(i,<span class="number">2</span>,n)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span>((val[i]+val[i<span class="number">-1</span>])&amp;<span class="number">1</span>)</div><div class="line">		&#123;</div><div class="line">			<span class="built_in">puts</span>(<span class="string">"no"</span>);</div><div class="line">			<span class="keyword">return</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">puts</span>(<span class="string">"yes"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="E-Competitive-Seagulls"><a href="#E-Competitive-Seagulls" class="headerlink" title="E. Competitive Seagulls"></a>E. Competitive Seagulls</h3></span>
       
     </div>
 
@@ -381,7 +416,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Sherlock-Bones"><span class="nav-number">1.</span> <span class="nav-text">A. Sherlock Bones</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Unusual-Team"><span class="nav-number">2.</span> <span class="nav-text">B. Unusual Team</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Cheap-Kangaroo"><span class="nav-number">3.</span> <span class="nav-text">C. Cheap Kangaroo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Magical-Bamboos"><span class="nav-number">4.</span> <span class="nav-text">D. Magical Bamboos</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-Competitive-Seagulls"><span class="nav-number">5.</span> <span class="nav-text">E. Competitive Seagulls</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
