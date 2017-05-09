@@ -44,7 +44,7 @@
 <meta property="og:url" content="http://2997ms.github.io/2017/05/09/Qt学习笔记/index.html">
 <meta property="og:site_name" content="2997ms">
 <meta property="og:description" content="category终于有了题记之外的东西。说来Qt是我五年之前做课程设计时候用的东西了，很多都已经忘了。最近因为要做一些东西，又要用到，所以在这里简单记录一下学习到的东西。">
-<meta property="og:updated_time" content="2017-05-09T07:08:57.000Z">
+<meta property="og:updated_time" content="2017-05-09T08:08:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Qt学习笔记">
 <meta name="twitter:description" content="category终于有了题记之外的东西。说来Qt是我五年之前做课程设计时候用的东西了，很多都已经忘了。最近因为要做一些东西，又要用到，所以在这里简单记录一下学习到的东西。">
@@ -236,6 +236,12 @@
 
       
         <span itemprop="articleBody"><p>category终于有了题记之外的东西。说来Qt是我五年之前做课程设计时候用的东西了，很多都已经忘了。最近因为要做一些东西，又要用到，所以在这里简单记录一下学习到的东西。</p>
+<a id="more"></a>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"dialog.h"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QApplication&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></div><div class="line">&#123;</div><div class="line">   <span class="function">QApplication <span class="title">a</span><span class="params">(argc,argv)</span></span>;</div><div class="line">   Dialog w;</div><div class="line">   w.show();</div><div class="line">   <span class="keyword">return</span> a.exec();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>#include &lt; QApplication &gt;。Application类的定义。在每一个使用Qt图形化应用程序中都必须使用一个QApplication对象。QApplication管理了各种各样的图形化应用程序的广泛资源、基本设置、控制流及事件处理等。</p>
+<p>QApplication a(arg,argv)。a是这个程序的QApplication对象。在任何Qt的窗口系统部件被使用之前必须创建QApplication对象。它在这里被创建并且处理这些命令行变量。所有被Qt识别的命令行参数都将从argv中被移去，并且argc也因此而减少。</p>
+<p>w.show()。当创建一个窗口部件的时候，默认它是不可见的，必须调用show()函数使它变为可见。</p>
+<p>return a.exec()。程序进入消息循环，等待可能的输入进行响应。这里就是main()函数将控制权转交给Qt，Qt完成事件处理工作，当应用程序退出的时候，exec()函数的值就会返回。在exec()函数中，Qt接收并处理用户和系统的事件并且将它们传递给适当的窗口部件。</p>
 </span>
       
     </div>
