@@ -4,6 +4,17 @@
   
     
     <entry>
+      <title><![CDATA[关于C++]]></title>
+      <url>http://2997ms.github.io/2017/05/16/%E5%85%B3%E4%BA%8EC++/</url>
+      <content type="html"><![CDATA[<p>这里整理一下C++语法中经常会出现的问题。。。</p>
+<h3 id="1-explicit关键字"><a href="#1-explicit关键字" class="headerlink" title="1.explicit关键字"></a>1.explicit关键字</h3><blockquote>
+<p>作用是表明该构造函数是显示的，而非隐式的。</p>
+</blockquote>
+<p><a href="http://www.cnblogs.com/ymy124/p/3632634.html" target="_blank" rel="external">链接</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Qt学习笔记]]></title>
       <url>http://2997ms.github.io/2017/05/09/Qt%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
       <content type="html"><![CDATA[<p>category终于有了题记之外的东西。说来Qt是我五年之前做课程设计时候用的东西了，很多都已经忘了。最近因为要做一些东西，又要用到，所以在这里简单记录一下学习到的东西。</p>
@@ -1516,7 +1527,8 @@
 <p>最近的感悟就是智商又低了…可能一直也没有上涨过…</p>
 </blockquote>
 <p>世界真的很大，想做的事情很多~</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"One day you'll leave this world behind. "</span>&lt;&lt; <span class="built_in">endl</span>;</div><div class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"So live a life you will remember."</span>&lt;&lt; <span class="built_in">endl</span>;</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">  <span class="comment">//cout &lt;&lt; "One day you'll leave this world behind. "&lt;&lt; endl;</span></div><div class="line">  <span class="comment">//cout &lt;&lt; "So live a life you will remember."&lt;&lt; endl;</span></div><div class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"Some day I will be just like you"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"总有一天，我要变得和你一样强"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
     </entry>
     
   
