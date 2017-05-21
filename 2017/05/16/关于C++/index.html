@@ -40,13 +40,13 @@
 
 <meta name="description" content="这里整理一下C++语法中经常会出现的问题。。。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于C++">
+<meta property="og:title" content="C++的一些">
 <meta property="og:url" content="http://2997ms.github.io/2017/05/16/关于C++/index.html">
 <meta property="og:site_name" content="2997ms">
 <meta property="og:description" content="这里整理一下C++语法中经常会出现的问题。。。">
-<meta property="og:updated_time" content="2017-05-16T08:31:23.000Z">
+<meta property="og:updated_time" content="2017-05-21T12:34:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于C++">
+<meta name="twitter:title" content="C++的一些">
 <meta name="twitter:description" content="这里整理一下C++语法中经常会出现的问题。。。">
 
 
@@ -57,7 +57,7 @@
   };
 </script>
 
-  <title> 关于C++ | 2997ms </title>
+  <title> C++的一些 | 2997ms </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -192,7 +192,7 @@
           
           
             
-              关于C++
+              C++的一些
             
           
         </h1>
@@ -231,6 +231,12 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function">CxString <span class="title">string2</span><span class="params">(<span class="number">10</span>)</span></span>;  </div><div class="line">或  </div><div class="line"><span class="function">CxString <span class="title">temp</span><span class="params">(<span class="number">10</span>)</span></span>;  </div><div class="line">CxString string2 = temp;</div></pre></td></tr></table></figure>
 <h3 id="2-error-assigning-to-‘char-‘-from-incompatible-type-‘void-‘"><a href="#2-error-assigning-to-‘char-‘-from-incompatible-type-‘void-‘" class="headerlink" title="2.error: assigning to ‘char *‘ from incompatible type ‘void *‘"></a>2.error: assigning to ‘char *‘ from incompatible type ‘void *‘</h3><p>报错出现在上述代码的_pstr = malloc(size + 1);这里，主要原因是C对于类型转换是很宽泛的，但是C++不行malloc返回的是void *，这里赋值到char *需要类型的转换。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">s-&gt;ptr = <span class="keyword">static_cast</span>&lt;<span class="keyword">char</span>*&gt;(<span class="built_in">malloc</span>(s-&gt;len+<span class="number">1</span>));</div></pre></td></tr></table></figure>
+<h3 id="3-malloc-与-new"><a href="#3-malloc-与-new" class="headerlink" title="3.malloc 与 new"></a>3.malloc 与 new</h3><p>a.malloc是C的一个库函数，new是C++中的操作符。</p>
+<p>b.malloc只是分配了一块内存而不是生成一个对象，它返回了一个void*类型指针。</p>
+<p>对于非内部数据类型的对象而言，光用malloc/free无法满足动态对象的要求。对象在创建的同时要自动执行构造函数，对象在消亡之前要自动执行析构函数。由于malloc/free是库函数而不是运算符，不在编译器控制权限之内，不能够把执行构造函数和析构函数的任务强加于malloc/free。</p>
+<p>因此C++的解决方案是创建一个对象所需的所有动作都结合在一个称为new的运算符里。当用new创建一个对象时，它就在堆里为对象分配内存并为这块内存调用构造函数。</p>
+<p>c.delete表达式首先调用析构函数，然后释放内存(经常调用free)。</p>
+<p>正如new表达式返回一个指向对象的指针一样，delete表达式需要一个对象的地址。</p>
 </span>
       
     </div>
@@ -374,7 +380,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-explicit关键字"><span class="nav-number">1.</span> <span class="nav-text">1.explicit关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-error-assigning-to-‘char-‘-from-incompatible-type-‘void-‘"><span class="nav-number">2.</span> <span class="nav-text">2.error: assigning to ‘char *‘ from incompatible type ‘void *‘</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-explicit关键字"><span class="nav-number">1.</span> <span class="nav-text">1.explicit关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-error-assigning-to-‘char-‘-from-incompatible-type-‘void-‘"><span class="nav-number">2.</span> <span class="nav-text">2.error: assigning to ‘char *‘ from incompatible type ‘void *‘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-malloc-与-new"><span class="nav-number">3.</span> <span class="nav-text">3.malloc 与 new</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
