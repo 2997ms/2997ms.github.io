@@ -23,7 +23,7 @@
     
     <entry>
       <title><![CDATA[C++的一些]]></title>
-      <url>http://2997ms.github.io/2017/05/16/%E5%85%B3%E4%BA%8EC++/</url>
+      <url>http://2997ms.github.io/2017/05/16/C++%E7%9A%84%E4%B8%80%E4%BA%9B/</url>
       <content type="html"><![CDATA[<p>这里整理一下C++语法中经常会出现的问题。。。</p>
 <a id="more"></a>
 <h3 id="1-explicit关键字"><a href="#1-explicit关键字" class="headerlink" title="1.explicit关键字"></a>1.explicit关键字</h3><blockquote>
@@ -35,13 +35,30 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function">CxString <span class="title">string2</span><span class="params">(<span class="number">10</span>)</span></span>;  </div><div class="line">或  </div><div class="line"><span class="function">CxString <span class="title">temp</span><span class="params">(<span class="number">10</span>)</span></span>;  </div><div class="line">CxString string2 = temp;</div></pre></td></tr></table></figure>
 <h3 id="2-error-assigning-to-‘char-‘-from-incompatible-type-‘void-‘"><a href="#2-error-assigning-to-‘char-‘-from-incompatible-type-‘void-‘" class="headerlink" title="2.error: assigning to ‘char *‘ from incompatible type ‘void *‘"></a>2.error: assigning to ‘char *‘ from incompatible type ‘void *‘</h3><p>报错出现在上述代码的_pstr = malloc(size + 1);这里，主要原因是C对于类型转换是很宽泛的，但是C++不行malloc返回的是void *，这里赋值到char *需要类型的转换。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">s-&gt;ptr = <span class="keyword">static_cast</span>&lt;<span class="keyword">char</span>*&gt;(<span class="built_in">malloc</span>(s-&gt;len+<span class="number">1</span>));</div></pre></td></tr></table></figure>
-<h3 id="3-malloc-与-new"><a href="#3-malloc-与-new" class="headerlink" title="3.malloc 与 new"></a>3.malloc 与 new</h3><p>a.malloc是C的一个库函数，new是C++中的操作符。</p>
+<h3 id="3-malloc-与-new"><a href="#3-malloc-与-new" class="headerlink" title="3.malloc 与 new"></a>3.malloc 与 new</h3><blockquote>
+<p>a.malloc是C的一个库函数，new是C++中的操作符。</p>
 <p>b.malloc只是分配了一块内存而不是生成一个对象，它返回了一个void*类型指针。</p>
+</blockquote>
 <p>对于非内部数据类型的对象而言，光用malloc/free无法满足动态对象的要求。对象在创建的同时要自动执行构造函数，对象在消亡之前要自动执行析构函数。由于malloc/free是库函数而不是运算符，不在编译器控制权限之内，不能够把执行构造函数和析构函数的任务强加于malloc/free。</p>
 <p>因此C++的解决方案是创建一个对象所需的所有动作都结合在一个称为new的运算符里。当用new创建一个对象时，它就在堆里为对象分配内存并为这块内存调用构造函数。</p>
+<blockquote>
 <p>c.delete表达式首先调用析构函数，然后释放内存(经常调用free)。</p>
+</blockquote>
 <p>正如new表达式返回一个指向对象的指针一样，delete表达式需要一个对象的地址。</p>
-]]></content>
+<blockquote>
+<p>d.C++中int a[10]和int a=new int[10]有什么区别</p>
+</blockquote>
+<p>前者固定大小，后者动态分配。前者在栈上，后者在堆上。</p>
+<p><strong>如果不是a[10]，而是a[1000000000]或者更大的话，那一般情况下，就只能使用int<em> a=new这种方式了。这个涉及到内存存放位置的问题，int a[]这种方式，内存是存放在栈上；int</em> a＝new int[]这种方式，内存是存放在堆上，栈的实际内存是连续内存，因此可分配空间较小，堆可以是非连续内存，因此可以分配较大内存。因此，如果需要分配较大内存，需要分配在堆上</strong></p>
+<blockquote>
+<p>e.new int[10] 与 new int<a href="">10\</a>区别</p>
+</blockquote>
+<p>int *pia = new int[10];    // 10个未初始化int</p>
+<p>int *pia2 = new int<a href="">10\</a>; // 10个值初始化为0的int</p>
+<p>int <em>p2 = new int<a href="">10\</a>;申请了空间，而且进行了初始化int </em>p1 = new int[10];只申请空间，没有进行初始化原因：对于一些结构体，我们可以看到（）往往表示构造函数，int是基本类型算初始化吧理由：你可以测试输出两种的值你会发现p1的值未知，而p2清零了。</p>
+<p>new运算符只是申请分配一个内存空间而已，因为不知道为其分配对象的名称，所以分配之后返回的只是一个指向该对象的指针，并没有初始化，加上一个（）后，就相当于调用了默认构造函数，会默认初始化，用0来初始化.</p>
+<h3 id="4-union联合"><a href="#4-union联合" class="headerlink" title="4.union联合"></a>4.union联合</h3><p>union的所有成员引用的是<strong>内存中的相同位置</strong>，当你想在不同的时刻把不同的东西存储于同一个位置时，就可以使用联合。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">union</span></div><div class="line">&#123;</div><div class="line">  <span class="keyword">float</span> f;</div><div class="line">  <span class="keyword">int</span> i;</div><div class="line">&#125;fi;</div><div class="line">fi.f = <span class="number">3.14159</span>;</div><div class="line"><span class="built_in">printf</span>(<span class="string">"%d\n"</span>,fi.i);</div></pre></td></tr></table></figure>]]></content>
     </entry>
     
     <entry>
