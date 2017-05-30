@@ -29,7 +29,7 @@
 
 
 
-  <meta name="keywords" content="AtCoder,DP,倍增,KMP," />
+  <meta name="keywords" content="CS academy,树形DP," />
 
 
 
@@ -38,34 +38,19 @@
   <link rel="shorticon icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="这一期的Regular Contest我也是肥肠喜欢啊，题目都很好玩啊，题目链接。
-代码链接
-C Tak and Cards
-C题题意是给出N(N&amp;lt;=50)个数，每个数的范围在1到50之间，然后给一个值A。从这N个数任意选择数字，要求选取的这些数字的平均值是A，问有多少种选取的方法。
-dp[i][j][x]表示到第i个数时，有j个数组成和为x的方法数量。
-D Digit Sum
-D题题意是给">
+<meta name="description" content="终于把E的树形DP搞明白了.
+题目链接">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AtCoder Regular Contest 060">
-<meta property="og:url" content="http://2997ms.github.io/2016/09/05/AtCoder-Regular-Contest-060/index.html">
+<meta property="og:title" content="CS academy Round #29">
+<meta property="og:url" content="http://2997ms.github.io/2017/05/30/CS-academy-Round-29/index.html">
 <meta property="og:site_name" content="2997ms">
-<meta property="og:description" content="这一期的Regular Contest我也是肥肠喜欢啊，题目都很好玩啊，题目链接。
-代码链接
-C Tak and Cards
-C题题意是给出N(N&amp;lt;=50)个数，每个数的范围在1到50之间，然后给一个值A。从这N个数任意选择数字，要求选取的这些数字的平均值是A，问有多少种选取的方法。
-dp[i][j][x]表示到第i个数时，有j个数组成和为x的方法数量。
-D Digit Sum
-D题题意是给">
-<meta property="og:updated_time" content="2016-09-05T15:46:22.000Z">
+<meta property="og:description" content="终于把E的树形DP搞明白了.
+题目链接">
+<meta property="og:updated_time" content="2017-05-30T14:41:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AtCoder Regular Contest 060">
-<meta name="twitter:description" content="这一期的Regular Contest我也是肥肠喜欢啊，题目都很好玩啊，题目链接。
-代码链接
-C Tak and Cards
-C题题意是给出N(N&amp;lt;=50)个数，每个数的范围在1到50之间，然后给一个值A。从这N个数任意选择数字，要求选取的这些数字的平均值是A，问有多少种选取的方法。
-dp[i][j][x]表示到第i个数时，有j个数组成和为x的方法数量。
-D Digit Sum
-D题题意是给">
+<meta name="twitter:title" content="CS academy Round #29">
+<meta name="twitter:description" content="终于把E的树形DP搞明白了.
+题目链接">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -75,7 +60,7 @@ D题题意是给">
   };
 </script>
 
-  <title> AtCoder Regular Contest 060 | 2997ms </title>
+  <title> CS academy Round #29 | 2997ms </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -210,7 +195,7 @@ D题题意是给">
           
           
             
-              AtCoder Regular Contest 060
+              CS academy Round #29
             
           
         </h1>
@@ -219,8 +204,8 @@ D题题意是给">
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2016-09-05T22:39:38+08:00" content="2016-09-05">
-            2016-09-05
+          <time itemprop="dateCreated" datetime="2017-05-30T22:27:46+08:00" content="2017-05-30">
+            2017-05-30
           </time>
         </span>
 
@@ -253,28 +238,23 @@ D题题意是给">
       
 
       
-        <span itemprop="articleBody"><p>这一期的Regular Contest我也是肥肠喜欢啊，题目都很好玩啊，<a href="http://arc060.contest.atcoder.jp/assignments" target="_blank" rel="external">题目链接</a>。</p>
-<p><a href="https://github.com/2997ms/My_Algorithm/tree/master/AtCoder/Regular_Contest_060" target="_blank" rel="external">代码链接</a></p>
-<h3 id="C-Tak-and-Cards"><a href="#C-Tak-and-Cards" class="headerlink" title="C Tak and Cards"></a>C Tak and Cards</h3><hr>
-<p>C题题意是给出N(N&lt;=50)个数，每个数的范围在1到50之间，然后给一个值A。从这N个数任意选择数字，要求选取的这些数字的平均值是A，问有多少种选取的方法。</p>
-<p>dp[i][j][x]表示到第i个数时，有j个数组成和为x的方法数量。</p>
-<h3 id="D-Digit-Sum"><a href="#D-Digit-Sum" class="headerlink" title="D Digit Sum"></a>D Digit Sum</h3><hr>
-<p>D题题意是给出了一种函数f(b,n)，<br>$$<br>f(b,n)=n   \    \  \  \ when\ \  n&lt;b<br>$$</p>
-<p>$$<br>f(b,n)=f(b,floor(\frac{n}{b}))+(n\%b)<br>$$</p>
-<p>然后给出了n和s，求是最小的b，使得f(b,n)=s。如果不存在这样的b，输出-1。</p>
-<p>下次看到n,b范围在10^11,10^12这种题，直接考虑O(sqrt(n))啊啊啊。</p>
-<p>首先考虑b&lt;sqrt(n)的这种情况，直接暴力算。</p>
-<p>然后考虑b&gt;sqrt(n),那这样n=pb+q，有p+q=s。得到n-s=b*(p-1)因为b&gt;sqrt(n),所以p是小于sqrt(n)的，枚举p，注意q也要符合条件即可。</p>
-<h3 id="E-Tak-and-Hotels"><a href="#E-Tak-and-Hotels" class="headerlink" title="E Tak and Hotels"></a>E Tak and Hotels</h3><hr>
-<p>E题题意是给出了n个旅馆的坐标，然后有一个人旅行一天的时间行走的距离不超过L，晚上必须在旅馆睡。然后有Q个询问，问从a走到b至少需要几天，保证是可以到达的。</p>
-<p>倍增的想法，dp[x][a]表示从x经过2^a天能够达到的最远旅馆，之后每次询问从最高次往低次暴力。</p>
-<h3 id="F-Best-Representation"><a href="#F-Best-Representation" class="headerlink" title="F Best Representation"></a>F Best Representation</h3><hr>
-<p><del>发现AtCoder日本人很喜欢出这种题，关于这种是哪种我也说不太好</del></p>
-<p>字符串X如果能够被表示成k(k&gt;=2)个字符串a连接而成的话，就不是好字符串，否则就是好字符串。</p>
-<p>现给出一个字符串，要求把这个字符串分解成都是好字符串的字符串。。。问在所有分解成功的集合中，分解出来的最少的字符串数量是多少，设为ans，有多少种分法，使得最少字符串数量为ans，输出ans和这个多少种分法。= =。突然发现我语言能力如此捉急，看不懂的看英文吧，当然我觉得那个也挺难懂的。</p>
-<p>这个题就好玩在，排除所有字符相等的情况(这种情况输出的是strlen(w)，1,不用多说)，分解出来的最少字符串数量一定不是1就是2。当这个字符串本身就是好字符串的时候就是1。当这个字符串可以表示成k(k&gt;=2)个字符串a连接而成的话，那么此时，嘿嘿嘿(……)，一拆的话，前者多一个，后者少一个，就可以分成两个好字符串啦。</p>
-<p>所以这个题判断出是1的情况之后，说白了就是判断一个字符串可不可以分解成由k(k&gt;=2)个字符串a连接而成，POJ上面有一道类似的题目，kmp直接可以解，前后如果都满足，方法的数量就+1。那个1e9+7纯属唬人。。。</p>
-<p>这个题目也挺好玩(真是智障儿童欢乐多。。。)</p>
+        <span itemprop="articleBody"><p>终于把E的树形DP搞明白了.</p>
+<p><a href="https://csacademy.com/contest/round-29/tasks/" target="_blank" rel="external">题目链接</a></p>
+<a id="more"></a>
+<h3 id="A-Missing-Number"><a href="#A-Missing-Number" class="headerlink" title="A.Missing Number"></a>A.Missing Number</h3><blockquote>
+<p>数组里找最小没有出现的正数。简单题不表。</p>
+</blockquote>
+<h3 id="B-Positive-Xors"><a href="#B-Positive-Xors" class="headerlink" title="B.Positive Xors"></a>B.Positive Xors</h3><blockquote>
+<p>给出一组数，找到最大的子数组，其异或不为0。</p>
+</blockquote>
+<p>从前往后扫一遍，从后往前扫一遍。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> n;</div><div class="line"><span class="keyword">int</span> val[maxn];</div><div class="line"><span class="keyword">int</span> pre[maxn],suf[maxn];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	sa(n);</div><div class="line">	repp(i,<span class="number">1</span>,n)</div><div class="line">	&#123;</div><div class="line">		sa(val[i]);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">int</span> res=<span class="number">0</span>;</div><div class="line">	<span class="keyword">int</span> cur=<span class="number">0</span>;</div><div class="line">	repp(i,<span class="number">1</span>,n)</div><div class="line">	&#123;</div><div class="line">		cur^=val[i];</div><div class="line">		<span class="keyword">if</span>(cur)res=max(res,i);</div><div class="line">	&#125;</div><div class="line">	cur=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=n;i&gt;=<span class="number">1</span>;i--)</div><div class="line">	&#123;</div><div class="line">		cur^=val[i];</div><div class="line">		<span class="keyword">if</span>(cur)</div><div class="line">		&#123;</div><div class="line">			res=max(res,n-i+<span class="number">1</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">cout</span>&lt;&lt;res&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="C-Equality"><a href="#C-Equality" class="headerlink" title="C.Equality"></a>C.Equality</h3><blockquote>
+<p>题意是给出一组数，有一种操作是可以选择两个数$A[i]，A[j]$，对其中一个$+1$，另一个$-1$，问最少操作多少次，可以使得这些数的$Max-Min&lt;=K$。</p>
+</blockquote>
+<p>暴力。。。记录最大值，最小值的个数与位置。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> n,k;</div><div class="line"><span class="keyword">int</span> val[maxn];</div><div class="line"><span class="keyword">int</span> hax[maxn];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	sa(n),sa(k);</div><div class="line">	<span class="keyword">int</span> maxx=<span class="number">0</span>,minn=<span class="number">1e5</span>;</div><div class="line">	repp(i,<span class="number">1</span>,n)</div><div class="line">	&#123;</div><div class="line">		sa(val[i]);</div><div class="line">		hax[val[i]]++;</div><div class="line">		minn=min(minn,val[i]);</div><div class="line">		maxx=max(maxx,val[i]);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">int</span> cnt=<span class="number">0</span>;</div><div class="line">	<span class="keyword">while</span>(<span class="literal">true</span>)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span>(<span class="built_in">abs</span>(maxx-minn)&lt;=k)<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">int</span> num=min(hax[minn],hax[maxx]);</div><div class="line">		cnt+=num;</div><div class="line">		<span class="comment">//DE(maxx)</span></div><div class="line">		<span class="comment">//DE(minn)</span></div><div class="line">		hax[minn]-=num;</div><div class="line">		hax[maxx]-=num;</div><div class="line">		<span class="keyword">if</span>(hax[minn]==<span class="number">0</span>)</div><div class="line">		&#123;</div><div class="line">			minn++;</div><div class="line">			hax[minn]+=num;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		&#123;</div><div class="line">			hax[minn+<span class="number">1</span>]+=num;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(hax[maxx]==<span class="number">0</span>)</div><div class="line">		&#123;</div><div class="line">			maxx--;</div><div class="line">			hax[maxx]+=num;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		&#123;</div><div class="line">			hax[maxx<span class="number">-1</span>]+=num;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">cout</span>&lt;&lt;cnt&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="D-Odd-Palindromes"><a href="#D-Odd-Palindromes" class="headerlink" title="D.Odd Palindromes"></a>D.Odd Palindromes</h3><p>&gt;</p>
 </span>
       
     </div>
@@ -283,13 +263,9 @@ D题题意是给">
       
         <div class="post-tags">
           
-            <a href="/tags/AtCoder/" rel="tag">#AtCoder</a>
+            <a href="/tags/CS-academy/" rel="tag">#CS academy</a>
           
-            <a href="/tags/DP/" rel="tag">#DP</a>
-          
-            <a href="/tags/倍增/" rel="tag">#倍增</a>
-          
-            <a href="/tags/KMP/" rel="tag">#KMP</a>
+            <a href="/tags/树形DP/" rel="tag">#树形DP</a>
           
         </div>
       
@@ -298,13 +274,11 @@ D题题意是给">
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/09/07/AtCoder-Grand-Contest-002/" rel="prev">AtCoder Grand Contest 002</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/03/AtCoder-Regular-Contest-059/" rel="next">AtCoder Regular Contest 059</a>
+              <a href="/2017/05/30/Codeforces-416-Div2/" rel="next">Codeforces 416 Div2</a>
             
           </div>
         </div>
@@ -424,7 +398,7 @@ D题题意是给">
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Tak-and-Cards"><span class="nav-number">1.</span> <span class="nav-text">C Tak and Cards</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Digit-Sum"><span class="nav-number">2.</span> <span class="nav-text">D Digit Sum</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-Tak-and-Hotels"><span class="nav-number">3.</span> <span class="nav-text">E Tak and Hotels</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#F-Best-Representation"><span class="nav-number">4.</span> <span class="nav-text">F Best Representation</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Missing-Number"><span class="nav-number">1.</span> <span class="nav-text">A.Missing Number</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Positive-Xors"><span class="nav-number">2.</span> <span class="nav-text">B.Positive Xors</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Equality"><span class="nav-number">3.</span> <span class="nav-text">C.Equality</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Odd-Palindromes"><span class="nav-number">4.</span> <span class="nav-text">D.Odd Palindromes</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
