@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="2997ms" />
+  <meta name="keywords" content="," />
 
 
 
@@ -84,15 +84,23 @@
 
 
 
-<meta name="description" content="2997ms">
+<meta name="description" content="最近要学习ML以及Tensorflow，既兴奋又慌张。兴奋在于自己完全没接触过，慌张也在于自己完全没接触过。。。有太多太多东西需要学习了。
+
+但不管怎么样，感谢生命的馈赠，尽情享受它带给你的一切。">
+<meta name="keywords">
 <meta property="og:type" content="website">
-<meta property="og:title" content="2997ms">
-<meta property="og:url" content="http://2997ms.github.io/archives/2016/page/2/index.html">
+<meta property="og:title" content="Tensorflow学习笔记">
+<meta property="og:url" content="http://2997ms.github.io/Tensorflow学习笔记.html">
 <meta property="og:site_name" content="2997ms">
-<meta property="og:description" content="2997ms">
+<meta property="og:description" content="最近要学习ML以及Tensorflow，既兴奋又慌张。兴奋在于自己完全没接触过，慌张也在于自己完全没接触过。。。有太多太多东西需要学习了。
+
+但不管怎么样，感谢生命的馈赠，尽情享受它带给你的一切。">
+<meta property="og:updated_time" content="2017-07-02T08:58:08.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2997ms">
-<meta name="twitter:description" content="2997ms">
+<meta name="twitter:title" content="Tensorflow学习笔记">
+<meta name="twitter:description" content="最近要学习ML以及Tensorflow，既兴奋又慌张。兴奋在于自己完全没接触过，慌张也在于自己完全没接触过。。。有太多太多东西需要学习了。
+
+但不管怎么样，感谢生命的馈赠，尽情享受它带给你的一切。">
 
 
 
@@ -113,10 +121,16 @@
 
 
 
-  <link rel="canonical" href="http://2997ms.github.io/archives/2016/page/2/"/>
+  <link rel="canonical" href="http://2997ms.github.io/Tensorflow学习笔记.html"/>
 
 
-  <title> 归档 | 2997ms </title>
+  <title>
+  
+
+  
+    Tensorflow学习笔记 | 2997ms
+  
+</title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -137,7 +151,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  page-archive  ">
+  <div class="container one-collumn sidebar-position-left  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
@@ -246,402 +260,29 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-       
-      
-      OK! 目前共计 50 篇日志。 继续努力。
-    </span>
+  <div id="posts" class="posts-expand">
+    
+    
+      <p>最近要学习ML以及Tensorflow，既兴奋又慌张。兴奋在于自己完全没接触过，慌张也在于自己完全没接触过。。。有太多太多东西需要学习了。</p>
+<blockquote>
+<p>但不管怎么样，感谢生命的馈赠，尽情享受它带给你的一切。</p>
+</blockquote>
+<a id="more"></a>
+<p>官方文档下的Tensorflow：</p>
+<p>1.使用图(graph)来表示计算任务。</p>
+<p>2.在被称之为会话(Session)的上下文(context)中执行图。</p>
+<p>3.使用tensor表示数据。</p>
+<p>4.通过变量(Variable)维护状态。</p>
+<p>5.使用 feed 和 fetch 可以为任意的操作(arbitrary operation) 赋值或者从其中获取数据.</p>
+<p><a href="http://suanfazu.com/t/tensorflow/13217/2" target="_blank" rel="external">例子</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">	</div><div class="line">	var = tf.Variable(<span class="number">0</span>,name = <span class="string">'counter'</span>)</div><div class="line"></div><div class="line">	one = tf.constant(<span class="number">1</span>)</div><div class="line"></div><div class="line">	new_value = tf.add(var,one)</div><div class="line"></div><div class="line">	<span class="comment">#print new_value</span></div><div class="line">	<span class="comment">#print var</span></div><div class="line"></div><div class="line">	update = tf.assign(var,new_value)</div><div class="line"></div><div class="line">	init_op = tf.initialize_all_variables()</div><div class="line">	</div><div class="line">	<span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</div><div class="line">		sess.run(init_op)</div><div class="line">		<span class="keyword">print</span> sess.run(var)</div><div class="line"></div><div class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>):</div><div class="line">			sess.run(update)</div><div class="line">			<span class="keyword">print</span> sess.run(var)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>所有的节点在定义的时候都是都是不会执行的，只有在Session.run()调用的时候才会run，以上的过程可以看成图，从var节点流到add节点再流到flow节点，而Session这个对象正是把图运行的载体。</p>
+<p>关于Session，相当于申请了资源来执行已经定义好的流程，那么在流程执行结束后需要调用Session.close()来释放资源，可以手动调用，也可以使用with写法。</p>
+</blockquote>
 
     
-
-      
-      
-      
-
-      
-        
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2016">2016</h2>
-        </div>
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/10/06/Intel-Code-Chanllenge-Elimination-Round/" itemprop="url">
-              
-                <span itemprop="name">Intel Code Chanllenge Elimination Round</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-10-06T21:39:17+08:00"
-              content="2016-10-06" >
-          10-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/10/06/Codeforces-375-Div2/" itemprop="url">
-              
-                <span itemprop="name">Codeforces 375 Div2</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-10-06T20:25:18+08:00"
-              content="2016-10-06" >
-          10-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/10/06/Codeforces-374-Div2/" itemprop="url">
-              
-                <span itemprop="name">Codeforces 374 Div2</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-10-06T18:05:07+08:00"
-              content="2016-10-06" >
-          10-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/10/06/Hackerrank-HourRank-13/" itemprop="url">
-              
-                <span itemprop="name">Hackerrank HourRank 13</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-10-06T17:17:26+08:00"
-              content="2016-10-06" >
-          10-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/09/28/Codeforces-372-Div2/" itemprop="url">
-              
-                <span itemprop="name">Codeforces 372 Div2</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-09-28T09:29:44+08:00"
-              content="2016-09-28" >
-          09-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/09/27/Codeforces-373-Div2/" itemprop="url">
-              
-                <span itemprop="name">Codeforces 373 Div2</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-09-27T23:13:57+08:00"
-              content="2016-09-27" >
-          09-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/09/27/CODE-FESTIVAL-2016-Qualification-Round-A/" itemprop="url">
-              
-                <span itemprop="name">CODE FESTIVAL 2016 Qualification Round A</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-09-27T21:49:04+08:00"
-              content="2016-09-27" >
-          09-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/09/23/LeetCode-11-20/" itemprop="url">
-              
-                <span itemprop="name">LeetCode 11-20</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-09-23T10:31:39+08:00"
-              content="2016-09-23" >
-          09-23
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/09/21/LeetCode-1-10/" itemprop="url">
-              
-                <span itemprop="name">LeetCode 1-10</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-09-21T10:15:24+08:00"
-              content="2016-09-21" >
-          09-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/09/19/Google-APAC-Test-2017-Round-C/" itemprop="url">
-              
-                <span itemprop="name">Google APAC Test 2017 Round C</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-09-19T14:16:11+08:00"
-              content="2016-09-19" >
-          09-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-  </section>
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/2016/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/archives/2016/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2016/page/3/">3</a><a class="page-number" href="/archives/2016/page/4/">4</a><a class="extend next" rel="next" href="/archives/2016/page/3/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
-
+  </div>
 
 
           </div>
@@ -649,6 +290,15 @@
 
 
           
+  <div class="comments" id="comments">
+    
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2137748"></script>
+    <!-- UY END -->
+    
+  </div>
+
 
         </div>
         
@@ -851,12 +501,6 @@
   
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
-
 
   
 
