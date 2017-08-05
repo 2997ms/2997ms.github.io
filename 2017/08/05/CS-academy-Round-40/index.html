@@ -84,19 +84,16 @@
 
 
 
-<meta name="description" content="题目链接
-A Erase Value12345678910111213141516171819202122232425int n;int val[maxn];void solve()&amp;#123;	sa(n);		int sum = 0;	repp(i,1,n)	&amp;#123;		sa(val[i]);		sum+=val[i];	&amp;#125;	repp(i,1,n)	&amp;#123;		int cnt">
+<meta name="description" content="似乎。。。要锻炼一下了啊。。。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CS academy Round 40">
 <meta property="og:url" content="http://2997ms.github.io/2017/08/05/CS-academy-Round-40/index.html">
 <meta property="og:site_name" content="2997ms">
-<meta property="og:description" content="题目链接
-A Erase Value12345678910111213141516171819202122232425int n;int val[maxn];void solve()&amp;#123;	sa(n);		int sum = 0;	repp(i,1,n)	&amp;#123;		sa(val[i]);		sum+=val[i];	&amp;#125;	repp(i,1,n)	&amp;#123;		int cnt">
-<meta property="og:updated_time" content="2017-08-05T08:06:48.000Z">
+<meta property="og:description" content="似乎。。。要锻炼一下了啊。。。">
+<meta property="og:updated_time" content="2017-08-05T08:08:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CS academy Round 40">
-<meta name="twitter:description" content="题目链接
-A Erase Value12345678910111213141516171819202122232425int n;int val[maxn];void solve()&amp;#123;	sa(n);		int sum = 0;	repp(i,1,n)	&amp;#123;		sa(val[i]);		sum+=val[i];	&amp;#125;	repp(i,1,n)	&amp;#123;		int cnt">
+<meta name="twitter:description" content="似乎。。。要锻炼一下了啊。。。">
 
 
 
@@ -335,7 +332,8 @@ A Erase Value12345678910111213141516171819202122232425int n;int val[maxn];void s
       
 
       
-        <a id="more"></a>
+        <p>似乎。。。要锻炼一下了啊。。。</p>
+<a id="more"></a>
 <p><a href="https://csacademy.com/contest/round-40/summary/" target="_blank" rel="external">题目链接</a></p>
 <h3 id="A-Erase-Value"><a href="#A-Erase-Value" class="headerlink" title="A Erase Value"></a>A Erase Value</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> n;</div><div class="line"><span class="keyword">int</span> val[maxn];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	sa(n);</div><div class="line">	</div><div class="line">	<span class="keyword">int</span> sum = <span class="number">0</span>;</div><div class="line">	repp(i,<span class="number">1</span>,n)</div><div class="line">	&#123;</div><div class="line">		sa(val[i]);</div><div class="line">		sum+=val[i];</div><div class="line">	&#125;</div><div class="line">	repp(i,<span class="number">1</span>,n)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">int</span> cnt=<span class="number">0</span>;</div><div class="line">		repp(j,<span class="number">1</span>,n)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">if</span>(val[i]==val[j])<span class="keyword">continue</span>;</div><div class="line">			cnt+=val[j];</div><div class="line">		&#125;</div><div class="line">		sum=min(sum,cnt);</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sum);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="B-Move-the-Bishop"><a href="#B-Move-the-Bishop" class="headerlink" title="B Move the Bishop"></a>B Move the Bishop</h3><p>宽搜一发。</p>
