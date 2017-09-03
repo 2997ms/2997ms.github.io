@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://2997ms.github.io/2017/08/05/CS-academy-Round-40/index.html">
 <meta property="og:site_name" content="2997ms">
 <meta property="og:description" content="似乎。。。要锻炼一下了啊。。。">
-<meta property="og:updated_time" content="2017-08-05T08:08:39.000Z">
+<meta property="og:updated_time" content="2017-08-11T13:11:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CS academy Round 40">
 <meta name="twitter:description" content="似乎。。。要锻炼一下了啊。。。">
@@ -351,7 +351,7 @@
 <h3 id="E-Direct-the-Graph"><a href="#E-Direct-the-Graph" class="headerlink" title="E Direct the Graph"></a>E Direct the Graph</h3><blockquote>
 <p>当前是一个$n$个点的无向完全图，现在要你对每一个边标记方向，有最多的3元环。问最多的3元环个数以及方案。</p>
 </blockquote>
-<p>所有的环-bad环。</p>
+<p>答案即是：所有的环 - bad环。</p>
 <p>所有的环：C(n,3)。</p>
 <p>bad环：任意一个点的两个同方向的路径都会组成一个bad环。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">ll n;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	<span class="built_in">cin</span>&gt;&gt;n;</div><div class="line">	ll ans = n*(n<span class="number">-1</span>)*(n<span class="number">-2</span>)/<span class="number">6</span>;</div><div class="line">	ll bad = (n<span class="number">-1</span>)/<span class="number">2</span>;</div><div class="line">	bad = (bad*(bad<span class="number">-1</span>)/<span class="number">2</span>+(n<span class="number">-1</span>-bad)*(n<span class="number">-1</span>-bad<span class="number">-1</span>)/<span class="number">2</span>);</div><div class="line">	bad = n*bad/<span class="number">2</span>;</div><div class="line">	ans = ((ans-bad)%mod+mod)%mod;</div><div class="line">	<span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">	ll cnt = (n<span class="number">-1</span>)/<span class="number">2</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=n<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)</div><div class="line">	&#123;</div><div class="line">		<span class="function"><span class="built_in">string</span> <span class="title">c1</span><span class="params">(i-cnt,<span class="string">'0'</span>)</span></span>;</div><div class="line">		<span class="function"><span class="built_in">string</span> <span class="title">c2</span><span class="params">(cnt,<span class="string">'1'</span>)</span></span>;</div><div class="line"></div><div class="line">		cnt-=<span class="number">1</span>;</div><div class="line">		cnt=max(cnt,<span class="number">0l</span>l);</div><div class="line">		<span class="built_in">cout</span>&lt;&lt;c1&lt;&lt;c2;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -392,6 +392,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/30/2017年-8月-荒腔走板/" rel="prev" title="2017_8月_荒腔走板">
+                2017_8月_荒腔走板 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -464,7 +468,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">53</span>
+              <span class="site-state-item-count">54</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -472,7 +476,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
