@@ -6,7 +6,9 @@
     <entry>
       <title><![CDATA[Hackerrank 专题(一)]]></title>
       <url>http://2997ms.github.io/2017/10/06/Hackerrank-%E4%B8%93%E9%A2%98(%E4%B8%80)/</url>
-      <content type="html"><![CDATA[<p>不知所言。</p>
+      <content type="html"><![CDATA[<blockquote>
+<p>如果不坚持对现实表示些不满、刻薄或者绝望的话, 人生就虚伪得连一点诚意都没有了.</p>
+</blockquote>
 <a id="more"></a>
 <h3 id="Kingdom-Division"><a href="#Kingdom-Division" class="headerlink" title="Kingdom Division"></a><a href="https://www.hackerrank.com/challenges/kingdom-division" target="_blank" rel="external">Kingdom Division</a></h3><blockquote>
 <p>题意是给出一棵树，然后要对这棵树上的每一个点进行0或者1的染色，要求不能一个点的相邻节点都是另一个颜色，这样分配会引发战争。问有多少种染色方法。</p>
