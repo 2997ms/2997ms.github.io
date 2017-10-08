@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title><![CDATA[CODE FESTIVAL 2017 qual B(待填)]]></title>
+      <url>http://2997ms.github.io/2017/10/08/CODE-FESTIVAL-2017-qual-B-%E5%BE%85%E5%A1%AB/</url>
+      <content type="html"><![CDATA[<p>感觉还是应该多打一些contest，多在打的时候思考思考。。。</p>
+<p>C题想了两个小时没思路啊，智障啊。。。</p>
+<p><a href="http://code-festival-2017-qualb.contest.atcoder.jp/" target="_blank" rel="external">题目链接</a></p>
+<a id="more"></a>
+<p>AB两个水题不说了。</p>
+<h3 id="C-3-Steps"><a href="#C-3-Steps" class="headerlink" title="C - 3 Steps"></a>C - 3 Steps</h3><blockquote>
+<p>题意是给出一个联通图，无自环和重边，然后不断的往里面添加边，添加边的条件是这两个点可以通过三条边连接，那么这两个点就可以添一条边。问最多添多少边。</p>
+</blockquote>
+<p>居然。。。往二分图那方面去想了。。。</p>
+<p>后来自己想想。。。有道理啊。。。</p>
+<p>首先这个是一个联通图，那么如果不能变成二分图的话，就是有奇环了，那么画一下会发现，任意两个点最终都可以添一条边，答案就是$\frac{n*(n-1)}{2}-m$。</p>
+<p>如果可以变成二分图的话呢。。。染色黑白，就是黑的数量*白的数量-m。。。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> n,m;</div><div class="line"><span class="keyword">int</span> col[maxn];</div><div class="line">ll cnt1,cnt2;</div><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;edge[maxn];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> c)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span>(col[x]!=<span class="number">-1</span>)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">return</span> col[x]==c;</div><div class="line">	&#125;</div><div class="line">	col[x]=c;</div><div class="line">	<span class="keyword">int</span> res=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;edge[x].size();i++)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">int</span> nxt=edge[x][i];</div><div class="line">		res&amp;=dfs(nxt,<span class="number">1</span>-c);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> res;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	sa(n),sa(m);</div><div class="line">	</div><div class="line">	repp(i,<span class="number">1</span>,m)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">int</span> x,y;</div><div class="line">		sa(x),sa(y);</div><div class="line">		edge[x].push_back(y);</div><div class="line">		edge[y].push_back(x);</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">memset</span>(col,<span class="number">-1</span>,<span class="keyword">sizeof</span>(col));</div><div class="line">	<span class="keyword">bool</span> res = dfs(<span class="number">1</span>,<span class="number">0</span>);</div><div class="line">	repp(i,<span class="number">1</span>,n)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span>(col[i])cnt1++;</div><div class="line">		<span class="keyword">else</span> cnt2++;</div><div class="line">	&#125;</div><div class="line">	ll ans=-m;</div><div class="line">	<span class="keyword">if</span>(res)</div><div class="line">	&#123;</div><div class="line">		ans+=cnt1*cnt2;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span></div><div class="line">	&#123;</div><div class="line">		ans+=<span class="number">1L</span>L*n*(n<span class="number">-1</span>)/<span class="number">2</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[最近的笔试题]]></title>
       <url>http://2997ms.github.io/2017/10/08/%E6%9C%80%E8%BF%91%E7%9A%84%E7%AC%94%E8%AF%95%E9%A2%98/</url>
       <content type="html"><![CDATA[<p>日常智障</p>
@@ -42,8 +61,8 @@
     </entry>
     
     <entry>
-      <title><![CDATA[University CodeSprint 3(待补)]]></title>
-      <url>http://2997ms.github.io/2017/10/04/University-CodeSprint-3-%E5%BE%85%E8%A1%A5/</url>
+      <title><![CDATA[University CodeSprint 3(待填)]]></title>
+      <url>http://2997ms.github.io/2017/10/04/University-CodeSprint-3-%E5%BE%85%E5%A1%AB/</url>
       <content type="html"><![CDATA[<p>十一的时候打的这个比赛，前五题感觉都很容易。然后第六题不会。。暴力骗了点分。。</p>
 <p>后来看Editoral这个第六题确实没想到，学到了。。。但也不是很难啊。。。</p>
 <p>第七题好像是link-cut-tree？没学过，以后补一下。</p>
