@@ -238,8 +238,8 @@
     </entry>
     
     <entry>
-      <title><![CDATA[继承和组合]]></title>
-      <url>http://2997ms.github.io/2017/06/30/%E7%BB%A7%E6%89%BF%E5%92%8C%E7%BB%84%E5%90%88/</url>
+      <title><![CDATA[不会C++(二)(继承和组合)]]></title>
+      <url>http://2997ms.github.io/2017/06/30/%E4%B8%8D%E4%BC%9AC++(%E4%BA%8C)/</url>
       <content type="html"><![CDATA[<p>对于知识上的匮乏到了忍无可忍的地步。。。需要认真<strong>从头</strong>梳理一些概念的理解。</p>
 <p>不把这些搞清楚，实在没有办法安心做其他的。自己怎么这么弱啊。。。</p>
 <a id="more"></a>
@@ -525,7 +525,7 @@
     </entry>
     
     <entry>
-      <title><![CDATA[不会C++(一)]]></title>
+      <title><![CDATA[不会C++(一)(explicit,new与malloc,union)]]></title>
       <url>http://2997ms.github.io/2017/05/16/%E4%B8%8D%E4%BC%9AC++(%E4%B8%80)/</url>
       <content type="html"><![CDATA[<p>这里整理一下C++语法中经常会出现的问题。。。</p>
 <a id="more"></a>
@@ -559,7 +559,7 @@
 </blockquote>
 <p>int *pia = new int[10];    // 10个未初始化int</p>
 <p>int *pia2 = new int<a href="">10\</a>; // 10个值初始化为0的int</p>
-<p>int <em>p2 = new int<a href="">10\</a>;申请了空间，而且进行了初始化int </em>p1 = new int[10];只申请空间，没有进行初始化原因：对于一些结构体，我们可以看到（）往往表示构造函数，int是基本类型算初始化吧理由：你可以测试输出两种的值你会发现p1的值未知，而p2清零了。</p>
+<p>int <em>p2 = new int<a href="">10\</a>;申请了空间，而且进行了初始化。int </em>p1 = new int[10];只申请空间，没有进行初始化原因：对于一些结构体，我们可以看到（）往往表示构造函数，int是基本类型初始化。理由：你可以测试输出两种的值你会发现p1的值未知，而p2清零了。</p>
 <p>new运算符只是申请分配一个内存空间而已，因为不知道为其分配对象的名称，所以分配之后返回的只是一个指向该对象的指针，并没有初始化，加上一个（）后，就相当于调用了默认构造函数，会默认初始化，用0来初始化.</p>
 <h3 id="4-union联合"><a href="#4-union联合" class="headerlink" title="4.union联合"></a>4.union联合</h3><p>union的所有成员引用的是<strong>内存中的相同位置</strong>，当你想在不同的时刻把不同的东西存储于同一个位置时，就可以使用联合。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">union</span></div><div class="line">&#123;</div><div class="line">  <span class="keyword">float</span> f;</div><div class="line">  <span class="keyword">int</span> i;</div><div class="line">&#125;fi;</div><div class="line">fi.f = <span class="number">3.14159</span>;</div><div class="line"><span class="built_in">printf</span>(<span class="string">"%d\n"</span>,fi.i);</div></pre></td></tr></table></figure>]]></content>
