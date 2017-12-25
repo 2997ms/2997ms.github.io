@@ -1,0 +1,862 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="DP,KMP,LeetCode,链表," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="这一期10道题好难啊。。。好多要记的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode 21-30">
+<meta property="og:url" content="http://2997ms.github.io/2016/10/07/Leetcode/LeetCode-21-30/index.html">
+<meta property="og:site_name" content="2997ms">
+<meta property="og:description" content="这一期10道题好难啊。。。好多要记的。">
+<meta property="og:updated_time" content="2016-12-27T07:47:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LeetCode 21-30">
+<meta name="twitter:description" content="这一期10道题好难啊。。。好多要记的。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://2997ms.github.io/2016/10/07/Leetcode/LeetCode-21-30/"/>
+
+
+  <title> LeetCode 21-30 | 2997ms </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">2997ms</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">2997ms</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                LeetCode 21-30
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-07T22:27:24+08:00" content="2016-10-07">
+              2016-10-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/题记/" itemprop="url" rel="index">
+                    <span itemprop="name">题记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这一期10道题好难啊。。。好多要记的。</p>
+<a id="more"></a>
+<h3 id="21-Merge-Two-Sorted-Lists"><a href="#21-Merge-Two-Sorted-Lists" class="headerlink" title="21 Merge Two Sorted Lists"></a>21 Merge Two Sorted Lists</h3><blockquote>
+<p>合并两个链表，注意为空的情况。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">* Definition for singly-linked list.</div><div class="line">* struct ListNode &#123;</div><div class="line">*     int val;</div><div class="line">*     ListNode *next;</div><div class="line">*     ListNode(int x) : val(x), next(NULL) &#123;&#125;</div><div class="line">* &#125;;</div><div class="line">*/</div><div class="line"><span class="keyword">class</span> Solution </div><div class="line">&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span></span></div><div class="line">	&#123;</div><div class="line">		<span class="function">ListNode <span class="title">node</span><span class="params">(INT_MIN)</span></span>;</div><div class="line">		ListNode *head = &amp;node;</div><div class="line"></div><div class="line">		<span class="keyword">while</span> (l1&amp;&amp;l2)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">if</span> (l1-&gt;val &lt; l2-&gt;val)</div><div class="line">			&#123;</div><div class="line">				head-&gt;next = l1;</div><div class="line">				l1 = l1-&gt;next;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">else</span></div><div class="line">			&#123;</div><div class="line">				head-&gt;next = l2;</div><div class="line">				l2 = l2-&gt;next;</div><div class="line">			&#125;</div><div class="line">			head = head-&gt;next;</div><div class="line">		&#125;</div><div class="line">		head-&gt;next = l1 ? l1 : l2;</div><div class="line">		<span class="keyword">return</span> node.next;</div><div class="line">	&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="22-Generate-Parentheses"><a href="#22-Generate-Parentheses" class="headerlink" title="22 Generate Parentheses"></a>22 Generate Parentheses</h3><blockquote>
+<p>产生长度为$2*n$的合法括号字符串。</p>
+</blockquote>
+<p>这种题递归求解很容易理解，其实也可以非递归写的，这里有<a href="https://discuss.leetcode.com/topic/18523/a-simplified-c-dp-solution-4ms-8-lines" target="_blank" rel="external">DP求解</a>的。思路就是$dp[x]$表示由x个括号组成的所有字符串，那推倒$x+1$就是在前面的长度两个加一起长度为$x$的合在一起就好了。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">gen</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp;res, <span class="keyword">int</span> le, <span class="keyword">int</span> ri, <span class="built_in">string</span> cur)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (le == <span class="number">0</span> &amp;&amp; ri == <span class="number">0</span>)</div><div class="line">	&#123;</div><div class="line">		res.push_back(cur);</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> (le &gt; <span class="number">0</span>)</div><div class="line">	&#123;</div><div class="line">		gen(res, le - <span class="number">1</span>, ri, cur + <span class="string">'('</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> (ri &gt; le)</div><div class="line">	&#123;</div><div class="line">		gen(res, le, ri - <span class="number">1</span>, cur + <span class="string">')'</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">class</span> Solution </div><div class="line">&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; generateParenthesis(<span class="keyword">int</span> n)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;res;</div><div class="line">		gen(res, n, n, <span class="string">""</span>);</div><div class="line">		<span class="keyword">return</span> res;</div><div class="line">	&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="23-Merge-k-Sorted-Lists"><a href="#23-Merge-k-Sorted-Lists" class="headerlink" title="23 Merge k Sorted Lists"></a>23 Merge k Sorted Lists</h3><blockquote>
+<p>把k的链表合在一起。</p>
+</blockquote>
+<p>归并排序的思想。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for singly-linked list.</div><div class="line"> * struct ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode *next;</div><div class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line"><span class="function">ListNode* <span class="title">mergeTwoLists</span><span class="params">(ListNode* l1, ListNode* l2)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="function">ListNode <span class="title">node</span><span class="params">(INT_MIN)</span></span>;</div><div class="line">	ListNode *head = &amp;node;</div><div class="line"></div><div class="line">	<span class="keyword">while</span> (l1&amp;&amp;l2)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span> (l1-&gt;val &lt; l2-&gt;val)</div><div class="line">		&#123;</div><div class="line">			head-&gt;next = l1;</div><div class="line">			l1 = l1-&gt;next;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		&#123;</div><div class="line">			head-&gt;next = l2;</div><div class="line">			l2 = l2-&gt;next;</div><div class="line">		&#125;</div><div class="line">		head = head-&gt;next;</div><div class="line">	&#125;</div><div class="line">	head-&gt;next = l1 ? l1 : l2;</div><div class="line">	<span class="keyword">return</span> node.next;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">class</span> Solution </div><div class="line">&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="function">ListNode* <span class="title">mergeKLists</span><span class="params">(<span class="built_in">vector</span>&lt;ListNode*&gt;&amp; lists)</span> </span></div><div class="line">	&#123;</div><div class="line">		<span class="keyword">int</span> sz = lists.size();</div><div class="line">		<span class="keyword">if</span> (sz == <span class="number">0</span>)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (sz == <span class="number">1</span>)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">return</span> lists[<span class="number">0</span>];</div><div class="line">		&#125;</div><div class="line">		<span class="built_in">vector</span>&lt;ListNode*&gt;left(lists.begin(), lists.begin() + sz / <span class="number">2</span>);</div><div class="line">		<span class="built_in">vector</span>&lt;ListNode*&gt;right(lists.begin() + sz / <span class="number">2</span>, lists.end());</div><div class="line">		<span class="keyword">return</span> mergeTwoLists(mergeKLists(left), mergeKLists(right));</div><div class="line">	&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="24-Swap-Nodes-in-Pairs"><a href="#24-Swap-Nodes-in-Pairs" class="headerlink" title="24 Swap Nodes in Pairs"></a>24 Swap Nodes in Pairs</h3><blockquote>
+<p>交换链表中相邻的两个节点。</p>
+</blockquote>
+<p>后面相邻k个的简单版。(链表的题目永远不要嫌多。。。)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for singly-linked list.</div><div class="line"> * struct ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode *next;</div><div class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line"><span class="keyword">class</span> Solution </div><div class="line">&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function">ListNode* <span class="title">swapPairs</span><span class="params">(ListNode* head)</span> </span></div><div class="line">    &#123;</div><div class="line">    	ListNode no = ListNode(<span class="number">0</span>);</div><div class="line">    	no.next = head;</div><div class="line">    	ListNode *pre=&amp;no;</div><div class="line"></div><div class="line">    	<span class="keyword">while</span>(head&amp;&amp;head-&gt;next)</div><div class="line">    	&#123;</div><div class="line">    		ListNode *tmp=head-&gt;next-&gt;next;</div><div class="line"></div><div class="line">    		pre-&gt;next=head-&gt;next;</div><div class="line">    		head-&gt;next-&gt;next=head;</div><div class="line">    		head-&gt;next=tmp;</div><div class="line"></div><div class="line">    		pre = head;</div><div class="line">    		head = tmp;</div><div class="line">    	&#125;</div><div class="line"></div><div class="line">    	<span class="keyword">return</span> no.next;   </div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="25-Reverse-Nodes-in-k-Group"><a href="#25-Reverse-Nodes-in-k-Group" class="headerlink" title="**25 Reverse Nodes in k-Group"></a><strong><em>**</em></strong>25 Reverse Nodes in k-Group</h3><blockquote>
+<p>对链表，旋转相邻k个节点。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for singly-linked list.</div><div class="line"> * struct ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode *next;</div><div class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="function">ListNode* <span class="title">reverseKGroup</span><span class="params">(ListNode* head, <span class="keyword">int</span> k)</span></span></div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span> (head == <span class="literal">NULL</span> || k == <span class="number">1</span>)<span class="keyword">return</span> head;</div><div class="line">		ListNode *res = <span class="keyword">new</span> ListNode(<span class="number">-1</span>);</div><div class="line">		res-&gt;next = head;</div><div class="line">		ListNode *pre = res;</div><div class="line">		ListNode *cur = res;</div><div class="line">		ListNode *nxt = res;</div><div class="line"></div><div class="line">		<span class="keyword">int</span> num = <span class="number">0</span>;</div><div class="line">		<span class="keyword">while</span> (cur-&gt;next)</div><div class="line">		&#123;</div><div class="line">			cur = cur-&gt;next;</div><div class="line">			num++;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">while</span> (num &gt;= k)</div><div class="line">		&#123;</div><div class="line">			cur = pre-&gt;next;</div><div class="line">			nxt = cur-&gt;next;</div><div class="line"></div><div class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; k; i++)</div><div class="line">			&#123;</div><div class="line">				cur-&gt;next = nxt-&gt;next;</div><div class="line">				nxt-&gt;next = pre-&gt;next;</div><div class="line">				pre-&gt;next = nxt;</div><div class="line">				nxt = cur-&gt;next;</div><div class="line">			&#125;</div><div class="line">			num -= k;</div><div class="line">			pre = cur;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> res-&gt;next;</div><div class="line">	&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="27-Remove-Element"><a href="#27-Remove-Element" class="headerlink" title="27 Remove Element"></a>27 Remove Element</h3><blockquote>
+<p>要求在数组内删除值为val的元素。不要另开空间。</p>
+</blockquote>
+<p>我的做法还是麻烦了很多，这个人的<a href="https://discuss.leetcode.com/topic/61161/c-solution-0-ms" target="_blank" rel="external">解法</a>是0ms的。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution</div><div class="line">&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="function"><span class="keyword">int</span> <span class="title">removeElement</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> val)</span></span></div><div class="line">	&#123;</div><div class="line">		<span class="keyword">int</span> sz = nums.size();</div><div class="line">		<span class="keyword">if</span> (sz == <span class="number">0</span>)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">int</span> idx = sz - <span class="number">1</span>;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = sz - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">if</span> (nums[i] == val)</div><div class="line">			&#123;</div><div class="line">				swap(nums[i], nums[idx]);</div><div class="line">				idx--;</div><div class="line">				sz--;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		nums.resize(sz);</div><div class="line">		<span class="keyword">return</span> sz;</div><div class="line">	&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="28-Implement-strStr"><a href="#28-Implement-strStr" class="headerlink" title="28  Implement strStr()"></a>28  Implement strStr()</h3><blockquote>
+<p>返回子串在原串中出现的位置。</p>
+</blockquote>
+<p>裸kmp。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">getnext</span><span class="params">(<span class="built_in">string</span> x, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp;nxt)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> k = <span class="number">-1</span>;</div><div class="line">	<span class="keyword">int</span> len = x.length();</div><div class="line">	nxt[<span class="number">0</span>] = <span class="number">-1</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; )</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span> (k == <span class="number">-1</span> || x[k] == x[i])</div><div class="line">		&#123;</div><div class="line">			k++;</div><div class="line">			i++;</div><div class="line">			nxt[i] = k;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		&#123;</div><div class="line">			k = nxt[k];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">class</span> Solution </div><div class="line">&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="function"><span class="keyword">int</span> <span class="title">strStr</span><span class="params">(<span class="built_in">string</span> haystack, <span class="built_in">string</span> needle)</span> </span></div><div class="line">	&#123;</div><div class="line">		<span class="keyword">int</span> len1 = haystack.length();</div><div class="line">		<span class="keyword">int</span> len2 = needle.length();</div><div class="line">		</div><div class="line">		<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;nxt(needle.length() + <span class="number">1</span>, <span class="number">0</span>);</div><div class="line">		getnext(needle, nxt);</div><div class="line"></div><div class="line">		<span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</div><div class="line">		<span class="keyword">while</span> (i &lt; len1 &amp;&amp; j &lt; len2)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">if</span> (j == <span class="number">-1</span> || haystack[i] == needle[j])</div><div class="line">			&#123;</div><div class="line">				i++;</div><div class="line">				j++;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">else</span></div><div class="line">			&#123;</div><div class="line">				j = nxt[j];</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (j == len2)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">return</span> i - len2;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		&#123;</div><div class="line">			<span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="29-Divide-Two-Integers"><a href="#29-Divide-Two-Integers" class="headerlink" title="29 Divide Two Integers"></a>29 Divide Two Integers</h3><blockquote>
+<p>算两数相除，不能使用乘除模操作。</p>
+</blockquote>
+<p>使用移位操作，化成二进制。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">cal</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> dividend, <span class="keyword">long</span> <span class="keyword">long</span> divisor)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">long</span> <span class="keyword">long</span> res = <span class="number">0</span>;</div><div class="line">	<span class="keyword">long</span> <span class="keyword">long</span> d = <span class="built_in">abs</span>(dividend);</div><div class="line">	<span class="keyword">long</span> <span class="keyword">long</span> t = <span class="built_in">abs</span>(divisor);</div><div class="line"></div><div class="line">	<span class="keyword">while</span> (d &gt;= t)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">long</span> <span class="keyword">long</span> cnt = <span class="number">0</span>;</div><div class="line">		<span class="keyword">while</span> ((t &lt;&lt; cnt) &lt;= d)</div><div class="line">		&#123;</div><div class="line">			cnt++;</div><div class="line">		&#125;</div><div class="line">		cnt--;</div><div class="line">		d -= (t &lt;&lt; cnt);</div><div class="line">		res += (<span class="number">1L</span>L &lt;&lt; cnt);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">int</span> s1 = dividend &lt; <span class="number">0</span>;</div><div class="line">	<span class="keyword">int</span> s2 = divisor &lt; <span class="number">0</span>;</div><div class="line">	<span class="keyword">if</span> (s1^s2)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">return</span> -res;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span></div><div class="line">	&#123;</div><div class="line">		<span class="keyword">return</span> res;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">class</span> Solution </div><div class="line">&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="function"><span class="keyword">int</span> <span class="title">divide</span><span class="params">(<span class="keyword">int</span> dividend, <span class="keyword">int</span> divisor)</span> </span></div><div class="line">	&#123;</div><div class="line">		<span class="keyword">int</span> s1 = dividend &lt; <span class="number">0</span>;</div><div class="line">		<span class="keyword">int</span> s2 = divisor &lt; <span class="number">0</span>;</div><div class="line">		<span class="keyword">if</span> (s1^s2)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">if</span> (<span class="built_in">abs</span>(dividend) == INT_MIN&amp;&amp;<span class="built_in">abs</span>(divisor) == <span class="number">1</span>)</div><div class="line">				<span class="keyword">return</span> INT_MIN;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		&#123;</div><div class="line">			<span class="keyword">if</span> (<span class="built_in">abs</span>(dividend) == INT_MIN&amp;&amp;<span class="built_in">abs</span>(divisor) == <span class="number">1</span>)</div><div class="line">				<span class="keyword">return</span> INT_MAX;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">long</span> <span class="keyword">long</span> res = cal(dividend, divisor);</div><div class="line">		<span class="keyword">if</span> (res &gt; INT_MAX || res &lt; INT_MIN)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">return</span> INT_MAX;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		&#123;</div><div class="line">			<span class="keyword">return</span> res;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="30-Substring-with-Concatenation-of-All-Words"><a href="#30-Substring-with-Concatenation-of-All-Words" class="headerlink" title="30 Substring with Concatenation of All Words"></a>30 Substring with Concatenation of All Words</h3><blockquote>
+<p>给出一个字符串集合，然后给出了原串，要求给出在原串里所有字符串集合中都出现一次的位置。</p>
+</blockquote>
+<p>记录一个map，算字符串出现的次数，然后每一个位置去对照，看是否超出或者没有找到。</p>
+<p>耗时好多啊，<a href="https://msreekan.com/2016/06/27/substring-with-concatenation-of-all-words/" target="_blank" rel="external">这里</a>有一篇使用trie的。看完之后回来改进一下。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution</div><div class="line">&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; findSubstring(<span class="built_in">string</span> s, <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; words) </div><div class="line">	&#123;</div><div class="line">		<span class="built_in">map</span>&lt;<span class="built_in">string</span>, <span class="keyword">int</span>&gt;num;</div><div class="line">		<span class="keyword">int</span> sz = words.size();</div><div class="line">		<span class="keyword">int</span> len = <span class="number">0</span>;</div><div class="line">		<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;res;</div><div class="line">		<span class="keyword">if</span> (sz == <span class="number">0</span>)<span class="keyword">return</span> res;</div><div class="line">		<span class="keyword">int</span> one = words[<span class="number">0</span>].length();</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; sz; i++)</div><div class="line">		&#123;</div><div class="line">			num[words[i]]++;</div><div class="line">			len += words[i].length();</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">int</span> lens = s.length();</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i + len &lt;= lens; i++)</div><div class="line">		&#123;</div><div class="line">			<span class="built_in">map</span>&lt;<span class="built_in">string</span>, <span class="keyword">int</span>&gt;tmp;</div><div class="line">			<span class="keyword">int</span> f = <span class="number">0</span>;</div><div class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; sz; k++)</div><div class="line">			&#123;</div><div class="line">				<span class="built_in">string</span> t = s.substr(i + k*one, one);</div><div class="line">				<span class="keyword">if</span> (num.find(t) != num.end())</div><div class="line">				&#123;</div><div class="line">					tmp[t]++;</div><div class="line">					<span class="keyword">if</span> (tmp[t] &gt; num[t])</div><div class="line">					&#123;</div><div class="line">						f = <span class="number">1</span>;</div><div class="line">						<span class="keyword">break</span>;</div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line">				<span class="keyword">else</span></div><div class="line">				&#123;</div><div class="line">					f = <span class="number">1</span>;</div><div class="line">					<span class="keyword">break</span>;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">if</span> (f == <span class="number">0</span>)</div><div class="line">			&#123;</div><div class="line">				res.push_back(i);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> res;</div><div class="line">	&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/DP/" rel="tag">#DP</a>
+          
+            <a href="/tags/KMP/" rel="tag">#KMP</a>
+          
+            <a href="/tags/LeetCode/" rel="tag">#LeetCode</a>
+          
+            <a href="/tags/链表/" rel="tag">#链表</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/06/Codeforces/Intel-Code-Chanllenge-Elimination-Round/" rel="next" title="Intel Code Chanllenge Elimination Round">
+                <i class="fa fa-chevron-left"></i> Intel Code Chanllenge Elimination Round
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/09/2016/2016-9月-吭哧咔哧/" rel="prev" title="2016_9月_吭哧咔哧">
+                2016_9月_吭哧咔哧 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2137748"></script>
+    <!-- UY END -->
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="2997ms" />
+          <p class="site-author-name" itemprop="name">2997ms</p>
+          <p class="site-description motion-element" itemprop="description">2997ms</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">62</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/2997ms" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/u/3567374047?is_all=1" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#21-Merge-Two-Sorted-Lists"><span class="nav-number">1.</span> <span class="nav-text">21 Merge Two Sorted Lists</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#22-Generate-Parentheses"><span class="nav-number">2.</span> <span class="nav-text">22 Generate Parentheses</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#23-Merge-k-Sorted-Lists"><span class="nav-number">3.</span> <span class="nav-text">23 Merge k Sorted Lists</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#24-Swap-Nodes-in-Pairs"><span class="nav-number">4.</span> <span class="nav-text">24 Swap Nodes in Pairs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#25-Reverse-Nodes-in-k-Group"><span class="nav-number">5.</span> <span class="nav-text">**25 Reverse Nodes in k-Group</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#27-Remove-Element"><span class="nav-number">6.</span> <span class="nav-text">27 Remove Element</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#28-Implement-strStr"><span class="nav-number">7.</span> <span class="nav-text">28  Implement strStr()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#29-Divide-Two-Integers"><span class="nav-number">8.</span> <span class="nav-text">29 Divide Two Integers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#30-Substring-with-Concatenation-of-All-Words"><span class="nav-number">9.</span> <span class="nav-text">30 Substring with Concatenation of All Words</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">2997ms</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = false;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = decodeURIComponent(data.url);
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title >= 0 || index_content >= 0 ){
+                                isMatch = true;
+								if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            } 
+							
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
