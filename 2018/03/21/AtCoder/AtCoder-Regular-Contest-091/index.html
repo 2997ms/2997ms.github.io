@@ -85,18 +85,21 @@
 
 
 <meta name="description" content="最近这个三月在忙毕业的事情，答辩、各种表格、医院、签证等等。在结束这一切之后，这一期的AtCoder终于补完了。艰难脸^ - ^
-C、D不用说什么的话，那一共才两道题。。。">
+C、D不用说什么的话，那一共才两道题。。。
+Update: [2018-06-17]就这么一直拖到了现在。。。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AtCoder Regular Contest 091">
 <meta property="og:url" content="http://2997ms.github.io/2018/03/21/AtCoder/AtCoder-Regular-Contest-091/index.html">
 <meta property="og:site_name" content="2997ms">
 <meta property="og:description" content="最近这个三月在忙毕业的事情，答辩、各种表格、医院、签证等等。在结束这一切之后，这一期的AtCoder终于补完了。艰难脸^ - ^
-C、D不用说什么的话，那一共才两道题。。。">
-<meta property="og:updated_time" content="2018-03-21T14:29:07.010Z">
+C、D不用说什么的话，那一共才两道题。。。
+Update: [2018-06-17]就这么一直拖到了现在。。。">
+<meta property="og:updated_time" content="2018-06-17T02:46:47.043Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AtCoder Regular Contest 091">
 <meta name="twitter:description" content="最近这个三月在忙毕业的事情，答辩、各种表格、医院、签证等等。在结束这一切之后，这一期的AtCoder终于补完了。艰难脸^ - ^
-C、D不用说什么的话，那一共才两道题。。。">
+C、D不用说什么的话，那一共才两道题。。。
+Update: [2018-06-17]就这么一直拖到了现在。。。">
 
 
 
@@ -337,11 +340,34 @@ C、D不用说什么的话，那一共才两道题。。。">
       
         <p>最近这个三月在忙毕业的事情，答辩、各种表格、医院、签证等等。在结束这一切之后，这一期的AtCoder终于补完了。艰难脸^ - ^</p>
 <p>C、D不用说什么的话，那一共才两道题。。。</p>
+<p>Update: [2018-06-17]就这么一直拖到了现在。。。</p>
 <a id="more"></a>
 <p><a href="https://arc091.contest.atcoder.jp/assignments" target="_blank" rel="external">题目链接</a></p>
-<h3 id="D-Remainder-Reminder"><a href="#D-Remainder-Reminder" class="headerlink" title="D Remainder Reminder"></a>D Remainder Reminder</h3><h3 id="E-LISDL"><a href="#E-LISDL" class="headerlink" title="E LISDL"></a>E LISDL</h3><blockquote>
-<p>给出了</p>
+<h3 id="C-Flip-Flip-and-Flip……"><a href="#C-Flip-Flip-and-Flip……" class="headerlink" title="C - Flip,Flip, and Flip……"></a>C - Flip,Flip, and Flip……</h3><blockquote>
+<p>题意是给出了$n*m$个格子，然后每个格子都要进行翻转，连带着周围八个格子也都要翻转。问最终有多少格子是反面。</p>
 </blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">ll n, m;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</div><div class="line">	ll ans = n*m;</div><div class="line">	<span class="keyword">int</span> f = <span class="number">0</span>;</div><div class="line">	<span class="keyword">if</span> (m &gt;= <span class="number">2</span>)</div><div class="line">	&#123;</div><div class="line">		f++;</div><div class="line">		ans -= <span class="number">2</span> * n;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> (n &gt;= <span class="number">2</span>)</div><div class="line">	&#123;</div><div class="line">		f++;</div><div class="line">		ans -= <span class="number">2</span> * m;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span>(f==<span class="number">2</span>)ans += <span class="number">4</span>;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="D-Remainder-Reminder"><a href="#D-Remainder-Reminder" class="headerlink" title="D Remainder Reminder"></a>D Remainder Reminder</h3><blockquote>
+<p>找出不超过$n$中，有多少对$(a,b)$，使得$a\%b &gt;= k$</p>
+</blockquote>
+<p>枚举$b$。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">ll n, k;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	slla(n), slla(k);</div><div class="line">	ll ans = <span class="number">0</span>;</div><div class="line">	repp(x, k + <span class="number">1</span>, n)</div><div class="line">	&#123;</div><div class="line">		ll f = n / x;</div><div class="line">		ll num = x - k;</div><div class="line">		ans += num*f;</div><div class="line">		ll sur = n%x + <span class="number">1</span>;</div><div class="line">		ans += max(sur - k, <span class="number">0L</span>L);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> (!k)ans = n*n;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="E-LISDL"><a href="#E-LISDL" class="headerlink" title="E LISDL"></a>E LISDL</h3><blockquote>
+<p>给出$n，a，b$。构建一个长度为$n$的序列，元素是$1$到$n$。使得最长递增子序列长度为a，最长递减子序列长度为$b$。</p>
+</blockquote>
+<p>这个题比较有趣了。。。可以先满足最长递增子序列为$a$，然后成段去构造最长递减子序列，这时也就可以发现满足条件是什么了。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">ll n,a,b;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    slla(n),slla(a),slla(b);</div><div class="line">    <span class="keyword">if</span>(a+b<span class="number">-1</span>&gt;n || a*b&lt;n)</div><div class="line">    &#123;</div><div class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="number">-1</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">while</span>(n&gt;<span class="number">0</span>)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> x = min(a,n-b+<span class="number">1</span>);</div><div class="line"> </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = n-x+<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">        &#123;</div><div class="line">            <span class="built_in">cout</span>&lt;&lt;i&lt;&lt;<span class="string">" "</span>;</div><div class="line">        &#125;</div><div class="line">        n-=x;</div><div class="line">        b--;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="F-Strange-Nim"><a href="#F-Strange-Nim" class="headerlink" title="F - Strange Nim"></a>F - Strange Nim</h3><blockquote>
+<p>有$n$堆石子，每堆石子的数量为$A_i$，每堆石子都有一个参数$k_i$。现有a和b，分别进行如下操作：</p>
+<p>选择一堆石子，如果当前该堆有$x$个石子，那么移除$[1, floor(x/k)]$。</p>
+<p>不能进行操作的人判输。双方都是最优选择，问输赢情况。</p>
+</blockquote>
+<p>sg找规律。。。</p>
+<p>如果$n$整除$k$，那么sg(n,k)=n/k</p>
+<p>发现g(1,k), g(2,k), g(3,k)…. g(n,k)中移除g(k,k) g(2*k,k), g(3*k,k)…数列没有变化。</p>
+<p>如果$n$不整除$k$，那么假设n=k*x+b，有sg(k*x+b,k) = sg((k-1)*x+(b-1),k).</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">SG</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> k)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> x=a/k,b=a%k;</div><div class="line">    <span class="keyword">if</span>(!b) <span class="keyword">return</span> x;</div><div class="line">    <span class="keyword">int</span> t=(b+x)/(x+<span class="number">1</span>);</div><div class="line">    <span class="keyword">return</span> SG(a-t*(x+<span class="number">1</span>),k);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> n;</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">cal</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>(x%y==<span class="number">0</span>)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> x/y;</div><div class="line">    &#125; <span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">return</span> cal(x - max(x%y/(x/y+<span class="number">1</span>),<span class="number">1</span>)*(x/y+<span class="number">1</span>),y);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    sa(n);</div><div class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</div><div class="line">    repp(i,<span class="number">1</span>,n)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> x,y;</div><div class="line">        sa(x),sa(y);</div><div class="line">        ans ^= cal(x,y);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(ans)</div><div class="line">    &#123;</div><div class="line">        <span class="built_in">puts</span>(<span class="string">"Takahashi"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span></div><div class="line">    &#123;</div><div class="line">        <span class="built_in">puts</span>(<span class="string">"Aoki"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -524,7 +550,7 @@ C、D不用说什么的话，那一共才两道题。。。">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Remainder-Reminder"><span class="nav-number">1.</span> <span class="nav-text">D Remainder Reminder</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-LISDL"><span class="nav-number">2.</span> <span class="nav-text">E LISDL</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Flip-Flip-and-Flip……"><span class="nav-number">1.</span> <span class="nav-text">C - Flip,Flip, and Flip……</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Remainder-Reminder"><span class="nav-number">2.</span> <span class="nav-text">D Remainder Reminder</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-LISDL"><span class="nav-number">3.</span> <span class="nav-text">E LISDL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#F-Strange-Nim"><span class="nav-number">4.</span> <span class="nav-text">F - Strange Nim</span></a></li></ol></div>
             
           </div>
         </section>
