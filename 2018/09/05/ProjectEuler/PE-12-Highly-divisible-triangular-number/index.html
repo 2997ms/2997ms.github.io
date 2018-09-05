@@ -84,22 +84,16 @@
 
 
 
-<meta name="description" content="题目链接
-题意就是在n*(n+1)/2的数列中找到最小的，满足因子数目大于500的数字。
-1234567891011121314151617181920212223void solve() &amp;#123;	static int val[50005];	memset(val,0,sizeof(val));	int n =50000;	for (int i=1;i&amp;lt;=n;i++) &amp;#123;">
+<meta name="description" content="题目链接">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PE#12 Highly divisible triangular number">
 <meta property="og:url" content="http://2997ms.github.io/2018/09/05/ProjectEuler/PE-12-Highly-divisible-triangular-number/index.html">
 <meta property="og:site_name" content="2997ms">
-<meta property="og:description" content="题目链接
-题意就是在n*(n+1)/2的数列中找到最小的，满足因子数目大于500的数字。
-1234567891011121314151617181920212223void solve() &amp;#123;	static int val[50005];	memset(val,0,sizeof(val));	int n =50000;	for (int i=1;i&amp;lt;=n;i++) &amp;#123;">
-<meta property="og:updated_time" content="2018-09-05T13:32:40.905Z">
+<meta property="og:description" content="题目链接">
+<meta property="og:updated_time" content="2018-09-05T13:36:19.017Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PE#12 Highly divisible triangular number">
-<meta name="twitter:description" content="题目链接
-题意就是在n*(n+1)/2的数列中找到最小的，满足因子数目大于500的数字。
-1234567891011121314151617181920212223void solve() &amp;#123;	static int val[50005];	memset(val,0,sizeof(val));	int n =50000;	for (int i=1;i&amp;lt;=n;i++) &amp;#123;">
+<meta name="twitter:description" content="题目链接">
 
 
 
@@ -339,6 +333,7 @@
 
       
         <p><a href="https://projecteuler.net/problem=12" target="_blank" rel="external">题目链接</a></p>
+<a id="more"></a>
 <p>题意就是在n*(n+1)/2的数列中找到最小的，满足因子数目大于500的数字。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="keyword">static</span> <span class="keyword">int</span> val[<span class="number">50005</span>];</div><div class="line">	<span class="built_in">memset</span>(val,<span class="number">0</span>,<span class="keyword">sizeof</span>(val));</div><div class="line"></div><div class="line">	<span class="keyword">int</span> n =<span class="number">50000</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j=i;j&lt;=n;j+=i) &#123;</div><div class="line">			val[j]++;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span> (ll i=<span class="number">1</span>;i&lt;=n;i++) &#123;</div><div class="line">		ll v;</div><div class="line">		<span class="keyword">if</span> (i&amp;<span class="number">1</span>) &#123;</div><div class="line">			v = val[(i+<span class="number">1</span>)/<span class="number">2</span>]*val[i];</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			v = val[i/<span class="number">2</span>] * val[i+<span class="number">1</span>];</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(v&gt;=<span class="number">500</span>) &#123;</div><div class="line">			<span class="built_in">cout</span>&lt;&lt;i*(i+<span class="number">1</span>)/<span class="number">2</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">			<span class="keyword">return</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
