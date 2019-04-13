@@ -8,7 +8,7 @@
       <url>http://2997ms.github.io/2019/04/13/Google/Google-Code-Jam-2019-Round-1A/</url>
       <content type="html"><![CDATA[<p>距离2017年竟然也都这么久了。</p>
 <a id="more"></a>
-<p><a href="[https://codingcompetitions.withgoogle.com/codejam/round/0000000000051635](https://codingcompetitions.withgoogle.com/codejam/round/0000000000051635">题目链接</a>)</p>
+<p><a href="https://codingcompetitions.withgoogle.com/codejam/round/0000000000051635" target="_blank" rel="external">题目链接</a></p>
 <p>读英文题目还是捉急。太菜了太菜了。</p>
 <h3 id="Pylons"><a href="#Pylons" class="headerlink" title="Pylons"></a>Pylons</h3><p>题意是给出一个r*c的格子，要求移动的时候不能同行同列对角线，可以任意选起点。问行走的方案。</p>
 <p>random_shuffle(vector)</p>
