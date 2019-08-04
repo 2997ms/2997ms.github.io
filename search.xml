@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title><![CDATA[2019年_8月_鲜花荆棘]]></title>
+      <url>http://2997ms.github.io/2019/08/04/2019/2019_8/</url>
+      <content type="html"><![CDATA[<p>戏还是很多。</p>
+<a id="more"></a>
+<p>这个blog还真是真实，51nod原来是5个题一篇，然后是两个题一篇，后面变成一个题一篇。完全反映了本人最后坚持不下来的情况。</p>
+<p>这个周末切了一堆的leetcode新题，发现有许多可以总结的地方。</p>
+<p>【待填】这个标签里有大量残留的无意义的篇幅，该清理的清理，该删的删。</p>
+<p>唯一可以说的就是2019年变化很大。</p>
+<p>发现今年还没在博客上抒发些什么，以自己这么多愁善感的人还真是难得。自己今年有一个改进的地方吧，就是不那么在乎自己的负面情绪了。尽量不让负面情绪影响自己目前正在做的事情。这个能力有了很多的提升。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[2019 TCO Round 1B]]></title>
       <url>http://2997ms.github.io/2019/05/02/TopCoder/2019-TCO-Round-1B/</url>
       <content type="html"><![CDATA[<p>Topcoder上有意思的dp题还是多，但是如果能有更多的editor就好了(你要干嘛。。)</p>
@@ -380,6 +393,62 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Topcoder做题计划]]></title>
+      <url>http://2997ms.github.io/2018/01/11/TopCoder%E9%80%89%E5%81%9A/</url>
+      <content type="html"><![CDATA[<p>原来的tag是2018-01-11，现在已经是2019年8月4日了。</p>
+<a id="more"></a>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Round</th>
+<th style="text-align:center">Easy</th>
+<th style="text-align:center">Medium</th>
+<th style="text-align:center">Hard</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">SRM727</td>
+<td style="text-align:center">Done</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">SRM726</td>
+<td style="text-align:center">Done</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">SRM725</td>
+<td style="text-align:center">Done</td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<h4 id="SRM-727-Easy："><a href="#SRM-727-Easy：" class="headerlink" title="SRM 727 Easy："></a>SRM 727 Easy：</h4><hr>
+<blockquote>
+<p>题意：给出一个字符串X，可以在任意位置添加字符。要求</p>
+<p>1:最终的字符串长度小于1050。</p>
+<p>2.包含“SATNA”子序列。</p>
+<p>3.不包含“SATAN”子序列。</p>
+<p>求最终的字符串。</p>
+</blockquote>
+<p>找T和N位置的规律，如果T都在N后面，不用管。将最前的T换成NT，或者将最后的N换成NT，然后找这之前最前的A，前面加S。</p>
+<h4 id="SRM-726-Easy："><a href="#SRM-726-Easy：" class="headerlink" title="SRM 726 Easy："></a>SRM 726 Easy：</h4><blockquote>
+<p>题意是有$n$个箱子，每个箱子里有$a_i$个红球，$b_i$个蓝球。价钱是$c_i$。每个箱子有可能会有一个球的颜色是颠倒的。要求最终至少有一种颜色的球的数量大于等于$K$。问最小价钱。</p>
+<p>$n&lt;=50, a_i&lt;=10000, b_i&lt;=10000$</p>
+</blockquote>
+<ol>
+<li>Min cost to make <em>a</em>[<em>i</em>] - 1 ≥ <em>K</em></li>
+<li>Min Cost to make <em>b</em>[<em>i</em>] - 1 ≥ <em>K</em>.</li>
+<li>Min cost to make <em>a</em>[<em>i</em>] + <em>b</em>[<em>i</em>] ≥ 2 <em> </em>k* - 1,思路卡在这里了，如果可以互相转移的话，考虑和是一定的。</li>
+</ol>
+<h4 id="SRM-725-Easy："><a href="#SRM-725-Easy：" class="headerlink" title="SRM 725 Easy："></a>SRM 725 Easy：</h4><p>725的Easy有些意想不到啊。。。就是八皇后啊。。。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Codeforces 451 Div2]]></title>
       <url>http://2997ms.github.io/2017/12/26/Codeforces/Codeforces-451-Div2/</url>
       <content type="html"><![CDATA[<p>其实451和452两场就真的挺简单的了，但就是脑残了。</p>
@@ -443,6 +512,47 @@
 <p>啊，原来。。。树状数组就可以做这种事啊。。。为什么我。。。到现在还不知道啊。。。</p>
 <p>哦。。。原来就是二分就可以了，多一个log。。。就是给定一个前缀和K，要求的就是前缀和为K的位置。二分查找就做到两个log了。谷歌面试的时候问到过一个log的想法。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> n, m;</div><div class="line"><span class="keyword">int</span> val[<span class="number">300</span>];</div><div class="line"><span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt;pos[<span class="number">300</span>];</div><div class="line"><span class="keyword">char</span> v[maxn];</div><div class="line">ll num[maxn];</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">return</span> x&amp;(-x);</div><div class="line">&#125;</div><div class="line"><span class="function">ll <span class="title">getsum</span><span class="params">(ll x)</span></span></div><div class="line">&#123;</div><div class="line">	ll ans = <span class="number">0</span>;</div><div class="line">	<span class="keyword">while</span> (x&gt;<span class="number">0</span>)</div><div class="line">	&#123;</div><div class="line">		ans += num[x];</div><div class="line">		x -= lowbit(x);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> ans;</div><div class="line">&#125;</div><div class="line"><span class="function">ll <span class="title">add</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> v)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> up = maxn - <span class="number">1</span>;</div><div class="line">	<span class="keyword">while</span> (x &lt;= up)</div><div class="line">	&#123;</div><div class="line">		num[x] += v;</div><div class="line">		x += lowbit(x);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> x;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">find_p</span><span class="params">(<span class="keyword">int</span> k)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> le = <span class="number">1</span>, ri = n;</div><div class="line">	<span class="keyword">while</span> (le &lt; ri)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">int</span> mid = (le + ri) / <span class="number">2</span>;</div><div class="line">		<span class="keyword">if</span> (getsum(mid) &lt; k)</div><div class="line">		&#123;</div><div class="line">			le = mid + <span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		&#123;</div><div class="line">			ri = mid;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> le;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	sa(n), sa(m);</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%s"</span>, v + <span class="number">1</span>);</div><div class="line">	repp(i, <span class="number">1</span>, n)</div><div class="line">	&#123;</div><div class="line">		pos[v[i]].insert(i);</div><div class="line">		add(i, <span class="number">1</span>);</div><div class="line">	&#125;</div><div class="line">	repp(i, <span class="number">1</span>, m)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">int</span> le, ri;</div><div class="line">		<span class="keyword">char</span> op[<span class="number">5</span>];</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%s"</span>, &amp;le, &amp;ri, op);</div><div class="line">		<span class="keyword">char</span> k = op[<span class="number">0</span>];</div><div class="line">		le = find_p(le);</div><div class="line">		ri = find_p(ri);</div><div class="line"></div><div class="line">		<span class="keyword">auto</span> p = pos[k].lower_bound(le);</div><div class="line">		<span class="keyword">while</span> (p != pos[k].end()&amp;&amp;*p &lt;= ri)</div><div class="line">		&#123;</div><div class="line">			add(*p, <span class="number">-1</span>);</div><div class="line">			<span class="keyword">auto</span> t = p;</div><div class="line">			p++;</div><div class="line">			pos[k].erase(t);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	repp(i, <span class="number">1</span>, n)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span> (getsum(i) - getsum(i - <span class="number">1</span>))</div><div class="line">		&#123;</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"%c"</span>, v[i]);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Atcoder选做]]></title>
+      <url>http://2997ms.github.io/2017/11/09/Atcoder%E9%80%89%E5%81%9A/</url>
+      <content type="html"><![CDATA[<p>Atcoder选做</p>
+<a id="more"></a>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Round</th>
+<th style="text-align:center">A</th>
+<th style="text-align:center">B</th>
+<th style="text-align:center">C</th>
+<th style="text-align:center">D</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Code Festival 2017 qual C</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">Done</td>
+</tr>
+<tr>
+<td style="text-align:center">Code Festival 2017 qual A</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<p>#### </p>
+<h3 id="CODE-FESTIVAL-2017-qual-C-D-Yet-Another-Palindrome-Partitioning"><a href="#CODE-FESTIVAL-2017-qual-C-D-Yet-Another-Palindrome-Partitioning" class="headerlink" title="CODE FESTIVAL 2017 qual C D - Yet Another Palindrome Partitioning"></a>CODE FESTIVAL 2017 qual C D - Yet Another Palindrome Partitioning</h3><blockquote>
+<p><a href="http://code-festival-2017-qualc.contest.atcoder.jp/tasks/code_festival_2017_qualc_d" target="_blank" rel="external">题目链接</a></p>
+<p>题意是把一个字符串分成最小数量，使得每一份都可以变成回文串。</p>
+</blockquote>
+<p>dp。dp[i]表示到位置i的最小分割数。f[x]表示当前状态是x的最小分割数，如果只记录每一个字母的奇偶的话，那么可以构成回文串sum[i]^sum[j]=0||2^i。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> dp[maxn],f[<span class="number">70000010</span>];</div><div class="line"><span class="keyword">char</span> x[maxn];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>,x+<span class="number">1</span>);</div><div class="line"></div><div class="line">    <span class="keyword">int</span> len = <span class="built_in">strlen</span>(x+<span class="number">1</span>);</div><div class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</div><div class="line">    </div><div class="line">    <span class="built_in">memset</span>(f,<span class="number">0x3f</span>,<span class="keyword">sizeof</span>(f));</div><div class="line">    f[<span class="number">0</span>] = <span class="number">0</span>;</div><div class="line">    repp(i,<span class="number">1</span>,len)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> y = (<span class="number">1</span>&lt;&lt;(<span class="keyword">int</span>)(x[i]-<span class="string">'a'</span>));</div><div class="line">        sum ^= y;</div><div class="line">        dp[i] = INF;</div><div class="line">        dp[i] = min(dp[i],f[sum]+<span class="number">1</span>);</div><div class="line">        rep(j,<span class="number">0</span>,<span class="number">26</span>)</div><div class="line">        &#123;</div><div class="line">              dp[i] = min(dp[i],f[sum^(<span class="number">1</span>&lt;&lt;j)]+<span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">        f[sum] = min(f[sum],dp[i]);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, dp[len]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 ]]></content>
     </entry>
     
