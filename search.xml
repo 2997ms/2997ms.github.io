@@ -4,6 +4,443 @@
   
     
     <entry>
+      <title><![CDATA[最后一年]]></title>
+      <url>http://2997ms.github.io/2019/12/10/2019/Last-year/</url>
+      <content type="html"><![CDATA[<p>想来说说我的经历，在这个半夜。</p>
+<a id="more"></a>
+<p>自己没有任何算法竞赛经历，凭的全是热爱，现在回头看，投入/产出不是一个量级，但是值不值呢，反正我不后悔，即便自己现在什么都不会。</p>
+<p>大一时候想参加集训队，发现新生赛的题目完全不会，稀里糊涂就到大二了，发邮件问学长有没有机会进队，学长说你的基础有些差，而且你都大二了，有些晚，估计是参加不了区预赛了。心灰意冷，主要是自己也确实是菜，跟着队里的人打任何virtual contest都打不动，当时性格很害怕跟他人沟通，后来想想如果多联系学长多在群里发问，也应该能跟上？</p>
+<p>2015，2016读研的时候除了写老师给的任务之外，都一心扑在做题上了。</p>
+<p>2017年校赛，预赛Rank 2，onsite rank 7。</p>
+<p>Edu有一场Rank 9。</p>
+<p>Leetcode Weekly有一场china rank 2，global rank 5。其余大多数时候可以稳定在global rank 50以内。</p>
+<p>Google kickstart 打过20+的名次。</p>
+<p>剩下的就没了。发现自己还是不会的太多太多，就打Leetcode weekly比较顺手，其余的都很卡。</p>
+<p>当年自己一直无法突破1900，现在也不知道是1900变的容易了还是怎么回事，竟然也能稳定在紫名了，我的结论是1900确实变的容易了。但是往上突破，自己是真的没时间了，毕竟每天还要工作。</p>
+<p>归根到底是智商太低。</p>
+<p>去年开始工作，做题的精力更是少了太多。今年来看，好像更多精力是把leetcode 1000多道题清空了。今年生活的暴击实在是太多太多了，爱情上的，经济上的，工作中的，生活里的，亲人朋友的，见识了生活的厉害，被它捶到土里，说不出话来。</p>
+<p>明年的其中一个梦想是CF黄名。</p>
+<p>如果经历了明年的500题洗礼之后，还是不能到达黄名的话，那我可能真的要放弃了。</p>
+<p>认识了一些厉害的牛人，我也知道自己该往哪个方向走了，明年年底是我给我自己的最后的机会。</p>
+<p>就想变成黄名。</p>
+<p>说回来，其实if 最后一年？也不会发生啥，人生当然也不会进入到某个分岔，这里的if一点用没有，时间还是该向前向前，我就是想图个安慰，想弄清楚，我到底可以抵达哪里。</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[2020-500]]></title>
+      <url>http://2997ms.github.io/2019/12/10/2020-plan/</url>
+      <content type="html"><![CDATA[<p>hello 2020. Bye 2020</p>
+<a id="more"></a>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Problem Link</th>
+<th style="text-align:center">Difficulty</th>
+<th style="text-align:center">Type</th>
+<th style="text-align:center">Others</th>
+<th>Submission</th>
+<th style="text-align:center">No.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><a href="https://codeforces.com/contest/1264/problem/D1" target="_blank" rel="external">https://codeforces.com/contest/1264/problem/D1</a></td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">DP</td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://codeforces.com/contest/1265/problem/E" target="_blank" rel="external">https://codeforces.com/contest/1265/problem/E</a></td>
+<td style="text-align:center">E</td>
+<td style="text-align:center">DP</td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://codeforces.com/contest/1265/problem/D" target="_blank" rel="external">https://codeforces.com/contest/1265/problem/D</a></td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">Adhoc</td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://codeforces.com/contest/1263/problem/E" target="_blank" rel="external">https://codeforces.com/contest/1263/problem/E</a></td>
+<td style="text-align:center">E</td>
+<td style="text-align:center">线段树</td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center">4</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://codeforces.com/contest/1263/problem/F" target="_blank" rel="external">https://codeforces.com/contest/1263/problem/F</a></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center">5</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://codeforces.com/contest/1260/problem/E" target="_blank" rel="external">https://codeforces.com/contest/1260/problem/E</a></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center">6</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://codeforces.com/contest/600/problem/F" target="_blank" rel="external">https://codeforces.com/contest/600/problem/F</a></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center">7(todo)</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://codeforces.com/contest/1253/problem/D" target="_blank" rel="external">https://codeforces.com/contest/1253/problem/D</a></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center">8</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://codeforces.com/contest/1253/problem/E" target="_blank" rel="external">https://codeforces.com/contest/1253/problem/E</a></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center">9</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://codeforces.com/contest/600/problem/D" target="_blank" rel="external">https://codeforces.com/contest/600/problem/D</a></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center">10</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://codeforces.com/contest/598/problem/F" target="_blank" rel="external">https://codeforces.com/contest/598/problem/F</a></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center">11</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://codeforces.com/contest/1245/problem/F" target="_blank" rel="external">https://codeforces.com/contest/1245/problem/F</a></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center">12</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://codeforces.com/problemset/problem/1133/E" target="_blank" rel="external">https://codeforces.com/problemset/problem/1133/E</a></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center">13(todo)</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://codeforces.com/contest/600/problem/E" target="_blank" rel="external">https://codeforces.com/contest/600/problem/E</a></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center">14</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Educational Codeforces Round 1]]></title>
       <url>http://2997ms.github.io/2019/11/18/Codeforces/Eductional-Codeforces-Round-1/</url>
       <content type="html"><![CDATA[<p>时隔多年，开始补的是Eductional Round，从第一轮开始，计算几何好难啊，我怎么这么菜啊。。。</p>
@@ -13,7 +450,7 @@
 <p>A, B, C,D好像都比较简单啊。这里主要想记录的是F题。</p>
 <h3 id="E-Chocolate-Bar"><a href="#E-Chocolate-Bar" class="headerlink" title="E. Chocolate Bar"></a>E. Chocolate Bar</h3><p>切蛋糕，算是非常经典的dp了。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">pragma</span> <span class="meta-keyword">warning</span>(disable:4996)</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"> </div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 1e9+7</span></div><div class="line"> </div><div class="line"><span class="keyword">int</span> dp[<span class="number">32</span>][<span class="number">32</span>][<span class="number">52</span>];</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> i, j, k, h, m;</div><div class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt;= <span class="number">30</span>; i++)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt;= <span class="number">30</span>; j++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">for</span> (k = <span class="number">0</span>; k &lt;= <span class="number">50</span>; k++)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">if</span> (k == i*j || k == <span class="number">0</span>)</div><div class="line">                &#123;</div><div class="line">                    dp[i][j][k] = <span class="number">0</span>;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">else</span></div><div class="line">                &#123;</div><div class="line">                    dp[i][j][k] = INF;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">for</span> (h = <span class="number">0</span>; h &lt;= k; h++)</div><div class="line">                &#123;</div><div class="line">                    <span class="keyword">for</span> (m = <span class="number">1</span>; m &lt; j; m++)</div><div class="line">                        dp[i][j][k] = min(dp[i][j][k], dp[i][m][h] + dp[i][j - m][k - h] + i*i);</div><div class="line">                    <span class="keyword">for</span> (m = <span class="number">1</span>; m &lt; i; m++)</div><div class="line">                        dp[i][j][k] = min(dp[i][j][k], dp[m][j][h] + dp[i - m][j][k - h] + j*j);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;k);</div><div class="line">    <span class="keyword">while</span> (k--)</div><div class="line">    &#123;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;i, &amp;j, &amp;h);</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, dp[i][j][h]);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="F-Cut-length"><a href="#F-Cut-length" class="headerlink" title="F.Cut length"></a>F.Cut length</h3><p>题意是给出一个图形和一个直线，计算这个直线在该图形内的长度。</p>
+<h3 id="F-Cut-length"><a href="#F-Cut-length" class="headerlink" title="F. Cut length"></a>F. Cut length</h3><p>题意是给出一个图形和一个直线，计算这个直线在该图形内的长度。</p>
 <p>计算几何，用叉积算方向，从而算是否相交。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">1005</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">double</span> eps=<span class="number">1e-5</span>;</div><div class="line"><span class="keyword">int</span> n,m;</div><div class="line"><span class="keyword">struct</span> P</div><div class="line">&#123;</div><div class="line">	<span class="keyword">double</span> x,y;</div><div class="line">	<span class="function"><span class="keyword">double</span> <span class="title">length</span><span class="params">()</span></span></div><div class="line">	&#123;</div><div class="line">		<span class="keyword">return</span> <span class="built_in">sqrt</span>(x*x+y*y);</div><div class="line">	&#125;</div><div class="line">&#125;a[N];</div><div class="line">P <span class="keyword">operator</span>-(<span class="keyword">const</span> P &amp;a,<span class="keyword">const</span> P &amp;b)</div><div class="line">&#123;</div><div class="line">	<span class="keyword">return</span> &#123;a.x-b.x,a.y-b.y&#125;;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">double</span> <span class="title">cp</span><span class="params">(P a,P b)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">return</span> a.x*b.y-b.x*a.y;</div><div class="line">&#125;</div><div class="line"><span class="keyword">struct</span> L</div><div class="line">&#123;</div><div class="line">	<span class="keyword">double</span> l;</div><div class="line">	<span class="keyword">int</span> v;</div><div class="line">&#125;stk[N];</div><div class="line"><span class="keyword">int</span> top;</div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(L a,L b)</span></span>&#123;<span class="keyword">return</span> a.l&lt;b.l; &#125;</div><div class="line"><span class="comment">//这里用来计算比例</span></div><div class="line"><span class="function"><span class="keyword">double</span> <span class="title">Len</span><span class="params">(P a,P v,P p,P q)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">return</span> cp(p-a,q-p)/cp(v,q-p);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">sign</span><span class="params">(<span class="keyword">double</span> x)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (x&lt;-eps) <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">	<span class="keyword">if</span> (x&gt;eps) <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//Point, Vector</span></div><div class="line"><span class="function"><span class="keyword">double</span> <span class="title">solve</span><span class="params">(P p,P v)</span></span></div><div class="line">&#123;</div><div class="line">	top=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">int</span> s1=sign(cp(v,a[i<span class="number">-1</span>]-p));</div><div class="line">		<span class="keyword">int</span> s2=sign(cp(v,a[i]-p));</div><div class="line">		<span class="keyword">if</span> (s1&gt;<span class="number">0</span>&amp;&amp;s2&gt;<span class="number">0</span>||s1==<span class="number">0</span>&amp;&amp;s2==<span class="number">0</span>||s1&lt;<span class="number">0</span>&amp;&amp;s2&lt;<span class="number">0</span>) <span class="keyword">continue</span>;</div><div class="line">		<span class="keyword">if</span> (s1&gt;s2) stk[++top]=&#123;Len(p,v,a[i<span class="number">-1</span>],a[i]) , (s1!=<span class="number">0</span>&amp;&amp;s2!=<span class="number">0</span> ?<span class="number">2</span>:<span class="number">1</span>) &#125;;</div><div class="line">		<span class="keyword">else</span> stk[++top]=&#123;Len(p,v,a[i<span class="number">-1</span>],a[i]) , (s1!=<span class="number">0</span>&amp;&amp;s2!=<span class="number">0</span> ?<span class="number">-2</span>:<span class="number">-1</span>) &#125;;</div><div class="line">	&#125;</div><div class="line">	sort(stk+<span class="number">1</span>,stk+top+<span class="number">1</span>,cmp);</div><div class="line">	<span class="keyword">double</span> ret=<span class="number">0</span>;</div><div class="line">	<span class="keyword">int</span> tmp=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=top;i++)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span> (tmp) ret+=stk[i].l-stk[i<span class="number">-1</span>].l;</div><div class="line">		tmp+=stk[i].v;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> ret*v.length();</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">"%lf%lf"</span>,&amp;a[i].x,&amp;a[i].y);</div><div class="line">	a[<span class="number">0</span>]=a[n];</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;j++)</div><div class="line">	&#123;</div><div class="line">		P p,q;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%lf%lf"</span>,&amp;p.x,&amp;p.y);</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%lf%lf"</span>,&amp;q.x,&amp;q.y);</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%.10f\n"</span>,solve(p,q-p));</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
     </entry>
