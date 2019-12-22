@@ -5,7 +5,7 @@
     
     <entry>
       <title><![CDATA[2020-500]]></title>
-      <url>http://2997ms.github.io/2019/12/10/2020-plan/</url>
+      <url>http://2997ms.github.io/2019/12/22/2020-plan/</url>
       <content type="html"><![CDATA[<p>hello 2020. Bye 2020</p>
 <a id="more"></a>
 <table>
@@ -106,8 +106,8 @@
 <tr>
 <td style="text-align:center">1133E</td>
 <td style="text-align:center">E</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">DP</td>
+<td style="text-align:center">比较标准的DP，非贪心</td>
 <td style="text-align:center">13</td>
 </tr>
 <tr>
@@ -127,8 +127,8 @@
 <tr>
 <td style="text-align:center">1163D</td>
 <td style="text-align:center">D</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">DP</td>
+<td style="text-align:center">求next数组，字符串dp，考虑所有情况</td>
 <td style="text-align:center">16</td>
 </tr>
 <tr>
@@ -142,7 +142,7 @@
 <td style="text-align:center">1257E</td>
 <td style="text-align:center">E</td>
 <td style="text-align:center">DP</td>
-<td style="text-align:center">dp</td>
+<td style="text-align:center">dp，排列</td>
 <td style="text-align:center">18</td>
 </tr>
 <tr>
@@ -153,32 +153,32 @@
 <td style="text-align:center">19</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">1271E</td>
+<td style="text-align:center">E</td>
+<td style="text-align:center">二分</td>
+<td style="text-align:center">观察规律，两次二分(出题)</td>
+<td style="text-align:center">20</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">1278D</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">二分，树</td>
+<td style="text-align:center">这个题目思路很新颖(不会)…</td>
+<td style="text-align:center">21</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">1269D</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">Adhoc</td>
+<td style="text-align:center">挺trick的，多米诺转成棋盘问题，但是好像在哪里见过</td>
+<td style="text-align:center">22</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">652D</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">树状数组</td>
+<td style="text-align:center">树状数组裸题了，这题居然还要想很久？？？？？？</td>
+<td style="text-align:center">23</td>
 </tr>
 <tr>
 <td style="text-align:center"></td>
