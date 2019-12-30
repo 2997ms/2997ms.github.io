@@ -5,7 +5,7 @@
     
     <entry>
       <title><![CDATA[2020-500]]></title>
-      <url>http://2997ms.github.io/2019/12/22/2020-plan/</url>
+      <url>http://2997ms.github.io/2019/12/30/2020-plan/</url>
       <content type="html"><![CDATA[<p>hello 2020. Bye 2020</p>
 <a id="more"></a>
 <table>
@@ -58,7 +58,7 @@
 <td style="text-align:center">1260E</td>
 <td style="text-align:center">E</td>
 <td style="text-align:center">Adhoc</td>
-<td style="text-align:center">trick</td>
+<td style="text-align:center">打比赛，贿赂裁判。</td>
 <td style="text-align:center">6</td>
 </tr>
 <tr>
@@ -163,7 +163,7 @@
 <td style="text-align:center">1278D</td>
 <td style="text-align:center">D</td>
 <td style="text-align:center">二分，树</td>
-<td style="text-align:center">这个题目思路很新颖(不会)…</td>
+<td style="text-align:center">给出一堆线段，交互情况代表点之间是否有连接，问能否形成一棵树</td>
 <td style="text-align:center">21</td>
 </tr>
 <tr>
@@ -223,32 +223,32 @@
 <td style="text-align:center">29</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">AGC41B</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">二分</td>
+<td style="text-align:center">N个题选p个，M次投票。</td>
+<td style="text-align:center">30</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">LC1307</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">Adhoc</td>
+<td style="text-align:center">算术表达式，先化简，再深搜</td>
+<td style="text-align:center">31</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">LCP3</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">Adhoc</td>
+<td style="text-align:center">机器人大冒险</td>
+<td style="text-align:center">32</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">1270D</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">交互题</td>
+<td style="text-align:center">Adhoc，不知道给出的结果排第几。</td>
+<td style="text-align:center">33</td>
 </tr>
 <tr>
 <td style="text-align:center"></td>
