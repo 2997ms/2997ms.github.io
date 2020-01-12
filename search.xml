@@ -307,11 +307,11 @@
 <td style="text-align:center">41</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">CF_1185D</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">Adhoc</td>
+<td style="text-align:center">简单题</td>
+<td style="text-align:center">42(self)</td>
 </tr>
 <tr>
 <td style="text-align:center"></td>
@@ -2880,17 +2880,17 @@
             
             <tag> Codeforces </tag>
             
-            <tag> CodeChef </tag>
-            
             <tag> 树重心 </tag>
+            
+            <tag> 树分治 </tag>
+            
+            <tag> CodeChef </tag>
             
             <tag> LCA </tag>
             
             <tag> sync_with_stdio </tag>
             
             <tag> 分块 </tag>
-            
-            <tag> 树分治 </tag>
             
         </tags>
         
@@ -3513,13 +3513,13 @@
             
             <tag> 二分 </tag>
             
-            <tag> 树重心 </tag>
-            
-            <tag> 树分治 </tag>
-            
             <tag> dijkstra </tag>
             
             <tag> 扩展欧几里得求逆元 </tag>
+            
+            <tag> 树重心 </tag>
+            
+            <tag> 树分治 </tag>
             
         </tags>
         
