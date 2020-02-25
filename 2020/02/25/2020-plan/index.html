@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="DP,AtCoder,倍增,KMP,">
+  <meta name="keywords" content="2997ms">
 
 
 
@@ -84,18 +84,17 @@
 
 
 
-<meta name="description" content="这一期的Regular Contest我也是肥肠喜欢啊，题目都很好玩啊，题目链接。 代码链接 C Tak and Cards C题题意是给出N(N&amp;lt;=50)个数，每个数的范围在1到50之间，然后给一个值A。从这N个数任意选择数字，要求选取的这些数字的平均值是A，问有多少种选取的方法。 dp[i][j][x]表示到第i个数时，有j个数组成和为x的方法数量。 D Digit Sum D题题意是给">
-<meta name="keywords" content="DP,AtCoder,倍增,KMP">
+<meta name="description" content="hello 2020. Bye 2020">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AtCoder Regular Contest 060">
-<meta property="og:url" content="http://2997ms.github.io/2016/09/05/AtCoder/AtCoder-Regular-Contest-060/index.html">
+<meta property="og:title" content="2020-500">
+<meta property="og:url" content="http://2997ms.github.io/2020/02/25/2020-plan/index.html">
 <meta property="og:site_name" content="2997ms">
-<meta property="og:description" content="这一期的Regular Contest我也是肥肠喜欢啊，题目都很好玩啊，题目链接。 代码链接 C Tak and Cards C题题意是给出N(N&amp;lt;=50)个数，每个数的范围在1到50之间，然后给一个值A。从这N个数任意选择数字，要求选取的这些数字的平均值是A，问有多少种选取的方法。 dp[i][j][x]表示到第i个数时，有j个数组成和为x的方法数量。 D Digit Sum D题题意是给">
+<meta property="og:description" content="hello 2020. Bye 2020">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2016-09-05T15:46:22.000Z">
+<meta property="og:updated_time" content="2020-02-25T12:53:08.939Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AtCoder Regular Contest 060">
-<meta name="twitter:description" content="这一期的Regular Contest我也是肥肠喜欢啊，题目都很好玩啊，题目链接。 代码链接 C Tak and Cards C题题意是给出N(N&amp;lt;=50)个数，每个数的范围在1到50之间，然后给一个值A。从这N个数任意选择数字，要求选取的这些数字的平均值是A，问有多少种选取的方法。 dp[i][j][x]表示到第i个数时，有j个数组成和为x的方法数量。 D Digit Sum D题题意是给">
+<meta name="twitter:title" content="2020-500">
+<meta name="twitter:description" content="hello 2020. Bye 2020">
 
 
 
@@ -116,10 +115,10 @@
 
 
 
-  <link rel="canonical" href="http://2997ms.github.io/2016/09/05/AtCoder/AtCoder-Regular-Contest-060/">
+  <link rel="canonical" href="http://2997ms.github.io/2020/02/25/2020-plan/">
 
 
-  <title> AtCoder Regular Contest 060 | 2997ms </title>
+  <title> 2020-500 | 2997ms </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -270,7 +269,7 @@
             
             
               
-                AtCoder Regular Contest 060
+                2020-500
               
             
           </h1>
@@ -282,30 +281,11 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-05T22:39:38+08:00" content="2016-09-05">
-              2016-09-05
+            <time itemprop="dateCreated" datetime="2020-02-25T23:04:02+08:00" content="2020-02-25">
+              2020-02-25
             </time>
           </span>
 
-          
-            <span class="post-category">
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/题记/" itemprop="url" rel="index">
-                    <span itemprop="name">题记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
@@ -334,28 +314,363 @@
       
 
       
-        <p>这一期的Regular Contest我也是肥肠喜欢啊，题目都很好玩啊，<a href="http://arc060.contest.atcoder.jp/assignments" target="_blank" rel="noopener">题目链接</a>。</p>
-<p><a href="https://github.com/2997ms/My_Algorithm/tree/master/AtCoder/Regular_Contest_060" target="_blank" rel="noopener">代码链接</a></p>
-<h3 id="C-Tak-and-Cards"><a href="#C-Tak-and-Cards" class="headerlink" title="C Tak and Cards"></a>C Tak and Cards</h3><hr>
-<p>C题题意是给出N(N&lt;=50)个数，每个数的范围在1到50之间，然后给一个值A。从这N个数任意选择数字，要求选取的这些数字的平均值是A，问有多少种选取的方法。</p>
-<p>dp[i][j][x]表示到第i个数时，有j个数组成和为x的方法数量。</p>
-<h3 id="D-Digit-Sum"><a href="#D-Digit-Sum" class="headerlink" title="D Digit Sum"></a>D Digit Sum</h3><hr>
-<p>D题题意是给出了一种函数f(b,n)，<br>$$<br>f(b,n)=n   \    \  \  \ when\ \  n&lt;b<br>$$</p>
-<p>$$<br>f(b,n)=f(b,floor(\frac{n}{b}))+(n\%b)<br>$$</p>
-<p>然后给出了n和s，求是最小的b，使得f(b,n)=s。如果不存在这样的b，输出-1。</p>
-<p>下次看到n,b范围在10^11,10^12这种题，直接考虑O(sqrt(n))啊啊啊。</p>
-<p>首先考虑b&lt;sqrt(n)的这种情况，直接暴力算。</p>
-<p>然后考虑b&gt;sqrt(n),那这样n=pb+q，有p+q=s。得到n-s=b*(p-1)因为b&gt;sqrt(n),所以p是小于sqrt(n)的，枚举p，注意q也要符合条件即可。</p>
-<h3 id="E-Tak-and-Hotels"><a href="#E-Tak-and-Hotels" class="headerlink" title="E Tak and Hotels"></a>E Tak and Hotels</h3><hr>
-<p>E题题意是给出了n个旅馆的坐标，然后有一个人旅行一天的时间行走的距离不超过L，晚上必须在旅馆睡。然后有Q个询问，问从a走到b至少需要几天，保证是可以到达的。</p>
-<p>倍增的想法，dp[x][a]表示从x经过2^a天能够达到的最远旅馆，之后每次询问从最高次往低次暴力。</p>
-<h3 id="F-Best-Representation"><a href="#F-Best-Representation" class="headerlink" title="F Best Representation"></a>F Best Representation</h3><hr>
-<p><del>发现AtCoder日本人很喜欢出这种题，关于这种是哪种我也说不太好</del></p>
-<p>字符串X如果能够被表示成k(k&gt;=2)个字符串a连接而成的话，就不是好字符串，否则就是好字符串。</p>
-<p>现给出一个字符串，要求把这个字符串分解成都是好字符串的字符串。。。问在所有分解成功的集合中，分解出来的最少的字符串数量是多少，设为ans，有多少种分法，使得最少字符串数量为ans，输出ans和这个多少种分法。= =。突然发现我语言能力如此捉急，看不懂的看英文吧，当然我觉得那个也挺难懂的。</p>
-<p>这个题就好玩在，排除所有字符相等的情况(这种情况输出的是strlen(w)，1,不用多说)，分解出来的最少字符串数量一定不是1就是2。当这个字符串本身就是好字符串的时候就是1。当这个字符串可以表示成k(k&gt;=2)个字符串a连接而成的话，那么此时，嘿嘿嘿(……)，一拆的话，前者多一个，后者少一个，就可以分成两个好字符串啦。</p>
-<p>所以这个题判断出是1的情况之后，说白了就是判断一个字符串可不可以分解成由k(k&gt;=2)个字符串a连接而成，POJ上面有一道类似的题目，kmp直接可以解，前后如果都满足，方法的数量就+1。那个1e9+7纯属唬人。。。</p>
-<p>这个题目也挺好玩(真是智障儿童欢乐多。。。)</p>
+        <p>hello 2020. Bye 2020</p>
+<a id="more"></a>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Problem</th>
+<th style="text-align:center">Difficulty</th>
+<th style="text-align:center">Type</th>
+<th style="text-align:center">Comment</th>
+<th style="text-align:center">No.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">CF_1264D1</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">DP</td>
+<td style="text-align:center">括号问题，带？，DP去计算每个括号的贡献。</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_1265E</td>
+<td style="text-align:center">E</td>
+<td style="text-align:center">DP</td>
+<td style="text-align:center">期望dp，递推</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_1265D</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">Adhoc</td>
+<td style="text-align:center">当找不到最优的时候，暴力吧。</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_1263E</td>
+<td style="text-align:center">E</td>
+<td style="text-align:center">线段树</td>
+<td style="text-align:center">括号问题，更新区间，求区间最大值，最小值</td>
+<td style="text-align:center">4</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_1263F</td>
+<td style="text-align:center">F</td>
+<td style="text-align:center">DP</td>
+<td style="text-align:center">上下两个树，删边，问最少代价</td>
+<td style="text-align:center">5</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_1260E</td>
+<td style="text-align:center">E</td>
+<td style="text-align:center">Adhoc</td>
+<td style="text-align:center">打比赛，贿赂裁判。</td>
+<td style="text-align:center">6</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_600F</td>
+<td style="text-align:center">F</td>
+<td style="text-align:center">匈牙利算法</td>
+<td style="text-align:center">匈牙利算法思想</td>
+<td style="text-align:center">7</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_1253D</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">N/A</td>
+<td style="text-align:center">N/A</td>
+<td style="text-align:center">8(self)</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_1253E</td>
+<td style="text-align:center">E</td>
+<td style="text-align:center">DP</td>
+<td style="text-align:center">算每个点的范围，dp</td>
+<td style="text-align:center">9</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_600D</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">计算几何</td>
+<td style="text-align:center">Template计算几何，圆相交的面积</td>
+<td style="text-align:center">10</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_598F</td>
+<td style="text-align:center">F</td>
+<td style="text-align:center">计算几何</td>
+<td style="text-align:center">直线与图形相交的长度，叉积。</td>
+<td style="text-align:center">11</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_1245F</td>
+<td style="text-align:center">F</td>
+<td style="text-align:center">数位DP</td>
+<td style="text-align:center">和hihocoder的一道数位dp类似，暴力暴力啊</td>
+<td style="text-align:center">12</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_1133E</td>
+<td style="text-align:center">E</td>
+<td style="text-align:center">DP</td>
+<td style="text-align:center">比较标准的DP，非贪心</td>
+<td style="text-align:center">13</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_600E</td>
+<td style="text-align:center">E</td>
+<td style="text-align:center">Adhoc</td>
+<td style="text-align:center">树的合并O(nlogn)</td>
+<td style="text-align:center">14</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_1227F1</td>
+<td style="text-align:center">F</td>
+<td style="text-align:center">DP</td>
+<td style="text-align:center">dp求排列数量</td>
+<td style="text-align:center">15</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_1163D</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">DP</td>
+<td style="text-align:center">求next数组，字符串dp，考虑所有情况</td>
+<td style="text-align:center">16</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_1245E</td>
+<td style="text-align:center">E</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">17</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_1257E</td>
+<td style="text-align:center">E</td>
+<td style="text-align:center">DP</td>
+<td style="text-align:center">dp，排列</td>
+<td style="text-align:center">18</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_1272E</td>
+<td style="text-align:center">E</td>
+<td style="text-align:center">图论</td>
+<td style="text-align:center">图论，最短路</td>
+<td style="text-align:center">19</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_1271E</td>
+<td style="text-align:center">E</td>
+<td style="text-align:center">二分</td>
+<td style="text-align:center">观察规律，两次二分(出题)</td>
+<td style="text-align:center">20</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_1278D</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">二分，树</td>
+<td style="text-align:center">给出一堆线段，交互情况代表点之间是否有连接，问能否形成一棵树</td>
+<td style="text-align:center">21</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_1269D</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">Adhoc</td>
+<td style="text-align:center">挺trick的，多米诺转成棋盘问题，但是好像在哪里见过</td>
+<td style="text-align:center">22</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_652D</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">树状数组</td>
+<td style="text-align:center">树状数组裸题了，这题居然还要想很久？？？？？？</td>
+<td style="text-align:center">23</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_468B</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">dsu, 2-sat</td>
+<td style="text-align:center">dsu</td>
+<td style="text-align:center">24</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_744B</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">交互题</td>
+<td style="text-align:center">交互里经典的题了，按每一位分成两组计算。</td>
+<td style="text-align:center">25</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_744C</td>
+<td style="text-align:center">E</td>
+<td style="text-align:center">状压dp</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">CF_1266D</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">Adhoc</td>
+<td style="text-align:center">默认是在一个环里，简化还债。</td>
+<td style="text-align:center">27</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_1282D</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">交互题</td>
+<td style="text-align:center">编辑距离交互题</td>
+<td style="text-align:center">28</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_1278E</td>
+<td style="text-align:center">E</td>
+<td style="text-align:center">Adhoc</td>
+<td style="text-align:center">给出一棵树，构造相交的线段。</td>
+<td style="text-align:center">29</td>
+</tr>
+<tr>
+<td style="text-align:center">AGC_41B</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">二分</td>
+<td style="text-align:center">N个题选p个，M次投票。</td>
+<td style="text-align:center">30</td>
+</tr>
+<tr>
+<td style="text-align:center">LC_1307</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">Adhoc</td>
+<td style="text-align:center">算术表达式，先化简，再深搜</td>
+<td style="text-align:center">31</td>
+</tr>
+<tr>
+<td style="text-align:center">LC_P3</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">Adhoc</td>
+<td style="text-align:center">机器人大冒险</td>
+<td style="text-align:center">32</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_1270D</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">交互题</td>
+<td style="text-align:center">Adhoc，不知道给出的结果排第几。</td>
+<td style="text-align:center">33</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_228E</td>
+<td style="text-align:center">E</td>
+<td style="text-align:center">2-sat</td>
+<td style="text-align:center">2-sat模版题</td>
+<td style="text-align:center">34</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_27E</td>
+<td style="text-align:center">E</td>
+<td style="text-align:center">数学</td>
+<td style="text-align:center">给出约数的数量，求满足约数个数的最小的数</td>
+<td style="text-align:center">35</td>
+</tr>
+<tr>
+<td style="text-align:center">LCP4.覆盖</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">匈牙利算法</td>
+<td style="text-align:center">二分图最大匹配，1X2骨牌覆盖。也可以状压dp。比较经典(老)的题目了。</td>
+<td style="text-align:center">36</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_1284C</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">计数</td>
+<td style="text-align:center">在所有排列中计算一共有多少个有效区间。固定区间计数。</td>
+<td style="text-align:center">37</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_1173C</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">Adhoc</td>
+<td style="text-align:center">两副牌。很trick，代码要考虑一些情况。</td>
+<td style="text-align:center">38</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_1173D</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">计数，树dp</td>
+<td style="text-align:center">一棵树，排列计数，要求树的边不能交叉。</td>
+<td style="text-align:center">39</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_1286B</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">dfs</td>
+<td style="text-align:center">给出子树中有多少比自己少的个数，求最后树的各个点的值</td>
+<td style="text-align:center">40</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_1180D</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">Adhoc</td>
+<td style="text-align:center">一维变二维。围绕中心点。</td>
+<td style="text-align:center">41</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_1185D</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">Adhoc</td>
+<td style="text-align:center">简单题</td>
+<td style="text-align:center">42(self)</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_1307C</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">Adhoc</td>
+<td style="text-align:center">字符的长度只可能是1或者2</td>
+<td style="text-align:center">43</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_1313C2</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">stack</td>
+<td style="text-align:center">很经典的栈题目，温故知新。</td>
+<td style="text-align:center">44</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_1307D</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">bfs, sort</td>
+<td style="text-align:center">bfs+排序，排序那块不会，多看看</td>
+<td style="text-align:center">45</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_1311F</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">树状数组，归并排序</td>
+<td style="text-align:center">归并排序的思想</td>
+<td style="text-align:center">46</td>
+</tr>
+<tr>
+<td style="text-align:center">CF_1311D</td>
+<td style="text-align:center">C</td>
+<td style="text-align:center">简单题</td>
+<td style="text-align:center">简单题</td>
+<td style="text-align:center">47(self)</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
@@ -376,34 +691,18 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/DP/" rel="tag">#DP</a>
-          
-            <a href="/tags/AtCoder/" rel="tag">#AtCoder</a>
-          
-            <a href="/tags/倍增/" rel="tag">#倍增</a>
-          
-            <a href="/tags/KMP/" rel="tag">#KMP</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/03/AtCoder/AtCoder-Regular-Contest-059/" rel="next" title="AtCoder Regular Contest 059">
-                <i class="fa fa-chevron-left"></i> AtCoder Regular Contest 059
+              <a href="/2020/02/19/2020/2020-2/" rel="next" title="2020年_2月_春生夏长，秋收冬藏">
+                <i class="fa fa-chevron-left"></i> 2020年_2月_春生夏长，秋收冬藏
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/07/AtCoder/AtCoder-Grand-Contest-002/" rel="prev" title="AtCoder Grand Contest 002">
-                AtCoder Grand Contest 002 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -540,7 +839,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Tak-and-Cards"><span class="nav-number">1.</span> <span class="nav-text">C Tak and Cards</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Digit-Sum"><span class="nav-number">2.</span> <span class="nav-text">D Digit Sum</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-Tak-and-Hotels"><span class="nav-number">3.</span> <span class="nav-text">E Tak and Hotels</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#F-Best-Representation"><span class="nav-number">4.</span> <span class="nav-text">F Best Representation</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>
