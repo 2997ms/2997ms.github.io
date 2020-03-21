@@ -4,6 +4,43 @@
   
     
     <entry>
+      <title><![CDATA[Panasonic Programming Contest 2020]]></title>
+      <url>http://2997ms.github.io/2020/03/21/AtCoder/Panasonic-Programming-Contest-2020/</url>
+      <content type="html"><![CDATA[<p>最近是有打了几场Atcoder的，这几天统一还是要补一下的。距离我上一次更新题解也是够久的了。</p>
+<a id="more"></a>
+<p>几乎所有的Atcoder题目都可以被归类为【思维题】。数据结构在我认知的范围之内都不复杂，但你就是想不出来。</p>
+<p>自己写这个blog也真是忘了初衷了，一开始每一篇都写的那么认真，你看看现在。</p>
+<p>这场主要还是E、F题，A到D题还是比较水的。</p>
+<p><a href="[https://atcoder.jp/contests/panasonic2020/tasks](https://atcoder.jp/contests/panasonic2020/tasks">题目链接</a>)</p>
+<h3 id="E-Three-Substrings"><a href="#E-Three-Substrings" class="headerlink" title="E - Three Substrings"></a>E - Three Substrings</h3><p>三个字符串，是一个字符串的子串。随意组合，要求原字符串长度最小。</p>
+<p>这题就不能什么枚举组合求贪心，当时比赛的时候就已经发现不能贪心了。然而。。。我居然还各种特判条件，然后怎么弄都不对。。。真的是智障。。。</p>
+<p>直接枚举ab，ac，bc偏移，然后最后统一组合。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"><span class="keyword">int</span> ab[maxn], ac[maxn], bc[maxn];</span><br><span class="line"> </span><br><span class="line"><span class="built_in">string</span> aa, bb, cc;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; aa &gt;&gt; bb &gt;&gt; cc;</span><br><span class="line">    <span class="keyword">int</span> mid = <span class="number">1e5</span>;</span><br><span class="line"> </span><br><span class="line">    REP(i,<span class="number">0</span>,aa.length()) &#123;</span><br><span class="line">        REP(j,<span class="number">0</span>,bb.length()) &#123;</span><br><span class="line">            <span class="keyword">if</span>(!(aa[i] == bb[j] || aa[i] == <span class="string">'?'</span> || bb[j] == <span class="string">'?'</span>)) &#123;</span><br><span class="line">                ab[i - j + mid] = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">   &#125;</span><br><span class="line"> </span><br><span class="line">   REP(i,<span class="number">0</span>,aa.length()) &#123;</span><br><span class="line">        REP(j,<span class="number">0</span>,cc.length()) &#123;</span><br><span class="line">            <span class="keyword">if</span>(!(aa[i] == cc[j] || aa[i] == <span class="string">'?'</span> || cc[j] == <span class="string">'?'</span>)) &#123;</span><br><span class="line">                ac[i - j + mid] = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">   &#125;</span><br><span class="line"> </span><br><span class="line">   REP(i,<span class="number">0</span>,bb.length()) &#123;</span><br><span class="line">        REP(j,<span class="number">0</span>,cc.length()) &#123;</span><br><span class="line">            <span class="keyword">if</span>(!(bb[i] == cc[j] || bb[i] == <span class="string">'?'</span> || cc[j] == <span class="string">'?'</span>)) &#123;</span><br><span class="line">                bc[i - j + mid] = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">   &#125;</span><br><span class="line"> </span><br><span class="line">   <span class="keyword">int</span> ans = aa.length() + bb.length() + cc.length();</span><br><span class="line">   REPP(i,<span class="number">-4000</span>, <span class="number">4000</span>) &#123;</span><br><span class="line">    REPP(j, <span class="number">-4000</span>, <span class="number">4000</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(!ab[i + mid] &amp;&amp; !ac[j + mid] &amp;&amp; !bc[j - i + mid]) &#123;</span><br><span class="line">            <span class="keyword">int</span> minn = min(&#123;<span class="number">0</span>, i, j&#125;);</span><br><span class="line">            <span class="keyword">int</span> maxx = max(&#123;(<span class="keyword">int</span>)aa.length(), (<span class="keyword">int</span>)bb.length() + i, (<span class="keyword">int</span>)cc.length() + j&#125;);</span><br><span class="line">            ans = min(ans, maxx - minn );</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="F-Fractal-Shortest-Path"><a href="#F-Fractal-Shortest-Path" class="headerlink" title="F - Fractal Shortest Path"></a>F - Fractal Shortest Path</h3><p>F题的题意是一张$3^m * 3^m$大图，中间是block的情况。然后给你两个点，求距离。</p>
+<p>多么简明的题意！但为什么就是想不出来呢？</p>
+<p>递归，如果发现不在同一层，直接曼哈顿距离。</p>
+<p>在同一层，如果是中间那一层，考虑是上面还是下面过去。</p>
+<p>否则，再往下递归就行了。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">ll wid[maxn];</span><br><span class="line"><span class="function">ll <span class="title">dfs</span><span class="params">(ll x1, ll y1, ll x2, ll y2, <span class="keyword">int</span> level)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (level == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">abs</span>(y1 - y2);</span><br><span class="line">    &#125;</span><br><span class="line">    ll w = wid[level<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">if</span>(x1 / w != x2 / w) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">abs</span>(x1 - x2) + <span class="built_in">abs</span>(y1 - y2);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(x1 / w == <span class="number">1</span> &amp;&amp; <span class="built_in">abs</span>(y1 / w - y2 /w) &gt;= <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">abs</span>( y1 - y2 )  + min(x1 % w + <span class="number">1</span> + x2 % w + <span class="number">1</span>, w - x1%w + w - x2%w);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dfs(x1 % w, y1, x2 % w, y2, level<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">int</span> q;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    wid[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    REPP(i,<span class="number">1</span>,<span class="number">30</span>) &#123;</span><br><span class="line">        wid[i] = wid[i<span class="number">-1</span>] * <span class="number">3</span>;</span><br><span class="line">     &#125;</span><br><span class="line">    SA(q);</span><br><span class="line">    REPP(i,<span class="number">1</span>,q) &#123;</span><br><span class="line">        ll a1,b1,c1,d1;</span><br><span class="line">        SLLA(a1);</span><br><span class="line">        SLLA(b1);</span><br><span class="line">        SLLA(c1);</span><br><span class="line">        SLLA(d1);</span><br><span class="line">        a1--;</span><br><span class="line">        b1--;</span><br><span class="line">        c1--;</span><br><span class="line">        d1--;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">abs</span>(a1 - c1) &gt; <span class="built_in">abs</span>(b1 - d1)) &#123;</span><br><span class="line">            swap(b1, a1);</span><br><span class="line">            swap(c1, d1);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt; dfs(a1, b1, c1, d1, <span class="number">30</span>) &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+        <categories>
+            
+            <category> 题记 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Atcoder </tag>
+            
+            <tag> 思维题 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[2020-500]]></title>
       <url>http://2997ms.github.io/2020/02/25/2020-plan/</url>
       <content type="html"><![CDATA[<p>hello 2020. Bye 2020</p>
@@ -349,17 +386,18 @@
 <td style="text-align:center">47(self)</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">At_PPC_E</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">思维题</td>
+<td style="text-align:center">不是贪心，更类似于动态规划。三个字符串如何组合能让字符最短。</td>
+<td style="text-align:center">48</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">At_PPC_F</td>
+<td style="text-align:center">D</td>
+<td style="text-align:center">思维题</td>
+<td style="text-align:center">一张大图，中间被block，求两点距离。</td>
+<td style="text-align:center">49</td>
 </tr>
 </tbody>
 </table>
@@ -1181,9 +1219,9 @@
         
         <tags>
             
-            <tag> DP </tag>
-            
             <tag> AtCoder </tag>
+            
+            <tag> DP </tag>
             
             <tag> 二分 </tag>
             
@@ -3143,9 +3181,9 @@
         
         <tags>
             
-            <tag> Google </tag>
-            
             <tag> 矩阵快速幂 </tag>
+            
+            <tag> Google </tag>
             
         </tags>
         
@@ -3580,9 +3618,9 @@
             
             <tag> Codeforces </tag>
             
-            <tag> 矩阵快速幂 </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> 矩阵快速幂 </tag>
             
         </tags>
         
@@ -3945,9 +3983,9 @@
         
         <tags>
             
-            <tag> DP </tag>
-            
             <tag> AtCoder </tag>
+            
+            <tag> DP </tag>
             
             <tag> 深搜 </tag>
             
@@ -4065,9 +4103,9 @@
         
         <tags>
             
-            <tag> DP </tag>
-            
             <tag> AtCoder </tag>
+            
+            <tag> DP </tag>
             
             <tag> 整体二分 </tag>
             
@@ -4111,9 +4149,9 @@
         
         <tags>
             
-            <tag> DP </tag>
-            
             <tag> AtCoder </tag>
+            
+            <tag> DP </tag>
             
             <tag> 倍增 </tag>
             
@@ -4153,9 +4191,9 @@
         
         <tags>
             
-            <tag> DP </tag>
-            
             <tag> AtCoder </tag>
+            
+            <tag> DP </tag>
             
         </tags>
         
@@ -4342,9 +4380,9 @@
         
         <tags>
             
-            <tag> DP </tag>
-            
             <tag> AtCoder </tag>
+            
+            <tag> DP </tag>
             
         </tags>
         
