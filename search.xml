@@ -4,8 +4,40 @@
   
     
     <entry>
+      <title><![CDATA[AtCoder Beginner Contest 160]]></title>
+      <url>http://2997ms.github.io/2020/04/12/AtCoder/AtCoder-Beginner-Contest-160/</url>
+      <content type="html"><![CDATA[<p>退化。</p>
+<a id="more"></a>
+<p><a href="https://atcoder.jp/contests/abc160" target="_blank" rel="noopener">题目链接</a></p>
+<h4 id="F-Distributing-Integers"><a href="#F-Distributing-Integers" class="headerlink" title="F Distributing Integers"></a><a href="https://atcoder.jp/contests/abc160/tasks/abc160_f" target="_blank" rel="noopener">F Distributing Integers</a></h4><blockquote>
+<p>题意是给出一棵树，指定一个点开始染色，之后染色的点必须与已经染过色的点相邻才可以被染。问每个点作为第一个染色点的方案树。</p>
+</blockquote>
+<p>假定root=1，总的方案数为<br>$$<br>\frac{n!}{\sum_{k=1..n}{size[k]}}<br>$$<br>之后就是根据已有的root的答案对子树进行转换。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; edge[maxn];</span><br><span class="line">ll fac[maxn], inv_fac[maxn];</span><br><span class="line">ll res[maxn];</span><br><span class="line">ll sz[maxn], mul[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> root, <span class="keyword">int</span> fa)</span> </span>&#123;</span><br><span class="line">    sz[root] = <span class="number">1</span>;</span><br><span class="line">    mul[root] = <span class="number">1</span>;</span><br><span class="line">    REP(i,<span class="number">0</span>,edge[root].size()) &#123;</span><br><span class="line">        <span class="keyword">int</span> nxt = edge[root][i];</span><br><span class="line">        <span class="keyword">if</span>(nxt == fa) &#123;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        dfs(nxt, root);</span><br><span class="line">        sz[root] += sz[nxt];</span><br><span class="line">        mul[root] = mul[root] * mul[nxt] % mod;</span><br><span class="line">    &#125;</span><br><span class="line">    mul[root] = mul[root] * sz[root] % mod;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs2</span><span class="params">(<span class="keyword">int</span> root, <span class="keyword">int</span> fa, ll premul)</span> </span>&#123;</span><br><span class="line">    ll k = premul;</span><br><span class="line"></span><br><span class="line">    REP(i,<span class="number">0</span>,edge[root].size()) &#123;</span><br><span class="line">        <span class="keyword">int</span> nxt = edge[root][i];</span><br><span class="line">        <span class="keyword">if</span>(nxt == fa) &#123;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        k = k * mul[nxt] % mod;</span><br><span class="line">    &#125;</span><br><span class="line">    res[root] = fac[n - <span class="number">1</span>] * po(k, mod<span class="number">-2</span>,mod) % mod;</span><br><span class="line">    REP(i,<span class="number">0</span>,edge[root].size()) &#123;</span><br><span class="line">        <span class="keyword">int</span> nxt = edge[root][i];</span><br><span class="line">        <span class="keyword">if</span>(nxt == fa) &#123;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        dfs2(nxt, root, k * po(mul[nxt], mod <span class="number">-2</span>, mod) % mod * (n - sz[nxt])%mod);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    SA(n);</span><br><span class="line">    REPP(i,<span class="number">1</span>,n<span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> a, b;</span><br><span class="line">        SA(a);</span><br><span class="line">        SA(b);</span><br><span class="line">        edge[a].push_back(b);</span><br><span class="line">        edge[b].push_back(a);</span><br><span class="line">    &#125;</span><br><span class="line">    fac[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    inv_fac[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    REPP(i,<span class="number">1</span>,n) &#123;</span><br><span class="line">        fac[i] = fac[i<span class="number">-1</span>] * i % mod;</span><br><span class="line">        inv_fac[i] = po(fac[i], mod - <span class="number">2</span>, mod);</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(<span class="number">1</span>, <span class="number">-1</span>);</span><br><span class="line">    dfs2(<span class="number">1</span>, <span class="number">-1</span>, <span class="number">1</span>);</span><br><span class="line">    REPP(i,<span class="number">1</span>,n) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, res[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> 题记 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> AtCoder </tag>
+            
+            <tag> dp </tag>
+            
+            <tag> 树 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[而今的我们为什么这么累这么丧]]></title>
-      <url>http://2997ms.github.io/2020/04/12/2020/tomorrow/</url>
+      <url>http://2997ms.github.io/2020/04/12/2020/2020-4/</url>
       <content type="html"><![CDATA[<p>写在二十七岁的今天。简单写点什么，献给自己。</p>
 <p>这是我很长一段时间以来一直想说的一个话题，标题中的“我们”也不是说谁们，更多的时候就是说我。因为疫情的原因，我发现2020年的每个人都过的不快乐，国内外大量的人们面临失业，经济中的压力，生意上的不如意，各种贷款。总而言之，求不得，出不去，要自由。</p>
 <a id="more"></a>
@@ -484,6 +516,285 @@
 <td style="text-align:center">思维题</td>
 <td style="text-align:center">一张大图，中间被block，求两点距离。</td>
 <td style="text-align:center">49</td>
+</tr>
+<tr>
+<td style="text-align:center">At_160_F</td>
+<td style="text-align:center">E</td>
+<td style="text-align:center">树</td>
+<td style="text-align:center">树的拓扑排序，转换dp。</td>
+<td style="text-align:center">50</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
 </tr>
 </tbody>
 </table>
@@ -2115,9 +2426,9 @@
         
         <tags>
             
-            <tag> 博弈 </tag>
-            
             <tag> Codeforces </tag>
+            
+            <tag> 博弈 </tag>
             
         </tags>
         
@@ -3021,17 +3332,17 @@
             
             <tag> Codeforces </tag>
             
-            <tag> CodeChef </tag>
-            
             <tag> 树重心 </tag>
+            
+            <tag> 树分治 </tag>
+            
+            <tag> CodeChef </tag>
             
             <tag> LCA </tag>
             
             <tag> sync_with_stdio </tag>
             
             <tag> 分块 </tag>
-            
-            <tag> 树分治 </tag>
             
         </tags>
         
@@ -3134,9 +3445,9 @@
             
             <tag> DP </tag>
             
-            <tag> 博弈 </tag>
-            
             <tag> Codeforces </tag>
+            
+            <tag> 博弈 </tag>
             
         </tags>
         
@@ -3650,17 +3961,17 @@
         
         <tags>
             
-            <tag> 二分 </tag>
-            
             <tag> Codeforces </tag>
             
-            <tag> 树重心 </tag>
-            
-            <tag> 树分治 </tag>
+            <tag> 二分 </tag>
             
             <tag> dijkstra </tag>
             
             <tag> 扩展欧几里得求逆元 </tag>
+            
+            <tag> 树重心 </tag>
+            
+            <tag> 树分治 </tag>
             
         </tags>
         
@@ -3966,9 +4277,9 @@
             
             <tag> DP </tag>
             
-            <tag> 二分 </tag>
-            
             <tag> Codeforces </tag>
+            
+            <tag> 二分 </tag>
             
             <tag> 左偏树 </tag>
             
