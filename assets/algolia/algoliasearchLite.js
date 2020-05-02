@@ -1,4 +1,4 @@
-/*! algoliasearch 3.35.1 | © 2014, 2015 Algolia SAS | github.com/algolia/algoliasearch-client-js */
+/*! algoliasearch 3.23.0 | © 2014, 2015 Algolia SAS | github.com/algolia/algoliasearch-client-js */
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.algoliasearch = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 (function (process){
 /**
@@ -399,18 +399,17 @@ function coerce(val) {
  * @copyright Copyright (c) 2014 Yehuda Katz, Tom Dale, Stefan Penner and contributors (Conversion to ES6 API by Jake Archibald)
  * @license   Licensed under MIT license
  *            See https://raw.githubusercontent.com/stefanpenner/es6-promise/master/LICENSE
- * @version   4.1.1
+ * @version   4.1.0
  */
 
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-	typeof define === 'function' && define.amd ? define(factory) :
-	(global.ES6Promise = factory());
+    typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+    typeof define === 'function' && define.amd ? define(factory) :
+    (global.ES6Promise = factory());
 }(this, (function () { 'use strict';
 
 function objectOrFunction(x) {
-  var type = typeof x;
-  return x !== null && (type === 'object' || type === 'function');
+  return typeof x === 'function' || typeof x === 'object' && x !== null;
 }
 
 function isFunction(x) {
@@ -418,12 +417,12 @@ function isFunction(x) {
 }
 
 var _isArray = undefined;
-if (Array.isArray) {
-  _isArray = Array.isArray;
-} else {
+if (!Array.isArray) {
   _isArray = function (x) {
     return Object.prototype.toString.call(x) === '[object Array]';
   };
+} else {
+  _isArray = Array.isArray;
 }
 
 var isArray = _isArray;
@@ -611,7 +610,7 @@ function then(onFulfillment, onRejection) {
   @return {Promise} a promise that will become fulfilled with the given
   `value`
 */
-function resolve$1(object) {
+function resolve(object) {
   /*jshint validthis:true */
   var Constructor = this;
 
@@ -620,7 +619,7 @@ function resolve$1(object) {
   }
 
   var promise = new Constructor(noop);
-  resolve(promise, object);
+  _resolve(promise, object);
   return promise;
 }
 
@@ -651,24 +650,24 @@ function getThen(promise) {
   }
 }
 
-function tryThen(then$$1, value, fulfillmentHandler, rejectionHandler) {
+function tryThen(then, value, fulfillmentHandler, rejectionHandler) {
   try {
-    then$$1.call(value, fulfillmentHandler, rejectionHandler);
+    then.call(value, fulfillmentHandler, rejectionHandler);
   } catch (e) {
     return e;
   }
 }
 
-function handleForeignThenable(promise, thenable, then$$1) {
+function handleForeignThenable(promise, thenable, then) {
   asap(function (promise) {
     var sealed = false;
-    var error = tryThen(then$$1, thenable, function (value) {
+    var error = tryThen(then, thenable, function (value) {
       if (sealed) {
         return;
       }
       sealed = true;
       if (thenable !== value) {
-        resolve(promise, value);
+        _resolve(promise, value);
       } else {
         fulfill(promise, value);
       }
@@ -678,12 +677,12 @@ function handleForeignThenable(promise, thenable, then$$1) {
       }
       sealed = true;
 
-      reject(promise, reason);
+      _reject(promise, reason);
     }, 'Settle: ' + (promise._label || ' unknown promise'));
 
     if (!sealed && error) {
       sealed = true;
-      reject(promise, error);
+      _reject(promise, error);
     }
   }, promise);
 }
@@ -692,36 +691,36 @@ function handleOwnThenable(promise, thenable) {
   if (thenable._state === FULFILLED) {
     fulfill(promise, thenable._result);
   } else if (thenable._state === REJECTED) {
-    reject(promise, thenable._result);
+    _reject(promise, thenable._result);
   } else {
     subscribe(thenable, undefined, function (value) {
-      return resolve(promise, value);
+      return _resolve(promise, value);
     }, function (reason) {
-      return reject(promise, reason);
+      return _reject(promise, reason);
     });
   }
 }
 
-function handleMaybeThenable(promise, maybeThenable, then$$1) {
-  if (maybeThenable.constructor === promise.constructor && then$$1 === then && maybeThenable.constructor.resolve === resolve$1) {
+function handleMaybeThenable(promise, maybeThenable, then$$) {
+  if (maybeThenable.constructor === promise.constructor && then$$ === then && maybeThenable.constructor.resolve === resolve) {
     handleOwnThenable(promise, maybeThenable);
   } else {
-    if (then$$1 === GET_THEN_ERROR) {
-      reject(promise, GET_THEN_ERROR.error);
+    if (then$$ === GET_THEN_ERROR) {
+      _reject(promise, GET_THEN_ERROR.error);
       GET_THEN_ERROR.error = null;
-    } else if (then$$1 === undefined) {
+    } else if (then$$ === undefined) {
       fulfill(promise, maybeThenable);
-    } else if (isFunction(then$$1)) {
-      handleForeignThenable(promise, maybeThenable, then$$1);
+    } else if (isFunction(then$$)) {
+      handleForeignThenable(promise, maybeThenable, then$$);
     } else {
       fulfill(promise, maybeThenable);
     }
   }
 }
 
-function resolve(promise, value) {
+function _resolve(promise, value) {
   if (promise === value) {
-    reject(promise, selfFulfillment());
+    _reject(promise, selfFulfillment());
   } else if (objectOrFunction(value)) {
     handleMaybeThenable(promise, value, getThen(value));
   } else {
@@ -750,7 +749,7 @@ function fulfill(promise, value) {
   }
 }
 
-function reject(promise, reason) {
+function _reject(promise, reason) {
   if (promise._state !== PENDING) {
     return;
   }
@@ -835,7 +834,7 @@ function invokeCallback(settled, promise, callback, detail) {
     }
 
     if (promise === value) {
-      reject(promise, cannotReturnOwn());
+      _reject(promise, cannotReturnOwn());
       return;
     }
   } else {
@@ -846,25 +845,25 @@ function invokeCallback(settled, promise, callback, detail) {
   if (promise._state !== PENDING) {
     // noop
   } else if (hasCallback && succeeded) {
-      resolve(promise, value);
+      _resolve(promise, value);
     } else if (failed) {
-      reject(promise, error);
+      _reject(promise, error);
     } else if (settled === FULFILLED) {
       fulfill(promise, value);
     } else if (settled === REJECTED) {
-      reject(promise, value);
+      _reject(promise, value);
     }
 }
 
 function initializePromise(promise, resolver) {
   try {
     resolver(function resolvePromise(value) {
-      resolve(promise, value);
+      _resolve(promise, value);
     }, function rejectPromise(reason) {
-      reject(promise, reason);
+      _reject(promise, reason);
     });
   } catch (e) {
-    reject(promise, e);
+    _reject(promise, e);
   }
 }
 
@@ -880,7 +879,7 @@ function makePromise(promise) {
   promise._subscribers = [];
 }
 
-function Enumerator$1(Constructor, input) {
+function Enumerator(Constructor, input) {
   this._instanceConstructor = Constructor;
   this.promise = new Constructor(noop);
 
@@ -889,6 +888,7 @@ function Enumerator$1(Constructor, input) {
   }
 
   if (isArray(input)) {
+    this._input = input;
     this.length = input.length;
     this._remaining = input.length;
 
@@ -898,31 +898,34 @@ function Enumerator$1(Constructor, input) {
       fulfill(this.promise, this._result);
     } else {
       this.length = this.length || 0;
-      this._enumerate(input);
+      this._enumerate();
       if (this._remaining === 0) {
         fulfill(this.promise, this._result);
       }
     }
   } else {
-    reject(this.promise, validationError());
+    _reject(this.promise, validationError());
   }
 }
 
 function validationError() {
   return new Error('Array Methods must be provided an Array');
-}
+};
 
-Enumerator$1.prototype._enumerate = function (input) {
-  for (var i = 0; this._state === PENDING && i < input.length; i++) {
-    this._eachEntry(input[i], i);
+Enumerator.prototype._enumerate = function () {
+  var length = this.length;
+  var _input = this._input;
+
+  for (var i = 0; this._state === PENDING && i < length; i++) {
+    this._eachEntry(_input[i], i);
   }
 };
 
-Enumerator$1.prototype._eachEntry = function (entry, i) {
+Enumerator.prototype._eachEntry = function (entry, i) {
   var c = this._instanceConstructor;
-  var resolve$$1 = c.resolve;
+  var resolve$$ = c.resolve;
 
-  if (resolve$$1 === resolve$1) {
+  if (resolve$$ === resolve) {
     var _then = getThen(entry);
 
     if (_then === then && entry._state !== PENDING) {
@@ -930,28 +933,28 @@ Enumerator$1.prototype._eachEntry = function (entry, i) {
     } else if (typeof _then !== 'function') {
       this._remaining--;
       this._result[i] = entry;
-    } else if (c === Promise$2) {
+    } else if (c === Promise) {
       var promise = new c(noop);
       handleMaybeThenable(promise, entry, _then);
       this._willSettleAt(promise, i);
     } else {
-      this._willSettleAt(new c(function (resolve$$1) {
-        return resolve$$1(entry);
+      this._willSettleAt(new c(function (resolve$$) {
+        return resolve$$(entry);
       }), i);
     }
   } else {
-    this._willSettleAt(resolve$$1(entry), i);
+    this._willSettleAt(resolve$$(entry), i);
   }
 };
 
-Enumerator$1.prototype._settledAt = function (state, i, value) {
+Enumerator.prototype._settledAt = function (state, i, value) {
   var promise = this.promise;
 
   if (promise._state === PENDING) {
     this._remaining--;
 
     if (state === REJECTED) {
-      reject(promise, value);
+      _reject(promise, value);
     } else {
       this._result[i] = value;
     }
@@ -962,7 +965,7 @@ Enumerator$1.prototype._settledAt = function (state, i, value) {
   }
 };
 
-Enumerator$1.prototype._willSettleAt = function (promise, i) {
+Enumerator.prototype._willSettleAt = function (promise, i) {
   var enumerator = this;
 
   subscribe(promise, undefined, function (value) {
@@ -1019,8 +1022,8 @@ Enumerator$1.prototype._willSettleAt = function (promise, i) {
   fulfilled, or rejected if any of them become rejected.
   @static
 */
-function all$1(entries) {
-  return new Enumerator$1(this, entries).promise;
+function all(entries) {
+  return new Enumerator(this, entries).promise;
 }
 
 /**
@@ -1088,7 +1091,7 @@ function all$1(entries) {
   @return {Promise} a promise which settles in the same way as the first passed
   promise to settle.
 */
-function race$1(entries) {
+function race(entries) {
   /*jshint validthis:true */
   var Constructor = this;
 
@@ -1140,11 +1143,11 @@ function race$1(entries) {
   Useful for tooling.
   @return {Promise} a promise rejected with the given `reason`.
 */
-function reject$1(reason) {
+function reject(reason) {
   /*jshint validthis:true */
   var Constructor = this;
   var promise = new Constructor(noop);
-  reject(promise, reason);
+  _reject(promise, reason);
   return promise;
 }
 
@@ -1259,27 +1262,27 @@ function needsNew() {
   Useful for tooling.
   @constructor
 */
-function Promise$2(resolver) {
+function Promise(resolver) {
   this[PROMISE_ID] = nextId();
   this._result = this._state = undefined;
   this._subscribers = [];
 
   if (noop !== resolver) {
     typeof resolver !== 'function' && needsResolver();
-    this instanceof Promise$2 ? initializePromise(this, resolver) : needsNew();
+    this instanceof Promise ? initializePromise(this, resolver) : needsNew();
   }
 }
 
-Promise$2.all = all$1;
-Promise$2.race = race$1;
-Promise$2.resolve = resolve$1;
-Promise$2.reject = reject$1;
-Promise$2._setScheduler = setScheduler;
-Promise$2._setAsap = setAsap;
-Promise$2._asap = asap;
+Promise.all = all;
+Promise.race = race;
+Promise.resolve = resolve;
+Promise.reject = reject;
+Promise._setScheduler = setScheduler;
+Promise._setAsap = setAsap;
+Promise._asap = asap;
 
-Promise$2.prototype = {
-  constructor: Promise$2,
+Promise.prototype = {
+  constructor: Promise,
 
   /**
     The primary way of interacting with a promise is through its `then` method,
@@ -1508,8 +1511,7 @@ Promise$2.prototype = {
   }
 };
 
-/*global self*/
-function polyfill$1() {
+function polyfill() {
     var local = undefined;
 
     if (typeof global !== 'undefined') {
@@ -1539,17 +1541,16 @@ function polyfill$1() {
         }
     }
 
-    local.Promise = Promise$2;
+    local.Promise = Promise;
 }
 
 // Strange compat..
-Promise$2.polyfill = polyfill$1;
-Promise$2.Promise = Promise$2;
+Promise.polyfill = polyfill;
+Promise.Promise = Promise;
 
-return Promise$2;
+return Promise;
 
 })));
-
 
 
 }).call(this,require(11),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
@@ -2147,92 +2148,6 @@ process.umask = function() { return 0; };
 
 'use strict';
 
-// If obj.hasOwnProperty has been overridden, then calling
-// obj.hasOwnProperty(prop) will break.
-// See: https://github.com/joyent/node/issues/1707
-function hasOwnProperty(obj, prop) {
-  return Object.prototype.hasOwnProperty.call(obj, prop);
-}
-
-module.exports = function(qs, sep, eq, options) {
-  sep = sep || '&';
-  eq = eq || '=';
-  var obj = {};
-
-  if (typeof qs !== 'string' || qs.length === 0) {
-    return obj;
-  }
-
-  var regexp = /\+/g;
-  qs = qs.split(sep);
-
-  var maxKeys = 1000;
-  if (options && typeof options.maxKeys === 'number') {
-    maxKeys = options.maxKeys;
-  }
-
-  var len = qs.length;
-  // maxKeys <= 0 means that we should not limit keys count
-  if (maxKeys > 0 && len > maxKeys) {
-    len = maxKeys;
-  }
-
-  for (var i = 0; i < len; ++i) {
-    var x = qs[i].replace(regexp, '%20'),
-        idx = x.indexOf(eq),
-        kstr, vstr, k, v;
-
-    if (idx >= 0) {
-      kstr = x.substr(0, idx);
-      vstr = x.substr(idx + 1);
-    } else {
-      kstr = x;
-      vstr = '';
-    }
-
-    k = decodeURIComponent(kstr);
-    v = decodeURIComponent(vstr);
-
-    if (!hasOwnProperty(obj, k)) {
-      obj[k] = v;
-    } else if (isArray(obj[k])) {
-      obj[k].push(v);
-    } else {
-      obj[k] = [obj[k], v];
-    }
-  }
-
-  return obj;
-};
-
-var isArray = Array.isArray || function (xs) {
-  return Object.prototype.toString.call(xs) === '[object Array]';
-};
-
-},{}],13:[function(require,module,exports){
-// Copyright Joyent, Inc. and other Node contributors.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to permit
-// persons to whom the Software is furnished to do so, subject to the
-// following conditions:
-//
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-'use strict';
-
 var stringifyPrimitive = function(v) {
   switch (typeof v) {
     case 'string':
@@ -2296,20 +2211,14 @@ var objectKeys = Object.keys || function (obj) {
   return res;
 };
 
-},{}],14:[function(require,module,exports){
-'use strict';
-
-exports.decode = exports.parse = require(12);
-exports.encode = exports.stringify = require(13);
-
-},{"12":12,"13":13}],15:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 (function (process){
 module.exports = AlgoliaSearchCore;
 
-var errors = require(25);
-var exitPromise = require(26);
-var IndexCore = require(16);
-var store = require(31);
+var errors = require(24);
+var exitPromise = require(25);
+var IndexCore = require(14);
+var store = require(30);
 
 // We will always put the API KEY in the JSON body in case of too long API KEY,
 // to avoid query string being too long and failing in various conditions (our server limit, browser limit,
@@ -2328,8 +2237,9 @@ var RESET_APP_DATA_TIMER =
  * @param {Object} [opts]
  * @param {number} [opts.timeout=2000] - The request timeout set in milliseconds,
  * another request will be issued after this timeout
- * @param {string} [opts.protocol='https:'] - The protocol used to query Algolia Search API.
- *                                        Set to 'http:' to force using http.
+ * @param {string} [opts.protocol='http:'] - The protocol used to query Algolia Search API.
+ *                                        Set to 'https:' to force using https.
+ *                                        Default to document.location.protocol in browsers
  * @param {Object|Array} [opts.hosts={
  *           read: [this.applicationID + '-dsn.algolia.net'].concat([
  *             this.applicationID + '-1.algolianet.com',
@@ -2346,9 +2256,9 @@ var RESET_APP_DATA_TIMER =
 function AlgoliaSearchCore(applicationID, apiKey, opts) {
   var debug = require(1)('algoliasearch');
 
-  var clone = require(22);
+  var clone = require(21);
   var isArray = require(7);
-  var map = require(27);
+  var map = require(26);
 
   var usage = 'Usage: algoliasearch(applicationID, apiKey, opts)';
 
@@ -2370,6 +2280,7 @@ function AlgoliaSearchCore(applicationID, apiKey, opts) {
 
   opts = opts || {};
 
+  var protocol = opts.protocol || 'https:';
   this._timeouts = opts.timeouts || {
     connect: 1 * 1000, // 500ms connect is GPRS latency
     read: 2 * 1000,
@@ -2381,14 +2292,13 @@ function AlgoliaSearchCore(applicationID, apiKey, opts) {
     this._timeouts.connect = this._timeouts.read = this._timeouts.write = opts.timeout;
   }
 
-  var protocol = opts.protocol || 'https:';
   // while we advocate for colon-at-the-end values: 'http:' for `opts.protocol`
   // we also accept `http` and `https`. It's a common error.
   if (!/:$/.test(protocol)) {
     protocol = protocol + ':';
   }
 
-  if (protocol !== 'http:' && protocol !== 'https:') {
+  if (opts.protocol !== 'http:' && opts.protocol !== 'https:') {
     throw new errors.AlgoliaSearchError('protocol must be `http:` or `https:` (was `' + opts.protocol + '`)');
   }
 
@@ -2400,8 +2310,7 @@ function AlgoliaSearchCore(applicationID, apiKey, opts) {
     });
 
     // no hosts given, compute defaults
-    var mainSuffix = (opts.dsn === false ? '' : '-dsn') + '.algolia.net';
-    this.hosts.read = [this.applicationID + mainSuffix].concat(defaultHosts);
+    this.hosts.read = [this.applicationID + '-dsn.algolia.net'].concat(defaultHosts);
     this.hosts.write = [this.applicationID + '.algolia.net'].concat(defaultHosts);
   } else if (isArray(opts.hosts)) {
     // when passing custom hosts, we need to have a different host index if the number
@@ -2417,14 +2326,13 @@ function AlgoliaSearchCore(applicationID, apiKey, opts) {
   this.hosts.read = map(this.hosts.read, prepareHost(protocol));
   this.hosts.write = map(this.hosts.write, prepareHost(protocol));
 
-  this.extraHeaders = {};
+  this.extraHeaders = [];
 
   // In some situations you might want to warm the cache
   this.cache = opts._cache || {};
 
   this._ua = opts._ua;
   this._useCache = opts._useCache === undefined || opts._cache ? true : opts._useCache;
-  this._useRequestCache = this._useCache && opts._useRequestCache;
   this._useFallback = opts.useFallback === undefined ? true : opts.useFallback;
 
   this._setTimeout = opts._setTimeout;
@@ -2449,25 +2357,9 @@ AlgoliaSearchCore.prototype.initIndex = function(indexName) {
 * @param value the header field value
 */
 AlgoliaSearchCore.prototype.setExtraHeader = function(name, value) {
-  this.extraHeaders[name.toLowerCase()] = value;
-};
-
-/**
-* Get the value of an extra HTTP header
-*
-* @param name the header field name
-*/
-AlgoliaSearchCore.prototype.getExtraHeader = function(name) {
-  return this.extraHeaders[name.toLowerCase()];
-};
-
-/**
-* Remove an extra field from the HTTP request
-*
-* @param name the header field name
-*/
-AlgoliaSearchCore.prototype.unsetExtraHeader = function(name) {
-  delete this.extraHeaders[name.toLowerCase()];
+  this.extraHeaders.push({
+    name: name.toLowerCase(), value: value
+  });
 };
 
 /**
@@ -2477,10 +2369,8 @@ AlgoliaSearchCore.prototype.unsetExtraHeader = function(name) {
 * @param algoliaAgent the agent to add
 */
 AlgoliaSearchCore.prototype.addAlgoliaAgent = function(algoliaAgent) {
-  var algoliaAgentWithDelimiter = '; ' + algoliaAgent;
-
-  if (this._ua.indexOf(algoliaAgentWithDelimiter) === -1) {
-    this._ua += algoliaAgentWithDelimiter;
+  if (this._ua.indexOf(';' + algoliaAgent) === -1) {
+    this._ua += ';' + algoliaAgent;
   }
 };
 
@@ -2492,9 +2382,7 @@ AlgoliaSearchCore.prototype._jsonRequest = function(initialOpts) {
 
   var requestDebug = require(1)('algoliasearch:' + initialOpts.url);
 
-
   var body;
-  var cacheID;
   var additionalUA = initialOpts.additionalUA || '';
   var cache = initialOpts.cache;
   var client = this;
@@ -2510,16 +2398,9 @@ AlgoliaSearchCore.prototype._jsonRequest = function(initialOpts) {
     initialOpts.body.requests !== undefined) // client.search()
   ) {
     initialOpts.body.apiKey = this.apiKey;
-    headers = this._computeRequestHeaders({
-      additionalUA: additionalUA,
-      withApiKey: false,
-      headers: initialOpts.headers
-    });
+    headers = this._computeRequestHeaders(additionalUA, false);
   } else {
-    headers = this._computeRequestHeaders({
-      additionalUA: additionalUA,
-      headers: initialOpts.headers
-    });
+    headers = this._computeRequestHeaders(additionalUA);
   }
 
   if (initialOpts.body !== undefined) {
@@ -2529,33 +2410,26 @@ AlgoliaSearchCore.prototype._jsonRequest = function(initialOpts) {
   requestDebug('request start');
   var debugData = [];
 
-
   function doRequest(requester, reqOpts) {
     client._checkAppIdData();
 
     var startTime = new Date();
+    var cacheID;
 
-    if (client._useCache && !client._useRequestCache) {
+    if (client._useCache) {
       cacheID = initialOpts.url;
     }
 
     // as we sometime use POST requests to pass parameters (like query='aa'),
     // the cacheID must also include the body to be different between calls
-    if (client._useCache && !client._useRequestCache && body) {
+    if (client._useCache && body) {
       cacheID += '_body_' + reqOpts.body;
     }
 
     // handle cache existence
-    if (isCacheValidWithCurrentID(!client._useRequestCache, cache, cacheID)) {
+    if (client._useCache && cache && cache[cacheID] !== undefined) {
       requestDebug('serving response from cache');
-
-      var responseText = cache[cacheID];
-
-      // Cache response must match the type of the original one
-      return client._promise.resolve({
-        body: JSON.parse(responseText),
-        responseText: responseText
-      });
+      return client._promise.resolve(JSON.parse(cache[cacheID]));
     }
 
     // if we reached max tries
@@ -2583,10 +2457,7 @@ AlgoliaSearchCore.prototype._jsonRequest = function(initialOpts) {
         reqOpts.body = safeJSONStringify(reqOpts.jsonBody);
       }
       // re-compute headers, they could be omitting the API KEY
-      headers = client._computeRequestHeaders({
-        additionalUA: additionalUA,
-        headers: initialOpts.headers
-      });
+      headers = client._computeRequestHeaders(additionalUA);
 
       reqOpts.timeouts = client._getTimeoutsForRequest(initialOpts.hostType);
       client._setHostIndexByType(0, initialOpts.hostType);
@@ -2603,8 +2474,7 @@ AlgoliaSearchCore.prototype._jsonRequest = function(initialOpts) {
       method: reqOpts.method,
       headers: headers,
       timeouts: reqOpts.timeouts,
-      debug: requestDebug,
-      forceAuthHeaders: reqOpts.forceAuthHeaders
+      debug: requestDebug
     };
 
     requestDebug('method: %s, url: %s, headers: %j, timeouts: %d',
@@ -2660,14 +2530,11 @@ AlgoliaSearchCore.prototype._jsonRequest = function(initialOpts) {
       });
 
       if (httpResponseOk) {
-        if (client._useCache && !client._useRequestCache && cache) {
+        if (client._useCache && cache) {
           cache[cacheID] = httpResponse.responseText;
         }
 
-        return {
-          responseText: httpResponse.responseText,
-          body: httpResponse.body
-        };
+        return httpResponse.body;
       }
 
       var shouldRetry = Math.floor(status / 100) !== 4;
@@ -2737,7 +2604,7 @@ AlgoliaSearchCore.prototype._jsonRequest = function(initialOpts) {
         return client._promise.reject(err);
       }
 
-      // When a timeout occurred, retry by raising timeout
+      // When a timeout occured, retry by raising timeout
       if (err instanceof errors.RequestTimeout) {
         return retryRequestWithHigherTimeout();
       }
@@ -2760,90 +2627,31 @@ AlgoliaSearchCore.prototype._jsonRequest = function(initialOpts) {
     }
   }
 
-  function isCacheValidWithCurrentID(
-    useRequestCache,
-    currentCache,
-    currentCacheID
-  ) {
-    return (
-      client._useCache &&
-      useRequestCache &&
-      currentCache &&
-      currentCache[currentCacheID] !== undefined
-    );
-  }
-
-
-  function interopCallbackReturn(request, callback) {
-    if (isCacheValidWithCurrentID(client._useRequestCache, cache, cacheID)) {
-      request.catch(function() {
-        // Release the cache on error
-        delete cache[cacheID];
-      });
-    }
-
-    if (typeof initialOpts.callback === 'function') {
-      // either we have a callback
-      request.then(function okCb(content) {
-        exitPromise(function() {
-          initialOpts.callback(null, callback(content));
-        }, client._setTimeout || setTimeout);
-      }, function nookCb(err) {
-        exitPromise(function() {
-          initialOpts.callback(err);
-        }, client._setTimeout || setTimeout);
-      });
-    } else {
-      // either we are using promises
-      return request.then(callback);
-    }
-  }
-
-  if (client._useCache && client._useRequestCache) {
-    cacheID = initialOpts.url;
-  }
-
-  // as we sometime use POST requests to pass parameters (like query='aa'),
-  // the cacheID must also include the body to be different between calls
-  if (client._useCache && client._useRequestCache && body) {
-    cacheID += '_body_' + body;
-  }
-
-  if (isCacheValidWithCurrentID(client._useRequestCache, cache, cacheID)) {
-    requestDebug('serving request from cache');
-
-    var maybePromiseForCache = cache[cacheID];
-
-    // In case the cache is warmup with value that is not a promise
-    var promiseForCache = typeof maybePromiseForCache.then !== 'function'
-      ? client._promise.resolve({responseText: maybePromiseForCache})
-      : maybePromiseForCache;
-
-    return interopCallbackReturn(promiseForCache, function(content) {
-      // In case of the cache request, return the original value
-      return JSON.parse(content.responseText);
-    });
-  }
-
-  var request = doRequest(
+  var promise = doRequest(
     client._request, {
       url: initialOpts.url,
       method: initialOpts.method,
       body: body,
       jsonBody: initialOpts.body,
-      timeouts: client._getTimeoutsForRequest(initialOpts.hostType),
-      forceAuthHeaders: initialOpts.forceAuthHeaders
+      timeouts: client._getTimeoutsForRequest(initialOpts.hostType)
     }
   );
 
-  if (client._useCache && client._useRequestCache && cache) {
-    cache[cacheID] = request;
+  // either we have a callback
+  // either we are using promises
+  if (initialOpts.callback) {
+    promise.then(function okCb(content) {
+      exitPromise(function() {
+        initialOpts.callback(null, content);
+      }, client._setTimeout || setTimeout);
+    }, function nookCb(err) {
+      exitPromise(function() {
+        initialOpts.callback(err);
+      }, client._setTimeout || setTimeout);
+    });
+  } else {
+    return promise;
   }
-
-  return interopCallbackReturn(request, function(content) {
-    // In case of the first request, return the JSON value
-    return content.body;
-  });
 };
 
 /*
@@ -2865,18 +2673,11 @@ AlgoliaSearchCore.prototype._getSearchParams = function(args, params) {
   return params;
 };
 
-/**
- * Compute the headers for a request
- *
- * @param [string] options.additionalUA semi-colon separated string with other user agents to add
- * @param [boolean=true] options.withApiKey Send the api key as a header
- * @param [Object] options.headers Extra headers to send
- */
-AlgoliaSearchCore.prototype._computeRequestHeaders = function(options) {
+AlgoliaSearchCore.prototype._computeRequestHeaders = function(additionalUA, withAPIKey) {
   var forEach = require(4);
 
-  var ua = options.additionalUA ?
-    this._ua + '; ' + options.additionalUA :
+  var ua = additionalUA ?
+    this._ua + ';' + additionalUA :
     this._ua;
 
   var requestHeaders = {
@@ -2888,7 +2689,7 @@ AlgoliaSearchCore.prototype._computeRequestHeaders = function(options) {
   // but in some situations, the API KEY will be too long (big secured API keys)
   // so if the request is a POST and the KEY is very long, we will be asked to not put
   // it into headers but in the JSON body
-  if (options.withApiKey !== false) {
+  if (withAPIKey !== false) {
     requestHeaders['x-algolia-api-key'] = this.apiKey;
   }
 
@@ -2900,13 +2701,9 @@ AlgoliaSearchCore.prototype._computeRequestHeaders = function(options) {
     requestHeaders['x-algolia-tagfilters'] = this.securityTags;
   }
 
-  forEach(this.extraHeaders, function addToRequestHeaders(value, key) {
-    requestHeaders[key] = value;
-  });
-
-  if (options.headers) {
-    forEach(options.headers, function addToRequestHeaders(value, key) {
-      requestHeaders[key] = value;
+  if (this.extraHeaders) {
+    forEach(this.extraHeaders, function addToRequestHeaders(header) {
+      requestHeaders[header.name] = header.value;
     });
   }
 
@@ -2924,7 +2721,7 @@ AlgoliaSearchCore.prototype._computeRequestHeaders = function(options) {
  */
 AlgoliaSearchCore.prototype.search = function(queries, opts, callback) {
   var isArray = require(7);
-  var map = require(27);
+  var map = require(26);
 
   var usage = 'Usage: client.search(arrayOfQueries[, callback])';
 
@@ -2970,7 +2767,7 @@ AlgoliaSearchCore.prototype.search = function(queries, opts, callback) {
   var url = '/1/indexes/*/queries';
 
   if (opts.strategy !== undefined) {
-    postObj.strategy = opts.strategy;
+    url += '?strategy=' + opts.strategy;
   }
 
   return this._jsonRequest({
@@ -2988,70 +2785,6 @@ AlgoliaSearchCore.prototype.search = function(queries, opts, callback) {
     },
     callback: callback
   });
-};
-
-/**
-* Search for facet values
-* https://www.algolia.com/doc/rest-api/search#search-for-facet-values
-* This is the top-level API for SFFV.
-*
-* @param {object[]} queries An array of queries to run.
-* @param {string} queries[].indexName Index name, name of the index to search.
-* @param {object} queries[].params Query parameters.
-* @param {string} queries[].params.facetName Facet name, name of the attribute to search for values in.
-* Must be declared as a facet
-* @param {string} queries[].params.facetQuery Query for the facet search
-* @param {string} [queries[].params.*] Any search parameter of Algolia,
-* see https://www.algolia.com/doc/api-client/javascript/search#search-parameters
-* Pagination is not supported. The page and hitsPerPage parameters will be ignored.
-*/
-AlgoliaSearchCore.prototype.searchForFacetValues = function(queries) {
-  var isArray = require(7);
-  var map = require(27);
-
-  var usage = 'Usage: client.searchForFacetValues([{indexName, params: {facetName, facetQuery, ...params}}, ...queries])'; // eslint-disable-line max-len
-
-  if (!isArray(queries)) {
-    throw new Error(usage);
-  }
-
-  var client = this;
-
-  return client._promise.all(map(queries, function performQuery(query) {
-    if (
-      !query ||
-      query.indexName === undefined ||
-      query.params.facetName === undefined ||
-      query.params.facetQuery === undefined
-    ) {
-      throw new Error(usage);
-    }
-
-    var clone = require(22);
-    var omit = require(29);
-
-    var indexName = query.indexName;
-    var params = query.params;
-
-    var facetName = params.facetName;
-    var filteredParams = omit(clone(params), function(keyName) {
-      return keyName === 'facetName';
-    });
-    var searchParameters = client._getSearchParams(filteredParams, '');
-
-    return client._jsonRequest({
-      cache: client.cache,
-      method: 'POST',
-      url:
-        '/1/indexes/' +
-        encodeURIComponent(indexName) +
-        '/facets/' +
-        encodeURIComponent(facetName) +
-        '/query',
-      hostType: 'read',
-      body: {params: searchParameters}
-    });
-  }));
 };
 
 /**
@@ -3180,7 +2913,7 @@ AlgoliaSearchCore.prototype._getHostIndexByType = function(hostType) {
 };
 
 AlgoliaSearchCore.prototype._setHostIndexByType = function(hostIndex, hostType) {
-  var clone = require(22);
+  var clone = require(21);
   var newHostIndexes = clone(this._hostIndexes);
   newHostIndexes[hostType] = hostIndex;
   this._partialAppIdDataUpdate({hostIndexes: newHostIndexes});
@@ -3274,10 +3007,10 @@ function removeCredentials(headers) {
 }
 
 }).call(this,require(11))
-},{"1":1,"11":11,"16":16,"22":22,"25":25,"26":26,"27":27,"29":29,"31":31,"4":4,"7":7}],16:[function(require,module,exports){
-var buildSearchMethod = require(21);
-var deprecate = require(23);
-var deprecatedMessage = require(24);
+},{"1":1,"11":11,"14":14,"21":21,"24":24,"25":25,"26":26,"30":30,"4":4,"7":7}],14:[function(require,module,exports){
+var buildSearchMethod = require(20);
+var deprecate = require(22);
+var deprecatedMessage = require(23);
 
 module.exports = IndexCore;
 
@@ -3409,13 +3142,7 @@ IndexCore.prototype.search = buildSearchMethod('query');
 *   All search parameters are supported (see search function), restrictSearchableAttributes and facetFilters
 *   are the two most useful to restrict the similar results and get more relevant content
 */
-IndexCore.prototype.similarSearch = deprecate(
-  buildSearchMethod('similarQuery'),
-  deprecatedMessage(
-    'index.similarSearch(query[, callback])',
-    'index.search({ similarQuery: query }[, callback])'
-  )
-);
+IndexCore.prototype.similarSearch = buildSearchMethod('similarQuery');
 
 /*
 * Browse index content. The response content will have a `cursor` property that you can use
@@ -3435,7 +3162,7 @@ IndexCore.prototype.similarSearch = deprecate(
 * @see {@link https://www.algolia.com/doc/rest_api#Browse|Algolia REST API Documentation}
 */
 IndexCore.prototype.browse = function(query, queryParameters, callback) {
-  var merge = require(28);
+  var merge = require(27);
 
   var indexObj = this;
 
@@ -3530,8 +3257,8 @@ IndexCore.prototype.browseFrom = function(cursor, callback) {
 * @param callback (optional)
 */
 IndexCore.prototype.searchForFacetValues = function(params, callback) {
-  var clone = require(22);
-  var omit = require(29);
+  var clone = require(21);
+  var omit = require(28);
   var usage = 'Usage: index.searchForFacetValues({facetName, facetQuery, ...params}[, callback])';
 
   if (params.facetName === undefined || params.facetQuery === undefined) {
@@ -3585,7 +3312,7 @@ IndexCore.prototype._search = function(params, url, callback, additionalUA) {
 * @param attrs (optional) if set, contains the array of attribute names to retrieve
 * @param callback (optional) the result callback called with two arguments
 *  error: null or Error('message')
-*  content: the object to retrieve or the error message if a failure occurred
+*  content: the object to retrieve or the error message if a failure occured
 */
 IndexCore.prototype.getObject = function(objectID, attrs, callback) {
   var indexObj = this;
@@ -3621,7 +3348,7 @@ IndexCore.prototype.getObject = function(objectID, attrs, callback) {
 */
 IndexCore.prototype.getObjects = function(objectIDs, attributesToRetrieve, callback) {
   var isArray = require(7);
-  var map = require(27);
+  var map = require(26);
 
   var usage = 'Usage: index.getObjects(arrayOfObjectIDs[, callback])';
 
@@ -3665,15 +3392,15 @@ IndexCore.prototype.indexName = null;
 IndexCore.prototype.typeAheadArgs = null;
 IndexCore.prototype.typeAheadValueOption = null;
 
-},{"21":21,"22":22,"23":23,"24":24,"27":27,"28":28,"29":29,"7":7}],17:[function(require,module,exports){
+},{"20":20,"21":21,"22":22,"23":23,"26":26,"27":27,"28":28,"7":7}],15:[function(require,module,exports){
 'use strict';
 
-var AlgoliaSearchCore = require(15);
-var createAlgoliasearch = require(18);
+var AlgoliaSearchCore = require(13);
+var createAlgoliasearch = require(16);
 
-module.exports = createAlgoliasearch(AlgoliaSearchCore, 'Browser (lite)');
+module.exports = createAlgoliasearch(AlgoliaSearchCore, '(lite) ');
 
-},{"15":15,"18":18}],18:[function(require,module,exports){
+},{"13":13,"16":16}],16:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -3685,10 +3412,10 @@ var Promise = global.Promise || require(3).Promise;
 // using XMLHttpRequest, XDomainRequest and JSONP as fallback
 module.exports = function createAlgoliasearch(AlgoliaSearch, uaSuffix) {
   var inherits = require(6);
-  var errors = require(25);
-  var inlineHeaders = require(19);
-  var jsonpRequest = require(20);
-  var places = require(30);
+  var errors = require(24);
+  var inlineHeaders = require(18);
+  var jsonpRequest = require(19);
+  var places = require(29);
   uaSuffix = uaSuffix || '';
 
   if (process.env.NODE_ENV === 'debug') {
@@ -3696,20 +3423,23 @@ module.exports = function createAlgoliasearch(AlgoliaSearch, uaSuffix) {
   }
 
   function algoliasearch(applicationID, apiKey, opts) {
-    var cloneDeep = require(22);
+    var cloneDeep = require(21);
+
+    var getDocumentProtocol = require(17);
 
     opts = cloneDeep(opts || {});
+
+    if (opts.protocol === undefined) {
+      opts.protocol = getDocumentProtocol();
+    }
 
     opts._ua = opts._ua || algoliasearch.ua;
 
     return new AlgoliaSearchBrowser(applicationID, apiKey, opts);
   }
 
-  algoliasearch.version = require(32);
-
-  algoliasearch.ua =
-    'Algolia for JavaScript (' + algoliasearch.version + '); ' + uaSuffix;
-
+  algoliasearch.version = require(31);
+  algoliasearch.ua = 'Algolia for vanilla JavaScript ' + uaSuffix + algoliasearch.version;
   algoliasearch.initPlaces = places(algoliasearch);
 
   // we expose into window no matter how we are used, this will allow
@@ -3767,19 +3497,6 @@ module.exports = function createAlgoliasearch(AlgoliaSearch, uaSuffix) {
       // breaks it and set it to false by default
       if (req instanceof XMLHttpRequest) {
         req.open(opts.method, url, true);
-
-        // The Analytics API never accepts Auth headers as query string
-        // this option exists specifically for them.
-        if (opts.forceAuthHeaders) {
-          req.setRequestHeader(
-            'x-algolia-application-id',
-            opts.headers['x-algolia-application-id']
-          );
-          req.setRequestHeader(
-            'x-algolia-api-key',
-            opts.headers['x-algolia-api-key']
-          );
-        }
       } else {
         req.open(opts.method, url);
       }
@@ -3797,11 +3514,7 @@ module.exports = function createAlgoliasearch(AlgoliaSearch, uaSuffix) {
         req.setRequestHeader('accept', 'application/json');
       }
 
-      if (body) {
-        req.send(body);
-      } else {
-        req.send();
-      }
+      req.send(body);
 
       // event object not received in IE8, at least
       // but we do not use it, still important to note
@@ -3903,9 +3616,6 @@ module.exports = function createAlgoliasearch(AlgoliaSearch, uaSuffix) {
       return new Promise(function resolveOnTimeout(resolve/* , reject*/) {
         setTimeout(resolve, ms);
       });
-    },
-    all: function all(promises) {
-      return Promise.all(promises);
     }
   };
 
@@ -3913,12 +3623,28 @@ module.exports = function createAlgoliasearch(AlgoliaSearch, uaSuffix) {
 };
 
 }).call(this,require(11))
-},{"1":1,"11":11,"19":19,"20":20,"22":22,"25":25,"3":3,"30":30,"32":32,"5":5,"6":6}],19:[function(require,module,exports){
+},{"1":1,"11":11,"17":17,"18":18,"19":19,"21":21,"24":24,"29":29,"3":3,"31":31,"5":5,"6":6}],17:[function(require,module,exports){
+'use strict';
+
+module.exports = getDocumentProtocol;
+
+function getDocumentProtocol() {
+  var protocol = window.document.location.protocol;
+
+  // when in `file:` mode (local html file), default to `http:`
+  if (protocol !== 'http:' && protocol !== 'https:') {
+    protocol = 'http:';
+  }
+
+  return protocol;
+}
+
+},{}],18:[function(require,module,exports){
 'use strict';
 
 module.exports = inlineHeaders;
 
-var encode = require(13);
+var encode = require(12);
 
 function inlineHeaders(url, headers) {
   if (/\?/.test(url)) {
@@ -3930,12 +3656,12 @@ function inlineHeaders(url, headers) {
   return url + encode(headers);
 }
 
-},{"13":13}],20:[function(require,module,exports){
+},{"12":12}],19:[function(require,module,exports){
 'use strict';
 
 module.exports = jsonpRequest;
 
-var errors = require(25);
+var errors = require(24);
 
 var JSONPCounter = 0;
 
@@ -3969,8 +3695,7 @@ function jsonpRequest(url, opts, cb) {
     clean();
 
     cb(null, {
-      body: data,
-      responseText: JSON.stringify(data)/* ,
+      body: data/* ,
       // We do not send the statusCode, there's no statusCode in JSONP, it will be
       // computed using data.status && data.message like with XDR
       statusCode*/
@@ -4058,10 +3783,10 @@ function jsonpRequest(url, opts, cb) {
   }
 }
 
-},{"25":25}],21:[function(require,module,exports){
+},{"24":24}],20:[function(require,module,exports){
 module.exports = buildSearchMethod;
 
-var errors = require(25);
+var errors = require(24);
 
 /**
  * Creates a search method to be used in clients
@@ -4127,19 +3852,19 @@ function buildSearchMethod(queryParam, url) {
   };
 }
 
-},{"25":25}],22:[function(require,module,exports){
+},{"24":24}],21:[function(require,module,exports){
 module.exports = function clone(obj) {
   return JSON.parse(JSON.stringify(obj));
 };
 
-},{}],23:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 module.exports = function deprecate(fn, message) {
   var warned = false;
 
   function deprecated() {
     if (!warned) {
       /* eslint no-console:0 */
-      console.warn(message);
+      console.log(message);
       warned = true;
     }
 
@@ -4149,16 +3874,17 @@ module.exports = function deprecate(fn, message) {
   return deprecated;
 };
 
-},{}],24:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 module.exports = function deprecatedMessage(previousUsage, newUsage) {
   var githubAnchorLink = previousUsage.toLowerCase()
-    .replace(/[\.\(\)]/g, '');
+    .replace('.', '')
+    .replace('()', '');
 
   return 'algoliasearch: `' + previousUsage + '` was replaced by `' + newUsage +
-    '`. Please see https://github.com/algolia/algoliasearch-client-javascript/wiki/Deprecated#' + githubAnchorLink;
+    '`. Please see https://github.com/algolia/algoliasearch-client-js/wiki/Deprecated#' + githubAnchorLink;
 };
 
-},{}],25:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 'use strict';
 
 // This file hosts our error definitions
@@ -4218,7 +3944,7 @@ module.exports = {
   ),
   RequestTimeout: createCustomError(
     'RequestTimeout',
-    'Request timed out before getting a response'
+    'Request timedout before getting a response'
   ),
   Network: createCustomError(
     'Network',
@@ -4228,17 +3954,9 @@ module.exports = {
     'JSONPScriptFail',
     '<script> was loaded but did not call our provided callback'
   ),
-  ValidUntilNotFound: createCustomError(
-    'ValidUntilNotFound',
-    'The SecuredAPIKey does not have a validUntil parameter.'
-  ),
   JSONPScriptError: createCustomError(
     'JSONPScriptError',
     '<script> unable to load due to an `error` event on it'
-  ),
-  ObjectNotFound: createCustomError(
-    'ObjectNotFound',
-    'Object not found'
   ),
   Unknown: createCustomError(
     'Unknown',
@@ -4246,7 +3964,7 @@ module.exports = {
   )
 };
 
-},{"4":4,"6":6}],26:[function(require,module,exports){
+},{"4":4,"6":6}],25:[function(require,module,exports){
 // Parse cloud does not supports setTimeout
 // We do not store a setTimeout reference in the client everytime
 // We only fallback to a fake setTimeout when not available
@@ -4255,7 +3973,7 @@ module.exports = function exitPromise(fn, _setTimeout) {
   _setTimeout(fn, 0);
 };
 
-},{}],27:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 var foreach = require(4);
 
 module.exports = function map(arr, fn) {
@@ -4266,7 +3984,7 @@ module.exports = function map(arr, fn) {
   return newArr;
 };
 
-},{"4":4}],28:[function(require,module,exports){
+},{"4":4}],27:[function(require,module,exports){
 var foreach = require(4);
 
 module.exports = function merge(destination/* , sources */) {
@@ -4287,7 +4005,7 @@ module.exports = function merge(destination/* , sources */) {
   return destination;
 };
 
-},{"4":4}],29:[function(require,module,exports){
+},{"4":4}],28:[function(require,module,exports){
 module.exports = function omit(obj, test) {
   var keys = require(9);
   var foreach = require(4);
@@ -4303,15 +4021,14 @@ module.exports = function omit(obj, test) {
   return filtered;
 };
 
-},{"4":4,"9":9}],30:[function(require,module,exports){
+},{"4":4,"9":9}],29:[function(require,module,exports){
 module.exports = createPlacesClient;
 
-var qs3 = require(14);
-var buildSearchMethod = require(21);
+var buildSearchMethod = require(20);
 
 function createPlacesClient(algoliasearch) {
   return function places(appID, apiKey, opts) {
-    var cloneDeep = require(22);
+    var cloneDeep = require(21);
 
     opts = opts && cloneDeep(opts) || {};
     opts.hosts = opts.hosts || [
@@ -4331,17 +4048,6 @@ function createPlacesClient(algoliasearch) {
     var client = algoliasearch(appID, apiKey, opts);
     var index = client.initIndex('places');
     index.search = buildSearchMethod('query', '/1/places/query');
-    index.reverse = function(options, callback) {
-      var encoded = qs3.encode(options);
-
-      return this.as._jsonRequest({
-        method: 'GET',
-        url: '/1/places/reverse?' + encoded,
-        hostType: 'read',
-        callback: callback
-      });
-    };
-
     index.getObject = function(objectID, callback) {
       return this.as._jsonRequest({
         method: 'GET',
@@ -4354,7 +4060,7 @@ function createPlacesClient(algoliasearch) {
   };
 }
 
-},{"14":14,"21":21,"22":22}],31:[function(require,module,exports){
+},{"20":20,"21":21}],30:[function(require,module,exports){
 (function (global){
 var debug = require(1)('algoliasearch:src/hostIndexState.js');
 var localStorageNamespace = 'algoliasearch-client-js';
@@ -4444,10 +4150,10 @@ function cleanup() {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"1":1}],32:[function(require,module,exports){
+},{"1":1}],31:[function(require,module,exports){
 'use strict';
 
-module.exports = '3.35.1';
+module.exports = '3.23.0';
 
-},{}]},{},[17])(17)
+},{}]},{},[15])(15)
 });
