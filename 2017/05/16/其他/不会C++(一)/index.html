@@ -6,15 +6,15 @@
 
 
 <html class="theme-next mist use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -63,21 +63,21 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="C++," />
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="C++,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.0.2" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.0.2">
 
 
 
@@ -85,11 +85,13 @@
 
 
 <meta name="description" content="这里整理一下C++语法中经常会出现的问题。。。">
+<meta name="keywords" content="C++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="不会C++(一)(explicit,new与malloc,union)">
 <meta property="og:url" content="http://2997ms.github.io/2017/05/16/其他/不会C++(一)/index.html">
 <meta property="og:site_name" content="2997ms">
 <meta property="og:description" content="这里整理一下C++语法中经常会出现的问题。。。">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-10-11T14:46:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="不会C++(一)(explicit,new与malloc,union)">
@@ -114,7 +116,7 @@
 
 
 
-  <link rel="canonical" href="http://2997ms.github.io/2017/05/16/其他/不会C++(一)/"/>
+  <link rel="canonical" href="http://2997ms.github.io/2017/05/16/其他/不会C++(一)/">
 
 
   <title> 不会C++(一)(explicit,new与malloc,union) | 2997ms </title>
@@ -146,7 +148,7 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">2997ms</span>
       <span class="logo-line-after"><i></i></span>
@@ -294,7 +296,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -326,7 +328,7 @@
           
               &nbsp; | &nbsp;
               <span class="page-pv"><i class="fa fa-file-o"></i>
-              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
               </span>
           
         </div>
@@ -346,12 +348,12 @@
 <h3 id="1-explicit关键字"><a href="#1-explicit关键字" class="headerlink" title="1.explicit关键字"></a>1.explicit关键字</h3><blockquote>
 <p>作用是表明该构造函数是显示的，而非隐式的。</p>
 </blockquote>
-<p><a href="http://www.cnblogs.com/ymy124/p/3632634.html" target="_blank" rel="external">转载的链接</a></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> CxString  <span class="comment">// 没有使用explicit关键字的类声明, 即默认为隐式声明  </span></div><div class="line">&#123;  </div><div class="line"><span class="keyword">public</span>:  </div><div class="line">    <span class="keyword">char</span> *<span class="number">_</span>pstr;  </div><div class="line">    <span class="keyword">int</span> <span class="number">_</span>size;  </div><div class="line">    CxString(<span class="keyword">int</span> size)  </div><div class="line">    &#123;  </div><div class="line">        <span class="number">_</span>size = size;                <span class="comment">// string的预设大小  </span></div><div class="line">        <span class="number">_</span>pstr = <span class="built_in">malloc</span>(size + <span class="number">1</span>);    <span class="comment">// 分配string的内存  </span></div><div class="line">        <span class="built_in">memset</span>(<span class="number">_</span>pstr, <span class="number">0</span>, size + <span class="number">1</span>);  </div><div class="line">    &#125;  </div><div class="line">    CxString(<span class="keyword">const</span> <span class="keyword">char</span> *p)  </div><div class="line">    &#123;  </div><div class="line">        <span class="keyword">int</span> size = <span class="built_in">strlen</span>(p);  </div><div class="line">        <span class="number">_</span>pstr = <span class="built_in">malloc</span>(size + <span class="number">1</span>);    <span class="comment">// 分配string的内存  </span></div><div class="line">        <span class="built_in">strcpy</span>(<span class="number">_</span>pstr, p);            <span class="comment">// 复制字符串  </span></div><div class="line">        <span class="number">_</span>size = <span class="built_in">strlen</span>(<span class="number">_</span>pstr);  </div><div class="line">    &#125;  </div><div class="line">    <span class="comment">// 析构函数这里不讨论, 省略...  </span></div><div class="line">&#125;;  </div><div class="line">  </div><div class="line">    <span class="comment">// 下面是调用:  </span></div><div class="line">  </div><div class="line">    <span class="function">CxString <span class="title">string1</span><span class="params">(<span class="number">24</span>)</span></span>;     <span class="comment">// 这样是OK的, 为CxString预分配24字节的大小的内存  </span></div><div class="line">    CxString string2 = <span class="number">10</span>;    <span class="comment">// 这样是OK的, 为CxString预分配10字节的大小的内存  </span></div><div class="line">    CxString string3;         <span class="comment">// 这样是不行的, 因为没有默认构造函数, 错误为: “CxString”: 没有合适的默认构造函数可用  </span></div><div class="line">    <span class="function">CxString <span class="title">string4</span><span class="params">(<span class="string">"aaaa"</span>)</span></span>; <span class="comment">// 这样是OK的  </span></div><div class="line">    CxString string5 = <span class="string">"bbb"</span>; <span class="comment">// 这样也是OK的, 调用的是CxString(const char *p)  </span></div><div class="line">    CxString string6 = <span class="string">'c'</span>;   <span class="comment">// 这样也是OK的, 其实调用的是CxString(int size), 且size等于'c'的ascii码  </span></div><div class="line">    string1 = <span class="number">2</span>;              <span class="comment">// 这样也是OK的, 为CxString预分配2字节的大小的内存  </span></div><div class="line">    string2 = <span class="number">3</span>;              <span class="comment">// 这样也是OK的, 为CxString预分配3字节的大小的内存  </span></div><div class="line">    string3 = string1;        <span class="comment">// 这样也是OK的, 至少编译是没问题的, 但是如果析构函数里用free释放_pstr内存指针的时候可能会报错, 完整的代码必须重载运算符"=", 并在其中处理内存释放</span></div></pre></td></tr></table></figure>
+<p><a href="http://www.cnblogs.com/ymy124/p/3632634.html" target="_blank" rel="noopener">转载的链接</a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CxString</span>  // 没有使用<span class="title">explicit</span>关键字的类声明, 即默认为隐式声明  </span></span><br><span class="line"><span class="class">&#123;</span>  </span><br><span class="line"><span class="keyword">public</span>:  </span><br><span class="line">    <span class="keyword">char</span> *_pstr;  </span><br><span class="line">    <span class="keyword">int</span> _size;  </span><br><span class="line">    CxString(<span class="keyword">int</span> size)  </span><br><span class="line">    &#123;  </span><br><span class="line">        _size = size;                <span class="comment">// string的预设大小  </span></span><br><span class="line">        _pstr = <span class="built_in">malloc</span>(size + <span class="number">1</span>);    <span class="comment">// 分配string的内存  </span></span><br><span class="line">        <span class="built_in">memset</span>(_pstr, <span class="number">0</span>, size + <span class="number">1</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">    CxString(<span class="keyword">const</span> <span class="keyword">char</span> *p)  </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">int</span> size = <span class="built_in">strlen</span>(p);  </span><br><span class="line">        _pstr = <span class="built_in">malloc</span>(size + <span class="number">1</span>);    <span class="comment">// 分配string的内存  </span></span><br><span class="line">        <span class="built_in">strcpy</span>(_pstr, p);            <span class="comment">// 复制字符串  </span></span><br><span class="line">        _size = <span class="built_in">strlen</span>(_pstr);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="comment">// 析构函数这里不讨论, 省略...  </span></span><br><span class="line">&#125;;  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 下面是调用:  </span></span><br><span class="line">  </span><br><span class="line">    <span class="function">CxString <span class="title">string1</span><span class="params">(<span class="number">24</span>)</span></span>;     <span class="comment">// 这样是OK的, 为CxString预分配24字节的大小的内存  </span></span><br><span class="line">    CxString string2 = <span class="number">10</span>;    <span class="comment">// 这样是OK的, 为CxString预分配10字节的大小的内存  </span></span><br><span class="line">    CxString string3;         <span class="comment">// 这样是不行的, 因为没有默认构造函数, 错误为: “CxString”: 没有合适的默认构造函数可用  </span></span><br><span class="line">    <span class="function">CxString <span class="title">string4</span><span class="params">(<span class="string">"aaaa"</span>)</span></span>; <span class="comment">// 这样是OK的  </span></span><br><span class="line">    CxString string5 = <span class="string">"bbb"</span>; <span class="comment">// 这样也是OK的, 调用的是CxString(const char *p)  </span></span><br><span class="line">    CxString string6 = <span class="string">'c'</span>;   <span class="comment">// 这样也是OK的, 其实调用的是CxString(int size), 且size等于'c'的ascii码  </span></span><br><span class="line">    string1 = <span class="number">2</span>;              <span class="comment">// 这样也是OK的, 为CxString预分配2字节的大小的内存  </span></span><br><span class="line">    string2 = <span class="number">3</span>;              <span class="comment">// 这样也是OK的, 为CxString预分配3字节的大小的内存  </span></span><br><span class="line">    string3 = string1;        <span class="comment">// 这样也是OK的, 至少编译是没问题的, 但是如果析构函数里用free释放_pstr内存指针的时候可能会报错, 完整的代码必须重载运算符"=", 并在其中处理内存释放</span></span><br></pre></td></tr></table></figure>
 <p>上面的代码中, “CxString string2 = 10;” 这句为什么是可以的呢? 在C++中, 如果的构造函数只有一个参数时, 那么在编译的时候就会有一个缺省的转换操作:将该构造函数对应数据类型的数据转换为该类对象. 也就是说 “CxString string2 = 10;” 这段代码, 编译器自动将整型转换为CxString类对象, 实际上等同于下面的操作:</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function">CxString <span class="title">string2</span><span class="params">(<span class="number">10</span>)</span></span>;  </div><div class="line">或  </div><div class="line"><span class="function">CxString <span class="title">temp</span><span class="params">(<span class="number">10</span>)</span></span>;  </div><div class="line">CxString string2 = temp;</div></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">CxString <span class="title">string2</span><span class="params">(<span class="number">10</span>)</span></span>;  </span><br><span class="line">或  </span><br><span class="line"><span class="function">CxString <span class="title">temp</span><span class="params">(<span class="number">10</span>)</span></span>;  </span><br><span class="line">CxString string2 = temp;</span><br></pre></td></tr></table></figure>
 <h3 id="2-error-assigning-to-‘char-‘-from-incompatible-type-‘void-‘"><a href="#2-error-assigning-to-‘char-‘-from-incompatible-type-‘void-‘" class="headerlink" title="2.error: assigning to ‘char *‘ from incompatible type ‘void *‘"></a>2.error: assigning to ‘char *‘ from incompatible type ‘void *‘</h3><p>报错出现在上述代码的_pstr = malloc(size + 1);这里，主要原因是C对于类型转换是很宽泛的，但是C++不行malloc返回的是void *，这里赋值到char *需要类型的转换。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">s-&gt;ptr = <span class="keyword">static_cast</span>&lt;<span class="keyword">char</span>*&gt;(<span class="built_in">malloc</span>(s-&gt;len+<span class="number">1</span>));</div></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s-&gt;ptr = <span class="keyword">static_cast</span>&lt;<span class="keyword">char</span>*&gt;(<span class="built_in">malloc</span>(s-&gt;len+<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
 <h3 id="3-malloc-与-new"><a href="#3-malloc-与-new" class="headerlink" title="3.malloc 与 new"></a>3.malloc 与 new</h3><blockquote>
 <p>a.malloc是C的一个库函数，new是C++中的操作符。</p>
 <p>b.malloc只是分配了一块内存而不是生成一个对象，它返回了一个void*类型指针。</p>
@@ -368,14 +370,14 @@
 <p>前者固定大小，后者动态分配。前者在栈上，后者在堆上。</p>
 <p><strong>如果不是a[10]，而是a[1000000000]或者更大的话，那一般情况下，就只能使用int<em> a=new这种方式了。这个涉及到内存存放位置的问题，int a[]这种方式，内存是存放在栈上；int</em> a＝new int[]这种方式，内存是存放在堆上，栈的实际内存是连续内存，因此可分配空间较小，堆可以是非连续内存，因此可以分配较大内存。因此，如果需要分配较大内存，需要分配在堆上</strong></p>
 <blockquote>
-<p>e.new int[10] 与 new int<a href="">10\</a>区别</p>
+<p>e.new int[10] 与 new int<a href>10\</a>区别</p>
 </blockquote>
 <p>int *pia = new int[10];    // 10个未初始化int</p>
-<p>int *pia2 = new int<a href="">10\</a>; // 10个值初始化为0的int</p>
-<p>int <em>p2 = new int<a href="">10\</a>;申请了空间，而且进行了初始化。int </em>p1 = new int[10];只申请空间，没有进行初始化原因：对于一些结构体，我们可以看到（）往往表示构造函数，int是基本类型初始化。理由：你可以测试输出两种的值你会发现p1的值未知，而p2清零了。</p>
+<p>int *pia2 = new int<a href>10\</a>; // 10个值初始化为0的int</p>
+<p>int <em>p2 = new int<a href>10\</a>;申请了空间，而且进行了初始化。int </em>p1 = new int[10];只申请空间，没有进行初始化原因：对于一些结构体，我们可以看到（）往往表示构造函数，int是基本类型初始化。理由：你可以测试输出两种的值你会发现p1的值未知，而p2清零了。</p>
 <p>new运算符只是申请分配一个内存空间而已，因为不知道为其分配对象的名称，所以分配之后返回的只是一个指向该对象的指针，并没有初始化，加上一个（）后，就相当于调用了默认构造函数，会默认初始化，用0来初始化.</p>
 <h3 id="4-union联合"><a href="#4-union联合" class="headerlink" title="4.union联合"></a>4.union联合</h3><p>union的所有成员引用的是<strong>内存中的相同位置</strong>，当你想在不同的时刻把不同的东西存储于同一个位置时，就可以使用联合。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">union</span></div><div class="line">&#123;</div><div class="line">  <span class="keyword">float</span> f;</div><div class="line">  <span class="keyword">int</span> i;</div><div class="line">&#125;fi;</div><div class="line">fi.f = <span class="number">3.14159</span>;</div><div class="line"><span class="built_in">printf</span>(<span class="string">"%d\n"</span>,fi.i);</div></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">union</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">float</span> f;</span><br><span class="line">  <span class="keyword">int</span> i;</span><br><span class="line">&#125;fi;</span><br><span class="line">fi.f = <span class="number">3.14159</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d\n"</span>,fi.i);</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -469,7 +471,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -480,9 +482,7 @@
 
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
-               alt="2997ms" />
+          <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="2997ms">
           <p class="site-author-name" itemprop="name">2997ms</p>
           <p class="site-description motion-element" itemprop="description">2997ms</p>
         </div>
@@ -571,7 +571,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
   <span itemprop="copyrightYear">2020</span>

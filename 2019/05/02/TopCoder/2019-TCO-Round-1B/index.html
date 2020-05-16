@@ -6,15 +6,15 @@
 
 
 <html class="theme-next mist use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -63,21 +63,21 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="DP,TopCoder," />
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="DP,TopCoder,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.0.2" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.0.2">
 
 
 
@@ -85,11 +85,13 @@
 
 
 <meta name="description" content="Topcoder上有意思的dp题还是多，但是如果能有更多的editor就好了(你要干嘛。。)">
+<meta name="keywords" content="DP,TopCoder">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2019 TCO Round 1B">
 <meta property="og:url" content="http://2997ms.github.io/2019/05/02/TopCoder/2019-TCO-Round-1B/index.html">
 <meta property="og:site_name" content="2997ms">
 <meta property="og:description" content="Topcoder上有意思的dp题还是多，但是如果能有更多的editor就好了(你要干嘛。。)">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-05-01T16:48:59.385Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2019 TCO Round 1B">
@@ -114,7 +116,7 @@
 
 
 
-  <link rel="canonical" href="http://2997ms.github.io/2019/05/02/TopCoder/2019-TCO-Round-1B/"/>
+  <link rel="canonical" href="http://2997ms.github.io/2019/05/02/TopCoder/2019-TCO-Round-1B/">
 
 
   <title> 2019 TCO Round 1B | 2997ms </title>
@@ -146,7 +148,7 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">2997ms</span>
       <span class="logo-line-after"><i></i></span>
@@ -294,7 +296,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -326,7 +328,7 @@
           
               &nbsp; | &nbsp;
               <span class="page-pv"><i class="fa fa-file-o"></i>
-              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
               </span>
           
         </div>
@@ -350,10 +352,10 @@
 <p>之后再扫一遍就完了。</p>
 <p>就目前处理问题这里完全不会break down一下。智力问题。</p>
 <p>当然我这里直接$N^2$了。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">ll val[<span class="number">100005</span>],nxt[<span class="number">100005</span>];</div><div class="line"><span class="keyword">int</span> fa[<span class="number">100005</span>];</div><div class="line"></div><div class="line"><span class="keyword">class</span> EllysTeleport &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">   </div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getMax</span><span class="params">(<span class="keyword">int</span> N, <span class="keyword">int</span> H1, <span class="keyword">int</span> A, <span class="keyword">int</span> B, <span class="keyword">int</span> P, <span class="keyword">int</span> Q, <span class="keyword">int</span> M)</span> </span>&#123;</div><div class="line">        val[<span class="number">1</span>] = H1;</div><div class="line">        repp(i,<span class="number">2</span>,N) &#123;</div><div class="line">            val[i] = (val[i<span class="number">-1</span>]*A+B)%M;</div><div class="line">        &#125;</div><div class="line">        sort(val+<span class="number">1</span>,val+N+<span class="number">1</span>);</div><div class="line">        repp(i,<span class="number">1</span>,N) &#123;</div><div class="line">            nxt[i] = i<span class="number">-1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</div><div class="line">        <span class="built_in">memset</span>(fa,<span class="number">-1</span>,<span class="keyword">sizeof</span>(fa));</div><div class="line">        repp(i,<span class="number">1</span>,N) &#123;</div><div class="line">            <span class="keyword">int</span> cnt = <span class="number">0</span>;</div><div class="line">            <span class="keyword">int</span> x = i;</div><div class="line">            <span class="keyword">while</span>(x!=<span class="number">0</span>&amp;&amp;fa[x]!=i) &#123;</div><div class="line">                ++cnt;</div><div class="line">                fa[x]=i;</div><div class="line">                x=nxt[x];</div><div class="line">            &#125;</div><div class="line">            ans = max(ans,cnt);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> ans;</div><div class="line">    &#125;</div><div class="line">&#125;t;</div></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">ll val[<span class="number">100005</span>],nxt[<span class="number">100005</span>];</span><br><span class="line"><span class="keyword">int</span> fa[<span class="number">100005</span>];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EllysTeleport</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">   </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getMax</span><span class="params">(<span class="keyword">int</span> N, <span class="keyword">int</span> H1, <span class="keyword">int</span> A, <span class="keyword">int</span> B, <span class="keyword">int</span> P, <span class="keyword">int</span> Q, <span class="keyword">int</span> M)</span> </span>&#123;</span><br><span class="line">        val[<span class="number">1</span>] = H1;</span><br><span class="line">        repp(i,<span class="number">2</span>,N) &#123;</span><br><span class="line">            val[i] = (val[i<span class="number">-1</span>]*A+B)%M;</span><br><span class="line">        &#125;</span><br><span class="line">        sort(val+<span class="number">1</span>,val+N+<span class="number">1</span>);</span><br><span class="line">        repp(i,<span class="number">1</span>,N) &#123;</span><br><span class="line">            nxt[i] = i<span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">memset</span>(fa,<span class="number">-1</span>,<span class="keyword">sizeof</span>(fa));</span><br><span class="line">        repp(i,<span class="number">1</span>,N) &#123;</span><br><span class="line">            <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> x = i;</span><br><span class="line">            <span class="keyword">while</span>(x!=<span class="number">0</span>&amp;&amp;fa[x]!=i) &#123;</span><br><span class="line">                ++cnt;</span><br><span class="line">                fa[x]=i;</span><br><span class="line">                x=nxt[x];</span><br><span class="line">            &#125;</span><br><span class="line">            ans = max(ans,cnt);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;t;</span><br></pre></td></tr></table></figure>
 <h2 id="EllysPearls"><a href="#EllysPearls" class="headerlink" title="EllysPearls"></a>EllysPearls</h2><p>1000的题意是每个点有个颜色，要求同一个颜色的点都放在一起。问当前这些点需要更改顺序多少次。</p>
 <p>题解里说了一般出现15这种，就考虑bitmask dp。然后这个dp其实很经典了。就是[0,1]表示当前这种颜色是否已经加到集合里了，是否考虑了，然后记录一个最后位置的颜色，就结束了。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> n;</div><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;v;</div><div class="line"><span class="keyword">int</span> dp[<span class="number">55</span>][<span class="number">16</span>][<span class="number">1</span>&lt;&lt;<span class="number">16</span>];</div><div class="line"><span class="keyword">class</span> EllysPearls &#123;</div><div class="line">    <span class="keyword">public</span>:</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> ind,<span class="keyword">int</span> col, <span class="keyword">int</span> state)</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">if</span>(ind&gt;=n) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(dp[ind][col][state]!=<span class="number">-1</span>) &#123;</div><div class="line">            <span class="keyword">return</span> dp[ind][col][state];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> ans = <span class="number">1</span> + dfs(ind+<span class="number">1</span>,col,state);</div><div class="line">        <span class="keyword">if</span>(v[ind] == col) &#123;</div><div class="line">            ans = min(ans, dfs(ind+<span class="number">1</span>,col,state));</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(!((<span class="number">1</span>&lt;&lt;v[ind]) &amp; state)) &#123;</div><div class="line">            ans = min(ans, dfs(ind+<span class="number">1</span>,v[ind],((<span class="number">1</span>&lt;&lt;v[ind])|state)));</div><div class="line">        &#125;</div><div class="line">        dp[ind][col][state]=ans;</div><div class="line">        <span class="keyword">return</span> ans;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getMin</span><span class="params">(<span class="keyword">int</span> N, <span class="keyword">int</span> M, <span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; pearls)</span> </span>&#123;</div><div class="line">        <span class="built_in">memset</span>(dp,<span class="number">-1</span>,<span class="keyword">sizeof</span>(dp));</div><div class="line">        n = N;</div><div class="line">        v = pearls;</div><div class="line">        <span class="keyword">return</span> dfs(<span class="number">0</span>,M+<span class="number">1</span>,<span class="number">0</span>);</div><div class="line">    &#125;</div><div class="line">&#125;t;</div></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;v;</span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">55</span>][<span class="number">16</span>][<span class="number">1</span>&lt;&lt;<span class="number">16</span>];</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EllysPearls</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> ind,<span class="keyword">int</span> col, <span class="keyword">int</span> state)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(ind&gt;=n) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(dp[ind][col][state]!=<span class="number">-1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> dp[ind][col][state];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">1</span> + dfs(ind+<span class="number">1</span>,col,state);</span><br><span class="line">        <span class="keyword">if</span>(v[ind] == col) &#123;</span><br><span class="line">            ans = min(ans, dfs(ind+<span class="number">1</span>,col,state));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!((<span class="number">1</span>&lt;&lt;v[ind]) &amp; state)) &#123;</span><br><span class="line">            ans = min(ans, dfs(ind+<span class="number">1</span>,v[ind],((<span class="number">1</span>&lt;&lt;v[ind])|state)));</span><br><span class="line">        &#125;</span><br><span class="line">        dp[ind][col][state]=ans;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getMin</span><span class="params">(<span class="keyword">int</span> N, <span class="keyword">int</span> M, <span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; pearls)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">memset</span>(dp,<span class="number">-1</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">        n = N;</span><br><span class="line">        v = pearls;</span><br><span class="line">        <span class="keyword">return</span> dfs(<span class="number">0</span>,M+<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;t;</span><br></pre></td></tr></table></figure>
 <p>最近这边正好是五一假期，自己没有回家。十分想老爸老妈，想想这些年自己独立做的这些决定。也不知道该说些什么。只希望自己要一直努力下去，真的请一直一直努力下去。</p>
 <p>总有一天，要让他们。。。为我骄傲。。。</p>
 
@@ -452,7 +454,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -463,9 +465,7 @@
 
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
-               alt="2997ms" />
+          <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="2997ms">
           <p class="site-author-name" itemprop="name">2997ms</p>
           <p class="site-description motion-element" itemprop="description">2997ms</p>
         </div>
@@ -554,7 +554,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
   <span itemprop="copyrightYear">2020</span>

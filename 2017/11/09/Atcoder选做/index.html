@@ -6,15 +6,15 @@
 
 
 <html class="theme-next mist use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -63,21 +63,21 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Atcoder," />
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="Atcoder,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.0.2" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.0.2">
 
 
 
@@ -85,11 +85,13 @@
 
 
 <meta name="description" content="Atcoder选做">
+<meta name="keywords" content="Atcoder">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Atcoder选做">
 <meta property="og:url" content="http://2997ms.github.io/2017/11/09/Atcoder选做/index.html">
 <meta property="og:site_name" content="2997ms">
 <meta property="og:description" content="Atcoder选做">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-12-18T14:17:34.949Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Atcoder选做">
@@ -114,7 +116,7 @@
 
 
 
-  <link rel="canonical" href="http://2997ms.github.io/2017/11/09/Atcoder选做/"/>
+  <link rel="canonical" href="http://2997ms.github.io/2017/11/09/Atcoder选做/">
 
 
   <title> Atcoder选做 | 2997ms </title>
@@ -146,7 +148,7 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">2997ms</span>
       <span class="logo-line-after"><i></i></span>
@@ -307,7 +309,7 @@
           
               &nbsp; | &nbsp;
               <span class="page-pv"><i class="fa fa-file-o"></i>
-              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
               </span>
           
         </div>
@@ -351,11 +353,11 @@
 </table>
 <p>#### </p>
 <h3 id="CODE-FESTIVAL-2017-qual-C-D-Yet-Another-Palindrome-Partitioning"><a href="#CODE-FESTIVAL-2017-qual-C-D-Yet-Another-Palindrome-Partitioning" class="headerlink" title="CODE FESTIVAL 2017 qual C D - Yet Another Palindrome Partitioning"></a>CODE FESTIVAL 2017 qual C D - Yet Another Palindrome Partitioning</h3><blockquote>
-<p><a href="http://code-festival-2017-qualc.contest.atcoder.jp/tasks/code_festival_2017_qualc_d" target="_blank" rel="external">题目链接</a></p>
+<p><a href="http://code-festival-2017-qualc.contest.atcoder.jp/tasks/code_festival_2017_qualc_d" target="_blank" rel="noopener">题目链接</a></p>
 <p>题意是把一个字符串分成最小数量，使得每一份都可以变成回文串。</p>
 </blockquote>
 <p>dp。dp[i]表示到位置i的最小分割数。f[x]表示当前状态是x的最小分割数，如果只记录每一个字母的奇偶的话，那么可以构成回文串sum[i]^sum[j]=0||2^i。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> dp[maxn],f[<span class="number">70000010</span>];</div><div class="line"><span class="keyword">char</span> x[maxn];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>,x+<span class="number">1</span>);</div><div class="line"></div><div class="line">    <span class="keyword">int</span> len = <span class="built_in">strlen</span>(x+<span class="number">1</span>);</div><div class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</div><div class="line">    </div><div class="line">    <span class="built_in">memset</span>(f,<span class="number">0x3f</span>,<span class="keyword">sizeof</span>(f));</div><div class="line">    f[<span class="number">0</span>] = <span class="number">0</span>;</div><div class="line">    repp(i,<span class="number">1</span>,len)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> y = (<span class="number">1</span>&lt;&lt;(<span class="keyword">int</span>)(x[i]-<span class="string">'a'</span>));</div><div class="line">        sum ^= y;</div><div class="line">        dp[i] = INF;</div><div class="line">        dp[i] = min(dp[i],f[sum]+<span class="number">1</span>);</div><div class="line">        rep(j,<span class="number">0</span>,<span class="number">26</span>)</div><div class="line">        &#123;</div><div class="line">              dp[i] = min(dp[i],f[sum^(<span class="number">1</span>&lt;&lt;j)]+<span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">        f[sum] = min(f[sum],dp[i]);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, dp[len]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> dp[maxn],f[<span class="number">70000010</span>];</span><br><span class="line"><span class="keyword">char</span> x[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>,x+<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> len = <span class="built_in">strlen</span>(x+<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">memset</span>(f,<span class="number">0x3f</span>,<span class="keyword">sizeof</span>(f));</span><br><span class="line">    f[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    repp(i,<span class="number">1</span>,len)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> y = (<span class="number">1</span>&lt;&lt;(<span class="keyword">int</span>)(x[i]-<span class="string">'a'</span>));</span><br><span class="line">        sum ^= y;</span><br><span class="line">        dp[i] = INF;</span><br><span class="line">        dp[i] = min(dp[i],f[sum]+<span class="number">1</span>);</span><br><span class="line">        rep(j,<span class="number">0</span>,<span class="number">26</span>)</span><br><span class="line">        &#123;</span><br><span class="line">              dp[i] = min(dp[i],f[sum^(<span class="number">1</span>&lt;&lt;j)]+<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        f[sum] = min(f[sum],dp[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, dp[len]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -450,7 +452,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -461,9 +463,7 @@
 
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
-               alt="2997ms" />
+          <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="2997ms">
           <p class="site-author-name" itemprop="name">2997ms</p>
           <p class="site-description motion-element" itemprop="description">2997ms</p>
         </div>
@@ -552,7 +552,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
   <span itemprop="copyrightYear">2020</span>
