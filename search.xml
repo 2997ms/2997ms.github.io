@@ -7,6 +7,7 @@
       <title><![CDATA[Codeforces 1343E]]></title>
       <url>http://2997ms.github.io/2020/05/16/Codeforces/Codeforces-1343E/</url>
       <content type="html"><![CDATA[<p>一道题从读题到写出来一个半小时过去了。</p>
+<a id="more"></a>
 <p>题意是重新分配边的权值，使得a-&gt;b-&gt;c的权值最小。</p>
 <p>没有思路。</p>
 <p>每次都想着记录边，但是边在最段路中记录起来消耗太大了。考虑更换起点，得到三个dis的数组。这里的思路很多题都是这么干的了。</p>
