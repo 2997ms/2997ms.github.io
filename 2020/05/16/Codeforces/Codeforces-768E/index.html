@@ -84,19 +84,18 @@
 
 
 
-<meta name="description" content="翻看自己以前的博客是十分尴尬的，那些东西感觉更多是毫无来由的热血，终归是热血。而且起码还算是连贯能看，现在写的是什么玩意。。
- 生命里没有任何一刻是值得被浪费的。">
+<meta name="description" content="智障计划第一弹，又来一个计划，都不知道有没有第二弹。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2020年-5月-一定一定">
-<meta property="og:url" content="http://2997ms.github.io/2020/04/18/2020/2020年-5月-一定一定/index.html">
+<meta property="og:title" content="Codeforces 768E">
+<meta property="og:url" content="http://2997ms.github.io/2020/05/16/Codeforces/Codeforces-768E/index.html">
 <meta property="og:site_name" content="2997ms">
-<meta property="og:description" content="翻看自己以前的博客是十分尴尬的，那些东西感觉更多是毫无来由的热血，终归是热血。而且起码还算是连贯能看，现在写的是什么玩意。。
- 生命里没有任何一刻是值得被浪费的。">
-<meta property="og:updated_time" content="2020-04-19T00:05:29.442Z">
+<meta property="og:description" content="智障计划第一弹，又来一个计划，都不知道有没有第二弹。">
+<meta property="og:image" content="https://raw.githubusercontent.com/2997ms/My_Algorithm/master/source_pic/zhizhang.png">
+<meta property="og:updated_time" content="2020-05-16T06:16:00.330Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2020年-5月-一定一定">
-<meta name="twitter:description" content="翻看自己以前的博客是十分尴尬的，那些东西感觉更多是毫无来由的热血，终归是热血。而且起码还算是连贯能看，现在写的是什么玩意。。
- 生命里没有任何一刻是值得被浪费的。">
+<meta name="twitter:title" content="Codeforces 768E">
+<meta name="twitter:description" content="智障计划第一弹，又来一个计划，都不知道有没有第二弹。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/2997ms/My_Algorithm/master/source_pic/zhizhang.png">
 
 
 
@@ -117,10 +116,10 @@
 
 
 
-  <link rel="canonical" href="http://2997ms.github.io/2020/04/18/2020/2020年-5月-一定一定/"/>
+  <link rel="canonical" href="http://2997ms.github.io/2020/05/16/Codeforces/Codeforces-768E/"/>
 
 
-  <title> 2020年-5月-一定一定 | 2997ms </title>
+  <title> Codeforces 768E | 2997ms </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -271,7 +270,7 @@
             
             
               
-                2020年-5月-一定一定
+                Codeforces 768E
               
             
           </h1>
@@ -283,30 +282,11 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2020-04-18T15:31:56+08:00" content="2020-04-18">
-              2020-04-18
+            <time itemprop="dateCreated" datetime="2020-05-16T13:19:54+08:00" content="2020-05-16">
+              2020-05-16
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/所说/" itemprop="url" rel="index">
-                    <span itemprop="name">所说</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
@@ -335,11 +315,14 @@
       
 
       
-        <p>翻看自己以前的博客是十分尴尬的，那些东西感觉更多是毫无来由的热血，终归是热血。而且起码还算是连贯能看，现在写的是什么玩意。。</p>
-<p> 生命里没有任何一刻是值得被浪费的。</p>
+        <p>智障计划第一弹，又来一个计划，都不知道有没有第二弹。</p>
 <a id="more"></a>
-<p>“妈妈说，大部分人，还是会凑凑合合过一辈子。凑合的朋友，一茬来了一茬又走了；一般般的婚姻，吵吵闹闹却又承担不起离婚的成本。”</p>
-<p>“他们既学不会放手一搏力争风头，也学不会知足常乐甘当鸡头。”</p>
+<p><img src="https://raw.githubusercontent.com/2997ms/My_Algorithm/master/source_pic/zhizhang.png" alt="D_1"></p>
+<p>题意跟经典的nim博弈的区别就在于移动过的石堆不能再被移动了。</p>
+<p>一开始我的想法就是直接判断n的奇偶性就行了？</p>
+<p>发现题意读错了，是同一个数字不能在一个堆里取了。</p>
+<p>可以打表找一下sg函数的规律。在打表sg的时候暴力 + dp。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> vis[<span class="number">1005</span>];</div><div class="line"><span class="keyword">int</span> sg[<span class="number">22</span>][<span class="number">1</span>&lt;&lt;<span class="number">21</span>];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">mex</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; ; i++) <span class="keyword">if</span>(!vis[i]) <span class="keyword">return</span> i;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">pre</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="built_in">memset</span>(sg, <span class="number">0</span>, <span class="keyword">sizeof</span>(sg));</div><div class="line">    REPP(i,<span class="number">1</span>,<span class="number">20</span>) &#123;</div><div class="line">        sg[i][<span class="number">0</span>] = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; (<span class="number">1</span>&lt;&lt;<span class="number">20</span>) ; j++) &#123;</div><div class="line">            <span class="built_in">memset</span>(vis, <span class="number">0</span>, <span class="keyword">sizeof</span>(vis));</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; i; k++) <span class="keyword">if</span> ((j &gt;&gt; k) &amp;<span class="number">1</span>)</div><div class="line">                    vis[sg[i - k - <span class="number">1</span>][j ^ (<span class="number">1</span> &lt;&lt; k)]] = <span class="number">1</span>;</div><div class="line">            sg[i][j] = mex();</div><div class="line">            <span class="comment">// cout&lt;&lt;i&lt;&lt;" "&lt;&lt;k&lt;&lt;" "&lt;&lt;sg[i][k]&lt;&lt;endl;</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    REPP(i,<span class="number">0</span>,<span class="number">20</span>) &#123;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d %d\n"</span>, i, sg[i][(<span class="number">1</span> &lt;&lt; i) - <span class="number">1</span>]);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;   </div><div class="line">    <span class="comment">//pre();</span></div><div class="line">    <span class="keyword">int</span> n;</div><div class="line">    SA(n);</div><div class="line">    <span class="keyword">int</span> cnt = <span class="number">1</span>;</div><div class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</div><div class="line">    REPP(i,<span class="number">1</span>,n) &#123;</div><div class="line">        <span class="keyword">int</span> x;</div><div class="line">        SA(x);</div><div class="line">        <span class="keyword">for</span>(cnt=<span class="number">1</span>;cnt*(cnt+<span class="number">1</span>)/<span class="number">2</span>&lt;=x;cnt++);</div><div class="line">        ans ^= (cnt<span class="number">-1</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(ans) &#123;</div><div class="line">        <span class="built_in">puts</span>(<span class="string">"YES"</span>);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="built_in">puts</span>(<span class="string">"NO"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line"> </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -365,17 +348,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/04/12/AtCoder/AtCoder-Beginner-Contest-160/" rel="next" title="AtCoder Beginner Contest 160">
-                <i class="fa fa-chevron-left"></i> AtCoder Beginner Contest 160
+              <a href="/2020/04/18/2020/2020年-5月-一定一定/" rel="next" title="2020年-5月-一定一定">
+                <i class="fa fa-chevron-left"></i> 2020年-5月-一定一定
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/05/16/Codeforces/Codeforces-768E/" rel="prev" title="Codeforces 768E">
-                Codeforces 768E <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
