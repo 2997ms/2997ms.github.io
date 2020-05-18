@@ -4,6 +4,156 @@
   
     
     <entry>
+      <title><![CDATA[ddia-第七章-事务]]></title>
+      <url>http://2997ms.github.io/2020/05/18/Notes/ddia-%E7%AC%AC%E4%B8%83%E7%AB%A0%20%E4%BA%8B%E5%8A%A1/</url>
+      <content type="html"><![CDATA[<p><a href="https://github.com/Vonng/ddia/blob/master/ch7.md" target="_blank" rel="noopener">阅读地址</a></p>
+<a id="more"></a>
+<p>这一章主要讲的是数据库层面的ACID，然后主要讲里面”I”的层级，隔离层面不同处理方法的优缺点，以及大概是怎么实现隔离的。</p>
+<h3 id="ACID"><a href="#ACID" class="headerlink" title="ACID"></a>ACID</h3><p><strong>Atomicity</strong> 原子性，不能拆分。</p>
+<p>这个性质使得事务只能处于操作之前或者操作之后的状态。具体实现上是”I”要做的事情。原子性使得事务一旦中止，应用层重试一次即可，没有其他顾虑。</p>
+<p><strong>Consistency</strong> 一致性。</p>
+<p>应用层面的属性，数据中没有脏数据。</p>
+<p><strong>Isolation</strong> 隔离性。</p>
+<p>同时执行的事务之间互不干扰。</p>
+<p><strong>Durability</strong></p>
+<p>安全的地方存储数据，不用担心丢失。</p>
+<h3 id="单对象和多对象操作"><a href="#单对象和多对象操作" class="headerlink" title="单对象和多对象操作"></a>单对象和多对象操作</h3><h4 id="单对象写入"><a href="#单对象写入" class="headerlink" title="单对象写入"></a>单对象写入</h4><p>当单个对象发生改变时，原子性和隔离也是适用的。例如，假设您正在向数据库写入一个 20 KB的 JSON文档：</p>
+<ul>
+<li>如果在发送第一个10 KB之后网络连接中断，数据库是否存储了不可解析的10KB JSON片段？</li>
+<li>如果在数据库正在覆盖磁盘上的前一个值的过程中电源发生故障，是否最终将新旧值拼接在一起？</li>
+<li>如果另一个客户端在写入过程中读取该文档，是否会看到部分更新的值？</li>
+</ul>
+<p>事务通常被理解为，<strong>将多个对象上的多个操作合并为一个执行单元的机制</strong>。</p>
+<h4 id="多对象事务的需求"><a href="#多对象事务的需求" class="headerlink" title="多对象事务的需求"></a>多对象事务的需求</h4><p><strong>没有原子性，错误处理就要复杂得多，缺乏隔离性，就会导致并发问题</strong>。</p>
+<h4 id="处理错误和中止"><a href="#处理错误和中止" class="headerlink" title="处理错误和中止"></a>处理错误和中止</h4><p>尽管重试一个中止的事务是一个简单而有效的错误处理机制，但它并不完美：</p>
+<table>
+<thead>
+<tr>
+<th>问题</th>
+<th>方案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>事务可能实际上已经执行成功，只是网络中断让客户端看起来失败。此时重试会导致重复执行。</td>
+<td>需要应用层删除重复数据。</td>
+</tr>
+<tr>
+<td>如果错误是因为系统超负荷，重试会使情况更糟糕。</td>
+<td>设置重试次数上限</td>
+</tr>
+<tr>
+<td>如果出现了永久性故障（例如违反约束），则重试毫无意义</td>
+<td>不要重试</td>
+</tr>
+<tr>
+<td>如果已经产生数据库之外的副作用，则就算事务中止，副作用也已生效</td>
+<td>可以考虑两阶段提交</td>
+</tr>
+<tr>
+<td>客户端在重试的过程中也失败了，则没有其它应用负责重试了</td>
+<td>无法解决</td>
+</tr>
+</tbody>
+</table>
+<h3 id="弱隔离级别"><a href="#弱隔离级别" class="headerlink" title="弱隔离级别"></a>弱隔离级别</h3><p>当一个事务读取由另一个事务同时修改的数据时，或者当两个事务试图同时修改相同的数据时，并发问题（竞争条件）才会出现。</p>
+<h4 id="读已提交（Read-Committed）"><a href="#读已提交（Read-Committed）" class="headerlink" title="读已提交（Read Committed）"></a>读已提交（Read Committed）</h4><p>最基本的事务隔离级别是<strong>读已提交</strong>，它提供了两个保证：</p>
+<ol>
+<li>从数据库读时，只能看到已提交的数据（没有<strong>脏读（dirty reads）</strong>）。</li>
+<li>写入数据库时，只会覆盖已经写入的数据（没有<strong>脏写（dirty writes）</strong>）。</li>
+</ol>
+<p><strong>实现读已提交</strong>：</p>
+<p>防止脏写：行级锁。当事务想要修改特定对象（行或文档）时，它必须首先获得该对象的锁。然后必须持有该锁直到事务被提交或中止。</p>
+<p>防止脏读：一种方式是使用相同的锁。但这会带来性能问题。大多数数据库会维护旧值和当前持锁事务将要设置的新值这两个版本。提交前，其它读操作会读到旧值，提交后会读到新值。</p>
+<h4 id="读未提交（Read-uncommitted）"><a href="#读未提交（Read-uncommitted）" class="headerlink" title="读未提交（Read uncommitted）"></a>读未提交（Read uncommitted）</h4><p>它可以防止脏写，但不防止脏读。</p>
+<p>设想一个事务已经将一些数据写入数据库，但事务还没有提交或中止。另一个事务可以看到未提交的数据吗？如果是的话，那就叫做<strong>脏读（dirty reads）</strong></p>
+<p>但是，如果先前的写入是尚未提交事务的一部分，又会发生什么情况，后面的写入会覆盖一个尚未提交的值？这被称作<strong>脏写（dirty write）</strong></p>
+<h4 id="快照隔离和可重复读"><a href="#快照隔离和可重复读" class="headerlink" title="快照隔离和可重复读"></a>快照隔离和可重复读</h4><p>爱丽丝在银行有1000美元的储蓄，分为两个账户，每个500美元。现在一笔事务从她的一个账户中转移了100美元到另一个账户。如果她在事务处理的同时查看其账户余额列表，不幸地在转账事务完成前看到收款账户余额（余额为500美元），而在转账完成后看到另一个转出账户（已经转出100美元，余额400美元）。对爱丽丝来说，现在她的账户似乎只有900美元——看起来100美元已经消失了。</p>
+<p>这种异常被称为<strong>不可重复读（nonrepeatable read）或读取偏差（read skew）</strong>：如果Alice在事务结束时再次读取账户1的余额，她将看到与她之前的查询中看到的不同的值（600美元）。在读已提交的隔离条件下，<strong>不可重复读</strong>被认为是可接受的：Alice看到的帐户余额时确实在阅读时已经提交了。</p>
+<p><strong>快照隔离</strong>：每个事务都从数据库的<strong>一致快照（consistent snapshot）</strong> 中读取——也就是说，事务可以看到事务开始时在数据库中提交的所有数据。即使这些数据随后被另一个事务更改，每个事务也只能看到该特定时间点的旧数据。</p>
+<p><strong>实现快照隔离</strong>：<strong>多版本并发控制（MVCC, multi-version concurrentcy control）</strong>, 一种典型的方法是<strong>读已提交</strong>为每个查询使用单独的快照，而<strong>快照隔离</strong>对整个事务使用相同的快照。</p>
+<p>表中的每一行都有一个 <code>created_by</code> 字段，其中包含将该行插入到表中的的事务ID。此外，每行都有一个 <code>deleted_by</code> 字段，最初是空的。如果某个事务删除了一行，那么该行实际上并未从数据库中删除，而是通过将 <code>deleted_by</code> 字段设置为请求删除的事务的ID来标记为删除。在稍后的时间，当确定没有事务可以再访问已删除的数据时，数据库中的垃圾收集过程会将所有带有删除标记的行移除，并释放其空间。</p>
+<p><strong>观察一致性快照的可见性规则</strong>：</p>
+<ul>
+<li>读事务开始时，创建该对象的事务已经提交。</li>
+<li>对象未被标记为删除，或如果被标记为删除，请求删除的事务在读事务开始时尚未提交。</li>
+</ul>
+<h4 id="索引和快照隔离"><a href="#索引和快照隔离" class="headerlink" title="索引和快照隔离"></a>索引和快照隔离</h4><p>索引如何在多版本数据库中工作？</p>
+<ul>
+<li>一种选择是使索引简单地指向对象的所有版本，并且需要索引查询来过滤掉当前事务不可见的任何对象版本。当垃圾收集删除任何事务不再可见的旧对象版本时，相应的索引条目也可以被删除。</li>
+<li>每个写入事务（或一批事务）都会创建一颗新的B树，当创建时，从该特定树根生长的树就是数据库的一个一致性快照。没必要根据事务ID过滤掉对象，因为后续写入不能修改现有的B树；它们只能创建新的树根。但这种方法也需要一个负责压缩和垃圾收集的后台进程。</li>
+</ul>
+<h4 id="防止丢失更新"><a href="#防止丢失更新" class="headerlink" title="防止丢失更新"></a>防止丢失更新</h4><p>如果应用从数据库中读取一些值，修改它并写回修改的值（读取-修改-写入序列），则可能会发生丢失更新的问题。</p>
+<p><strong>解决方案</strong></p>
+<ul>
+<li><p>原子写</p>
+<ul>
+<li><p>许多数据库提供了原子更新操作，从而消除了在应用程序代码中执行读取-修改-写入序列的需要。如果你的代码可以用这些操作来表达，那这通常是最好的解决方案。例如，下面的指令在大多数关系数据库中是并发安全的：</p>
+</li>
+<li><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> counters <span class="keyword">SET</span> <span class="keyword">value</span> = <span class="keyword">value</span> + <span class="number">1</span> <span class="keyword">WHERE</span> <span class="keyword">key</span> = <span class="string">'foo'</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>显式锁定</p>
+<ul>
+<li><p>如果数据库的内置原子操作没有提供必要的功能，防止丢失更新的另一个选择是让应用程序显式地锁定将要更新的对象。然后应用程序可以执行读取-修改-写入序列，如果任何其他事务尝试同时读取同一个对象，则强制等待，直到第一个<strong>读取-修改-写入序列</strong>完成。</p>
+</li>
+<li><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">BEGIN</span> <span class="keyword">TRANSACTION</span>;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> figures</span><br><span class="line">	<span class="keyword">WHERE</span> <span class="keyword">name</span> = <span class="string">'robot'</span> <span class="keyword">AND</span> game_id = <span class="number">222</span></span><br><span class="line"><span class="keyword">FOR</span> <span class="keyword">UPDATE</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">UPDATE</span> figures <span class="keyword">SET</span> <span class="keyword">position</span> = <span class="string">'c4'</span> <span class="keyword">WHERE</span> <span class="keyword">id</span> = <span class="number">1234</span>;</span><br><span class="line"><span class="keyword">COMMIT</span>;</span><br></pre></td></tr></table></figure>
+<p><code>FOR UPDATE</code>子句告诉数据库应该对该查询返回的所有行加锁。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>脏读</th>
+<th>脏写</th>
+<th>不可重复读</th>
+<th>写倾斜</th>
+<th>幻读</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>读未提交 read uncommitted</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>读已提交 read committed</td>
+<td>√</td>
+<td>√</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>快照隔离 repeatable read</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>可序列化 serializable</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Codeforces 1355E]]></title>
       <url>http://2997ms.github.io/2020/05/17/Codeforces/Codeforces-1355E/</url>
       <content type="html"><![CDATA[<p>这题是很标准的三分了，一段区间上求极值。</p>
@@ -906,7 +1056,7 @@
     
     <entry>
       <title><![CDATA[笔试题整理]]></title>
-      <url>http://2997ms.github.io/2017/10/08/%E5%85%B6%E4%BB%96/%E7%AC%94%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%861/</url>
+      <url>http://2997ms.github.io/2017/10/08/Topic/%E7%AC%94%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%861/</url>
       <content type="html"><![CDATA[<p>笔试题整理</p>
 <a id="more"></a>
 <h3 id="LeetCode-440-K-th-Smallest-in-Lexicographical-Order"><a href="#LeetCode-440-K-th-Smallest-in-Lexicographical-Order" class="headerlink" title="LeetCode 440 K-th Smallest in Lexicographical Order"></a><a href="440 K-th Smallest in Lexicographical Order">LeetCode 440 K-th Smallest in Lexicographical Order</a></h3><p>hulu笔试的第二题。</p>
@@ -1095,7 +1245,7 @@
     
     <entry>
       <title><![CDATA[不会C++(二)(继承和组合)]]></title>
-      <url>http://2997ms.github.io/2017/06/30/%E5%85%B6%E4%BB%96/%E4%B8%8D%E4%BC%9AC++(%E4%BA%8C)/</url>
+      <url>http://2997ms.github.io/2017/06/30/Topic/%E4%B8%8D%E4%BC%9AC++(%E4%BA%8C)/</url>
       <content type="html"><![CDATA[<p>对于知识上的匮乏到了忍无可忍的地步。。。需要认真<strong>从头</strong>梳理一些概念的理解。</p>
 <p>不把这些搞清楚，实在没有办法安心做其他的。自己怎么这么弱啊。。。</p>
 <a id="more"></a>
@@ -1382,7 +1532,7 @@
     
     <entry>
       <title><![CDATA[不会C++(一)(explicit,new与malloc,union)]]></title>
-      <url>http://2997ms.github.io/2017/05/16/%E5%85%B6%E4%BB%96/%E4%B8%8D%E4%BC%9AC++(%E4%B8%80)/</url>
+      <url>http://2997ms.github.io/2017/05/16/Topic/%E4%B8%8D%E4%BC%9AC++(%E4%B8%80)/</url>
       <content type="html"><![CDATA[<p>这里整理一下C++语法中经常会出现的问题。。。</p>
 <a id="more"></a>
 <p>update：2017-05-16 15:22:22</p>
@@ -1542,7 +1692,7 @@
     
     <entry>
       <title><![CDATA[面试题整理3]]></title>
-      <url>http://2997ms.github.io/2017/03/16/%E5%85%B6%E4%BB%96/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%863/</url>
+      <url>http://2997ms.github.io/2017/03/16/Topic/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%863/</url>
       <content type="html"><![CDATA[<p>继续整理《Cracking the Coding Interview》。</p>
 <a id="more"></a>
 <p>18.4 2的个数</p>
@@ -1559,7 +1709,7 @@
     
     <entry>
       <title><![CDATA[面试题整理2]]></title>
-      <url>http://2997ms.github.io/2017/03/15/%E5%85%B6%E4%BB%96/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%862/</url>
+      <url>http://2997ms.github.io/2017/03/15/Topic/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%862/</url>
       <content type="html"><![CDATA[<p>继续整理《Cracking the Coding Interview》。</p>
 <a id="more"></a>
 <p>17.4无判断max</p>
@@ -1601,7 +1751,7 @@
     
     <entry>
       <title><![CDATA[面试题整理1]]></title>
-      <url>http://2997ms.github.io/2017/03/12/%E5%85%B6%E4%BB%96/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%861/</url>
+      <url>http://2997ms.github.io/2017/03/12/Topic/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%861/</url>
       <content type="html"><![CDATA[<p>在看《程序员面试金典》，里面150题有一些不错的，<a href="https://www.nowcoder.com/ta/cracking-the-coding-interview?query=&amp;asc=true&amp;order=&amp;page=1" target="_blank" rel="noopener">提交地址</a>，记录整理一下：</p>
 <a id="more"></a>
 <p>5.3最接近的数</p>
