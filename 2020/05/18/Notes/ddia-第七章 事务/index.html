@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="2997ms">
 <meta property="og:description" content="阅读地址">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-25T15:47:35.466Z">
+<meta property="og:updated_time" content="2020-05-27T13:13:14.617Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ddia-第七章-事务">
 <meta name="twitter:description" content="阅读地址">
@@ -439,7 +439,23 @@
 </li>
 </ul>
 </li>
+<li><p>自动检测</p>
+<ul>
+<li>另一种方法是允许它们并行执行，如果事务管理器检测到丢失更新，则中止事务并强制它们重试其<strong>读取-修改-写入序列</strong>。</li>
 </ul>
+</li>
+<li><p>比较并设置(CAS)</p>
+<ul>
+<li>只有当前值从上次读取时一直未改变，才允许更新发生。如果当前值与先前读取的值不匹配，则更新不起作用，且必须重试读取-修改-写入序列。</li>
+</ul>
+</li>
+</ul>
+<h4 id="冲突解决和复制"><a href="#冲突解决和复制" class="headerlink" title="冲突解决和复制"></a>冲突解决和复制</h4><p>由于在多个节点上存在数据副本，并且在不同节点上的数据可能被并发地修改，因此需要采取一些额外的步骤来防止丢失更新。</p>
+<p>复制数据库中的一种常见方法是允许并发写入创建多个冲突版本的值（也称为兄弟），并使用应用代码或特殊数据结构在事实发生之后解决和合并这些版本。</p>
+<p>原子操作可以在复制的上下文中很好地工作，尤其当它们具有可交换性时（即可以在不同的副本上以不同的顺序应用它们，且仍然可以得到相同的结果）。例如，递增计数器或向集合添加元素是可交换的操作。这是Riak 2.0数据类型背后的思想，它可以防止复制副本丢失更新。当不同的客户端同时更新一个值时，Riak自动将更新合并在一起，以免丢失更新。</p>
+<h4 id="写入偏差与幻读"><a href="#写入偏差与幻读" class="headerlink" title="写入偏差与幻读"></a>写入偏差与幻读</h4><p>首先，想象一下这个例子：你正在为医院写一个医生轮班管理程序。医院通常会同时要求几位医生待命，但底线是至少有一位医生在待命。医生可以放弃他们的班次（例如，如果他们自己生病了），只要至少有一个同事在这一班中继续工作。</p>
+<p><strong>写偏差</strong>。它既不是<strong>脏写</strong>，也不是<strong>丢失更新</strong>，因为这两个事务正在更新两个不同的对象（Alice和Bob各自的待命记录）。在这里发生的冲突并不是那么明显，但是这显然是一个竞争条件：如果两个事务一个接一个地运行，那么第二个医生就不能歇班了。异常行为只有在事务并发进行时才有可能。</p>
+<p>一个事务中的写入改变另一个事务的搜索查询的结果，被称为<strong>幻读</strong>。快照隔离避免了只读查询中幻读，但是在像我们讨论的例子那样的读写事务中，幻影会导致特别棘手的写入偏差情况。</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><table>
 <thead>
 <tr>
@@ -660,7 +676,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ACID"><span class="nav-number">1.</span> <span class="nav-text">ACID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单对象和多对象操作"><span class="nav-number">2.</span> <span class="nav-text">单对象和多对象操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#单对象写入"><span class="nav-number">2.1.</span> <span class="nav-text">单对象写入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多对象事务的需求"><span class="nav-number">2.2.</span> <span class="nav-text">多对象事务的需求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#处理错误和中止"><span class="nav-number">2.3.</span> <span class="nav-text">处理错误和中止</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#弱隔离级别"><span class="nav-number">3.</span> <span class="nav-text">弱隔离级别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#读已提交（Read-Committed）"><span class="nav-number">3.1.</span> <span class="nav-text">读已提交（Read Committed）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#读未提交（Read-uncommitted）"><span class="nav-number">3.2.</span> <span class="nav-text">读未提交（Read uncommitted）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#快照隔离和可重复读"><span class="nav-number">3.3.</span> <span class="nav-text">快照隔离和可重复读</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#索引和快照隔离"><span class="nav-number">3.4.</span> <span class="nav-text">索引和快照隔离</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#防止丢失更新"><span class="nav-number">3.5.</span> <span class="nav-text">防止丢失更新</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ACID"><span class="nav-number">1.</span> <span class="nav-text">ACID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单对象和多对象操作"><span class="nav-number">2.</span> <span class="nav-text">单对象和多对象操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#单对象写入"><span class="nav-number">2.1.</span> <span class="nav-text">单对象写入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多对象事务的需求"><span class="nav-number">2.2.</span> <span class="nav-text">多对象事务的需求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#处理错误和中止"><span class="nav-number">2.3.</span> <span class="nav-text">处理错误和中止</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#弱隔离级别"><span class="nav-number">3.</span> <span class="nav-text">弱隔离级别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#读已提交（Read-Committed）"><span class="nav-number">3.1.</span> <span class="nav-text">读已提交（Read Committed）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#读未提交（Read-uncommitted）"><span class="nav-number">3.2.</span> <span class="nav-text">读未提交（Read uncommitted）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#快照隔离和可重复读"><span class="nav-number">3.3.</span> <span class="nav-text">快照隔离和可重复读</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#索引和快照隔离"><span class="nav-number">3.4.</span> <span class="nav-text">索引和快照隔离</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#防止丢失更新"><span class="nav-number">3.5.</span> <span class="nav-text">防止丢失更新</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#冲突解决和复制"><span class="nav-number">3.6.</span> <span class="nav-text">冲突解决和复制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#写入偏差与幻读"><span class="nav-number">3.7.</span> <span class="nav-text">写入偏差与幻读</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
           </div>
         </section>
