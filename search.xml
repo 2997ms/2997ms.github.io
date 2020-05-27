@@ -133,7 +133,7 @@
 <td>×</td>
 </tr>
 <tr>
-<td>快照隔离 repeatable read</td>
+<td>快照隔离, 也是可重复读 repeatable read</td>
 <td>√</td>
 <td>√</td>
 <td>√</td>
@@ -150,6 +150,15 @@
 </tr>
 </tbody>
 </table>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[POJ 2689]]></title>
+      <url>http://2997ms.github.io/2020/05/18/POJ-2689/</url>
+      <content type="html"><![CDATA[<p>尽管数很大，但是区间长度在1000000范围内。用以有的素数对大数进行素数筛。</p>
+<a id="more"></a>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> pri[maxn];</span><br><span class="line"><span class="keyword">int</span> vis[maxn];</span><br><span class="line">ll le, ri;</span><br><span class="line"><span class="keyword">int</span> not_pri[maxn];</span><br><span class="line"><span class="keyword">int</span> pri_cnt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">get_prime_between_le_and_ri</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    REP(i,<span class="number">0</span>,pri_cnt) &#123;</span><br><span class="line">        ll g = le / pri[i];</span><br><span class="line">        <span class="keyword">while</span>(g&lt;=<span class="number">1</span>) &#123;</span><br><span class="line">            g++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(ll j=g*pri[i];j&lt;=ri;j+=pri[i]) &#123;</span><br><span class="line">            <span class="keyword">if</span>(j&gt;=le) &#123;</span><br><span class="line">                not_pri[j-le] = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(le == <span class="number">1</span>) &#123;</span><br><span class="line">        not_pri[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> v[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> up = <span class="number">5e4</span>;</span><br><span class="line">    pri_cnt = <span class="number">0</span>;</span><br><span class="line">    REPP(i,<span class="number">2</span>,up) &#123;</span><br><span class="line">        <span class="keyword">if</span>(!vis[i]) &#123;</span><br><span class="line">            pri[pri_cnt] = i;</span><br><span class="line">            pri_cnt++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i;j&lt;=up;j+=i) &#123;</span><br><span class="line">            vis[j] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>, &amp;le, &amp;ri) != <span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="built_in">memset</span>(not_pri, <span class="number">0</span>, <span class="keyword">sizeof</span>(not_pri));</span><br><span class="line">        get_prime_between_le_and_ri();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        REP(i,<span class="number">0</span>,ri-le+<span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span>(not_pri[i] == <span class="number">0</span>) &#123;</span><br><span class="line">                v[cnt] = i + le;</span><br><span class="line">                cnt++;</span><br><span class="line">            &#125; </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(cnt &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="built_in">puts</span>(<span class="string">"There are no adjacent primes."</span>);</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> dismax = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> dismin = <span class="number">1</span>;</span><br><span class="line">        REP(i,<span class="number">1</span>,cnt) &#123;</span><br><span class="line">            <span class="keyword">if</span>(v[i] - v[i<span class="number">-1</span>] &gt; v[dismax] - v[dismax<span class="number">-1</span>]) &#123;</span><br><span class="line">                dismax = i;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(v[i] - v[i<span class="number">-1</span>] &lt; v[dismin] - v[dismin<span class="number">-1</span>]) &#123;</span><br><span class="line">                dismin = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d,%d are closest, %d,%d are most distant.\n"</span>, v[dismin<span class="number">-1</span>], v[dismin], v[dismax<span class="number">-1</span>], v[dismax]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
     </entry>
     
@@ -400,7 +409,7 @@
     
     <entry>
       <title><![CDATA[Hackerrank选做]]></title>
-      <url>http://2997ms.github.io/2019/08/04/Hackerrank%E9%80%89%E5%81%9A/</url>
+      <url>http://2997ms.github.io/2019/08/04/Hackerrank/Hackerrank%E9%80%89%E5%81%9A/</url>
       <content type="html"><![CDATA[<blockquote>
 <p>如果不坚持对现实表示些不满、刻薄或者绝望的话, 人生就虚伪得连一点诚意都没有了.</p>
 </blockquote>
@@ -823,7 +832,7 @@
     
     <entry>
       <title><![CDATA[Topcoder选做]]></title>
-      <url>http://2997ms.github.io/2018/01/11/TopCoder%E9%80%89%E5%81%9A/</url>
+      <url>http://2997ms.github.io/2018/01/11/TopCoder/TopCoder%E9%80%89%E5%81%9A/</url>
       <content type="html"><![CDATA[<p>原来的tag是2018-01-11，现在已经是2019年8月4日了。</p>
 <a id="more"></a>
 <table>
@@ -945,38 +954,11 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Atcoder选做]]></title>
-      <url>http://2997ms.github.io/2017/11/09/Atcoder%E9%80%89%E5%81%9A/</url>
+      <title><![CDATA[CODE FESTIVAL 2017 qual D]]></title>
+      <url>http://2997ms.github.io/2017/11/09/AtCoder/CODE-FESTIVAL%20-2017-qual-D%20/</url>
       <content type="html"><![CDATA[<p>Atcoder选做</p>
-<a id="more"></a>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Round</th>
-<th style="text-align:center">A</th>
-<th style="text-align:center">B</th>
-<th style="text-align:center">C</th>
-<th style="text-align:center">D</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">Code Festival 2017 qual C</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center">Done</td>
-</tr>
-<tr>
-<td style="text-align:center">Code Festival 2017 qual A</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-</tr>
-</tbody>
-</table>
-<p>#### </p>
-<h3 id="CODE-FESTIVAL-2017-qual-C-D-Yet-Another-Palindrome-Partitioning"><a href="#CODE-FESTIVAL-2017-qual-C-D-Yet-Another-Palindrome-Partitioning" class="headerlink" title="CODE FESTIVAL 2017 qual C D - Yet Another Palindrome Partitioning"></a>CODE FESTIVAL 2017 qual C D - Yet Another Palindrome Partitioning</h3><blockquote>
+<a id="more"></a> 
+<h3 id="CODE-FESTIVAL-2017-qual-D-Yet-Another-Palindrome-Partitioning"><a href="#CODE-FESTIVAL-2017-qual-D-Yet-Another-Palindrome-Partitioning" class="headerlink" title="CODE FESTIVAL 2017 qual D - Yet Another Palindrome Partitioning"></a>CODE FESTIVAL 2017 qual D - Yet Another Palindrome Partitioning</h3><blockquote>
 <p><a href="http://code-festival-2017-qualc.contest.atcoder.jp/tasks/code_festival_2017_qualc_d" target="_blank" rel="noopener">题目链接</a></p>
 <p>题意是把一个字符串分成最小数量，使得每一份都可以变成回文串。</p>
 </blockquote>
@@ -986,12 +968,11 @@
     </entry>
     
     <entry>
-      <title><![CDATA[CODE FESTIVAL 2017 qual B(待填)]]></title>
-      <url>http://2997ms.github.io/2017/11/04/CODE-FESTIVAL-2017-qual-B-%E5%BE%85%E5%A1%AB/</url>
+      <title><![CDATA[CODE FESTIVAL 2017 qual B]]></title>
+      <url>http://2997ms.github.io/2017/11/04/AtCoder/CODE-FESTIVAL-2017-qual-B/</url>
       <content type="html"><![CDATA[<p>感觉还是应该多打一些contest，多在打的时候思考思考。。。</p>
 <p>C题想了两个小时没思路啊，智障啊。。。</p>
 <p><a href="http://code-festival-2017-qualb.contest.atcoder.jp/" target="_blank" rel="noopener">题目链接</a></p>
-<p>[1st : 2017-10-08 22:35:28]</p>
 <a id="more"></a>
 <p>AB两个水题不说了。</p>
 <h3 id="C-3-Steps"><a href="#C-3-Steps" class="headerlink" title="C - 3 Steps"></a>C - 3 Steps</h3><blockquote>
