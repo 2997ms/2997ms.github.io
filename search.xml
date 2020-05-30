@@ -4,12 +4,36 @@
   
     
     <entry>
+      <title><![CDATA[Codeforces 645 Div2]]></title>
+      <url>http://2997ms.github.io/2020/05/30/Codeforces/Codeforces-645-Div2/</url>
+      <content type="html"><![CDATA[<p>2020年还在做div2真是棒棒了呢。</p>
+<blockquote>
+<p>我就今年坚持打，我不信到不了的啊。</p>
+</blockquote>
+<a id="more"></a>
+<blockquote>
+<p>C. Celex Update</p>
+</blockquote>
+<p>C题题意是给出了gaz-giz的那种数字网格，给出起点和终点，每一种走法计算路径上的和，算从起点到终点有多少种和。</p>
+<p><img src="https://raw.githubusercontent.com/2997ms/My_Algorithm/master/source_pic/CF645/C1.png" alt="D_1"></p>
+<p>来，我在比赛中干了什么呢？算清楚了给出一个点具体的值。</p>
+<p>之后发现就是最大值到最小值的差值，然后我居然就开始考虑最小值怎么算，最大值怎么算。后来发现就算算清楚了也是要爆long long的，心态开始崩。。。</p>
+<p>这是结束后后面红旺发给我的。。。。。</p>
+<p><img src="https://raw.githubusercontent.com/2997ms/My_Algorithm/master/source_pic/CF645/C2.jpg" alt="D_1"></p>
+<p>我就不清楚我当时在想什么。后续x*y+1也是可以猜出来的，但当时我自己莫名地搞出了一个反例觉得不对，后来是自己反例算错了。。。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    SLLA(xx1);</span><br><span class="line">    SLLA(yy1);</span><br><span class="line">    SLLA(xx2);</span><br><span class="line">    SLLA(yy2);</span><br><span class="line"> </span><br><span class="line">    ll ans = (xx2 - xx1 ) *(yy2 - yy1) + <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结束之后发现D题简单啊，二分一下就结束了，唯一需要注意的是一个地方爆了long long，自己用double给莽过去了。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[ddia-第八章-分布式系统的麻烦]]></title>
       <url>http://2997ms.github.io/2020/05/27/Notes/ddia-%E7%AC%AC%E5%85%AB%E7%AB%A0%20%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E9%BA%BB%E7%83%A6/</url>
-      <content type="html"><![CDATA[<p>尽管我们已经谈了很多错误，但之前几章仍然过于乐观。现实更加黑暗。我们现在将悲观主义最大化，假设任何可能出错的东西<strong>都会</strong>出错</p>
+      <content type="html"><![CDATA[<p>尽管我们已经谈了很多错误，但之前几章仍然过于乐观。现实更加黑暗。我们现在将悲观主义最大化，假设任何可能出错的东西都会出错</p>
 <a id="more"></a>
 <p> <a href="https://github.com/Vonng/ddia/blob/master/ch8.md" target="_blank" rel="noopener">阅读地址</a></p>
-]]></content>
+<h3 id="故障与部分失效"><a href="#故障与部分失效" class="headerlink" title="故障与部分失效"></a>故障与部分失效</h3><p>在分布式系统中，尽管系统的其他部分工作正常，但系统的某些部分可能会以某种不可预知的方式被破坏。这被称为<strong>部分失效（partial failure）</strong>。难点在于部分失效是<strong>不确定性的（nonderterministic）</strong>：如果你试图做任何涉及多个节点和网络的事情，它有时可能会工作，有时会出现不可预知的失败。</p>
+<h3 id="云计算与超级计算机"><a href="#云计算与超级计算机" class="headerlink" title="云计算与超级计算机"></a>云计算与超级计算机</h3>]]></content>
     </entry>
     
     <entry>
