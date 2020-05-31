@@ -1,0 +1,836 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="LeetCode,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.0.2">
+
+
+
+
+
+
+<meta name="description" content="理想状态和实际总有距离">
+<meta name="keywords" content="LeetCode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode 1101-1150">
+<meta property="og:url" content="http://2997ms.github.io/2019/08/04/CP/Leetcode/LeetCode-1101-1150/index.html">
+<meta property="og:site_name" content="2997ms">
+<meta property="og:description" content="理想状态和实际总有距离">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-08-04T08:45:26.493Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LeetCode 1101-1150">
+<meta name="twitter:description" content="理想状态和实际总有距离">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://2997ms.github.io/2019/08/04/CP/Leetcode/LeetCode-1101-1150/">
+
+
+  <title> LeetCode 1101-1150 | 2997ms </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">2997ms</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">2997ms</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-moments">
+          <a href="/moments" rel="section">
+            
+            碎碎念
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                LeetCode 1101-1150
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2019-08-04T20:43:11+08:00" content="2019-08-04">
+              2019-08-04
+            </time>
+          </span>
+
+          
+            <span class="post-category">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/题记/" itemprop="url" rel="index">
+                    <span itemprop="name">题记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>理想状态和实际总有距离</p>
+<a id="more"></a>
+<h3 id="LeetCode1106-Parsing-A-Boolean-Expression"><a href="#LeetCode1106-Parsing-A-Boolean-Expression" class="headerlink" title="LeetCode1106 Parsing A Boolean Expression"></a><a href="https://leetcode.com/problems/parsing-a-boolean-expression/" target="_blank" rel="noopener">LeetCode1106 Parsing A Boolean Expression</a></h3><p>这个题和basic calculator差不多，栈来记录状态。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">parseBoolExpr</span><span class="params">(<span class="built_in">string</span> expression)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">stack</span>&lt;<span class="keyword">char</span>&gt;s;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;expression.size();i++) &#123;</span><br><span class="line">           <span class="keyword">char</span> ch = expression[i];</span><br><span class="line">           <span class="keyword">if</span>(ch==<span class="string">')'</span>) &#123;</span><br><span class="line">            <span class="keyword">bool</span> hasT = <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">bool</span> hasF = <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">while</span>(s.top()==<span class="string">'t'</span> || s.top()==<span class="string">'f'</span>) &#123;</span><br><span class="line">              hasT |= (s.top()==<span class="string">'t'</span>);</span><br><span class="line">              hasF |= (s.top()==<span class="string">'f'</span>);</span><br><span class="line">              s.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">char</span> op = s.top();</span><br><span class="line">            s.pop();</span><br><span class="line">            <span class="keyword">if</span>(op == <span class="string">'!'</span>) &#123;</span><br><span class="line">              <span class="keyword">if</span>(hasT) &#123;</span><br><span class="line">                s.push(<span class="string">'f'</span>);</span><br><span class="line">              &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                s.push(<span class="string">'t'</span>);</span><br><span class="line">              &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span>(op==<span class="string">'&amp;'</span>) &#123;</span><br><span class="line">              <span class="keyword">if</span>(hasF) &#123;</span><br><span class="line">                s.push(<span class="string">'f'</span>);</span><br><span class="line">              &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                s.push(<span class="string">'t'</span>);</span><br><span class="line">              &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span>(op==<span class="string">'|'</span>)&#123;</span><br><span class="line">              <span class="keyword">if</span>(hasT) &#123;</span><br><span class="line">                s.push(<span class="string">'t'</span>);</span><br><span class="line">              &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                s.push(<span class="string">'f'</span>);</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span>(ch != <span class="string">','</span> &amp;&amp; ch!=<span class="string">'('</span>) &#123;</span><br><span class="line">              s.push(ch);</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s.top()==<span class="string">'t'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="LeetCode1124-Longest-Well-Performing-Interval"><a href="#LeetCode1124-Longest-Well-Performing-Interval" class="headerlink" title="LeetCode1124. Longest Well-Performing Interval"></a><a href="https://leetcode.com/problems/longest-well-performing-interval/" target="_blank" rel="noopener">LeetCode1124. Longest Well-Performing Interval</a></h3><p>这个题和我之前在51nod上讨论过的，求区间大于等于0的最长区间很类似。</p>
+<p>那道题需要对前缀和进行排序，解法也非常巧妙。</p>
+<p>这个题因为值本身很特殊，都是1或者-1，所以前缀和一定是相差1，解法上有一点类似于之前经历的汽车加油的那道题。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> val[<span class="number">10005</span>];</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">longestWPI</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; hours)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> maxx = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">int</span> minn = <span class="number">0</span>;</span><br><span class="line">      <span class="built_in">map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;hax;</span><br><span class="line">      <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;hours.size();i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(hours[i] &gt; <span class="number">8</span>) &#123;</span><br><span class="line">          val[i+<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">            ans = <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          val[i+<span class="number">1</span>] = <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        val[i+<span class="number">1</span>] += val[i];</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0</span>) &#123;</span><br><span class="line">          maxx = minn = val[i+<span class="number">1</span>];</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          maxx = max(maxx ,val[i+<span class="number">1</span>]);</span><br><span class="line">          minn = min(minn, val[i+<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(hax.count(val[i+<span class="number">1</span>]))<span class="keyword">continue</span>;</span><br><span class="line">        hax[val[i+<span class="number">1</span>]] = i+<span class="number">1</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> i=minn+<span class="number">1</span>;i&lt;=maxx; i++) &#123;</span><br><span class="line">        hax[i] = min(hax[i], hax[i<span class="number">-1</span>]);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=hours.size();i++) &#123;</span><br><span class="line">         <span class="keyword">if</span>(val[i]&gt;<span class="number">0</span>) ans = max(ans, i);</span><br><span class="line">         <span class="keyword">if</span>(hax[val[i]<span class="number">-1</span>])</span><br><span class="line">          ans = max(ans, i-hax[val[i]<span class="number">-1</span>]);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="LeetCode1125-Smallest-Sufficient-Team"><a href="#LeetCode1125-Smallest-Sufficient-Team" class="headerlink" title="LeetCode1125 Smallest Sufficient Team"></a><a href="https://leetcode.com/problems/smallest-sufficient-team/" target="_blank" rel="noopener">LeetCode1125 Smallest Sufficient Team</a></h3><p>本质还是背包</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">smallestSufficientTeam</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; req_skills, <span class="built_in">vector</span>&lt; <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; &gt;&amp; people)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">map</span>&lt;<span class="built_in">string</span>, <span class="keyword">int</span>&gt;hax;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;req_skills.size();i++) &#123;</span><br><span class="line">          hax[req_skills[i]] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt;res;</span><br><span class="line">        res[<span class="number">0</span>] = &#123;&#125;;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;have;</span><br><span class="line">        have.push_back(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;people.size();i++) &#123;</span><br><span class="line">          <span class="keyword">int</span> bitmask = <span class="number">0</span>;</span><br><span class="line">          <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;people[i].size();j++) &#123;</span><br><span class="line">            bitmask = bitmask | (<span class="number">1</span>&lt;&lt;hax[people[i][j]]);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt;nxt(have.begin(),have.end());</span><br><span class="line">          <span class="keyword">for</span>(<span class="keyword">int</span> j=have.size()<span class="number">-1</span>;j&gt;=<span class="number">0</span>;j--) &#123;</span><br><span class="line">            <span class="keyword">int</span> val = have[j];</span><br><span class="line">            <span class="keyword">int</span> k = have[j] | bitmask;</span><br><span class="line">                </span><br><span class="line">            <span class="keyword">if</span>(!res.count(k) || res[k].size() &gt; res[val].size() + <span class="number">1</span>) &#123;</span><br><span class="line">                res[k] = res[val];</span><br><span class="line">                res[k].push_back(i);</span><br><span class="line">                </span><br><span class="line">                nxt.insert(k);</span><br><span class="line">             &#125;</span><br><span class="line">          &#125;</span><br><span class="line">          have.clear();</span><br><span class="line">          <span class="keyword">for</span>(<span class="keyword">auto</span> i:nxt) &#123;</span><br><span class="line">            have.push_back(i);</span><br><span class="line">          &#125;</span><br><span class="line">          sort(have.begin(),have.end());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res[(<span class="number">1</span>&lt;&lt;req_skills.size())<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="LeetCode1129-Shortest-Path-with-Alternating-Colors"><a href="#LeetCode1129-Shortest-Path-with-Alternating-Colors" class="headerlink" title="LeetCode1129 Shortest Path with Alternating Colors"></a><a href="https://leetcode.com/problems/shortest-path-with-alternating-colors/" target="_blank" rel="noopener">LeetCode1129 Shortest Path with Alternating Colors</a></h3><p>要记怎么来的，不能只记结果，这个踩过很多坑了</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">shortestAlternatingPaths</span><span class="params">(<span class="keyword">int</span> n, <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt;&amp; red_edges, <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt;&amp; blue_edges)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">queue</span>&lt; pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; &gt;que;</span><br><span class="line">        que.push(make_pair(<span class="number">0</span>,<span class="number">-1</span>));</span><br><span class="line">        <span class="built_in">map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;hax[<span class="number">2</span>];</span><br><span class="line">        hax[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        hax[<span class="number">1</span>][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(!que.empty()) &#123;</span><br><span class="line">          pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; now = que.front();</span><br><span class="line">          que.pop();</span><br><span class="line">          <span class="keyword">if</span>(now.second == <span class="number">-1</span> || now.second == <span class="number">1</span>) &#123;</span><br><span class="line">              <span class="keyword">int</span> t = now.second;</span><br><span class="line">              now.second = <span class="number">1</span>;</span><br><span class="line">            rep(i,<span class="number">0</span>,red_edges.size()) &#123;</span><br><span class="line">              <span class="keyword">if</span>(red_edges[i][<span class="number">0</span>]==now.first) &#123;</span><br><span class="line">                <span class="keyword">int</span> len = hax[now.second][now.first] + <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(!hax[<span class="number">1</span> - now.second].count(red_edges[i][<span class="number">1</span>]) || hax[<span class="number">1</span> - now.second][red_edges[i][<span class="number">1</span>]] &gt; len) &#123;</span><br><span class="line">                  hax[<span class="number">1</span>-now.second][red_edges[i][<span class="number">1</span>]] = len;</span><br><span class="line">                  que.push(make_pair(red_edges[i][<span class="number">1</span>], <span class="number">1</span>-now.second));</span><br><span class="line">                &#125;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">              now.second=t;</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          <span class="keyword">if</span>(now.second == <span class="number">-1</span> || now.second == <span class="number">0</span>) &#123;</span><br><span class="line">              now.second=<span class="number">0</span>;</span><br><span class="line">            rep(i,<span class="number">0</span>,blue_edges.size()) &#123;</span><br><span class="line">              <span class="keyword">if</span>(blue_edges[i][<span class="number">0</span>]==now.first) &#123;</span><br><span class="line">                <span class="keyword">int</span> len = hax[now.second][now.first] + <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(!hax[<span class="number">1</span> - now.second].count(blue_edges[i][<span class="number">1</span>]) || hax[<span class="number">1</span> - now.second][blue_edges[i][<span class="number">1</span>]] &gt; len) &#123;</span><br><span class="line">                  hax[<span class="number">1</span>-now.second][blue_edges[i][<span class="number">1</span>]] = len;</span><br><span class="line">                  que.push(make_pair(blue_edges[i][<span class="number">1</span>], <span class="number">1</span>-now.second));</span><br><span class="line">                &#125;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;ans;</span><br><span class="line">        rep(i,<span class="number">0</span>,n) &#123;</span><br><span class="line">          <span class="keyword">int</span> res = <span class="number">1e9</span>;</span><br><span class="line">          <span class="keyword">if</span>(hax[<span class="number">0</span>].count(i)) &#123;</span><br><span class="line">            res = min(res,hax[<span class="number">0</span>][i]);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">if</span>(hax[<span class="number">1</span>].count(i)) &#123;</span><br><span class="line">            res = min(res,hax[<span class="number">1</span>][i]);</span><br><span class="line">          &#125; </span><br><span class="line">          <span class="keyword">if</span>(res==<span class="number">1e9</span>) &#123;</span><br><span class="line">            res = <span class="number">-1</span>;</span><br><span class="line">          &#125;</span><br><span class="line">          ans.push_back(res);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="LeetCode1131-Maximum-of-Absolute-Value-Expression"><a href="#LeetCode1131-Maximum-of-Absolute-Value-Expression" class="headerlink" title="LeetCode1131 Maximum of Absolute Value Expression"></a><a href="https://leetcode.com/problems/maximum-of-absolute-value-expression/" target="_blank" rel="noopener">LeetCode1131 Maximum of Absolute Value Expression</a></h3><p>带绝对值这种题，无论多麻烦，都要先脱掉它</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> sum[<span class="number">2</span>][<span class="number">40005</span>];</span><br><span class="line">    <span class="keyword">int</span> diff[<span class="number">2</span>][<span class="number">40005</span>];</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">cal</span><span class="params">(<span class="keyword">int</span> g[],<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> maxx = g[<span class="number">0</span>];</span><br><span class="line">      <span class="keyword">int</span> minn = g[<span class="number">0</span>];</span><br><span class="line">      rep(i,<span class="number">0</span>,n) &#123;</span><br><span class="line">        maxx = max(maxx,g[i]);</span><br><span class="line">        minn = min(minn,g[i]);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> maxx - minn;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxAbsValExpr</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; arr1, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; arr2)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> n = arr1.size();</span><br><span class="line">      rep(i,<span class="number">0</span>,arr1.size()) &#123;</span><br><span class="line">        sum[<span class="number">0</span>][i] = arr1[i] + arr2[i] + i;</span><br><span class="line">        sum[<span class="number">1</span>][i] = arr1[i] + arr2[i] - i;</span><br><span class="line">        diff[<span class="number">0</span>][i] = arr1[i] - arr2[i] + i;</span><br><span class="line">        diff[<span class="number">1</span>][i] = arr1[i] - arr2[i] - i;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> max(max(cal(sum[<span class="number">0</span>],n),cal(sum[<span class="number">1</span>],n)),max(cal(diff[<span class="number">0</span>],n),cal(diff[<span class="number">1</span>],n)));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="LeetCode1143-Longest-Common-Subsequence"><a href="#LeetCode1143-Longest-Common-Subsequence" class="headerlink" title="LeetCode1143 Longest Common Subsequence"></a><a href="https://leetcode.com/problems/longest-common-subsequence" target="_blank" rel="noopener">LeetCode1143 Longest Common Subsequence</a></h3><p>题意是找到最长的LCS的值。</p>
+<p>如果输出具体的字符串怎么做。记录每个点的pre，判断相等就说明这个字符在最终的结果里。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> dp[<span class="number">1005</span>][<span class="number">1005</span>];</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">longestCommonSubsequence</span><span class="params">(<span class="built_in">string</span> text1, <span class="built_in">string</span> text2)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">memset</span>(dp,<span class="number">0</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;text1.size();i++) &#123;</span><br><span class="line">          <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;text2.size();j++) &#123;</span><br><span class="line">            dp[i+<span class="number">1</span>][j+<span class="number">1</span>] = dp[i][j];</span><br><span class="line">            <span class="keyword">if</span>(text1[i] == text2[j]) &#123;</span><br><span class="line">              dp[i+<span class="number">1</span>][j+<span class="number">1</span>] = max(dp[i+<span class="number">1</span>][j+<span class="number">1</span>],dp[i][j]+<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            dp[i+<span class="number">1</span>][j+<span class="number">1</span>] = max(dp[i+<span class="number">1</span>][j+<span class="number">1</span>],dp[i+<span class="number">1</span>][j]);</span><br><span class="line">            dp[i+<span class="number">1</span>][j+<span class="number">1</span>] = max(dp[i+<span class="number">1</span>][j+<span class="number">1</span>],dp[i][j+<span class="number">1</span>]);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[text1.size()][text2.size()];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LeetCode/" rel="tag">#LeetCode</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/04/CP/Hackerrank/Hackerrank选做/" rel="next" title="Hackerrank选做">
+                <i class="fa fa-chevron-left"></i> Hackerrank选做
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/04/CP/Leetcode/LeetCode-1051-1100/" rel="prev" title="LeetCode 1051-1100">
+                LeetCode 1051-1100 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2137748"></script>
+    <!-- UY END -->
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="2997ms">
+          <p class="site-author-name" itemprop="name">2997ms</p>
+          <p class="site-description motion-element" itemprop="description">2997ms</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">115</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/2997ms" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/u/3567374047?is_all=1" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#LeetCode1106-Parsing-A-Boolean-Expression"><span class="nav-number">1.</span> <span class="nav-text">LeetCode1106 Parsing A Boolean Expression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LeetCode1124-Longest-Well-Performing-Interval"><span class="nav-number">2.</span> <span class="nav-text">LeetCode1124. Longest Well-Performing Interval</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LeetCode1125-Smallest-Sufficient-Team"><span class="nav-number">3.</span> <span class="nav-text">LeetCode1125 Smallest Sufficient Team</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LeetCode1129-Shortest-Path-with-Alternating-Colors"><span class="nav-number">4.</span> <span class="nav-text">LeetCode1129 Shortest Path with Alternating Colors</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LeetCode1131-Maximum-of-Absolute-Value-Expression"><span class="nav-number">5.</span> <span class="nav-text">LeetCode1131 Maximum of Absolute Value Expression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LeetCode1143-Longest-Common-Subsequence"><span class="nav-number">6.</span> <span class="nav-text">LeetCode1143 Longest Common Subsequence</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">2997ms</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = false;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = decodeURIComponent(data.url);
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title >= 0 || index_content >= 0 ){
+                                isMatch = true;
+								if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            } 
+							
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

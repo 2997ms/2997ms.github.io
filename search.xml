@@ -4,8 +4,17 @@
   
     
     <entry>
+      <title><![CDATA[三次握手与四次挥手]]></title>
+      <url>http://2997ms.github.io/2020/05/31/Topic/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E4%B8%8E%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/</url>
+      <content type="html"><![CDATA[<p>TCP/IP协议，几层。</p>
+<p>三次握手，四次挥手。</p>
+<p>FIN，RST请求。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Codeforces 645 Div2]]></title>
-      <url>http://2997ms.github.io/2020/05/30/Codeforces/Codeforces-645-Div2/</url>
+      <url>http://2997ms.github.io/2020/05/30/CP/Codeforces/Codeforces-645-Div2/</url>
       <content type="html"><![CDATA[<p>2020年还在做div2真是棒棒了呢。</p>
 <blockquote>
 <p>我就今年坚持打，我不信到不了的啊。</p>
@@ -33,7 +42,36 @@
 <a id="more"></a>
 <p> <a href="https://github.com/Vonng/ddia/blob/master/ch8.md" target="_blank" rel="noopener">阅读地址</a></p>
 <h3 id="故障与部分失效"><a href="#故障与部分失效" class="headerlink" title="故障与部分失效"></a>故障与部分失效</h3><p>在分布式系统中，尽管系统的其他部分工作正常，但系统的某些部分可能会以某种不可预知的方式被破坏。这被称为<strong>部分失效（partial failure）</strong>。难点在于部分失效是<strong>不确定性的（nonderterministic）</strong>：如果你试图做任何涉及多个节点和网络的事情，它有时可能会工作，有时会出现不可预知的失败。</p>
-<h3 id="云计算与超级计算机"><a href="#云计算与超级计算机" class="headerlink" title="云计算与超级计算机"></a>云计算与超级计算机</h3>]]></content>
+<h3 id="云计算与超级计算机"><a href="#云计算与超级计算机" class="headerlink" title="云计算与超级计算机"></a>云计算与超级计算机</h3><p>两个极端：</p>
+<ul>
+<li>高性能计算（HPC）领域。具有数千个CPU的超级计算机通常用于计算密集型科学计算任务，如天气预报或分子动力学（模拟原子和分子的运动）。</li>
+<li>云计算。通常与多租户数据中心，连接IP网络的商品计算机（通常是以太网），弹性/按需资源分配以及计量计费等相关联。</li>
+</ul>
+<p>传统企业数据中心位于这两个极端之间。</p>
+<h3 id="不可靠的网络"><a href="#不可靠的网络" class="headerlink" title="不可靠的网络"></a>不可靠的网络</h3><p>互联网和数据中心（通常是以太网）中的大多数内部网络都是<strong>异步分组网络（asynchronous packet networks）</strong>。在这种网络中，一个节点可以向另一个节点发送一个消息（一个数据包），但是网络不能保证它什么时候到达，或者是否到达。如果您发送请求并期待响应，则很多事情可能会出错。</p>
+<ol>
+<li>请求可能已经丢失（可能有人拔掉了网线）。</li>
+<li>请求可能正在排队，稍后将交付（也许网络或收件人超载）。</li>
+<li>远程节点可能已经失效（可能是崩溃或关机）。</li>
+<li>远程节点可能暂时停止了响应（可能会遇到长时间的垃圾回收暂停），但稍后会再次响应。</li>
+<li>远程节点可能已经处理了请求，但是网络上的响应已经丢失（可能是网络交换机配置错误）。</li>
+<li>远程节点可能已经处理了请求，但是响应已经被延迟，并且稍后将被传递（可能是网络或者你自己的机器过载）。</li>
+</ol>
+<p>处理这个问题的通常方法是<strong>超时（Timeout）</strong>：在一段时间之后放弃等待，并且认为响应不会到达。但是，当发生超时时，你仍然不知道远程节点是否收到了请求（如果请求仍然在某个地方排队，那么即使发件人已经放弃了该请求，仍然可能会将其发送给收件人）。</p>
+<h3 id="检测故障"><a href="#检测故障" class="headerlink" title="检测故障"></a>检测故障</h3><p>许多系统需要自动检测故障节点。例如：</p>
+<ul>
+<li>负载平衡器需要停止向已死亡的节点转发请求（即从<strong>移出轮询列表（out of rotation）</strong>）。</li>
+<li>在单主复制功能的分布式数据库中，如果主库失效，则需要将从库之一升级为新主库。</li>
+</ul>
+<p>不幸的是，网络的不确定性使得很难判断一个节点是否工作。在某些特定的情况下，会收到一些结果。</p>
+<ul>
+<li>如果你可以到达运行节点的机器，但没有进程正在侦听目标端口（例如，因为进程崩溃），操作系统将通过发送FIN或RST来关闭并重用TCP连接。但是，如果节点在处理请求时发生崩溃，则无法知道远程节点实际处理了多少数据。</li>
+<li>如果节点进程崩溃（或被管理员杀死），但节点的操作系统仍在运行，则脚本可以通知其他节点有关该崩溃的信息，以便另一个节点可以快速接管，而无需等待超时到期。</li>
+<li>如果您有权访问数据中心网络交换机的管理界面，则可以查询它们以检测硬件级别的链路故障（例如，远程机器是否关闭电源）。如果您通过互联网连接，或者如果您处于共享数据中心而无法访问交换机，或者由于网络问题而无法访问管理界面，则排除此选项。</li>
+<li>如果路由器确认您尝试连接的IP地址不可用，则可能会使用ICMP目标不可达数据包回复您。但是，路由器不具备神奇的故障检测能力——它受到与网络其他参与者相同的限制。</li>
+</ul>
+<h3 id="超时与无穷的延迟"><a href="#超时与无穷的延迟" class="headerlink" title="超时与无穷的延迟"></a>超时与无穷的延迟</h3><p>那么超时应该等待多久？不幸的是没有答案。</p>
+]]></content>
     </entry>
     
     <entry>
@@ -259,7 +297,7 @@
     
     <entry>
       <title><![CDATA[POJ 2689]]></title>
-      <url>http://2997ms.github.io/2020/05/18/POJ-2689/</url>
+      <url>http://2997ms.github.io/2020/05/18/CP/POJ-2689/</url>
       <content type="html"><![CDATA[<p>尽管数很大，但是区间长度在1000000范围内。用以有的素数对大数进行素数筛。</p>
 <a id="more"></a>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> pri[maxn];</span><br><span class="line"><span class="keyword">int</span> vis[maxn];</span><br><span class="line">ll le, ri;</span><br><span class="line"><span class="keyword">int</span> not_pri[maxn];</span><br><span class="line"><span class="keyword">int</span> pri_cnt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">get_prime_between_le_and_ri</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    REP(i,<span class="number">0</span>,pri_cnt) &#123;</span><br><span class="line">        ll g = le / pri[i];</span><br><span class="line">        <span class="keyword">while</span>(g&lt;=<span class="number">1</span>) &#123;</span><br><span class="line">            g++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(ll j=g*pri[i];j&lt;=ri;j+=pri[i]) &#123;</span><br><span class="line">            <span class="keyword">if</span>(j&gt;=le) &#123;</span><br><span class="line">                not_pri[j-le] = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(le == <span class="number">1</span>) &#123;</span><br><span class="line">        not_pri[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> v[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> up = <span class="number">5e4</span>;</span><br><span class="line">    pri_cnt = <span class="number">0</span>;</span><br><span class="line">    REPP(i,<span class="number">2</span>,up) &#123;</span><br><span class="line">        <span class="keyword">if</span>(!vis[i]) &#123;</span><br><span class="line">            pri[pri_cnt] = i;</span><br><span class="line">            pri_cnt++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i;j&lt;=up;j+=i) &#123;</span><br><span class="line">            vis[j] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>, &amp;le, &amp;ri) != <span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="built_in">memset</span>(not_pri, <span class="number">0</span>, <span class="keyword">sizeof</span>(not_pri));</span><br><span class="line">        get_prime_between_le_and_ri();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        REP(i,<span class="number">0</span>,ri-le+<span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span>(not_pri[i] == <span class="number">0</span>) &#123;</span><br><span class="line">                v[cnt] = i + le;</span><br><span class="line">                cnt++;</span><br><span class="line">            &#125; </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(cnt &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="built_in">puts</span>(<span class="string">"There are no adjacent primes."</span>);</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> dismax = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> dismin = <span class="number">1</span>;</span><br><span class="line">        REP(i,<span class="number">1</span>,cnt) &#123;</span><br><span class="line">            <span class="keyword">if</span>(v[i] - v[i<span class="number">-1</span>] &gt; v[dismax] - v[dismax<span class="number">-1</span>]) &#123;</span><br><span class="line">                dismax = i;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(v[i] - v[i<span class="number">-1</span>] &lt; v[dismin] - v[dismin<span class="number">-1</span>]) &#123;</span><br><span class="line">                dismin = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d,%d are closest, %d,%d are most distant.\n"</span>, v[dismin<span class="number">-1</span>], v[dismin], v[dismax<span class="number">-1</span>], v[dismax]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -268,7 +306,7 @@
     
     <entry>
       <title><![CDATA[Codeforces 1355E]]></title>
-      <url>http://2997ms.github.io/2020/05/17/Codeforces/Codeforces-1355E/</url>
+      <url>http://2997ms.github.io/2020/05/17/CP/Codeforces/Codeforces-1355E/</url>
       <content type="html"><![CDATA[<p>这题是很标准的三分了，一段区间上求极值。</p>
 <a id="more"></a>
 <p>然而自己在搞的什么蛇皮啊，在最后一分钟终于搞过了。终于又一次回到紫名了，今年想冲2100，如果可以稳定下来，这个并非没有可能。</p>
@@ -283,7 +321,7 @@
     
     <entry>
       <title><![CDATA[Codeforces 1343E]]></title>
-      <url>http://2997ms.github.io/2020/05/16/Codeforces/Codeforces-1343E/</url>
+      <url>http://2997ms.github.io/2020/05/16/CP/Codeforces/Codeforces-1343E/</url>
       <content type="html"><![CDATA[<p>一道题从读题到写出来一个半小时过去了。</p>
 <a id="more"></a>
 <p>题意是重新分配边的权值，使得a-&gt;b-&gt;c的权值最小。</p>
@@ -296,7 +334,7 @@
     
     <entry>
       <title><![CDATA[Codeforces 768E]]></title>
-      <url>http://2997ms.github.io/2020/05/16/Codeforces/Codeforces-768E/</url>
+      <url>http://2997ms.github.io/2020/05/16/CP/Codeforces/Codeforces-768E/</url>
       <content type="html"><![CDATA[<p>智障计划第一弹，又来一个计划，都不知道有没有第二弹。</p>
 <a id="more"></a>
 <p><img src="https://raw.githubusercontent.com/2997ms/My_Algorithm/master/source_pic/zhizhang.png" alt="D_1"></p>
@@ -310,7 +348,7 @@
     
     <entry>
       <title><![CDATA[2020年-5月-一定一定]]></title>
-      <url>http://2997ms.github.io/2020/04/18/2020/2020%E5%B9%B4-5%E6%9C%88-%E4%B8%80%E5%AE%9A%E4%B8%80%E5%AE%9A/</url>
+      <url>http://2997ms.github.io/2020/04/18/BB/2020/2020%E5%B9%B4-5%E6%9C%88-%E4%B8%80%E5%AE%9A%E4%B8%80%E5%AE%9A/</url>
       <content type="html"><![CDATA[<p>翻看自己以前的博客是十分尴尬的，那些东西感觉更多是毫无来由的热血，终归是热血。而且起码还算是连贯能看，现在写的是什么玩意。。</p>
 <p> 生命里没有任何一刻是值得被浪费的。</p>
 <a id="more"></a>
@@ -321,7 +359,7 @@
     
     <entry>
       <title><![CDATA[AtCoder Beginner Contest 160]]></title>
-      <url>http://2997ms.github.io/2020/04/12/AtCoder/AtCoder-Beginner-Contest-160/</url>
+      <url>http://2997ms.github.io/2020/04/12/CP/AtCoder/AtCoder-Beginner-Contest-160/</url>
       <content type="html"><![CDATA[<p>退化。</p>
 <a id="more"></a>
 <p><a href="https://atcoder.jp/contests/abc160" target="_blank" rel="noopener">题目链接</a></p>
@@ -335,7 +373,7 @@
     
     <entry>
       <title><![CDATA[2020年-4月-而今的我们为什么这么累这么丧]]></title>
-      <url>http://2997ms.github.io/2020/04/12/2020/2020%E5%B9%B4-4%E6%9C%88-%E8%80%8C%E4%BB%8A%E7%9A%84%E6%88%91%E4%BB%AC%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%99%E4%B9%88%E7%B4%AF%E8%BF%99%E4%B9%88%E4%B8%A7/</url>
+      <url>http://2997ms.github.io/2020/04/12/BB/2020/2020%E5%B9%B4-4%E6%9C%88-%E8%80%8C%E4%BB%8A%E7%9A%84%E6%88%91%E4%BB%AC%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%99%E4%B9%88%E7%B4%AF%E8%BF%99%E4%B9%88%E4%B8%A7/</url>
       <content type="html"><![CDATA[<p>写在二十七岁的今天。简单写点什么，献给自己。</p>
 <p>这是我很长一段时间以来一直想说的一个话题，标题中的“我们”也不是说谁们，更多的时候就是说我。因为疫情的原因，我发现2020年的每个人都过的不快乐，国内外大量的人们面临失业，经济中的压力，生意上的不如意，各种贷款。总而言之，求不得，出不去，要自由。</p>
 <a id="more"></a>
@@ -373,7 +411,7 @@
     
     <entry>
       <title><![CDATA[Kickstart A Round 2020]]></title>
-      <url>http://2997ms.github.io/2020/03/22/Google/Kickstart-A-Round-2020/</url>
+      <url>http://2997ms.github.io/2020/03/22/CP/Google/Kickstart-A-Round-2020/</url>
       <content type="html"><![CDATA[<p>今年的Kickstart这一轮比往年简单太多了，简单到我都AK了，昨晚的Leetcode D题我都不会做。。。</p>
 <p>榜上的大佬们最快16分钟就AK了。写完题解之后发现我今年真的是越来越菜了 ^ - ^。。。 </p>
 <a id="more"></a>
@@ -391,7 +429,7 @@
     
     <entry>
       <title><![CDATA[Panasonic Programming Contest 2020]]></title>
-      <url>http://2997ms.github.io/2020/03/21/AtCoder/Panasonic-Programming-Contest-2020/</url>
+      <url>http://2997ms.github.io/2020/03/21/CP/AtCoder/Panasonic-Programming-Contest-2020/</url>
       <content type="html"><![CDATA[<p>最近是有打了几场Atcoder的，这几天统一还是要补一下的。距离我上一次更新题解也是够久的了。</p>
 <a id="more"></a>
 <p>几乎所有的Atcoder题目都可以被归类为【思维题】。数据结构在我认知的范围之内都不复杂，但你就是想不出来。</p>
@@ -412,7 +450,7 @@
     
     <entry>
       <title><![CDATA[2020年-2月-春生夏长，秋收冬藏]]></title>
-      <url>http://2997ms.github.io/2020/02/19/2020/2020%E5%B9%B4-2%E6%9C%88/</url>
+      <url>http://2997ms.github.io/2020/02/19/BB/2020/2020%E5%B9%B4-2%E6%9C%88/</url>
       <content type="html"><![CDATA[<p>我记得我跨年的时候还在祈愿，国泰民安，风调雨顺。结果祖国发生了疫情，自己身体也不好。最近的感悟就是个人的命运与国家的命运是紧紧联系在一起的。希望神州大地平安度过，早日度过，国泰民安，风调雨顺。</p>
 <a id="more"></a>
 <p>自己列的计划又落下了，过年的时候没时间完成，工作本身也各种赶不完，当然这不是理由—— 吃饭从来都不落下，也不会忘记。说明还是不够重视？</p>
@@ -427,7 +465,7 @@
     
     <entry>
       <title><![CDATA[2019年-12月-伦敦之行]]></title>
-      <url>http://2997ms.github.io/2019/12/30/2019/2019%E5%B9%B4-12%E6%9C%88-%E4%BC%A6%E6%95%A6%E4%B9%8B%E8%A1%8C/</url>
+      <url>http://2997ms.github.io/2019/12/30/BB/2019/2019%E5%B9%B4-12%E6%9C%88-%E4%BC%A6%E6%95%A6%E4%B9%8B%E8%A1%8C/</url>
       <content type="html"><![CDATA[<p>2019年年末在伦敦，很机缘巧合的一次旅行。</p>
 <a id="more"></a>
 <p>2019年发生了太多太多事情，每一次开始都需要一点仪式，愿2020年的黎明快速到来。</p>
@@ -438,7 +476,7 @@
     
     <entry>
       <title><![CDATA[2019年-11月-最后一年]]></title>
-      <url>http://2997ms.github.io/2019/12/10/2019/2019%E5%B9%B4-11%E6%9C%88-%E6%9C%80%E5%90%8E%E4%B8%80%E5%B9%B4/</url>
+      <url>http://2997ms.github.io/2019/12/10/BB/2019/2019%E5%B9%B4-11%E6%9C%88-%E6%9C%80%E5%90%8E%E4%B8%80%E5%B9%B4/</url>
       <content type="html"><![CDATA[<p>想来说说我的经历，在这个半夜。</p>
 <a id="more"></a>
 <p>自己没有任何算法竞赛经历，凭的全是热爱，现在回头看，投入/产出不是一个量级，但是值不值呢，反正我不后悔，即便自己现在什么都不会。</p>
@@ -465,7 +503,7 @@
     
     <entry>
       <title><![CDATA[Educational Codeforces Round 1]]></title>
-      <url>http://2997ms.github.io/2019/11/18/Codeforces/Eductional-Codeforces-Round-1/</url>
+      <url>http://2997ms.github.io/2019/11/18/CP/Codeforces/Eductional-Codeforces-Round-1/</url>
       <content type="html"><![CDATA[<p>时隔多年，开始补的是Eductional Round，从第一轮开始，计算几何好难啊，我怎么这么菜啊。。。</p>
 <p>Educational补完，我要做安德鲁系列！你看我什么时候可以把Edu补完。</p>
 <a id="more"></a>
@@ -480,7 +518,7 @@
     
     <entry>
       <title><![CDATA[LeetCode 1051-1100]]></title>
-      <url>http://2997ms.github.io/2019/08/04/Leetcode/LeetCode-1051-1100/</url>
+      <url>http://2997ms.github.io/2019/08/04/CP/Leetcode/LeetCode-1051-1100/</url>
       <content type="html"><![CDATA[<p>Leetcode是烹小鲜，之前更类似于耍大刀。</p>
 <a id="more"></a>
 <h3 id="LeetCode1096-Brace-Expansion-II"><a href="#LeetCode1096-Brace-Expansion-II" class="headerlink" title="LeetCode1096 Brace Expansion II"></a><a href="https://leetcode.com/problems/brace-expansion-ii/" target="_blank" rel="noopener">LeetCode1096 Brace Expansion II</a></h3><p>这个题目递归解还是要调好久。</p>
@@ -490,7 +528,7 @@
     
     <entry>
       <title><![CDATA[LeetCode 1101-1150]]></title>
-      <url>http://2997ms.github.io/2019/08/04/Leetcode/LeetCode-1101-1150/</url>
+      <url>http://2997ms.github.io/2019/08/04/CP/Leetcode/LeetCode-1101-1150/</url>
       <content type="html"><![CDATA[<p>理想状态和实际总有距离</p>
 <a id="more"></a>
 <h3 id="LeetCode1106-Parsing-A-Boolean-Expression"><a href="#LeetCode1106-Parsing-A-Boolean-Expression" class="headerlink" title="LeetCode1106 Parsing A Boolean Expression"></a><a href="https://leetcode.com/problems/parsing-a-boolean-expression/" target="_blank" rel="noopener">LeetCode1106 Parsing A Boolean Expression</a></h3><p>这个题和basic calculator差不多，栈来记录状态。</p>
@@ -513,7 +551,7 @@
     
     <entry>
       <title><![CDATA[Hackerrank选做]]></title>
-      <url>http://2997ms.github.io/2019/08/04/Hackerrank/Hackerrank%E9%80%89%E5%81%9A/</url>
+      <url>http://2997ms.github.io/2019/08/04/CP/Hackerrank/Hackerrank%E9%80%89%E5%81%9A/</url>
       <content type="html"><![CDATA[<blockquote>
 <p>如果不坚持对现实表示些不满、刻薄或者绝望的话, 人生就虚伪得连一点诚意都没有了.</p>
 </blockquote>
@@ -547,7 +585,7 @@
     
     <entry>
       <title><![CDATA[2019年-8月-鲜花荆棘]]></title>
-      <url>http://2997ms.github.io/2019/08/04/2019/2019%E5%B9%B4-8%E6%9C%88-%E9%B2%9C%E8%8A%B1%E8%8D%86%E6%A3%98/</url>
+      <url>http://2997ms.github.io/2019/08/04/BB/2019/2019%E5%B9%B4-8%E6%9C%88-%E9%B2%9C%E8%8A%B1%E8%8D%86%E6%A3%98/</url>
       <content type="html"><![CDATA[<p>戏还是很多。</p>
 <a id="more"></a>
 <p>这个blog还真是真实，51nod原来是5个题一篇，然后是两个题一篇，后面变成一个题一篇。完全反映了本人最后坚持不下来的情况。</p>
@@ -560,7 +598,7 @@
     
     <entry>
       <title><![CDATA[2019 TCO Round 1B]]></title>
-      <url>http://2997ms.github.io/2019/05/02/TopCoder/2019-TCO-Round-1B/</url>
+      <url>http://2997ms.github.io/2019/05/02/CP/TopCoder/2019-TCO-Round-1B/</url>
       <content type="html"><![CDATA[<p>Topcoder上有意思的dp题还是多，但是如果能有更多的editor就好了(你要干嘛。。)</p>
 <a id="more"></a>
 <p><a href="[https://www.topcoder.com/blog/2019-topcoder-open-algorithm-round-1b-editorials/](https://www.topcoder.com/blog/2019-topcoder-open-algorithm-round-1b-editorials/">题解链接</a>)</p>
@@ -582,7 +620,7 @@
     
     <entry>
       <title><![CDATA[Google Code Jam 2019 Round 1A]]></title>
-      <url>http://2997ms.github.io/2019/04/13/Google/Google-Code-Jam-2019-Round-1A/</url>
+      <url>http://2997ms.github.io/2019/04/13/CP/Google/Google-Code-Jam-2019-Round-1A/</url>
       <content type="html"><![CDATA[<p>距离2017年竟然也都这么久了。</p>
 <a id="more"></a>
 <p><a href="https://codingcompetitions.withgoogle.com/codejam/round/0000000000051635" target="_blank" rel="noopener">题目链接</a></p>
@@ -599,7 +637,7 @@
     
     <entry>
       <title><![CDATA[51nod 1290]]></title>
-      <url>http://2997ms.github.io/2018/12/09/51nod/51nod-1290/</url>
+      <url>http://2997ms.github.io/2018/12/09/CP/51nod/51nod-1290/</url>
       <content type="html"><![CDATA[<p>没那么复杂啊。。。</p>
 <a id="more"></a>
 <h4 id="51nod-1290"><a href="#51nod-1290" class="headerlink" title="51nod 1290"></a><a href="http://www.51nod.com/Challenge/Problem.html#!#problemId=1290" target="_blank" rel="noopener">51nod 1290</a></h4><p>将每一个v，v+k，v-k离散，然后莫队查询。</p>
@@ -609,7 +647,7 @@
     
     <entry>
       <title><![CDATA[51nod 1594]]></title>
-      <url>http://2997ms.github.io/2018/12/09/51nod/51nod-1594/</url>
+      <url>http://2997ms.github.io/2018/12/09/CP/51nod/51nod-1594/</url>
       <content type="html"><![CDATA[<p>这题折腾了好久。。。。</p>
 <a id="more"></a>
 <h4 id="51nod-1594"><a href="#51nod-1594" class="headerlink" title="51nod 1594"></a><a href="http://www.51nod.com/Challenge/Problem.html#!#problemId=1594" target="_blank" rel="noopener">51nod 1594</a></h4><p>$C_{x}表示1到n中phi(i)==x的数量有多少$</p>
@@ -630,7 +668,7 @@
     
     <entry>
       <title><![CDATA[51nod填坑记(三)(1203,1695)]]></title>
-      <url>http://2997ms.github.io/2018/12/09/51nod/51nod%E5%A1%AB%E5%9D%91%E8%AE%B0-%E4%B8%89/</url>
+      <url>http://2997ms.github.io/2018/12/09/CP/51nod/51nod%E5%A1%AB%E5%9D%91%E8%AE%B0-%E4%B8%89/</url>
       <content type="html"><![CDATA[<p>现在居然一点多了。。。不总结题就是没做过这个题。</p>
 <a id="more"></a>
 <h3 id="51nod-1203"><a href="#51nod-1203" class="headerlink" title="51nod 1203"></a><a href="http://www.51nod.com/Challenge/Problem.html#!#problemId=1203" target="_blank" rel="noopener">51nod 1203</a></h3><p>通过这个题，重新复习了一下莫队，好多都忘了。</p>
@@ -651,7 +689,7 @@
     
     <entry>
       <title><![CDATA[51nod填坑记(二)(1048, 1167)]]></title>
-      <url>http://2997ms.github.io/2018/12/02/51nod/51nod%E5%A1%AB%E5%9D%91%E8%AE%B0-%E4%BA%8C/</url>
+      <url>http://2997ms.github.io/2018/12/02/CP/51nod/51nod%E5%A1%AB%E5%9D%91%E8%AE%B0-%E4%BA%8C/</url>
       <content type="html"><![CDATA[<p>前一个还是2017年的事情，51nod填坑记二居然相差了一年多。主要是51nod这一年好像近期才做了一个很大的改变，之前bug太多了啊。。。</p>
 <p>这一年自己经历了很多，然而进步很小啊。。。心态有的时候也需要调整。</p>
 <a id="more"></a>
@@ -670,7 +708,7 @@
     
     <entry>
       <title><![CDATA[PE#243 Resilience]]></title>
-      <url>http://2997ms.github.io/2018/09/15/ProjectEuler/PE-243-Resilience/</url>
+      <url>http://2997ms.github.io/2018/09/15/CP/ProjectEuler/PE-243-Resilience/</url>
       <content type="html"><![CDATA[<p><a href="https://projecteuler.net/problem=243" target="_blank" rel="noopener">题目链接</a></p>
 <a id="more"></a>
 <p>题意是找到一个phi(m)/(m-1) &lt; 15499/94744，要求m最小。<br>$$<br>phi(n)=n*\prod_{n|p}(1-\frac{1}{p})<br>$$</p>
@@ -680,7 +718,7 @@
     
     <entry>
       <title><![CDATA[PE#12 Highly divisible triangular number]]></title>
-      <url>http://2997ms.github.io/2018/09/05/ProjectEuler/PE-12-Highly-divisible-triangular-number/</url>
+      <url>http://2997ms.github.io/2018/09/05/CP/ProjectEuler/PE-12-Highly-divisible-triangular-number/</url>
       <content type="html"><![CDATA[<p><a href="https://projecteuler.net/problem=12" target="_blank" rel="noopener">题目链接</a></p>
 <a id="more"></a>
 <p>题意就是在n*(n+1)/2的数列中找到最小的，满足因子数目大于500的数字。</p>
@@ -690,7 +728,7 @@
     
     <entry>
       <title><![CDATA[2018年_8月_时至今日]]></title>
-      <url>http://2997ms.github.io/2018/08/12/2018/2018_8_Present_is_a_gift/</url>
+      <url>http://2997ms.github.io/2018/08/12/BB/2018/2018_8_Present_is_a_gift/</url>
       <content type="html"><![CDATA[<p>Today is a gift. That’s why we call it present.</p>
 <a id="more"></a>
 <p>自从工作之后，到现在为止，博客是真的长了草。</p>
@@ -701,7 +739,7 @@
     
     <entry>
       <title><![CDATA[POJ 1821]]></title>
-      <url>http://2997ms.github.io/2018/08/12/POJ/POJ-1821/</url>
+      <url>http://2997ms.github.io/2018/08/12/CP/POJ/POJ-1821/</url>
       <content type="html"><![CDATA[<p><a href="http://poj.org/problem?id=1821" target="_blank" rel="noopener">题目链接</a></p>
 <p>这道题是很经典的一道维护单调队列的题目，最近在做POJ的题目。记录一下这道题。</p>
 <a id="more"></a>
@@ -716,7 +754,7 @@
     
     <entry>
       <title><![CDATA[2018_3月_自由自在 放浪形骸]]></title>
-      <url>http://2997ms.github.io/2018/04/05/2018/2018_3_%E8%87%AA%E7%94%B1%E8%87%AA%E5%9C%A8%E6%94%BE%E6%B5%AA%E5%BD%A2%E9%AA%B8/</url>
+      <url>http://2997ms.github.io/2018/04/05/BB/2018/2018_3_%E8%87%AA%E7%94%B1%E8%87%AA%E5%9C%A8%E6%94%BE%E6%B5%AA%E5%BD%A2%E9%AA%B8/</url>
       <content type="html"><![CDATA[<p>2018年的3月其主题就是告别，我曾经那么梦想着离开这所学校。研一的时候不停地想要退学，像<a href="https://yanyiwu.com/" target="_blank" rel="noopener">yanyiwu</a>那样。但因为自己实在没有勇气，于是时间都在犹犹豫豫与不停等待中熬过了。3月月末，一切结束，不得不离开的时候，我才知道我在这里曾经留下了那么多的热爱。</p>
 <p>这个博文也是，很早时候就写了一些，中间因为工作的缘故，也因为自己发现没什么好说的，就没继续。</p>
 <p>今天我希望把它完成，把整个感受写完。</p>
@@ -745,7 +783,7 @@
     
     <entry>
       <title><![CDATA[AtCoder Regular Contest 091]]></title>
-      <url>http://2997ms.github.io/2018/03/21/AtCoder/AtCoder-Regular-Contest-091/</url>
+      <url>http://2997ms.github.io/2018/03/21/CP/AtCoder/AtCoder-Regular-Contest-091/</url>
       <content type="html"><![CDATA[<p>最近这个三月在忙毕业的事情，答辩、各种表格、医院、签证等等。在结束这一切之后，这一期的AtCoder终于补完了。艰难脸^ - ^</p>
 <p>C、D不用说什么的话，那一共才两道题。。。</p>
 <p>Update: [2018-06-17]就这么一直拖到了现在。。。</p>
@@ -782,7 +820,7 @@
     
     <entry>
       <title><![CDATA[CS academy Round 71]]></title>
-      <url>http://2997ms.github.io/2018/03/03/CS-academy/CS-academy-Round-71/</url>
+      <url>http://2997ms.github.io/2018/03/03/CP/CS-academy/CS-academy-Round-71/</url>
       <content type="html"><![CDATA[<p>CS academy Round 71</p>
 <a id="more"></a>
 <p><a href="https://csacademy.com/contest/round-71/tasks/" target="_blank" rel="noopener">题目链接</a></p>
@@ -807,7 +845,7 @@
     
     <entry>
       <title><![CDATA[CS academy Round 66]]></title>
-      <url>http://2997ms.github.io/2018/02/21/CS-academy/CS-academy-Round-66/</url>
+      <url>http://2997ms.github.io/2018/02/21/CP/CS-academy/CS-academy-Round-66/</url>
       <content type="html"><![CDATA[<p>假期里的第二套。。。</p>
 <a id="more"></a>
 <p><a href="https://csacademy.com/contest/round-66/tasks/" target="_blank" rel="noopener">题目链接</a>，A、B、C都很水。</p>
@@ -830,7 +868,7 @@
     
     <entry>
       <title><![CDATA[CS academy Round 68]]></title>
-      <url>http://2997ms.github.io/2018/02/09/CS-academy/CS-academy-Round-68/</url>
+      <url>http://2997ms.github.io/2018/02/09/CP/CS-academy/CS-academy-Round-68/</url>
       <content type="html"><![CDATA[<p>补完一套题。</p>
 <a id="more"></a>
 <p><a href="https://csacademy.com/contest/round-68/tasks/" target="_blank" rel="noopener">题目链接</a></p>
@@ -862,7 +900,7 @@
     
     <entry>
       <title><![CDATA[2018年_2月_生命里的好时刻]]></title>
-      <url>http://2997ms.github.io/2018/02/04/2018/2018_2_MomentsOfLife/</url>
+      <url>http://2997ms.github.io/2018/02/04/BB/2018/2018_2_MomentsOfLife/</url>
       <content type="html"><![CDATA[<p>“人生不是基于一个人所活的长短计算的，而是取决于这样一个个神奇的时刻”，</p>
 <p>此时是生命里的好时刻。</p>
 <a id="more"></a>
@@ -884,7 +922,7 @@
     
     <entry>
       <title><![CDATA[AtCoder Regular Contest 088]]></title>
-      <url>http://2997ms.github.io/2018/01/26/AtCoder/AtCoder-Regular-Contest-088/</url>
+      <url>http://2997ms.github.io/2018/01/26/CP/AtCoder/AtCoder-Regular-Contest-088/</url>
       <content type="html"><![CDATA[<p>这期的D、E、F题都很有趣。总结下来，E题做的时候没想法。F题琢磨题解琢磨了好久，将问题转换，后面的$O(nlog^2n)$的DP还是很神的。。。</p>
 <a id="more"></a>
 <h3 id="D-Wide-Flip"><a href="#D-Wide-Flip" class="headerlink" title="D Wide Flip"></a>D Wide Flip</h3><blockquote>
@@ -913,7 +951,7 @@
     
     <entry>
       <title><![CDATA[2018年_1月_泥步修行]]></title>
-      <url>http://2997ms.github.io/2018/01/23/2018/2018_1_%E6%B3%A5%E6%AD%A5%E4%BF%AE%E8%A1%8C/</url>
+      <url>http://2997ms.github.io/2018/01/23/BB/2018/2018_1_%E6%B3%A5%E6%AD%A5%E4%BF%AE%E8%A1%8C/</url>
       <content type="html"><![CDATA[<blockquote>
 <p>2018年也是我记录活表的第四个年头了，时间喜欢下狠手，一刻都不停留，才刚填好上一个格子，下一个格子的颜色又要去好好思考和把握。</p>
 </blockquote>
@@ -936,7 +974,7 @@
     
     <entry>
       <title><![CDATA[Topcoder选做]]></title>
-      <url>http://2997ms.github.io/2018/01/11/TopCoder/TopCoder%E9%80%89%E5%81%9A/</url>
+      <url>http://2997ms.github.io/2018/01/11/CP/TopCoder/TopCoder%E9%80%89%E5%81%9A/</url>
       <content type="html"><![CDATA[<p>原来的tag是2018-01-11，现在已经是2019年8月4日了。</p>
 <a id="more"></a>
 <table>
@@ -992,7 +1030,7 @@
     
     <entry>
       <title><![CDATA[Codeforces 451 Div2]]></title>
-      <url>http://2997ms.github.io/2017/12/26/Codeforces/Codeforces-451-Div2/</url>
+      <url>http://2997ms.github.io/2017/12/26/CP/Codeforces/Codeforces-451-Div2/</url>
       <content type="html"><![CDATA[<p>其实451和452两场就真的挺简单的了，但就是脑残了。</p>
 <p>写一下补的题目吧。其余的题目都很水了。</p>
 <a id="more"></a>
@@ -1008,7 +1046,7 @@
     
     <entry>
       <title><![CDATA[2017_12月_我的失败与继续]]></title>
-      <url>http://2997ms.github.io/2017/12/25/2017/2017%E5%B9%B4-12%E6%9C%88-%E6%88%91%E7%9A%84%E5%A4%B1%E8%B4%A5%E4%B8%8E%E7%BB%A7%E7%BB%AD/</url>
+      <url>http://2997ms.github.io/2017/12/25/BB/2017/2017%E5%B9%B4-12%E6%9C%88-%E6%88%91%E7%9A%84%E5%A4%B1%E8%B4%A5%E4%B8%8E%E7%BB%A7%E7%BB%AD/</url>
       <content type="html"><![CDATA[<p>壮怀激烈，焦虑，想起飞，原地爆炸，一个人待一会儿。</p>
 <p>还是一个正能量的人啊，每个早上都很充满了希望， 每天都有属于自己的战场。</p>
 <p>//远远没写完，今天只是拿来做个测试。。。</p>
@@ -1039,7 +1077,7 @@
     
     <entry>
       <title><![CDATA[Codeforces 452 Div2]]></title>
-      <url>http://2997ms.github.io/2017/12/21/Codeforces/Codeforces-452-Div2/</url>
+      <url>http://2997ms.github.io/2017/12/21/CP/Codeforces/Codeforces-452-Div2/</url>
       <content type="html"><![CDATA[<p>真是忘了初心，越写越差。。。</p>
 <p>写个总结吧，怎么能这么菜啊。。。</p>
 <a id="more"></a>
@@ -1059,7 +1097,7 @@
     
     <entry>
       <title><![CDATA[CODE FESTIVAL 2017 qual D]]></title>
-      <url>http://2997ms.github.io/2017/11/09/AtCoder/CODE-FESTIVAL%20-2017-qual-D%20/</url>
+      <url>http://2997ms.github.io/2017/11/09/CP/AtCoder/CODE-FESTIVAL%20-2017-qual-D%20/</url>
       <content type="html"><![CDATA[<p>Atcoder选做</p>
 <a id="more"></a> 
 <h3 id="CODE-FESTIVAL-2017-qual-D-Yet-Another-Palindrome-Partitioning"><a href="#CODE-FESTIVAL-2017-qual-D-Yet-Another-Palindrome-Partitioning" class="headerlink" title="CODE FESTIVAL 2017 qual D - Yet Another Palindrome Partitioning"></a>CODE FESTIVAL 2017 qual D - Yet Another Palindrome Partitioning</h3><blockquote>
@@ -1073,7 +1111,7 @@
     
     <entry>
       <title><![CDATA[CODE FESTIVAL 2017 qual B]]></title>
-      <url>http://2997ms.github.io/2017/11/04/AtCoder/CODE-FESTIVAL-2017-qual-B/</url>
+      <url>http://2997ms.github.io/2017/11/04/CP/AtCoder/CODE-FESTIVAL-2017-qual-B/</url>
       <content type="html"><![CDATA[<p>感觉还是应该多打一些contest，多在打的时候思考思考。。。</p>
 <p>C题想了两个小时没思路啊，智障啊。。。</p>
 <p><a href="http://code-festival-2017-qualb.contest.atcoder.jp/" target="_blank" rel="noopener">题目链接</a></p>
@@ -1102,7 +1140,7 @@
     
     <entry>
       <title><![CDATA[2017-10月-告别天堂]]></title>
-      <url>http://2997ms.github.io/2017/10/22/2017/2017-10%E6%9C%88-%E5%91%8A%E5%88%AB%E5%A4%A9%E5%A0%82/</url>
+      <url>http://2997ms.github.io/2017/10/22/BB/2017/2017-10%E6%9C%88-%E5%91%8A%E5%88%AB%E5%A4%A9%E5%A0%82/</url>
       <content type="html"><![CDATA[<p>不开玩笑啦。。。这次打算写得长一些。。。以前的月度总结好敷衍。。。</p>
 <p>自己文字功力几乎为0，一些情绪、经历、想法在大脑层面形成了感观之后很难用语言优雅地表达出来，捉急。。。趁着我今晚倾诉欲这么强烈，赶紧记录一下。</p>
 <a id="more"></a>
@@ -1153,7 +1191,7 @@
     
     <entry>
       <title><![CDATA[University CodeSprint 3(待填)]]></title>
-      <url>http://2997ms.github.io/2017/10/04/University-CodeSprint-3-%E5%BE%85%E5%A1%AB/</url>
+      <url>http://2997ms.github.io/2017/10/04/CP/University-CodeSprint-3-%E5%BE%85%E5%A1%AB/</url>
       <content type="html"><![CDATA[<p>十一的时候打的这个比赛，前五题感觉都很容易。然后第六题不会。。暴力骗了点分。。</p>
 <p>后来看Editoral这个第六题确实没想到，学到了。。。但也不是很难啊。。。</p>
 <p>第七题好像是link-cut-tree？没学过，以后补一下。</p>
@@ -1182,7 +1220,7 @@
     
     <entry>
       <title><![CDATA[51nod填坑记(一)(1742,1810,1753,1291,1296)]]></title>
-      <url>http://2997ms.github.io/2017/10/02/51nod/51nod%E5%A1%AB%E5%9D%91%E8%AE%B0-%E4%B8%80/</url>
+      <url>http://2997ms.github.io/2017/10/02/CP/51nod/51nod%E5%A1%AB%E5%9D%91%E8%AE%B0-%E4%B8%80/</url>
       <content type="html"><![CDATA[<p>做51nod也挺久的了，因为早期总是喜欢看题解错过了不少好题，而今想来想给自己几个耳光。重要的永远不是这个题目做不做得出来，而是如何去思考。这里很多题目都不错，想在这里记录一下。</p>
 <a id="more"></a>
 <h3 id="51nod-1742-开心的小Q"><a href="#51nod-1742-开心的小Q" class="headerlink" title="51nod 1742 开心的小Q"></a><a href="http://www.51nod.com/onlineJudge/problemSolution.html#!problemId=1742" target="_blank" rel="noopener">51nod 1742 开心的小Q</a></h3><p>这个题目出得很赞啊。。。不会啊。。。或许是这类题目做得实在太少的缘故，式子的推导+容斥，不会啊。。。</p>
@@ -1209,7 +1247,7 @@
     
     <entry>
       <title><![CDATA[2017_9月_Time Travel]]></title>
-      <url>http://2997ms.github.io/2017/09/29/2017/2017%E5%B9%B4-9%E6%9C%88-Time%20Travel/</url>
+      <url>http://2997ms.github.io/2017/09/29/BB/2017/2017%E5%B9%B4-9%E6%9C%88-Time%20Travel/</url>
       <content type="html"><![CDATA[<p>耳机里面这首Time Travel真是赞。</p>
 <a id="more"></a>
 <p>TO_DO：把近期手机里的图片，朋友圈，云笔记里面记录的一些东西，整理一下吧。</p>
@@ -1221,7 +1259,7 @@
     
     <entry>
       <title><![CDATA[2017_8月_荒腔走板]]></title>
-      <url>http://2997ms.github.io/2017/08/30/2017/2017%E5%B9%B4-8%E6%9C%88-%E8%8D%92%E8%85%94%E8%B5%B0%E6%9D%BF/</url>
+      <url>http://2997ms.github.io/2017/08/30/BB/2017/2017%E5%B9%B4-8%E6%9C%88-%E8%8D%92%E8%85%94%E8%B5%B0%E6%9D%BF/</url>
       <content type="html"><![CDATA[<h3 id="A-Yesterday-is-history-Tomorrow-is-a-mystery-Today-is-a-gift-That’s-why-it-is-called-the-present"><a href="#A-Yesterday-is-history-Tomorrow-is-a-mystery-Today-is-a-gift-That’s-why-it-is-called-the-present" class="headerlink" title="A.Yesterday is history. Tomorrow is a mystery. Today is a gift. That’s why it is called the present."></a>A.Yesterday is history. Tomorrow is a mystery. Today is a gift. That’s why it is called the present.</h3><a id="more"></a>
 <p>今天周日，一位本科的室友过来了。走在校园里，跟TMD做梦一样。</p>
 <p>不仅仅他，我自己也是。似乎很久很久没有在白天的学校里了。。。吃完饭出来的时候在想两年之前我们一群人也是这么回学校，那个时候好轻松啊，什么事情都没有，每天打打游戏嘻嘻哈哈一天一天就这么过去了。现在慨叹每天忙得要死，一起吃个饭电话都要不停地摁下去。</p>
@@ -1251,7 +1289,7 @@
     
     <entry>
       <title><![CDATA[CS academy Round 40]]></title>
-      <url>http://2997ms.github.io/2017/08/05/CS-academy/CS-academy-Round-40/</url>
+      <url>http://2997ms.github.io/2017/08/05/CP/CS-academy/CS-academy-Round-40/</url>
       <content type="html"><![CDATA[<p>似乎。。。要锻炼一下了啊。。。</p>
 <a id="more"></a>
 <p><a href="https://csacademy.com/contest/round-40/summary/" target="_blank" rel="noopener">题目链接</a></p>
@@ -1279,7 +1317,7 @@
     
     <entry>
       <title><![CDATA[2017_7月_请回答七月]]></title>
-      <url>http://2997ms.github.io/2017/07/31/2017/2017-7%E6%9C%88-%E8%AF%B7%E5%9B%9E%E7%AD%947%E6%9C%88/</url>
+      <url>http://2997ms.github.io/2017/07/31/BB/2017/2017-7%E6%9C%88-%E8%AF%B7%E5%9B%9E%E7%AD%947%E6%9C%88/</url>
       <content type="html"><![CDATA[<p>之前本来打算每个月写一个月度总结，后来想想可能太矫情了，就没继续下去。巧合的是15年和16年都在7月有总结。16年那个如此简陋，15年那个如此坦诚。。。</p>
 <a id="more"></a>
 <p><a href="http://blog.csdn.net/u010885899/article/details/46765879" target="_blank" rel="noopener">装订空白</a></p>
@@ -1291,7 +1329,7 @@
     
     <entry>
       <title><![CDATA[AtCoder Regular Contest 077]]></title>
-      <url>http://2997ms.github.io/2017/07/30/AtCoder/AtCoder-Regular-Contest-077/</url>
+      <url>http://2997ms.github.io/2017/07/30/CP/AtCoder/AtCoder-Regular-Contest-077/</url>
       <content type="html"><![CDATA[<p>也许是因为最近在实习的缘故，也许不是(那你说它干嘛)…….可能就是因为懒……最近做题特别少，但是感觉…….好像又到了一些关键时期(…….)，所以还是需要做一做的，然后发现本就没有多少的IQ似乎最近清零了一样…….</p>
 <p>这次的E题和F题都想了好久好久好久，AtCoder这种乱搞题我特别喜欢，因为…….常常做不出来…..(摊手苦笑)</p>
 <a id="more"></a>
@@ -1395,7 +1433,7 @@
     
     <entry>
       <title><![CDATA[Codeforces 418 Div2]]></title>
-      <url>http://2997ms.github.io/2017/06/16/Codeforces/Codeforces-418-Div2/</url>
+      <url>http://2997ms.github.io/2017/06/16/CP/Codeforces/Codeforces-418-Div2/</url>
       <content type="html"><![CDATA[<p><a href="http://codeforces.com/contest/814" target="_blank" rel="noopener">题目链接</a></p>
 <a id="more"></a>
 <h3 id="A-An-abandoned-sentiment-from-past"><a href="#A-An-abandoned-sentiment-from-past" class="headerlink" title="A An abandoned sentiment from past"></a>A An abandoned sentiment from past</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n,k;</span><br><span class="line"><span class="keyword">int</span> val[maxn],b[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	sa(n),sa(k);</span><br><span class="line">	<span class="keyword">if</span>(k&gt;<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">puts</span>(<span class="string">"Yes"</span>);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	repp(i,<span class="number">1</span>,n)</span><br><span class="line">	&#123;</span><br><span class="line">		sa(val[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	repp(i,<span class="number">1</span>,k)</span><br><span class="line">	&#123;</span><br><span class="line">		sa(b[i]);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> left=<span class="number">-1</span>,right=<span class="number">205</span>;</span><br><span class="line">	val[<span class="number">0</span>]=<span class="number">-1</span>;</span><br><span class="line">	val[n+<span class="number">1</span>]=<span class="number">205</span>;</span><br><span class="line">	<span class="keyword">int</span> pre=<span class="number">-1</span>;</span><br><span class="line">	repp(i,<span class="number">1</span>,n)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(val[i]==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			left=val[i<span class="number">-1</span>];</span><br><span class="line">			right=val[i+<span class="number">1</span>];</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(val[i]&lt;=pre)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">puts</span>(<span class="string">"Yes"</span>);</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		pre=val[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(left&lt;b[<span class="number">1</span>]&amp;&amp;b[<span class="number">1</span>]&lt;right)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">puts</span>(<span class="string">"No"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">puts</span>(<span class="string">"Yes"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -1428,7 +1466,7 @@
     
     <entry>
       <title><![CDATA[Codeforces 417 Div2]]></title>
-      <url>http://2997ms.github.io/2017/06/16/Codeforces/Codeforces-417-Div2/</url>
+      <url>http://2997ms.github.io/2017/06/16/CP/Codeforces/Codeforces-417-Div2/</url>
       <content type="html"><![CDATA[<p><a href="http://codeforces.com/contest/812" target="_blank" rel="noopener">题目链接</a></p>
 <a id="more"></a>
 <h3 id="A-Sagheer-and-Crossroads"><a href="#A-Sagheer-and-Crossroads" class="headerlink" title="A Sagheer and Crossroads"></a>A Sagheer and Crossroads</h3><blockquote>
@@ -1463,7 +1501,7 @@
     
     <entry>
       <title><![CDATA[CS academy Round 33]]></title>
-      <url>http://2997ms.github.io/2017/06/15/CS-academy/CS-academy-Round-33/</url>
+      <url>http://2997ms.github.io/2017/06/15/CP/CS-academy/CS-academy-Round-33/</url>
       <content type="html"><![CDATA[<p><a href="https://csacademy.com/contest/round-33/tasks/" target="_blank" rel="noopener">题目链接</a></p>
 <p>还是需要沉浸下去，C、D、E都不错的题目，E题DP应该是要想出来的啊，怎么回事啊。</p>
 <a id="more"></a>
@@ -1500,7 +1538,7 @@
     
     <entry>
       <title><![CDATA[AtCoder Regular Contest 075]]></title>
-      <url>http://2997ms.github.io/2017/06/09/AtCoder/AtCoder-Regular-Contest-075/</url>
+      <url>http://2997ms.github.io/2017/06/09/CP/AtCoder/AtCoder-Regular-Contest-075/</url>
       <content type="html"><![CDATA[<p>这套题目整体来说算是比较简单的，前三个题目300、400、600分。主要是想记录一下D题。</p>
 <p><a href="http://arc075.contest.atcoder.jp/assignments" target="_blank" rel="noopener">题目链接</a></p>
 <a id="more"></a>
@@ -1528,7 +1566,7 @@
     
     <entry>
       <title><![CDATA[CS academy Round 29]]></title>
-      <url>http://2997ms.github.io/2017/05/30/CS-academy/CS-academy-Round-29/</url>
+      <url>http://2997ms.github.io/2017/05/30/CP/CS-academy/CS-academy-Round-29/</url>
       <content type="html"><![CDATA[<p>终于把E的树形DP搞明白了.</p>
 <p><a href="https://csacademy.com/contest/round-29/tasks/" target="_blank" rel="noopener">题目链接</a></p>
 <a id="more"></a>
@@ -1562,7 +1600,7 @@
     
     <entry>
       <title><![CDATA[Codeforces 416 Div2]]></title>
-      <url>http://2997ms.github.io/2017/05/30/Codeforces/Codeforces-416-Div2/</url>
+      <url>http://2997ms.github.io/2017/05/30/CP/Codeforces/Codeforces-416-Div2/</url>
       <content type="html"><![CDATA[<p>Codeforces怎么就都到416了啊，好快。</p>
 <p>简单记录一下这次Div2。</p>
 <p><a href="http://codeforces.com/contest/811" target="_blank" rel="noopener">题目链接</a></p>
@@ -1599,7 +1637,7 @@
     
     <entry>
       <title><![CDATA[2017_5月_很多很多]]></title>
-      <url>http://2997ms.github.io/2017/05/21/2017/2017_5%E6%9C%88_%E5%A6%82%E6%AD%A4%E6%BC%AB%E9%95%BF/</url>
+      <url>http://2997ms.github.io/2017/05/21/BB/2017/2017_5%E6%9C%88_%E5%A6%82%E6%AD%A4%E6%BC%AB%E9%95%BF/</url>
       <content type="html"><![CDATA[<blockquote>
 <p>你的一生如此漫长</p>
 </blockquote>
@@ -1658,7 +1696,7 @@
     
     <entry>
       <title><![CDATA[AtCoder Regular Contest 073]]></title>
-      <url>http://2997ms.github.io/2017/05/06/AtCoder/AtCoder-Regular-Contest-073/</url>
+      <url>http://2997ms.github.io/2017/05/06/CP/AtCoder/AtCoder-Regular-Contest-073/</url>
       <content type="html"><![CDATA[<p>做了一下ARC073，又是好久没做题了。。。AtCoder的题怎么总是感觉不可做啊，每次解法都好神啊。。。</p>
 <a id="more"></a>
 <h3 id="C-Sentou"><a href="#C-Sentou" class="headerlink" title="C - Sentou"></a>C - Sentou</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n,t;</span><br><span class="line"><span class="keyword">int</span> val[maxn];</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ll res = <span class="number">0</span>;</span><br><span class="line">	sa(n),sa(t);</span><br><span class="line">	sa(val[<span class="number">1</span>]);</span><br><span class="line"> </span><br><span class="line">	repp(i,<span class="number">2</span>,n)</span><br><span class="line">	&#123;</span><br><span class="line">		sa(val[i]);</span><br><span class="line">		<span class="keyword">if</span>(val[i]&gt;=val[i<span class="number">-1</span>]+t)res+=t;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			res+=val[i]-val[i<span class="number">-1</span>];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	res+=t;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, res);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -1691,7 +1729,7 @@
     
     <entry>
       <title><![CDATA[2017_4月_中年危机]]></title>
-      <url>http://2997ms.github.io/2017/05/03/2017/2017_4%E6%9C%88_%E4%B8%AD%E5%B9%B4%E5%8D%B1%E6%9C%BA/</url>
+      <url>http://2997ms.github.io/2017/05/03/BB/2017/2017_4%E6%9C%88_%E4%B8%AD%E5%B9%B4%E5%8D%B1%E6%9C%BA/</url>
       <content type="html"><![CDATA[<p>刚刚在头条离职了，办理离职的流程也不过二十分钟，工牌就这么没有了。回学校的时候刷卡，发现我们都是以不同的身份穿行在城市的角落。</p>
 <a id="more"></a>
 <p>最近在论坛上看得一句话，很有感触：</p>
@@ -1705,7 +1743,7 @@
     
     <entry>
       <title><![CDATA[2017 ACM Arabella Collegiate Programming Contest]]></title>
-      <url>http://2997ms.github.io/2017/05/01/Codeforces/2017-ACM-Arabella-Collegiate-Programming-Contest/</url>
+      <url>http://2997ms.github.io/2017/05/01/CP/Codeforces/2017-ACM-Arabella-Collegiate-Programming-Contest/</url>
       <content type="html"><![CDATA[<p>挂在CF GYM的一套题，据说只有DIV2的难度，就做了一下，前面还好，后面做了好久，才清理干净。</p>
 <p>暑期去实习，还有两个月，这两个月要做的事情有很多很多，多多看书，多多运动。</p>
 <a id="more"></a>
@@ -1879,7 +1917,7 @@
     
     <entry>
       <title><![CDATA[Kickstart A Round 2017]]></title>
-      <url>http://2997ms.github.io/2017/03/11/Google/Kickstart-A-Round-2017/</url>
+      <url>http://2997ms.github.io/2017/03/11/CP/Google/Kickstart-A-Round-2017/</url>
       <content type="html"><![CDATA[<p>这一轮的kickstart，第一题推了好久，才把large搞出来啊，后来才知道知乎上有讨论的了。。。这样下去要跪啊。。。</p>
 <a id="more"></a>
 <h3 id="A-Square-Counting"><a href="#A-Square-Counting" class="headerlink" title="A.Square Counting"></a>A.Square Counting</h3><p>Problem</p>
@@ -1956,7 +1994,7 @@
     
     <entry>
       <title><![CDATA[Kickstart Practice Round 2017]]></title>
-      <url>http://2997ms.github.io/2017/03/03/Google/Kickstart-Practice-Round-2017/</url>
+      <url>http://2997ms.github.io/2017/03/03/CP/Google/Kickstart-Practice-Round-2017/</url>
       <content type="html"><![CDATA[<p>又是好久没写blog了。。。这周末要做kickstart，拿一个practice round练一练，发现这三道题还是挺简单的，主要很想记录一下B题Vote的，这个题和spoj上的<a href="http://www.spoj.com/problems/INS14G/" target="_blank" rel="noopener">INS14G - Kill them All</a>是一样的思路，当初好不容易想明白，结果自己做的时候又有些忘记了。。。</p>
 <blockquote>
 <p>好累啊，一年又一年，没有活成我想要的样子，没有去我想去的地方。</p>
@@ -2033,7 +2071,7 @@
     
     <entry>
       <title><![CDATA[Hackerrank HourRank 17]]></title>
-      <url>http://2997ms.github.io/2017/02/07/Hackerrank/Hackerrank-HourRank-17/</url>
+      <url>http://2997ms.github.io/2017/02/07/CP/Hackerrank/Hackerrank-HourRank-17/</url>
       <content type="html"><![CDATA[<p>好久好久没有做题了。。。去年定的目标，自己不算不努力，但还是没能完成。。。今年继续加油吧。。。</p>
 <p>过去三个月总把LeetCode刷通了一遍，收获很大。但感觉一遍来说还不是很熟练，时间好紧啊。。。</p>
 <p><a href="https://www.hackerrank.com/contests/hourrank-17/challenges" target="_blank" rel="noopener">题目链接</a>与<a href="https://github.com/2997ms/My_Algorithm/tree/master/Hackerrank/HourRank_17" target="_blank" rel="noopener">代码链接</a></p>
@@ -2059,7 +2097,7 @@
     
     <entry>
       <title><![CDATA[LeetCode 41-50]]></title>
-      <url>http://2997ms.github.io/2016/12/12/Leetcode/LeetCode-41-50/</url>
+      <url>http://2997ms.github.io/2016/12/12/CP/Leetcode/LeetCode-41-50/</url>
       <content type="html"><![CDATA[<p>再不写blog估计这里就要长草了。。。最近自己在弄程序静态分析这块，提取相关的特征，IDA python 提取程序的操作码以及立即数。最近有面试通知，想了想还是要做LeetCode，于是在赶LeetCode的进度。。。LeetCode现在做到了200+左右，后面会陆续写LeetCode的总结。51nod四级题还差十几个，做完然后好好理一理思路。(都快忘了怎么写blog了。。。)</p>
 <a id="more"></a>
 <h3 id="41-First-Missing-Positive"><a href="#41-First-Missing-Positive" class="headerlink" title="41 First Missing Positive"></a>41 First Missing Positive</h3><blockquote>
@@ -2109,7 +2147,7 @@
     
     <entry>
       <title><![CDATA[CodeChef October Lunchtime 2016]]></title>
-      <url>http://2997ms.github.io/2016/11/05/CodeChef/CodeChef-October-Lunchtime-2016/</url>
+      <url>http://2997ms.github.io/2016/11/05/CP/CodeChef/CodeChef-October-Lunchtime-2016/</url>
       <content type="html"><![CDATA[<p><a href="https://www.codechef.com/LTIME41" target="_blank" rel="noopener">题目链接</a>与<a href="https://github.com/2997ms/My_Algorithm/tree/master/CodeChef/CodeChef-October-Lunchtime-2016" target="_blank" rel="noopener">代码链接</a></p>
 <p>访问CodeChef好慢啊。。。</p>
 <h3 id="A-The-Largest-Bouquet"><a href="#A-The-Largest-Bouquet" class="headerlink" title="A The Largest Bouquet"></a>A The Largest Bouquet</h3><blockquote>
@@ -2143,7 +2181,7 @@
     
     <entry>
       <title><![CDATA[LeetCode 31-40]]></title>
-      <url>http://2997ms.github.io/2016/10/24/Leetcode/LeetCode-31-40/</url>
+      <url>http://2997ms.github.io/2016/10/24/CP/Leetcode/LeetCode-31-40/</url>
       <content type="html"><![CDATA[<p>…<a id="more"></a></p>
 <h3 id="31-Next-Permutation"><a href="#31-Next-Permutation" class="headerlink" title="31 Next Permutation"></a>31 Next Permutation</h3><blockquote>
 <p>求一个序列的下一个字典序。</p>
@@ -2180,7 +2218,7 @@
     
     <entry>
       <title><![CDATA[Codeforces 376 Div2]]></title>
-      <url>http://2997ms.github.io/2016/10/24/Codeforces/Codeforces-376-Div2/</url>
+      <url>http://2997ms.github.io/2016/10/24/CP/Codeforces/Codeforces-376-Div2/</url>
       <content type="html"><![CDATA[<p><a href="http://codeforces.com/contest/731" target="_blank" rel="noopener">题目链接</a>与<a href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/376_Div2" target="_blank" rel="noopener">代码链接</a></p>
 <p>晚上VP了这一场，并查集写脑残了，TLE47。F题关于数据应该注意数据范围，然后根据每一个数字来进行枚举。</p>
 <h3 id="A-Night-at-the-Museum"><a href="#A-Night-at-the-Museum" class="headerlink" title="A Night at the Museum"></a>A Night at the Museum</h3><blockquote>
@@ -2216,7 +2254,7 @@
     
     <entry>
       <title><![CDATA[Technocup 2017 - Elimination Round 1]]></title>
-      <url>http://2997ms.github.io/2016/10/19/Codeforces/Technocup-2017-Elimination-Round-1/</url>
+      <url>http://2997ms.github.io/2016/10/19/CP/Codeforces/Technocup-2017-Elimination-Round-1/</url>
       <content type="html"><![CDATA[<p>最近去参加了复旦大学举办的Hackx_FDU，收获满满~ 看到了很多大神，然后也赞叹于一群人在短时间内可以写出如此美妙的代码。</p>
 <p>这个Technocup是我Hackx比赛的时候没有吃晚饭，偷着两个小时打的。。。然而效果非常不好。。。自己脑袋犯困，另外也挺着急的。。。B题挂在精度上了。。。C题也脑残了好久啊。。。才出掉。。。</p>
 <p><a href="http://codeforces.com/contest/727" target="_blank" rel="noopener">题目链接</a>与<a href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/Technocup%202017%20%E2%80%94%20Elimination%20Round%201" target="_blank" rel="noopener">代码链接</a></p>
@@ -2250,7 +2288,7 @@
     
     <entry>
       <title><![CDATA[CODE FESTIVAL 2016 Qualification Round B]]></title>
-      <url>http://2997ms.github.io/2016/10/13/AtCoder/CODE-FESTIVAL-2016-Qualification-Round-B/</url>
+      <url>http://2997ms.github.io/2016/10/13/CP/AtCoder/CODE-FESTIVAL-2016-Qualification-Round-B/</url>
       <content type="html"><![CDATA[<p><a href="http://code-festival-2016-qualb.contest.atcoder.jp/assignments" target="_blank" rel="noopener">题目链接</a>与<a href="https://github.com/2997ms/My_Algorithm/tree/master/AtCoder/CODE%20FESTIVAL%202016%20Qualification%20Round%20B" target="_blank" rel="noopener">代码链接</a></p>
 <p>非常难得这次做出四道题(A和B已经无法更水了)。大中午的特别困，中间睡了一个小时，之后把C和D搞出来了。E题的这个Trie很赞。。。</p>
 <h3 id="C-Gr-idian-MST"><a href="#C-Gr-idian-MST" class="headerlink" title="C - Gr-idian MST"></a>C - Gr-idian MST</h3><blockquote>
@@ -2272,7 +2310,7 @@
     
     <entry>
       <title><![CDATA[Google Code Jam Round 1A 2008]]></title>
-      <url>http://2997ms.github.io/2016/10/12/Google/Google-Code-Jam-Round-1A-2008/</url>
+      <url>http://2997ms.github.io/2016/10/12/CP/Google/Google-Code-Jam-Round-1A-2008/</url>
       <content type="html"><![CDATA[<p><a href="https://code.google.com/codejam/contest/32016/dashboard" target="_blank" rel="noopener">题目链接</a>与<a href="https://github.com/2997ms/My_Algorithm/tree/master/Google/GCJ%20Round%201A%202008" target="_blank" rel="noopener">代码链接</a></p>
 <p>一开始只是特别想记一下C题，后来发现B题也不错。。。</p>
 <h3 id="A-Minimum-Scalar-Product"><a href="#A-Minimum-Scalar-Product" class="headerlink" title="A Minimum Scalar Product"></a>A Minimum Scalar Product</h3><blockquote>
@@ -2299,7 +2337,7 @@
     
     <entry>
       <title><![CDATA[2016_9月_吭哧咔哧]]></title>
-      <url>http://2997ms.github.io/2016/10/09/2016/2016-9%E6%9C%88-%E5%90%AD%E5%93%A7%E5%92%94%E5%93%A7/</url>
+      <url>http://2997ms.github.io/2016/10/09/BB/2016/2016-9%E6%9C%88-%E5%90%AD%E5%93%A7%E5%92%94%E5%93%A7/</url>
       <content type="html"><![CDATA[<blockquote>
 <p>九月份开学，到现在为止一个月，总结一下最近这一个月都做了一些什么。话说，在10月都过了三分之一的时候写这个是有一些尴尬。。。</p>
 </blockquote>
@@ -2337,7 +2375,7 @@
     
     <entry>
       <title><![CDATA[LeetCode 21-30]]></title>
-      <url>http://2997ms.github.io/2016/10/07/Leetcode/LeetCode-21-30/</url>
+      <url>http://2997ms.github.io/2016/10/07/CP/Leetcode/LeetCode-21-30/</url>
       <content type="html"><![CDATA[<p>这一期10道题好难啊。。。好多要记的。</p>
 <a id="more"></a>
 <h3 id="21-Merge-Two-Sorted-Lists"><a href="#21-Merge-Two-Sorted-Lists" class="headerlink" title="21 Merge Two Sorted Lists"></a>21 Merge Two Sorted Lists</h3><blockquote>
@@ -2388,7 +2426,7 @@
     
     <entry>
       <title><![CDATA[Intel Code Chanllenge Elimination Round]]></title>
-      <url>http://2997ms.github.io/2016/10/06/Codeforces/Intel-Code-Chanllenge-Elimination-Round/</url>
+      <url>http://2997ms.github.io/2016/10/06/CP/Codeforces/Intel-Code-Chanllenge-Elimination-Round/</url>
       <content type="html"><![CDATA[<p><a href="http://codeforces.com/contest/722" target="_blank" rel="noopener">题目链接</a>与<a href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/Intel%20Code%20Challenge%20Elimination%20Round" target="_blank" rel="noopener">代码链接</a></p>
 <p>A题在自己知道坑的情况下还是挂了，D题在最后五分钟想出思路，又一次懵逼，没有时间敲完。。。</p>
 <h3 id="A-Broken-Clock"><a href="#A-Broken-Clock" class="headerlink" title="*A Broken Clock"></a>*A Broken Clock</h3><blockquote>
@@ -2429,7 +2467,7 @@
     
     <entry>
       <title><![CDATA[Codeforces 375 Div2]]></title>
-      <url>http://2997ms.github.io/2016/10/06/Codeforces/Codeforces-375-Div2/</url>
+      <url>http://2997ms.github.io/2016/10/06/CP/Codeforces/Codeforces-375-Div2/</url>
       <content type="html"><![CDATA[<p><a href="http://codeforces.com/contest/723" target="_blank" rel="noopener">题目链接</a>与<a href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/375_Div2" target="_blank" rel="noopener">代码链接</a></p>
 <p>A,B,D都很简单很简单了，这场C题题意读偏了一些+没有判断数组的范围，GG。E和F两个构造，都没敢想。。。。E题一直在考虑网络流解，但是想不到怎么建图。</p>
 <h3 id="A-The-New-Year-Meeting-Friends"><a href="#A-The-New-Year-Meeting-Friends" class="headerlink" title="A The New Year: Meeting Friends"></a>A The New Year: Meeting Friends</h3><blockquote>
@@ -2467,7 +2505,7 @@
     
     <entry>
       <title><![CDATA[Codeforces 374 Div2]]></title>
-      <url>http://2997ms.github.io/2016/10/06/Codeforces/Codeforces-374-Div2/</url>
+      <url>http://2997ms.github.io/2016/10/06/CP/Codeforces/Codeforces-374-Div2/</url>
       <content type="html"><![CDATA[<p>这一轮就过了A和B，C题看见直接懵了，不会做。xjb写了一个宽搜，然后又被叉掉了。D题有思路又没有写完。</p>
 <p><a href="http://codeforces.com/contest/721" target="_blank" rel="noopener">题目链接</a>与<a href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/374_Div2" target="_blank" rel="noopener">代码链接</a></p>
 <h3 id="A-One-dimensional-Japanese-Crossword"><a href="#A-One-dimensional-Japanese-Crossword" class="headerlink" title="A One-dimensional Japanese Crossword"></a>A One-dimensional Japanese Crossword</h3><blockquote>
@@ -2506,7 +2544,7 @@
     
     <entry>
       <title><![CDATA[Hackerrank HourRank 13]]></title>
-      <url>http://2997ms.github.io/2016/10/06/Hackerrank/Hackerrank-HourRank-13/</url>
+      <url>http://2997ms.github.io/2016/10/06/CP/Hackerrank/Hackerrank-HourRank-13/</url>
       <content type="html"><![CDATA[<p><a href="https://www.hackerrank.com/contests/hourrank-13/challenges" target="_blank" rel="noopener">题目链接</a>与<a href="https://github.com/2997ms/My_Algorithm/tree/master/Hackerrank/HourRank_13" target="_blank" rel="noopener">代码链接</a></p>
 <p>十一之前，Codeforces上面自己的rating是1876，一看十一期间有四场比赛，想着怎么也可以上1900了吧，结果呵呵呵了，暴爽的十一三连跪(剩下一个8号的感觉还是跪)，直接掉到了1800，又一次感觉自己真是大菜鸡啊。</p>
 <p>下午的时候有很多想在blog里夹带私货总结的，但刚刚写了两个小时的日记。。。忽然发现把什么话都说完了。</p>
@@ -2538,7 +2576,7 @@
     
     <entry>
       <title><![CDATA[Codeforces 372 Div2]]></title>
-      <url>http://2997ms.github.io/2016/09/28/Codeforces/Codeforces-372-Div2/</url>
+      <url>http://2997ms.github.io/2016/09/28/CP/Codeforces/Codeforces-372-Div2/</url>
       <content type="html"><![CDATA[<p><a href="http://codeforces.com/contest/716" target="_blank" rel="noopener">题目链接</a>与<a href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/372_Div2" target="_blank" rel="noopener">代码链接</a></p>
 <p>这一次的D题二分收获很大，E题的树分治第一次做。</p>
 <h3 id="A-Crazy-Computer"><a href="#A-Crazy-Computer" class="headerlink" title="A. Crazy Computer"></a>A. Crazy Computer</h3><blockquote>
@@ -2566,7 +2604,7 @@
     
     <entry>
       <title><![CDATA[Codeforces 373 Div2]]></title>
-      <url>http://2997ms.github.io/2016/09/27/Codeforces/Codeforces-373-Div2/</url>
+      <url>http://2997ms.github.io/2016/09/27/CP/Codeforces/Codeforces-373-Div2/</url>
       <content type="html"><![CDATA[<p>还没有补373Div1的题。。。感觉好难。。。当睡前读物吧。。。</p>
 <p>这次Div2的D题出了问题，只有四道了。比的时候出了三道，所以想记的也就那么一道题。。。</p>
 <p><a href="http://codeforces.com/contest/719" target="_blank" rel="noopener">题目链接</a>与<a href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/373_Div2" target="_blank" rel="noopener">代码链接</a></p>
@@ -2594,7 +2632,7 @@
     
     <entry>
       <title><![CDATA[CODE FESTIVAL 2016 Qualification Round A]]></title>
-      <url>http://2997ms.github.io/2016/09/27/AtCoder/CODE-FESTIVAL-2016-Qualification-Round-A/</url>
+      <url>http://2997ms.github.io/2016/09/27/CP/AtCoder/CODE-FESTIVAL-2016-Qualification-Round-A/</url>
       <content type="html"><![CDATA[<p><a href="http://code-festival-2016-quala.contest.atcoder.jp/assignments" target="_blank" rel="noopener">题目链接</a>与<a href="https://github.com/2997ms/My_Algorithm/tree/master/AtCoder/CODE%20FESTIVAL%202016%20Qualification%20Round%20A" target="_blank" rel="noopener">代码链接</a></p>
 <p>还是那句话吧，好好思考，并且希望自己能坚持下去。</p>
 <h3 id="A-CODEFESTIVAL-2016"><a href="#A-CODEFESTIVAL-2016" class="headerlink" title="A - CODEFESTIVAL 2016"></a>A - CODEFESTIVAL 2016</h3><blockquote>
@@ -2628,7 +2666,7 @@
     
     <entry>
       <title><![CDATA[LeetCode 11-20]]></title>
-      <url>http://2997ms.github.io/2016/09/23/Leetcode/LeetCode-11-20/</url>
+      <url>http://2997ms.github.io/2016/09/23/CP/Leetcode/LeetCode-11-20/</url>
       <content type="html"><![CDATA[<h3 id="LeetCode11-Container-With-Most-Water"><a href="#LeetCode11-Container-With-Most-Water" class="headerlink" title="LeetCode11 Container With Most Water"></a>LeetCode11 Container With Most Water</h3><blockquote>
 <p>题意是给出$N$个整数$a_1,a_2…a_n$，代表在对应位置有一条$(i,0)$到$(i,a_i)$的边。问这里面两条边加x轴所围成的面积最大值。</p>
 </blockquote>
@@ -2648,7 +2686,7 @@
     
     <entry>
       <title><![CDATA[LeetCode 1-10]]></title>
-      <url>http://2997ms.github.io/2016/09/21/Leetcode/LeetCode-1-10/</url>
+      <url>http://2997ms.github.io/2016/09/21/CP/Leetcode/LeetCode-1-10/</url>
       <content type="html"><![CDATA[<p>时维九月，序属三秋。然而，美好的九月都要过完啦。。。要做一做LeetCode上面的题啦，一直说要把这个做完，一直没有恒心做下去，马上十月了，一天三道，希望年底能把这些K完。昨天写日记的时候，又有一个日记本要写完了，然后就想起在家里的从七岁开始写下的十几个本子(好像到二十了？也不太清楚了)，突然莫名地觉得下一个本子是我人生的第二部了，希望下一部能够精彩吧。之前接触过一些acmer，其中好些人对LeetCode的态度是很鄙视的，觉得太简单。我对这些表示鄙视的人表示反鄙视，这里面的有些题过掉可能不难，但是在面试中，时常要求的是最低时间复杂度、空间复杂度，这样其实有些题(链表啊，各种STL的设计啊)很变态的，写的时候参考了很多discuss，还有csdn博客上面的内容。</p>
 <a id="more"></a>
 <blockquote>
@@ -2705,7 +2743,7 @@
     
     <entry>
       <title><![CDATA[Google APAC Test 2017 Round C]]></title>
-      <url>http://2997ms.github.io/2016/09/19/Google/Google-APAC-Test-2017-Round-C/</url>
+      <url>http://2997ms.github.io/2016/09/19/CP/Google/Google-APAC-Test-2017-Round-C/</url>
       <content type="html"><![CDATA[<p><a href="https://code.google.com/codejam/contest/6274486/dashboard#s=p0" target="_blank" rel="noopener">题目链接</a>(需要翻墙)与<a href="https://github.com/2997ms/My_Algorithm/tree/master/Google/APAC%20Test%202017%20Round%20C" target="_blank" rel="noopener">代码链接</a></p>
 <p>早就应该做一下笔试的原题了，也好体会一下题目的难度与区分度，结果一直拖延。。。</p>
 <p>前两场也都做了，成绩和这场一样不理想，做出三道，第四道的时候时间还剩一个多小时，正常来讲是应该要想出来的，但是当时特别特别困，还饿，加上本人智商有限，还剩半个小时的时候上床睡觉去了。。。</p>
@@ -2730,7 +2768,7 @@
     
     <entry>
       <title><![CDATA[Codeforces 371]]></title>
-      <url>http://2997ms.github.io/2016/09/19/Codeforces/Codeforces-371/</url>
+      <url>http://2997ms.github.io/2016/09/19/CP/Codeforces/Codeforces-371/</url>
       <content type="html"><![CDATA[<p><a href="http://codeforces.com/contest/713" target="_blank" rel="noopener">题目链接</a>与<a href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/371" target="_blank" rel="noopener">代码链接</a></p>
 <p>看到这次Div1是三个2000的(而不是2500)，另外看到叉姐在论坛上放出<a href="https://async.icpc-camp.org/d/555-codeforces-round-371" target="_blank" rel="noopener">题解</a>，莫名其妙自己也想做一做。。。</p>
 <h3 id="Div2A-Meeting-of-Old-Friends"><a href="#Div2A-Meeting-of-Old-Friends" class="headerlink" title="Div2A Meeting of Old Friends"></a>Div2A Meeting of Old Friends</h3><hr>
@@ -2774,7 +2812,7 @@
     
     <entry>
       <title><![CDATA[AtCoder Regular Contest 061]]></title>
-      <url>http://2997ms.github.io/2016/09/15/AtCoder/AtCoder-Regular-Contest-061/</url>
+      <url>http://2997ms.github.io/2016/09/15/CP/AtCoder/AtCoder-Regular-Contest-061/</url>
       <content type="html"><![CDATA[<p><a href="http://arc061.contest.atcoder.jp/assignments" target="_blank" rel="noopener">题目链接</a>与<a href="https://github.com/2997ms/My_Algorithm/tree/master/AtCoder/Regular_Contest_061" target="_blank" rel="noopener">代码链接</a></p>
 <h3 id="C-Many-Formulas"><a href="#C-Many-Formulas" class="headerlink" title="C Many Formulas"></a>C Many Formulas</h3><hr>
 <p>题意是给出了由1到9组成的一个字符串，字符串长度最多是10，你可以在字符串中间添加+号，算所有方案得到的数的总和。</p>
@@ -2800,7 +2838,7 @@
     
     <entry>
       <title><![CDATA[AtCoder Grand Contest 004]]></title>
-      <url>http://2997ms.github.io/2016/09/14/AtCoder/AtCoder-Grand-Contest-004/</url>
+      <url>http://2997ms.github.io/2016/09/14/CP/AtCoder/AtCoder-Grand-Contest-004/</url>
       <content type="html"><![CDATA[<p><a href="http://agc004.contest.atcoder.jp/assignments" target="_blank" rel="noopener">题目链接</a>与<a href="https://github.com/2997ms/My_Algorithm/tree/master/AtCoder/Grand_Contest_004" target="_blank" rel="noopener">代码链接</a></p>
 <h3 id="A-Divide-a-Cuboid"><a href="#A-Divide-a-Cuboid" class="headerlink" title="A Divide a Cuboid"></a>A Divide a Cuboid</h3><hr>
 <p>题意是给出一个A*B*C的立方体，以一个面来切分成两部分，要求这两部分体积之差最小。</p>
@@ -2845,7 +2883,7 @@
     
     <entry>
       <title><![CDATA[AtCoder Grand Contest 003]]></title>
-      <url>http://2997ms.github.io/2016/09/13/AtCoder/AtCoder-Grand-Contest-003/</url>
+      <url>http://2997ms.github.io/2016/09/13/CP/AtCoder/AtCoder-Grand-Contest-003/</url>
       <content type="html"><![CDATA[<p><a href="http://agc003.contest.atcoder.jp/assignments" target="_blank" rel="noopener">题目链接</a>与<a href="https://github.com/2997ms/My_Algorithm/tree/master/AtCoder/Grand_Contest_003" target="_blank" rel="noopener">代码链接</a></p>
 <p>比的时候只做出三道，后来感觉这一期的D题是可以出的，E题的思路还是神，就感觉这种题也不靠什么特定的算法，靠思维把问题转换，跟前面Atcoder的很多题一样，挺看智商的。。。至于F题。。。那个矩阵的构造，从答案推出矩阵的正确性我是搞懂了，但是如何通过一些递推关系搞出矩阵，感觉自己还需要练习吧= =。</p>
 <h3 id="A-Wanna-go-back-home"><a href="#A-Wanna-go-back-home" class="headerlink" title="A Wanna go back home"></a>A Wanna go back home</h3><hr>
@@ -2889,7 +2927,7 @@
     
     <entry>
       <title><![CDATA[AtCoder Grand Contest 002]]></title>
-      <url>http://2997ms.github.io/2016/09/07/AtCoder/AtCoder-Grand-Contest-002/</url>
+      <url>http://2997ms.github.io/2016/09/07/CP/AtCoder/AtCoder-Grand-Contest-002/</url>
       <content type="html"><![CDATA[<p><a href="http://agc002.contest.atcoder.jp/" target="_blank" rel="noopener">题目链接</a>，这场D题没接触过，整体二分，挺典型。E和F做得我好头痛，E题提交了好多次，F题那个DP。。。都很神。</p>
 <p><a href="https://github.com/2997ms/My_Algorithm/tree/master/AtCoder/Grand_Contest_002" target="_blank" rel="noopener">代码链接</a></p>
 <h3 id="A-Range-Product"><a href="#A-Range-Product" class="headerlink" title="A Range Product"></a>A Range Product</h3><hr>
@@ -2933,7 +2971,7 @@
     
     <entry>
       <title><![CDATA[AtCoder Regular Contest 060]]></title>
-      <url>http://2997ms.github.io/2016/09/05/AtCoder/AtCoder-Regular-Contest-060/</url>
+      <url>http://2997ms.github.io/2016/09/05/CP/AtCoder/AtCoder-Regular-Contest-060/</url>
       <content type="html"><![CDATA[<p>这一期的Regular Contest我也是肥肠喜欢啊，题目都很好玩啊，<a href="http://arc060.contest.atcoder.jp/assignments" target="_blank" rel="noopener">题目链接</a>。</p>
 <p><a href="https://github.com/2997ms/My_Algorithm/tree/master/AtCoder/Regular_Contest_060" target="_blank" rel="noopener">代码链接</a></p>
 <h3 id="C-Tak-and-Cards"><a href="#C-Tak-and-Cards" class="headerlink" title="C Tak and Cards"></a>C Tak and Cards</h3><hr>
@@ -2961,7 +2999,7 @@
     
     <entry>
       <title><![CDATA[AtCoder Regular Contest 059]]></title>
-      <url>http://2997ms.github.io/2016/09/03/AtCoder/AtCoder-Regular-Contest-059/</url>
+      <url>http://2997ms.github.io/2016/09/03/CP/AtCoder/AtCoder-Regular-Contest-059/</url>
       <content type="html"><![CDATA[<p>这一期的后两道DP很好玩。</p>
 <p>代码在<a href="https://github.com/2997ms/My_Algorithm/tree/master/AtCoder/Regular_Contest_059" target="_blank" rel="noopener">这里</a>。</p>
 <h3 id="C-Be-Together"><a href="#C-Be-Together" class="headerlink" title="C Be Together"></a>C Be Together</h3><hr>
@@ -2983,7 +3021,7 @@
     
     <entry>
       <title><![CDATA[CodeChef August Lunchtime 2016]]></title>
-      <url>http://2997ms.github.io/2016/09/03/CodeChef/CodeChef-August-Lunchtime-2016/</url>
+      <url>http://2997ms.github.io/2016/09/03/CP/CodeChef/CodeChef-August-Lunchtime-2016/</url>
       <content type="html"><![CDATA[<p>做了Codechef上面的<a href="https://www.codechef.com/LTIME39" target="_blank" rel="noopener">August Lunchtime 2016</a>，上面的题都有中文题面，还有解答，还有代码。觉得这个网站也不错呀。。。</p>
 <p>然后这次做完发现是三道easy，一道medium。一想也没用什么数据结构，好像是差不多哈，但是第四个树上直径这个和51nod上面树上最远点对是一样的想法，做得时候自己感觉还是挺难的。第三题数组开小了，然而一直返回WA，找了很久。第二个有相同的数字也WA了一个晚上。这样想来觉得也不那么简单了。</p>
 <p>代码在<a href="https://github.com/2997ms/My_Algorithm/tree/master/Codechef/August-Lunchtime-2016" target="_blank" rel="noopener">这里</a>。</p>
@@ -3001,7 +3039,7 @@
     
     <entry>
       <title><![CDATA[Codeforces 369 Div2]]></title>
-      <url>http://2997ms.github.io/2016/08/31/Codeforces/Codeforces-369-Div2/</url>
+      <url>http://2997ms.github.io/2016/08/31/CP/Codeforces/Codeforces-369-Div2/</url>
       <content type="html"><![CDATA[<p>刚刚做完51nod上面一道很恶心的<a href="http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1607" target="_blank" rel="noopener">题目</a>，各种情况各种搞，打算早晚要写一下51nod上面的一些题目了。之后把这轮的E题补了，这轮题目很简单，简单到我都做出了四道，并且第四道是在1:59:47完成提交的，可谓惊心动魄。自认为打得不错，很幸运。此役之后，Codeforces的rating变成了1758，涨了77分，还挺开心的。想把它记录下来也是因为好多事情在八月都没做，然而它就这么过去了。</p>
 <p>代码在<a href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/369_Div2" target="_blank" rel="noopener">这里</a>。</p>
 <p>A题不用说，B题直接把数字求出来然后带进去验证四个方向是否满足条件。</p>
@@ -3036,7 +3074,7 @@
     
     <entry>
       <title><![CDATA[Codeforces 362 Div2]]></title>
-      <url>http://2997ms.github.io/2016/08/22/Codeforces/Codeforces-362-Div2/</url>
+      <url>http://2997ms.github.io/2016/08/22/CP/Codeforces/Codeforces-362-Div2/</url>
       <content type="html"><![CDATA[<p>很早的一轮了，一直没写，主要是因为笨，然后还有懒。。。</p>
 <p>仔细想想一个div2的题目，充其量够写的也就3道题，然后自己还一直补不完，我的天。。。</p>
 <p>代码在<a href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/362_Div2" target="_blank" rel="noopener">这里</a></p>
@@ -3078,7 +3116,7 @@
     
     <entry>
       <title><![CDATA[AtCoder Regular Contest 058]]></title>
-      <url>http://2997ms.github.io/2016/07/30/AtCoder/AtCoder-Regular-Contest-058/</url>
+      <url>http://2997ms.github.io/2016/07/30/CP/AtCoder/AtCoder-Regular-Contest-058/</url>
       <content type="html"><![CDATA[<p>C、D、E的代码在<a href="https://github.com/2997ms/My_Algorithm/tree/master/AtCoder/Regular_Contest_058" target="_blank" rel="noopener">这里</a></p>
 <p>这周一直在忙老师要求写的一些东西，终于在周六的时候还是光荣地倒下了，太累了。</p>
 <p>原本是上周的比赛，自己一周的时间还是没有把F过掉，在Codeforces上面问了一些人，算是搞懂了原理，但是对于<a href="http://codeforces.com/profile/yosupo" target="_blank" rel="noopener">yosupo</a>所说的Z-algorithm还是没有学过，这个也加入到了<a href="http://2997ms.github.io/2016/07/30/To-do-list/">To_do_list</a>里面，我一定会回来的。。。</p>
@@ -3106,7 +3144,7 @@
     
     <entry>
       <title><![CDATA[AtCoder Grand Contest 001]]></title>
-      <url>http://2997ms.github.io/2016/07/20/AtCoder/AtCoder-Grand-Contest-001/</url>
+      <url>http://2997ms.github.io/2016/07/20/CP/AtCoder/AtCoder-Grand-Contest-001/</url>
       <content type="html"><![CDATA[<p>上周末做了<a href="http://codeforces.com/profile/rng_58" target="_blank" rel="noopener">rng_58</a>办的<a href="http://agc001.contest.atcoder.jp/" target="_blank" rel="noopener">AtCoder Grand Contest 001</a>，英文题解在<a href="https://agc001.contest.atcoder.jp/data/agc/001/editorial.pdf" target="_blank" rel="noopener">这里</a>。比赛的时候只做出了两道题，第二题还一直wa，导致第三题没时间了，博主比较弱。。。。后来自己慢慢补题，发现D E F都是很神的题。。。在这里记一下总结吧。</p>
 <h2 id="A-BBQ-Easy"><a href="#A-BBQ-Easy" class="headerlink" title="A BBQ Easy"></a>A BBQ Easy</h2><p>题意是给出2*n个长度，每两个在一起，这两个的长度算两个中短的那个，之后算总的最大长度。</p>
 <p>直接排序，把奇数位的加起来就是总的最大长度。</p>
@@ -3147,7 +3185,7 @@
     
     <entry>
       <title><![CDATA[2016_7月_是的是的]]></title>
-      <url>http://2997ms.github.io/2016/07/17/2016/2016-2%E6%9C%88-%E6%98%AF%E7%9A%84%E6%98%AF%E7%9A%84%E7%9A%84%E5%89%AF%E6%9C%AC/</url>
+      <url>http://2997ms.github.io/2016/07/17/BB/2016/2016-2%E6%9C%88-%E6%98%AF%E7%9A%84%E6%98%AF%E7%9A%84%E7%9A%84%E5%89%AF%E6%9C%AC/</url>
       <content type="html"><![CDATA[<blockquote>
 <p>这次我是真的要好好写博客了~没开玩笑啦~</p>
 </blockquote>
@@ -3163,7 +3201,7 @@
     
     <entry>
       <title><![CDATA[2016-6月]]></title>
-      <url>http://2997ms.github.io/2016/06/30/2016/2016-6%E6%9C%88/</url>
+      <url>http://2997ms.github.io/2016/06/30/BB/2016/2016-6%E6%9C%88/</url>
       <content type="html"><![CDATA[<p>这个6月感觉自己过得像坨屎，想干的事一件都没完成。</p>
 <p>2016年过完一半了，7、8月希望能够有所改变。</p>
 ]]></content>
@@ -3171,7 +3209,7 @@
     
     <entry>
       <title><![CDATA[HDU 5668 Circle]]></title>
-      <url>http://2997ms.github.io/2016/05/18/HDU/HDU%205668/</url>
+      <url>http://2997ms.github.io/2016/05/18/CP/HDU/HDU%205668/</url>
       <content type="html"><![CDATA[<p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5668" target="_blank" rel="noopener">题目链接</a></p>
 <a id="more"></a>
 <p><img src="https://raw.githubusercontent.com/2997ms/My_Algorithm/master/source_pic/HDU/5668.png" alt="5668"></p>
@@ -3180,7 +3218,7 @@
     
     <entry>
       <title><![CDATA[2016-3月-壮怀激烈]]></title>
-      <url>http://2997ms.github.io/2016/03/31/2016/2016-3%E6%9C%88-%E5%A3%AE%E6%80%80%E6%BF%80%E7%83%88/</url>
+      <url>http://2997ms.github.io/2016/03/31/BB/2016/2016-3%E6%9C%88-%E5%A3%AE%E6%80%80%E6%BF%80%E7%83%88/</url>
       <content type="html"><![CDATA[<p>多么美好的三月末，结果自己写了一天的XX。无语了。。。</p>
 <p>总结的话就是三月做了一些题，是这几个月做的做多的。但都比较散的题，好多也都没有写总结。</p>
 <p>最近看了一个THU大牛的博客，里面有一篇文章讲自己最近一年都干了些什么，见到了很多人，感慨眼界狭窄，读完之后我反倒是更加颇为感慨，人家要是眼界狭窄的话，自己简直就是没有眼界。从高中到现在一直把目光放到周围人身上，比较也只喜欢比较周围人。“反正我只要比他强应该就好了吧”一直这种心态。后来自己真正接触到了一些牛人，发现当初的那些算什么啊。总在乎别人的眼光算什么啊，人家根本就没在看你好不好，总觉得自己好像怎么怎么样，想想都替自己害臊：好歹也是一个爷们啊。而且，那时的光速小子真是不知道这个世界的广大，好多真正有趣的东西都没有见到，好多风趣的人物也没有接触到，心胸与眼界能够包容得下这些，你也才能真正有所感悟，有所提高。</p>
@@ -3195,7 +3233,7 @@
     
     <entry>
       <title><![CDATA[2016-2月-1900]]></title>
-      <url>http://2997ms.github.io/2016/02/29/2016/2016-7%E6%9C%88-%E6%98%AF%E7%9A%84%E6%98%AF%E7%9A%84/</url>
+      <url>http://2997ms.github.io/2016/02/29/BB/2016/2016-7%E6%9C%88-%E6%98%AF%E7%9A%84%E6%98%AF%E7%9A%84/</url>
       <content type="html"><![CDATA[<p>这次回家之前，自己一直有一个疑问，相较于之前的，打牌、烧烤、各种扯淡聊天，这个寒假能不能有一点不一样？想起大一时候在行李箱里面塞得满满的书，然后就是回家压根忘记自己带书回来的，怎么带回来怎么带回去，这叫一个沉。。。</p>
 <p>这么多年了，野心一直很大，能力一直很小，导致有的时候自己特别郁闷。。。</p>
 <p>但这次，从活表来看这29天吧，金色的还是很多的。也就是说。。。真的不一样了。。。</p>
@@ -3212,7 +3250,7 @@
     
     <entry>
       <title><![CDATA[2016-1月-make each day count]]></title>
-      <url>http://2997ms.github.io/2016/01/31/2016/2016-1%E6%9C%88-make%20each%20day%20count/</url>
+      <url>http://2997ms.github.io/2016/01/31/BB/2016/2016-1%E6%9C%88-make%20each%20day%20count/</url>
       <content type="html"><![CDATA[<p>1月份真的是在忙于各种考试，感觉概率论很大可能跪掉。。。课也没去过，出的题目感觉是在三环，自己的复习方向还在五环溜达呢。</p>
 <p>把后缀数组论文上的题目都搞了一遍，一开始看其算法真是给作者跪了，好厉害啊啊啊。。。后面要好好总结一下这些题目。。。</p>
 <p>然后就是终于回家了。。。每次回家都想象着能在家里做好多事情啊。。。但是每次结果都不太令人满意。。。好多时候书是怎么带回来的，又怎么带回去。以往的寒暑假自己属于各种作，到最后就是什么都没干。不知道这次的寒假能不能有一些不同。毕竟有一些兴趣和记录表的带领，这次应该能不同吧。</p>
@@ -3222,7 +3260,7 @@
     
     <entry>
       <title><![CDATA[2015-11-有生之年]]></title>
-      <url>http://2997ms.github.io/2015/11/30/2015/2015-11-%E6%9C%89%E7%94%9F%E4%B9%8B%E5%B9%B4/</url>
+      <url>http://2997ms.github.io/2015/11/30/BB/2015/2015-11-%E6%9C%89%E7%94%9F%E4%B9%8B%E5%B9%B4/</url>
       <content type="html"><![CDATA[<p>0)决定以后博客上只写我做不出来的，或是一个类型的总结吧，一些水题自己实在不好意思再往上面写了，当然可能这样显得我就更弱了(哇塞，这题你都不会？？？)。。。希望这里是自己的一个学习笔记吧，记录对于不会题的总结吧。所以这个月的博客数量变少了许多~ </p>
 <p> 1)那天我和C君聊天，聊到我俩在大学期间都经常熬夜。都知道熬夜很不好，第二天很没有精神，但还是一如既往地这么干，结果想了想原因，就是怕，怕来不及。急着看完一本小说，看完一部电影，甚至是大半夜在想一道算法题，看C++的某一章节，都会让我有这种感觉，这个世界如此精彩，在我身体没有残破不堪之前，我希望尽可能的去领略它。</p>
 <p>  2)刚刚终于想通了Hackerrank的一道题，现在看来又是很简单的一道题了，不过一个小dp，但是当时的自己就是没能想出来。11月份是我学习算法的第5个月，参加的一些小比赛又是被虐了，不过现在的我心态特别好，说真的，很多结果已经对于我接下来的行动构不成什么影响了。(换句话也可以说是脸皮越来越厚了。。。)</p>
@@ -3238,7 +3276,7 @@
     
     <entry>
       <title><![CDATA[2015-10-叽里咕噜]]></title>
-      <url>http://2997ms.github.io/2015/11/01/2015/2015-10-%E5%8F%BD%E9%87%8C%E5%92%95%E5%99%9C/</url>
+      <url>http://2997ms.github.io/2015/11/01/BB/2015/2015-10-%E5%8F%BD%E9%87%8C%E5%92%95%E5%99%9C/</url>
       <content type="html"><![CDATA[<p>一看是11月1日才写的这个10月总结就知道这两天滚成球了。。。这周末codestorm、51nod算法马拉松、BC、CF、hihocoder，然后还有一个华山杯的CTF(。。。)，其实这些比赛自己比得有些超出自己预期，有的极其烂。像51，之前一直都是爆零大队大队长，这次一下子做出两个80分的题，尤其是选数字那题，自己深搜一直tle，最后搞出来的时候特别兴奋。但做题就常常有这种感觉，过一段时间看这道题，也不难啊，也不过如此啊，至于那么兴奋吗。。。就这种感觉。codestorm 查三角形与扔飞镖的做出来也是这种感觉，想了一个下午把扔飞镖给搞出来了。</p>
 <p>然后是BC，打得这个郁闷，直接rating掉150。。。关键是已经考虑到了1那种情况，那个时候脑袋真是糊涂了，把1也当成出不去的那种情况了，结果自己两个小时一直对着那道题干瞪眼。。。。都枉费我这次的几次hack。。。做出来直接去div1了，唉，还是慢慢努力吧。</p>
 <p>不能一直把时间放到比赛上面，一段时间的比赛有让自己反思并且总结的作用，长时间来看还是要按照自己的计划看书学习做oj题。现在发现写代码，算法和数据结构就想武林里面的内功，内功好了，头脑灵活了，再学其他的招式也就不再困难了，想必各大公司应该也都是看中这个原因才对程序员重视算法吧。</p>
@@ -3258,7 +3296,7 @@
     
     <entry>
       <title><![CDATA[2015-09-远方之远]]></title>
-      <url>http://2997ms.github.io/2015/09/30/2015/2015-09-%E8%BF%9C%E6%96%B9%E4%B9%8B%E8%BF%9C/</url>
+      <url>http://2997ms.github.io/2015/09/30/BB/2015/2015-09-%E8%BF%9C%E6%96%B9%E4%B9%8B%E8%BF%9C/</url>
       <content type="html"><![CDATA[<p>现在是9月30号20：24分，北京到了10月也开始渐渐变冷了。外面下着相对于北京来说是很大的雨了。</p>
 <p>9月我的感觉是这个月份我发现我在不断地思考，每个月都有那么几天很特殊，这个很特殊的意思是在我心里标记了记号的那种。7月份的毕业，大哥陪我弄牙。8月份的回家。9月份的重新开始。</p>
 <p>先说重新开始这事，早已经没有了一点点的期待、兴奋。10号完全就是走个过场，非常疲惫与厌倦。然后下一个节点是SQ的到来，聊了很多。再下一个节点，就是今天下午老爸的电话，我老爸最近看了很多书，说的最多的就是自己很后悔以前没有珍惜时间，留有很多遗憾。</p>
@@ -3272,7 +3310,7 @@
     
     <entry>
       <title><![CDATA[2015-08-英雄不老]]></title>
-      <url>http://2997ms.github.io/2015/08/31/2015/2015-08-%E8%8B%B1%E9%9B%84%E4%B8%8D%E8%80%81/</url>
+      <url>http://2997ms.github.io/2015/08/31/BB/2015/2015-08-%E8%8B%B1%E9%9B%84%E4%B8%8D%E8%80%81/</url>
       <content type="html"><![CDATA[<p>昨天被hiho第一题就给虐了两个小时之后(我都想构图tarjan了)，发现那个题目出得就不严密，想得少的人反而AC了。。。以为昨天就是8月的最后一天，就很遗憾地在想，看来9月份才能写8月的总结了。结果是8月还有个31号让我觉得很惊喜。</p>
 <p>好像8月没有做太多事，从写的博客题目就能看出远没有7月那般努力。但是也将签名变成了”生命是陨石终有终点，所以要尽情快乐地燃烧“，就是忽然有一天午夜梦回觉得要对跟了我这么多年的躯壳负责，所以要活得乐观一些。发现调整了这个心态之后，生活确实多了很多美好的事物，看待事物的心情也变得有些不一样了。</p>
 <p>今天下午被51nod的方阵与完全平方数那道题弄得欲仙欲死(也就一个40分的题目。。。也是够渣渣)，但后来发现也不过是写了两个半小时的代码。。。总觉得好像自己写了一天一样。但还是很累。。。发现编写算法题目真的能带给我很多快感，看到写完的代码是一种很销魂的体验，不断唏嘘跟它相见恨晚，咒骂人生太短。</p>
@@ -3284,7 +3322,7 @@
     
     <entry>
       <title><![CDATA[2015-07-装订空白]]></title>
-      <url>http://2997ms.github.io/2015/07/31/2015/2015-07-%E8%A3%85%E8%AE%A2%E7%A9%BA%E7%99%BD/</url>
+      <url>http://2997ms.github.io/2015/07/31/BB/2015/2015-07-%E8%A3%85%E8%AE%A2%E7%A9%BA%E7%99%BD/</url>
       <content type="html"><![CDATA[<p>是不是每个人的心中，都有一个彼端的自己？更好的，更加坚强的，更加勇敢的，更加有自信站在你面前的自己。</p>
 <p>现在写题真的是到了一个尴尬的地步，做简单题鄙视，做难题还有好多都还不会。加油吧，多看看书多学学算法，思路总会开阔的。</p>
 <p>回去走路的时候在想明年四月份有校赛和百度之星，不断地计算着到那时候掌握算法的程度，写代码的能力，能做了多少道题。不断地用这些良辰美景来激励，关键是这些良辰美景还是我构想出来的，现实是一片望不到边际的大沙漠。</p>
