@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="2997ms">
 <meta property="og:description" content="尽管我们已经谈了很多错误，但之前几章仍然过于乐观。现实更加黑暗。我们现在将悲观主义最大化，假设任何可能出错的东西都会出错">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-31T12:54:48.838Z">
+<meta property="og:updated_time" content="2020-05-31T14:32:20.261Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ddia-第八章-分布式系统的麻烦">
 <meta name="twitter:description" content="尽管我们已经谈了很多错误，但之前几章仍然过于乐观。现实更加黑暗。我们现在将悲观主义最大化，假设任何可能出错的东西都会出错">
@@ -399,6 +399,7 @@
 <li>在虚拟机中，硬件时钟被虚拟化，这对于需要精确计时的应用程序提出了额外的挑战。当一个CPU核心在虚拟机之间共享时，每个虚拟机都会暂停几十毫秒，与此同时另一个虚拟机正在运行。从应用程序的角度来看，这种停顿表现为时钟突然向前跳跃。</li>
 <li>如果您在未完全控制的设备上运行软件（例如，移动设备或嵌入式设备），则不能信任该设备的硬件时钟。</li>
 </ul>
+<h4 id="有序事件的时间戳"><a href="#有序事件的时间戳" class="headerlink" title="有序事件的时间戳"></a>有序事件的时间戳</h4><p><strong>最后写入胜利（LWW）</strong>，它在多领导者复制和无领导者数据库（如Cassandra 【53】和Riak 【54】）中被广泛使用。客户端通过时间戳而不是先后来判定写入哪一个值。</p>
 
       
     </div>
@@ -511,7 +512,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">115</span>
+              <span class="site-state-item-count">116</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -577,7 +578,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#故障与部分失效"><span class="nav-number">1.</span> <span class="nav-text">故障与部分失效</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#云计算与超级计算机"><span class="nav-number">2.</span> <span class="nav-text">云计算与超级计算机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不可靠的网络"><span class="nav-number">3.</span> <span class="nav-text">不可靠的网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检测故障"><span class="nav-number">4.</span> <span class="nav-text">检测故障</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#超时与无穷的延迟"><span class="nav-number">5.</span> <span class="nav-text">超时与无穷的延迟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同步网络-vs-异步网络"><span class="nav-number">6.</span> <span class="nav-text">同步网络 vs 异步网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不可靠的时钟"><span class="nav-number">7.</span> <span class="nav-text">不可靠的时钟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单调钟与时钟"><span class="nav-number">8.</span> <span class="nav-text">单调钟与时钟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时钟同步与准确性"><span class="nav-number">9.</span> <span class="nav-text">时钟同步与准确性</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#故障与部分失效"><span class="nav-number">1.</span> <span class="nav-text">故障与部分失效</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#云计算与超级计算机"><span class="nav-number">2.</span> <span class="nav-text">云计算与超级计算机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不可靠的网络"><span class="nav-number">3.</span> <span class="nav-text">不可靠的网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检测故障"><span class="nav-number">4.</span> <span class="nav-text">检测故障</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#超时与无穷的延迟"><span class="nav-number">5.</span> <span class="nav-text">超时与无穷的延迟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同步网络-vs-异步网络"><span class="nav-number">6.</span> <span class="nav-text">同步网络 vs 异步网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不可靠的时钟"><span class="nav-number">7.</span> <span class="nav-text">不可靠的时钟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单调钟与时钟"><span class="nav-number">8.</span> <span class="nav-text">单调钟与时钟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时钟同步与准确性"><span class="nav-number">9.</span> <span class="nav-text">时钟同步与准确性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#有序事件的时间戳"><span class="nav-number">9.1.</span> <span class="nav-text">有序事件的时间戳</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
