@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="2997ms">
+  <meta name="keywords" content="素数筛,">
 
 
 
@@ -84,16 +84,18 @@
 
 
 
-<meta name="description" content="2997ms">
-<meta property="og:type" content="website">
-<meta property="og:title" content="2997ms">
-<meta property="og:url" content="http://2997ms.github.io/tags/计算几何/index.html">
+<meta name="description" content="尽管数很大，但是区间长度在1000000范围内。用以有的素数对大数进行素数筛。">
+<meta name="keywords" content="素数筛">
+<meta property="og:type" content="article">
+<meta property="og:title" content="POJ 2689">
+<meta property="og:url" content="http://2997ms.github.io/2020/05/18/CP/POJ/POJ-2689/index.html">
 <meta property="og:site_name" content="2997ms">
-<meta property="og:description" content="2997ms">
+<meta property="og:description" content="尽管数很大，但是区间长度在1000000范围内。用以有的素数对大数进行素数筛。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-05-18T12:25:35.310Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2997ms">
-<meta name="twitter:description" content="2997ms">
+<meta name="twitter:title" content="POJ 2689">
+<meta name="twitter:description" content="尽管数很大，但是区间长度在1000000范围内。用以有的素数对大数进行素数筛。">
 
 
 
@@ -114,10 +116,10 @@
 
 
 
-  <link rel="canonical" href="http://2997ms.github.io/tags/计算几何/">
+  <link rel="canonical" href="http://2997ms.github.io/2020/05/18/CP/POJ/POJ-2689/">
 
 
-  <title> 标签: 计算几何 | 2997ms </title>
+  <title> POJ 2689 | 2997ms </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -138,7 +140,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
@@ -255,44 +257,133 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2>
-        计算几何
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                POJ 2689
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2020-05-18T20:23:59+08:00" content="2020-05-18">
+              2020-05-18
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
+      
+        <p>尽管数很大，但是区间长度在1000000范围内。用以有的素数对大数进行素数筛。</p>
+<a id="more"></a>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> pri[maxn];</span><br><span class="line"><span class="keyword">int</span> vis[maxn];</span><br><span class="line">ll le, ri;</span><br><span class="line"><span class="keyword">int</span> not_pri[maxn];</span><br><span class="line"><span class="keyword">int</span> pri_cnt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">get_prime_between_le_and_ri</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    REP(i,<span class="number">0</span>,pri_cnt) &#123;</span><br><span class="line">        ll g = le / pri[i];</span><br><span class="line">        <span class="keyword">while</span>(g&lt;=<span class="number">1</span>) &#123;</span><br><span class="line">            g++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(ll j=g*pri[i];j&lt;=ri;j+=pri[i]) &#123;</span><br><span class="line">            <span class="keyword">if</span>(j&gt;=le) &#123;</span><br><span class="line">                not_pri[j-le] = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(le == <span class="number">1</span>) &#123;</span><br><span class="line">        not_pri[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> v[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> up = <span class="number">5e4</span>;</span><br><span class="line">    pri_cnt = <span class="number">0</span>;</span><br><span class="line">    REPP(i,<span class="number">2</span>,up) &#123;</span><br><span class="line">        <span class="keyword">if</span>(!vis[i]) &#123;</span><br><span class="line">            pri[pri_cnt] = i;</span><br><span class="line">            pri_cnt++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i;j&lt;=up;j+=i) &#123;</span><br><span class="line">            vis[j] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>, &amp;le, &amp;ri) != <span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="built_in">memset</span>(not_pri, <span class="number">0</span>, <span class="keyword">sizeof</span>(not_pri));</span><br><span class="line">        get_prime_between_le_and_ri();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        REP(i,<span class="number">0</span>,ri-le+<span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span>(not_pri[i] == <span class="number">0</span>) &#123;</span><br><span class="line">                v[cnt] = i + le;</span><br><span class="line">                cnt++;</span><br><span class="line">            &#125; </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(cnt &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="built_in">puts</span>(<span class="string">"There are no adjacent primes."</span>);</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> dismax = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> dismin = <span class="number">1</span>;</span><br><span class="line">        REP(i,<span class="number">1</span>,cnt) &#123;</span><br><span class="line">            <span class="keyword">if</span>(v[i] - v[i<span class="number">-1</span>] &gt; v[dismax] - v[dismax<span class="number">-1</span>]) &#123;</span><br><span class="line">                dismax = i;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(v[i] - v[i<span class="number">-1</span>] &lt; v[dismin] - v[dismin<span class="number">-1</span>]) &#123;</span><br><span class="line">                dismin = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d,%d are closest, %d,%d are most distant.\n"</span>, v[dismin<span class="number">-1</span>], v[dismin], v[dismax<span class="number">-1</span>], v[dismax]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2019/11/18/CP/Codeforces/Eductional-Codeforces-Round-1/" itemprop="url">
-              
-                <span itemprop="name">Educational Codeforces Round 1</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-11-18T23:13:57+08:00" content="2019-11-18">
-          11-18
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/素数筛/" rel="tag">#素数筛</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/05/17/CP/Codeforces/Codeforces-1355E/" rel="next" title="Codeforces 1355E">
+                <i class="fa fa-chevron-left"></i> Codeforces 1355E
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/18/Notes/ddia-第七章 事务/" rel="prev" title="ddia-第七章-事务">
+                ddia-第七章-事务 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -300,6 +391,15 @@
 
 
           
+  <div class="comments" id="comments">
+    
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2137748"></script>
+    <!-- UY END -->
+    
+  </div>
+
 
         </div>
         
@@ -319,8 +419,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
           <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="2997ms">
           <p class="site-author-name" itemprop="name">2997ms</p>
@@ -388,6 +497,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -500,6 +620,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
 
   
 
