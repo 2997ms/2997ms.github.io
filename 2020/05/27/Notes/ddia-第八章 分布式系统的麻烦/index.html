@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="2997ms">
 <meta property="og:description" content="尽管我们已经谈了很多错误，但之前几章仍然过于乐观。现实更加黑暗。我们现在将悲观主义最大化，假设任何可能出错的东西都会出错">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-06-08T15:57:02.153Z">
+<meta property="og:updated_time" content="2020-06-13T08:37:09.102Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ddia-第八章-分布式系统的麻烦">
 <meta name="twitter:description" content="尽管我们已经谈了很多错误，但之前几章仍然过于乐观。现实更加黑暗。我们现在将悲观主义最大化，假设任何可能出错的东西都会出错">
@@ -425,6 +425,27 @@
 <li>发送SIGSTOP信号来暂停Unix进程，例如通过在shell中按下Ctrl-Z。 这个信号立即阻止进程继续执行更多的CPU周期，直到SIGCONT恢复为止，此时它将继续运行。 即使你的环境通常不使用SIGSTOP，也可能由运维工程师意外发送。</li>
 </ul>
 <h4 id="响应时间保证"><a href="#响应时间保证" class="headerlink" title="响应时间保证"></a>响应时间保证</h4><p>硬实时（hard real-time）系统：某些软件的运行环境要求很高，不能在特定时间内响应可能会导致严重的损失。</p>
+<h3 id="真理由多数所定义"><a href="#真理由多数所定义" class="headerlink" title="真理由多数所定义"></a>真理由多数所定义</h3><p>如果法定数量的节点宣告另一个节点已经死亡，那么即使该节点仍感觉自己活着，它也必须被认为是死的。个体节点必须遵守法定决定并下台。</p>
+<h4 id="领导者和锁"><a href="#领导者和锁" class="headerlink" title="领导者和锁"></a>领导者和锁</h4><p>通常情况下，一些东西在一个系统中只能有一个。例如：</p>
+<ul>
+<li>数据库分区的领导者只能有一个节点，以避免<strong>脑裂（split brain）</strong>。</li>
+<li>特定资源的锁或对象只允许一个事务/客户端持有，以防同时写入和损坏。</li>
+<li>一个特定的用户名只能被一个用户所注册，因为用户名必须唯一标识一个用户。</li>
+</ul>
+<p>如果持有租约的客户端暂停太久，它的租约将到期。另一个客户端可以获得同一文件的租约，并开始写入文件。当暂停的客户端回来时，它认为它仍然有一个有效的租约，并继续写入文件。结果，客户的写入冲突和损坏的文件。</p>
+<p>处理的方法是：我们假设每次锁定服务器授予锁或租约时，它还会返回一个<strong>防护令牌（fencing token）</strong>，这个数字在每次授予锁定时都会增加（例如，由锁定服务增加）。然后，我们可以要求客户端每次向存储服务发送写入请求时，都必须包含当前的防护令牌。</p>
+<p>客户端1以33的令牌获得租约，但随后进入一个长时间的停顿并且租约到期。客户端2以34的令牌（该数字总是增加）获取租约，然后将其写入请求发送到存储服务，包括34的令牌。稍后，客户端1恢复生机并将其写入存储服务，包括其令牌值33.但是，存储服务器会记住它已经处理了一个具有更高令牌编号（34）的写入，因此它会拒绝带有令牌33的请求。</p>
+<h3 id="拜占庭故障"><a href="#拜占庭故障" class="headerlink" title="拜占庭故障"></a>拜占庭故障</h3><p>如果存在节点可能“撒谎”（发送任意错误或损坏的响应）的风险，则分布式系统的问题变得更困难了——例如，如果节点可能声称其实际上没有收到特定的消息。这种行为被称为<strong>拜占庭故障（Byzantine fault）</strong>，<strong>在不信任的环境中达成共识的问题被称为拜占庭将军问题</strong>。</p>
+<p>当一个系统在部分节点发生故障、不遵守协议、甚至恶意攻击、扰乱网络时仍然能继续正确工作，称之为<strong>拜占庭容错（Byzantine fault-tolerant）</strong>的，在特定场景下，这种担忧在是有意义的，比如航天系统。</p>
+<h3 id="系统模型与现实"><a href="#系统模型与现实" class="headerlink" title="系统模型与现实"></a>系统模型与现实</h3><p><strong>同步模型</strong></p>
+<p><strong>部分同步模型</strong></p>
+<p><strong>异步模型</strong></p>
+<p><strong>节点失效</strong>三种最常见的节点系统模型是：</p>
+<ul>
+<li><strong>崩溃-停止故障</strong></li>
+<li><strong>崩溃-恢复故障</strong></li>
+<li><strong>拜占庭（任意）故障</strong></li>
+</ul>
 
       
     </div>
@@ -603,7 +624,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#故障与部分失效"><span class="nav-number">1.</span> <span class="nav-text">故障与部分失效</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#云计算与超级计算机"><span class="nav-number">2.</span> <span class="nav-text">云计算与超级计算机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不可靠的网络"><span class="nav-number">3.</span> <span class="nav-text">不可靠的网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检测故障"><span class="nav-number">4.</span> <span class="nav-text">检测故障</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#超时与无穷的延迟"><span class="nav-number">5.</span> <span class="nav-text">超时与无穷的延迟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同步网络-vs-异步网络"><span class="nav-number">6.</span> <span class="nav-text">同步网络 vs 异步网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不可靠的时钟"><span class="nav-number">7.</span> <span class="nav-text">不可靠的时钟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单调钟与时钟"><span class="nav-number">8.</span> <span class="nav-text">单调钟与时钟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时钟同步与准确性"><span class="nav-number">9.</span> <span class="nav-text">时钟同步与准确性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#有序事件的时间戳"><span class="nav-number">9.1.</span> <span class="nav-text">有序事件的时间戳</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#时钟读数存在置信区间"><span class="nav-number">9.2.</span> <span class="nav-text">时钟读数存在置信区间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#全局快照的同步时钟"><span class="nav-number">9.3.</span> <span class="nav-text">全局快照的同步时钟</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#暂停进程"><span class="nav-number">10.</span> <span class="nav-text">暂停进程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#响应时间保证"><span class="nav-number">10.1.</span> <span class="nav-text">响应时间保证</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#故障与部分失效"><span class="nav-number">1.</span> <span class="nav-text">故障与部分失效</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#云计算与超级计算机"><span class="nav-number">2.</span> <span class="nav-text">云计算与超级计算机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不可靠的网络"><span class="nav-number">3.</span> <span class="nav-text">不可靠的网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检测故障"><span class="nav-number">4.</span> <span class="nav-text">检测故障</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#超时与无穷的延迟"><span class="nav-number">5.</span> <span class="nav-text">超时与无穷的延迟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同步网络-vs-异步网络"><span class="nav-number">6.</span> <span class="nav-text">同步网络 vs 异步网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不可靠的时钟"><span class="nav-number">7.</span> <span class="nav-text">不可靠的时钟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单调钟与时钟"><span class="nav-number">8.</span> <span class="nav-text">单调钟与时钟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时钟同步与准确性"><span class="nav-number">9.</span> <span class="nav-text">时钟同步与准确性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#有序事件的时间戳"><span class="nav-number">9.1.</span> <span class="nav-text">有序事件的时间戳</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#时钟读数存在置信区间"><span class="nav-number">9.2.</span> <span class="nav-text">时钟读数存在置信区间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#全局快照的同步时钟"><span class="nav-number">9.3.</span> <span class="nav-text">全局快照的同步时钟</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#暂停进程"><span class="nav-number">10.</span> <span class="nav-text">暂停进程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#响应时间保证"><span class="nav-number">10.1.</span> <span class="nav-text">响应时间保证</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#真理由多数所定义"><span class="nav-number">11.</span> <span class="nav-text">真理由多数所定义</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#领导者和锁"><span class="nav-number">11.1.</span> <span class="nav-text">领导者和锁</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拜占庭故障"><span class="nav-number">12.</span> <span class="nav-text">拜占庭故障</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统模型与现实"><span class="nav-number">13.</span> <span class="nav-text">系统模型与现实</span></a></li></ol></div>
             
           </div>
         </section>
