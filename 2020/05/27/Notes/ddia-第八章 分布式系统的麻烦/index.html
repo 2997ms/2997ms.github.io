@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="2997ms">
 <meta property="og:description" content="尽管我们已经谈了很多错误，但之前几章仍然过于乐观。现实更加黑暗。我们现在将悲观主义最大化，假设任何可能出错的东西都会出错">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-06-13T08:46:09.370Z">
+<meta property="og:updated_time" content="2020-08-15T13:21:48.967Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ddia-第八章-分布式系统的麻烦">
 <meta name="twitter:description" content="尽管我们已经谈了很多错误，但之前几章仍然过于乐观。现实更加黑暗。我们现在将悲观主义最大化，假设任何可能出错的东西都会出错">
@@ -383,7 +383,7 @@
 <p>电话网络中的电路与TCP连接有很大不同：电路是固定数量的预留带宽，在电路建立时没有其他人可以使用，而TCP连接的数据包<strong>机会性地</strong>使用任何可用的网络带宽。您可以给TCP一个可变大小的数据块（例如，一个电子邮件或一个网页），它会尽可能在最短的时间内传输它。 TCP连接空闲时，不使用任何带宽。</p>
 <p>如果资源是静态分区的（例如，专用硬件和专用带宽分配），则在某些环境中可以实现<strong>延迟保证</strong>。但是，这是以降低利用率为代价的——换句话说，它是更昂贵的。另一方面，动态资源分配的多租户提供了更好的利用率，所以它更便宜，但它具有可变延迟的缺点。</p>
 <p>电话交换机是静态分区，互联网动态分享网络带宽。</p>
-<p> 网络中的可变延迟不是一种自然规律，而只是成本/收益权衡的结果。</p>
+<p>网络中的可变延迟不是一种自然规律，而只是成本/收益权衡的结果。</p>
 <h3 id="不可靠的时钟"><a href="#不可靠的时钟" class="headerlink" title="不可靠的时钟"></a>不可靠的时钟</h3><p>网络上的每台机器都有自己的时钟，这是一个实际的硬件设备：通常是石英晶体振荡器。这些设备不是完全准确的，所以每台机器都有自己的时间概念，可能比其他机器稍快或更慢。可以在一定程度上同步时钟：最常用的机制是<strong>网络时间协议（NTP）</strong>，它允许根据一组服务器报告的时间来调整计算机时钟。服务器则从更精确的时间源（如GPS接收机）获取时间。</p>
 <h3 id="单调钟与时钟"><a href="#单调钟与时钟" class="headerlink" title="单调钟与时钟"></a>单调钟与时钟</h3><p>时钟，也叫<strong>挂钟时间（wall-clock time）</strong>。通常与NTP同步，Linux上的<code>clock_gettime(CLOCK_REALTIME)</code>和Java中的<code>System.currentTimeMillis()</code></p>
 <p>单调钟适用于测量持续时间（时间间隔），例如超时或服务的响应时间：Linux上的<code>clock_gettime(CLOCK_MONOTONIC)</code>，和Java中的<code>System.nanoTime()</code>都是单调时钟。这个名字来源于他们保证总是前进的事实（而时钟可以及时跳回）。</p>
@@ -569,7 +569,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">118</span>
+              <span class="site-state-item-count">119</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
