@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="2997ms">
+  <meta name="keywords" content="ddia,">
 
 
 
@@ -84,17 +84,18 @@
 
 
 
-<meta name="description" content="新的开始。">
+<meta name="description" content="Last updated: 2020-06-18 22:43:47 这一章好家伙 读了三个月。">
+<meta name="keywords" content="ddia">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2020年-07月-在路上">
-<meta property="og:url" content="http://2997ms.github.io/2020/07/15/BB/2020/2020年-7月-OnTheWay/index.html">
+<meta property="og:title" content="ddia-第九章-一致性与共识">
+<meta property="og:url" content="http://2997ms.github.io/2020/09/14/Notes/ddia-第九章-一致性与共识/index.html">
 <meta property="og:site_name" content="2997ms">
-<meta property="og:description" content="新的开始。">
+<meta property="og:description" content="Last updated: 2020-06-18 22:43:47 这一章好家伙 读了三个月。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-07-19T19:53:11.428Z">
+<meta property="og:updated_time" content="2020-09-14T08:54:59.266Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2020年-07月-在路上">
-<meta name="twitter:description" content="新的开始。">
+<meta name="twitter:title" content="ddia-第九章-一致性与共识">
+<meta name="twitter:description" content="Last updated: 2020-06-18 22:43:47 这一章好家伙 读了三个月。">
 
 
 
@@ -115,10 +116,10 @@
 
 
 
-  <link rel="canonical" href="http://2997ms.github.io/2020/07/15/BB/2020/2020年-7月-OnTheWay/">
+  <link rel="canonical" href="http://2997ms.github.io/2020/09/14/Notes/ddia-第九章-一致性与共识/">
 
 
-  <title> 2020年-07月-在路上 | 2997ms </title>
+  <title> ddia-第九章-一致性与共识 | 2997ms </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -277,7 +278,7 @@
             
             
               
-                2020年-07月-在路上
+                ddia-第九章-一致性与共识
               
             
           </h1>
@@ -289,8 +290,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2020-07-15T09:22:57+08:00" content="2020-07-15">
-              2020-07-15
+            <time itemprop="dateCreated" datetime="2020-09-14T16:54:47+08:00" content="2020-09-14">
+              2020-09-14
             </time>
           </span>
 
@@ -303,8 +304,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/所说/" itemprop="url" rel="index">
-                    <span itemprop="name">所说</span>
+                  <a href="/categories/阅读/" itemprop="url" rel="index">
+                    <span itemprop="name">阅读</span>
                   </a>
                 </span>
 
@@ -341,41 +342,27 @@
       
 
       
-        <p>新的开始。</p>
+        <p>Last updated: 2020-06-18 22:43:47</p>
+<p>这一章好家伙 读了三个月。</p>
 <a id="more"></a>
+<p> <a href="https://github.com/Vonng/ddia/blob/master/ch9.md" target="_blank" rel="noopener">阅读地址</a></p>
+<p>在分布式中，重要的是只有一个领导者，且所有的节点都认同其领导。如果两个节点都认为自己是领导者，这种情况被称为<strong>脑裂（split brain）</strong>，且经常导致数据丢失。正确实现共识有助于避免这种问题。</p>
+<p>事务隔离主要是为了，<strong>避免由于同时执行事务而导致的竞争状态</strong>，而分布式一致性主要关于，<strong>面对延迟和故障时，如何协调副本间的状态。</strong></p>
+<h2 id="一致性保证"><a href="#一致性保证" class="headerlink" title="一致性保证"></a>一致性保证</h2><p><strong>最终一致性</strong>：如果你停止向数据库写入数据并等待一段不确定的时间，那么最终所有的读取请求都会返回相同的值。换句话说，不一致性是暂时的，最终会自行解决（假设网络中的任何故障最终都会被修复）。最终一致性也叫<strong>收敛（convergence）</strong>。</p>
+<p><strong>分布式一致性模型</strong>和我们之前讨论的事务隔离级别的层次结构有一些相似之处。</p>
+<p>事务隔离主要是为了，<strong>避免由于同时执行事务而导致的竞争状态</strong>。</p>
+<p>而分布式一致性主要关于，<strong>面对延迟和故障时，如何协调副本间的状态。</strong></p>
+<h2 id="线性一致性"><a href="#线性一致性" class="headerlink" title="线性一致性"></a>线性一致性</h2><p><strong>线性一致性（linearizability）的最终想法是让一个系统的数据库看上去只有一个副本，而且所有的操作都是原子性的。</strong></p>
+<p>如果读取(与写入同时发生时)可能返回旧值或新值，则称该寄存器为常规寄存器。</p>
 <blockquote>
-<p>熟悉感</p>
+<p>线性一致性与可序列化</p>
+<p>可序列化（Serializability）是事务的隔离属性，每个事务可以读写<strong>多个对象(行，文档，记录)</strong>。它确保事务的行为，与它们按照某种顺序依次执行的结果相同（每个事务在下一个事务开始之前运行完成）。这种执行顺序可以与事务实际执行的顺序不同。</p>
+<p>线性一致性（Linearizability）是读取和写入寄存器<strong>（单个对象）</strong>的新鲜度保证。它不会将操作组合为事务，因此它也不会阻止写偏差等问题。</p>
 </blockquote>
-<p>单纯从形式上来说，又好像没什么变化，今天和昨天，这周和上周，今年和去年。熟悉感往往丢失趣味，许知远说“只有在陌生的环境中，我才感到人生没有虚度。”<br>看《贫穷的本质》前三章里几个观点还挺有趣，但是里面好多废话，一个观点不停重复。<br>“援助的弊大于利，援助使人们停止寻找自己解决问题的方法，腐蚀地方机构并削弱其作用，导致一些援助机构形同虚设。”<br>“穷人之所以会坚持那些看起来漏洞百出的信念，还有一个潜在的原因，在他们无能为力的情况下，希望变得至关重要。”</p>
-<p>今天一睡睡到16：00，没有更新。</p>
-<blockquote>
-<p>注意力</p>
-</blockquote>
-<p>昨天的标题感觉像是我需要20年才能变黄名，不过也说不定哈…</p>
-<p>看到他们关于训练的讨论，想起李笑来曾经提到注意力是一种资源，自己之后也要注意一下，5个小时，集中精力做某件事，期间手机隔离，没有打扰，专注地干完，专注地学，之后专注地玩。之前太注重过程也太懒散，中间手机的打扰，刷一会论坛，好像自己在学习一样，跟大学时候在图书馆一个样，效率不高。之后要注意了，让每分每秒有一些价值。</p>
-<p>说人生短是指从现在看过去，短暂、稍纵即逝。从现在看未来，人生依然漫长，总不想一成不变地过活。</p>
-<p>中午的时候看到小众的算法圈都能撕来撕去，一边吃瓜群众还能分成两边，还有退圈一说，我的天。队友之间发生的事情旁人根本没办法通过只言片语去判断事实，何况还是当事人的只言片语，更加的主观了。倒不是说圈子，我只是怀念以前bestcoder，csacademy，hackerrank都有比赛的日子，那个时候比赛非常密集，每周都有很多比赛可以较量。</p>
-<p>现在剩下一个CF了，TC没人打啊… leetcode太简单，我都打进过前五…剩下的就没有定期的、人数众多的、质量高的比赛了啊…sigh…</p>
-<p>所有的天里最美好的是周五，周五最美好的是晚上。</p>
-<p>今天这边下雪了，“夜有了个白色的枕头，风吹亮了月光”，在十一月的尾巴上。</p>
-<blockquote>
-<p>无能为力感</p>
-</blockquote>
-<p>配置的东西搞了一个下午，别人的电脑都是可以的，我也是按照文档一步一步来的，但是到后面就还是索引加不上，越到后面心情就愈加烦躁，也无法去集中精力去做其他的事，就放在这里死挺着，晚上的时候买了烤冷面，又多吃了，这些年这种状态太多了，很沮丧，对自己无能为力。</p>
-<p>这种沮丧感和平日里的热血形成鲜明对比，精神状态好的时候，觉得可以干翻世界，不好的时候如现在，被生活捶到土里。这几年我最大的变化就是开玩笑、戏谑生活的次数少了太多太多。经常是我笑嘻嘻地调侃了生活，生活随后就把我砍到哭笑不得。</p>
-<p>以前自己感慨“多想逃离当下的生活啊，多想过有趣的日子”，但是逃离之后去哪，能去哪，还是不知道。你离开这个生活，你也没有更好的选择。像是一个挣扎的皮球，终归落回到地面上。</p>
-<p>“人生不会某一刻落回起点，是因为生命的螺旋成长模式。每一个周期就会再次遇到某件事情的升级版，也是一种精进的表现。”</p>
-<blockquote>
-<p>怒火燎原</p>
-</blockquote>
-<p>最近在读《活出生命的意义》，里面有一句话是你要想清楚你活着是为了什么。</p>
-<p>大多数时候人不会思考这些，活着也只是因为活着的惯性–又不可能去死，就继续活着。但是一些瞬间，亲朋好友的疾病意外、电影综艺里的闲谈会让你停下来，思考一会儿忙碌的意义。思考了之后你发现没什么用，徒增痛苦跟烦恼，于是继续被忙碌，或者像个沙漠里的鸵鸟，将自己忙碌。</p>
-<p>偶尔半夜的时候，会想起，“当初丢盔弃甲狼狈不堪地出来，不破不还衣锦还乡地归来”，这种执念像一颗针往内心深处越扎越深，越深越疼。像是头脑里流动的河流，叮叮当当，夜夜歌唱。</p>
-<p>最近在整理收藏夹，发现很多todo，居然有几百个。我理解的“计划”，其中的一个含义是未来的自己受过去的自己支配的时刻，就是计划生效的时刻。</p>
-<p>最近看《壁花少年》，艾玛实在是太哎妈好看了，结合她之前演过很多烂片的印象，这部电影是个很大的惊喜了。最后送上电影里的一段话。</p>
-<p>“我知道这一切有一天都会变成故事，我们的合影会变成老照片，我们也终会身为父母。但是现在，这个时刻并不是故事，这个时刻正在发生着，我就在这里。”</p>
-<p>周一早上睡过了头，都不算睡过了头，就是纯粹的不想起床。</p>
-<p>头一次那么期待明天，希望今天早日过去，明天会有太阳。</p>
+<p>依赖线性一致性的场景：</p>
+<p>1.锁定和领导选举。一个使用单主复制的系统，需要确保领导真的只有一个，而不是几个（脑裂）。一种选择领导者的方法是使用锁：每个节点在启动时尝试获取锁，成功者成为领导者。不管这个锁是如何实现的，它必须是线性一致的：所有节点必须就哪个节点拥有锁达成一致，否则就没用了。 </p>
+<p>2.约束和唯一性保证：用户名或电子邮件地址必须唯一标识一个用户；账户余额永远不会为负数；不会出售比仓库里的库存更多的物品；两个人不会都预定了航班或剧院里同一时间的同一个位置。</p>
+<p>281</p>
 
       
     </div>
@@ -396,22 +383,24 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/ddia/" rel="tag">#ddia</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/06/13/BB/2020/2020年-6月-AHalf/" rel="next" title="2020年-06月-九局下半">
-                <i class="fa fa-chevron-left"></i> 2020年-06月-九局下半
+              <a href="/2020/09/09/BB/2020/2020年-8月-致未来三年的你/" rel="next" title="2020年-08月-五年高考三年计划">
+                <i class="fa fa-chevron-left"></i> 2020年-08月-五年高考三年计划
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/09/09/BB/2020/2020年-8月-致未来三年的你/" rel="prev" title="2020年-08月-五年高考三年计划">
-                2020年-08月-五年高考三年计划 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -548,7 +537,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一致性保证"><span class="nav-number">1.</span> <span class="nav-text">一致性保证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性一致性"><span class="nav-number">2.</span> <span class="nav-text">线性一致性</span></a></li></ol></div>
             
           </div>
         </section>
