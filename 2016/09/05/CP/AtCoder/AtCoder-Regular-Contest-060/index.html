@@ -1,0 +1,102 @@
+<html>
+<head>
+	
+	<title>AtCoder Regular Contest 060</title>
+	<meta name="keywords" content="fzb.me,冯宗宝,冯宗宝的blog" />
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+	   <link href="/css/main.css?v=3" rel="stylesheet" type="text/css" />
+    
+        
+<script src="/js/util.js"></script>
+
+        <script>
+            if(isMobile()) {
+                loadjscssfile('../css/mobile.css', 'css');
+            } else {
+                loadjscssfile('../css/desktop.css', 'css');
+            }
+        </script> 
+    
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom feed">
+
+    
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3"/>
+    
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+
+
+<h2 class="title">AtCoder Regular Contest 060</h2>
+<!--
+<div style="text-align:center;margin-top: -10px;">
+<div class="article-category">
+发表于2016年9月5日
+
+
+    <a class="article-category-link" href="/categories/%E9%A2%98%E8%AE%B0/">题记</a>
+
+
+
+ </div>
+-->
+</div>
+
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#C-Tak-and-Cards"><span class="toc-text">C Tak and Cards</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#D-Digit-Sum"><span class="toc-text">D Digit Sum</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#E-Tak-and-Hotels"><span class="toc-text">E Tak and Hotels</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#F-Best-Representation"><span class="toc-text">F Best Representation</span></a></li></ol>
+<p>这一期的Regular Contest我也是肥肠喜欢啊，题目都很好玩啊，<a target="_blank" rel="noopener" href="http://arc060.contest.atcoder.jp/assignments">题目链接</a>。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/AtCoder/Regular_Contest_060">代码链接</a></p>
+<h3 id="C-Tak-and-Cards"><a href="#C-Tak-and-Cards" class="headerlink" title="C Tak and Cards"></a>C Tak and Cards</h3><hr>
+<p>C题题意是给出N(N&lt;&#x3D;50)个数，每个数的范围在1到50之间，然后给一个值A。从这N个数任意选择数字，要求选取的这些数字的平均值是A，问有多少种选取的方法。</p>
+<p>dp[i][j][x]表示到第i个数时，有j个数组成和为x的方法数量。</p>
+<h3 id="D-Digit-Sum"><a href="#D-Digit-Sum" class="headerlink" title="D Digit Sum"></a>D Digit Sum</h3><hr>
+<p>D题题意是给出了一种函数f(b,n)，<br>$$<br>f(b,n)&#x3D;n   \    \  \  \ when\ \  n&lt;b<br>$$</p>
+<p>$$<br>f(b,n)&#x3D;f(b,floor(\frac{n}{b}))+(n%b)<br>$$</p>
+<p>然后给出了n和s，求是最小的b，使得f(b,n)&#x3D;s。如果不存在这样的b，输出-1。</p>
+<p>下次看到n,b范围在10^11,10^12这种题，直接考虑O(sqrt(n))啊啊啊。</p>
+<p>首先考虑b&lt;sqrt(n)的这种情况，直接暴力算。</p>
+<p>然后考虑b&gt;sqrt(n),那这样n&#x3D;pb+q，有p+q&#x3D;s。得到n-s&#x3D;b*(p-1)因为b&gt;sqrt(n),所以p是小于sqrt(n)的，枚举p，注意q也要符合条件即可。</p>
+<h3 id="E-Tak-and-Hotels"><a href="#E-Tak-and-Hotels" class="headerlink" title="E Tak and Hotels"></a>E Tak and Hotels</h3><hr>
+<p>E题题意是给出了n个旅馆的坐标，然后有一个人旅行一天的时间行走的距离不超过L，晚上必须在旅馆睡。然后有Q个询问，问从a走到b至少需要几天，保证是可以到达的。</p>
+<p>倍增的想法，dp[x][a]表示从x经过2^a天能够达到的最远旅馆，之后每次询问从最高次往低次暴力。</p>
+<h3 id="F-Best-Representation"><a href="#F-Best-Representation" class="headerlink" title="F Best Representation"></a>F Best Representation</h3><hr>
+<p><del>发现AtCoder日本人很喜欢出这种题，关于这种是哪种我也说不太好</del></p>
+<p>字符串X如果能够被表示成k(k&gt;&#x3D;2)个字符串a连接而成的话，就不是好字符串，否则就是好字符串。</p>
+<p>现给出一个字符串，要求把这个字符串分解成都是好字符串的字符串。。。问在所有分解成功的集合中，分解出来的最少的字符串数量是多少，设为ans，有多少种分法，使得最少字符串数量为ans，输出ans和这个多少种分法。&#x3D; &#x3D;。突然发现我语言能力如此捉急，看不懂的看英文吧，当然我觉得那个也挺难懂的。</p>
+<p>这个题就好玩在，排除所有字符相等的情况(这种情况输出的是strlen(w)，1,不用多说)，分解出来的最少字符串数量一定不是1就是2。当这个字符串本身就是好字符串的时候就是1。当这个字符串可以表示成k(k&gt;&#x3D;2)个字符串a连接而成的话，那么此时，嘿嘿嘿(……)，一拆的话，前者多一个，后者少一个，就可以分成两个好字符串啦。</p>
+<p>所以这个题判断出是1的情况之后，说白了就是判断一个字符串可不可以分解成由k(k&gt;&#x3D;2)个字符串a连接而成，POJ上面有一道类似的题目，kmp直接可以解，前后如果都满足，方法的数量就+1。那个1e9+7纯属唬人。。。</p>
+<p>这个题目也挺好玩(真是智障儿童欢乐多。。。)</p>
+
+
+<!--<a href="http://2997ms.github.io/2016/09/05/CP/AtCoder/AtCoder-Regular-Contest-060/#disqus_thread" class="article-comment-link">Comments</a>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = ''; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+-->
+<div style="display:none">
+<script src="http://s4.cnzz.com/stat.php?id=&web_id=" language="JavaScript"></script>script>
+</div>
+
+
+
+
+
+
+</body>
+</html>

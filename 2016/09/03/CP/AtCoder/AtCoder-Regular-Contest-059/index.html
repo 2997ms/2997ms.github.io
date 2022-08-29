@@ -1,0 +1,96 @@
+<html>
+<head>
+	
+	<title>AtCoder Regular Contest 059</title>
+	<meta name="keywords" content="fzb.me,冯宗宝,冯宗宝的blog" />
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+	   <link href="/css/main.css?v=3" rel="stylesheet" type="text/css" />
+    
+        
+<script src="/js/util.js"></script>
+
+        <script>
+            if(isMobile()) {
+                loadjscssfile('../css/mobile.css', 'css');
+            } else {
+                loadjscssfile('../css/desktop.css', 'css');
+            }
+        </script> 
+    
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom feed">
+
+    
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3"/>
+    
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+
+
+<h2 class="title">AtCoder Regular Contest 059</h2>
+<!--
+<div style="text-align:center;margin-top: -10px;">
+<div class="article-category">
+发表于2016年9月3日
+
+
+    <a class="article-category-link" href="/categories/%E9%A2%98%E8%AE%B0/">题记</a>
+
+
+
+ </div>
+-->
+</div>
+
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#C-Be-Together"><span class="toc-text">C Be Together</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#D-Unbalanced"><span class="toc-text">D Unbalanced</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#E-Children-and-Candies"><span class="toc-text">E Children and Candies</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#F-Unhappy-Hacking"><span class="toc-text">F Unhappy Hacking</span></a></li></ol>
+<p>这一期的后两道DP很好玩。</p>
+<p>代码在<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/AtCoder/Regular_Contest_059">这里</a>。</p>
+<h3 id="C-Be-Together"><a href="#C-Be-Together" class="headerlink" title="C Be Together"></a>C Be Together</h3><hr>
+<p>题意是给出n个数，它们要统一变成同一个数，代价是差的平方，问最小代价。</p>
+<p>由于数量和范围都很小，直接暴力。</p>
+<h3 id="D-Unbalanced"><a href="#D-Unbalanced" class="headerlink" title="D Unbalanced"></a>D Unbalanced</h3><hr>
+<p>题意是给出一个字符串，找出这个字符串的子串中是否存在不平衡串，并输出其位置。所谓不平衡串，就是该串中一个字符的数量大于该串长度的一半。</p>
+<p>发现最小规模的不平衡串就是在三个以内有超过两个的相同字符，任何不平衡串都要以此为基础。所以一个一个字符暴力就好了。</p>
+<h3 id="E-Children-and-Candies"><a href="#E-Children-and-Candies" class="headerlink" title="E Children and Candies"></a>E Children and Candies</h3><hr>
+<p>题意是有n个小孩子，c个糖果，将c个糖果分配给n个小孩子，假设孩子得到的糖果数量为a，兴奋值为xi，这个小孩的快乐值为xi^a，幼儿园总的活动值为所有小孩子快乐值的乘积。</p>
+<p>现在每一个小孩的兴奋值取值范围为Ai~Bi，问所有情况的幼儿园活动值(…….)的和。</p>
+<p>dp[i][c]表示i个小孩分配c个糖果的活动值总和，那么仔细分析这个函数，当到i+1的时候，转移的情况为<br>$$<br>dp[i+1][c]&#x3D;\sum_{j&#x3D;0}^{c}dp[i][j]*(\sum_{x&#x3D;A[i+1]}^{B[i+1]}x^{c-j})<br>$$<br>所以预处理出x的前缀和，直接转移即可。</p>
+<h3 id="F-Unhappy-Hacking"><a href="#F-Unhappy-Hacking" class="headerlink" title="F Unhappy Hacking"></a>F Unhappy Hacking</h3><hr>
+<p>题意是这个电脑键盘上只有三个键：0，1和delete键，现在按了n次键盘，有一个字符串，问有多少种按键情况能够形成改字符串。</p>
+<p>dp[n][c]表示按了n次键盘，形成字符串长度为c的方法数，对第n+1次按键盘，可能是delete，转移方程为：<br>$$<br>dp[n+1][max(c-1,0)]+&#x3D;dp[n][c]<br>$$<br>如果是按0，转移方程为：<br>$$<br>dp[n+1][c+1]+&#x3D;dp[n][c]<br>$$<br>按1同理，在上式基础上再加一遍dp[n][c]。</p>
+<p>最终因为是固定了0、1，所以除以2^len。</p>
+
+
+<!--<a href="http://2997ms.github.io/2016/09/03/CP/AtCoder/AtCoder-Regular-Contest-059/#disqus_thread" class="article-comment-link">Comments</a>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = ''; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+-->
+<div style="display:none">
+<script src="http://s4.cnzz.com/stat.php?id=&web_id=" language="JavaScript"></script>script>
+</div>
+
+
+
+
+
+
+</body>
+</html>

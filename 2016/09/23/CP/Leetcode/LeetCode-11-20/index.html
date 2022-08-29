@@ -1,0 +1,96 @@
+<html>
+<head>
+	
+	<title>LeetCode 11-20</title>
+	<meta name="keywords" content="fzb.me,冯宗宝,冯宗宝的blog" />
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+	   <link href="/css/main.css?v=3" rel="stylesheet" type="text/css" />
+    
+        
+<script src="/js/util.js"></script>
+
+        <script>
+            if(isMobile()) {
+                loadjscssfile('../css/mobile.css', 'css');
+            } else {
+                loadjscssfile('../css/desktop.css', 'css');
+            }
+        </script> 
+    
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom feed">
+
+    
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3"/>
+    
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+
+
+<h2 class="title">LeetCode 11-20</h2>
+<!--
+<div style="text-align:center;margin-top: -10px;">
+<div class="article-category">
+发表于2016年9月23日
+
+
+    <a class="article-category-link" href="/categories/%E9%A2%98%E8%AE%B0/">题记</a>
+
+
+
+ </div>
+-->
+</div>
+
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#LeetCode11-Container-With-Most-Water"><span class="toc-text">LeetCode11 Container With Most Water</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LeetCode12-Integer-to-Roman"><span class="toc-text">LeetCode12 Integer to Roman</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LeetCode19-Remove-Nth-Node-From-End-of-List"><span class="toc-text">LeetCode19 Remove Nth Node From End of List</span></a></li></ol>
+<h3 id="LeetCode11-Container-With-Most-Water"><a href="#LeetCode11-Container-With-Most-Water" class="headerlink" title="LeetCode11 Container With Most Water"></a>LeetCode11 Container With Most Water</h3><blockquote>
+<p>题意是给出$N$个整数$a_1,a_2…a_n$，代表在对应位置有一条$(i,0)$到$(i,a_i)$的边。问这里面两条边加x轴所围成的面积最大值。</p>
+</blockquote>
+<p>之后也有一道类似的题，左右贪心，每次将较小的边去掉，时间复杂度$O(n)$。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> </span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maxArea</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; height)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="type">int</span> sz=height.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">if</span>(sz==<span class="number">0</span>||sz==<span class="number">1</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> le=<span class="number">0</span>,ri=sz<span class="number">-1</span>;</span><br><span class="line">        <span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> weight=sz<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(le&lt;ri)</span><br><span class="line">        &#123;</span><br><span class="line">        	res=<span class="built_in">max</span>(res,<span class="built_in">min</span>(height[le],height[ri])*weight);</span><br><span class="line">        	<span class="type">int</span> h1=height[le];</span><br><span class="line">        	<span class="type">int</span> h2=height[ri];</span><br><span class="line">        	<span class="keyword">if</span>(h1&lt;h2)</span><br><span class="line">        	&#123;</span><br><span class="line">        		le++;</span><br><span class="line">        	&#125;</span><br><span class="line">        	<span class="keyword">else</span></span><br><span class="line">        	&#123;</span><br><span class="line">        		ri--;</span><br><span class="line">        	&#125;</span><br><span class="line">        	weight--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;t;</span><br></pre></td></tr></table></figure>
+
+<h3 id="LeetCode12-Integer-to-Roman"><a href="#LeetCode12-Integer-to-Roman" class="headerlink" title="LeetCode12 Integer to Roman"></a>LeetCode12 Integer to Roman</h3><blockquote>
+<p>题意是将整形数字转成罗马数字(字符串)。</p>
+</blockquote>
+<p>考虑每一位，0到3是一种，4是一种，5到8是一种，9是一种。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function">string <span class="title">intToRoman</span><span class="params">(<span class="type">int</span> num)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="type">int</span> n[<span class="number">4</span>] = &#123; <span class="number">1000</span>,<span class="number">100</span>,<span class="number">10</span>,<span class="number">1</span> &#125;;</span><br><span class="line">		<span class="type">char</span> r5[<span class="number">4</span>] = &#123; <span class="string">&#x27; &#x27;</span>,<span class="string">&#x27;D&#x27;</span>,<span class="string">&#x27;L&#x27;</span>,<span class="string">&#x27;V&#x27;</span> &#125;;</span><br><span class="line">		<span class="type">char</span> r1[<span class="number">4</span>] = &#123; <span class="string">&#x27;M&#x27;</span>,<span class="string">&#x27;C&#x27;</span>,<span class="string">&#x27;X&#x27;</span>,<span class="string">&#x27;I&#x27;</span> &#125;;</span><br><span class="line"></span><br><span class="line">		string res = <span class="string">&quot;&quot;</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="type">int</span> k = num / n[i];</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> (k == <span class="number">9</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				res = res + r1[i] + r1[i - <span class="number">1</span>];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (k == <span class="number">4</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				res = res + r1[i] + r5[i];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (k &gt;= <span class="number">5</span> &amp;&amp; k &lt;= <span class="number">8</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				res = res + r5[i];</span><br><span class="line">				<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; k - <span class="number">5</span>; j++)</span><br><span class="line">				&#123;</span><br><span class="line">					res = res + r1[i];</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; k; j++)</span><br><span class="line">				&#123;</span><br><span class="line">					res = res + r1[i];</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			num = num%n[i];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> res;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="LeetCode19-Remove-Nth-Node-From-End-of-List"><a href="#LeetCode19-Remove-Nth-Node-From-End-of-List" class="headerlink" title="LeetCode19 Remove Nth Node From End of List"></a>LeetCode19 Remove Nth Node From End of List</h3><blockquote>
+<p>移除链表结尾的第n个节点。</p>
+</blockquote>
+<p>一前一后距离为n-1，当后一个节点到了结尾的时候，那么前一个节点就是要删除的节点。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">removeNthFromEnd</span><span class="params">(ListNode* head, <span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">    	<span class="keyword">if</span>(head==<span class="literal">NULL</span>)</span><br><span class="line">    	&#123;</span><br><span class="line">    		<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    	&#125;</span><br><span class="line">    	ListNode *pre = <span class="literal">NULL</span>;</span><br><span class="line">    	ListNode *p = head;</span><br><span class="line">    	ListNode *q = head;</span><br><span class="line">    	ListNode *res = head;</span><br><span class="line">    	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n<span class="number">-1</span>;i++)</span><br><span class="line">    	&#123;</span><br><span class="line">    		q=q-&gt;next;</span><br><span class="line">    	&#125;</span><br><span class="line"></span><br><span class="line">    	<span class="keyword">while</span>(q-&gt;next)</span><br><span class="line">    	&#123;</span><br><span class="line">    		pre=p;</span><br><span class="line">    		p=p-&gt;next;</span><br><span class="line">    		q=q-&gt;next;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">if</span>(pre)</span><br><span class="line">    	&#123;</span><br><span class="line">    	     pre-&gt;next=p-&gt;next;   </span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">else</span></span><br><span class="line">    	&#123;</span><br><span class="line">    	     res=head-&gt;next;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">return</span> res;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<!--<a href="http://2997ms.github.io/2016/09/23/CP/Leetcode/LeetCode-11-20/#disqus_thread" class="article-comment-link">Comments</a>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = ''; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+-->
+<div style="display:none">
+<script src="http://s4.cnzz.com/stat.php?id=&web_id=" language="JavaScript"></script>script>
+</div>
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+<html>
+<head>
+	
+	<title>Codeforces 645 Div2</title>
+	<meta name="keywords" content="fzb.me,冯宗宝,冯宗宝的blog" />
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+	   <link href="/css/main.css?v=3" rel="stylesheet" type="text/css" />
+    
+        
+<script src="/js/util.js"></script>
+
+        <script>
+            if(isMobile()) {
+                loadjscssfile('../css/mobile.css', 'css');
+            } else {
+                loadjscssfile('../css/desktop.css', 'css');
+            }
+        </script> 
+    
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom feed">
+
+    
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3"/>
+    
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+
+
+<h2 class="title">Codeforces 645 Div2</h2>
+<!--
+<div style="text-align:center;margin-top: -10px;">
+<div class="article-category">
+发表于2020年5月30日
+
+
+    <a class="article-category-link" href="/categories/%E9%A2%98%E8%AE%B0/">题记</a>
+
+
+
+ </div>
+-->
+</div>
+
+
+<p>2020年还在做div2真是棒棒了呢。</p>
+<blockquote>
+<p>我就今年坚持打，我不信到不了的啊。</p>
+</blockquote>
+<span id="more"></span>
+
+<blockquote>
+<p>C. Celex Update</p>
+</blockquote>
+<p>C题题意是给出了gaz-giz的那种数字网格，给出起点和终点，每一种走法计算路径上的和，算从起点到终点有多少种和。</p>
+<p><img src="https://raw.githubusercontent.com/2997ms/My_Algorithm/master/source_pic/CF645/C1.png" alt="D_1"></p>
+<p>来，我在比赛中干了什么呢？算清楚了给出一个点具体的值。</p>
+<p>之后发现就是最大值到最小值的差值，然后我居然就开始考虑最小值怎么算，最大值怎么算。后来发现就算算清楚了也是要爆long long的，心态开始崩。。。</p>
+<p>这是结束后后面红旺发给我的。。。。。</p>
+<p><img src="https://raw.githubusercontent.com/2997ms/My_Algorithm/master/source_pic/CF645/C2.jpg" alt="D_1"></p>
+<p>我就不清楚我当时在想什么。后续x*y+1也是可以猜出来的，但当时我自己莫名地搞出了一个反例觉得不对，后来是自己反例算错了。。。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">SLLA</span>(xx1);</span><br><span class="line">    <span class="built_in">SLLA</span>(yy1);</span><br><span class="line">    <span class="built_in">SLLA</span>(xx2);</span><br><span class="line">    <span class="built_in">SLLA</span>(yy2);</span><br><span class="line"> </span><br><span class="line">    ll ans = (xx2 - xx1 ) *(yy2 - yy1) + <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结束之后发现D题简单啊，二分一下就结束了，唯一需要注意的是一个地方爆了long long，自己用double给莽过去了。</p>
+
+
+<!--<a href="http://2997ms.github.io/2020/05/30/CP/Codeforces/Codeforces-645-Div2/#disqus_thread" class="article-comment-link">Comments</a>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = ''; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+-->
+<div style="display:none">
+<script src="http://s4.cnzz.com/stat.php?id=&web_id=" language="JavaScript"></script>script>
+</div>
+
+
+
+
+
+
+</body>
+</html>

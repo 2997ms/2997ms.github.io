@@ -1,0 +1,88 @@
+<html>
+<head>
+	
+	<title>Codeforces 768E</title>
+	<meta name="keywords" content="fzb.me,冯宗宝,冯宗宝的blog" />
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+	   <link href="/css/main.css?v=3" rel="stylesheet" type="text/css" />
+    
+        
+<script src="/js/util.js"></script>
+
+        <script>
+            if(isMobile()) {
+                loadjscssfile('../css/mobile.css', 'css');
+            } else {
+                loadjscssfile('../css/desktop.css', 'css');
+            }
+        </script> 
+    
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom feed">
+
+    
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3"/>
+    
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+
+
+<h2 class="title">Codeforces 768E</h2>
+<!--
+<div style="text-align:center;margin-top: -10px;">
+<div class="article-category">
+发表于2020年5月16日
+
+
+
+
+ </div>
+-->
+</div>
+
+
+<p>智障计划第一弹，又来一个计划，都不知道有没有第二弹。</p>
+<span id="more"></span>
+
+<p><img src="https://raw.githubusercontent.com/2997ms/My_Algorithm/master/source_pic/zhizhang.png" alt="D_1"></p>
+<p>题意跟经典的nim博弈的区别就在于移动过的石堆不能再被移动了。</p>
+<p>一开始我的想法就是直接判断n的奇偶性就行了？</p>
+<p>发现题意读错了，是同一个数字不能在一个堆里取了。</p>
+<p>可以打表找一下sg函数的规律。在打表sg的时候暴力 + dp。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> vis[<span class="number">1005</span>];</span><br><span class="line"><span class="type">int</span> sg[<span class="number">22</span>][<span class="number">1</span>&lt;&lt;<span class="number">21</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">mex</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; ; i++) <span class="keyword">if</span>(!vis[i]) <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">pre</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(sg, <span class="number">0</span>, <span class="built_in">sizeof</span>(sg));</span><br><span class="line">    <span class="built_in">REPP</span>(i,<span class="number">1</span>,<span class="number">20</span>) &#123;</span><br><span class="line">        sg[i][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>; j &lt; (<span class="number">1</span>&lt;&lt;<span class="number">20</span>) ; j++) &#123;</span><br><span class="line">            <span class="built_in">memset</span>(vis, <span class="number">0</span>, <span class="built_in">sizeof</span>(vis));</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> k = <span class="number">0</span>; k &lt; i; k++) <span class="keyword">if</span> ((j &gt;&gt; k) &amp;<span class="number">1</span>)</span><br><span class="line">                    vis[sg[i - k - <span class="number">1</span>][j ^ (<span class="number">1</span> &lt;&lt; k)]] = <span class="number">1</span>;</span><br><span class="line">            sg[i][j] = <span class="built_in">mex</span>();</span><br><span class="line">            <span class="comment">// cout&lt;&lt;i&lt;&lt;&quot; &quot;&lt;&lt;k&lt;&lt;&quot; &quot;&lt;&lt;sg[i][k]&lt;&lt;endl;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">REPP</span>(i,<span class="number">0</span>,<span class="number">20</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d %d\n&quot;</span>, i, sg[i][(<span class="number">1</span> &lt;&lt; i) - <span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;   </span><br><span class="line">    <span class="comment">//pre();</span></span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="built_in">SA</span>(n);</span><br><span class="line">    <span class="type">int</span> cnt = <span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">REPP</span>(i,<span class="number">1</span>,n) &#123;</span><br><span class="line">        <span class="type">int</span> x;</span><br><span class="line">        <span class="built_in">SA</span>(x);</span><br><span class="line">        <span class="keyword">for</span>(cnt=<span class="number">1</span>;cnt*(cnt+<span class="number">1</span>)/<span class="number">2</span>&lt;=x;cnt++);</span><br><span class="line">        ans ^= (cnt<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(ans) &#123;</span><br><span class="line">        <span class="built_in">puts</span>(<span class="string">&quot;YES&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">puts</span>(<span class="string">&quot;NO&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<!--<a href="http://2997ms.github.io/2020/05/16/CP/Codeforces/Codeforces-768E/#disqus_thread" class="article-comment-link">Comments</a>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = ''; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+-->
+<div style="display:none">
+<script src="http://s4.cnzz.com/stat.php?id=&web_id=" language="JavaScript"></script>script>
+</div>
+
+
+
+
+
+
+</body>
+</html>

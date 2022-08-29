@@ -1,0 +1,87 @@
+<html>
+<head>
+	
+	<title>Codeforces 1343E</title>
+	<meta name="keywords" content="fzb.me,冯宗宝,冯宗宝的blog" />
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+	   <link href="/css/main.css?v=3" rel="stylesheet" type="text/css" />
+    
+        
+<script src="/js/util.js"></script>
+
+        <script>
+            if(isMobile()) {
+                loadjscssfile('../css/mobile.css', 'css');
+            } else {
+                loadjscssfile('../css/desktop.css', 'css');
+            }
+        </script> 
+    
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom feed">
+
+    
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3"/>
+    
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+
+
+<h2 class="title">Codeforces 1343E</h2>
+<!--
+<div style="text-align:center;margin-top: -10px;">
+<div class="article-category">
+发表于2020年5月16日
+
+
+
+
+ </div>
+-->
+</div>
+
+
+<p>一道题从读题到写出来一个半小时过去了。</p>
+<span id="more"></span>
+
+<p>题意是重新分配边的权值，使得a-&gt;b-&gt;c的权值最小。</p>
+<p>没有思路。</p>
+<p>每次都想着记录边，但是边在最段路中记录起来消耗太大了。考虑更换起点，得到三个dis的数组。这里的思路很多题都是这么干的了。</p>
+<p>然后枚举中间的点。这里确实没有想到。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">edge</span> &#123;</span><br><span class="line">  <span class="type">int</span> to, cost;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dijkstra</span><span class="params">(<span class="type">const</span> vector&lt;vector&lt;edge&gt;&gt; &amp;g, <span class="type">int</span> s)</span> </span>&#123;</span><br><span class="line">  <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">d</span><span class="params">(g.size() + <span class="number">5</span>, INF)</span></span>;</span><br><span class="line">  priority_queue&lt;pair&lt;ll,ll&gt;, vector&lt;pair&lt;ll,ll&gt;&gt;, greater&lt;pair&lt;ll,ll&gt;&gt;&gt; que;</span><br><span class="line">  d[s] = <span class="number">0</span>;</span><br><span class="line">  que.<span class="built_in">emplace</span>(<span class="number">0</span>, s);</span><br><span class="line">  <span class="keyword">while</span> (!que.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">    <span class="keyword">auto</span> p = que.<span class="built_in">top</span>();</span><br><span class="line">    que.<span class="built_in">pop</span>();</span><br><span class="line">    <span class="type">int</span> u = p.second;</span><br><span class="line">    <span class="keyword">if</span> (d[u] &lt; p.first) <span class="keyword">continue</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> &amp;e : g[u]) &#123;</span><br><span class="line">      <span class="type">int</span> v = e.to;</span><br><span class="line">      <span class="keyword">if</span> (d[v] &gt; d[u] + e.cost) &#123;</span><br><span class="line">        d[v] = d[u] + e.cost;</span><br><span class="line">        que.<span class="built_in">emplace</span>(d[v], v);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> d;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ll n,m,a,b,c;</span><br><span class="line">ll p[maxn];</span><br><span class="line">vector&lt;vector&lt;edge&gt;&gt; g;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">SLLA</span>(n);</span><br><span class="line">    <span class="built_in">SLLA</span>(m);</span><br><span class="line">    <span class="built_in">SLLA</span>(a);</span><br><span class="line">    <span class="built_in">SLLA</span>(b);</span><br><span class="line">    <span class="built_in">SLLA</span>(c);</span><br><span class="line">    g.<span class="built_in">resize</span>(n+<span class="number">5</span>);</span><br><span class="line">    <span class="built_in">REPP</span>(i,<span class="number">1</span>,n) &#123;</span><br><span class="line">        g[i].<span class="built_in">clear</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">REPP</span>(i,<span class="number">1</span>,m) &#123;</span><br><span class="line">        <span class="built_in">SLLA</span>(p[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">sort</span>(p+<span class="number">1</span>,p+m+<span class="number">1</span>);</span><br><span class="line">    <span class="built_in">REPP</span>(i,<span class="number">1</span>,m) &#123;</span><br><span class="line">        p[i] += p[i<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">REPP</span>(i,<span class="number">1</span>,m) &#123;</span><br><span class="line">        <span class="type">int</span> h,f;</span><br><span class="line">        <span class="built_in">SA</span>(h);</span><br><span class="line">        <span class="built_in">SA</span>(f);</span><br><span class="line">        g[h].<span class="built_in">push_back</span>(edge&#123;f, <span class="number">1</span>&#125;);</span><br><span class="line">        g[f].<span class="built_in">push_back</span>(edge&#123;h, <span class="number">1</span>&#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    std::vector&lt;<span class="type">int</span>&gt; dis1 = <span class="built_in">dijkstra</span>(g, a);</span><br><span class="line">    std::vector&lt;<span class="type">int</span>&gt; dis2 = <span class="built_in">dijkstra</span>(g, b);</span><br><span class="line">    std::vector&lt;<span class="type">int</span>&gt; dis3 = <span class="built_in">dijkstra</span>(g, c);</span><br><span class="line">    ll ans = LL_INF;</span><br><span class="line">    <span class="built_in">REPP</span>(i,<span class="number">1</span>,n) &#123;</span><br><span class="line">        <span class="keyword">if</span>(dis1[i] + dis2[i] + dis3[i] &gt; m) &#123;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        ans = <span class="built_in">min</span>(ans, p[dis1[i] + dis2[i] + dis3[i]] + p[dis2[i]]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<!--<a href="http://2997ms.github.io/2020/05/16/CP/Codeforces/Codeforces-1343E/#disqus_thread" class="article-comment-link">Comments</a>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = ''; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+-->
+<div style="display:none">
+<script src="http://s4.cnzz.com/stat.php?id=&web_id=" language="JavaScript"></script>script>
+</div>
+
+
+
+
+
+
+</body>
+</html>

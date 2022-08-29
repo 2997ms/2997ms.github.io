@@ -1,0 +1,109 @@
+<html>
+<head>
+	
+	<title>Technocup 2017 - Elimination Round 1</title>
+	<meta name="keywords" content="fzb.me,冯宗宝,冯宗宝的blog" />
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+	   <link href="/css/main.css?v=3" rel="stylesheet" type="text/css" />
+    
+        
+<script src="/js/util.js"></script>
+
+        <script>
+            if(isMobile()) {
+                loadjscssfile('../css/mobile.css', 'css');
+            } else {
+                loadjscssfile('../css/desktop.css', 'css');
+            }
+        </script> 
+    
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom feed">
+
+    
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3"/>
+    
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+
+
+<h2 class="title">Technocup 2017 - Elimination Round 1</h2>
+<!--
+<div style="text-align:center;margin-top: -10px;">
+<div class="article-category">
+发表于2016年10月19日
+
+
+    <a class="article-category-link" href="/categories/%E9%A2%98%E8%AE%B0/">题记</a>
+
+
+
+ </div>
+-->
+</div>
+
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-Transformation-from-A-to-B"><span class="toc-text">A  Transformation: from A to B</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-Bill-Total-Value"><span class="toc-text">B Bill Total Value</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-Guess-the-Array"><span class="toc-text">C Guess the Array</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#D-T-shirts-Distribution"><span class="toc-text">D T-shirts Distribution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#E-Games-on-a-CD"><span class="toc-text">E Games on a CD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#F-Polycarp%E2%80%99s-problems"><span class="toc-text">F Polycarp’s problems</span></a></li></ol>
+<p>最近去参加了复旦大学举办的Hackx_FDU，收获满满~ 看到了很多大神，然后也赞叹于一群人在短时间内可以写出如此美妙的代码。</p>
+<p>这个Technocup是我Hackx比赛的时候没有吃晚饭，偷着两个小时打的。。。然而效果非常不好。。。自己脑袋犯困，另外也挺着急的。。。B题挂在精度上了。。。C题也脑残了好久啊。。。才出掉。。。</p>
+<p><a target="_blank" rel="noopener" href="http://codeforces.com/contest/727">题目链接</a>与<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/Technocup%202017%20%E2%80%94%20Elimination%20Round%201">代码链接</a></p>
+<h3 id="A-Transformation-from-A-to-B"><a href="#A-Transformation-from-A-to-B" class="headerlink" title="A  Transformation: from A to B"></a>A  Transformation: from A to B</h3><blockquote>
+<p>一个数字可以乘$2$，也可以乘$10+1$，问从$A$变到$B$的方案。</p>
+</blockquote>
+<p>宽搜。</p>
+<h3 id="B-Bill-Total-Value"><a href="#B-Bill-Total-Value" class="headerlink" title="B Bill Total Value"></a>B Bill Total Value</h3><blockquote>
+<p>题意是给出一个字符串，里面是各个物品的价钱，如果小数点后面是两位的话，代表是小数。三位的话就是整数。问价钱总和。</p>
+</blockquote>
+<p>莫名其妙地卡精度。。。本地运行OK，提交上去一直WA。下把这种情况直接乘以100，换成整数运算。。。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> x[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>, x + <span class="number">1</span>);</span><br><span class="line">	ll res = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; x[i]; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (<span class="built_in">isalpha</span>(x[i]))<span class="keyword">continue</span>;</span><br><span class="line">		ll t = <span class="number">0</span>;</span><br><span class="line">		<span class="type">int</span> dot = <span class="number">-1</span>;</span><br><span class="line">		<span class="keyword">while</span> (x[i]&amp;&amp;!<span class="built_in">isalpha</span>(x[i]))</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (x[i] == <span class="string">&#x27;.&#x27;</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				dot = i;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				t = t * <span class="number">10</span> + x[i] - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			i++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (dot == <span class="number">-1</span> || i - dot == <span class="number">4</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			t *= <span class="number">100</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		res += t;</span><br><span class="line">		i--;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (res &lt; <span class="number">100</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;0.%02lld\n&quot;</span>, res);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	vector&lt;<span class="type">int</span>&gt;r;</span><br><span class="line">	<span class="keyword">while</span> (res)</span><br><span class="line">	&#123;</span><br><span class="line">		r.<span class="built_in">push_back</span>(res % <span class="number">10</span>);</span><br><span class="line">		res /= <span class="number">10</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">reverse</span>(r.<span class="built_in">begin</span>(), r.<span class="built_in">end</span>());</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; r.<span class="built_in">size</span>()<span class="number">-2</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, r[i]);</span><br><span class="line">		<span class="keyword">if</span> ((r.<span class="built_in">size</span>() - <span class="number">2</span> - (i+<span class="number">1</span>)) % <span class="number">3</span> == <span class="number">0</span> &amp;&amp; i != r.<span class="built_in">size</span>() - <span class="number">3</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;.&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (r[r.<span class="built_in">size</span>() - <span class="number">1</span>] == <span class="number">0</span> &amp;&amp; r[r.<span class="built_in">size</span>() - <span class="number">2</span>] == <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;.%d%d\n&quot;</span>, r[r.<span class="built_in">size</span>() - <span class="number">2</span>], r[r.<span class="built_in">size</span>() - <span class="number">1</span>]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="C-Guess-the-Array"><a href="#C-Guess-the-Array" class="headerlink" title="C Guess the Array"></a>C Guess the Array</h3><blockquote>
+<p>题意对长度为$N$的数组，可以询问$N$个两个元素之间的和。最后输出这个数组。</p>
+</blockquote>
+<p>又智障啊。。。思路一直是死的，询问1 2&#x2F;2 3&#x2F;3 4&#x2F;..&#x2F;n..1，但其实这样是可以最后推出来的，也就是这样是多解啊。。所以说直接求 12&#x2F; 2 3&#x2F; 3 1把前三个元素干出来之后，剩余元素也就出来了。。真的智障。。。WA5次，最后才搞出来。</p>
+<h3 id="D-T-shirts-Distribution"><a href="#D-T-shirts-Distribution" class="headerlink" title="D T-shirts Distribution"></a>D T-shirts Distribution</h3><blockquote>
+<p>每个人穿衣服可以有固定的大小，也可以在两种型号(两种型号必相邻)之间选择一个。现在给出6种衣服的数量，问衣服的分配情况。</p>
+</blockquote>
+<p>水题。。直接从最小的开始贪。。</p>
+<h3 id="E-Games-on-a-CD"><a href="#E-Games-on-a-CD" class="headerlink" title="E Games on a CD"></a>E Games on a CD</h3><blockquote>
+<p>每个名字的长度是相等的，现在给出$g$个字符串，从这$g$个字符串里面选出$n$个，顺时针的情况下可以组成给定字符即可。。</p>
+</blockquote>
+<p>AC自动机，因为长度等长，也不可能有覆盖的情况，所以直接跑一遍，看最终是否有重复+数量够不够。</p>
+<h3 id="F-Polycarp’s-problems"><a href="#F-Polycarp’s-problems" class="headerlink" title="F Polycarp’s problems"></a>F Polycarp’s problems</h3><blockquote>
+<p>给出一个长度为$n$的数组$a_i$，然后起始的值为$b_i$，要求在起始的值为$b_i$的情况下，遇到一个$a_i$就相加，但不能有小于等于0的情况，问最后要去掉多少个值。现在有m个询问，对于每一个$b_i$都要求一次最小去掉的数量。</p>
+</blockquote>
+<p>二分取$1$到$n$个所要具备的最小值，然后在结果里面再次二分。</p>
+
+
+<!--<a href="http://2997ms.github.io/2016/10/19/CP/Codeforces/Technocup-2017-Elimination-Round-1/#disqus_thread" class="article-comment-link">Comments</a>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = ''; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+-->
+<div style="display:none">
+<script src="http://s4.cnzz.com/stat.php?id=&web_id=" language="JavaScript"></script>script>
+</div>
+
+
+
+
+
+
+</body>
+</html>

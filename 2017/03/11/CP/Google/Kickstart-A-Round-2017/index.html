@@ -1,0 +1,157 @@
+<html>
+<head>
+	
+	<title>Kickstart A Round 2017</title>
+	<meta name="keywords" content="fzb.me,冯宗宝,冯宗宝的blog" />
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+	   <link href="/css/main.css?v=3" rel="stylesheet" type="text/css" />
+    
+        
+<script src="/js/util.js"></script>
+
+        <script>
+            if(isMobile()) {
+                loadjscssfile('../css/mobile.css', 'css');
+            } else {
+                loadjscssfile('../css/desktop.css', 'css');
+            }
+        </script> 
+    
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom feed">
+
+    
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3"/>
+    
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+
+
+<h2 class="title">Kickstart A Round 2017</h2>
+<!--
+<div style="text-align:center;margin-top: -10px;">
+<div class="article-category">
+发表于2017年3月11日
+
+
+    <a class="article-category-link" href="/categories/%E9%A2%98%E8%AE%B0/">题记</a>
+
+
+
+ </div>
+-->
+</div>
+
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-Square-Counting"><span class="toc-text">A.Square Counting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-Patterns-Overlap"><span class="toc-text">B.Patterns Overlap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-Space-Cubes"><span class="toc-text">C. Space Cubes</span></a></li></ol>
+<p>这一轮的kickstart，第一题推了好久，才把large搞出来啊，后来才知道知乎上有讨论的了。。。这样下去要跪啊。。。</p>
+<span id="more"></span>
+
+<h3 id="A-Square-Counting"><a href="#A-Square-Counting" class="headerlink" title="A.Square Counting"></a>A.Square Counting</h3><p>Problem</p>
+<p>Mr. Panda has recently fallen in love with a new game called Square Off, in which players compete to find as many different squares as possible on an evenly spaced rectangular grid of dots. To find a square, a player must identify four dots that form the vertices of a square. Each side of the square must have the same length, of course, but it does not matter what that length is, and the square does not necessarily need to be aligned with the axes of the grid. The player earns one point for every different square found in this way. Two squares are different if and only if their sets of four dots are different.</p>
+<p>Mr. Panda has just been given a grid with R rows and C columns of dots. How many different squares can he find in this grid? Since the number might be very large, please output the answer modulo 109 + 7 (1000000007).</p>
+<p>Input</p>
+<p>The first line of the input gives the number of test cases, T. T lines follow. Each line has two integers R and C: the number of dots in each row and column of the grid, respectively.<br>Output</p>
+<p>For each test case, output one line containing Case #x: y, where x is the test case number (starting from 1) and y is the number of different squares can be found in the grid.<br>Limits</p>
+<p>1 ≤ T ≤ 100.<br>Small dataset</p>
+<p>2 ≤ R ≤ 1000.<br>2 ≤ C ≤ 1000.<br>Large dataset</p>
+<p>2 ≤ R ≤ 10^9.<br>2 ≤ C ≤ 10^9.</p>
+<p>Sample<br>Input<br>4<br>2 4<br>3 4<br>4 4<br>1000 500</p>
+<p>Output<br>Case #1: 3<br>Case #2: 10<br>Case #3: 20<br>Case #4: 624937395</p>
+<blockquote>
+<p>题意是n*m的点阵中有多少个正方形</p>
+</blockquote>
+<p>算的时候各种推，很麻烦。。。包括<br>$$<br>1^2+2^2+3^2+….+n^2 &#x3D; \frac{n(n+1)(2n+1)}{6}<br>$$</p>
+<p>$$<br>1^3+2^3+3^3….+n^3&#x3D;\frac{[n(n+1)]^2}{2}<br>$$</p>
+<p>都用上了。。。</p>
+<p>推一下：</p>
+<p>$n*n$的点阵所含有的正方形个数(包括正的和斜的)为$n-1$个</p>
+<p>$n*m$中含有$k*k$的个数为$(n-k+1)(m-k+1)$个</p>
+<p>所以能够得到<br>$$<br>ans&#x3D;\sum_{i&#x3D;2}^{min(n,m)-1}(n-i+1)(m-i+1)(i-1) &#x3D; \sum_{i-1&#x3D;1}^{min(n,m)-1}(n-(i-1))(m-(i-1))(i-1)<br>$$</p>
+<p>$$<br>ans&#x3D;\sum_{i&#x3D;1}^{min(n,m)}(n-i)(m-i)i<br>$$</p>
+<p>这样还不够。。。展开来</p>
+<p>令$r&#x3D;min(n,m)$,有<br>$$<br>ans&#x3D;\sum_{i&#x3D;1}^{r}i^3-(n+m)\sum_{i&#x3D;1}^{r}i^2+nm\sum_{i&#x3D;1}^{r}i<br>$$<br>然后通过上面的求和公式展开，得到结果。。。这里直接看代码吧。。。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ll n,m;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">	<span class="keyword">if</span>(n&gt;m)<span class="built_in">swap</span>(n,m);</span><br><span class="line">	n--,m--;</span><br><span class="line">	ll res1 = m*n%mod*(n+<span class="number">2</span>)%mod*(n+<span class="number">1</span>)%mod*<span class="built_in">po</span>(<span class="number">2</span>,mod<span class="number">-2</span>,mod)%mod;</span><br><span class="line">	ll res2 = (m+n)%mod*( (n+<span class="number">2</span>)*(n+<span class="number">1</span>)%mod*n%mod*<span class="built_in">po</span>(<span class="number">3</span>,mod<span class="number">-2</span>,mod)%mod)%mod;</span><br><span class="line">	ll res3 = n*(n+<span class="number">1</span>)%mod*(<span class="number">2</span>*n+<span class="number">1</span>)%mod *<span class="built_in">po</span>(<span class="number">6</span>,mod<span class="number">-2</span>,mod)%mod + n*n%mod*(n+<span class="number">1</span>)%mod*(n+<span class="number">1</span>)%mod*<span class="built_in">po</span>(<span class="number">4</span>,mod<span class="number">-2</span>,mod)%mod;</span><br><span class="line">	ll res=((res1-res2+res3)%mod+mod)%mod;</span><br><span class="line">	cout&lt;&lt;res&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="B-Patterns-Overlap"><a href="#B-Patterns-Overlap" class="headerlink" title="B.Patterns Overlap"></a>B.Patterns Overlap</h3><p>Problem</p>
+<p>Alice likes reading and buys a lot of books. She stores her books in two boxes; each box is labeled with a pattern that matches the titles of all of the books stored in that box. A pattern consists of only uppercase&#x2F;lowercase English alphabet letters and stars (*). A star can match between zero and four letters. For example, books with the titles GoneGirl and GoneTomorrow can be put in a box with the pattern Gone**, but books with the titles TheGoneGirl, and GoneWithTheWind cannot.</p>
+<p>Alice is wondering whether there is any book that could be stored in either of the boxes. That is, she wonders if there is a title that matches both boxes’ patterns.</p>
+<p>Input</p>
+<p>The first line of the input gives the number of test cases, T. T test cases follow. Each consists of two lines; each line has one string in which each character is either an uppercase&#x2F;lowercase English letter or *.</p>
+<p>Output</p>
+<p>For each test case, output one line containing Case #x: y, where x is the test case number (starting from 1) and y is TRUE if there is a string that matches both patterns, or FALSE if not.</p>
+<p>Limits</p>
+<p>1 ≤ T ≤ 50.<br>Small dataset</p>
+<p>1 ≤ the length of each pattern ≤ 200.<br>Each pattern contains at most 5 stars.<br>Large dataset</p>
+<p>1 ≤ the length of each pattern ≤ 2000.<br>Sample</p>
+<p>Input<br>3<br>****<br>It<br>Shakes*e<br>S*speare<br>Shakes*e<br>*peare</p>
+<p>Output<br>Case #1: TRUE<br>Case #2: TRUE<br>Case #3: FALSE</p>
+<blockquote>
+<p>题意是给出两个字符串，其中*可以匹配0到4个字符，问有两种模式，有没有一个字符串满足这两种模式的。</p>
+</blockquote>
+<p>很明显的dp了，但是期间一直犹豫碰到*的时候要转移到下4个非*的字符状态，就很麻烦，结束了才知道可以直接把*替换成四个任意字符的。</p>
+<p>调试了好久。。。。。。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> dp[maxn][maxn];</span><br><span class="line"><span class="function">string <span class="title">change</span><span class="params">(string x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> len=x.<span class="built_in">length</span>();</span><br><span class="line">	string res;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;len;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(x[i]==<span class="string">&#x27;*&#x27;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">repp</span>(k,<span class="number">1</span>,<span class="number">4</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				res.<span class="built_in">push_back</span>(<span class="number">0</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			res.<span class="built_in">push_back</span>(x[i]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	string s,t;</span><br><span class="line">	cin&gt;&gt;s&gt;&gt;t;</span><br><span class="line">	s=<span class="built_in">change</span>(s);</span><br><span class="line">	t=<span class="built_in">change</span>(t);</span><br><span class="line">	<span class="built_in">memset</span>(dp,<span class="number">0</span>,<span class="built_in">sizeof</span>(dp));</span><br><span class="line">	dp[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;=s.<span class="built_in">length</span>();i++)<span class="comment">//注意这里的等号！！！！！！</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;=t.<span class="built_in">length</span>();j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(!dp[i][j])<span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">if</span>(s[i]==t[j]||s[i]==<span class="number">0</span>||t[j]==<span class="number">0</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				dp[i+<span class="number">1</span>][j+<span class="number">1</span>]|=dp[i][j];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(s[i]==<span class="number">0</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				dp[i+<span class="number">1</span>][j]|=dp[i][j];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(t[j]==<span class="number">0</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				dp[i][j+<span class="number">1</span>]|=dp[i][j];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	cout&lt;&lt;(dp[s.<span class="built_in">length</span>()][t.<span class="built_in">length</span>()]?<span class="string">&quot;TRUE&quot;</span>:<span class="string">&quot;FALSE&quot;</span>)&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="C-Space-Cubes"><a href="#C-Space-Cubes" class="headerlink" title="C. Space Cubes"></a>C. Space Cubes</h3><p>Problem</p>
+<p>“Look at the stars, look how they shine for you.” - Coldplay, “Yellow”</p>
+<p>In a galaxy far, far away, there are many stars. Each one is a sphere with a certain position (in three-dimensional space) and radius. It is possible for stars to overlap each other.</p>
+<p>The stars are so incredibly beautiful to you that you want to capture them forever! You would like to build two cubes of the same integer edge length, and place them in space such that for each star, there is at least one cube that completely contains it. (It’s not enough for a star to be completely contained by the union of the two cubes.) A star is completely contained by a cube if no point on the star is outside the cube; a point exactly on a cube face is still considered to be inside the cube.</p>
+<p>The cubes can be placed anywhere in space, but they must be placed with their edges parallel to the coordinate axes. It is acceptable for the cubes to overlap stars or each other.</p>
+<p>What is the minimum integer edge length that allows you to achieve this goal?</p>
+<p>Input</p>
+<p>The input starts with one line containing exactly one integer T, which is the number of test cases. T test cases follow.</p>
+<p>Each test case begins with a line containing an integer, N, representing the number of stars.</p>
+<p>This is followed by N lines. On the ith line, there are 4 space-separated integers, Xi, Yi, Zi and Ri, indicating the (X, Y, Z) coordinates of the center of the ith star, and the radius of the ith star.</p>
+<p>Output</p>
+<p>For each test case, output one line containing Case #x: y, where x is the test case number (starting from 1) and y is the minimum cube edge length that solves the problem, as described above.</p>
+<p>Limits</p>
+<p>1 ≤ T ≤ 100.<br>-108 ≤ Xi ≤ 108, for all i.<br>-108 ≤ Yi ≤ 108, for all i.<br>-108 ≤ Zi ≤ 108, for all i.<br>1 ≤ Ri ≤ 108, for all i.<br>Small dataset</p>
+<p>1 ≤ N ≤ 16.<br>Large dataset</p>
+<p>1 ≤ N ≤ 2000.</p>
+<p>Sample</p>
+<p>Input<br>3<br>3<br>1 1 1 1<br>2 2 2 1<br>4 4 4 1<br>3<br>1 1 1 2<br>2 3 4 1<br>5 6 7 1<br>3<br>1 1 1 1<br>1 1 1 1<br>9 9 9 1</p>
+<p>Output </p>
+<p>Case #1: 3<br>Case #2: 5<br>Case #3: 2<br>In the first test case, one solution is to place two cubes with an edge length of 3 such that their corners with minimum (x, y, z) coordinates are at (0, 0, 0) and (3, 3, 3).<br>In the second test case, one solution is to place two cubes with an edge length of 5 such that their corners with minimum (x, y, z) coordinates are at (-1, -1, -1) and (1, 2, 3).</p>
+<blockquote>
+<p>题意是在空间中给出了一些球体(坐标、半径)，现在你有两个正方体，要求把每一个球体包括进去，即每一个球体要么在A正方体中，要么在B正方体中，问最小的正方体边长。</p>
+</blockquote>
+<p>如果是二维平面，那么我求出边界$x、y$之后(即$X_{max} X_{min} Y_{max} Y_{min}$)，那么直接二分正方形长度，肯定是左上、右下或者左下、右上这两种放置正方形的方式。三维的类似，8种方式放置。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> x[maxn],y[maxn],z[maxn],r[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">inside</span><span class="params">(ll xd1,ll yd1,ll zd1,ll xu1,ll yu1,ll zu1,</span></span></span><br><span class="line"><span class="params"><span class="function">			ll xd2,ll yd2,ll zd2,ll xu2,ll yu2,ll zu2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">repp</span>(i,<span class="number">1</span>,n)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> ans=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span>(x[i]-r[i]&lt;xd1 || x[i]+r[i]&gt;xu1</span><br><span class="line">			||y[i]-r[i]&lt;yd1 || y[i]+r[i]&gt;yu1</span><br><span class="line">			||z[i]-r[i]&lt;zd1 || z[i]+r[i]&gt;zu1)</span><br><span class="line">		&#123;</span><br><span class="line">			ans++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(x[i]-r[i]&lt;xd2 || x[i]+r[i]&gt;xu2</span><br><span class="line">			||y[i]-r[i]&lt;yd2 || y[i]+r[i]&gt;yu2</span><br><span class="line">			||z[i]-r[i]&lt;zd2 || z[i]+r[i]&gt;zu2)</span><br><span class="line">		&#123;</span><br><span class="line">			ans++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(ans==<span class="number">2</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">check</span><span class="params">(ll len)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ll xmin=INF,xmax=-INF;</span><br><span class="line">	ll ymin=INF,ymax=-INF;</span><br><span class="line">	ll zmin=INF,zmax=-INF;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">repp</span>(i,<span class="number">1</span>,n)</span><br><span class="line">	&#123;</span><br><span class="line">		xmin=<span class="built_in">min</span>(xmin,<span class="number">1LL</span>*x[i]-r[i]);</span><br><span class="line">		xmax=<span class="built_in">max</span>(xmax,<span class="number">1LL</span>*x[i]+r[i]);</span><br><span class="line"></span><br><span class="line">		ymin=<span class="built_in">min</span>(ymin,<span class="number">1LL</span>*y[i]-r[i]);</span><br><span class="line">		ymax=<span class="built_in">max</span>(ymax,<span class="number">1LL</span>*y[i]+r[i]);</span><br><span class="line"></span><br><span class="line">		zmin=<span class="built_in">min</span>(zmin,<span class="number">1LL</span>*z[i]-r[i]);</span><br><span class="line">		zmax=<span class="built_in">max</span>(zmax,<span class="number">1LL</span>*z[i]+r[i]);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="type">int</span> xd[<span class="number">4</span>] = &#123;xmin,xmin+len,xmax-len,xmax&#125;; </span><br><span class="line">	<span class="type">int</span> yd[<span class="number">4</span>] = &#123;ymin,ymin+len,ymax-len,ymax&#125;; </span><br><span class="line">	<span class="type">int</span> zd[<span class="number">4</span>] = &#123;zmin,zmin+len,zmax-len,zmax&#125;; </span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> x1=<span class="number">0</span>;x1&lt;<span class="number">4</span>;x1+=<span class="number">2</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> y1=<span class="number">0</span>;y1&lt;<span class="number">4</span>;y1+=<span class="number">2</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> z1=<span class="number">0</span>;z1&lt;<span class="number">4</span>;z1+=<span class="number">2</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="type">int</span> x2=<span class="number">0</span>;x2&lt;<span class="number">4</span>;x2+=<span class="number">2</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">for</span>(<span class="type">int</span> y2=<span class="number">0</span>;y2&lt;<span class="number">4</span>;y2+=<span class="number">2</span>)</span><br><span class="line">					&#123;</span><br><span class="line">						<span class="keyword">for</span>(<span class="type">int</span> z2=<span class="number">0</span>;z2&lt;<span class="number">4</span>;z2+=<span class="number">2</span>)</span><br><span class="line">						&#123;</span><br><span class="line">							<span class="keyword">if</span>(<span class="built_in">inside</span>(xd[x1],yd[y1],zd[z1],xd[x1+<span class="number">1</span>],yd[y1+<span class="number">1</span>],zd[z1+<span class="number">1</span>],</span><br><span class="line">									  xd[x2],yd[y2],zd[z2],xd[x2+<span class="number">1</span>],yd[y2+<span class="number">1</span>],zd[z2+<span class="number">1</span>]))</span><br><span class="line">							&#123;</span><br><span class="line">								<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">							&#125;</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">sa</span>(n);</span><br><span class="line">	<span class="built_in">repp</span>(i,<span class="number">1</span>,n)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">sa</span>(x[i]),<span class="built_in">sa</span>(y[i]),<span class="built_in">sa</span>(z[i]),<span class="built_in">sa</span>(r[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	ll le=<span class="number">0</span>,ri=INF;</span><br><span class="line">	<span class="keyword">while</span>(le&lt;ri)</span><br><span class="line">	&#123;</span><br><span class="line">		ll mid = (ri+le)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">check</span>(mid))</span><br><span class="line">		&#123;</span><br><span class="line">			ri=mid;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			le=mid+<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>,le);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<!--<a href="http://2997ms.github.io/2017/03/11/CP/Google/Kickstart-A-Round-2017/#disqus_thread" class="article-comment-link">Comments</a>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = ''; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+-->
+<div style="display:none">
+<script src="http://s4.cnzz.com/stat.php?id=&web_id=" language="JavaScript"></script>script>
+</div>
+
+
+
+
+
+
+</body>
+</html>

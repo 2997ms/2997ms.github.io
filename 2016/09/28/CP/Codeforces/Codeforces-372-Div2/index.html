@@ -1,0 +1,102 @@
+<html>
+<head>
+	
+	<title>Codeforces 372 Div2</title>
+	<meta name="keywords" content="fzb.me,冯宗宝,冯宗宝的blog" />
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+	   <link href="/css/main.css?v=3" rel="stylesheet" type="text/css" />
+    
+        
+<script src="/js/util.js"></script>
+
+        <script>
+            if(isMobile()) {
+                loadjscssfile('../css/mobile.css', 'css');
+            } else {
+                loadjscssfile('../css/desktop.css', 'css');
+            }
+        </script> 
+    
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom feed">
+
+    
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3"/>
+    
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+
+
+<h2 class="title">Codeforces 372 Div2</h2>
+<!--
+<div style="text-align:center;margin-top: -10px;">
+<div class="article-category">
+发表于2016年9月28日
+
+
+    <a class="article-category-link" href="/categories/%E9%A2%98%E8%AE%B0/">题记</a>
+
+
+
+ </div>
+-->
+</div>
+
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-Crazy-Computer"><span class="toc-text">A. Crazy Computer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-Complete-the-Word"><span class="toc-text">B. Complete the Word</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-Plus-and-Square-Root"><span class="toc-text">C. Plus and Square Root</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#D-Complete-The-Graph"><span class="toc-text">D. Complete The Graph</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#E-Digit-Tree"><span class="toc-text">E. Digit Tree</span></a></li></ol>
+<p><a target="_blank" rel="noopener" href="http://codeforces.com/contest/716">题目链接</a>与<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/372_Div2">代码链接</a></p>
+<p>这一次的D题二分收获很大，E题的树分治第一次做。</p>
+<h3 id="A-Crazy-Computer"><a href="#A-Crazy-Computer" class="headerlink" title="A. Crazy Computer"></a>A. Crazy Computer</h3><blockquote>
+<p>题意是给出一个序列，前后差值大于$C$时，结果清空，否则+1，问最终结果。</p>
+</blockquote>
+<h3 id="B-Complete-the-Word"><a href="#B-Complete-the-Word" class="headerlink" title="B. Complete the Word"></a>B. Complete the Word</h3><blockquote>
+<p>给出一个字符串，找出含有26个不重复字母的子串，其中?可以替换成任意字符。</p>
+</blockquote>
+<h3 id="C-Plus-and-Square-Root"><a href="#C-Plus-and-Square-Root" class="headerlink" title="C. Plus and Square Root"></a>C. Plus and Square Root</h3><blockquote>
+<p>题意是一个游戏，当前数字是$x$，你可以在$x$的基础上添加任意倍数的$x$，使得在第$k$等上，你要变成的是一个完全平方数，并且它开根号之后，可以被$k+1$整除。</p>
+</blockquote>
+<p>每一轮构造$k*k*(k+1)*(k+1)$，这样开过根号之后变成$k*(k+1)$可以被$k$整除，那么到下一轮，因为有$k+1$这个因子，就可以继续构造$(k+1)*(k+1)*(k+2)*(k+2)$。</p>
+<h3 id="D-Complete-The-Graph"><a href="#D-Complete-The-Graph" class="headerlink" title="D. Complete The Graph"></a>D. Complete The Graph</h3><blockquote>
+<p>题意是给定一个图，权值为0的边可以任意赋一个大于0的值，要求最终$s$到$t$的最短距离是一个固定长度$L$。</p>
+</blockquote>
+<p>看到这个题最终也可以二分搞，真的是跪服。</p>
+<p>二分所有权值为0的那些边的总和，首先如果都为0，那么最短路还大于$L$的GG。都为最大值，最短路还小于$L$的GG。剩下的会发现相当于二分在某一条边上的长度了，dijkstra求最短路。</p>
+<h3 id="E-Digit-Tree"><a href="#E-Digit-Tree" class="headerlink" title="E. Digit Tree"></a>E. Digit Tree</h3><blockquote>
+<p>题意是给定一棵树，每一条边上有一个0到9的数，然后给定一个$M$，满足$gcd(M,10)&#x3D;1$。现在树上每两点通过边可以得到一个数值$\sum_{i&#x3D;1}^{k-1}d_{i}*10^{k-1-i}$，问树上任意两点能够被M整除的有多少对。</p>
+</blockquote>
+<p>树分治，首先找重心，然后考虑所有经过重心的有多少对。</p>
+<p>假设通过深搜u点的值为123，即在该重心为根的情况下，深度为3。另一个点v的值为45，深度为2。那么能够知道u和v形成的点对的值是12354和45321。那么假设$A$代表从根节点正着计算得到的值，像上面得到的123，45，$B$代表从根节点每一个节点深搜反着得到的值，像321，54。那么被M整除的条件为，<br>$$<br>A_u\times 10^{d_{v}}+B_v\equiv 0\ mod\ m<br>$$<br>推过来就有<br>$$<br>A_u\equiv -B_v \times \frac{1}{10^{d_v}}\ mod\ m<br>$$<br>那这样在深搜的时候就知道记录什么了，然后以重心为根，前后深搜两遍，就记录了经过该点的点对数量，之后再接着找重心，分治解。</p>
+
+
+<!--<a href="http://2997ms.github.io/2016/09/28/CP/Codeforces/Codeforces-372-Div2/#disqus_thread" class="article-comment-link">Comments</a>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = ''; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+-->
+<div style="display:none">
+<script src="http://s4.cnzz.com/stat.php?id=&web_id=" language="JavaScript"></script>script>
+</div>
+
+
+
+
+
+
+</body>
+</html>

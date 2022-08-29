@@ -1,0 +1,92 @@
+<html>
+<head>
+	
+	<title>CodeChef August Lunchtime 2016</title>
+	<meta name="keywords" content="fzb.me,冯宗宝,冯宗宝的blog" />
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+	   <link href="/css/main.css?v=3" rel="stylesheet" type="text/css" />
+    
+        
+<script src="/js/util.js"></script>
+
+        <script>
+            if(isMobile()) {
+                loadjscssfile('../css/mobile.css', 'css');
+            } else {
+                loadjscssfile('../css/desktop.css', 'css');
+            }
+        </script> 
+    
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom feed">
+
+    
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3"/>
+    
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+
+
+<h2 class="title">CodeChef August Lunchtime 2016</h2>
+<!--
+<div style="text-align:center;margin-top: -10px;">
+<div class="article-category">
+发表于2016年9月3日
+
+
+    <a class="article-category-link" href="/categories/%E9%A2%98%E8%AE%B0/">题记</a>
+
+
+
+ </div>
+-->
+</div>
+
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#B%E9%A2%98Lock-Free-Stack"><span class="toc-text">B题Lock-Free Stack</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C%E9%A2%98-Short-in-Average"><span class="toc-text">C题 Short in Average</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#D%E9%A2%98-Product-of-Diameters"><span class="toc-text">D题 Product of Diameters</span></a></li></ol>
+<p>做了Codechef上面的<a target="_blank" rel="noopener" href="https://www.codechef.com/LTIME39">August Lunchtime 2016</a>，上面的题都有中文题面，还有解答，还有代码。觉得这个网站也不错呀。。。</p>
+<p>然后这次做完发现是三道easy，一道medium。一想也没用什么数据结构，好像是差不多哈，但是第四个树上直径这个和51nod上面树上最远点对是一样的想法，做得时候自己感觉还是挺难的。第三题数组开小了，然而一直返回WA，找了很久。第二个有相同的数字也WA了一个晚上。这样想来觉得也不那么简单了。</p>
+<p>代码在<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Codechef/August-Lunchtime-2016">这里</a>。</p>
+<p>A题Studying Alphabet不用写了。。。</p>
+<h3 id="B题Lock-Free-Stack"><a href="#B题Lock-Free-Stack" class="headerlink" title="B题Lock-Free Stack"></a>B题Lock-Free Stack</h3><hr>
+<p>因为有P &#x3D; (A1 + 1) × (A2 + 1) × … × (AN + 1)，然后P&lt;&#x3D;10^6，所以最多20个进程，那就对每个进程的输出都要符合压栈顺序。(一开始自己一位一位找，发现有相同的数字，所以WA了一晚上，后来还是对每个进程都满足顺序就可以了)。</p>
+<h3 id="C题-Short-in-Average"><a href="#C题-Short-in-Average" class="headerlink" title="C题 Short in Average"></a>C题 Short in Average</h3><hr>
+<p>这个题自己搞过原题，感触就是平均值问题很容易搞成二分，然后对每一个值减去二分的值，然后去判断。<a target="_blank" rel="noopener" href="http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1711">51nod 1711平均数</a>也是这样，二分这个平均数x，然后每个数减去x，那么这样的话就是算区间和&lt;0的个数与k去相比，区间和[le,ri]小于0，相当于前缀和sum[ri]-sum[le-1]&lt;0，sum[ri]&lt;sum[le-1]，这个不就是逆序对的数目嘛，发现离散化+树状数组就可以做了。</p>
+<p>这个题的思路也是这样，每个边减去二分值x，然后直接判环就好了。</p>
+<h3 id="D题-Product-of-Diameters"><a href="#D题-Product-of-Diameters" class="headerlink" title="D题 Product of Diameters"></a>D题 Product of Diameters</h3><hr>
+<p>这个题目赞在要逆向考虑，往里面加边，然后输出结果。那么往里面加边，就是除以每颗树直径的直径的乘积，这个可以维护，然后求出这两棵树内部的直径，这个维护相当于需要维护一个集合里面的最远距离，想了一下和<a target="_blank" rel="noopener" href="http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1766">51nod 1766树上的最远点对</a>本质上是一样的题目，也是维护一个集合里面距离最远的两个点，然后两个集合的合并，只可能在这四个点里面出，倍增求lca，求距离。</p>
+<p>这个题思想还是挺简单的，要想清楚过程，自己写起来一些细节写得还是不够好。</p>
+
+
+<!--<a href="http://2997ms.github.io/2016/09/03/CP/CodeChef/CodeChef-August-Lunchtime-2016/#disqus_thread" class="article-comment-link">Comments</a>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = ''; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+-->
+<div style="display:none">
+<script src="http://s4.cnzz.com/stat.php?id=&web_id=" language="JavaScript"></script>script>
+</div>
+
+
+
+
+
+
+</body>
+</html>

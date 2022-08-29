@@ -1,0 +1,99 @@
+<html>
+<head>
+	
+	<title>Google APAC Test 2017 Round C</title>
+	<meta name="keywords" content="fzb.me,冯宗宝,冯宗宝的blog" />
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+	   <link href="/css/main.css?v=3" rel="stylesheet" type="text/css" />
+    
+        
+<script src="/js/util.js"></script>
+
+        <script>
+            if(isMobile()) {
+                loadjscssfile('../css/mobile.css', 'css');
+            } else {
+                loadjscssfile('../css/desktop.css', 'css');
+            }
+        </script> 
+    
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom feed">
+
+    
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3"/>
+    
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+
+
+<h2 class="title">Google APAC Test 2017 Round C</h2>
+<!--
+<div style="text-align:center;margin-top: -10px;">
+<div class="article-category">
+发表于2016年9月19日
+
+
+    <a class="article-category-link" href="/categories/%E9%A2%98%E8%AE%B0/">题记</a>
+
+
+
+ </div>
+-->
+</div>
+
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Problem-A-Monster-Path"><span class="toc-text">Problem A. Monster Path</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Problem-B-Safe-Squares"><span class="toc-text">Problem B. Safe Squares</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Problem-C-Evaluation"><span class="toc-text">Problem C. Evaluation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Problem-D-Soldiers"><span class="toc-text">Problem D. Soldiers</span></a></li></ol>
+<p><a target="_blank" rel="noopener" href="https://code.google.com/codejam/contest/6274486/dashboard#s=p0">题目链接</a>(需要翻墙)与<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Google/APAC%20Test%202017%20Round%20C">代码链接</a></p>
+<p>早就应该做一下笔试的原题了，也好体会一下题目的难度与区分度，结果一直拖延。。。</p>
+<p>前两场也都做了，成绩和这场一样不理想，做出三道，第四道的时候时间还剩一个多小时，正常来讲是应该要想出来的，但是当时特别特别困，还饿，加上本人智商有限，还剩半个小时的时候上床睡觉去了。。。</p>
+<hr>
+<h3 id="Problem-A-Monster-Path"><a href="#Problem-A-Monster-Path" class="headerlink" title="Problem A. Monster Path"></a>Problem A. Monster Path</h3><p>题意是给出R*C的格子，然后给你一个起点，走S步。每个点如果是’A’的话有P概率爆出怪兽，不是的话有Q概率爆出怪兽。一个点最多爆出一个怪兽。</p>
+<p>求你走S步之后，最大的怪兽数量期望。</p>
+<p>深搜，记录每一个点访问的次数x，每次加上该点爆出怪兽的期望，(1-P)^x*P或者(1-Q)^x*Q。最后记录最大值。</p>
+<hr>
+<h3 id="Problem-B-Safe-Squares"><a href="#Problem-B-Safe-Squares" class="headerlink" title="Problem B. Safe Squares"></a>Problem B. Safe Squares</h3><p>题意是求R*C矩形内，全为0的正方形数量之和。</p>
+<p>和<a href="http://2997ms.github.io/2016/09/19/Codeforces-371/">上一篇E题一样</a>，DP每一个点作为正方形右下角的最大边长，计算结果的时候加一起。</p>
+<hr>
+<h3 id="Problem-C-Evaluation"><a href="#Problem-C-Evaluation" class="headerlink" title="Problem C. Evaluation"></a>Problem C. Evaluation</h3><p>题意是给出变量之间的关系，就像C++语言看一个变量是否被定义。如果是没有参数变量的函数的返回值，那么该变量就是确定的，否则就依赖于其参数是否确定。函数执行的顺序是打乱的。</p>
+<p>其实就是拓扑排序嘛，O(n^2)搞一下，没有定义的变量为-1，找到这样的直接out。否则的话就看能不能有确定的拓扑排序。</p>
+<hr>
+<h3 id="Problem-D-Soldiers"><a href="#Problem-D-Soldiers" class="headerlink" title="Problem D. Soldiers"></a>Problem D. Soldiers</h3><p>题意是Alice和Bob做游戏，现在有n个士兵，每一个士兵有一个攻击力和一个防御力，要求每一个人选的士兵要么攻击力大于当前被选的所有士兵的攻击力，要么防御力大于当前被选的所有士兵的防御力，选择不到时游戏停止。现在给出n个士兵的攻击力和防御力，Alice先选，要求的是最终Alice选择的士兵要比Bob多。问两者都是最优选择的情况下，是否可行。</p>
+<p>给一个<a target="_blank" rel="noopener" href="http://codeforces.com/blog/entry/47181#comment-315896">链接</a>，说的还是挺明白的，将所有士兵按照攻击力排序，按照防御力排序，如果存在一个士兵特厉害，两个属性都冠绝群雄，那么Alice胜利，因为Bob没得选了。如果不存在，那么Alice一定不会去选攻击力最大的那个或者防御力最大的那个，因为万一选了这两个中的一个，那么Bob选择另一个，数量上是打平的，Alice赢不了。所以这样的数据就可以从可选的集合里面删去了，然后这样不断求解。</p>
+<blockquote>
+<p>这个题也让我学习到了一个新的函数。。。remove_if(a.begin(),a.end(),cmp) cmp里面放入if判别条件，删除容器内符合条件的元素，不符合条件的元素依次往前走，返回结束位置。</p>
+</blockquote>
+
+
+<!--<a href="http://2997ms.github.io/2016/09/19/CP/Google/Google-APAC-Test-2017-Round-C/#disqus_thread" class="article-comment-link">Comments</a>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = ''; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+-->
+<div style="display:none">
+<script src="http://s4.cnzz.com/stat.php?id=&web_id=" language="JavaScript"></script>script>
+</div>
+
+
+
+
+
+
+</body>
+</html>

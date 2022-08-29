@@ -1,0 +1,109 @@
+<html>
+<head>
+	
+	<title>ddia-第九章-一致性与共识</title>
+	<meta name="keywords" content="fzb.me,冯宗宝,冯宗宝的blog" />
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+	   <link href="/css/main.css?v=3" rel="stylesheet" type="text/css" />
+    
+        
+<script src="/js/util.js"></script>
+
+        <script>
+            if(isMobile()) {
+                loadjscssfile('../css/mobile.css', 'css');
+            } else {
+                loadjscssfile('../css/desktop.css', 'css');
+            }
+        </script> 
+    
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom feed">
+
+    
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3"/>
+    
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+
+
+<h2 class="title">ddia-第九章-一致性与共识</h2>
+<!--
+<div style="text-align:center;margin-top: -10px;">
+<div class="article-category">
+发表于2020年12月25日
+
+
+    <a class="article-category-link" href="/categories/%E9%98%85%E8%AF%BB/">阅读</a>
+
+
+
+ </div>
+-->
+</div>
+
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E8%87%B4%E6%80%A7%E4%BF%9D%E8%AF%81"><span class="toc-text">一致性保证</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E4%B8%80%E8%87%B4%E6%80%A7"><span class="toc-text">线性一致性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E7%BA%BF%E6%80%A7%E4%B8%80%E8%87%B4%E7%9A%84%E7%B3%BB%E7%BB%9F"><span class="toc-text">实现线性一致的系统</span></a></li></ol></li></ol>
+<p>Last updated: 2020-09-14 16:54:47</p>
+<p>Last updated: 2020-06-18 22:43:47</p>
+<p>这一章好家伙 读了三个月。</p>
+<span id="more"></span>
+
+<p> <a target="_blank" rel="noopener" href="https://github.com/Vonng/ddia/blob/master/ch9.md">阅读地址</a></p>
+<p>在分布式中，重要的是只有一个领导者，且所有的节点都认同其领导。如果两个节点都认为自己是领导者，这种情况被称为<strong>脑裂（split brain）</strong>，且经常导致数据丢失。正确实现共识有助于避免这种问题。</p>
+<p>事务隔离主要是为了，<strong>避免由于同时执行事务而导致的竞争状态</strong>，而分布式一致性主要关于，<strong>面对延迟和故障时，如何协调副本间的状态。</strong></p>
+<h2 id="一致性保证"><a href="#一致性保证" class="headerlink" title="一致性保证"></a>一致性保证</h2><p><strong>最终一致性</strong>：如果你停止向数据库写入数据并等待一段不确定的时间，那么最终所有的读取请求都会返回相同的值。换句话说，不一致性是暂时的，最终会自行解决（假设网络中的任何故障最终都会被修复）。最终一致性也叫<strong>收敛（convergence）</strong>。</p>
+<p><strong>分布式一致性模型</strong>和我们之前讨论的事务隔离级别的层次结构有一些相似之处。</p>
+<p>事务隔离主要是为了，<strong>避免由于同时执行事务而导致的竞争状态</strong>。</p>
+<p>而分布式一致性主要关于，<strong>面对延迟和故障时，如何协调副本间的状态。</strong></p>
+<h2 id="线性一致性"><a href="#线性一致性" class="headerlink" title="线性一致性"></a>线性一致性</h2><p><strong>线性一致性（linearizability）的最终想法是让一个系统的数据库看上去只有一个副本，而且所有的操作都是原子性的。</strong></p>
+<p>如果读取(与写入同时发生时)可能返回旧值或新值，则称该寄存器为常规寄存器。</p>
+<blockquote>
+<p>线性一致性与可序列化</p>
+<p>可序列化（Serializability）是事务的隔离属性，每个事务可以读写**多个对象(行，文档，记录)**。它确保事务的行为，与它们按照某种顺序依次执行的结果相同（每个事务在下一个事务开始之前运行完成）。这种执行顺序可以与事务实际执行的顺序不同。</p>
+<p>线性一致性（Linearizability）是读取和写入寄存器<strong>（单个对象）</strong>的新鲜度保证。它不会将操作组合为事务，因此它也不会阻止写偏差等问题。</p>
+</blockquote>
+<p>尽管两者有一部分内容重叠，但它们处理的是无关的问题：事务隔离主要是为了，避免由于同时执行事务而导致的竞争状态，而分布式一致性主要关于，面对延迟和故障时，如何协调副本间的状态。 </p>
+<p>依赖线性一致性的场景：</p>
+<p>1.锁定和领导选举。一个使用单主复制的系统，需要确保领导真的只有一个，而不是几个（脑裂）。一种选择领导者的方法是使用锁：每个节点在启动时尝试获取锁，成功者成为领导者。不管这个锁是如何实现的，它必须是线性一致的：所有节点必须就哪个节点拥有锁达成一致，否则就没用了。 </p>
+<p>2.约束和唯一性保证：用户名或电子邮件地址必须唯一标识一个用户；账户余额永远不会为负数；不会出售比仓库里的库存更多的物品；两个人不会都预定了航班或剧院里同一时间的同一个位置。</p>
+<h3 id="实现线性一致的系统"><a href="#实现线性一致的系统" class="headerlink" title="实现线性一致的系统"></a>实现线性一致的系统</h3><p>最简单的方法就是真的只有一个数据副本，但是这种方法无法容错：节点失效导致数据丢失，服务无法访问。</p>
+<p>使系统容错最常用的方法是使用复制：</p>
+<p>单主复制(可能线性一致)：在具有单主复制功能的系统中，主库具有用于写入的数据的主副本，而追随者在其他节点上保留数据的备份副本。如果从主库或同步更新的从库读取数据，它们可能（protential）是线性一致性的iv。然而，并不是每个单主数据库都是实际线性一致性的，无论是通过设计（例如，因为使用快照隔离）还是并发错误。</p>
+<p>共识算法（线性一致）</p>
+<p>不需要线性一致性的应用对网络问题有更强的容错能力。这种见解通常被称为CAP定理</p>
+<p>333</p>
+
+
+<!--<a href="http://2997ms.github.io/2020/12/25/Notes/ddia-%E7%AC%AC%E4%B9%9D%E7%AB%A0-%E4%B8%80%E8%87%B4%E6%80%A7%E4%B8%8E%E5%85%B1%E8%AF%86/#disqus_thread" class="article-comment-link">Comments</a>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = ''; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+-->
+<div style="display:none">
+<script src="http://s4.cnzz.com/stat.php?id=&web_id=" language="JavaScript"></script>script>
+</div>
+
+
+
+
+
+
+</body>
+</html>

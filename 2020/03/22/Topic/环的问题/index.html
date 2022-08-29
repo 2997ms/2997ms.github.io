@@ -1,0 +1,89 @@
+<html>
+<head>
+	
+	<title>环路问题</title>
+	<meta name="keywords" content="fzb.me,冯宗宝,冯宗宝的blog" />
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+	   <link href="/css/main.css?v=3" rel="stylesheet" type="text/css" />
+    
+        
+<script src="/js/util.js"></script>
+
+        <script>
+            if(isMobile()) {
+                loadjscssfile('../css/mobile.css', 'css');
+            } else {
+                loadjscssfile('../css/desktop.css', 'css');
+            }
+        </script> 
+    
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom feed">
+
+    
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3"/>
+    
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+
+
+<h2 class="title">环路问题</h2>
+<!--
+<div style="text-align:center;margin-top: -10px;">
+<div class="article-category">
+发表于2020年3月22日
+
+
+    <a class="article-category-link" href="/categories/%E4%B8%93%E9%A2%98/">专题</a>
+
+
+
+ </div>
+-->
+</div>
+
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Pizza-With-3n-Slices"><span class="toc-text">Pizza With 3n Slices</span></a></li></ol>
+<p>自己博客上记录的题目其实也不少了，但是因为智力以及自己对一些概念的理解确实不够，导致一些题目出来还是不知道怎么想。这篇博客想说一下碰到的带环的问题。</p>
+<span id="more"></span>
+
+<p>基本上“环”这个问题一出来，就很头疼，dp也没办法dp，然后很多东西很难去解。</p>
+<h3 id="Pizza-With-3n-Slices"><a href="#Pizza-With-3n-Slices" class="headerlink" title="Pizza With 3n Slices"></a><a target="_blank" rel="noopener" href="https://leetcode.com/problems/pizza-with-3n-slices">Pizza With 3n Slices</a></h3><p>题意最后化成了，n个数，环形，如果要取非相邻的n&#x2F;3个，怎么搞。</p>
+<p>其实这个题很早以前就有过类似的，见<a target="_blank" rel="noopener" href="https://leetcode.com/problems/house-robber-ii/submissions/">这里</a>，一样的处理方法。比较去掉第一个 或者 最后一个，这两种情况下的最大值。剩余部分就当作没有环来处理了。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">int</span> dp[<span class="number">505</span>][<span class="number">505</span>];</span><br><span class="line">    <span class="type">int</span> val[<span class="number">505</span>];</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">cal</span><span class="params">(std::vector&lt;<span class="type">int</span>&gt; v)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">memset</span>(dp, <span class="number">0</span>, <span class="built_in">sizeof</span>(dp));</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;v.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            val[i+<span class="number">1</span>] = v[i];</span><br><span class="line">            <span class="built_in">DE</span>(val[i+<span class="number">1</span>])</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> n = (v.<span class="built_in">size</span>()+<span class="number">1</span>) / <span class="number">3</span>;</span><br><span class="line">        <span class="type">int</span> m = v.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="type">int</span> pre_max = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>; j &lt;= m; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span>(j&gt;=<span class="number">2</span>) pre_max = <span class="built_in">max</span>(pre_max, dp[i<span class="number">-1</span>][j<span class="number">-2</span>]);</span><br><span class="line">                dp[i][j] = <span class="built_in">max</span>(dp[i][j], pre_max + val[j]);</span><br><span class="line">                ans = <span class="built_in">max</span>(ans, dp[i][j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maxSizeSlices</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; slices)</span> </span>&#123;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">v1</span><span class="params">(slices.begin() + <span class="number">1</span> , slices.end())</span></span>;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">v2</span><span class="params">(slices.begin(), prev(slices.end()))</span></span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(<span class="built_in">cal</span>(v1), <span class="built_in">cal</span>(v2));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>当然这个题还可以O(nlogn)来搞，双端队列 + 优先队列，每次都pop出最大值，然后反悔这个最大值，感觉<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/pizza-with-3n-slices/solution/shuang-xiang-lian-biao-tan-xin-suan-fa-shi-jian-fu/">这种做法</a>很牛逼啊….</p>
+
+
+<!--<a href="http://2997ms.github.io/2020/03/22/Topic/%E7%8E%AF%E7%9A%84%E9%97%AE%E9%A2%98/#disqus_thread" class="article-comment-link">Comments</a>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = ''; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+-->
+<div style="display:none">
+<script src="http://s4.cnzz.com/stat.php?id=&web_id=" language="JavaScript"></script>script>
+</div>
+
+
+
+
+
+
+</body>
+</html>

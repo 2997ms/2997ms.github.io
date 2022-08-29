@@ -1,0 +1,117 @@
+<html>
+<head>
+	
+	<title>AtCoder Regular Contest 091</title>
+	<meta name="keywords" content="fzb.me,冯宗宝,冯宗宝的blog" />
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+	   <link href="/css/main.css?v=3" rel="stylesheet" type="text/css" />
+    
+        
+<script src="/js/util.js"></script>
+
+        <script>
+            if(isMobile()) {
+                loadjscssfile('../css/mobile.css', 'css');
+            } else {
+                loadjscssfile('../css/desktop.css', 'css');
+            }
+        </script> 
+    
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom feed">
+
+    
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3"/>
+    
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+
+
+<h2 class="title">AtCoder Regular Contest 091</h2>
+<!--
+<div style="text-align:center;margin-top: -10px;">
+<div class="article-category">
+发表于2018年3月21日
+
+
+    <a class="article-category-link" href="/categories/%E9%A2%98%E8%AE%B0/">题记</a>
+
+
+
+ </div>
+-->
+</div>
+
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#C-Flip-Flip-and-Flip%E2%80%A6%E2%80%A6"><span class="toc-text">C - Flip,Flip, and Flip……</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#D-Remainder-Reminder"><span class="toc-text">D Remainder Reminder</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#E-LISDL"><span class="toc-text">E LISDL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#F-Strange-Nim"><span class="toc-text">F - Strange Nim</span></a></li></ol>
+<p>最近这个三月在忙毕业的事情，答辩、各种表格、医院、签证等等。在结束这一切之后，这一期的AtCoder终于补完了。艰难脸^ - ^</p>
+<p>C、D不用说什么的话，那一共才两道题。。。</p>
+<p>Update: [2018-06-17]就这么一直拖到了现在。。。</p>
+<span id="more"></span>
+
+<p><a target="_blank" rel="noopener" href="https://arc091.contest.atcoder.jp/assignments">题目链接</a></p>
+<h3 id="C-Flip-Flip-and-Flip……"><a href="#C-Flip-Flip-and-Flip……" class="headerlink" title="C - Flip,Flip, and Flip……"></a>C - Flip,Flip, and Flip……</h3><blockquote>
+<p>题意是给出了$n*m$个格子，然后每个格子都要进行翻转，连带着周围八个格子也都要翻转。问最终有多少格子是反面。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">ll n, m;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	ll ans = n*m;</span><br><span class="line">	<span class="type">int</span> f = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span> (m &gt;= <span class="number">2</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		f++;</span><br><span class="line">		ans -= <span class="number">2</span> * n;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (n &gt;= <span class="number">2</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		f++;</span><br><span class="line">		ans -= <span class="number">2</span> * m;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(f==<span class="number">2</span>)ans += <span class="number">4</span>;</span><br><span class="line">	cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="D-Remainder-Reminder"><a href="#D-Remainder-Reminder" class="headerlink" title="D Remainder Reminder"></a>D Remainder Reminder</h3><blockquote>
+<p>找出不超过$n$中，有多少对$(a,b)$，使得$a%b &gt;&#x3D; k$</p>
+</blockquote>
+<p>枚举$b$。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">ll n, k;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">slla</span>(n), <span class="built_in">slla</span>(k);</span><br><span class="line">	ll ans = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">repp</span>(x, k + <span class="number">1</span>, n)</span><br><span class="line">	&#123;</span><br><span class="line">		ll f = n / x;</span><br><span class="line">		ll num = x - k;</span><br><span class="line">		ans += num*f;</span><br><span class="line">		ll sur = n%x + <span class="number">1</span>;</span><br><span class="line">		ans += <span class="built_in">max</span>(sur - k, <span class="number">0LL</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (!k)ans = n*n;</span><br><span class="line">	cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="E-LISDL"><a href="#E-LISDL" class="headerlink" title="E LISDL"></a>E LISDL</h3><blockquote>
+<p>给出$n，a，b$。构建一个长度为$n$的序列，元素是$1$到$n$。使得最长递增子序列长度为a，最长递减子序列长度为$b$。</p>
+</blockquote>
+<p>这个题比较有趣了。。。可以先满足最长递增子序列为$a$，然后成段去构造最长递减子序列，这时也就可以发现满足条件是什么了。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">ll n,a,b;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">slla</span>(n),<span class="built_in">slla</span>(a),<span class="built_in">slla</span>(b);</span><br><span class="line">    <span class="keyword">if</span>(a+b<span class="number">-1</span>&gt;n || a*b&lt;n)</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;<span class="number">-1</span>&lt;&lt;endl;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(n&gt;<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> x = <span class="built_in">min</span>(a,n-b+<span class="number">1</span>);</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = n-x+<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            cout&lt;&lt;i&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        n-=x;</span><br><span class="line">        b--;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="F-Strange-Nim"><a href="#F-Strange-Nim" class="headerlink" title="F - Strange Nim"></a>F - Strange Nim</h3><blockquote>
+<p>有$n$堆石子，每堆石子的数量为$A_i$，每堆石子都有一个参数$k_i$。现有a和b，分别进行如下操作：</p>
+<p>选择一堆石子，如果当前该堆有$x$个石子，那么移除$[1, floor(x&#x2F;k)]$。</p>
+<p>不能进行操作的人判输。双方都是最优选择，问输赢情况。</p>
+</blockquote>
+<p>sg找规律。。。</p>
+<p>如果$n$整除$k$，那么sg(n,k)&#x3D;n&#x2F;k</p>
+<p>发现g(1,k), g(2,k), g(3,k)…. g(n,k)中移除g(k,k) g(2*k,k), g(3*k,k)…数列没有变化。</p>
+<p>如果$n$不整除$k$，那么假设n&#x3D;k*x+b，有sg(x*k+b,k) &#x3D; sg((x-1)*k+(b-1),k).</p>
+<p>可以发现原来是x*k+b，现在要变成x*k+b-(x+1)。这里需要进行优化，计算有多少个x是不变的。一共要减ceil(b&#x2F;(x+1))次，所以也就是(b+x)&#x2F;(x+1)。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">SG</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> x=a/k,b=a%k;</span><br><span class="line">    <span class="keyword">if</span>(!b) <span class="keyword">return</span> x;</span><br><span class="line">    <span class="type">int</span> t=(b+x)/(x+<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">SG</span>(a-t*(x+<span class="number">1</span>),k);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> n;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">cal</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x%y==<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> x/y;</span><br><span class="line">    &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">cal</span>(x - <span class="built_in">max</span>(x%y/(x/y+<span class="number">1</span>),<span class="number">1</span>)*(x/y+<span class="number">1</span>),y);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">sa</span>(n);</span><br><span class="line">    <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">repp</span>(i,<span class="number">1</span>,n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> x,y;</span><br><span class="line">        <span class="built_in">sa</span>(x),<span class="built_in">sa</span>(y);</span><br><span class="line">        ans ^= <span class="built_in">cal</span>(x,y);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(ans)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">puts</span>(<span class="string">&quot;Takahashi&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">puts</span>(<span class="string">&quot;Aoki&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<!--<a href="http://2997ms.github.io/2018/03/21/CP/AtCoder/AtCoder-Regular-Contest-091/#disqus_thread" class="article-comment-link">Comments</a>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = ''; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+-->
+<div style="display:none">
+<script src="http://s4.cnzz.com/stat.php?id=&web_id=" language="JavaScript"></script>script>
+</div>
+
+
+
+
+
+
+</body>
+</html>

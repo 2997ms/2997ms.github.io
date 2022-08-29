@@ -1,0 +1,96 @@
+<html>
+<head>
+	
+	<title>51nod 1594</title>
+	<meta name="keywords" content="fzb.me,冯宗宝,冯宗宝的blog" />
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+	   <link href="/css/main.css?v=3" rel="stylesheet" type="text/css" />
+    
+        
+<script src="/js/util.js"></script>
+
+        <script>
+            if(isMobile()) {
+                loadjscssfile('../css/mobile.css', 'css');
+            } else {
+                loadjscssfile('../css/desktop.css', 'css');
+            }
+        </script> 
+    
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom feed">
+
+    
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3"/>
+    
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+
+
+<h2 class="title">51nod 1594</h2>
+<!--
+<div style="text-align:center;margin-top: -10px;">
+<div class="article-category">
+发表于2018年12月9日
+
+
+    <a class="article-category-link" href="/categories/%E9%A2%98%E8%AE%B0/">题记</a>
+
+
+
+ </div>
+-->
+</div>
+
+<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#51nod-1594"><span class="toc-text">51nod 1594</span></a></li></ol>
+<p>这题折腾了好久。。。。</p>
+<span id="more"></span>
+
+<h4 id="51nod-1594"><a href="#51nod-1594" class="headerlink" title="51nod 1594"></a><a target="_blank" rel="noopener" href="http://www.51nod.com/Challenge/Problem.html#!#problemId=1594">51nod 1594</a></h4><p>$C_{x}表示1到n中phi(i)&#x3D;&#x3D;x的数量有多少$</p>
+<p>$原式&#x3D;\sum_{i&#x3D;1}^n\sum_{j&#x3D;1}^n \phi_{( \phi\ _i,\phi_j)}$</p>
+<p>$&#x3D;\sum_{d&#x3D;1}^n \sum_{i&#x3D;1}^{n&#x2F;d}\sum_{j&#x3D;1}^{n&#x2F;d} \phi_{d} C_{id}*C_{jd}[gcd(i,j)&#x3D;&#x3D;1]$</p>
+<p>$&#x3D;\sum_{d&#x3D;1}^n \sum_{i&#x3D;1}^{n&#x2F;d}\sum_{j&#x3D;1}^{n&#x2F;d} \phi_{d} C_{id}*C_{jd}\sum_{d2|i且d2|j}u_{d2}$</p>
+<p>这里卡住了。。。</p>
+<p>$&#x3D;\sum_{d&#x3D;1}^n \sum_{d2&#x3D;1}^{n&#x2F;d}\sum_{i&#x3D;1}^{n&#x2F;(d*d2)}\sum_{j&#x3D;1}^{n&#x2F;(d*d2)} \phi_{d} C_{i*d*d2}*C_{j*d*d2}*u_{d2}$</p>
+<p>关于这部分</p>
+<p>$G(x) &#x3D; \sum_{i&#x3D;1}^{n&#x2F;x}\sum_{j&#x3D;1}^{n&#x2F;x}C_{ix}*C_{jx}$</p>
+<p>这部分可以分开求：</p>
+<p>$G(x)&#x3D;(\sum_{i&#x3D;1}^{n&#x2F;x}C_{ix})^2$</p>
+<p>这时候就很清晰了，$G(x)可以在O(nlog_{2}n)$预处理出来。</p>
+<p>所以原式</p>
+<p>$\sum_{d&#x3D;1}^n \phi_{d} \sum_{d2&#x3D;1}^{n&#x2F;d}u_{d2}*G(d2*d)$</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">ll phi[maxn],mu[maxn],pri[maxn],vis[maxn];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">get_phi</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    phi[<span class="number">1</span>]=mu[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> tot=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=maxn<span class="number">-5</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(!vis[i]) pri[++tot]=i,mu[i]=<span class="number">-1</span>,phi[i]=i<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=tot&amp;&amp;pri[j]*i&lt;=maxn<span class="number">-5</span>;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            vis[pri[j]*i]=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(i%pri[j]==<span class="number">0</span>) &#123;mu[i*pri[j]]=<span class="number">0</span>;phi[i*pri[j]]=phi[i]*pri[j];<span class="keyword">break</span>;&#125;</span><br><span class="line">            <span class="keyword">else</span> mu[i*pri[j]]=-mu[i],phi[i*pri[j]]=phi[i]*(pri[j]<span class="number">-1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">ll c[maxn],g[maxn],f[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    <span class="built_in">sa</span>(t);</span><br><span class="line">    <span class="built_in">get_phi</span>();</span><br><span class="line">    <span class="keyword">while</span>(t--) &#123;</span><br><span class="line">        <span class="built_in">memset</span>(c,<span class="number">0</span>,<span class="built_in">sizeof</span>(c));</span><br><span class="line">        <span class="built_in">memset</span>(f,<span class="number">0</span>,<span class="built_in">sizeof</span>(f));</span><br><span class="line">        <span class="built_in">memset</span>(g,<span class="number">0</span>,<span class="built_in">sizeof</span>(g));</span><br><span class="line">        <span class="type">int</span> n;</span><br><span class="line">        <span class="built_in">sa</span>(n);</span><br><span class="line">        <span class="built_in">repp</span>(i,<span class="number">1</span>,n)&#123;</span><br><span class="line">            c[phi[i]]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">repp</span>(x,<span class="number">1</span>,n) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n/x;i++) &#123;</span><br><span class="line">                g[x]+=c[i*x];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">repp</span>(x,<span class="number">1</span>,n) &#123;</span><br><span class="line">            g[x]=g[x]*g[x];</span><br><span class="line">        &#125;</span><br><span class="line">        ll ans = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">repp</span>(d,<span class="number">1</span>,n) &#123;</span><br><span class="line">            ll tmp = <span class="number">0</span>;</span><br><span class="line">            <span class="built_in">repp</span>(d2,<span class="number">1</span>,n/d) &#123;</span><br><span class="line">                tmp+=mu[d2]*g[d2*d];</span><br><span class="line">            &#125;</span><br><span class="line">            ans+=phi[d]*tmp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>,ans);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">solve</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<!--<a href="http://2997ms.github.io/2018/12/09/CP/51nod/51nod-1594/#disqus_thread" class="article-comment-link">Comments</a>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = ''; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+-->
+<div style="display:none">
+<script src="http://s4.cnzz.com/stat.php?id=&web_id=" language="JavaScript"></script>script>
+</div>
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<html>
+<head>
+	
+	<title>POJ 2689</title>
+	<meta name="keywords" content="fzb.me,冯宗宝,冯宗宝的blog" />
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+	   <link href="/css/main.css?v=3" rel="stylesheet" type="text/css" />
+    
+        
+<script src="/js/util.js"></script>
+
+        <script>
+            if(isMobile()) {
+                loadjscssfile('../css/mobile.css', 'css');
+            } else {
+                loadjscssfile('../css/desktop.css', 'css');
+            }
+        </script> 
+    
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom feed">
+
+    
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3"/>
+    
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+
+
+<h2 class="title">POJ 2689</h2>
+<!--
+<div style="text-align:center;margin-top: -10px;">
+<div class="article-category">
+发表于2020年5月18日
+
+
+
+
+ </div>
+-->
+</div>
+
+
+<p>尽管数很大，但是区间长度在1000000范围内。用以有的素数对大数进行素数筛。</p>
+<span id="more"></span>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> pri[maxn];</span><br><span class="line"><span class="type">int</span> vis[maxn];</span><br><span class="line">ll le, ri;</span><br><span class="line"><span class="type">int</span> not_pri[maxn];</span><br><span class="line"><span class="type">int</span> pri_cnt;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">get_prime_between_le_and_ri</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">REP</span>(i,<span class="number">0</span>,pri_cnt) &#123;</span><br><span class="line">        ll g = le / pri[i];</span><br><span class="line">        <span class="keyword">while</span>(g&lt;=<span class="number">1</span>) &#123;</span><br><span class="line">            g++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(ll j=g*pri[i];j&lt;=ri;j+=pri[i]) &#123;</span><br><span class="line">            <span class="keyword">if</span>(j&gt;=le) &#123;</span><br><span class="line">                not_pri[j-le] = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(le == <span class="number">1</span>) &#123;</span><br><span class="line">        not_pri[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> v[maxn];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> up = <span class="number">5e4</span>;</span><br><span class="line">    pri_cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">REPP</span>(i,<span class="number">2</span>,up) &#123;</span><br><span class="line">        <span class="keyword">if</span>(!vis[i]) &#123;</span><br><span class="line">            pri[pri_cnt] = i;</span><br><span class="line">            pri_cnt++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=i;j&lt;=up;j+=i) &#123;</span><br><span class="line">            vis[j] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">&quot;%lld%lld&quot;</span>, &amp;le, &amp;ri) != <span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="built_in">memset</span>(not_pri, <span class="number">0</span>, <span class="built_in">sizeof</span>(not_pri));</span><br><span class="line">        <span class="built_in">get_prime_between_le_and_ri</span>();</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">REP</span>(i,<span class="number">0</span>,ri-le+<span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span>(not_pri[i] == <span class="number">0</span>) &#123;</span><br><span class="line">                v[cnt] = i + le;</span><br><span class="line">                cnt++;</span><br><span class="line">            &#125; </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(cnt &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="built_in">puts</span>(<span class="string">&quot;There are no adjacent primes.&quot;</span>);</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> dismax = <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> dismin = <span class="number">1</span>;</span><br><span class="line">        <span class="built_in">REP</span>(i,<span class="number">1</span>,cnt) &#123;</span><br><span class="line">            <span class="keyword">if</span>(v[i] - v[i<span class="number">-1</span>] &gt; v[dismax] - v[dismax<span class="number">-1</span>]) &#123;</span><br><span class="line">                dismax = i;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(v[i] - v[i<span class="number">-1</span>] &lt; v[dismin] - v[dismin<span class="number">-1</span>]) &#123;</span><br><span class="line">                dismin = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d,%d are closest, %d,%d are most distant.\n&quot;</span>, v[dismin<span class="number">-1</span>], v[dismin], v[dismax<span class="number">-1</span>], v[dismax]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<!--<a href="http://2997ms.github.io/2020/05/18/CP/POJ/POJ-2689/#disqus_thread" class="article-comment-link">Comments</a>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = ''; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+-->
+<div style="display:none">
+<script src="http://s4.cnzz.com/stat.php?id=&web_id=" language="JavaScript"></script>script>
+</div>
+
+
+
+
+
+
+</body>
+</html>

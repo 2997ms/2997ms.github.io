@@ -1,0 +1,102 @@
+<html>
+<head>
+	
+	<title>Google Code Jam Round 1A 2008</title>
+	<meta name="keywords" content="fzb.me,冯宗宝,冯宗宝的blog" />
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+	   <link href="/css/main.css?v=3" rel="stylesheet" type="text/css" />
+    
+        
+<script src="/js/util.js"></script>
+
+        <script>
+            if(isMobile()) {
+                loadjscssfile('../css/mobile.css', 'css');
+            } else {
+                loadjscssfile('../css/desktop.css', 'css');
+            }
+        </script> 
+    
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom feed">
+
+    
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3"/>
+    
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+
+
+<h2 class="title">Google Code Jam Round 1A 2008</h2>
+<!--
+<div style="text-align:center;margin-top: -10px;">
+<div class="article-category">
+发表于2016年10月12日
+
+
+    <a class="article-category-link" href="/categories/%E9%A2%98%E8%AE%B0/">题记</a>
+
+
+
+ </div>
+-->
+</div>
+
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-Minimum-Scalar-Product"><span class="toc-text">A Minimum Scalar Product</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-Milkshakes"><span class="toc-text">B Milkshakes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-Numbers"><span class="toc-text">C Numbers</span></a></li></ol>
+<p><a target="_blank" rel="noopener" href="https://code.google.com/codejam/contest/32016/dashboard">题目链接</a>与<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Google/GCJ%20Round%201A%202008">代码链接</a></p>
+<p>一开始只是特别想记一下C题，后来发现B题也不错。。。</p>
+<h3 id="A-Minimum-Scalar-Product"><a href="#A-Minimum-Scalar-Product" class="headerlink" title="A Minimum Scalar Product"></a>A Minimum Scalar Product</h3><blockquote>
+<p>题意是给出了两个$n$维的向量，你可以对这$n$个向量的坐标任意排序，使得他们之间的scalar product(点积$x_1y_1+x_2y_2+…+x_ny_n$)最小。问这个最小点积。</p>
+</blockquote>
+<p>一个正向排序，一个逆向排序。</p>
+<h3 id="B-Milkshakes"><a href="#B-Milkshakes" class="headerlink" title="B Milkshakes"></a>B Milkshakes</h3><blockquote>
+<p>题意是给出了$n$种物品，每种物品可0可1。$m$种顾客，每一个顾客有$T$个要求，每个要求”$X Y$”代表第$X$个物品是$Y$($Y$是0或者1)，其中$Y&#x3D;1$每个顾客至多一种。要求对每一个顾客至少满足他的一个要求，满足所有顾客的情况下，0的数量最少。如果不可能，输出”IMPOSSIBLE”。</p>
+</blockquote>
+<p>对每一个为0的物品和顾客一个一个检查，如果对一个顾客有一个满足条件的即跳出循环。有为1要求的记录下来，下一次将其改为1。如果都是1，而顾客要求为0导致的都不满足要求的情况，那就直接输出”IMPOSSIBLE”。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(state, <span class="number">0</span>, <span class="built_in">sizeof</span>(state));</span><br><span class="line">	<span class="built_in">memset</span>(num, <span class="number">0</span>, <span class="built_in">sizeof</span>(num));</span><br><span class="line">	<span class="built_in">memset</span>(chan, <span class="number">0</span>, <span class="built_in">sizeof</span>(chan));</span><br><span class="line"></span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;n, &amp;m);</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= m; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;num[i]);</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= num[i]; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="type">int</span> u, v;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;u, &amp;v);</span><br><span class="line">			chan[i][j][<span class="number">0</span>] = u;</span><br><span class="line">			chan[i][j][<span class="number">1</span>] = v;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">int</span> fini = <span class="number">0</span>;</span><br><span class="line">	<span class="type">int</span> imp = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (!fini)</span><br><span class="line">	&#123;</span><br><span class="line">		fini = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= m; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="type">int</span> k = <span class="number">-1</span>;</span><br><span class="line">			<span class="type">int</span> j = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">for</span> (j = <span class="number">1</span>; j &lt;= num[i]; j++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span> (state[chan[i][j][<span class="number">0</span>]] == chan[i][j][<span class="number">1</span>])</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">if</span> (chan[i][j][<span class="number">1</span>] == <span class="number">1</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					k = j;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (j &gt; num[i])</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span> (k == <span class="number">-1</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					fini = <span class="number">1</span>;</span><br><span class="line">					imp = <span class="number">1</span>;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				fini = <span class="number">0</span>;</span><br><span class="line">				state[chan[i][k][<span class="number">0</span>]] = <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (imp)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">puts</span>(<span class="string">&quot;IMPOSSIBLE&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (i &gt; <span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot; &quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, state[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="C-Numbers"><a href="#C-Numbers" class="headerlink" title="C Numbers"></a>C Numbers</h3><blockquote>
+<p>题意很简单，求$(3+\sqrt{5})^n$的最后三个整数部分的值。</p>
+</blockquote>
+<p>这个是一个很经典的问题了，特意来记录一下。</p>
+<p>设$a&#x3D;3+\sqrt{5}$，$b&#x3D;3-\sqrt{5}$，$x_n&#x3D;a^n+b^n$。</p>
+<p>会发现得到的$x_n$是一个整数，另外由于$b_n&lt;1$，所以得到的$x_n$是大于结果的第一个整数。所以现在考虑求这个$x_n$。</p>
+<p>然后对于$x^{n+1}$来说，有$(3+\sqrt{5})(a_n+b_n*\sqrt{5})&#x3D;(3a_n+5b_n)+(3b_n+a_n)*\sqrt{5}$，那么可以得到$a_{n+1}&#x3D;3a_n+5b_n$，$b_{n+1}&#x3D;3b_n+a_n$。</p>
+<p>这样可以化成矩阵的形式：<br>$$<br>\begin{pmatrix}<br>   a_{n} \<br>   b_{n+1}<br>  \end{pmatrix}&#x3D;A\begin{pmatrix}<br>   a_{n-1} \<br>   b_{n-1}<br>  \end{pmatrix}&#x3D;A_{n}\begin{pmatrix}<br>   a_{0} \<br>   b_{0}<br>  \end{pmatrix}<br>$$<br>其中<br>$$<br>A&#x3D;\begin{pmatrix}<br>   3&amp;5 \<br>   1&amp;3<br>  \end{pmatrix}<br>$$<br>因为$a_0&#x3D;1$,可以得到$(a_0,b_0)&#x3D;(1,0)$</p>
+<p><del>太困了。。。明天接着填。。。。</del></p>
+<p>这样就可以矩阵快速幂啦~</p>
+
+
+<!--<a href="http://2997ms.github.io/2016/10/12/CP/Google/Google-Code-Jam-Round-1A-2008/#disqus_thread" class="article-comment-link">Comments</a>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = ''; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+-->
+<div style="display:none">
+<script src="http://s4.cnzz.com/stat.php?id=&web_id=" language="JavaScript"></script>script>
+</div>
+
+
+
+
+
+
+</body>
+</html>

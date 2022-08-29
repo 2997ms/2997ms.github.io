@@ -1,0 +1,100 @@
+<html>
+<head>
+	
+	<title>AtCoder Regular Contest 061</title>
+	<meta name="keywords" content="fzb.me,冯宗宝,冯宗宝的blog" />
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+	   <link href="/css/main.css?v=3" rel="stylesheet" type="text/css" />
+    
+        
+<script src="/js/util.js"></script>
+
+        <script>
+            if(isMobile()) {
+                loadjscssfile('../css/mobile.css', 'css');
+            } else {
+                loadjscssfile('../css/desktop.css', 'css');
+            }
+        </script> 
+    
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom feed">
+
+    
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3"/>
+    
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+
+
+<h2 class="title">AtCoder Regular Contest 061</h2>
+<!--
+<div style="text-align:center;margin-top: -10px;">
+<div class="article-category">
+发表于2016年9月15日
+
+
+    <a class="article-category-link" href="/categories/%E9%A2%98%E8%AE%B0/">题记</a>
+
+
+
+ </div>
+-->
+</div>
+
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#C-Many-Formulas"><span class="toc-text">C Many Formulas</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#D-Snuke%E2%80%99s-Coloring"><span class="toc-text">D Snuke’s Coloring</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#E-Snuke%E2%80%99s-Subway-Trip"><span class="toc-text">E Snuke’s Subway Trip</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#F-Card-Game-for-Three"><span class="toc-text">F Card Game for Three</span></a></li></ol>
+<p><a target="_blank" rel="noopener" href="http://arc061.contest.atcoder.jp/assignments">题目链接</a>与<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/AtCoder/Regular_Contest_061">代码链接</a></p>
+<h3 id="C-Many-Formulas"><a href="#C-Many-Formulas" class="headerlink" title="C Many Formulas"></a>C Many Formulas</h3><hr>
+<p>题意是给出了由1到9组成的一个字符串，字符串长度最多是10，你可以在字符串中间添加+号，算所有方案得到的数的总和。</p>
+<p>因为长度最多只有10，直接暴力算。</p>
+<h3 id="D-Snuke’s-Coloring"><a href="#D-Snuke’s-Coloring" class="headerlink" title="D Snuke’s Coloring"></a>D Snuke’s Coloring</h3><hr>
+<p>题意是给出H*W的格子，在上面不是黑点就是白点，现在给出N个(0&lt;&#x3D;N&lt;&#x3D;min(10^5,H*W))黑点的位置，算3*3的格子内，有0到9的黑点的格子分别有多少个。</p>
+<p>对每一个黑点，将其被算入的3*3的格子都+1，对于3*3的格子直接计算左上角的那个格子被覆盖的数量。</p>
+<h3 id="E-Snuke’s-Subway-Trip"><a href="#E-Snuke’s-Subway-Trip" class="headerlink" title="E Snuke’s Subway Trip"></a>E Snuke’s Subway Trip</h3><hr>
+<p>给出了N个车站，M条地铁线，每一条地铁线由相关公司建造，如果在乘坐地铁的过程中，切换了地铁线所在的公司，那么费用+1。计算从车站1到车站N的最小费用。</p>
+<p>优先队列+宽搜，记录当前到达该车站的最小费用以及所乘坐的车，这样就能够判断下一次走的时候费用是否+1了。</p>
+<h3 id="F-Card-Game-for-Three"><a href="#F-Card-Game-for-Three" class="headerlink" title="F Card Game for Three"></a>F Card Game for Three</h3><hr>
+<p>题意是一张牌上面有a、b、c三个字母中的一个，A有N张这样的牌，B有M张，C有K张。现在他们没事了，然后又开始做游戏了。。。</p>
+<p>由A开始翻牌，翻自己所含有的最上面的牌，如果是a，则A继续翻牌；如果是b，则轮到B翻牌；C同理。</p>
+<p>如果轮到自己的时候发现自己没有牌了，则这个人获胜。</p>
+<p>现在给出N、M、K，问A获胜有多少种。</p>
+<p><a target="_blank" rel="noopener" href="http://codeforces.com/blog/entry/47072">Codeforces上的讨论</a></p>
+<p>这个题不要去考虑有三柱牌，直接考虑最终获胜的时候的序列。就拿讨论里面的例子举例，如果N&#x3D;5,M&#x3D;4,K&#x3D;6,那么A获胜的时候序列一定是先出现了5个a，出现b的次数小于等于4，出现c的次数小于等于6。当前翻过的牌数位x，后面的牌任意选，即3^(N+M+K-x)。</p>
+<p>那么对于前面翻过的这些牌来说，方案数就是<br>$$<br>ans&#x3D;{\begin{pmatrix}<br>n+x-1\<br>n-1<br>\end{pmatrix}}*fs(x)<br>\\<br>fs(x)&#x3D;\sum_{i+j&#x3D;x,i&lt;&#x3D;m,j&lt;&#x3D;k}{\begin{pmatrix}<br>x\<br>i<br>\end{pmatrix}}<br>$$</p>
+<p>现在来求fs(x)，fs(x)找规律。。。。。。。。。。。。</p>
+<p>画一下杨辉三角的图，发现就是fs(x+1)与2*fs(x)相差不多，如果加多了的话只需减掉前面的C(x,m)或者C(x,k)就能够递推了。</p>
+
+
+<!--<a href="http://2997ms.github.io/2016/09/15/CP/AtCoder/AtCoder-Regular-Contest-061/#disqus_thread" class="article-comment-link">Comments</a>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = ''; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+-->
+<div style="display:none">
+<script src="http://s4.cnzz.com/stat.php?id=&web_id=" language="JavaScript"></script>script>
+</div>
+
+
+
+
+
+
+</body>
+</html>

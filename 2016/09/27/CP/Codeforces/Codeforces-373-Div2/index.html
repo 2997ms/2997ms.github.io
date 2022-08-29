@@ -1,0 +1,102 @@
+<html>
+<head>
+	
+	<title>Codeforces 373 Div2</title>
+	<meta name="keywords" content="fzb.me,冯宗宝,冯宗宝的blog" />
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+	   <link href="/css/main.css?v=3" rel="stylesheet" type="text/css" />
+    
+        
+<script src="/js/util.js"></script>
+
+        <script>
+            if(isMobile()) {
+                loadjscssfile('../css/mobile.css', 'css');
+            } else {
+                loadjscssfile('../css/desktop.css', 'css');
+            }
+        </script> 
+    
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom feed">
+
+    
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3"/>
+    
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+
+
+<h2 class="title">Codeforces 373 Div2</h2>
+<!--
+<div style="text-align:center;margin-top: -10px;">
+<div class="article-category">
+发表于2016年9月27日
+
+
+    <a class="article-category-link" href="/categories/%E9%A2%98%E8%AE%B0/">题记</a>
+
+
+
+ </div>
+-->
+</div>
+
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-Vitya-in-the-Countryside"><span class="toc-text">A. Vitya in the Countryside</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-Anatoly-and-Cockroaches"><span class="toc-text">B. Anatoly and Cockroaches</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-Efim-and-Strange-Grade"><span class="toc-text">C. Efim and Strange Grade</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#E-Sasha-and-Array"><span class="toc-text">E. Sasha and Array</span></a></li></ol>
+<p>还没有补373Div1的题。。。感觉好难。。。当睡前读物吧。。。</p>
+<p>这次Div2的D题出了问题，只有四道了。比的时候出了三道，所以想记的也就那么一道题。。。</p>
+<p><a target="_blank" rel="noopener" href="http://codeforces.com/contest/719">题目链接</a>与<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/373_Div2">代码链接</a></p>
+<h3 id="A-Vitya-in-the-Countryside"><a href="#A-Vitya-in-the-Countryside" class="headerlink" title="A. Vitya in the Countryside"></a>A. Vitya in the Countryside</h3><blockquote>
+<p>题意是给出了一个循环的规律，然后给了循环中的某一位置的数字，问能否通过这些信息判断上升还是下降。判断不出来输出-1。</p>
+</blockquote>
+<p><strong>栽在这上面啦，就算后面发现了也丢失了很多分。。。所谓物极必反，在极值上肯定是可以判断的啊。</strong></p>
+<h3 id="B-Anatoly-and-Cockroaches"><a href="#B-Anatoly-and-Cockroaches" class="headerlink" title="B. Anatoly and Cockroaches"></a>B. Anatoly and Cockroaches</h3><blockquote>
+<p>题意是给出了由’r’和‘b’组成的字符串，然后可以由两种操作，1.交换两个位置的字符；2.改变某一位置的字符。问要求最终的字符串是交替的’r’’b’，最小操作多少次。</p>
+</blockquote>
+<p>最终要么是rbrbrbr…，要么是brbrbr….</p>
+<p>考虑两种情况，然后算r变b的数量x，b变r的数量y，结果min(x,y)+abs(x-y).</p>
+<h3 id="C-Efim-and-Strange-Grade"><a href="#C-Efim-and-Strange-Grade" class="headerlink" title="C. Efim and Strange Grade"></a>C. Efim and Strange Grade</h3><blockquote>
+<p>题意是给出了一个长度为$n(n\leq200000)$的小数，然后最多在小数位进位t次，问最终结果的最大值。要求规范输出。</p>
+</blockquote>
+<p>贪心，找小数位第一个大于等于5的，之后就在这个5之前找连续的大于等于4的，碰到小于4的结束，因为已经进不了位了。注意一些细节。。。</p>
+<p>想了好久，写了好久。。。万幸没有fst。</p>
+<h3 id="E-Sasha-and-Array"><a href="#E-Sasha-and-Array" class="headerlink" title="E. Sasha and Array"></a>E. Sasha and Array</h3><blockquote>
+<p>题意是给出了n个数，m个操作，每个位置上的数字是$f[a_i]$，f[x]代表斐波那契数列的第x项。现在每个操作有两种情况，第一种查询区间和。第二种对区间的每一个值加上f[x]。</p>
+</blockquote>
+<p>很新颖的题，发现对每一个斐波那契值，是可以矩阵快速幂搞的，那对于区间加上一个值，相当于在矩阵的前面再乘以一个矩阵，所以构建线段树，打lz标记。</p>
+<p>这就完了？忽然感觉没啥可说的了，但是为什么做的时候还是觉得难啊。。。</p>
+
+
+<!--<a href="http://2997ms.github.io/2016/09/27/CP/Codeforces/Codeforces-373-Div2/#disqus_thread" class="article-comment-link">Comments</a>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = ''; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+-->
+<div style="display:none">
+<script src="http://s4.cnzz.com/stat.php?id=&web_id=" language="JavaScript"></script>script>
+</div>
+
+
+
+
+
+
+</body>
+</html>

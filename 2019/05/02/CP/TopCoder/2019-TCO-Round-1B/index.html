@@ -1,0 +1,99 @@
+<html>
+<head>
+	
+	<title>2019 TCO Round 1B</title>
+	<meta name="keywords" content="fzb.me,冯宗宝,冯宗宝的blog" />
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+	   <link href="/css/main.css?v=3" rel="stylesheet" type="text/css" />
+    
+        
+<script src="/js/util.js"></script>
+
+        <script>
+            if(isMobile()) {
+                loadjscssfile('../css/mobile.css', 'css');
+            } else {
+                loadjscssfile('../css/desktop.css', 'css');
+            }
+        </script> 
+    
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom feed">
+
+    
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3"/>
+    
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+
+
+<h2 class="title">2019 TCO Round 1B</h2>
+<!--
+<div style="text-align:center;margin-top: -10px;">
+<div class="article-category">
+发表于2019年5月2日
+
+
+    <a class="article-category-link" href="/categories/%E9%A2%98%E8%AE%B0/">题记</a>
+
+
+
+ </div>
+-->
+</div>
+
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#EllysSki"><span class="toc-text">EllysSki</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EllysTeleport"><span class="toc-text">EllysTeleport</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EllysPearls"><span class="toc-text">EllysPearls</span></a></li></ol>
+<p>Topcoder上有意思的dp题还是多，但是如果能有更多的editor就好了(你要干嘛。。)</p>
+<span id="more"></span>
+
+<p><a href="%5Bhttps://www.topcoder.com/blog/2019-topcoder-open-algorithm-round-1b-editorials/%5D(https://www.topcoder.com/blog/2019-topcoder-open-algorithm-round-1b-editorials/)">题解链接</a></p>
+<h2 id="EllysSki"><a href="#EllysSki" class="headerlink" title="EllysSki"></a>EllysSki</h2><p>250的题太简单了。</p>
+<h2 id="EllysTeleport"><a href="#EllysTeleport" class="headerlink" title="EllysTeleport"></a>EllysTeleport</h2><p>500的题目是我当初面某司的题，就是有可能碰到环路。</p>
+<p>2-&gt;1-&gt;5-&gt;6-&gt;7-&gt;8-&gt;5这种情况。</p>
+<p>自己过后想了一下，先处理一下这个点是否在环路上，可以记录这个环路的长度。</p>
+<p>之后再扫一遍就完了。</p>
+<p>就目前处理问题这里完全不会break down一下。智力问题。</p>
+<p>当然我这里直接$N^2$了。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">ll val[<span class="number">100005</span>],nxt[<span class="number">100005</span>];</span><br><span class="line"><span class="type">int</span> fa[<span class="number">100005</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">EllysTeleport</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">   </span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getMax</span><span class="params">(<span class="type">int</span> N, <span class="type">int</span> H1, <span class="type">int</span> A, <span class="type">int</span> B, <span class="type">int</span> P, <span class="type">int</span> Q, <span class="type">int</span> M)</span> </span>&#123;</span><br><span class="line">        val[<span class="number">1</span>] = H1;</span><br><span class="line">        <span class="built_in">repp</span>(i,<span class="number">2</span>,N) &#123;</span><br><span class="line">            val[i] = (val[i<span class="number">-1</span>]*A+B)%M;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">sort</span>(val+<span class="number">1</span>,val+N+<span class="number">1</span>);</span><br><span class="line">        <span class="built_in">repp</span>(i,<span class="number">1</span>,N) &#123;</span><br><span class="line">            nxt[i] = i<span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">memset</span>(fa,<span class="number">-1</span>,<span class="built_in">sizeof</span>(fa));</span><br><span class="line">        <span class="built_in">repp</span>(i,<span class="number">1</span>,N) &#123;</span><br><span class="line">            <span class="type">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">            <span class="type">int</span> x = i;</span><br><span class="line">            <span class="keyword">while</span>(x!=<span class="number">0</span>&amp;&amp;fa[x]!=i) &#123;</span><br><span class="line">                ++cnt;</span><br><span class="line">                fa[x]=i;</span><br><span class="line">                x=nxt[x];</span><br><span class="line">            &#125;</span><br><span class="line">            ans = <span class="built_in">max</span>(ans,cnt);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;t;</span><br></pre></td></tr></table></figure>
+
+<h2 id="EllysPearls"><a href="#EllysPearls" class="headerlink" title="EllysPearls"></a>EllysPearls</h2><p>1000的题意是每个点有个颜色，要求同一个颜色的点都放在一起。问当前这些点需要更改顺序多少次。</p>
+<p>题解里说了一般出现15这种，就考虑bitmask dp。然后这个dp其实很经典了。就是[0,1]表示当前这种颜色是否已经加到集合里了，是否考虑了，然后记录一个最后位置的颜色，就结束了。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> n;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt;v;</span><br><span class="line"><span class="type">int</span> dp[<span class="number">55</span>][<span class="number">16</span>][<span class="number">1</span>&lt;&lt;<span class="number">16</span>];</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">EllysPearls</span> &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> ind,<span class="type">int</span> col, <span class="type">int</span> state)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(ind&gt;=n) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(dp[ind][col][state]!=<span class="number">-1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> dp[ind][col][state];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> ans = <span class="number">1</span> + <span class="built_in">dfs</span>(ind+<span class="number">1</span>,col,state);</span><br><span class="line">        <span class="keyword">if</span>(v[ind] == col) &#123;</span><br><span class="line">            ans = <span class="built_in">min</span>(ans, <span class="built_in">dfs</span>(ind+<span class="number">1</span>,col,state));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!((<span class="number">1</span>&lt;&lt;v[ind]) &amp; state)) &#123;</span><br><span class="line">            ans = <span class="built_in">min</span>(ans, <span class="built_in">dfs</span>(ind+<span class="number">1</span>,v[ind],((<span class="number">1</span>&lt;&lt;v[ind])|state)));</span><br><span class="line">        &#125;</span><br><span class="line">        dp[ind][col][state]=ans;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getMin</span><span class="params">(<span class="type">int</span> N, <span class="type">int</span> M, vector &lt;<span class="type">int</span>&gt; pearls)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">memset</span>(dp,<span class="number">-1</span>,<span class="built_in">sizeof</span>(dp));</span><br><span class="line">        n = N;</span><br><span class="line">        v = pearls;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">dfs</span>(<span class="number">0</span>,M+<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;t;</span><br></pre></td></tr></table></figure>
+
+<p>最近这边正好是五一假期，自己没有回家。十分想老爸老妈，想想这些年自己独立做的这些决定。也不知道该说些什么。只希望自己要一直努力下去，真的请一直一直努力下去。</p>
+<p>总有一天，要让他们。。。为我骄傲。。。</p>
+
+
+<!--<a href="http://2997ms.github.io/2019/05/02/CP/TopCoder/2019-TCO-Round-1B/#disqus_thread" class="article-comment-link">Comments</a>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = ''; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+-->
+<div style="display:none">
+<script src="http://s4.cnzz.com/stat.php?id=&web_id=" language="JavaScript"></script>script>
+</div>
+
+
+
+
+
+
+</body>
+</html>

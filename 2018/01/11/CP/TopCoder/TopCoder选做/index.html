@@ -1,0 +1,128 @@
+<html>
+<head>
+	
+	<title>Topcoder选做</title>
+	<meta name="keywords" content="fzb.me,冯宗宝,冯宗宝的blog" />
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+	   <link href="/css/main.css?v=3" rel="stylesheet" type="text/css" />
+    
+        
+<script src="/js/util.js"></script>
+
+        <script>
+            if(isMobile()) {
+                loadjscssfile('../css/mobile.css', 'css');
+            } else {
+                loadjscssfile('../css/desktop.css', 'css');
+            }
+        </script> 
+    
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom feed">
+
+    
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3"/>
+    
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+
+
+<h2 class="title">Topcoder选做</h2>
+<!--
+<div style="text-align:center;margin-top: -10px;">
+<div class="article-category">
+发表于2018年1月11日
+
+
+
+
+ </div>
+-->
+</div>
+
+<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#SRM-727-Easy%EF%BC%9A"><span class="toc-text">SRM 727 Easy：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SRM-726-Easy%EF%BC%9A"><span class="toc-text">SRM 726 Easy：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SRM-725-Easy%EF%BC%9A"><span class="toc-text">SRM 725 Easy：</span></a></li></ol>
+<p>原来的tag是2018-01-11，现在已经是2019年8月4日了。</p>
+<span id="more"></span>
+
+<table>
+<thead>
+<tr>
+<th align="center">Round</th>
+<th align="center">Easy</th>
+<th align="center">Medium</th>
+<th align="center">Hard</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">SRM727</td>
+<td align="center">Done</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">SRM726</td>
+<td align="center">Done</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">SRM725</td>
+<td align="center">Done</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h4 id="SRM-727-Easy："><a href="#SRM-727-Easy：" class="headerlink" title="SRM 727 Easy："></a>SRM 727 Easy：</h4><hr>
+<blockquote>
+<p>题意：给出一个字符串X，可以在任意位置添加字符。要求</p>
+<p>1:最终的字符串长度小于1050。</p>
+<p>2.包含“SATNA”子序列。</p>
+<p>3.不包含“SATAN”子序列。</p>
+<p>求最终的字符串。</p>
+</blockquote>
+<p>找T和N位置的规律，如果T都在N后面，不用管。将最前的T换成NT，或者将最后的N换成NT，然后找这之前最前的A，前面加S。</p>
+<h4 id="SRM-726-Easy："><a href="#SRM-726-Easy：" class="headerlink" title="SRM 726 Easy："></a>SRM 726 Easy：</h4><blockquote>
+<p>题意是有$n$个箱子，每个箱子里有$a_i$个红球，$b_i$个蓝球。价钱是$c_i$。每个箱子有可能会有一个球的颜色是颠倒的。要求最终至少有一种颜色的球的数量大于等于$K$。问最小价钱。</p>
+<p>$n&lt;&#x3D;50, a_i&lt;&#x3D;10000, b_i&lt;&#x3D;10000$</p>
+</blockquote>
+<ol>
+<li>Min cost to make <em>a</em>[<em>i</em>] - 1 ≥ <em>K</em></li>
+<li>Min Cost to make <em>b</em>[<em>i</em>] - 1 ≥ <em>K</em>.</li>
+<li>Min cost to make <em>a</em>[<em>i</em>] + <em>b</em>[<em>i</em>] ≥ 2 * <em>k</em> - 1,思路卡在这里了，如果可以互相转移的话，考虑和是一定的。</li>
+</ol>
+<h4 id="SRM-725-Easy："><a href="#SRM-725-Easy：" class="headerlink" title="SRM 725 Easy："></a>SRM 725 Easy：</h4><p>725的Easy有些意想不到啊。。。就是八皇后啊。。。</p>
+
+
+<!--<a href="http://2997ms.github.io/2018/01/11/CP/TopCoder/TopCoder%E9%80%89%E5%81%9A/#disqus_thread" class="article-comment-link">Comments</a>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = ''; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+-->
+<div style="display:none">
+<script src="http://s4.cnzz.com/stat.php?id=&web_id=" language="JavaScript"></script>script>
+</div>
+
+
+
+
+
+
+</body>
+</html>

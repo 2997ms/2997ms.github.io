@@ -1,0 +1,91 @@
+<html>
+<head>
+	
+	<title>POJ 1821</title>
+	<meta name="keywords" content="fzb.me,冯宗宝,冯宗宝的blog" />
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+	   <link href="/css/main.css?v=3" rel="stylesheet" type="text/css" />
+    
+        
+<script src="/js/util.js"></script>
+
+        <script>
+            if(isMobile()) {
+                loadjscssfile('../css/mobile.css', 'css');
+            } else {
+                loadjscssfile('../css/desktop.css', 'css');
+            }
+        </script> 
+    
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom feed">
+
+    
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3"/>
+    
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+
+
+<h2 class="title">POJ 1821</h2>
+<!--
+<div style="text-align:center;margin-top: -10px;">
+<div class="article-category">
+发表于2018年8月12日
+
+
+    <a class="article-category-link" href="/categories/%E9%A2%98%E8%AE%B0/">题记</a>
+
+
+
+ </div>
+-->
+</div>
+
+
+<p><a target="_blank" rel="noopener" href="http://poj.org/problem?id=1821">题目链接</a></p>
+<p>这道题是很经典的一道维护单调队列的题目，最近在做POJ的题目。记录一下这道题。</p>
+<span id="more"></span>
+
+<p>题意是$K$个工人，$N$个木板。每个工人可以最多涂$L_i$个木板，涂木板的区间必须是连续的，且必须包含$S_i$位置的木板，涂每块木板的收入是$P_i$，求这些工人最多的收入是多少。</p>
+<p>DP。DP[i][j]表示i个工人涂j个木板的最多收入。则有</p>
+<p>$DP[i][j] &#x3D; max(dp[i-1][j],dp[i][j-1],  dp[i-1][k] + peo[i].pay*(j-k))$</p>
+<p>这里 $dp[i-1][k] + peo[i].pay*(j-k))$表示前面$i-1$个人涂了$k$个木板，第$i$个工人涂接下来的$j-k$个。</p>
+<p>会发现此时$dp[i-1][k] + peo[i].pay*(j-k)) &#x3D; dp[i-1][k] - peo[i].pay*k+ peo[i].pay*j$ 。前面的$ dp[i-1][k] - peo[i].pay*k$可以采用单调队列解决。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> n,k;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">po</span> &#123;</span><br><span class="line">    <span class="type">int</span> len;</span><br><span class="line">    <span class="type">int</span> st;</span><br><span class="line">    <span class="type">int</span> pay;</span><br><span class="line">&#125;peo[<span class="number">200</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">cmp</span><span class="params">(po p1,po p2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> p1.st &lt; p2.st;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> dp[<span class="number">105</span>][<span class="number">17000</span>];</span><br><span class="line">deque&lt;<span class="type">int</span>&gt;q;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">sa</span>(n),<span class="built_in">sa</span>(k);</span><br><span class="line">    <span class="built_in">repp</span>(i,<span class="number">1</span>,k) &#123;</span><br><span class="line">        <span class="built_in">sa</span>(peo[i].len);</span><br><span class="line">        <span class="built_in">sa</span>(peo[i].pay);</span><br><span class="line">        <span class="built_in">sa</span>(peo[i].st);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">sort</span>(peo+<span class="number">1</span>,peo+k+<span class="number">1</span>,cmp);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">repp</span>(i,<span class="number">1</span>,k) &#123;</span><br><span class="line">        q.<span class="built_in">push_front</span>(<span class="built_in">max</span>(<span class="number">0</span>,peo[i].st-peo[i].len));</span><br><span class="line">        <span class="built_in">repp</span>(j,<span class="number">1</span>,n) &#123;</span><br><span class="line">            dp[i][j] = <span class="built_in">max</span>(dp[i<span class="number">-1</span>][j],dp[i][j<span class="number">-1</span>]);</span><br><span class="line">            <span class="keyword">if</span>(j &gt;= peo[i].st + peo[i].len)<span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">while</span>(!q.<span class="built_in">empty</span>() &amp;&amp; q.<span class="built_in">front</span>() + peo[i].len &lt; j) </span><br><span class="line">                q.<span class="built_in">pop_front</span>();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(j &lt; peo[i].st) &#123;</span><br><span class="line">                <span class="type">int</span> t = dp[i<span class="number">-1</span>][j] - peo[i].pay*j;</span><br><span class="line">                <span class="keyword">while</span>(!q.<span class="built_in">empty</span>() &amp;&amp;  dp[i<span class="number">-1</span>][q.<span class="built_in">back</span>()] - peo[i].pay*q.<span class="built_in">back</span>()&lt; t)</span><br><span class="line">                    q.<span class="built_in">pop_back</span>();</span><br><span class="line"></span><br><span class="line">                q.<span class="built_in">push_back</span>(j);</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span>(!q.<span class="built_in">empty</span>())</span><br><span class="line">                ans = dp[i<span class="number">-1</span>][q.<span class="built_in">front</span>()] + peo[i].pay*(j-q.<span class="built_in">front</span>());</span><br><span class="line"></span><br><span class="line">            dp[i][j] = <span class="built_in">max</span>(dp[i][j],ans);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,dp[k][n]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<!--<a href="http://2997ms.github.io/2018/08/12/CP/POJ/POJ-1821/#disqus_thread" class="article-comment-link">Comments</a>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = ''; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+-->
+<div style="display:none">
+<script src="http://s4.cnzz.com/stat.php?id=&web_id=" language="JavaScript"></script>script>
+</div>
+
+
+
+
+
+
+</body>
+</html>

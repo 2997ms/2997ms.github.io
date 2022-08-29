@@ -1,0 +1,109 @@
+<html>
+<head>
+	
+	<title>Codeforces 369 Div2</title>
+	<meta name="keywords" content="fzb.me,冯宗宝,冯宗宝的blog" />
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+	   <link href="/css/main.css?v=3" rel="stylesheet" type="text/css" />
+    
+        
+<script src="/js/util.js"></script>
+
+        <script>
+            if(isMobile()) {
+                loadjscssfile('../css/mobile.css', 'css');
+            } else {
+                loadjscssfile('../css/desktop.css', 'css');
+            }
+        </script> 
+    
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom feed">
+
+    
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3"/>
+    
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+
+
+<h2 class="title">Codeforces 369 Div2</h2>
+<!--
+<div style="text-align:center;margin-top: -10px;">
+<div class="article-category">
+发表于2016年8月31日
+
+
+    <a class="article-category-link" href="/categories/%E9%A2%98%E8%AE%B0/">题记</a>
+
+
+
+ </div>
+-->
+</div>
+
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#C-Coloring-Trees"><span class="toc-text">C Coloring Trees</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#D-Directed-Roads"><span class="toc-text">D Directed Roads</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#E-ZS-and-The-Birthday-Paradox"><span class="toc-text">E ZS and The Birthday Paradox</span></a></li></ol>
+<p>刚刚做完51nod上面一道很恶心的<a target="_blank" rel="noopener" href="http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1607">题目</a>，各种情况各种搞，打算早晚要写一下51nod上面的一些题目了。之后把这轮的E题补了，这轮题目很简单，简单到我都做出了四道，并且第四道是在1:59:47完成提交的，可谓惊心动魄。自认为打得不错，很幸运。此役之后，Codeforces的rating变成了1758，涨了77分，还挺开心的。想把它记录下来也是因为好多事情在八月都没做，然而它就这么过去了。</p>
+<p>代码在<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/369_Div2">这里</a>。</p>
+<p>A题不用说，B题直接把数字求出来然后带进去验证四个方向是否满足条件。</p>
+<h3 id="C-Coloring-Trees"><a href="#C-Coloring-Trees" class="headerlink" title="C Coloring Trees"></a>C Coloring Trees</h3><hr>
+<p>C题题意是有n个点排成一排，每个点要么有颜色，要么没颜色，现在要你把所有没颜色的点都上一种颜色，要求是上完颜色之后按照颜色分成k段。每个点上一种颜色有相应的花销。</p>
+<p>让你求在满足k段的条件下，花销最少。如果不能满足，输出-1。</p>
+<p>dp[i][j][k]表示到第i个点时，分成j段，当前颜色为k的最小花销。</p>
+<p>转移还挺好转移的，不多说。</p>
+<p>其实自己做dp题特别弱，这个dp比较简单，很多人一眼直接看出来了。</p>
+<h3 id="D-Directed-Roads"><a href="#D-Directed-Roads" class="headerlink" title="D Directed Roads"></a>D Directed Roads</h3><hr>
+<p>D题题意给出n个点，建一个有向图，然后每个点给出一个出边，要求是你可以更改一些边的方向，使得这个图不存在环，问边有多少种方案的选择。</p>
+<p>这种每个点一个出边的题也是出了很多次，这种图是一定形成环的，对于一个块，有x个在环上的点，有y个不在环上的点，那么方案数就为:<br>$$<br>(2^x-2)*(2^y)<br>$$<br>减2代表空集和全集，剩下的你随便改方向。然后那y个边你也随便改方向，都不会形成环，画一画就出来了。</p>
+<h3 id="E-ZS-and-The-Birthday-Paradox"><a href="#E-ZS-and-The-Birthday-Paradox" class="headerlink" title="E ZS and The Birthday Paradox"></a>E ZS and The Birthday Paradox</h3><hr>
+<p><del>对于一些题目还是要像写日记一样趁热打铁，要不然过程中很多感受就忘得一干二净。</del></p>
+<p>E题题意是给出了一年有2^n天，然后k个人，问这些人中有生日相同的概率是多少。</p>
+<p><del>哇做到这里我发现这轮题目真的好，题意简洁易懂，代码也不是特别繁琐恶心的那种。</del></p>
+<p>首先由鸽笼原理，如果k&gt;(2^n)，那么肯定是有相同的情况，直接输出结果。</p>
+<p>然后呢，生日相同的概率很难算，算生日不同的概率为</p>
+<p>$$<br>\frac{(2^n-1)*(2^n-2)*\cdot\cdot\cdot*(2^n-(k-1))} {2^{(k-1)*n}}<br>$$</p>
+<p>先固定一个人，然后第2个人不和他相同的概率为(2^n-1)&#x2F;(2^n)，接下来考虑第3个人，不和前两个人相同，以此类推。</p>
+<p>由于结果要求最简分数，那么如果这个是最简分数的话，可以肯定1-x也是最简分数，因为1-a&#x2F;b&#x3D;(b-a)&#x2F;b,而gcd(a,b)&#x3D;gcd(b-a,b)，所以求上式的公约数，公约数明显是2^x。</p>
+<p>现在问题化为求</p>
+<p>$$<br>(2^n-1)*(2^n-2)*\cdot\cdot\cdot*(2^n-(k-1))<br>$$</p>
+<p>最多能够整除2的多少次方，而现在又有如果x(满足x&lt;(2^n))可以整除2^x，可知2^n-x也一定整除2^x，所以要求的也即1,2,3….k-1，变为(k-1)!最多能够整除2的多少次方，然后根据勒让德定理：</p>
+<p>$$<br>在正数n!的素因子标准分解式中，素数p的指数记作L_{p}(n!)  ，则 L_{p}(n!) &#x3D;\sum_{k&gt;&#x3D;1}{[\frac{n}{p^k}]}<br>$$</p>
+<p>知道了这个，最后的结果也就好求啦。另外对于</p>
+<p>$$<br>(2^n-1)*(2^n-2)*\cdot\cdot\cdot*(2^n-(k-1))<br>$$</p>
+<p>来说，可以发现，当k-1&gt;&#x3D;mod的时候，最后的结果一定是0，即一定有整除mod的数出现了。剩下的就没什么了。</p>
+<p>这个题真的挺好玩的。^—^</p>
+
+
+<!--<a href="http://2997ms.github.io/2016/08/31/CP/Codeforces/Codeforces-369-Div2/#disqus_thread" class="article-comment-link">Comments</a>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = ''; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+-->
+<div style="display:none">
+<script src="http://s4.cnzz.com/stat.php?id=&web_id=" language="JavaScript"></script>script>
+</div>
+
+
+
+
+
+
+</body>
+</html>

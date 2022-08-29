@@ -1,0 +1,286 @@
+<html>
+<head>
+	
+	<title>ddia-第七章-事务</title>
+	<meta name="keywords" content="fzb.me,冯宗宝,冯宗宝的blog" />
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+	   <link href="/css/main.css?v=3" rel="stylesheet" type="text/css" />
+    
+        
+<script src="/js/util.js"></script>
+
+        <script>
+            if(isMobile()) {
+                loadjscssfile('../css/mobile.css', 'css');
+            } else {
+                loadjscssfile('../css/desktop.css', 'css');
+            }
+        </script> 
+    
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom feed">
+
+    
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3"/>
+    
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+
+
+<h2 class="title">ddia-第七章-事务</h2>
+<!--
+<div style="text-align:center;margin-top: -10px;">
+<div class="article-category">
+发表于2020年5月18日
+
+
+    <a class="article-category-link" href="/categories/%E9%98%85%E8%AF%BB/">阅读</a>
+
+
+
+ </div>
+-->
+</div>
+
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#ACID"><span class="toc-text">ACID</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%A4%9A%E5%AF%B9%E8%B1%A1%E6%93%8D%E4%BD%9C"><span class="toc-text">单对象和多对象操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E5%AF%B9%E8%B1%A1%E5%86%99%E5%85%A5"><span class="toc-text">单对象写入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E5%AF%B9%E8%B1%A1%E4%BA%8B%E5%8A%A1%E7%9A%84%E9%9C%80%E6%B1%82"><span class="toc-text">多对象事务的需求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E9%94%99%E8%AF%AF%E5%92%8C%E4%B8%AD%E6%AD%A2"><span class="toc-text">处理错误和中止</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%B1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="toc-text">弱隔离级别</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%BB%E5%B7%B2%E6%8F%90%E4%BA%A4%EF%BC%88Read-Committed%EF%BC%89"><span class="toc-text">读已提交（Read Committed）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%BB%E6%9C%AA%E6%8F%90%E4%BA%A4%EF%BC%88Read-uncommitted%EF%BC%89"><span class="toc-text">读未提交（Read uncommitted）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E7%85%A7%E9%9A%94%E7%A6%BB%E5%92%8C%E5%8F%AF%E9%87%8D%E5%A4%8D%E8%AF%BB"><span class="toc-text">快照隔离和可重复读</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E5%92%8C%E5%BF%AB%E7%85%A7%E9%9A%94%E7%A6%BB"><span class="toc-text">索引和快照隔离</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%B2%E6%AD%A2%E4%B8%A2%E5%A4%B1%E6%9B%B4%E6%96%B0"><span class="toc-text">防止丢失更新</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%B2%E7%AA%81%E8%A7%A3%E5%86%B3%E5%92%8C%E5%A4%8D%E5%88%B6"><span class="toc-text">冲突解决和复制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%99%E5%85%A5%E5%81%8F%E5%B7%AE%E4%B8%8E%E5%B9%BB%E8%AF%BB"><span class="toc-text">写入偏差与幻读</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">可序列化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9C%9F%E7%9A%84%E4%B8%B2%E8%A1%8C%E6%89%A7%E8%A1%8C"><span class="toc-text">真的串行执行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%A4%E9%98%B6%E6%AE%B5%E9%94%81%E5%AE%9A%EF%BC%882PL%EF%BC%89"><span class="toc-text">两阶段锁定（2PL）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E4%B8%A4%E9%98%B6%E6%AE%B5%E9%94%81"><span class="toc-text">实现两阶段锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%A7%E8%83%BD"><span class="toc-text">性能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%93%E8%AF%8D%E9%94%81%EF%BC%88predicate-lock%EF%BC%89"><span class="toc-text">谓词锁（predicate lock）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E5%8C%BA%E9%97%B4%E9%94%81"><span class="toc-text">索引区间锁</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96%E5%BF%AB%E7%85%A7%E9%9A%94%E7%A6%BB-Serializable-Snapshot-Isolation"><span class="toc-text">序列化快照隔离 (Serializable Snapshot Isolation)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%82%B2%E8%A7%82%E4%B8%8E%E4%B9%90%E8%A7%82%E7%9A%84%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6"><span class="toc-text">悲观与乐观的并发控制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E8%BF%87%E6%9C%9F%E7%9A%84%E6%9D%A1%E4%BB%B6%E5%81%9A%E5%86%B3%E5%AE%9A"><span class="toc-text">基于过期的条件做决定</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A3%80%E6%B5%8B%E6%98%AF%E5%90%A6%E8%AF%BB%E5%8F%96%E4%BA%86%E8%BF%87%E6%9C%9F%E7%9A%84-MVCC-%E5%AF%B9%E8%B1%A1"><span class="toc-text">检测是否读取了过期的 MVCC 对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A3%80%E6%B5%8B%E5%86%99%E6%98%AF%E5%90%A6%E5%BD%B1%E5%93%8D%E4%BA%86%E4%B9%8B%E5%89%8D%E7%9A%84%E8%AF%BB"><span class="toc-text">检测写是否影响了之前的读</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E5%BA%8F%E5%88%97%E5%8C%96%E7%9A%84%E5%BF%AB%E7%85%A7%E9%9A%94%E7%A6%BB%E7%9A%84%E6%80%A7%E8%83%BD"><span class="toc-text">可序列化的快照隔离的性能</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol>
+<p><a target="_blank" rel="noopener" href="https://github.com/Vonng/ddia/blob/master/ch7.md">阅读地址</a></p>
+<span id="more"></span>
+
+<p>这一章主要讲的是数据库层面的ACID，然后主要讲里面”I”的层级，隔离层面不同处理方法的优缺点，以及大概是怎么实现隔离的。</p>
+<h3 id="ACID"><a href="#ACID" class="headerlink" title="ACID"></a>ACID</h3><p><strong>Atomicity</strong> 原子性，不能拆分。</p>
+<p>这个性质使得事务只能处于操作之前或者操作之后的状态。具体实现上是”I”要做的事情。原子性使得事务一旦中止，应用层重试一次即可，没有其他顾虑。</p>
+<p><strong>Consistency</strong> 一致性。</p>
+<p>应用层面的属性，数据中没有脏数据。</p>
+<p><strong>Isolation</strong> 隔离性。</p>
+<p>同时执行的事务之间互不干扰。</p>
+<p><strong>Durability</strong></p>
+<p>安全的地方存储数据，不用担心丢失。</p>
+<h3 id="单对象和多对象操作"><a href="#单对象和多对象操作" class="headerlink" title="单对象和多对象操作"></a>单对象和多对象操作</h3><h4 id="单对象写入"><a href="#单对象写入" class="headerlink" title="单对象写入"></a>单对象写入</h4><p>当单个对象发生改变时，原子性和隔离也是适用的。例如，假设您正在向数据库写入一个 20 KB的 JSON文档：</p>
+<ul>
+<li>如果在发送第一个10 KB之后网络连接中断，数据库是否存储了不可解析的10KB JSON片段？</li>
+<li>如果在数据库正在覆盖磁盘上的前一个值的过程中电源发生故障，是否最终将新旧值拼接在一起？</li>
+<li>如果另一个客户端在写入过程中读取该文档，是否会看到部分更新的值？</li>
+</ul>
+<p>事务通常被理解为，<strong>将多个对象上的多个操作合并为一个执行单元的机制</strong>。</p>
+<h4 id="多对象事务的需求"><a href="#多对象事务的需求" class="headerlink" title="多对象事务的需求"></a>多对象事务的需求</h4><p><strong>没有原子性，错误处理就要复杂得多，缺乏隔离性，就会导致并发问题</strong>。</p>
+<h4 id="处理错误和中止"><a href="#处理错误和中止" class="headerlink" title="处理错误和中止"></a>处理错误和中止</h4><p>尽管重试一个中止的事务是一个简单而有效的错误处理机制，但它并不完美：</p>
+<table>
+<thead>
+<tr>
+<th>问题</th>
+<th>方案</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>事务可能实际上已经执行成功，只是网络中断让客户端看起来失败。此时重试会导致重复执行。</td>
+<td>需要应用层删除重复数据。</td>
+</tr>
+<tr>
+<td>如果错误是因为系统超负荷，重试会使情况更糟糕。</td>
+<td>设置重试次数上限</td>
+</tr>
+<tr>
+<td>如果出现了永久性故障（例如违反约束），则重试毫无意义</td>
+<td>不要重试</td>
+</tr>
+<tr>
+<td>如果已经产生数据库之外的副作用，则就算事务中止，副作用也已生效</td>
+<td>可以考虑两阶段提交</td>
+</tr>
+<tr>
+<td>客户端在重试的过程中也失败了，则没有其它应用负责重试了</td>
+<td>无法解决</td>
+</tr>
+</tbody></table>
+<h3 id="弱隔离级别"><a href="#弱隔离级别" class="headerlink" title="弱隔离级别"></a>弱隔离级别</h3><p>当一个事务读取由另一个事务同时修改的数据时，或者当两个事务试图同时修改相同的数据时，并发问题（竞争条件）才会出现。</p>
+<h4 id="读已提交（Read-Committed）"><a href="#读已提交（Read-Committed）" class="headerlink" title="读已提交（Read Committed）"></a>读已提交（Read Committed）</h4><p>最基本的事务隔离级别是<strong>读已提交</strong>，它提供了两个保证：</p>
+<ol>
+<li>从数据库读时，只能看到已提交的数据（没有<strong>脏读（dirty reads）</strong>）。</li>
+<li>写入数据库时，只会覆盖已经写入的数据（没有<strong>脏写（dirty writes）</strong>）。</li>
+</ol>
+<p><strong>实现读已提交</strong>：</p>
+<p>防止脏写：行级锁。当事务想要修改特定对象（行或文档）时，它必须首先获得该对象的锁。然后必须持有该锁直到事务被提交或中止。</p>
+<p>防止脏读：一种方式是使用相同的锁。但这会带来性能问题。大多数数据库会维护旧值和当前持锁事务将要设置的新值这两个版本。提交前，其它读操作会读到旧值，提交后会读到新值。</p>
+<h4 id="读未提交（Read-uncommitted）"><a href="#读未提交（Read-uncommitted）" class="headerlink" title="读未提交（Read uncommitted）"></a>读未提交（Read uncommitted）</h4><p>它可以防止脏写，但不防止脏读。</p>
+<p>设想一个事务已经将一些数据写入数据库，但事务还没有提交或中止。另一个事务可以看到未提交的数据吗？如果是的话，那就叫做<strong>脏读（dirty reads）</strong></p>
+<p>但是，如果先前的写入是尚未提交事务的一部分，又会发生什么情况，后面的写入会覆盖一个尚未提交的值？这被称作<strong>脏写（dirty write）</strong></p>
+<h4 id="快照隔离和可重复读"><a href="#快照隔离和可重复读" class="headerlink" title="快照隔离和可重复读"></a>快照隔离和可重复读</h4><p>爱丽丝在银行有1000美元的储蓄，分为两个账户，每个500美元。现在一笔事务从她的一个账户中转移了100美元到另一个账户。如果她在事务处理的同时查看其账户余额列表，不幸地在转账事务完成前看到收款账户余额（余额为500美元），而在转账完成后看到另一个转出账户（已经转出100美元，余额400美元）。对爱丽丝来说，现在她的账户似乎只有900美元——看起来100美元已经消失了。</p>
+<p>这种异常被称为<strong>不可重复读（nonrepeatable read）或读取偏差（read skew）</strong>：如果Alice在事务结束时再次读取账户1的余额，她将看到与她之前的查询中看到的不同的值（600美元）。在读已提交的隔离条件下，<strong>不可重复读</strong>被认为是可接受的：Alice看到的帐户余额时确实在阅读时已经提交了。</p>
+<p><strong>快照隔离</strong>：每个事务都从数据库的<strong>一致快照（consistent snapshot）</strong> 中读取——也就是说，事务可以看到事务开始时在数据库中提交的所有数据。即使这些数据随后被另一个事务更改，每个事务也只能看到该特定时间点的旧数据。</p>
+<p><strong>实现快照隔离</strong>：<strong>多版本并发控制（MVCC, multi-version concurrentcy control）</strong>, 一种典型的方法是<strong>读已提交</strong>为每个查询使用单独的快照，而<strong>快照隔离</strong>对整个事务使用相同的快照。</p>
+<p>表中的每一行都有一个 <code>created_by</code> 字段，其中包含将该行插入到表中的的事务ID。此外，每行都有一个 <code>deleted_by</code> 字段，最初是空的。如果某个事务删除了一行，那么该行实际上并未从数据库中删除，而是通过将 <code>deleted_by</code> 字段设置为请求删除的事务的ID来标记为删除。在稍后的时间，当确定没有事务可以再访问已删除的数据时，数据库中的垃圾收集过程会将所有带有删除标记的行移除，并释放其空间。</p>
+<p><strong>观察一致性快照的可见性规则</strong>：</p>
+<ul>
+<li>读事务开始时，创建该对象的事务已经提交。</li>
+<li>对象未被标记为删除，或如果被标记为删除，请求删除的事务在读事务开始时尚未提交。</li>
+</ul>
+<h4 id="索引和快照隔离"><a href="#索引和快照隔离" class="headerlink" title="索引和快照隔离"></a>索引和快照隔离</h4><p>索引如何在多版本数据库中工作？</p>
+<ul>
+<li>一种选择是使索引简单地指向对象的所有版本，并且需要索引查询来过滤掉当前事务不可见的任何对象版本。当垃圾收集删除任何事务不再可见的旧对象版本时，相应的索引条目也可以被删除。</li>
+<li>每个写入事务（或一批事务）都会创建一颗新的B树，当创建时，从该特定树根生长的树就是数据库的一个一致性快照。没必要根据事务ID过滤掉对象，因为后续写入不能修改现有的B树；它们只能创建新的树根。但这种方法也需要一个负责压缩和垃圾收集的后台进程。</li>
+</ul>
+<h4 id="防止丢失更新"><a href="#防止丢失更新" class="headerlink" title="防止丢失更新"></a>防止丢失更新</h4><p>如果应用从数据库中读取一些值，修改它并写回修改的值（读取-修改-写入序列），则可能会发生丢失更新的问题。</p>
+<p><strong>解决方案</strong></p>
+<ul>
+<li><p>原子写</p>
+<ul>
+<li><p>许多数据库提供了原子更新操作，从而消除了在应用程序代码中执行读取-修改-写入序列的需要。如果你的代码可以用这些操作来表达，那这通常是最好的解决方案。例如，下面的指令在大多数关系数据库中是并发安全的：</p>
+</li>
+<li><p>&#96;&#96;&#96;sql<br>UPDATE counters SET value &#x3D; value + 1 WHERE key &#x3D; ‘foo’;</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 显式锁定</span><br><span class="line"></span><br><span class="line">  - 如果数据库的内置原子操作没有提供必要的功能，防止丢失更新的另一个选择是让应用程序显式地锁定将要更新的对象。然后应用程序可以执行读取-修改-写入序列，如果任何其他事务尝试同时读取同一个对象，则强制等待，直到第一个**读取-修改-写入序列**完成。</span><br><span class="line"></span><br><span class="line">  - ```sql</span><br><span class="line">    BEGIN TRANSACTION;</span><br><span class="line">    SELECT * FROM figures</span><br><span class="line">    	WHERE name = &#x27;robot&#x27; AND game_id = 222</span><br><span class="line">    FOR UPDATE;</span><br><span class="line"></span><br><span class="line">    UPDATE figures SET position = &#x27;c4&#x27; WHERE id = 1234;</span><br><span class="line">    COMMIT;</span><br></pre></td></tr></table></figure>
+
+<p><code>FOR UPDATE</code>子句告诉数据库应该对该查询返回的所有行加锁。</p>
+</li>
+</ul>
+</li>
+<li><p>自动检测</p>
+<ul>
+<li>另一种方法是允许它们并行执行，如果事务管理器检测到丢失更新，则中止事务并强制它们重试其<strong>读取-修改-写入序列</strong>。</li>
+</ul>
+</li>
+<li><p>比较并设置(CAS)</p>
+<ul>
+<li>只有当前值从上次读取时一直未改变，才允许更新发生。如果当前值与先前读取的值不匹配，则更新不起作用，且必须重试读取-修改-写入序列。</li>
+</ul>
+</li>
+</ul>
+<h4 id="冲突解决和复制"><a href="#冲突解决和复制" class="headerlink" title="冲突解决和复制"></a>冲突解决和复制</h4><p>由于在多个节点上存在数据副本，并且在不同节点上的数据可能被并发地修改，因此需要采取一些额外的步骤来防止丢失更新。</p>
+<p>复制数据库中的一种常见方法是允许并发写入创建多个冲突版本的值（也称为兄弟），并使用应用代码或特殊数据结构在事实发生之后解决和合并这些版本。</p>
+<p>原子操作可以在复制的上下文中很好地工作，尤其当它们具有可交换性时（即可以在不同的副本上以不同的顺序应用它们，且仍然可以得到相同的结果）。例如，递增计数器或向集合添加元素是可交换的操作。这是Riak 2.0数据类型背后的思想，它可以防止复制副本丢失更新。当不同的客户端同时更新一个值时，Riak自动将更新合并在一起，以免丢失更新。</p>
+<h4 id="写入偏差与幻读"><a href="#写入偏差与幻读" class="headerlink" title="写入偏差与幻读"></a>写入偏差与幻读</h4><p>首先，想象一下这个例子：你正在为医院写一个医生轮班管理程序。医院通常会同时要求几位医生待命，但底线是至少有一位医生在待命。医生可以放弃他们的班次（例如，如果他们自己生病了），只要至少有一个同事在这一班中继续工作。</p>
+<p><strong>写偏差</strong>。它既不是<strong>脏写</strong>，也不是<strong>丢失更新</strong>，因为这两个事务正在更新两个不同的对象（Alice和Bob各自的待命记录）。在这里发生的冲突并不是那么明显，但是这显然是一个竞争条件：如果两个事务一个接一个地运行，那么第二个医生就不能歇班了。异常行为只有在事务并发进行时才有可能。</p>
+<p>一个事务中的写入改变另一个事务的搜索查询的结果，被称为<strong>幻读</strong>。快照隔离避免了只读查询中幻读，但是在像我们讨论的例子那样的读写事务中，幻影会导致特别棘手的写入偏差情况。</p>
+<blockquote>
+<p>如果事务是只读查询，则快照隔离可以解决。如果事务还有写操作，那就是发生了写倾斜，需要真正的可串行化隔离。</p>
+<p>从读操作来看，写倾斜属于幻读。从写操作来看，写倾斜属于更新丢失。</p>
+<p>—选自 红旺语录</p>
+</blockquote>
+<h3 id="可序列化"><a href="#可序列化" class="headerlink" title="可序列化"></a>可序列化</h3><p><strong>可序列化（Serializability）隔离通常被认为是最强的隔离级别。它保证即使事务可以并行执行，最终的结果也是一样的，就好像它们没有任何并发性，连续挨个执行一样。因此数据库保证，如果事务在单独运行时正常运行，则它们在并发运行时继续保持正确 —— 换句话说，数据库可以防止所有</strong>可能的竞争条件。</p>
+<p>目前大多数提供可序列化的数据库都使用了三种技术之一：</p>
+<ul>
+<li>字面意义上地串行顺序执行事务。</li>
+<li><strong>两相锁定（2PL, two-phase locking）</strong>，几十年来唯一可行的选择。</li>
+<li>乐观并发控制技术，例如<strong>可序列化的快照隔离（serializable snapshot isolation）</strong>。</li>
+</ul>
+<h4 id="真的串行执行"><a href="#真的串行执行" class="headerlink" title="真的串行执行"></a>真的串行执行</h4><p>在单个线程上按顺序一次只执行一个事务。这样做就完全绕开了检测&#x2F;防止事务间冲突的问题，由此产生的隔离，正是可序列化的定义。</p>
+<ul>
+<li>每个事务都必须小而快，只要有一个缓慢的事务，就会拖慢所有事务处理。</li>
+<li>仅限于活跃数据集可以放入内存的情况。很少访问的数据可能会被移动到磁盘，但如果需要在单线程执行的事务中访问，系统就会变得非常慢。</li>
+<li>写入吞吐量必须低到能在单个CPU核上处理，如若不然，事务需要能划分至单个分区，且不需要跨分区协调。</li>
+<li>跨分区事务是可能的，但是它们的使用程度有很大的限制。</li>
+</ul>
+<h4 id="两阶段锁定（2PL）"><a href="#两阶段锁定（2PL）" class="headerlink" title="两阶段锁定（2PL）"></a>两阶段锁定（2PL）</h4><p>两阶段锁定定类似，但使锁的要求更强。只要没有写入，就允许多个事务同时读取同一个对象。但对象只要有写入（修改或删除），就需要<strong>独占访问（exclusive access）</strong> 权限：</p>
+<ul>
+<li>如果事务A读取了一个对象，并且事务B想要写入该对象，那么B必须等到A提交或中止才能继续。 （这确保B不能在A底下意外地改变对象。）</li>
+<li>如果事务A写入了一个对象，并且事务B想要读取该对象，则B必须等到A提交或中止才能继续。</li>
+</ul>
+<h4 id="实现两阶段锁"><a href="#实现两阶段锁" class="headerlink" title="实现两阶段锁"></a>实现两阶段锁</h4><p>读与写的阻塞是通过为数据库中每个对象添加锁来实现的。锁可以处于<strong>共享模式（shared mode）或独占模式（exclusive mode）</strong>。锁使用如下：</p>
+<ul>
+<li>若事务要读取对象，则须先以共享模式获取锁。允许多个事务同时持有共享锁。但如果另一个事务已经在对象上持有排它锁，则这些事务必须等待。</li>
+<li>若事务要写入一个对象，它必须首先以独占模式获取该锁。没有其他事务可以同时持有锁（无论是共享模式还是独占模式），所以如果对象上存在任何锁，该事务必须等待。</li>
+<li>如果事务先读取再写入对象，则它可能会将其共享锁升级为独占锁。升级锁的工作与直接获得排他锁相同。</li>
+<li>事务获得锁之后，必须继续持有锁直到事务结束（提交或中止）。这就是“两阶段”这个名字的来源：第一阶段（当事务正在执行时）获取锁，第二阶段（在事务结束时）释放所有的锁。</li>
+</ul>
+<h4 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h4><p>性能很差。这一部分是由于获取和释放所有这些锁的开销，但更重要的是由于并发性的降低。按照设计，如果两个并发事务试图做任何可能导致竞争条件的事情，那么必须等待另一个完成。</p>
+<h4 id="谓词锁（predicate-lock）"><a href="#谓词锁（predicate-lock）" class="headerlink" title="谓词锁（predicate lock）"></a>谓词锁（predicate lock）</h4><p>谓词锁类似于前面描述的共享&#x2F;排它锁，但不属于特定的对象（例如，表中的一行），它属于所有符合某些搜索条件的对象，</p>
+<p>这里的关键思想是，谓词锁甚至适用于数据库中尚不存在，但将来可能会添加的对象（幻象）。如果两阶段锁定包含谓词锁，则数据库将阻止所有形式的写入偏差和其他竞争条件，因此其隔离实现了可串行化。</p>
+<h4 id="索引区间锁"><a href="#索引区间锁" class="headerlink" title="索引区间锁"></a>索引区间锁</h4><p>不幸的是谓词锁性能不佳：<strong>如果活跃事务持有很多锁，检查匹配的锁会非常耗时。因此，大多数使用2PL的数据库实际上实现了索引范围锁（也称为间隙锁（next-key locking）</strong>），这是一个简化的近似版谓词锁</p>
+<h3 id="序列化快照隔离-Serializable-Snapshot-Isolation"><a href="#序列化快照隔离-Serializable-Snapshot-Isolation" class="headerlink" title="序列化快照隔离 (Serializable Snapshot Isolation)"></a>序列化快照隔离 (Serializable Snapshot Isolation)</h3><h4 id="悲观与乐观的并发控制"><a href="#悲观与乐观的并发控制" class="headerlink" title="悲观与乐观的并发控制"></a>悲观与乐观的并发控制</h4><p>两阶段锁是一种所谓的<strong>悲观并发控制机制（pessimistic）</strong> ：它是基于这样的原则：如果有事情可能出错（如另一个事务所持有的锁所表示的），最好等到情况安全后再做任何事情。这就像互斥，用于保护多线程编程中的数据结构。</p>
+<p><strong>序列化快照隔离</strong>是一种<strong>乐观（optimistic）</strong> 的并发控制技术。在这种情况下，乐观意味着，如果存在潜在的危险也不阻止事务，而是继续执行事务，希望一切都会好起来。当一个事务想要提交时，数据库检查是否有什么不好的事情发生（即隔离是否被违反）；如果是的话，事务将被中止，并且必须重试。只有可序列化的事务才被允许提交。</p>
+<p>如果存在很多<strong>争用（contention）</strong>（很多事务试图访问相同的对象），则表现不佳，因为这会导致很大一部分事务需要中止。如果系统已经接近最大吞吐量，来自重试事务的额外负载可能会使性能变差。</p>
+<p>但是，如果有足够的备用容量，并且事务之间的争用不是太高，乐观的并发控制技术往往比悲观的要好。可交换的原子操作可以减少争用：例如，如果多个事务同时要增加一个计数器，那么应用增量的顺序（只要计数器不在同一个事务中读取）就无关紧要了，所以并发增量可以全部应用且无需冲突。</p>
+<h4 id="基于过期的条件做决定"><a href="#基于过期的条件做决定" class="headerlink" title="基于过期的条件做决定"></a>基于过期的条件做决定</h4><p>数据库如何知道查询结果是否可能已经改变？有两种情况需要考虑：</p>
+<ul>
+<li>检测对旧MVCC对象版本的读取（读之前存在未提交的写入）</li>
+<li>检测影响先前读取的写入（读之后发生写入）</li>
+</ul>
+<h4 id="检测是否读取了过期的-MVCC-对象"><a href="#检测是否读取了过期的-MVCC-对象" class="headerlink" title="检测是否读取了过期的 MVCC 对象"></a>检测是否读取了过期的 MVCC 对象</h4><p>为了防止这种异常，数据库需要跟踪一个事务由于MVCC可见性规则而忽略另一个事务的写入。当事务想要提交时，数据库检查是否有任何被忽略的写入现在已经被提交。如果是这样，事务必须中止。</p>
+<p>为什么要等到提交？当检测到陈旧的读取时，为什么不立即中止事务？</p>
+<ul>
+<li>如果事务是只读事务，则不需要中止，因为没有写入偏差的风险。</li>
+<li>事务可能被提交的时候中止或者可能仍然未被提交，因此读取可能终究不是陈旧的。</li>
+</ul>
+<h4 id="检测写是否影响了之前的读"><a href="#检测写是否影响了之前的读" class="headerlink" title="检测写是否影响了之前的读"></a>检测写是否影响了之前的读</h4><p>当事务写入数据库时，它必须在索引中查找最近曾读取受影响数据的其他事务。这个过程类似于在受影响的键范围上获取写锁，但锁并不会阻塞事务指导其他读事务完成，而是像警戒线一样只是简单通知其他事务：你们读过的数据可能不是最新的啦。</p>
+<h4 id="可序列化的快照隔离的性能"><a href="#可序列化的快照隔离的性能" class="headerlink" title="可序列化的快照隔离的性能"></a>可序列化的快照隔离的性能</h4><p>与往常一样，许多工程细节会影响算法的实际表现。例如一个权衡是跟踪事务的读取和写入的<strong>粒度（granularity）</strong>。如果数据库详细地跟踪每个事务的活动（细粒度），那么可以准确地确定哪些事务需要中止，但是簿记开销可能变得很显著。简略的跟踪速度更快（粗粒度），但可能会导致更多不必要的事务中止。</p>
+<p>可序列化快照隔离的最大优点是一个事务不需要阻塞等待另一个事务所持有的锁。就像在快照隔离下一样，写不会阻塞读，反之亦然。这种设计原则使得查询延迟更可预测，变量更少。特别是，只读查询可以运行在一致的快照上，而不需要任何锁定，这对于读取繁重的工作负载非常有吸引力。</p>
+<p>与串行执行相比，可序列化快照隔离并不局限于单个CPU核的吞吐量。</p>
+<p>中止率显著影响SSI的整体表现。例如，长时间读取和写入数据的事务很可能会发生冲突并中止，因此SSI要求同时读写的事务尽量短（只读长事务可能没问题）。对于慢事务，SSI可能比两阶段锁定或串行执行更不敏感。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>脏读</th>
+<th>脏写</th>
+<th>不可重复读</th>
+<th>写倾斜</th>
+<th>幻读</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>读未提交 read uncommitted</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>读已提交 read committed</td>
+<td>√</td>
+<td>√</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>快照隔离, 也是可重复读 repeatable read</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>可序列化 serializable</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+</tbody></table>
+
+
+<!--<a href="http://2997ms.github.io/2020/05/18/Notes/ddia-%E7%AC%AC%E4%B8%83%E7%AB%A0%20%E4%BA%8B%E5%8A%A1/#disqus_thread" class="article-comment-link">Comments</a>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = ''; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+-->
+<div style="display:none">
+<script src="http://s4.cnzz.com/stat.php?id=&web_id=" language="JavaScript"></script>script>
+</div>
+
+
+
+
+
+
+</body>
+</html>

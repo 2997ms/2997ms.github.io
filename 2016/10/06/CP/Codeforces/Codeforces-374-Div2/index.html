@@ -1,0 +1,114 @@
+<html>
+<head>
+	
+	<title>Codeforces 374 Div2</title>
+	<meta name="keywords" content="fzb.me,冯宗宝,冯宗宝的blog" />
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+	   <link href="/css/main.css?v=3" rel="stylesheet" type="text/css" />
+    
+        
+<script src="/js/util.js"></script>
+
+        <script>
+            if(isMobile()) {
+                loadjscssfile('../css/mobile.css', 'css');
+            } else {
+                loadjscssfile('../css/desktop.css', 'css');
+            }
+        </script> 
+    
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom feed">
+
+    
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3"/>
+    
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+
+
+<h2 class="title">Codeforces 374 Div2</h2>
+<!--
+<div style="text-align:center;margin-top: -10px;">
+<div class="article-category">
+发表于2016年10月6日
+
+
+    <a class="article-category-link" href="/categories/%E9%A2%98%E8%AE%B0/">题记</a>
+
+
+
+ </div>
+-->
+</div>
+
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-One-dimensional-Japanese-Crossword"><span class="toc-text">A One-dimensional Japanese Crossword</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-Passwords"><span class="toc-text">B Passwords</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-Journey"><span class="toc-text">*C Journey</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#D-Maxim-and-Array"><span class="toc-text">*D Maxim and Array</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#E-Road-to-Home"><span class="toc-text">*E Road to Home</span></a></li></ol>
+<p>这一轮就过了A和B，C题看见直接懵了，不会做。xjb写了一个宽搜，然后又被叉掉了。D题有思路又没有写完。</p>
+<p><a target="_blank" rel="noopener" href="http://codeforces.com/contest/721">题目链接</a>与<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/374_Div2">代码链接</a></p>
+<h3 id="A-One-dimensional-Japanese-Crossword"><a href="#A-One-dimensional-Japanese-Crossword" class="headerlink" title="A One-dimensional Japanese Crossword"></a>A One-dimensional Japanese Crossword</h3><blockquote>
+<p>找成段的b的区间。</p>
+</blockquote>
+<h3 id="B-Passwords"><a href="#B-Passwords" class="headerlink" title="B Passwords"></a>B Passwords</h3><blockquote>
+<p>密码长度为k，从最小的长度开始试验，随机在该长度的字符串里面xjb找，问最小代价与最大代价。</p>
+</blockquote>
+<p>将所有字符按照长度排序，算小于k的与小于等于k的。</p>
+<h3 id="C-Journey"><a href="#C-Journey" class="headerlink" title="*C Journey"></a>*C Journey</h3><blockquote>
+<p>题意是给出每两点之间要通过的时间，给出起点是$1$，终点是$n$。问在给定T时间的范围内，能走过的最多的点数。(点数$n \leq 5000 $，边数$m \leq 5000$ 时间$T\leq 10^9$)</p>
+</blockquote>
+<p>现在来考虑这道题，$dp[x][y]$表示搜到$x$点时，经过$y$个点所用的最短时间。然后这个深搜搜到第$n$个点为止。在搜的过程中记录前一个节点，代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cal</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (vis[x])</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	vis[x] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span> (x == n)</span><br><span class="line">	&#123;</span><br><span class="line">		dp[x][<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = head[x]; i != <span class="number">-1</span>; i = edge[i].next)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> nxt = edge[i].to;</span><br><span class="line">		<span class="type">int</span> t = edge[i].tim;</span><br><span class="line">		<span class="built_in">cal</span>(nxt);</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (dp[x][j] &gt; t + dp[nxt][j - <span class="number">1</span>])</span><br><span class="line">			&#123;</span><br><span class="line">				dp[x][j] = t + dp[nxt][j - <span class="number">1</span>];</span><br><span class="line">				pre[x][j] = nxt;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>就这种问题肯定是要同时记录时间和数量的，考虑将其中一个作为数组下标，另一个作为变量。</p>
+<h3 id="D-Maxim-and-Array"><a href="#D-Maxim-and-Array" class="headerlink" title="*D Maxim and Array"></a>*D Maxim and Array</h3><blockquote>
+<p>给出$n$个数，可以对其中任意一个数做$+x$或者$-x$的操作，现在最多能够操作$k$次，问使得这$n$个数相乘的最小的情况下，这$n$个数分别是多少。</p>
+</blockquote>
+<p>首先判断0的数量$x$，$x&gt;k$，只能是$0$。</p>
+<blockquote>
+<p>之后判断正负号，负号不管。正号的话，考虑把正的最小的变到负的，或者把负的最大的变成正的。(后一种情况要考虑到)</p>
+</blockquote>
+<p>做完这些操作之后，会发现问题变成使得它们相乘的绝对值最大，可以推出来，有$n$个数，可以对任意一个操作的时候，一定是选绝对值最小的那个数$+x$。那么这样的话就维护队列中的最小值不断$+x$就可以了。</p>
+<p>自己打得时候完全懵逼，拿一个线段树去维护最小值也是。。。用优先队列啊。。。</p>
+<h3 id="E-Road-to-Home"><a href="#E-Road-to-Home" class="headerlink" title="*E Road to Home"></a>*E Road to Home</h3><blockquote>
+<p>题意是给出了$L$范围内的$n$段区间，小朋友在这$n$段区间可以唱歌，每次唱歌走过的路程为$p$，当然也可以不唱。唱完歌走出一个区间至少要隔$t$长度才可以再唱，问最多能够唱几次。</p>
+</blockquote>
+<p>考虑每一个区间，$dp[x]$表示到第$x$区间的右端点时最多唱过的歌数。$en[x]$记录其位置。如果有相同数量的情况，记录其最左边的位置。</p>
+<p>这个题巧妙在于每一次只需记录利用该区间之后的最大数量和最左位置就好了，而不用每一次从1开始转移，原因<a target="_blank" rel="noopener" href="http://www.cnblogs.com/sagitta/p/5925785.html">这篇博客</a>说得很清楚了。</p>
+<blockquote>
+<p>你如果认真读过转移方程的话会发现 转移的时候是每次先休息再连续唱几遍歌 （先一段休息 再一段唱歌） 我们考虑唱歌段 如果唱歌段能继续延长一个周期 那么如果此时延长了肯定会使得从起点到当前区间的答案更优 <strong>而起点到每个区间的最优答案都是从起点到之前某个区间的最优答案转移过来的 如果某一区间少唱一首歌 那么空余出来的时间在这之后运气好也只能用来唱一首歌</strong> 所以只要按这种贪心思路 维护从起点到当前区间的最优解 最后得到的便是从起点到终点的最优解。</p>
+</blockquote>
+<p>这个题$O(n)$的解法真的很巧妙啊，比题解的那个根据p的范围分类讨论各种情况的好多了。。。</p>
+
+
+<!--<a href="http://2997ms.github.io/2016/10/06/CP/Codeforces/Codeforces-374-Div2/#disqus_thread" class="article-comment-link">Comments</a>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = ''; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+-->
+<div style="display:none">
+<script src="http://s4.cnzz.com/stat.php?id=&web_id=" language="JavaScript"></script>script>
+</div>
+
+
+
+
+
+
+</body>
+</html>

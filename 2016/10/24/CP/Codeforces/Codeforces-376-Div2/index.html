@@ -1,0 +1,112 @@
+<html>
+<head>
+	
+	<title>Codeforces 376 Div2</title>
+	<meta name="keywords" content="fzb.me,冯宗宝,冯宗宝的blog" />
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+	   <link href="/css/main.css?v=3" rel="stylesheet" type="text/css" />
+    
+        
+<script src="/js/util.js"></script>
+
+        <script>
+            if(isMobile()) {
+                loadjscssfile('../css/mobile.css', 'css');
+            } else {
+                loadjscssfile('../css/desktop.css', 'css');
+            }
+        </script> 
+    
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom feed">
+
+    
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3"/>
+    
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+
+
+<h2 class="title">Codeforces 376 Div2</h2>
+<!--
+<div style="text-align:center;margin-top: -10px;">
+<div class="article-category">
+发表于2016年10月24日
+
+
+    <a class="article-category-link" href="/categories/%E9%A2%98%E8%AE%B0/">题记</a>
+
+
+
+ </div>
+-->
+</div>
+
+<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-Night-at-the-Museum"><span class="toc-text">A Night at the Museum</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-Coupons-and-Discounts"><span class="toc-text">B Coupons and Discounts</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-Socks"><span class="toc-text">C Socks</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#D-80-th-Level-Archeology"><span class="toc-text">D 80-th Level Archeology</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#E-Funny-Game"><span class="toc-text">E Funny Game</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#F-Video-Cards"><span class="toc-text">F Video Cards</span></a></li></ol>
+<p><a target="_blank" rel="noopener" href="http://codeforces.com/contest/731">题目链接</a>与<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/376_Div2">代码链接</a></p>
+<p>晚上VP了这一场，并查集写脑残了，TLE47。F题关于数据应该注意数据范围，然后根据每一个数字来进行枚举。</p>
+<h3 id="A-Night-at-the-Museum"><a href="#A-Night-at-the-Museum" class="headerlink" title="A Night at the Museum"></a>A Night at the Museum</h3><blockquote>
+<p>$26$个字母放在一个圆盘上，然后可以顺时针逆时针方向找字母，问总和旋转次数最少是多少。</p>
+</blockquote>
+<p>每次贪心取最小值。res+&#x3D;min(abs(k-cur),26-abs(k-cur))</p>
+<h3 id="B-Coupons-and-Discounts"><a href="#B-Coupons-and-Discounts" class="headerlink" title="B Coupons and Discounts"></a>B Coupons and Discounts</h3><blockquote>
+<p>有$n$天，对应每一天要购买相应数量的pizza，有两种购买方式，第一种一天买两个，第二种连续两天买一个。问该安排在这两种购买方式下是否可行。</p>
+</blockquote>
+<p>从第一天开始贪心，偶数不用管，如果是奇数，那么想要可行下一天必须减1。判断每一天的数量大于等于0，还有最后一天要是偶数。</p>
+<h3 id="C-Socks"><a href="#C-Socks" class="headerlink" title="C Socks"></a>C Socks</h3><blockquote>
+<p>有n个袜子，k种颜色，m个天。每一天有对应安排，要穿哪两只袜子。问想要满足每一天袜子都一致的情况下，最小更改袜子的颜色数量。</p>
+</blockquote>
+<p>并查集，把要穿的袜子放在一个集合里面。然后再在每一个集合里面选取出现颜色最多的那种，其他的袜子就要去改成这个颜色。。。</p>
+<h3 id="D-80-th-Level-Archeology"><a href="#D-80-th-Level-Archeology" class="headerlink" title="D 80-th Level Archeology"></a>D 80-th Level Archeology</h3><blockquote>
+<p>题意是给出了$n$个序列，然后可以对所有序列向后移一位，最后一个$C$的话就变为$1$。问最少移多少位可以满足序列是呈现字典序递增的顺序。</p>
+</blockquote>
+<p>对两个序列进行比较会发现，是一个合法区间。将所有合法区间进行合并，看有没有满足所有区间的数字。</p>
+<h3 id="E-Funny-Game"><a href="#E-Funny-Game" class="headerlink" title="E Funny Game"></a>E Funny Game</h3><blockquote>
+<p>题意是有$n$个数，Petya和Gena对这$n$个数按照如下规则去取：每次至少选择数列中最左面前$2$个数，其和计入分数，然后把这个和再次放入该数列的最左面，直到该数列只剩下一个数为止。每个人都希望自己的分数-对手的分数最大，Petya先取，问最优解。</p>
+</blockquote>
+<p>后来才知道这种博弈是有套路的。。。</p>
+<p>$DP[i]$表示对当前玩家来说，取前$[1..i]$数其最优值，那么这个最优值$DP[i]$从哪里转移过来，从左往右取的话，这个最优值是取决于对手取的最优值，即是从右面转移过来的。根据这个可以写一个$O(n^2)$的记忆化$DP$。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> val[maxn],sum[maxn],dp[maxn];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">cal</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(dp[x]!=<span class="number">-1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> dp[x];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">int</span> res = -INF;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=x+<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		res=<span class="built_in">max</span>(res,<span class="built_in">cal</span>(i));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(res == -INF)</span><br><span class="line">		res = <span class="number">0</span>;</span><br><span class="line">	dp[x]=sum[x]-res;</span><br><span class="line">	<span class="keyword">return</span> dp[x];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(dp,<span class="number">-1</span>,<span class="built_in">sizeof</span>(dp));</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;val[i]);</span><br><span class="line">		sum[i]=sum[i<span class="number">-1</span>]+val[i];</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="type">int</span> res = -INF;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		res = <span class="built_in">max</span>(res,<span class="built_in">cal</span>(i));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,res);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>观察转移，从后转移的话，可以从后往前走，维护这个最大值，得到结果。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">ll n;</span><br><span class="line">ll val[maxn], sum[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%lld&quot;</span>, &amp;n);</span><br><span class="line">	<span class="built_in">repp</span>(i, <span class="number">1</span>, n)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%lld&quot;</span>, &amp;val[i]);</span><br><span class="line">		sum[i] = sum[i - <span class="number">1</span>] + val[i];</span><br><span class="line">	&#125;</span><br><span class="line">	ll res = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = n; i &gt;= <span class="number">2</span>; i--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (i == n)res = sum[i];</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (res &lt; sum[i] - res)</span><br><span class="line">		&#123;</span><br><span class="line">			res = sum[i] - res;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, res);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="F-Video-Cards"><a href="#F-Video-Cards" class="headerlink" title="F Video Cards"></a>F Video Cards</h3><blockquote>
+<p>有$n$个数，可以以任意一个数作为开头，其余的数必须减小到是这个数的整数倍，记这个数列的和。问所有情况下的和的最大值。</p>
+</blockquote>
+<p>注意数的范围都是小于200000的，那么就可以求前缀和，枚举每一个数作为基底，其2倍,3倍…的数。复杂度$O(nlogn)$</p>
+
+
+<!--<a href="http://2997ms.github.io/2016/10/24/CP/Codeforces/Codeforces-376-Div2/#disqus_thread" class="article-comment-link">Comments</a>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = ''; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+-->
+<div style="display:none">
+<script src="http://s4.cnzz.com/stat.php?id=&web_id=" language="JavaScript"></script>script>
+</div>
+
+
+
+
+
+
+</body>
+</html>
