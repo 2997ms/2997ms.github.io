@@ -1,56 +1,250 @@
-<html>
+<!DOCTYPE html>
+<html lang="zh-Hans">
 <head>
-	
-	<title>Codeforces 418 Div2</title>
-	<meta name="keywords" content="fzb.me,冯宗宝,冯宗宝的blog" />
-
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-    
-	   <link href="/css/main.css?v=3" rel="stylesheet" type="text/css" />
-    
-        
-<script src="/js/util.js"></script>
-
-        <script>
-            if(isMobile()) {
-                loadjscssfile('../css/mobile.css', 'css');
-            } else {
-                loadjscssfile('../css/desktop.css', 'css');
-            }
-        </script> 
-    
-
-    <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom feed">
-
-    
-	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3"/>
-    
-    
-
-<meta name="generator" content="Hexo 6.2.0"></head>
-
-<body>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.2.0">
 
 
-<h2 class="title">Codeforces 418 Div2</h2>
-<!--
-<div style="text-align:center;margin-top: -10px;">
-<div class="article-category">
-发表于2017年6月16日
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-
-    <a class="article-category-link" href="/categories/%E9%A2%98%E8%AE%B0/">题记</a>
+<link rel="stylesheet" href="/css/main.css">
 
 
 
- </div>
--->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"2997ms.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","Muse | Mist":320,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="题目链接">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Codeforces 418 Div2">
+<meta property="og:url" content="http://2997ms.github.io/2017/06/16/CP/Codeforces/Codeforces-418-Div2/index.html">
+<meta property="og:site_name" content="2997ms">
+<meta property="og:description" content="题目链接">
+<meta property="og:locale">
+<meta property="article:published_time" content="2017-06-16T08:24:32.000Z">
+<meta property="article:modified_time" content="2017-06-16T02:43:17.000Z">
+<meta property="article:author" content="2997ms">
+<meta property="article:tag" content="Codeforces">
+<meta property="article:tag" content="DP">
+<meta property="article:tag" content="贪心">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://2997ms.github.io/2017/06/16/CP/Codeforces/Codeforces-418-Div2/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://2997ms.github.io/2017/06/16/CP/Codeforces/Codeforces-418-Div2/","path":"2017/06/16/CP/Codeforces/Codeforces-418-Div2/","title":"Codeforces 418 Div2"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Codeforces 418 Div2 | 2997ms</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">2997ms</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">2997ms</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
 </div>
 
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-An-abandoned-sentiment-from-past"><span class="toc-text">A An abandoned sentiment from past</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-An-express-train-to-reveries"><span class="toc-text">B An express train to reveries</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-An-impassioned-circulation-of-affection"><span class="toc-text">C An impassioned circulation of affection</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#D-An-overnight-dance-in-discotheque"><span class="toc-text">D An overnight dance in discotheque</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#E-An-unavoidable-detour-for-home"><span class="toc-text">E An unavoidable detour for home</span></a></li></ol>
-<p><a target="_blank" rel="noopener" href="http://codeforces.com/contest/814">题目链接</a></p>
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-An-abandoned-sentiment-from-past"><span class="nav-number">1.</span> <span class="nav-text">A An abandoned sentiment from past</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-An-express-train-to-reveries"><span class="nav-number">2.</span> <span class="nav-text">B An express train to reveries</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-An-impassioned-circulation-of-affection"><span class="nav-number">3.</span> <span class="nav-text">C An impassioned circulation of affection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-An-overnight-dance-in-discotheque"><span class="nav-number">4.</span> <span class="nav-text">D An overnight dance in discotheque</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-An-unavoidable-detour-for-home"><span class="nav-number">5.</span> <span class="nav-text">E An unavoidable detour for home</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">2997ms</p>
+  <div class="site-description" itemprop="description">2997ms</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">132</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">65</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/2997ms" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;2997ms" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wangchong756@gmail.com" title="E-Mail → mailto:wangchong756@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2017/06/16/CP/Codeforces/Codeforces-418-Div2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="2997ms">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2997ms">
+      <meta itemprop="description" content="2997ms">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Codeforces 418 Div2 | 2997ms">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Codeforces 418 Div2
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2017-06-16 09:24:32 / Modified: 03:43:17" itemprop="dateCreated datePublished" datetime="2017-06-16T09:24:32+01:00">2017-06-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%A2%98%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">题记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><a target="_blank" rel="noopener" href="http://codeforces.com/contest/814">题目链接</a></p>
 <span id="more"></span>
 
 <h3 id="A-An-abandoned-sentiment-from-past"><a href="#A-An-abandoned-sentiment-from-past" class="headerlink" title="A An abandoned sentiment from past"></a>A An abandoned sentiment from past</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> n,k;</span><br><span class="line"><span class="type">int</span> val[maxn],b[maxn];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">sa</span>(n),<span class="built_in">sa</span>(k);</span><br><span class="line">	<span class="keyword">if</span>(k&gt;<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">puts</span>(<span class="string">&quot;Yes&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">repp</span>(i,<span class="number">1</span>,n)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">sa</span>(val[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">repp</span>(i,<span class="number">1</span>,k)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">sa</span>(b[i]);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="type">int</span> left=<span class="number">-1</span>,right=<span class="number">205</span>;</span><br><span class="line">	val[<span class="number">0</span>]=<span class="number">-1</span>;</span><br><span class="line">	val[n+<span class="number">1</span>]=<span class="number">205</span>;</span><br><span class="line">	<span class="type">int</span> pre=<span class="number">-1</span>;</span><br><span class="line">	<span class="built_in">repp</span>(i,<span class="number">1</span>,n)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(val[i]==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			left=val[i<span class="number">-1</span>];</span><br><span class="line">			right=val[i+<span class="number">1</span>];</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(val[i]&lt;=pre)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">puts</span>(<span class="string">&quot;Yes&quot;</span>);</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		pre=val[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(left&lt;b[<span class="number">1</span>]&amp;&amp;b[<span class="number">1</span>]&lt;right)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">puts</span>(<span class="string">&quot;No&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">puts</span>(<span class="string">&quot;Yes&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -92,26 +286,74 @@
 <p>因为每个点距离树根是确定的而且唯一，满足上述的条件。所以想到按照层去枚举。</p>
 <p>dp[a][b][c][d]表示上层有a个空着1条边的，b个空着2条边的，这一层有c个空着1条边的，d个空着2条边的。剩下的就是状态的转移了。。。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> d[<span class="number">55</span>];</span><br><span class="line">ll dp[<span class="number">2</span>][<span class="number">55</span>][<span class="number">55</span>][<span class="number">55</span>][<span class="number">55</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">sa</span>(n);</span><br><span class="line">	<span class="built_in">repp</span>(i, <span class="number">1</span>, n)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">sa</span>(d[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	dp[<span class="number">0</span>][d[<span class="number">1</span>] == <span class="number">2</span>][d[<span class="number">1</span>] == <span class="number">3</span>][d[<span class="number">2</span>] == <span class="number">2</span>][d[<span class="number">2</span>] == <span class="number">3</span>] = <span class="number">1</span>;</span><br><span class="line">	<span class="type">int</span> now = <span class="number">0</span>, nxt = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt; n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> h = <span class="number">0</span>; h &lt;= i; h++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j + h &lt;= i; j++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">0</span>; k + j + h &lt;= i; k++)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">for</span> (<span class="type">int</span> le = <span class="number">0</span>; le + k + j + h &lt;= i; le++)</span><br><span class="line">					&#123;</span><br><span class="line">						<span class="keyword">if</span> (dp[now][h][j][k][le] == <span class="number">0</span>)<span class="keyword">continue</span>;</span><br><span class="line">						<span class="keyword">if</span> (h == <span class="number">0</span> &amp;&amp; j == <span class="number">0</span>)</span><br><span class="line">						&#123;</span><br><span class="line">							<span class="keyword">if</span> (k || le)</span><br><span class="line">							&#123;</span><br><span class="line">								dp[now][k][le][<span class="number">0</span>][<span class="number">0</span>] += dp[now][h][j][k][le];</span><br><span class="line">								dp[now][k][le][<span class="number">0</span>][<span class="number">0</span>] %= mod;</span><br><span class="line">							&#125;</span><br><span class="line">							<span class="keyword">continue</span>;</span><br><span class="line">						&#125;</span><br><span class="line">						<span class="keyword">if</span> (d[i + <span class="number">1</span>] == <span class="number">2</span>)</span><br><span class="line">						&#123;</span><br><span class="line">							<span class="keyword">if</span> (h)</span><br><span class="line">							&#123;</span><br><span class="line">								dp[nxt][h - <span class="number">1</span>][j][k + <span class="number">1</span>][le] += dp[now][h][j][k][le] * h;</span><br><span class="line">								dp[nxt][h - <span class="number">1</span>][j][k + <span class="number">1</span>][le] %= mod;</span><br><span class="line"></span><br><span class="line">								<span class="keyword">if</span> (k)</span><br><span class="line">								&#123;</span><br><span class="line">									dp[nxt][h - <span class="number">1</span>][j][k - <span class="number">1</span>][le] += dp[now][h][j][k][le] * h*k%mod;</span><br><span class="line">									dp[nxt][h - <span class="number">1</span>][j][k - <span class="number">1</span>][le] %= mod;</span><br><span class="line">								&#125;</span><br><span class="line">								<span class="keyword">if</span> (le)</span><br><span class="line">								&#123;</span><br><span class="line">									dp[nxt][h - <span class="number">1</span>][j][k+<span class="number">1</span>][le - <span class="number">1</span>] += dp[now][h][j][k][le] * h*le%mod;</span><br><span class="line">									dp[nxt][h - <span class="number">1</span>][j][k+<span class="number">1</span>][le - <span class="number">1</span>] %= mod;</span><br><span class="line">								&#125;</span><br><span class="line">							&#125;</span><br><span class="line">							<span class="keyword">if</span> (j)</span><br><span class="line">							&#123;</span><br><span class="line">								dp[nxt][h + <span class="number">1</span>][j - <span class="number">1</span>][k + <span class="number">1</span>][le] += dp[now][h][j][k][le] * j;</span><br><span class="line">								dp[nxt][h + <span class="number">1</span>][j - <span class="number">1</span>][k + <span class="number">1</span>][le] %= mod;</span><br><span class="line"></span><br><span class="line">								<span class="keyword">if</span> (k)</span><br><span class="line">								&#123;</span><br><span class="line">									dp[nxt][h + <span class="number">1</span>][j - <span class="number">1</span>][k - <span class="number">1</span>][le] += dp[now][h][j][k][le] * j*k%mod;</span><br><span class="line">									dp[nxt][h + <span class="number">1</span>][j - <span class="number">1</span>][k - <span class="number">1</span>][le] %= mod;</span><br><span class="line">								&#125;</span><br><span class="line">								<span class="keyword">if</span> (le)</span><br><span class="line">								&#123;</span><br><span class="line">									dp[nxt][h + <span class="number">1</span>][j - <span class="number">1</span>][k + <span class="number">1</span>][le - <span class="number">1</span>] += dp[now][h][j][k][le] * j*le%mod;</span><br><span class="line">									dp[nxt][h + <span class="number">1</span>][j - <span class="number">1</span>][k + <span class="number">1</span>][le - <span class="number">1</span>] %= mod;</span><br><span class="line">								&#125;</span><br><span class="line">							&#125;</span><br><span class="line">						&#125;</span><br><span class="line">						<span class="keyword">else</span></span><br><span class="line">						&#123;</span><br><span class="line">							<span class="keyword">if</span> (h)</span><br><span class="line">							&#123;</span><br><span class="line">								dp[nxt][h - <span class="number">1</span>][j][k][le + <span class="number">1</span>] += dp[now][h][j][k][le] * h%mod;</span><br><span class="line">								dp[nxt][h - <span class="number">1</span>][j][k][le + <span class="number">1</span>] %= mod;</span><br><span class="line"></span><br><span class="line">								<span class="keyword">if</span> (k)</span><br><span class="line">								&#123;</span><br><span class="line">									dp[nxt][h - <span class="number">1</span>][j][k][le] += dp[now][h][j][k][le] * h*k;</span><br><span class="line">									dp[nxt][h - <span class="number">1</span>][j][k][le] %= mod;</span><br><span class="line">								&#125;</span><br><span class="line">								<span class="keyword">if</span> (le)</span><br><span class="line">								&#123;</span><br><span class="line">									dp[nxt][h - <span class="number">1</span>][j][k + <span class="number">2</span>][le - <span class="number">1</span>] += dp[now][h][j][k][le] * h*le%mod;</span><br><span class="line">									dp[nxt][h - <span class="number">1</span>][j][k + <span class="number">2</span>][le - <span class="number">1</span>] %= mod;</span><br><span class="line">								&#125;</span><br><span class="line">								<span class="keyword">if</span> (k &gt;= <span class="number">2</span>)</span><br><span class="line">								&#123;</span><br><span class="line">									dp[nxt][h - <span class="number">1</span>][j][k - <span class="number">2</span>][le] += dp[now][h][j][k][le] * h*k*(k - <span class="number">1</span>) / <span class="number">2</span> % mod;</span><br><span class="line">									dp[nxt][h - <span class="number">1</span>][j][k - <span class="number">2</span>][le] %= mod;</span><br><span class="line">								&#125;</span><br><span class="line">								<span class="keyword">if</span> (le &gt;= <span class="number">2</span>)</span><br><span class="line">								&#123;</span><br><span class="line">									dp[nxt][h - <span class="number">1</span>][j][k + <span class="number">2</span>][le - <span class="number">2</span>] += dp[now][h][j][k][le] * h*le*(le - <span class="number">1</span>) / <span class="number">2</span> % mod;</span><br><span class="line">									dp[nxt][h - <span class="number">1</span>][j][k + <span class="number">2</span>][le - <span class="number">2</span>] %= mod;</span><br><span class="line">								&#125;</span><br><span class="line">								<span class="keyword">if</span> (k&amp;&amp;le)</span><br><span class="line">								&#123;</span><br><span class="line">									dp[nxt][h - <span class="number">1</span>][j][k][le - <span class="number">1</span>] += dp[now][h][j][k][le] * h*k*le;</span><br><span class="line">									dp[nxt][h - <span class="number">1</span>][j][k][le - <span class="number">1</span>] %= mod;</span><br><span class="line">								&#125;</span><br><span class="line">							&#125;</span><br><span class="line">							<span class="keyword">if</span> (j)</span><br><span class="line">							&#123;</span><br><span class="line">								dp[nxt][h+<span class="number">1</span>][j - <span class="number">1</span>][k][le + <span class="number">1</span>] += dp[now][h][j][k][le] * j%mod;</span><br><span class="line">								dp[nxt][h+<span class="number">1</span>][j - <span class="number">1</span>][k][le + <span class="number">1</span>] %= mod;</span><br><span class="line"></span><br><span class="line">								<span class="keyword">if</span> (k)</span><br><span class="line">								&#123;</span><br><span class="line">									dp[nxt][h+<span class="number">1</span>][j - <span class="number">1</span>][k][le] += dp[now][h][j][k][le] * j*k%mod;</span><br><span class="line">									dp[nxt][h+<span class="number">1</span>][j<span class="number">-1</span>][k][le] %= mod;</span><br><span class="line">								&#125;</span><br><span class="line">								<span class="keyword">if</span> (le)</span><br><span class="line">								&#123;</span><br><span class="line">									dp[nxt][h+<span class="number">1</span>][j - <span class="number">1</span>][k + <span class="number">2</span>][le - <span class="number">1</span>] += dp[now][h][j][k][le] * j*le%mod;</span><br><span class="line">									dp[nxt][h+<span class="number">1</span>][j<span class="number">-1</span>][k + <span class="number">2</span>][le - <span class="number">1</span>] %= mod;</span><br><span class="line">								&#125;</span><br><span class="line">								<span class="keyword">if</span> (k &gt;= <span class="number">2</span>)</span><br><span class="line">								&#123;</span><br><span class="line">									dp[nxt][h+<span class="number">1</span>][j - <span class="number">1</span>][k - <span class="number">2</span>][le] += dp[now][h][j][k][le] * j*k*(k - <span class="number">1</span>) / <span class="number">2</span> % mod;</span><br><span class="line">									dp[nxt][h+<span class="number">1</span>][j - <span class="number">1</span>][k - <span class="number">2</span>][le] %= mod;</span><br><span class="line">								&#125;</span><br><span class="line">								<span class="keyword">if</span> (le &gt;= <span class="number">2</span>)</span><br><span class="line">								&#123;</span><br><span class="line">									dp[nxt][h + <span class="number">1</span>][j - <span class="number">1</span>][k + <span class="number">2</span>][le - <span class="number">2</span>] += dp[now][h][j][k][le] * j*le*(le - <span class="number">1</span>) / <span class="number">2</span> % mod;</span><br><span class="line">									dp[nxt][h + <span class="number">1</span>][j - <span class="number">1</span>][k + <span class="number">2</span>][le - <span class="number">2</span>] %= mod;</span><br><span class="line">								&#125;</span><br><span class="line">								<span class="keyword">if</span> (k&amp;&amp;le)</span><br><span class="line">								&#123;</span><br><span class="line">									dp[nxt][h + <span class="number">1</span>][j - <span class="number">1</span>][k][le - <span class="number">1</span>] += dp[now][h][j][k][le] * j*k*le;</span><br><span class="line">									dp[nxt][h + <span class="number">1</span>][j - <span class="number">1</span>][k][le - <span class="number">1</span>] %= mod;</span><br><span class="line">								&#125;</span><br><span class="line">							&#125;</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">swap</span>(now, nxt);</span><br><span class="line">		<span class="built_in">memset</span>(dp[nxt], <span class="number">0</span>, <span class="built_in">sizeof</span>(dp[nxt]));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, dp[now][<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    </div>
 
-<!--<a href="http://2997ms.github.io/2017/06/16/CP/Codeforces/Codeforces-418-Div2/#disqus_thread" class="article-comment-link">Comments</a>
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-    var disqus_shortname = ''; // required: replace example with your forum shortname
+    
+    
+    
 
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
--->
-<div style="display:none">
-<script src="http://s4.cnzz.com/stat.php?id=&web_id=" language="JavaScript"></script>script>
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Codeforces/" rel="tag"># Codeforces</a>
+              <a href="/tags/DP/" rel="tag"># DP</a>
+              <a href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag"># 贪心</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2017/06/16/CP/Codeforces/Codeforces-417-Div2/" rel="prev" title="Codeforces 417 Div2">
+                  <i class="fa fa-chevron-left"></i> Codeforces 417 Div2
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2017/06/30/Topic/%E4%B8%8D%E4%BC%9AC++(%E4%BA%8C)/" rel="next" title="不会C++(二)(继承和组合)">
+                  不会C++(二)(继承和组合) <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
 </div>
 
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">2997ms</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
 
 
 

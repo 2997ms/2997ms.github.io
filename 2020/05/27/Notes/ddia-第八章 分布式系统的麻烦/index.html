@@ -1,56 +1,254 @@
-<html>
+<!DOCTYPE html>
+<html lang="zh-Hans">
 <head>
-	
-	<title>ddia-第八章-分布式系统的麻烦</title>
-	<meta name="keywords" content="fzb.me,冯宗宝,冯宗宝的blog" />
-
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-    
-	   <link href="/css/main.css?v=3" rel="stylesheet" type="text/css" />
-    
-        
-<script src="/js/util.js"></script>
-
-        <script>
-            if(isMobile()) {
-                loadjscssfile('../css/mobile.css', 'css');
-            } else {
-                loadjscssfile('../css/desktop.css', 'css');
-            }
-        </script> 
-    
-
-    <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom feed">
-
-    
-	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=3"/>
-    
-    
-
-<meta name="generator" content="Hexo 6.2.0"></head>
-
-<body>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.2.0">
 
 
-<h2 class="title">ddia-第八章-分布式系统的麻烦</h2>
-<!--
-<div style="text-align:center;margin-top: -10px;">
-<div class="article-category">
-发表于2020年5月27日
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-
-    <a class="article-category-link" href="/categories/%E9%98%85%E8%AF%BB/">阅读</a>
+<link rel="stylesheet" href="/css/main.css">
 
 
 
- </div>
--->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"2997ms.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","Muse | Mist":320,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="尽管我们已经谈了很多错误，但之前几章仍然过于乐观。现实更加黑暗。我们现在将悲观主义最大化，假设任何可能出错的东西都会出错">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ddia-第八章-分布式系统的麻烦">
+<meta property="og:url" content="http://2997ms.github.io/2020/05/27/Notes/ddia-%E7%AC%AC%E5%85%AB%E7%AB%A0%20%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E9%BA%BB%E7%83%A6/index.html">
+<meta property="og:site_name" content="2997ms">
+<meta property="og:description" content="尽管我们已经谈了很多错误，但之前几章仍然过于乐观。现实更加黑暗。我们现在将悲观主义最大化，假设任何可能出错的东西都会出错">
+<meta property="og:locale">
+<meta property="article:published_time" content="2020-05-27T21:43:47.000Z">
+<meta property="article:modified_time" content="2020-08-15T13:21:48.967Z">
+<meta property="article:author" content="2997ms">
+<meta property="article:tag" content="ddia">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://2997ms.github.io/2020/05/27/Notes/ddia-%E7%AC%AC%E5%85%AB%E7%AB%A0%20%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E9%BA%BB%E7%83%A6/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://2997ms.github.io/2020/05/27/Notes/ddia-%E7%AC%AC%E5%85%AB%E7%AB%A0%20%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E9%BA%BB%E7%83%A6/","path":"2020/05/27/Notes/ddia-第八章 分布式系统的麻烦/","title":"ddia-第八章-分布式系统的麻烦"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ddia-第八章-分布式系统的麻烦 | 2997ms</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">2997ms</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">2997ms</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
 </div>
 
-<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%85%E9%9A%9C%E4%B8%8E%E9%83%A8%E5%88%86%E5%A4%B1%E6%95%88"><span class="toc-text">故障与部分失效</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%91%E8%AE%A1%E7%AE%97%E4%B8%8E%E8%B6%85%E7%BA%A7%E8%AE%A1%E7%AE%97%E6%9C%BA"><span class="toc-text">云计算与超级计算机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E5%8F%AF%E9%9D%A0%E7%9A%84%E7%BD%91%E7%BB%9C"><span class="toc-text">不可靠的网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E6%B5%8B%E6%95%85%E9%9A%9C"><span class="toc-text">检测故障</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B6%85%E6%97%B6%E4%B8%8E%E6%97%A0%E7%A9%B7%E7%9A%84%E5%BB%B6%E8%BF%9F"><span class="toc-text">超时与无穷的延迟</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8C%E6%AD%A5%E7%BD%91%E7%BB%9C-vs-%E5%BC%82%E6%AD%A5%E7%BD%91%E7%BB%9C"><span class="toc-text">同步网络 vs 异步网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E5%8F%AF%E9%9D%A0%E7%9A%84%E6%97%B6%E9%92%9F"><span class="toc-text">不可靠的时钟</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E8%B0%83%E9%92%9F%E4%B8%8E%E6%97%B6%E9%92%9F"><span class="toc-text">单调钟与时钟</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%92%9F%E5%90%8C%E6%AD%A5%E4%B8%8E%E5%87%86%E7%A1%AE%E6%80%A7"><span class="toc-text">时钟同步与准确性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%89%E5%BA%8F%E4%BA%8B%E4%BB%B6%E7%9A%84%E6%97%B6%E9%97%B4%E6%88%B3"><span class="toc-text">有序事件的时间戳</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%B6%E9%92%9F%E8%AF%BB%E6%95%B0%E5%AD%98%E5%9C%A8%E7%BD%AE%E4%BF%A1%E5%8C%BA%E9%97%B4"><span class="toc-text">时钟读数存在置信区间</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%BF%AB%E7%85%A7%E7%9A%84%E5%90%8C%E6%AD%A5%E6%97%B6%E9%92%9F"><span class="toc-text">全局快照的同步时钟</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9A%82%E5%81%9C%E8%BF%9B%E7%A8%8B"><span class="toc-text">暂停进程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E6%97%B6%E9%97%B4%E4%BF%9D%E8%AF%81"><span class="toc-text">响应时间保证</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%9F%E7%90%86%E7%94%B1%E5%A4%9A%E6%95%B0%E6%89%80%E5%AE%9A%E4%B9%89"><span class="toc-text">真理由多数所定义</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%86%E5%AF%BC%E8%80%85%E5%92%8C%E9%94%81"><span class="toc-text">领导者和锁</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%9C%E5%8D%A0%E5%BA%AD%E6%95%85%E9%9A%9C"><span class="toc-text">拜占庭故障</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9E%8B%E4%B8%8E%E7%8E%B0%E5%AE%9E"><span class="toc-text">系统模型与现实</span></a></li></ol>
-<p>尽管我们已经谈了很多错误，但之前几章仍然过于乐观。现实更加黑暗。我们现在将悲观主义最大化，假设任何可能出错的东西都会出错</p>
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%85%E9%9A%9C%E4%B8%8E%E9%83%A8%E5%88%86%E5%A4%B1%E6%95%88"><span class="nav-number">1.</span> <span class="nav-text">故障与部分失效</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%91%E8%AE%A1%E7%AE%97%E4%B8%8E%E8%B6%85%E7%BA%A7%E8%AE%A1%E7%AE%97%E6%9C%BA"><span class="nav-number">2.</span> <span class="nav-text">云计算与超级计算机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E5%8F%AF%E9%9D%A0%E7%9A%84%E7%BD%91%E7%BB%9C"><span class="nav-number">3.</span> <span class="nav-text">不可靠的网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E6%B5%8B%E6%95%85%E9%9A%9C"><span class="nav-number">4.</span> <span class="nav-text">检测故障</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B6%85%E6%97%B6%E4%B8%8E%E6%97%A0%E7%A9%B7%E7%9A%84%E5%BB%B6%E8%BF%9F"><span class="nav-number">5.</span> <span class="nav-text">超时与无穷的延迟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E7%BD%91%E7%BB%9C-vs-%E5%BC%82%E6%AD%A5%E7%BD%91%E7%BB%9C"><span class="nav-number">6.</span> <span class="nav-text">同步网络 vs 异步网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E5%8F%AF%E9%9D%A0%E7%9A%84%E6%97%B6%E9%92%9F"><span class="nav-number">7.</span> <span class="nav-text">不可靠的时钟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E8%B0%83%E9%92%9F%E4%B8%8E%E6%97%B6%E9%92%9F"><span class="nav-number">8.</span> <span class="nav-text">单调钟与时钟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E9%92%9F%E5%90%8C%E6%AD%A5%E4%B8%8E%E5%87%86%E7%A1%AE%E6%80%A7"><span class="nav-number">9.</span> <span class="nav-text">时钟同步与准确性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%89%E5%BA%8F%E4%BA%8B%E4%BB%B6%E7%9A%84%E6%97%B6%E9%97%B4%E6%88%B3"><span class="nav-number">9.1.</span> <span class="nav-text">有序事件的时间戳</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%B6%E9%92%9F%E8%AF%BB%E6%95%B0%E5%AD%98%E5%9C%A8%E7%BD%AE%E4%BF%A1%E5%8C%BA%E9%97%B4"><span class="nav-number">9.2.</span> <span class="nav-text">时钟读数存在置信区间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E5%BF%AB%E7%85%A7%E7%9A%84%E5%90%8C%E6%AD%A5%E6%97%B6%E9%92%9F"><span class="nav-number">9.3.</span> <span class="nav-text">全局快照的同步时钟</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9A%82%E5%81%9C%E8%BF%9B%E7%A8%8B"><span class="nav-number">10.</span> <span class="nav-text">暂停进程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%93%8D%E5%BA%94%E6%97%B6%E9%97%B4%E4%BF%9D%E8%AF%81"><span class="nav-number">10.1.</span> <span class="nav-text">响应时间保证</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9C%9F%E7%90%86%E7%94%B1%E5%A4%9A%E6%95%B0%E6%89%80%E5%AE%9A%E4%B9%89"><span class="nav-number">11.</span> <span class="nav-text">真理由多数所定义</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%86%E5%AF%BC%E8%80%85%E5%92%8C%E9%94%81"><span class="nav-number">11.1.</span> <span class="nav-text">领导者和锁</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%9C%E5%8D%A0%E5%BA%AD%E6%95%85%E9%9A%9C"><span class="nav-number">12.</span> <span class="nav-text">拜占庭故障</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E6%A8%A1%E5%9E%8B%E4%B8%8E%E7%8E%B0%E5%AE%9E"><span class="nav-number">13.</span> <span class="nav-text">系统模型与现实</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">2997ms</p>
+  <div class="site-description" itemprop="description">2997ms</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">132</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">65</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/2997ms" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;2997ms" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wangchong756@gmail.com" title="E-Mail → mailto:wangchong756@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2020/05/27/Notes/ddia-%E7%AC%AC%E5%85%AB%E7%AB%A0%20%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E9%BA%BB%E7%83%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="2997ms">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2997ms">
+      <meta itemprop="description" content="2997ms">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ddia-第八章-分布式系统的麻烦 | 2997ms">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ddia-第八章-分布式系统的麻烦
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-05-27 22:43:47" itemprop="dateCreated datePublished" datetime="2020-05-27T22:43:47+01:00">2020-05-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2020-08-15 14:21:48" itemprop="dateModified" datetime="2020-08-15T14:21:48+01:00">2020-08-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">阅读</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>尽管我们已经谈了很多错误，但之前几章仍然过于乐观。现实更加黑暗。我们现在将悲观主义最大化，假设任何可能出错的东西都会出错</p>
 <span id="more"></span>
 
 <p> <a target="_blank" rel="noopener" href="https://github.com/Vonng/ddia/blob/master/ch8.md">阅读地址</a></p>
@@ -167,26 +365,72 @@
 <p><strong>安全性（safety）和活性（liveness）</strong>。在刚刚给出的例子中，<strong>唯一性（uniqueness）和单调序列（monotonic sequence）是安全属性，但可用性</strong>是<strong>活性（liveness）</strong>属性。</p>
 <p>安全性通常被非正式地定义为，<strong>没有坏事发生</strong>，而活性通常就类似：<strong>最终好事发生</strong>。</p>
 
+    </div>
 
-<!--<a href="http://2997ms.github.io/2020/05/27/Notes/ddia-%E7%AC%AC%E5%85%AB%E7%AB%A0%20%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E9%BA%BB%E7%83%A6/#disqus_thread" class="article-comment-link">Comments</a>
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-    var disqus_shortname = ''; // required: replace example with your forum shortname
+    
+    
+    
 
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
--->
-<div style="display:none">
-<script src="http://s4.cnzz.com/stat.php?id=&web_id=" language="JavaScript"></script>script>
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ddia/" rel="tag"># ddia</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/05/18/Notes/ddia-%E7%AC%AC%E4%B8%83%E7%AB%A0%20%E4%BA%8B%E5%8A%A1/" rel="prev" title="ddia-第七章-事务">
+                  <i class="fa fa-chevron-left"></i> ddia-第七章-事务
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/05/30/CP/Codeforces/Codeforces-645-Div2/" rel="next" title="Codeforces 645 Div2">
+                  Codeforces 645 Div2 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
 </div>
 
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">2997ms</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
 
 
 
