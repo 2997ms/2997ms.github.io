@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">133</span>
+          <span class="site-state-item-count">134</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -330,6 +330,109 @@ Software Engineer Intern<br/>
 </div>
 
 <h4 style="color:gray">🦸‍♂️ Contact me: wangchong756@gmail.com </h4>
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/09/19/CP/Google/Google-APAC-Test-2017-Round-C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="2997ms">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2997ms">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 2997ms">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2016/09/19/CP/Google/Google-APAC-Test-2017-Round-C/" class="post-title-link" itemprop="url">Google APAC Test 2017 Round C</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2016-09-19 14:16:11" itemprop="dateCreated datePublished" datetime="2016-09-19T14:16:11+01:00">2016-09-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-09-04 20:39:00" itemprop="dateModified" datetime="2022-09-04T20:39:00+01:00">2022-09-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><a target="_blank" rel="noopener" href="https://code.google.com/codejam/contest/6274486/dashboard#s=p0">题目链接</a>(需要翻墙)与<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Google/APAC%20Test%202017%20Round%20C">代码链接</a></p>
+<p>早就应该做一下笔试的原题了，也好体会一下题目的难度与区分度，结果一直拖延。。。</p>
+<p>前两场也都做了，成绩和这场一样不理想，做出三道，第四道的时候时间还剩一个多小时，正常来讲是应该要想出来的，但是当时特别特别困，还饿，加上本人智商有限，还剩半个小时的时候上床睡觉去了。。。</p>
+<hr>
+<h3 id="Problem-A-Monster-Path"><a href="#Problem-A-Monster-Path" class="headerlink" title="Problem A. Monster Path"></a>Problem A. Monster Path</h3><p>题意是给出R*C的格子，然后给你一个起点，走S步。每个点如果是’A’的话有P概率爆出怪兽，不是的话有Q概率爆出怪兽。一个点最多爆出一个怪兽。</p>
+<p>求你走S步之后，最大的怪兽数量期望。</p>
+<p>深搜，记录每一个点访问的次数x，每次加上该点爆出怪兽的期望，(1-P)^x*P或者(1-Q)^x*Q。最后记录最大值。</p>
+<hr>
+<h3 id="Problem-B-Safe-Squares"><a href="#Problem-B-Safe-Squares" class="headerlink" title="Problem B. Safe Squares"></a>Problem B. Safe Squares</h3><p>题意是求R*C矩形内，全为0的正方形数量之和。</p>
+<p>和<a href="http://2997ms.github.io/2016/09/19/Codeforces-371/">上一篇E题一样</a>，DP每一个点作为正方形右下角的最大边长，计算结果的时候加一起。</p>
+<hr>
+<h3 id="Problem-C-Evaluation"><a href="#Problem-C-Evaluation" class="headerlink" title="Problem C. Evaluation"></a>Problem C. Evaluation</h3><p>题意是给出变量之间的关系，就像C++语言看一个变量是否被定义。如果是没有参数变量的函数的返回值，那么该变量就是确定的，否则就依赖于其参数是否确定。函数执行的顺序是打乱的。</p>
+<p>其实就是拓扑排序嘛，O(n^2)搞一下，没有定义的变量为-1，找到这样的直接out。否则的话就看能不能有确定的拓扑排序。</p>
+<hr>
+<h3 id="Problem-D-Soldiers"><a href="#Problem-D-Soldiers" class="headerlink" title="Problem D. Soldiers"></a>Problem D. Soldiers</h3><p>题意是Alice和Bob做游戏，现在有n个士兵，每一个士兵有一个攻击力和一个防御力，要求每一个人选的士兵要么攻击力大于当前被选的所有士兵的攻击力，要么防御力大于当前被选的所有士兵的防御力，选择不到时游戏停止。现在给出n个士兵的攻击力和防御力，Alice先选，要求的是最终Alice选择的士兵要比Bob多。问两者都是最优选择的情况下，是否可行。</p>
+<p>给一个<a target="_blank" rel="noopener" href="http://codeforces.com/blog/entry/47181#comment-315896">链接</a>，说的还是挺明白的，将所有士兵按照攻击力排序，按照防御力排序，如果存在一个士兵特厉害，两个属性都冠绝群雄，那么Alice胜利，因为Bob没得选了。如果不存在，那么Alice一定不会去选攻击力最大的那个或者防御力最大的那个，因为万一选了这两个中的一个，那么Bob选择另一个，数量上是打平的，Alice赢不了。所以这样的数据就可以从可选的集合里面删去了，然后这样不断求解。</p>
+<blockquote>
+<p>这个题也让我学习到了一个新的函数。。。remove_if(a.begin(),a.end(),cmp) cmp里面放入if判别条件，删除容器内符合条件的元素，不符合条件的元素依次往前走，返回结束位置。</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
 
 
     
@@ -1322,127 +1425,6 @@ Software Engineer Intern<br/>
 <p>$$<br>(2^n-1)*(2^n-2)*\cdot\cdot\cdot*(2^n-(k-1))<br>$$</p>
 <p>来说，可以发现，当k-1&gt;&#x3D;mod的时候，最后的结果一定是0，即一定有整除mod的数出现了。剩下的就没什么了。</p>
 <p>这个题真的挺好玩的。^—^</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/08/22/CP/Codeforces/Codeforces-362-Div2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="2997ms">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="2997ms">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 2997ms">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2016/08/22/CP/Codeforces/Codeforces-362-Div2/" class="post-title-link" itemprop="url">Codeforces 362 Div2</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2016-08-22 15:51:00" itemprop="dateCreated datePublished" datetime="2016-08-22T15:51:00+01:00">2016-08-22</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-09-04 20:37:35" itemprop="dateModified" datetime="2022-09-04T20:37:35+01:00">2022-09-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>很早的一轮了，一直没写，主要是因为笨，然后还有懒。。。</p>
-<p>仔细想想一个div2的题目，充其量够写的也就3道题，然后自己还一直补不完，我的天。。。</p>
-<p>代码在<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/362_Div2">这里</a></p>
-<h2 id="C-Lorenzo-Von-Matterhorn"><a href="#C-Lorenzo-Von-Matterhorn" class="headerlink" title="C:Lorenzo Von Matterhorn"></a>C:Lorenzo Von Matterhorn</h2><hr>
-<p>题意是对于一个图来说，该图每一个节点i会连接到 2 * i 与2 * i + 1。然后现在有两种操作，第一种操作是给出v、u、w，表示v到u的路径上所有边的权值都加上w，第二种操作是询问v和u路径上所有边的权值之和。</p>
-<p>这个问题就是map+暴力，不用考虑边，只考虑对于其父节点的权值相加。每次查询也是直接暴力查询。所以就是考虑如何标记点，找父节点就好了。</p>
-<h2 id="D-Puzzles"><a href="#D-Puzzles" class="headerlink" title="D:Puzzles"></a>D:Puzzles</h2><hr>
-<p>题意是给定一个树，根节点是1，然后从根节点开始dfs，对于每一个子节点来说，每次访问的先后概率是相等的，问最终每一个节点访问步数的期望。</p>
-<p>其实不是很理解这个做法，看答案的那个意思是说u和v都作为子节点的话，那么u排在v前面的概率和排在v后面的概率都是0.5，所以根据这个的话就有<br>$$<br>dp[i]&#x3D;\frac{num[fa[i]]-num[i]-1}{2}+dp[fa[i]]<br>$$</p>
-<p>num[x]表示包括节点x在内的x所有子节点的数量。</p>
-<h2 id="E-PLEASE"><a href="#E-PLEASE" class="headerlink" title="E:PLEASE"></a>E:PLEASE</h2><hr>
-<p>题意是有三个杯子，一开始把东西放到了中间的杯子下面。每一轮Barney随机选两边的某个杯子，与中间的杯子交换。在第n轮之后，问这个东西还在中间的概率。</p>
-<p>问题先到这里的话，可以假设dp[i]表示第i轮东西在中间的概率，然后有dp[1]&#x3D;0,对于i&gt;0有<br>$$<br>dp[i]&#x3D;\frac{1-dp[i-1]}{2}<br>$$<br>但是不幸的是，n不会这么轻易的告诉你，n用k个ai的乘积表示的，即<br>$$<br>n&#x3D;\prod_{i&#x3D;1}^{k}{a_i}<br>$$<br>然后最后的结果要输出分数的形式,p&#x2F;q，p和q互质，p和q本身对1e9+7取模。</p>
-<p>接下来就是变形了，对下面的式子<br>$$<br>dp[i]&#x3D;\frac{1-dp[i-1]}{2}<br>$$<br>这个式子是可以构造等比数列的，该法适用于递推式形如a(n+1)&#x3D;b*a(n)+c 或者a(n+1)&#x3D;b*a(n)+f(n)其中b、c为不相等的常数，f(n)为一次式</p>
-<p>所以假设</p>
-<p>$$<br>dp[i]+p&#x3D;-\frac{1}{2}*(dp[i-1]+p)<br>$$</p>
-<p>求解这个p，解得p&#x3D;-1&#x2F;3，即</p>
-<p>$$<br>dp[i]-\frac{1}{3}&#x3D;-\frac{1}{2}*(dp[i-1]-\frac{1}{3})<br>$$</p>
-<p>剩下来就好办了，dp[n]可以求通项公式了，有</p>
-<p>$$<br>dp[i]&#x3D;-\frac{1}{3}*(-\frac{1}{2})^{i-1}+\frac{1}{3}<br>$$</p>
-<p>考虑p和q互质，能够得到：</p>
-<p>当n是偶数时，</p>
-<p>$$<br>p&#x3D;\frac{2^{n-1}+1}{3} 然后q&#x3D;2^{n-1}<br>$$</p>
-<p>当n是奇数时，</p>
-<p>$$<br>p&#x3D;\frac{2^{n-1}-1}{3} 然后q&#x3D;2^{n-1}<br>$$</p>
-<p>易证p和q互质，p是奇数，q是2的幂，所以一定没有大于1的公约数。</p>
-<p>剩下的就是快速幂和费马小定理的东西了。</p>
-<h2 id="F-Legen…"><a href="#F-Legen…" class="headerlink" title="F:Legen…"></a>F:Legen…</h2><hr>
-<p>这个题个人觉得很SXBK。。。</p>
-<p>有n个单词，每个单词有相应的权值，然后你要组成一个长度为l的字符串，在这里面匹配到一个单词就加上相应的权值，可重叠匹配。问最终能够得到的最大值是多少。</p>
-<p>挺裸的AC自动机+矩阵快速幂。但还是很难写。。。</p>
-<p>多字符串模式的匹配根据我目前的水平，肯定是要往AC自动机上想。之后就把各个字符串插入到自动机中，然后构造转移矩阵。</p>
-<p>构造矩阵之后还是不够，l特别大(1e14)，考虑如何进行dp推倒，转移方程是dp[n]&#x3D;max(dp[i])+val[i][n]。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">mul</span><span class="params">(ma &amp;a, ma &amp;b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	res.sz = a.sz;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= res.sz; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= res.sz; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (i == j)</span><br><span class="line">			&#123;</span><br><span class="line">				res.val[i][j] = <span class="number">0</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				res.val[i][j] = <span class="number">-1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= a.sz; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= a.sz; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">1</span>; k &lt;= a.sz; k++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span> (a.val[i][k] == <span class="number">-1</span>)<span class="keyword">continue</span>;</span><br><span class="line">				<span class="keyword">if</span> (b.val[k][j] == <span class="number">-1</span>)<span class="keyword">continue</span>;</span><br><span class="line"></span><br><span class="line">				res.val[i][j] = <span class="built_in">max</span>(res.val[i][j], a.val[i][k] + b.val[k][j]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= a.sz; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= a.sz; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			a.val[i][j] = res.val[i][j];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>相乘的时候是这样乘的，因为函数的空间还不足，所以数组只能在外面开。</p>
-<p>好难啊。。。。还是觉得好难，好多地方还需要慢慢理解。。。。</p>
 
       
     </div>
