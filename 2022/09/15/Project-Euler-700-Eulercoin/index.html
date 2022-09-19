@@ -21,16 +21,14 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"2997ms.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","Muse | Mist":320,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="$$EulerCoin_n &#x3D; (1504170715041707 * n) % (4503599627370517) $$ We can see finally the $EulerCoin_n$ will become 1 and then the $n$ should be $3451657199285664$, the reason is below: From $pow(1">
-<meta property="og:type" content="article">
+    <meta property="og:type" content="article">
 <meta property="og:title" content="Project-Euler-700 Eulercoin">
 <meta property="og:url" content="http://2997ms.github.io/2022/09/15/Project-Euler-700-Eulercoin/index.html">
 <meta property="og:site_name" content="2997ms">
-<meta property="og:description" content="$$EulerCoin_n &#x3D; (1504170715041707 * n) % (4503599627370517) $$ We can see finally the $EulerCoin_n$ will become 1 and then the $n$ should be $3451657199285664$, the reason is below: From $pow(1">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://raw.githubusercontent.com/2997ms/My_Algorithm/master/source_pic/projectEuler11.png">
 <meta property="article:published_time" content="2022-09-15T22:15:38.000Z">
-<meta property="article:modified_time" content="2022-09-19T21:01:19.227Z">
+<meta property="article:modified_time" content="2022-09-19T21:15:56.105Z">
 <meta property="article:author" content="2997ms">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/2997ms/My_Algorithm/master/source_pic/projectEuler11.png">
@@ -225,7 +223,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-09-19 22:01:19" itemprop="dateModified" datetime="2022-09-19T22:01:19+01:00">2022-09-19</time>
+      <time title="Modified: 2022-09-19 22:15:56" itemprop="dateModified" datetime="2022-09-19T22:15:56+01:00">2022-09-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -247,17 +245,18 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <span id="more"></span>
-<p><img src="https://raw.githubusercontent.com/2997ms/My_Algorithm/master/source_pic/projectEuler11.png" alt="D_1"></p>
-<p>$$EulerCoin_n &#x3D; (1504170715041707 * n) % (4503599627370517) $$</p>
-<p>We can see finally the $EulerCoin_n$ will become 1 and then the $n$ should be $3451657199285664$, the reason is below:</p>
+        <p><img src="https://raw.githubusercontent.com/2997ms/My_Algorithm/master/source_pic/projectEuler11.png" alt="D_1"></p>
+<span id="more"></span>
+
+<p>$$<br> EulerCoin_n &#x3D; (1504170715041707 * n) mod (4503599627370517)<br>$$</p>
+<p>We can see finally the $ EulerCoin_n $ will become 1 and then the $n$ should be $3451657199285664$, the reason is below:</p>
 <p>From $pow(1504170715041707,-1,4503599627370517) &#x3D; 3451657199285664$, </p>
-<p>so we have $1504170715041707 * 3451657199285664 % 4503599627370517 &#x3D; 1$</p>
-<p>Now we know the upper limit of $n$ is $3451657199285664$, that is still too big. Hmm, it is not enough for us to calculate the result. </p>
-<p>If we go straight, finally we can get the first 15 results of $n$ and $EulerCoin$ very easily:</p>
+<p>so we have $1504170715041707 * 3451657199285664 \ mod \  4503599627370517 &#x3D; 1$</p>
+<p>Now we know the upper limit of $n$ is $3451657199285664$, that is still too big. Hmm, it will cost us 1 year to calculate the result. </p>
+<p>If we go straight, we can get the first 15 results of $n$ and $EulerCoin$ very easily:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">n = 3, EulerCoin_n = 8912517754604</span><br><span class="line">n = 506, EulerCoin_n = 2044785486369</span><br><span class="line">n = 2527, EulerCoin_n = 1311409677241</span><br><span class="line">n = 4548, EulerCoin_n = 578033868113</span><br><span class="line">n = 11117, EulerCoin_n = 422691927098</span><br><span class="line">n = 17686, EulerCoin_n = 267349986083</span><br><span class="line">n = 24255, EulerCoin_n = 112008045068</span><br><span class="line">n = 55079, EulerCoin_n = 68674149121</span><br><span class="line">n = 85903, EulerCoin_n = 25340253174</span><br><span class="line">n = 202630, EulerCoin_n = 7346610401</span><br><span class="line">n = 724617, EulerCoin_n = 4046188430</span><br><span class="line">n = 1246604, EulerCoin_n = 745766459</span><br><span class="line">n = 6755007, EulerCoin_n = 428410324</span><br><span class="line">n = 12263410, EulerCoin_n = 111054189</span><br><span class="line">n = 42298633, EulerCoin_n = 15806432</span><br></pre></td></tr></table></figure>
-<p>We find then the upper limit of $EulerCoin_n$ is only $15806432$. If we go reverse direction, we know $EulerCoin_n$, could we get the corresponding value of $n$ and see if $n$ is increasing? The answer is yes:  </p>
-<p>$$EulerCoin_n &#x3D; (1504170715041707 * n) % (4503599627370517) \<br>&#x3D;&gt; EulerCoin_n * 3451657199285664 % 4503599627370517 &#x3D; n$$</p>
+<p>We find then the upper limit of $EulerCoin_n$ is only $15806432$. If we go reverse direction, we know $EulerCoin_n$, could we get the corresponding value of $n$ and check if $n$ is decreasing? The answer is we can:  </p>
+<p>$$EulerCoin_n &#x3D; (1504170715041707 * n) mod (4503599627370517) $$<br>$$ &#x3D;&gt; (EulerCoin_n * 3451657199285664) mod 4503599627370517 &#x3D; n$$</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">before = <span class="number">3451657199285664</span></span><br><span class="line"><span class="keyword">for</span> EulerCoin_n <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">15806432</span>):</span><br><span class="line">    res = <span class="number">3451657199285664</span>*EulerCoin_n%<span class="number">4503599627370517</span></span><br><span class="line">    <span class="keyword">if</span>(res &lt; before):</span><br><span class="line">        before = res</span><br><span class="line">        sumt += EulerCoin_n</span><br></pre></td></tr></table></figure>
 
 <p>Plus the first 15 results of $EulerCoin_n$, we can get the final sum.</p>
@@ -327,6 +326,12 @@
   
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 
