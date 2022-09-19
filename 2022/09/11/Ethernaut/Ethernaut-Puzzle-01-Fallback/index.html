@@ -29,7 +29,7 @@
 <meta property="og:description" content="This puzzle asks to be the owner of the contract and withdraw all your contributions in the map.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-09-11T20:40:48.000Z">
-<meta property="article:modified_time" content="2022-09-11T22:13:50.029Z">
+<meta property="article:modified_time" content="2022-09-19T10:25:28.577Z">
 <meta property="article:author" content="2997ms">
 <meta name="twitter:card" content="summary">
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">135</span>
+          <span class="site-state-item-count">137</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -215,9 +215,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-09-11 21:40:48 / Modified: 23:13:50" itemprop="dateCreated datePublished" datetime="2022-09-11T21:40:48+01:00">2022-09-11</time>
+      <time title="Created: 2022-09-11 21:40:48" itemprop="dateCreated datePublished" datetime="2022-09-11T21:40:48+01:00">2022-09-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-09-19 11:25:28" itemprop="dateModified" datetime="2022-09-19T11:25:28+01:00">2022-09-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -245,7 +251,26 @@
 <p>And this is the smart contract: </p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// SPDX-License-Identifier: MIT</span></span><br><span class="line">pragma solidity ^<span class="number">0.6</span><span class="number">.0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;@openzeppelin/contracts/math/SafeMath.sol&#x27;</span>;</span><br><span class="line"></span><br><span class="line">contract <span class="title class_">Fallback</span> &#123;</span><br><span class="line"></span><br><span class="line">  using <span class="title class_">SafeMath</span> <span class="keyword">for</span> uint256;</span><br><span class="line">  <span class="title function_">mapping</span>(<span class="function"><span class="params">address</span> =&gt;</span> uint) public contributions;</span><br><span class="line">  address payable public owner;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>) public &#123;</span><br><span class="line">    owner = msg.<span class="property">sender</span>;</span><br><span class="line">    contributions[msg.<span class="property">sender</span>] = <span class="number">1000</span> * (<span class="number">1</span> ether);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  modifier onlyOwner &#123;</span><br><span class="line">        <span class="built_in">require</span>(</span><br><span class="line">            msg.<span class="property">sender</span> == owner,</span><br><span class="line">            <span class="string">&quot;caller is not the owner&quot;</span></span><br><span class="line">        );</span><br><span class="line">        _;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">contribute</span>(<span class="params"></span>) public payable &#123;</span><br><span class="line">    <span class="built_in">require</span>(msg.<span class="property">value</span> &lt; <span class="number">0.001</span> ether);</span><br><span class="line">    contributions[msg.<span class="property">sender</span>] += msg.<span class="property">value</span>;</span><br><span class="line">    <span class="keyword">if</span>(contributions[msg.<span class="property">sender</span>] &gt; contributions[owner]) &#123;</span><br><span class="line">      owner = msg.<span class="property">sender</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">getContribution</span>(<span class="params"></span>) public view returns (uint) &#123;</span><br><span class="line">    <span class="keyword">return</span> contributions[msg.<span class="property">sender</span>];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">withdraw</span>(<span class="params"></span>) public onlyOwner &#123;</span><br><span class="line">    owner.<span class="title function_">transfer</span>(<span class="title function_">address</span>(<span class="variable language_">this</span>).<span class="property">balance</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">receive</span>() external payable &#123;</span><br><span class="line">    <span class="built_in">require</span>(msg.<span class="property">value</span> &gt; <span class="number">0</span> &amp;&amp; contributions[msg.<span class="property">sender</span>] &gt; <span class="number">0</span>);</span><br><span class="line">    owner = msg.<span class="property">sender</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>W</p>
+<p>The problem asks us to become the owner of this contract. From the codes, we can see there are two ways to become the owner:</p>
+<ul>
+<li>When the contract is built, the msg.sender will become the owner. But this contract is already created, we can’t change now. Also, the creator has 1000 * (1 ether) as his initial value. </li>
+<li>The <code>contribute</code> function. If we can contribute more than the owner, then we can become the owner. But from the above, we can know that it is almost impossible because the owner has already 1000 * (1 ether) as his assets. How could we exceed this value? It is not feasible.</li>
+<li><strong>We can see from <code>receiver()</code> function, if we send a bit ether to this function, then we can become the owner. This way seems feasible.</strong></li>
+</ul>
+<p>By the way, here is the official explanation of <a target="_blank" rel="noopener" href="https://docs.soliditylang.org/en/v0.8.12/contracts.html?highlight=receive%20function#receive-ether-function">Receive Ether Function</a></p>
+<blockquote>
+<p>A contract can have at most one receive function, declared using receive() external payable { … } (without the function keyword). This function cannot have arguments, cannot return anything and must have external visibility and payable state mutability. It can be virtual, can override and can have modifiers.<br>The receive function is executed on a call to the contract with empty calldata. This is the function that is executed on plain Ether transfers (e.g. via .send() or .transfer()). If no such function exists, but a payable fallback function exists, the fallback function will be called on a plain Ether transfer. If neither a receive Ether nor a payable fallback function is present, the contract cannot receive Ether through regular transactions and throws an exception.</p>
+</blockquote>
+<p>In the browser console, type </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">await sendTransaction(&#123;from: player, to: contract.address, value: toWei(&#x27;0.000001&#x27;)&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>And then we can verify:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">await contract.owner()</span><br></pre></td></tr></table></figure>
+
+<p>It should be same with your address.</p>
+<p>Finally, in the console type:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">await contract.withdraw()</span><br></pre></td></tr></table></figure>
+<p>Then we can pass this problem ! </p>
 
     </div>
 
@@ -264,6 +289,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2022/09/15/Project-Euler-700-Eulercoin/" rel="next" title="Project-Euler-700 Eulercoin">
+                  Project-Euler-700 Eulercoin <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>

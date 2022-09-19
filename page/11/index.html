@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">135</span>
+          <span class="site-state-item-count">137</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -332,6 +332,212 @@ Software Engineer Intern<br/>
 </div>
 
 <h4 style="color:gray">🦸‍♂️ Contact me: wangchong756@gmail.com </h4>
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/10/13/CP/AtCoder/CODE-FESTIVAL-2016-Qualification-Round-B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="2997ms">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2997ms">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 2997ms">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2016/10/13/CP/AtCoder/CODE-FESTIVAL-2016-Qualification-Round-B/" class="post-title-link" itemprop="url">CODE FESTIVAL 2016 Qualification Round B</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2016-10-13 21:07:20" itemprop="dateCreated datePublished" datetime="2016-10-13T21:07:20+01:00">2016-10-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-09-04 20:35:49" itemprop="dateModified" datetime="2022-09-04T20:35:49+01:00">2022-09-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><a target="_blank" rel="noopener" href="http://code-festival-2016-qualb.contest.atcoder.jp/assignments">题目链接</a>与<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/AtCoder/CODE%20FESTIVAL%202016%20Qualification%20Round%20B">代码链接</a></p>
+<p>非常难得这次做出四道题(A和B已经无法更水了)。大中午的特别困，中间睡了一个小时，之后把C和D搞出来了。E题的这个Trie很赞。。。</p>
+<h3 id="C-Gr-idian-MST"><a href="#C-Gr-idian-MST" class="headerlink" title="C - Gr-idian MST"></a>C - Gr-idian MST</h3><blockquote>
+<p>题意是给出了$W \times H$的格子，然后每个格子之间都有一个相互连接的代价，格子$(i,j)$到格子$(i+1,j)$对于任意的$j$代价均为$p_i$，格子$(i,j)$到格子$(i,j+1)$对于任意的$i$代价均为$q_j$。问最终把格子连接成为一个整体需要的最小代价。</p>
+</blockquote>
+<p>一开始往并查集那里去考虑，发现数量级有一些大啊。。。之后找规律，不断找最小值，然后如果是x方向的，那么下一次y就少了1。如果是y方向的，下一次x就少了1。</p>
+<h3 id="D-Greedy-customers"><a href="#D-Greedy-customers" class="headerlink" title="D - Greedy customers"></a>D - Greedy customers</h3><blockquote>
+<p>题意是有$N$个顾客站成一排，每个顾客手里有$A_i$元钱，现在由你出价，从顾客1开始，如果出的价钱小于等于他手里的钱，那么他会买走你的物品。题目要求最后每个顾客手里的钱不能为0，问最多能够卖多少物品。</p>
+</blockquote>
+<p>在比赛结束一分钟之前，情况考虑得都不是很周全，慌乱中自己提交，竟然还过了。。。后来发现情况确实考虑得不好，只能说幸运。</p>
+<p>首先肯定是可以将卖的价钱最终变成一个升序的数列，而又不影响最终的买卖情况的。</p>
+<p>那就考虑从价钱1开始，卖给第一个用户，将其剩下1块。价钱$x$就从2开始，对于可以整除$x$的钱$N$，可以卖出去$N&#x2F;x-1$件物品，而$x$不需要+1，因为最后一件可以卖成$x+1$，使得该位置剩下的钱小于$x$元。而如果遇到$val[i]&#x3D;x$这种情况，那没办法了，$x$只能加1。</p>
+<h3 id="E-Lexicographical-disorder"><a href="#E-Lexicographical-disorder" class="headerlink" title="E - Lexicographical disorder"></a>E - Lexicographical disorder</h3><blockquote>
+<p>题意是给出了$N$个字符串，$Q$个询问$k_i, p$，每一个询问是算第$k_i$个字符串，在该字典序中所排列的位置。</p>
+</blockquote>
+<p>建立Trie树，记录每一个位置的值，查询的时候算每一个字符串在同一个位置上其他字符的数量，以及结束字符的数量。解法真的很亮。。。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/10/12/CP/Google/Google-Code-Jam-Round-1A-2008/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="2997ms">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2997ms">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 2997ms">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2016/10/12/CP/Google/Google-Code-Jam-Round-1A-2008/" class="post-title-link" itemprop="url">Google Code Jam Round 1A 2008</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2016-10-12 22:37:08" itemprop="dateCreated datePublished" datetime="2016-10-12T22:37:08+01:00">2016-10-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-09-04 20:38:54" itemprop="dateModified" datetime="2022-09-04T20:38:54+01:00">2022-09-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><a target="_blank" rel="noopener" href="https://code.google.com/codejam/contest/32016/dashboard">题目链接</a>与<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Google/GCJ%20Round%201A%202008">代码链接</a></p>
+<p>一开始只是特别想记一下C题，后来发现B题也不错。。。</p>
+<h3 id="A-Minimum-Scalar-Product"><a href="#A-Minimum-Scalar-Product" class="headerlink" title="A Minimum Scalar Product"></a>A Minimum Scalar Product</h3><blockquote>
+<p>题意是给出了两个$n$维的向量，你可以对这$n$个向量的坐标任意排序，使得他们之间的scalar product(点积$x_1y_1+x_2y_2+…+x_ny_n$)最小。问这个最小点积。</p>
+</blockquote>
+<p>一个正向排序，一个逆向排序。</p>
+<h3 id="B-Milkshakes"><a href="#B-Milkshakes" class="headerlink" title="B Milkshakes"></a>B Milkshakes</h3><blockquote>
+<p>题意是给出了$n$种物品，每种物品可0可1。$m$种顾客，每一个顾客有$T$个要求，每个要求”$X Y$”代表第$X$个物品是$Y$($Y$是0或者1)，其中$Y&#x3D;1$每个顾客至多一种。要求对每一个顾客至少满足他的一个要求，满足所有顾客的情况下，0的数量最少。如果不可能，输出”IMPOSSIBLE”。</p>
+</blockquote>
+<p>对每一个为0的物品和顾客一个一个检查，如果对一个顾客有一个满足条件的即跳出循环。有为1要求的记录下来，下一次将其改为1。如果都是1，而顾客要求为0导致的都不满足要求的情况，那就直接输出”IMPOSSIBLE”。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(state, <span class="number">0</span>, <span class="built_in">sizeof</span>(state));</span><br><span class="line">	<span class="built_in">memset</span>(num, <span class="number">0</span>, <span class="built_in">sizeof</span>(num));</span><br><span class="line">	<span class="built_in">memset</span>(chan, <span class="number">0</span>, <span class="built_in">sizeof</span>(chan));</span><br><span class="line"></span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;n, &amp;m);</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= m; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;num[i]);</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= num[i]; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="type">int</span> u, v;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;u, &amp;v);</span><br><span class="line">			chan[i][j][<span class="number">0</span>] = u;</span><br><span class="line">			chan[i][j][<span class="number">1</span>] = v;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">int</span> fini = <span class="number">0</span>;</span><br><span class="line">	<span class="type">int</span> imp = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (!fini)</span><br><span class="line">	&#123;</span><br><span class="line">		fini = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= m; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="type">int</span> k = <span class="number">-1</span>;</span><br><span class="line">			<span class="type">int</span> j = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">for</span> (j = <span class="number">1</span>; j &lt;= num[i]; j++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span> (state[chan[i][j][<span class="number">0</span>]] == chan[i][j][<span class="number">1</span>])</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">if</span> (chan[i][j][<span class="number">1</span>] == <span class="number">1</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					k = j;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (j &gt; num[i])</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span> (k == <span class="number">-1</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					fini = <span class="number">1</span>;</span><br><span class="line">					imp = <span class="number">1</span>;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				fini = <span class="number">0</span>;</span><br><span class="line">				state[chan[i][k][<span class="number">0</span>]] = <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (imp)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">puts</span>(<span class="string">&quot;IMPOSSIBLE&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (i &gt; <span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot; &quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, state[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="C-Numbers"><a href="#C-Numbers" class="headerlink" title="C Numbers"></a>C Numbers</h3><blockquote>
+<p>题意很简单，求$(3+\sqrt{5})^n$的最后三个整数部分的值。</p>
+</blockquote>
+<p>这个是一个很经典的问题了，特意来记录一下。</p>
+<p>设$a&#x3D;3+\sqrt{5}$，$b&#x3D;3-\sqrt{5}$，$x_n&#x3D;a^n+b^n$。</p>
+<p>会发现得到的$x_n$是一个整数，另外由于$b_n&lt;1$，所以得到的$x_n$是大于结果的第一个整数。所以现在考虑求这个$x_n$。</p>
+<p>然后对于$x^{n+1}$来说，有$(3+\sqrt{5})(a_n+b_n*\sqrt{5})&#x3D;(3a_n+5b_n)+(3b_n+a_n)*\sqrt{5}$，那么可以得到$a_{n+1}&#x3D;3a_n+5b_n$，$b_{n+1}&#x3D;3b_n+a_n$。</p>
+<p>这样可以化成矩阵的形式：<br>$$<br>\begin{pmatrix}<br>   a_{n} \<br>   b_{n+1}<br>  \end{pmatrix}&#x3D;A\begin{pmatrix}<br>   a_{n-1} \<br>   b_{n-1}<br>  \end{pmatrix}&#x3D;A_{n}\begin{pmatrix}<br>   a_{0} \<br>   b_{0}<br>  \end{pmatrix}<br>$$<br>其中<br>$$<br>A&#x3D;\begin{pmatrix}<br>   3&amp;5 \<br>   1&amp;3<br>  \end{pmatrix}<br>$$<br>因为$a_0&#x3D;1$,可以得到$(a_0,b_0)&#x3D;(1,0)$</p>
+<p><del>太困了。。。明天接着填。。。。</del></p>
+<p>这样就可以矩阵快速幂啦~</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
 
 
     
@@ -1208,218 +1414,6 @@ Software Engineer Intern<br/>
 <p>很新颖的题，发现对每一个斐波那契值，是可以矩阵快速幂搞的，那对于区间加上一个值，相当于在矩阵的前面再乘以一个矩阵，所以构建线段树，打lz标记。</p>
 <p>这就完了？忽然感觉没啥可说的了，但是为什么做的时候还是觉得难啊。。。</p>
 
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/09/27/CP/AtCoder/CODE-FESTIVAL-2016-Qualification-Round-A/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="2997ms">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="2997ms">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 2997ms">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2016/09/27/CP/AtCoder/CODE-FESTIVAL-2016-Qualification-Round-A/" class="post-title-link" itemprop="url">CODE FESTIVAL 2016 Qualification Round A</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2016-09-27 21:49:04" itemprop="dateCreated datePublished" datetime="2016-09-27T21:49:04+01:00">2016-09-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-09-04 20:35:46" itemprop="dateModified" datetime="2022-09-04T20:35:46+01:00">2022-09-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><a target="_blank" rel="noopener" href="http://code-festival-2016-quala.contest.atcoder.jp/assignments">题目链接</a>与<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/AtCoder/CODE%20FESTIVAL%202016%20Qualification%20Round%20A">代码链接</a></p>
-<p>还是那句话吧，好好思考，并且希望自己能坚持下去。</p>
-<h3 id="A-CODEFESTIVAL-2016"><a href="#A-CODEFESTIVAL-2016" class="headerlink" title="A - CODEFESTIVAL 2016"></a>A - CODEFESTIVAL 2016</h3><blockquote>
-<p>题意是给一个长度为12的字符串，输出前4个字符+空格+后四个字符。</p>
-</blockquote>
-<h3 id="B-仲良しうさぎ-x2F-Friendly-Rabbits"><a href="#B-仲良しうさぎ-x2F-Friendly-Rabbits" class="headerlink" title="B - 仲良しうさぎ &#x2F; Friendly Rabbits"></a>B - 仲良しうさぎ &#x2F; Friendly Rabbits</h3><blockquote>
-<p>题意是给出N个兔子，每个兔子有自己喜欢的兔子$A_i$，问互相喜欢的兔子有多少对。</p>
-</blockquote>
-<p>直接模拟计算。</p>
-<h3 id="C-次のアルファベット-x2F-Next-Letter"><a href="#C-次のアルファベット-x2F-Next-Letter" class="headerlink" title="C - 次のアルファベット &#x2F; Next Letter"></a>C - 次のアルファベット &#x2F; Next Letter</h3><blockquote>
-<p>题意是给出一个字符串，字符串中的每一个字符可以循环向后移，但是一共必须循环向后移动K次，问改变后的字典序最小的字符串。</p>
-</blockquote>
-<p>对每一个字符贪心搞，剩下的操作在最后一个字符上。</p>
-<h3 id="D-マス目と整数-x2F-Grid-and-Integers"><a href="#D-マス目と整数-x2F-Grid-and-Integers" class="headerlink" title="D - マス目と整数 &#x2F; Grid and Integers"></a>D - マス目と整数 &#x2F; Grid and Integers</h3><blockquote>
-<p>题意是给出了R*C的格子，然后有N个格子($r_i,c_i$)已经有值了$a_i$，现在要求让你判断是否每一个格子在都是大于等于零的情况下，满足在任意一个2*2的格子中，两个对角线的和是相等的。</p>
-</blockquote>
-<p>又是这种要你将题目转化的题。</p>
-<p>首先对于任意一个2*2的方格，要满足<br>$$<br>b_{i,j}+b_{i+1,j+1}&#x3D;b_{i+1,j}+b_{i,j+1}<br>$$<br>等式挪一下变成差的形式，会发现对于固定的一行i来说，其差值是要相等的。对于固定的一列j来说，其差值也是相等的。那么这个时候思考，可以将上述条件转变为是否存在两个数列$(x_1,x_2,…,x_R)$和$(y_1,y_2,…,y_C)$，使得$x_{rk}+y_{ck}&#x3D;a_k$。</p>
-<p>所以根据题中所给的条件可以构建图，每一个边的权值就是$a_k$，当形成环的时候判断是否相等。</p>
-<p>最后，要判断是否都满足是大于等于0，我们先假设最开始的值x是最小值0，根据这个基准，算其余点的值，计算最小正值与最小负值，如果最小负值的绝对值大于了最小正值，画图可知，这个时候就到了不可调和的地步，不符合要求。</p>
-<h3 id="E-LRU-パズル-x2F-LRU-Puzzle"><a href="#E-LRU-パズル-x2F-LRU-Puzzle" class="headerlink" title="E - LRU パズル &#x2F; LRU Puzzle"></a>E - LRU パズル &#x2F; LRU Puzzle</h3><blockquote>
-<p>题意是有N个1到M递增的数组，给出了一系列的操作，每次操作将从N个数组中选出一个数组，并将这个数组中的$a_i$拿到最前面。现在题目是问是否满足在进行Q次操作之后，得到的结果是相等的。</p>
-</blockquote>
-<p>假设操作在(1,2,…,M)上，那么在进行了Q次操作之后得到的结果，就是从后往前看，当这个数第一次出现的时候，将这个数放到结果的队列末尾，如果出现过，忽略掉。之后将没有出现在结果队列中的数字依次插入到结尾。</p>
-<p>那么问题现在相当于将这个操作的数组a，分成N个子串，要求这N个子串在1..M上的操作是相等的结果。问是否可能。</p>
-<p>那首先考虑N&#x3D;2的情况。贪心去取，碰到没出现过的，给第一个。碰到第一个出现的，给第二个。都出现的，忽略掉。最终看两个数组得到的是否相等。</p>
-<p>当N大于2的时候，思路也是一样的，类似于推箱子。。。</p>
-<p>首先记长度为0的有N个数组，然后得到一个数字判断当前面临的状态，往下面推，最后看箱子有没有剩下的。。。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/09/23/CP/Leetcode/LeetCode-11-20/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="2997ms">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="2997ms">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 2997ms">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2016/09/23/CP/Leetcode/LeetCode-11-20/" class="post-title-link" itemprop="url">LeetCode 11-20</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2016-09-23 10:31:39" itemprop="dateCreated datePublished" datetime="2016-09-23T10:31:39+01:00">2016-09-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-09-04 20:39:58" itemprop="dateModified" datetime="2022-09-04T20:39:58+01:00">2022-09-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="LeetCode11-Container-With-Most-Water"><a href="#LeetCode11-Container-With-Most-Water" class="headerlink" title="LeetCode11 Container With Most Water"></a>LeetCode11 Container With Most Water</h3><blockquote>
-<p>题意是给出$N$个整数$a_1,a_2…a_n$，代表在对应位置有一条$(i,0)$到$(i,a_i)$的边。问这里面两条边加x轴所围成的面积最大值。</p>
-</blockquote>
-<p>之后也有一道类似的题，左右贪心，每次将较小的边去掉，时间复杂度$O(n)$。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> </span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maxArea</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; height)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="type">int</span> sz=height.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">if</span>(sz==<span class="number">0</span>||sz==<span class="number">1</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> le=<span class="number">0</span>,ri=sz<span class="number">-1</span>;</span><br><span class="line">        <span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> weight=sz<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(le&lt;ri)</span><br><span class="line">        &#123;</span><br><span class="line">        	res=<span class="built_in">max</span>(res,<span class="built_in">min</span>(height[le],height[ri])*weight);</span><br><span class="line">        	<span class="type">int</span> h1=height[le];</span><br><span class="line">        	<span class="type">int</span> h2=height[ri];</span><br><span class="line">        	<span class="keyword">if</span>(h1&lt;h2)</span><br><span class="line">        	&#123;</span><br><span class="line">        		le++;</span><br><span class="line">        	&#125;</span><br><span class="line">        	<span class="keyword">else</span></span><br><span class="line">        	&#123;</span><br><span class="line">        		ri--;</span><br><span class="line">        	&#125;</span><br><span class="line">        	weight--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;t;</span><br></pre></td></tr></table></figure>
-
-<h3 id="LeetCode12-Integer-to-Roman"><a href="#LeetCode12-Integer-to-Roman" class="headerlink" title="LeetCode12 Integer to Roman"></a>LeetCode12 Integer to Roman</h3><blockquote>
-<p>题意是将整形数字转成罗马数字(字符串)。</p>
-</blockquote>
-<p>考虑每一位，0到3是一种，4是一种，5到8是一种，9是一种。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function">string <span class="title">intToRoman</span><span class="params">(<span class="type">int</span> num)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="type">int</span> n[<span class="number">4</span>] = &#123; <span class="number">1000</span>,<span class="number">100</span>,<span class="number">10</span>,<span class="number">1</span> &#125;;</span><br><span class="line">		<span class="type">char</span> r5[<span class="number">4</span>] = &#123; <span class="string">&#x27; &#x27;</span>,<span class="string">&#x27;D&#x27;</span>,<span class="string">&#x27;L&#x27;</span>,<span class="string">&#x27;V&#x27;</span> &#125;;</span><br><span class="line">		<span class="type">char</span> r1[<span class="number">4</span>] = &#123; <span class="string">&#x27;M&#x27;</span>,<span class="string">&#x27;C&#x27;</span>,<span class="string">&#x27;X&#x27;</span>,<span class="string">&#x27;I&#x27;</span> &#125;;</span><br><span class="line"></span><br><span class="line">		string res = <span class="string">&quot;&quot;</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="type">int</span> k = num / n[i];</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> (k == <span class="number">9</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				res = res + r1[i] + r1[i - <span class="number">1</span>];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (k == <span class="number">4</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				res = res + r1[i] + r5[i];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (k &gt;= <span class="number">5</span> &amp;&amp; k &lt;= <span class="number">8</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				res = res + r5[i];</span><br><span class="line">				<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; k - <span class="number">5</span>; j++)</span><br><span class="line">				&#123;</span><br><span class="line">					res = res + r1[i];</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; k; j++)</span><br><span class="line">				&#123;</span><br><span class="line">					res = res + r1[i];</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			num = num%n[i];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> res;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="LeetCode19-Remove-Nth-Node-From-End-of-List"><a href="#LeetCode19-Remove-Nth-Node-From-End-of-List" class="headerlink" title="LeetCode19 Remove Nth Node From End of List"></a>LeetCode19 Remove Nth Node From End of List</h3><blockquote>
-<p>移除链表结尾的第n个节点。</p>
-</blockquote>
-<p>一前一后距离为n-1，当后一个节点到了结尾的时候，那么前一个节点就是要删除的节点。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">removeNthFromEnd</span><span class="params">(ListNode* head, <span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">    	<span class="keyword">if</span>(head==<span class="literal">NULL</span>)</span><br><span class="line">    	&#123;</span><br><span class="line">    		<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    	&#125;</span><br><span class="line">    	ListNode *pre = <span class="literal">NULL</span>;</span><br><span class="line">    	ListNode *p = head;</span><br><span class="line">    	ListNode *q = head;</span><br><span class="line">    	ListNode *res = head;</span><br><span class="line">    	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n<span class="number">-1</span>;i++)</span><br><span class="line">    	&#123;</span><br><span class="line">    		q=q-&gt;next;</span><br><span class="line">    	&#125;</span><br><span class="line"></span><br><span class="line">    	<span class="keyword">while</span>(q-&gt;next)</span><br><span class="line">    	&#123;</span><br><span class="line">    		pre=p;</span><br><span class="line">    		p=p-&gt;next;</span><br><span class="line">    		q=q-&gt;next;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">if</span>(pre)</span><br><span class="line">    	&#123;</span><br><span class="line">    	     pre-&gt;next=p-&gt;next;   </span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">else</span></span><br><span class="line">    	&#123;</span><br><span class="line">    	     res=head-&gt;next;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">return</span> res;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       
     </div>
 
