@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">139</span>
+          <span class="site-state-item-count">140</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -331,6 +331,116 @@ Software Engineer Intern<br/>
 </div>
 
 <h4 style="color:gray">🦸‍♂️ Contact me: wangchong756@gmail.com </h4>
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/10/06/CP/Hackerrank/Hackerrank-HourRank-13/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="2997ms">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2997ms">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 2997ms">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2016/10/06/CP/Hackerrank/Hackerrank-HourRank-13/" class="post-title-link" itemprop="url">Hackerrank HourRank 13</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2016-10-06 17:17:26" itemprop="dateCreated datePublished" datetime="2016-10-06T17:17:26+01:00">2016-10-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-09-04 20:39:16" itemprop="dateModified" datetime="2022-09-04T20:39:16+01:00">2022-09-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><a target="_blank" rel="noopener" href="https://www.hackerrank.com/contests/hourrank-13/challenges">题目链接</a>与<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Hackerrank/HourRank_13">代码链接</a></p>
+<p>十一之前，Codeforces上面自己的rating是1876，一看十一期间有四场比赛，想着怎么也可以上1900了吧，结果呵呵呵了，暴爽的十一三连跪(剩下一个8号的感觉还是跪)，直接掉到了1800，又一次感觉自己真是大菜鸡啊。</p>
+<p>下午的时候有很多想在blog里夹带私货总结的，但刚刚写了两个小时的日记。。。忽然发现把什么话都说完了。</p>
+<blockquote>
+<p>我好想在今年变成紫名啊。。。加油。。。吭哧咔哧吭哧咔哧</p>
+</blockquote>
+<p>很喜欢Hackerrank上面的HourRank，原因就是时间短，题目也没有那么难。和别人的差距没有那么大(反正就一个小时，大牛写不完的就写不完了，我这样干瞪眼的也不用难受太久)。像Week of Code那种真是惨绝人寰，到后期还是有人把难题做出来，看着比赛的倒计时一点一点流失，Rank一点一点掉啊，自己还是无能为力的感觉太痛苦。<del>但我还是要打Week of Code啊，好有趣啊啊啊</del></p>
+<p>LeetCode的题落下了好多，明天补一补吧。。。</p>
+<h3 id="Sum-vs-XOR"><a href="#Sum-vs-XOR" class="headerlink" title="Sum vs XOR"></a>Sum vs XOR</h3><blockquote>
+<p>题意给定一个数$n(n\leq10^{15})$，找到满足这样要求的$x$ :</p>
+<p>1.$x(0\leq x \leq n)$</p>
+<p>2.$x + n &#x3D;x \oplus n$ </p>
+<p>求有多少个$x$满足上面要求。</p>
+</blockquote>
+<p>发现n用二进制表示的话，如果该位为1，那么x在该位上只能是0，否则就进位。如果该位是0，那么x在该位上可以1可以0。所以计算n有多少个0，再2的幂。</p>
+<h3 id="Coprime-Conundrum"><a href="#Coprime-Conundrum" class="headerlink" title="Coprime Conundrum"></a>Coprime Conundrum</h3><blockquote>
+<p>题意是求在有多少个互质对，其乘积小于等于$k(0\leq k \leq 10^9)$。</p>
+</blockquote>
+<p>和<a target="_blank" rel="noopener" href="http://acm.hdu.edu.cn/showproblem.php?pid=1695">HDU1695</a>是一个题，都是容斥原理，找小于等于up里面，与x不互质的个数。</p>
+<p>然而我是从1到n枚举了，最后结果还除以一个2，我是沙茶么。。。</p>
+<p>直接枚举到$\sqrt k$啊，之后就深搜减去比自己小的，剩下的就没算重复了。</p>
+<h3 id="Longest-Palindromic-Subsequence"><a href="#Longest-Palindromic-Subsequence" class="headerlink" title="Longest Palindromic Subsequence"></a>Longest Palindromic Subsequence</h3><blockquote>
+<p>题意是给出一个长度为$n(1\leq n \leq 3000)$的字符串，现在要你在任意位置往里面添加一个字符，使得这个字符串的最大回文序列(不是串)至少增加k个。</p>
+</blockquote>
+<p>可知添加一个字符的话，最大回文序列最多多2个，k如果大于2直接就GG。</p>
+<p>之后就是枚举添加的位置了，添加的字符可能是作为中间字符，那么最大的回文序列就是两边(其中一边逆过来)的最长公共子序列*2+1；如果是作为两边字符的话，那么就是中间算最长回文子序列的长度，两边算最长公共子序列的长度，dp记录这两者的状态。最后判断是否大于等于k。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
 
 
     
@@ -1283,128 +1393,6 @@ Software Engineer Intern<br/>
 <p>之后就是考虑环的情况了，因为最多n条边，所以考虑把环上的边拿掉会是一个什么情况。</p>
 <p>偶数环：判断剩下的图依旧得是二分图，三分这条边上经过的token数+其余边经过的token数，取最小值。</p>
 <p>奇数环，此时这两个点要么就是都带token，要么就是都不带token。把其余的多的或者少的token分配到这两个点上，再算一遍整个图。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/09/13/CP/AtCoder/AtCoder-Grand-Contest-003/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="2997ms">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="2997ms">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 2997ms">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2016/09/13/CP/AtCoder/AtCoder-Grand-Contest-003/" class="post-title-link" itemprop="url">AtCoder Grand Contest 003</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2016-09-13 08:42:54" itemprop="dateCreated datePublished" datetime="2016-09-13T08:42:54+01:00">2016-09-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-09-04 20:34:11" itemprop="dateModified" datetime="2022-09-04T20:34:11+01:00">2022-09-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><a target="_blank" rel="noopener" href="http://agc003.contest.atcoder.jp/assignments">题目链接</a>与<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/AtCoder/Grand_Contest_003">代码链接</a></p>
-<p>比的时候只做出三道，后来感觉这一期的D题是可以出的，E题的思路还是神，就感觉这种题也不靠什么特定的算法，靠思维把问题转换，跟前面Atcoder的很多题一样，挺看智商的。。。至于F题。。。那个矩阵的构造，从答案推出矩阵的正确性我是搞懂了，但是如何通过一些递推关系搞出矩阵，感觉自己还需要练习吧&#x3D; &#x3D;。</p>
-<h3 id="A-Wanna-go-back-home"><a href="#A-Wanna-go-back-home" class="headerlink" title="A Wanna go back home"></a>A Wanna go back home</h3><hr>
-<p>题意是Snuke走|s|次，每一次东西南北四个方向，任意距离，给出走的方向，问最终能否回到原点。</p>
-<p>相对的方向要都出现或者都不出现，这样就能够保证在这两个方向上移动的距离为0。</p>
-<h3 id="B-Simplified-mahjong"><a href="#B-Simplified-mahjong" class="headerlink" title="B Simplified mahjong"></a>B Simplified mahjong</h3><hr>
-<p>题意是Snuke有一堆卡片，每张卡片上的数字为1~N，数字i的卡片有Ai个，两张卡片上数字相差不超过1的可以形成一对，问最多形成多少对。</p>
-<p>之前一直WA，后来就直接贪心，如果数字为i的为偶数，那就自己组成一对。如果为奇数，找后面的一个组成一对。</p>
-<h3 id="C-BBuBBBlesort"><a href="#C-BBuBBBlesort" class="headerlink" title="C BBuBBBlesort!"></a>C BBuBBBlesort!</h3><hr>
-<p>题意是给出N个数，想把这N个数按大小排成有序，交换方法有两种：1.交换相邻的2个;2.交换相邻的3个.</p>
-<p>问最少必须使用多少次操作1使得数字有序。</p>
-<p>能够发现将这N个数排序之后，如果一个数排序之前的位置与排序之后的位置之差如果是偶数的话，那么就可以通过操作2来实现，但如果是奇数的话，那没办法了，想要到达该状态就必须通过操作1来实现了。</p>
-<h3 id="D-Anticube"><a href="#D-Anticube" class="headerlink" title="D Anticube"></a>D Anticube</h3><hr>
-<p>题意是给出N个数，求一个集合，该集合两两数字之前相乘不是立方数，问该集合元素的最大数量。</p>
-<p><a target="_blank" rel="noopener" href="https://async.icpc-camp.org/d/528-atcoder-grand-contest-003-d-anticube">叉姐题解</a></p>
-<p>其实后来就是如何分解该数的问题，一直TLE。</p>
-<p>数字是在10^10级别的，将10^3级别的因子过滤一遍之后，就考虑只剩下了p,pq,p^2的形式了，考虑如何将它们处理。另外p^2形式还要注意一下精度问题。</p>
-<p>剩下的就是两者取大的问题了。</p>
-<h3 id="E-Sequential-operations-on-Sequence"><a href="#E-Sequential-operations-on-Sequence" class="headerlink" title="E Sequential operations on Sequence"></a>E Sequential operations on Sequence</h3><hr>
-<p>题意是当前有一个序列1…N，有Q次操作，每次操作中，该序列被原来序列的前Qi个数不断地重复替代。问最终序列每个元素的出现次数。</p>
-<p>能够发现规律，如果Qi&gt;Q(i+1),那么之前的Qi就没有意义了。</p>
-<p>这样就会变成所有的操作是一个递增的序列。</p>
-<p>还是发现数字小的元素出现次数一定比数字大的元素出现次数多，所以最终问题考虑使用后缀和，那从后往前考虑，把最后一个元素标为1，即所有元素都是1了。</p>
-<p>从后往前每一次操作相当于做了一次折叠，考虑将后面位置的这些贡献分别贡献到那里了，如果该位置pos&gt;Qi，那么会发现Qi位置上的值+&#x3D;(pos&#x2F;Qi)*(该pos的值)，pos%Qi位置上的值+&#x3D;pos%Qi。</p>
-<p>这种问题感觉很难总结出一个系统的解决方法，每次碰到就靠跳大神，求问有没有类似的问题呢。。。？</p>
-<h3 id="F-Fraction-of-Fractal"><a href="#F-Fraction-of-Fractal" class="headerlink" title="F Fraction of Fractal"></a>F Fraction of Fractal</h3><hr>
-<p>题意是h*w的方格，每个格子要么是白点要么是黑点。所有这些黑点在上下左右四个方向是联通的。</p>
-<p>现在给出求第k等的图的方法，第k等的图从第k-1等的图来，如果该位置是白点，该位置替换成h*w的白点；如果是黑点，该位置替换成最开始的图。</p>
-<p>问第k等的图中黑点的联通块是多少个。</p>
-<p>先把其它简单的条件过滤掉，如果该图左右上下都可以连上，那么最终结果不管k多大都是1。</p>
-<p>如果该图左右上下都连不上，那么最终结果就是黑点数量a^(k-1)。</p>
-<p>现在只考虑一边连上，一边连不上的情况。比如说左右连通，上下不连通。</p>
-<p>现在这个图中黑点的数量为a，左右相连的点对数为b，边界上最左边和最右边都是黑点的对数为c。</p>
-<p>好，现在假设你已经知道了第k-1层有多少个连通块设为x，第k-1层有y个连接的数量，那么如何推出第k层？</p>
-<p>首先x*a，这个是完全不考虑相连的情况，假设每一个连通块就会分裂成a个，那么总和就是x*a个，之后减去x*b个，这b块不是新生成的连通块数量，要减去，是内部生成的。</p>
-<p>之后的这个y是上一轮连接的数量，那么上一轮如果连接上了的话，每一对y分裂而成就会有c对是新生成的连接着的块，这个是新的外部的连接的。</p>
-<p>这样总结得话可以得到一个矩阵，<br>$$<br>{\begin{pmatrix}<br>a&amp;-b\<br>0 &amp;c<br>\end{pmatrix}}^{k-1}<br>{\begin{pmatrix}<br>1\<br>1<br>\end{pmatrix}}<br>$$</p>
-<p>说的很乱很乱，也跑到论坛上面去问,发现讨论的东西和一开始想的也差不太多，给个<a target="_blank" rel="noopener" href="https://async.icpc-camp.org/d/545-atcoder-grand-contest-003-f-fraction-of-fractal">链接</a>，供参考。</p>
 
       
     </div>
