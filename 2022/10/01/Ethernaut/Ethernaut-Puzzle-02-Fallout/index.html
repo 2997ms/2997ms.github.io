@@ -29,7 +29,7 @@
 <meta property="og:description" content="This problem requires us to become the owner of this smart contract.  This may be the easiest problem in this series. All you need is careful observation.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-10-01T21:47:49.000Z">
-<meta property="article:modified_time" content="2022-10-03T20:42:52.601Z">
+<meta property="article:modified_time" content="2022-10-03T20:45:12.205Z">
 <meta property="article:author" content="2997ms">
 <meta name="twitter:card" content="summary">
 
@@ -223,7 +223,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-10-03 21:42:52" itemprop="dateModified" datetime="2022-10-03T21:42:52+01:00">2022-10-03</time>
+      <time title="Modified: 2022-10-03 21:45:12" itemprop="dateModified" datetime="2022-10-03T21:45:12+01:00">2022-10-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -249,7 +249,7 @@
 <p>This may be the easiest problem in this series. All you need is careful observation.</p>
 <span id="more"></span>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">contract Fallout &#123;</span><br><span class="line">  </span><br><span class="line">  using SafeMath for uint256;</span><br><span class="line">  mapping (address =&gt; uint) allocations;</span><br><span class="line">  address payable public owner;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  /* constructor */</span><br><span class="line">  function Fal1out() public payable &#123;</span><br><span class="line">    owner = msg.sender;</span><br><span class="line">    allocations[owner] = msg.value;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">contract Fallout &#123;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">using</span> SafeMath <span class="keyword">for</span> uint256;</span><br><span class="line">  <span class="built_in">mapping</span> (address =&gt; uint) allocations;</span><br><span class="line">  address payable <span class="keyword">public</span> owner;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">/* constructor */</span></span><br><span class="line">  <span class="function">function <span class="title">Fal1out</span><span class="params">()</span> <span class="keyword">public</span> payable </span>&#123;</span><br><span class="line">    owner = msg.sender;</span><br><span class="line">    allocations[owner] = msg.value;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>The constructor function is misspelt… It should be <code>Fallout</code> instead of <code>Fal1out()</code>. See the difference between the number <code>1</code> and the letter <code>l</code>. </p>
 <p>In this currect situation, anyone can claim the ownership of this smart contract. All we need to do is just invoke Fal1out function then we become the owner of this smart contract. Then this problem is resolved !</p>
 
