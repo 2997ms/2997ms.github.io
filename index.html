@@ -371,7 +371,7 @@ Software Engineer Intern<br/>
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-10-03 21:39:57 / Modified: 21:40:18" itemprop="dateCreated datePublished" datetime="2022-10-03T21:39:57+01:00">2022-10-03</time>
+      <time title="Created: 2022-10-03 21:39:57 / Modified: 21:42:08" itemprop="dateCreated datePublished" datetime="2022-10-03T21:39:57+01:00">2022-10-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -393,7 +393,8 @@ Software Engineer Intern<br/>
     
     
     <div class="post-body" itemprop="articleBody">
-          
+          <span id="more"></span>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">contract CoinFlip &#123;</span><br><span class="line"></span><br><span class="line">  using SafeMath for uint256;</span><br><span class="line">  uint256 public consecutiveWins;</span><br><span class="line">  uint256 lastHash;</span><br><span class="line">  uint256 FACTOR = 57896044618658097711785492504343953926634992332820282019728792003956564819968;</span><br><span class="line"></span><br><span class="line">  constructor() public &#123;</span><br><span class="line">    consecutiveWins = 0;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  function flip(bool _guess) public returns (bool) &#123;</span><br><span class="line">    uint256 blockValue = uint256(blockhash(block.number.sub(1)));</span><br><span class="line"></span><br><span class="line">    if (lastHash == blockValue) &#123;</span><br><span class="line">      revert();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    lastHash = blockValue;</span><br><span class="line">    uint256 coinFlip = blockValue.div(FACTOR);</span><br><span class="line">    bool side = coinFlip == 1 ? true : false;</span><br><span class="line"></span><br><span class="line">    if (side == _guess) &#123;</span><br><span class="line">      consecutiveWins++;</span><br><span class="line">      return true;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      consecutiveWins = 0;</span><br><span class="line">      return false;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -455,7 +456,7 @@ Software Engineer Intern<br/>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-10-03 21:38:11" itemprop="dateModified" datetime="2022-10-03T21:38:11+01:00">2022-10-03</time>
+      <time title="Modified: 2022-10-03 21:42:52" itemprop="dateModified" datetime="2022-10-03T21:42:52+01:00">2022-10-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -477,7 +478,8 @@ Software Engineer Intern<br/>
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>This may be the easiest problem in this series.</p>
+          <p>This problem requires us to become the owner of this smart contract. </p>
+<p>This may be the easiest problem in this series. All you need is careful observation.</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/10/01/Ethernaut/Ethernaut-Puzzle-02-Fallout/#more" rel="contents">
