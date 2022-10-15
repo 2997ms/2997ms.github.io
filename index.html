@@ -369,9 +369,15 @@ Software Engineer Intern<br/>
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-10-03 21:39:57 / Modified: 21:45:17" itemprop="dateCreated datePublished" datetime="2022-10-03T21:39:57+01:00">2022-10-03</time>
+      <time title="Created: 2022-10-03 21:39:57" itemprop="dateCreated datePublished" datetime="2022-10-03T21:39:57+01:00">2022-10-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-10-15 13:00:37" itemprop="dateModified" datetime="2022-10-15T13:00:37+01:00">2022-10-15</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -393,8 +399,15 @@ Software Engineer Intern<br/>
     
     
     <div class="post-body" itemprop="articleBody">
-          <span id="more"></span>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">contract CoinFlip &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">using</span> SafeMath <span class="keyword">for</span> uint256;</span><br><span class="line">  uint256 <span class="keyword">public</span> consecutiveWins;</span><br><span class="line">  uint256 lastHash;</span><br><span class="line">  uint256 FACTOR = <span class="number">57896044618658097711785492504343953926634992332820282019728792003956564819968</span>;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">constructor</span>() <span class="keyword">public</span> &#123;</span><br><span class="line">    consecutiveWins = <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function">function <span class="title">flip</span><span class="params">(<span class="type">bool</span> _guess)</span> <span class="keyword">public</span> <span class="title">returns</span> <span class="params">(<span class="type">bool</span>)</span> </span>&#123;</span><br><span class="line">    uint256 blockValue = <span class="built_in">uint256</span>(<span class="built_in">blockhash</span>(block.number.<span class="built_in">sub</span>(<span class="number">1</span>)));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (lastHash == blockValue) &#123;</span><br><span class="line">      <span class="built_in">revert</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    lastHash = blockValue;</span><br><span class="line">    uint256 coinFlip = blockValue.<span class="built_in">div</span>(FACTOR);</span><br><span class="line">    <span class="type">bool</span> side = coinFlip == <span class="number">1</span> ? <span class="literal">true</span> : <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (side == _guess) &#123;</span><br><span class="line">      consecutiveWins++;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      consecutiveWins = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <p>This puzzle is also very classic and almost appears on every solidity practice website.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/10/03/Ethernaut/Ethernaut-Puzzle-03-Coin-Flip/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -456,7 +469,7 @@ Software Engineer Intern<br/>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-10-03 21:45:12" itemprop="dateModified" datetime="2022-10-03T21:45:12+01:00">2022-10-03</time>
+      <time title="Modified: 2022-10-03 21:56:08" itemprop="dateModified" datetime="2022-10-03T21:56:08+01:00">2022-10-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
