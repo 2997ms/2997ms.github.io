@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">145</span>
+          <span class="site-state-item-count">146</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -136,7 +136,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">64</span>
+        <span class="site-state-item-count">65</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -331,6 +331,102 @@ Software Engineer Intern<br/>
 </div>
 
 <h4 style="color:gray">🦸‍♂️ Contact me: wangchong756@gmail.com </h4>
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/09/03/CP/CodeChef/CodeChef-August-Lunchtime-2016/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="2997ms">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2997ms">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 2997ms">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2016/09/03/CP/CodeChef/CodeChef-August-Lunchtime-2016/" class="post-title-link" itemprop="url">CodeChef August Lunchtime 2016</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2016-09-03 14:54:44" itemprop="dateCreated datePublished" datetime="2016-09-03T14:54:44+01:00">2016-09-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-09-04 20:36:04" itemprop="dateModified" datetime="2022-09-04T20:36:04+01:00">2022-09-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>做了Codechef上面的<a target="_blank" rel="noopener" href="https://www.codechef.com/LTIME39">August Lunchtime 2016</a>，上面的题都有中文题面，还有解答，还有代码。觉得这个网站也不错呀。。。</p>
+<p>然后这次做完发现是三道easy，一道medium。一想也没用什么数据结构，好像是差不多哈，但是第四个树上直径这个和51nod上面树上最远点对是一样的想法，做得时候自己感觉还是挺难的。第三题数组开小了，然而一直返回WA，找了很久。第二个有相同的数字也WA了一个晚上。这样想来觉得也不那么简单了。</p>
+<p>代码在<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Codechef/August-Lunchtime-2016">这里</a>。</p>
+<p>A题Studying Alphabet不用写了。。。</p>
+<h3 id="B题Lock-Free-Stack"><a href="#B题Lock-Free-Stack" class="headerlink" title="B题Lock-Free Stack"></a>B题Lock-Free Stack</h3><hr>
+<p>因为有P &#x3D; (A1 + 1) × (A2 + 1) × … × (AN + 1)，然后P&lt;&#x3D;10^6，所以最多20个进程，那就对每个进程的输出都要符合压栈顺序。(一开始自己一位一位找，发现有相同的数字，所以WA了一晚上，后来还是对每个进程都满足顺序就可以了)。</p>
+<h3 id="C题-Short-in-Average"><a href="#C题-Short-in-Average" class="headerlink" title="C题 Short in Average"></a>C题 Short in Average</h3><hr>
+<p>这个题自己搞过原题，感触就是平均值问题很容易搞成二分，然后对每一个值减去二分的值，然后去判断。<a target="_blank" rel="noopener" href="http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1711">51nod 1711平均数</a>也是这样，二分这个平均数x，然后每个数减去x，那么这样的话就是算区间和&lt;0的个数与k去相比，区间和[le,ri]小于0，相当于前缀和sum[ri]-sum[le-1]&lt;0，sum[ri]&lt;sum[le-1]，这个不就是逆序对的数目嘛，发现离散化+树状数组就可以做了。</p>
+<p>这个题的思路也是这样，每个边减去二分值x，然后直接判环就好了。</p>
+<h3 id="D题-Product-of-Diameters"><a href="#D题-Product-of-Diameters" class="headerlink" title="D题 Product of Diameters"></a>D题 Product of Diameters</h3><hr>
+<p>这个题目赞在要逆向考虑，往里面加边，然后输出结果。那么往里面加边，就是除以每颗树直径的直径的乘积，这个可以维护，然后求出这两棵树内部的直径，这个维护相当于需要维护一个集合里面的最远距离，想了一下和<a target="_blank" rel="noopener" href="http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1766">51nod 1766树上的最远点对</a>本质上是一样的题目，也是维护一个集合里面距离最远的两个点，然后两个集合的合并，只可能在这四个点里面出，倍增求lca，求距离。</p>
+<p>这个题思想还是挺简单的，要想清楚过程，自己写起来一些细节写得还是不够好。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
 
 
     
@@ -1247,94 +1343,6 @@ Software Engineer Intern<br/>
 <p>晚上在看丹布朗的地狱，每次读丹布朗的书，除了故事本身紧张刺激的情节之外，最大的感受就是自身相对于这个世界的精华文化实在是太渺小了，这个世界太多奥秘值得去探索。</p>
 <p>许多许多个冬天都这样过去了，许多许多个春天就这样来临。</p>
 <p>2016年2月份，过得很爽。农历新年，希望老爸老妈身体健康。1900，加油。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/01/31/BB/2016/2016-1%E6%9C%88-make%20each%20day%20count/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="2997ms">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="2997ms">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 2997ms">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2016/01/31/BB/2016/2016-1%E6%9C%88-make%20each%20day%20count/" class="post-title-link" itemprop="url">2016-1月-make each day count</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2016-01-31 19:32:13" itemprop="dateCreated datePublished" datetime="2016-01-31T19:32:13+00:00">2016-01-31</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-08-29 23:25:20" itemprop="dateModified" datetime="2022-08-29T23:25:20+01:00">2022-08-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>1月份真的是在忙于各种考试，感觉概率论很大可能跪掉。。。课也没去过，出的题目感觉是在三环，自己的复习方向还在五环溜达呢。</p>
-<p>把后缀数组论文上的题目都搞了一遍，一开始看其算法真是给作者跪了，好厉害啊啊啊。。。后面要好好总结一下这些题目。。。</p>
-<p>然后就是终于回家了。。。每次回家都想象着能在家里做好多事情啊。。。但是每次结果都不太令人满意。。。好多时候书是怎么带回来的，又怎么带回去。以往的寒暑假自己属于各种作，到最后就是什么都没干。不知道这次的寒假能不能有一些不同。毕竟有一些兴趣和记录表的带领，这次应该能不同吧。</p>
-<p>2016应该能有所不同，另外想对光速小子说，你的一生如此有限，别把人生浪费在一些破烂的七七八八的事情上，每一天都要死得其所，make each day count。</p>
 
       
     </div>
