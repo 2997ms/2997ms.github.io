@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">146</span>
+          <span class="site-state-item-count">147</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -331,6 +331,106 @@ Software Engineer Intern<br/>
 </div>
 
 <h4 style="color:gray">🦸‍♂️ Contact me: wangchong756@gmail.com </h4>
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/10/13/CP/AtCoder/CODE-FESTIVAL-2016-Qualification-Round-B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="2997ms">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2997ms">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 2997ms">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2016/10/13/CP/AtCoder/CODE-FESTIVAL-2016-Qualification-Round-B/" class="post-title-link" itemprop="url">CODE FESTIVAL 2016 Qualification Round B</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2016-10-13 21:07:20" itemprop="dateCreated datePublished" datetime="2016-10-13T21:07:20+01:00">2016-10-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-09-04 20:35:49" itemprop="dateModified" datetime="2022-09-04T20:35:49+01:00">2022-09-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><a target="_blank" rel="noopener" href="http://code-festival-2016-qualb.contest.atcoder.jp/assignments">题目链接</a>与<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/AtCoder/CODE%20FESTIVAL%202016%20Qualification%20Round%20B">代码链接</a></p>
+<p>非常难得这次做出四道题(A和B已经无法更水了)。大中午的特别困，中间睡了一个小时，之后把C和D搞出来了。E题的这个Trie很赞。。。</p>
+<h3 id="C-Gr-idian-MST"><a href="#C-Gr-idian-MST" class="headerlink" title="C - Gr-idian MST"></a>C - Gr-idian MST</h3><blockquote>
+<p>题意是给出了$W \times H$的格子，然后每个格子之间都有一个相互连接的代价，格子$(i,j)$到格子$(i+1,j)$对于任意的$j$代价均为$p_i$，格子$(i,j)$到格子$(i,j+1)$对于任意的$i$代价均为$q_j$。问最终把格子连接成为一个整体需要的最小代价。</p>
+</blockquote>
+<p>一开始往并查集那里去考虑，发现数量级有一些大啊。。。之后找规律，不断找最小值，然后如果是x方向的，那么下一次y就少了1。如果是y方向的，下一次x就少了1。</p>
+<h3 id="D-Greedy-customers"><a href="#D-Greedy-customers" class="headerlink" title="D - Greedy customers"></a>D - Greedy customers</h3><blockquote>
+<p>题意是有$N$个顾客站成一排，每个顾客手里有$A_i$元钱，现在由你出价，从顾客1开始，如果出的价钱小于等于他手里的钱，那么他会买走你的物品。题目要求最后每个顾客手里的钱不能为0，问最多能够卖多少物品。</p>
+</blockquote>
+<p>在比赛结束一分钟之前，情况考虑得都不是很周全，慌乱中自己提交，竟然还过了。。。后来发现情况确实考虑得不好，只能说幸运。</p>
+<p>首先肯定是可以将卖的价钱最终变成一个升序的数列，而又不影响最终的买卖情况的。</p>
+<p>那就考虑从价钱1开始，卖给第一个用户，将其剩下1块。价钱$x$就从2开始，对于可以整除$x$的钱$N$，可以卖出去$N&#x2F;x-1$件物品，而$x$不需要+1，因为最后一件可以卖成$x+1$，使得该位置剩下的钱小于$x$元。而如果遇到$val[i]&#x3D;x$这种情况，那没办法了，$x$只能加1。</p>
+<h3 id="E-Lexicographical-disorder"><a href="#E-Lexicographical-disorder" class="headerlink" title="E - Lexicographical disorder"></a>E - Lexicographical disorder</h3><blockquote>
+<p>题意是给出了$N$个字符串，$Q$个询问$k_i, p$，每一个询问是算第$k_i$个字符串，在该字典序中所排列的位置。</p>
+</blockquote>
+<p>建立Trie树，记录每一个位置的值，查询的时候算每一个字符串在同一个位置上其他字符的数量，以及结束字符的数量。解法真的很亮。。。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
 
 
     
@@ -1312,118 +1412,6 @@ Software Engineer Intern<br/>
 </blockquote>
 <p>很新颖的题，发现对每一个斐波那契值，是可以矩阵快速幂搞的，那对于区间加上一个值，相当于在矩阵的前面再乘以一个矩阵，所以构建线段树，打lz标记。</p>
 <p>这就完了？忽然感觉没啥可说的了，但是为什么做的时候还是觉得难啊。。。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/09/27/CP/AtCoder/CODE-FESTIVAL-2016-Qualification-Round-A/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="2997ms">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="2997ms">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 2997ms">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2016/09/27/CP/AtCoder/CODE-FESTIVAL-2016-Qualification-Round-A/" class="post-title-link" itemprop="url">CODE FESTIVAL 2016 Qualification Round A</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2016-09-27 21:49:04" itemprop="dateCreated datePublished" datetime="2016-09-27T21:49:04+01:00">2016-09-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-09-04 20:35:46" itemprop="dateModified" datetime="2022-09-04T20:35:46+01:00">2022-09-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><a target="_blank" rel="noopener" href="http://code-festival-2016-quala.contest.atcoder.jp/assignments">题目链接</a>与<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/AtCoder/CODE%20FESTIVAL%202016%20Qualification%20Round%20A">代码链接</a></p>
-<p>还是那句话吧，好好思考，并且希望自己能坚持下去。</p>
-<h3 id="A-CODEFESTIVAL-2016"><a href="#A-CODEFESTIVAL-2016" class="headerlink" title="A - CODEFESTIVAL 2016"></a>A - CODEFESTIVAL 2016</h3><blockquote>
-<p>题意是给一个长度为12的字符串，输出前4个字符+空格+后四个字符。</p>
-</blockquote>
-<h3 id="B-仲良しうさぎ-x2F-Friendly-Rabbits"><a href="#B-仲良しうさぎ-x2F-Friendly-Rabbits" class="headerlink" title="B - 仲良しうさぎ &#x2F; Friendly Rabbits"></a>B - 仲良しうさぎ &#x2F; Friendly Rabbits</h3><blockquote>
-<p>题意是给出N个兔子，每个兔子有自己喜欢的兔子$A_i$，问互相喜欢的兔子有多少对。</p>
-</blockquote>
-<p>直接模拟计算。</p>
-<h3 id="C-次のアルファベット-x2F-Next-Letter"><a href="#C-次のアルファベット-x2F-Next-Letter" class="headerlink" title="C - 次のアルファベット &#x2F; Next Letter"></a>C - 次のアルファベット &#x2F; Next Letter</h3><blockquote>
-<p>题意是给出一个字符串，字符串中的每一个字符可以循环向后移，但是一共必须循环向后移动K次，问改变后的字典序最小的字符串。</p>
-</blockquote>
-<p>对每一个字符贪心搞，剩下的操作在最后一个字符上。</p>
-<h3 id="D-マス目と整数-x2F-Grid-and-Integers"><a href="#D-マス目と整数-x2F-Grid-and-Integers" class="headerlink" title="D - マス目と整数 &#x2F; Grid and Integers"></a>D - マス目と整数 &#x2F; Grid and Integers</h3><blockquote>
-<p>题意是给出了R*C的格子，然后有N个格子($r_i,c_i$)已经有值了$a_i$，现在要求让你判断是否每一个格子在都是大于等于零的情况下，满足在任意一个2*2的格子中，两个对角线的和是相等的。</p>
-</blockquote>
-<p>又是这种要你将题目转化的题。</p>
-<p>首先对于任意一个2*2的方格，要满足<br>$$<br>b_{i,j}+b_{i+1,j+1}&#x3D;b_{i+1,j}+b_{i,j+1}<br>$$<br>等式挪一下变成差的形式，会发现对于固定的一行i来说，其差值是要相等的。对于固定的一列j来说，其差值也是相等的。那么这个时候思考，可以将上述条件转变为是否存在两个数列$(x_1,x_2,…,x_R)$和$(y_1,y_2,…,y_C)$，使得$x_{rk}+y_{ck}&#x3D;a_k$。</p>
-<p>所以根据题中所给的条件可以构建图，每一个边的权值就是$a_k$，当形成环的时候判断是否相等。</p>
-<p>最后，要判断是否都满足是大于等于0，我们先假设最开始的值x是最小值0，根据这个基准，算其余点的值，计算最小正值与最小负值，如果最小负值的绝对值大于了最小正值，画图可知，这个时候就到了不可调和的地步，不符合要求。</p>
-<h3 id="E-LRU-パズル-x2F-LRU-Puzzle"><a href="#E-LRU-パズル-x2F-LRU-Puzzle" class="headerlink" title="E - LRU パズル &#x2F; LRU Puzzle"></a>E - LRU パズル &#x2F; LRU Puzzle</h3><blockquote>
-<p>题意是有N个1到M递增的数组，给出了一系列的操作，每次操作将从N个数组中选出一个数组，并将这个数组中的$a_i$拿到最前面。现在题目是问是否满足在进行Q次操作之后，得到的结果是相等的。</p>
-</blockquote>
-<p>假设操作在(1,2,…,M)上，那么在进行了Q次操作之后得到的结果，就是从后往前看，当这个数第一次出现的时候，将这个数放到结果的队列末尾，如果出现过，忽略掉。之后将没有出现在结果队列中的数字依次插入到结尾。</p>
-<p>那么问题现在相当于将这个操作的数组a，分成N个子串，要求这N个子串在1..M上的操作是相等的结果。问是否可能。</p>
-<p>那首先考虑N&#x3D;2的情况。贪心去取，碰到没出现过的，给第一个。碰到第一个出现的，给第二个。都出现的，忽略掉。最终看两个数组得到的是否相等。</p>
-<p>当N大于2的时候，思路也是一样的，类似于推箱子。。。</p>
-<p>首先记长度为0的有N个数组，然后得到一个数字判断当前面临的状态，往下面推，最后看箱子有没有剩下的。。。</p>
 
       
     </div>

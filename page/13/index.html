@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">146</span>
+          <span class="site-state-item-count">147</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -331,6 +331,118 @@ Software Engineer Intern<br/>
 </div>
 
 <h4 style="color:gray">🦸‍♂️ Contact me: wangchong756@gmail.com </h4>
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/09/27/CP/AtCoder/CODE-FESTIVAL-2016-Qualification-Round-A/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="2997ms">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2997ms">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 2997ms">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2016/09/27/CP/AtCoder/CODE-FESTIVAL-2016-Qualification-Round-A/" class="post-title-link" itemprop="url">CODE FESTIVAL 2016 Qualification Round A</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2016-09-27 21:49:04" itemprop="dateCreated datePublished" datetime="2016-09-27T21:49:04+01:00">2016-09-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-09-04 20:35:46" itemprop="dateModified" datetime="2022-09-04T20:35:46+01:00">2022-09-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><a target="_blank" rel="noopener" href="http://code-festival-2016-quala.contest.atcoder.jp/assignments">题目链接</a>与<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/AtCoder/CODE%20FESTIVAL%202016%20Qualification%20Round%20A">代码链接</a></p>
+<p>还是那句话吧，好好思考，并且希望自己能坚持下去。</p>
+<h3 id="A-CODEFESTIVAL-2016"><a href="#A-CODEFESTIVAL-2016" class="headerlink" title="A - CODEFESTIVAL 2016"></a>A - CODEFESTIVAL 2016</h3><blockquote>
+<p>题意是给一个长度为12的字符串，输出前4个字符+空格+后四个字符。</p>
+</blockquote>
+<h3 id="B-仲良しうさぎ-x2F-Friendly-Rabbits"><a href="#B-仲良しうさぎ-x2F-Friendly-Rabbits" class="headerlink" title="B - 仲良しうさぎ &#x2F; Friendly Rabbits"></a>B - 仲良しうさぎ &#x2F; Friendly Rabbits</h3><blockquote>
+<p>题意是给出N个兔子，每个兔子有自己喜欢的兔子$A_i$，问互相喜欢的兔子有多少对。</p>
+</blockquote>
+<p>直接模拟计算。</p>
+<h3 id="C-次のアルファベット-x2F-Next-Letter"><a href="#C-次のアルファベット-x2F-Next-Letter" class="headerlink" title="C - 次のアルファベット &#x2F; Next Letter"></a>C - 次のアルファベット &#x2F; Next Letter</h3><blockquote>
+<p>题意是给出一个字符串，字符串中的每一个字符可以循环向后移，但是一共必须循环向后移动K次，问改变后的字典序最小的字符串。</p>
+</blockquote>
+<p>对每一个字符贪心搞，剩下的操作在最后一个字符上。</p>
+<h3 id="D-マス目と整数-x2F-Grid-and-Integers"><a href="#D-マス目と整数-x2F-Grid-and-Integers" class="headerlink" title="D - マス目と整数 &#x2F; Grid and Integers"></a>D - マス目と整数 &#x2F; Grid and Integers</h3><blockquote>
+<p>题意是给出了R*C的格子，然后有N个格子($r_i,c_i$)已经有值了$a_i$，现在要求让你判断是否每一个格子在都是大于等于零的情况下，满足在任意一个2*2的格子中，两个对角线的和是相等的。</p>
+</blockquote>
+<p>又是这种要你将题目转化的题。</p>
+<p>首先对于任意一个2*2的方格，要满足<br>$$<br>b_{i,j}+b_{i+1,j+1}&#x3D;b_{i+1,j}+b_{i,j+1}<br>$$<br>等式挪一下变成差的形式，会发现对于固定的一行i来说，其差值是要相等的。对于固定的一列j来说，其差值也是相等的。那么这个时候思考，可以将上述条件转变为是否存在两个数列$(x_1,x_2,…,x_R)$和$(y_1,y_2,…,y_C)$，使得$x_{rk}+y_{ck}&#x3D;a_k$。</p>
+<p>所以根据题中所给的条件可以构建图，每一个边的权值就是$a_k$，当形成环的时候判断是否相等。</p>
+<p>最后，要判断是否都满足是大于等于0，我们先假设最开始的值x是最小值0，根据这个基准，算其余点的值，计算最小正值与最小负值，如果最小负值的绝对值大于了最小正值，画图可知，这个时候就到了不可调和的地步，不符合要求。</p>
+<h3 id="E-LRU-パズル-x2F-LRU-Puzzle"><a href="#E-LRU-パズル-x2F-LRU-Puzzle" class="headerlink" title="E - LRU パズル &#x2F; LRU Puzzle"></a>E - LRU パズル &#x2F; LRU Puzzle</h3><blockquote>
+<p>题意是有N个1到M递增的数组，给出了一系列的操作，每次操作将从N个数组中选出一个数组，并将这个数组中的$a_i$拿到最前面。现在题目是问是否满足在进行Q次操作之后，得到的结果是相等的。</p>
+</blockquote>
+<p>假设操作在(1,2,…,M)上，那么在进行了Q次操作之后得到的结果，就是从后往前看，当这个数第一次出现的时候，将这个数放到结果的队列末尾，如果出现过，忽略掉。之后将没有出现在结果队列中的数字依次插入到结尾。</p>
+<p>那么问题现在相当于将这个操作的数组a，分成N个子串，要求这N个子串在1..M上的操作是相等的结果。问是否可能。</p>
+<p>那首先考虑N&#x3D;2的情况。贪心去取，碰到没出现过的，给第一个。碰到第一个出现的，给第二个。都出现的，忽略掉。最终看两个数组得到的是否相等。</p>
+<p>当N大于2的时候，思路也是一样的，类似于推箱子。。。</p>
+<p>首先记长度为0的有N个数组，然后得到一个数字判断当前面临的状态，往下面推，最后看箱子有没有剩下的。。。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
 
 
     
@@ -1309,106 +1421,6 @@ Software Engineer Intern<br/>
 <p>这个题就好玩在，排除所有字符相等的情况(这种情况输出的是strlen(w)，1,不用多说)，分解出来的最少字符串数量一定不是1就是2。当这个字符串本身就是好字符串的时候就是1。当这个字符串可以表示成k(k&gt;&#x3D;2)个字符串a连接而成的话，那么此时，嘿嘿嘿(……)，一拆的话，前者多一个，后者少一个，就可以分成两个好字符串啦。</p>
 <p>所以这个题判断出是1的情况之后，说白了就是判断一个字符串可不可以分解成由k(k&gt;&#x3D;2)个字符串a连接而成，POJ上面有一道类似的题目，kmp直接可以解，前后如果都满足，方法的数量就+1。那个1e9+7纯属唬人。。。</p>
 <p>这个题目也挺好玩(真是智障儿童欢乐多。。。)</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/09/03/CP/AtCoder/AtCoder-Regular-Contest-059/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="2997ms">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="2997ms">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 2997ms">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2016/09/03/CP/AtCoder/AtCoder-Regular-Contest-059/" class="post-title-link" itemprop="url">AtCoder Regular Contest 059</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2016-09-03 23:23:16" itemprop="dateCreated datePublished" datetime="2016-09-03T23:23:16+01:00">2016-09-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-09-04 20:35:09" itemprop="dateModified" datetime="2022-09-04T20:35:09+01:00">2022-09-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>这一期的后两道DP很好玩。</p>
-<p>代码在<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/AtCoder/Regular_Contest_059">这里</a>。</p>
-<h3 id="C-Be-Together"><a href="#C-Be-Together" class="headerlink" title="C Be Together"></a>C Be Together</h3><hr>
-<p>题意是给出n个数，它们要统一变成同一个数，代价是差的平方，问最小代价。</p>
-<p>由于数量和范围都很小，直接暴力。</p>
-<h3 id="D-Unbalanced"><a href="#D-Unbalanced" class="headerlink" title="D Unbalanced"></a>D Unbalanced</h3><hr>
-<p>题意是给出一个字符串，找出这个字符串的子串中是否存在不平衡串，并输出其位置。所谓不平衡串，就是该串中一个字符的数量大于该串长度的一半。</p>
-<p>发现最小规模的不平衡串就是在三个以内有超过两个的相同字符，任何不平衡串都要以此为基础。所以一个一个字符暴力就好了。</p>
-<h3 id="E-Children-and-Candies"><a href="#E-Children-and-Candies" class="headerlink" title="E Children and Candies"></a>E Children and Candies</h3><hr>
-<p>题意是有n个小孩子，c个糖果，将c个糖果分配给n个小孩子，假设孩子得到的糖果数量为a，兴奋值为xi，这个小孩的快乐值为xi^a，幼儿园总的活动值为所有小孩子快乐值的乘积。</p>
-<p>现在每一个小孩的兴奋值取值范围为Ai~Bi，问所有情况的幼儿园活动值(…….)的和。</p>
-<p>dp[i][c]表示i个小孩分配c个糖果的活动值总和，那么仔细分析这个函数，当到i+1的时候，转移的情况为<br>$$<br>dp[i+1][c]&#x3D;\sum_{j&#x3D;0}^{c}dp[i][j]*(\sum_{x&#x3D;A[i+1]}^{B[i+1]}x^{c-j})<br>$$<br>所以预处理出x的前缀和，直接转移即可。</p>
-<h3 id="F-Unhappy-Hacking"><a href="#F-Unhappy-Hacking" class="headerlink" title="F Unhappy Hacking"></a>F Unhappy Hacking</h3><hr>
-<p>题意是这个电脑键盘上只有三个键：0，1和delete键，现在按了n次键盘，有一个字符串，问有多少种按键情况能够形成改字符串。</p>
-<p>dp[n][c]表示按了n次键盘，形成字符串长度为c的方法数，对第n+1次按键盘，可能是delete，转移方程为：<br>$$<br>dp[n+1][max(c-1,0)]+&#x3D;dp[n][c]<br>$$<br>如果是按0，转移方程为：<br>$$<br>dp[n+1][c+1]+&#x3D;dp[n][c]<br>$$<br>按1同理，在上式基础上再加一遍dp[n][c]。</p>
-<p>最终因为是固定了0、1，所以除以2^len。</p>
 
       
     </div>
