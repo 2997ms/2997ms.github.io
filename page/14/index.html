@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">148</span>
+          <span class="site-state-item-count">149</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -331,6 +331,128 @@ Software Engineer Intern<br/>
 </div>
 
 <h4 style="color:gray">🦸‍♂️ Contact me: wangchong756@gmail.com </h4>
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/09/07/CP/AtCoder/AtCoder-Grand-Contest-002/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="2997ms">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2997ms">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 2997ms">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2016/09/07/CP/AtCoder/AtCoder-Grand-Contest-002/" class="post-title-link" itemprop="url">AtCoder Grand Contest 002</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2016-09-07 16:32:28" itemprop="dateCreated datePublished" datetime="2016-09-07T16:32:28+01:00">2016-09-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-09-04 20:34:16" itemprop="dateModified" datetime="2022-09-04T20:34:16+01:00">2022-09-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><a target="_blank" rel="noopener" href="http://agc002.contest.atcoder.jp/">题目链接</a>，这场D题没接触过，整体二分，挺典型。E和F做得我好头痛，E题提交了好多次，F题那个DP。。。都很神。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/AtCoder/Grand_Contest_002">代码链接</a></p>
+<h3 id="A-Range-Product"><a href="#A-Range-Product" class="headerlink" title="A Range Product"></a>A Range Product</h3><hr>
+<p>题是给定一个范围，问乘积是正是负。。。。。。</p>
+<h3 id="B-Box-and-Ball"><a href="#B-Box-and-Ball" class="headerlink" title="B Box and Ball"></a>B Box and Ball</h3><hr>
+<p>题意是给出了n个盒子，第1个盒子里面有红球，其余的都有白球。现在有m次操作，每次从第x个盒子里面随机抽一个球，放到y盒子里面。问最终有多少个盒子可能会有红球。</p>
+<p>有染的一律算上，注意盒子里没有球的情况。</p>
+<h3 id="C-Knot-Puzzle"><a href="#C-Knot-Puzzle" class="headerlink" title="C Knot Puzzle"></a>C Knot Puzzle</h3><hr>
+<p>题意是有n段绳子，每段绳子有一个长度。现在这n段绳子连在一起，Snuke想把它拆开，要求是选择一段长度至少为L的，才能拆成两段。问是否能把这一段绳子拆成n段，给出策略。</p>
+<p>这个题一开始我是贪心从两头开始拆，发现是错的，比如说这种情况：</p>
+<p>4 6<br>3 3 1 4</p>
+<p>还是选出相邻和的最大值，满足&gt;&#x3D;L的，就以这一段为最后一段。</p>
+<h3 id="D-Stamp-Rally"><a href="#D-Stamp-Rally" class="headerlink" title="D Stamp Rally"></a>D Stamp Rally</h3><hr>
+<p>题意是给出一个无向联通图，然后有q次询问x,y,z，问找出x和y连通的节点数量在哪一条边之后，数量大于等于z。</p>
+<p>当时做的时候问题看起来特别唬人，其实对于每一次查询就是看哪一次添加边之后，两者的并查集数量之和大于z了。那么q次询问，就用到整体二分的思想，把mid存到vector里，然后整体一起跑。每次不断缩小范围。</p>
+<h3 id="E-Candy-Piles"><a href="#E-Candy-Piles" class="headerlink" title="E Candy Piles"></a>E Candy Piles</h3><hr>
+<p>题意是现在有n摞球(原题是糖，说成球比较好理解图。。。)，双方有两种操作，一种是选最多那摞球，吃掉。。。另一种是对每一摞球吃一个。最后吃球的人输。先给出各摞球的个数，问最终谁赢。</p>
+<p>这题很神。。。完全见过类似的。</p>
+<p>如果我们把球按照从大到小排好会发现是这样的，</p>
+<p><img src="https://raw.githubusercontent.com/2997ms/My_Algorithm/master/source_pic/AGC_002/E1.png" alt="image"></p>
+<p>那这样的话两种操作就是这样的：</p>
+<p><img src="https://raw.githubusercontent.com/2997ms/My_Algorithm/master/source_pic/AGC_002/E2.png" alt="image"></p>
+<p>之后呢，问题就可以变成了你从左下边的点开始走，走到边界停止，就像这样：</p>
+<p><img src="https://raw.githubusercontent.com/2997ms/My_Algorithm/master/source_pic/AGC_002/E3.png" alt="image"></p>
+<p>对于边界来说，是胜利状态，标⭕️。失败状态，标❌。那么一个点(x,y)的可达状态是(x+1,y),(x,y+1),根据这些可以画出这幅图每个点的胜负情况。</p>
+<p><img src="https://raw.githubusercontent.com/2997ms/My_Algorithm/master/source_pic/AGC_002/E4.png" alt="image"></p>
+<p>现在就是要求左下点(1,1)点究竟是❌还是⭕️。</p>
+<p><img src="https://raw.githubusercontent.com/2997ms/My_Algorithm/master/source_pic/AGC_002/E5.png" alt="image"></p>
+<p>根据图7，分析可知就是要找拐点到y&#x3D;x这条线的距离奇偶，推得偶数不能给到胜利状态。最后注意一种情况就是所有边界值都在y&#x3D;x的直线之上，这个时候只有一个拐点，就没有right值，只有up值。</p>
+<h3 id="F-Leftmost-Ball"><a href="#F-Leftmost-Ball" class="headerlink" title="F Leftmost Ball"></a>F Leftmost Ball</h3><hr>
+<p>题意是有n种颜色的球，颜色分别为1到n，每一种颜色的球有k个，现在把这些球排成一排，把每一种颜色的球的最左端的那个球，染成颜色0。问最终球的排列有多少种情况。</p>
+<p>这个dp也好神。。。。</p>
+<p><img src="https://raw.githubusercontent.com/2997ms/My_Algorithm/master/source_pic/AGC_002/F1.png" alt="image"></p>
+<p>非常奇妙地把这n*k个球转换成了一个图，灰色的球代表颜色0，然后问这个图拓扑排序能够有多少种。(ORZ….)</p>
+<p>接下来有多少种呢。。。又使用dp来解(ORZ….)</p>
+<p><img src="https://raw.githubusercontent.com/2997ms/My_Algorithm/master/source_pic/AGC_002/F2.png" alt="image"></p>
+<p>对于每一个情形dp[i][j]来说，有两种选择：1.拿一个灰球dp[i-1][j]。2.拿一个橙色的球排在当前位置的第一个，那剩下的k-2的球的位置就任意了,即C(i+j*(k-1)-1，k-2)*dp[i][j-1]。</p>
+<p>最后将结果乘以n!</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
 
 
     
@@ -1270,98 +1392,6 @@ Software Engineer Intern<br/>
           <p>这个6月感觉自己过得像坨屎，想干的事一件都没完成。</p>
 <p>2016年过完一半了，7、8月希望能够有所改变。</p>
 
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/05/18/CP/HDU/HDU%205668/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="2997ms">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="2997ms">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 2997ms">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2016/05/18/CP/HDU/HDU%205668/" class="post-title-link" itemprop="url">HDU 5668 Circle</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2016-05-18 22:15:43" itemprop="dateCreated datePublished" datetime="2016-05-18T22:15:43+01:00">2016-05-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-09-04 20:39:21" itemprop="dateModified" datetime="2022-09-04T20:39:21+01:00">2022-09-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><a target="_blank" rel="noopener" href="http://acm.hdu.edu.cn/showproblem.php?pid=5668">题目链接</a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2016/05/18/CP/HDU/HDU%205668/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
       
     </div>
 

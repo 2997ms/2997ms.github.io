@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">148</span>
+          <span class="site-state-item-count">149</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -331,6 +331,122 @@ Software Engineer Intern<br/>
 </div>
 
 <h4 style="color:gray">🦸‍♂️ Contact me: wangchong756@gmail.com </h4>
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/10/24/CP/Codeforces/Codeforces-376-Div2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="2997ms">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2997ms">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 2997ms">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2016/10/24/CP/Codeforces/Codeforces-376-Div2/" class="post-title-link" itemprop="url">Codeforces 376 Div2</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2016-10-24 19:22:01" itemprop="dateCreated datePublished" datetime="2016-10-24T19:22:01+01:00">2016-10-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-09-04 20:37:16" itemprop="dateModified" datetime="2022-09-04T20:37:16+01:00">2022-09-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><a target="_blank" rel="noopener" href="http://codeforces.com/contest/731">题目链接</a>与<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/376_Div2">代码链接</a></p>
+<p>晚上VP了这一场，并查集写脑残了，TLE47。F题关于数据应该注意数据范围，然后根据每一个数字来进行枚举。</p>
+<h3 id="A-Night-at-the-Museum"><a href="#A-Night-at-the-Museum" class="headerlink" title="A Night at the Museum"></a>A Night at the Museum</h3><blockquote>
+<p>$26$个字母放在一个圆盘上，然后可以顺时针逆时针方向找字母，问总和旋转次数最少是多少。</p>
+</blockquote>
+<p>每次贪心取最小值。res+&#x3D;min(abs(k-cur),26-abs(k-cur))</p>
+<h3 id="B-Coupons-and-Discounts"><a href="#B-Coupons-and-Discounts" class="headerlink" title="B Coupons and Discounts"></a>B Coupons and Discounts</h3><blockquote>
+<p>有$n$天，对应每一天要购买相应数量的pizza，有两种购买方式，第一种一天买两个，第二种连续两天买一个。问该安排在这两种购买方式下是否可行。</p>
+</blockquote>
+<p>从第一天开始贪心，偶数不用管，如果是奇数，那么想要可行下一天必须减1。判断每一天的数量大于等于0，还有最后一天要是偶数。</p>
+<h3 id="C-Socks"><a href="#C-Socks" class="headerlink" title="C Socks"></a>C Socks</h3><blockquote>
+<p>有n个袜子，k种颜色，m个天。每一天有对应安排，要穿哪两只袜子。问想要满足每一天袜子都一致的情况下，最小更改袜子的颜色数量。</p>
+</blockquote>
+<p>并查集，把要穿的袜子放在一个集合里面。然后再在每一个集合里面选取出现颜色最多的那种，其他的袜子就要去改成这个颜色。。。</p>
+<h3 id="D-80-th-Level-Archeology"><a href="#D-80-th-Level-Archeology" class="headerlink" title="D 80-th Level Archeology"></a>D 80-th Level Archeology</h3><blockquote>
+<p>题意是给出了$n$个序列，然后可以对所有序列向后移一位，最后一个$C$的话就变为$1$。问最少移多少位可以满足序列是呈现字典序递增的顺序。</p>
+</blockquote>
+<p>对两个序列进行比较会发现，是一个合法区间。将所有合法区间进行合并，看有没有满足所有区间的数字。</p>
+<h3 id="E-Funny-Game"><a href="#E-Funny-Game" class="headerlink" title="E Funny Game"></a>E Funny Game</h3><blockquote>
+<p>题意是有$n$个数，Petya和Gena对这$n$个数按照如下规则去取：每次至少选择数列中最左面前$2$个数，其和计入分数，然后把这个和再次放入该数列的最左面，直到该数列只剩下一个数为止。每个人都希望自己的分数-对手的分数最大，Petya先取，问最优解。</p>
+</blockquote>
+<p>后来才知道这种博弈是有套路的。。。</p>
+<p>$DP[i]$表示对当前玩家来说，取前$[1..i]$数其最优值，那么这个最优值$DP[i]$从哪里转移过来，从左往右取的话，这个最优值是取决于对手取的最优值，即是从右面转移过来的。根据这个可以写一个$O(n^2)$的记忆化$DP$。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> val[maxn],sum[maxn],dp[maxn];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">cal</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(dp[x]!=<span class="number">-1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> dp[x];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">int</span> res = -INF;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=x+<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		res=<span class="built_in">max</span>(res,<span class="built_in">cal</span>(i));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(res == -INF)</span><br><span class="line">		res = <span class="number">0</span>;</span><br><span class="line">	dp[x]=sum[x]-res;</span><br><span class="line">	<span class="keyword">return</span> dp[x];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(dp,<span class="number">-1</span>,<span class="built_in">sizeof</span>(dp));</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;val[i]);</span><br><span class="line">		sum[i]=sum[i<span class="number">-1</span>]+val[i];</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="type">int</span> res = -INF;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		res = <span class="built_in">max</span>(res,<span class="built_in">cal</span>(i));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,res);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>观察转移，从后转移的话，可以从后往前走，维护这个最大值，得到结果。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">ll n;</span><br><span class="line">ll val[maxn], sum[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%lld&quot;</span>, &amp;n);</span><br><span class="line">	<span class="built_in">repp</span>(i, <span class="number">1</span>, n)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%lld&quot;</span>, &amp;val[i]);</span><br><span class="line">		sum[i] = sum[i - <span class="number">1</span>] + val[i];</span><br><span class="line">	&#125;</span><br><span class="line">	ll res = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = n; i &gt;= <span class="number">2</span>; i--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (i == n)res = sum[i];</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (res &lt; sum[i] - res)</span><br><span class="line">		&#123;</span><br><span class="line">			res = sum[i] - res;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, res);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="F-Video-Cards"><a href="#F-Video-Cards" class="headerlink" title="F Video Cards"></a>F Video Cards</h3><blockquote>
+<p>有$n$个数，可以以任意一个数作为开头，其余的数必须减小到是这个数的整数倍，记这个数列的和。问所有情况下的和的最大值。</p>
+</blockquote>
+<p>注意数的范围都是小于200000的，那么就可以求前缀和，枚举每一个数作为基底，其2倍,3倍…的数。复杂度$O(nlogn)$</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
 
 
     
@@ -1313,112 +1429,6 @@ Software Engineer Intern<br/>
 </blockquote>
 <p>可知添加一个字符的话，最大回文序列最多多2个，k如果大于2直接就GG。</p>
 <p>之后就是枚举添加的位置了，添加的字符可能是作为中间字符，那么最大的回文序列就是两边(其中一边逆过来)的最长公共子序列*2+1；如果是作为两边字符的话，那么就是中间算最长回文子序列的长度，两边算最长公共子序列的长度，dp记录这两者的状态。最后判断是否大于等于k。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/09/28/CP/Codeforces/Codeforces-372-Div2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="2997ms">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="2997ms">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 2997ms">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2016/09/28/CP/Codeforces/Codeforces-372-Div2/" class="post-title-link" itemprop="url">Codeforces 372 Div2</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2016-09-28 09:29:44" itemprop="dateCreated datePublished" datetime="2016-09-28T09:29:44+01:00">2016-09-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-09-04 20:37:28" itemprop="dateModified" datetime="2022-09-04T20:37:28+01:00">2022-09-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><a target="_blank" rel="noopener" href="http://codeforces.com/contest/716">题目链接</a>与<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/372_Div2">代码链接</a></p>
-<p>这一次的D题二分收获很大，E题的树分治第一次做。</p>
-<h3 id="A-Crazy-Computer"><a href="#A-Crazy-Computer" class="headerlink" title="A. Crazy Computer"></a>A. Crazy Computer</h3><blockquote>
-<p>题意是给出一个序列，前后差值大于$C$时，结果清空，否则+1，问最终结果。</p>
-</blockquote>
-<h3 id="B-Complete-the-Word"><a href="#B-Complete-the-Word" class="headerlink" title="B. Complete the Word"></a>B. Complete the Word</h3><blockquote>
-<p>给出一个字符串，找出含有26个不重复字母的子串，其中?可以替换成任意字符。</p>
-</blockquote>
-<h3 id="C-Plus-and-Square-Root"><a href="#C-Plus-and-Square-Root" class="headerlink" title="C. Plus and Square Root"></a>C. Plus and Square Root</h3><blockquote>
-<p>题意是一个游戏，当前数字是$x$，你可以在$x$的基础上添加任意倍数的$x$，使得在第$k$等上，你要变成的是一个完全平方数，并且它开根号之后，可以被$k+1$整除。</p>
-</blockquote>
-<p>每一轮构造$k*k*(k+1)*(k+1)$，这样开过根号之后变成$k*(k+1)$可以被$k$整除，那么到下一轮，因为有$k+1$这个因子，就可以继续构造$(k+1)*(k+1)*(k+2)*(k+2)$。</p>
-<h3 id="D-Complete-The-Graph"><a href="#D-Complete-The-Graph" class="headerlink" title="D. Complete The Graph"></a>D. Complete The Graph</h3><blockquote>
-<p>题意是给定一个图，权值为0的边可以任意赋一个大于0的值，要求最终$s$到$t$的最短距离是一个固定长度$L$。</p>
-</blockquote>
-<p>看到这个题最终也可以二分搞，真的是跪服。</p>
-<p>二分所有权值为0的那些边的总和，首先如果都为0，那么最短路还大于$L$的GG。都为最大值，最短路还小于$L$的GG。剩下的会发现相当于二分在某一条边上的长度了，dijkstra求最短路。</p>
-<h3 id="E-Digit-Tree"><a href="#E-Digit-Tree" class="headerlink" title="E. Digit Tree"></a>E. Digit Tree</h3><blockquote>
-<p>题意是给定一棵树，每一条边上有一个0到9的数，然后给定一个$M$，满足$gcd(M,10)&#x3D;1$。现在树上每两点通过边可以得到一个数值$\sum_{i&#x3D;1}^{k-1}d_{i}*10^{k-1-i}$，问树上任意两点能够被M整除的有多少对。</p>
-</blockquote>
-<p>树分治，首先找重心，然后考虑所有经过重心的有多少对。</p>
-<p>假设通过深搜u点的值为123，即在该重心为根的情况下，深度为3。另一个点v的值为45，深度为2。那么能够知道u和v形成的点对的值是12354和45321。那么假设$A$代表从根节点正着计算得到的值，像上面得到的123，45，$B$代表从根节点每一个节点深搜反着得到的值，像321，54。那么被M整除的条件为，<br>$$<br>A_u\times 10^{d_{v}}+B_v\equiv 0\ mod\ m<br>$$<br>推过来就有<br>$$<br>A_u\equiv -B_v \times \frac{1}{10^{d_v}}\ mod\ m<br>$$<br>那这样在深搜的时候就知道记录什么了，然后以重心为根，前后深搜两遍，就记录了经过该点的点对数量，之后再接着找重心，分治解。</p>
 
       
     </div>
