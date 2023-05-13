@@ -371,7 +371,7 @@ Software Engineer Intern<br/>
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2023-05-13 15:54:19 / Modified: 15:59:11" itemprop="dateCreated datePublished" datetime="2023-05-13T15:54:19+01:00">2023-05-13</time>
+      <time title="Created: 2023-05-13 15:54:19 / Modified: 16:23:14" itemprop="dateCreated datePublished" datetime="2023-05-13T15:54:19+01:00">2023-05-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -393,13 +393,15 @@ Software Engineer Intern<br/>
     
     
     <div class="post-body" itemprop="articleBody">
-          <span id="more"></span>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity ^0.7.3;</span><br><span class="line"></span><br><span class="line">contract Force &#123;</span><br><span class="line">    constructor (address payable target) payable &#123;</span><br><span class="line">        require(msg.value &gt; 0);</span><br><span class="line">        selfdestruct(target);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
+          <p>This question provides an empty smart contract called <code>Force</code>, which doesn’t have a <code>receive</code> or <code>fallback</code> function. As a result, if I try to transfer or send ether to this smart contract, it will be reverted. However, the question requires that the balance of this smart contract’s address be greater than 0, which means we still need to find a way to transfer some ether into it.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/05/13/Ethernaut/Ethernaut-Puzzle-07-Force/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
