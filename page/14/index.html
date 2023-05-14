@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">157</span>
+          <span class="site-state-item-count">158</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -331,6 +331,112 @@ Software Engineer Intern<br/>
 </div>
 
 <h4 style="color:gray">🦸‍♂️ Contact me: wangchong756@gmail.com </h4>
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/09/27/CP/Codeforces/Codeforces-373-Div2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="2997ms">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2997ms">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 2997ms">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2016/09/27/CP/Codeforces/Codeforces-373-Div2/" class="post-title-link" itemprop="url">Codeforces 373 Div2</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2016-09-27 23:13:57" itemprop="dateCreated datePublished" datetime="2016-09-27T23:13:57+01:00">2016-09-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-09-04 20:37:24" itemprop="dateModified" datetime="2022-09-04T20:37:24+01:00">2022-09-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>还没有补373Div1的题。。。感觉好难。。。当睡前读物吧。。。</p>
+<p>这次Div2的D题出了问题，只有四道了。比的时候出了三道，所以想记的也就那么一道题。。。</p>
+<p><a target="_blank" rel="noopener" href="http://codeforces.com/contest/719">题目链接</a>与<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/373_Div2">代码链接</a></p>
+<h3 id="A-Vitya-in-the-Countryside"><a href="#A-Vitya-in-the-Countryside" class="headerlink" title="A. Vitya in the Countryside"></a>A. Vitya in the Countryside</h3><blockquote>
+<p>题意是给出了一个循环的规律，然后给了循环中的某一位置的数字，问能否通过这些信息判断上升还是下降。判断不出来输出-1。</p>
+</blockquote>
+<p><strong>栽在这上面啦，就算后面发现了也丢失了很多分。。。所谓物极必反，在极值上肯定是可以判断的啊。</strong></p>
+<h3 id="B-Anatoly-and-Cockroaches"><a href="#B-Anatoly-and-Cockroaches" class="headerlink" title="B. Anatoly and Cockroaches"></a>B. Anatoly and Cockroaches</h3><blockquote>
+<p>题意是给出了由’r’和‘b’组成的字符串，然后可以由两种操作，1.交换两个位置的字符；2.改变某一位置的字符。问要求最终的字符串是交替的’r’’b’，最小操作多少次。</p>
+</blockquote>
+<p>最终要么是rbrbrbr…，要么是brbrbr….</p>
+<p>考虑两种情况，然后算r变b的数量x，b变r的数量y，结果min(x,y)+abs(x-y).</p>
+<h3 id="C-Efim-and-Strange-Grade"><a href="#C-Efim-and-Strange-Grade" class="headerlink" title="C. Efim and Strange Grade"></a>C. Efim and Strange Grade</h3><blockquote>
+<p>题意是给出了一个长度为$n(n\leq200000)$的小数，然后最多在小数位进位t次，问最终结果的最大值。要求规范输出。</p>
+</blockquote>
+<p>贪心，找小数位第一个大于等于5的，之后就在这个5之前找连续的大于等于4的，碰到小于4的结束，因为已经进不了位了。注意一些细节。。。</p>
+<p>想了好久，写了好久。。。万幸没有fst。</p>
+<h3 id="E-Sasha-and-Array"><a href="#E-Sasha-and-Array" class="headerlink" title="E. Sasha and Array"></a>E. Sasha and Array</h3><blockquote>
+<p>题意是给出了n个数，m个操作，每个位置上的数字是$f[a_i]$，f[x]代表斐波那契数列的第x项。现在每个操作有两种情况，第一种查询区间和。第二种对区间的每一个值加上f[x]。</p>
+</blockquote>
+<p>很新颖的题，发现对每一个斐波那契值，是可以矩阵快速幂搞的，那对于区间加上一个值，相当于在矩阵的前面再乘以一个矩阵，所以构建线段树，打lz标记。</p>
+<p>这就完了？忽然感觉没啥可说的了，但是为什么做的时候还是觉得难啊。。。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
 
 
     
@@ -1315,112 +1421,6 @@ Software Engineer Intern<br/>
 <p><img src="https://raw.githubusercontent.com/2997ms/My_Algorithm/master/source_pic/AGC_002/F2.png" alt="image"></p>
 <p>对于每一个情形dp[i][j]来说，有两种选择：1.拿一个灰球dp[i-1][j]。2.拿一个橙色的球排在当前位置的第一个，那剩下的k-2的球的位置就任意了,即C(i+j*(k-1)-1，k-2)*dp[i][j-1]。</p>
 <p>最后将结果乘以n!</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/09/05/CP/AtCoder/AtCoder-Regular-Contest-060/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="2997ms">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="2997ms">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 2997ms">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2016/09/05/CP/AtCoder/AtCoder-Regular-Contest-060/" class="post-title-link" itemprop="url">AtCoder Regular Contest 060</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2016-09-05 22:39:38" itemprop="dateCreated datePublished" datetime="2016-09-05T22:39:38+01:00">2016-09-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-09-04 20:35:13" itemprop="dateModified" datetime="2022-09-04T20:35:13+01:00">2022-09-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>这一期的Regular Contest我也是肥肠喜欢啊，题目都很好玩啊，<a target="_blank" rel="noopener" href="http://arc060.contest.atcoder.jp/assignments">题目链接</a>。</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/AtCoder/Regular_Contest_060">代码链接</a></p>
-<h3 id="C-Tak-and-Cards"><a href="#C-Tak-and-Cards" class="headerlink" title="C Tak and Cards"></a>C Tak and Cards</h3><hr>
-<p>C题题意是给出N(N&lt;&#x3D;50)个数，每个数的范围在1到50之间，然后给一个值A。从这N个数任意选择数字，要求选取的这些数字的平均值是A，问有多少种选取的方法。</p>
-<p>dp[i][j][x]表示到第i个数时，有j个数组成和为x的方法数量。</p>
-<h3 id="D-Digit-Sum"><a href="#D-Digit-Sum" class="headerlink" title="D Digit Sum"></a>D Digit Sum</h3><hr>
-<p>D题题意是给出了一种函数f(b,n)，<br>$$<br>f(b,n)&#x3D;n   \    \  \  \ when\ \  n&lt;b<br>$$</p>
-<p>$$<br>f(b,n)&#x3D;f(b,floor(\frac{n}{b}))+(n%b)<br>$$</p>
-<p>然后给出了n和s，求是最小的b，使得f(b,n)&#x3D;s。如果不存在这样的b，输出-1。</p>
-<p>下次看到n,b范围在10^11,10^12这种题，直接考虑O(sqrt(n))啊啊啊。</p>
-<p>首先考虑b&lt;sqrt(n)的这种情况，直接暴力算。</p>
-<p>然后考虑b&gt;sqrt(n),那这样n&#x3D;pb+q，有p+q&#x3D;s。得到n-s&#x3D;b*(p-1)因为b&gt;sqrt(n),所以p是小于sqrt(n)的，枚举p，注意q也要符合条件即可。</p>
-<h3 id="E-Tak-and-Hotels"><a href="#E-Tak-and-Hotels" class="headerlink" title="E Tak and Hotels"></a>E Tak and Hotels</h3><hr>
-<p>E题题意是给出了n个旅馆的坐标，然后有一个人旅行一天的时间行走的距离不超过L，晚上必须在旅馆睡。然后有Q个询问，问从a走到b至少需要几天，保证是可以到达的。</p>
-<p>倍增的想法，dp[x][a]表示从x经过2^a天能够达到的最远旅馆，之后每次询问从最高次往低次暴力。</p>
-<h3 id="F-Best-Representation"><a href="#F-Best-Representation" class="headerlink" title="F Best Representation"></a>F Best Representation</h3><hr>
-<p><del>发现AtCoder日本人很喜欢出这种题，关于这种是哪种我也说不太好</del></p>
-<p>字符串X如果能够被表示成k(k&gt;&#x3D;2)个字符串a连接而成的话，就不是好字符串，否则就是好字符串。</p>
-<p>现给出一个字符串，要求把这个字符串分解成都是好字符串的字符串。。。问在所有分解成功的集合中，分解出来的最少的字符串数量是多少，设为ans，有多少种分法，使得最少字符串数量为ans，输出ans和这个多少种分法。&#x3D; &#x3D;。突然发现我语言能力如此捉急，看不懂的看英文吧，当然我觉得那个也挺难懂的。</p>
-<p>这个题就好玩在，排除所有字符相等的情况(这种情况输出的是strlen(w)，1,不用多说)，分解出来的最少字符串数量一定不是1就是2。当这个字符串本身就是好字符串的时候就是1。当这个字符串可以表示成k(k&gt;&#x3D;2)个字符串a连接而成的话，那么此时，嘿嘿嘿(……)，一拆的话，前者多一个，后者少一个，就可以分成两个好字符串啦。</p>
-<p>所以这个题判断出是1的情况之后，说白了就是判断一个字符串可不可以分解成由k(k&gt;&#x3D;2)个字符串a连接而成，POJ上面有一道类似的题目，kmp直接可以解，前后如果都满足，方法的数量就+1。那个1e9+7纯属唬人。。。</p>
-<p>这个题目也挺好玩(真是智障儿童欢乐多。。。)</p>
 
       
     </div>

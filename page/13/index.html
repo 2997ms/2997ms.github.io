@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">157</span>
+          <span class="site-state-item-count">158</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -331,6 +331,119 @@ Software Engineer Intern<br/>
 </div>
 
 <h4 style="color:gray">🦸‍♂️ Contact me: wangchong756@gmail.com </h4>
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/10/19/CP/Codeforces/Technocup-2017-Elimination-Round-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="2997ms">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2997ms">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 2997ms">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2016/10/19/CP/Codeforces/Technocup-2017-Elimination-Round-1/" class="post-title-link" itemprop="url">Technocup 2017 - Elimination Round 1</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2016-10-19 18:03:25" itemprop="dateCreated datePublished" datetime="2016-10-19T18:03:25+01:00">2016-10-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-09-04 20:36:42" itemprop="dateModified" datetime="2022-09-04T20:36:42+01:00">2022-09-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>最近去参加了复旦大学举办的Hackx_FDU，收获满满~ 看到了很多大神，然后也赞叹于一群人在短时间内可以写出如此美妙的代码。</p>
+<p>这个Technocup是我Hackx比赛的时候没有吃晚饭，偷着两个小时打的。。。然而效果非常不好。。。自己脑袋犯困，另外也挺着急的。。。B题挂在精度上了。。。C题也脑残了好久啊。。。才出掉。。。</p>
+<p><a target="_blank" rel="noopener" href="http://codeforces.com/contest/727">题目链接</a>与<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/Technocup%202017%20%E2%80%94%20Elimination%20Round%201">代码链接</a></p>
+<h3 id="A-Transformation-from-A-to-B"><a href="#A-Transformation-from-A-to-B" class="headerlink" title="A  Transformation: from A to B"></a>A  Transformation: from A to B</h3><blockquote>
+<p>一个数字可以乘$2$，也可以乘$10+1$，问从$A$变到$B$的方案。</p>
+</blockquote>
+<p>宽搜。</p>
+<h3 id="B-Bill-Total-Value"><a href="#B-Bill-Total-Value" class="headerlink" title="B Bill Total Value"></a>B Bill Total Value</h3><blockquote>
+<p>题意是给出一个字符串，里面是各个物品的价钱，如果小数点后面是两位的话，代表是小数。三位的话就是整数。问价钱总和。</p>
+</blockquote>
+<p>莫名其妙地卡精度。。。本地运行OK，提交上去一直WA。下把这种情况直接乘以100，换成整数运算。。。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> x[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>, x + <span class="number">1</span>);</span><br><span class="line">	ll res = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; x[i]; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (<span class="built_in">isalpha</span>(x[i]))<span class="keyword">continue</span>;</span><br><span class="line">		ll t = <span class="number">0</span>;</span><br><span class="line">		<span class="type">int</span> dot = <span class="number">-1</span>;</span><br><span class="line">		<span class="keyword">while</span> (x[i]&amp;&amp;!<span class="built_in">isalpha</span>(x[i]))</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (x[i] == <span class="string">&#x27;.&#x27;</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				dot = i;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				t = t * <span class="number">10</span> + x[i] - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			i++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (dot == <span class="number">-1</span> || i - dot == <span class="number">4</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			t *= <span class="number">100</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		res += t;</span><br><span class="line">		i--;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (res &lt; <span class="number">100</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;0.%02lld\n&quot;</span>, res);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	vector&lt;<span class="type">int</span>&gt;r;</span><br><span class="line">	<span class="keyword">while</span> (res)</span><br><span class="line">	&#123;</span><br><span class="line">		r.<span class="built_in">push_back</span>(res % <span class="number">10</span>);</span><br><span class="line">		res /= <span class="number">10</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">reverse</span>(r.<span class="built_in">begin</span>(), r.<span class="built_in">end</span>());</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; r.<span class="built_in">size</span>()<span class="number">-2</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, r[i]);</span><br><span class="line">		<span class="keyword">if</span> ((r.<span class="built_in">size</span>() - <span class="number">2</span> - (i+<span class="number">1</span>)) % <span class="number">3</span> == <span class="number">0</span> &amp;&amp; i != r.<span class="built_in">size</span>() - <span class="number">3</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;.&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (r[r.<span class="built_in">size</span>() - <span class="number">1</span>] == <span class="number">0</span> &amp;&amp; r[r.<span class="built_in">size</span>() - <span class="number">2</span>] == <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;.%d%d\n&quot;</span>, r[r.<span class="built_in">size</span>() - <span class="number">2</span>], r[r.<span class="built_in">size</span>() - <span class="number">1</span>]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="C-Guess-the-Array"><a href="#C-Guess-the-Array" class="headerlink" title="C Guess the Array"></a>C Guess the Array</h3><blockquote>
+<p>题意对长度为$N$的数组，可以询问$N$个两个元素之间的和。最后输出这个数组。</p>
+</blockquote>
+<p>又智障啊。。。思路一直是死的，询问1 2&#x2F;2 3&#x2F;3 4&#x2F;..&#x2F;n..1，但其实这样是可以最后推出来的，也就是这样是多解啊。。所以说直接求 12&#x2F; 2 3&#x2F; 3 1把前三个元素干出来之后，剩余元素也就出来了。。真的智障。。。WA5次，最后才搞出来。</p>
+<h3 id="D-T-shirts-Distribution"><a href="#D-T-shirts-Distribution" class="headerlink" title="D T-shirts Distribution"></a>D T-shirts Distribution</h3><blockquote>
+<p>每个人穿衣服可以有固定的大小，也可以在两种型号(两种型号必相邻)之间选择一个。现在给出6种衣服的数量，问衣服的分配情况。</p>
+</blockquote>
+<p>水题。。直接从最小的开始贪。。</p>
+<h3 id="E-Games-on-a-CD"><a href="#E-Games-on-a-CD" class="headerlink" title="E Games on a CD"></a>E Games on a CD</h3><blockquote>
+<p>每个名字的长度是相等的，现在给出$g$个字符串，从这$g$个字符串里面选出$n$个，顺时针的情况下可以组成给定字符即可。。</p>
+</blockquote>
+<p>AC自动机，因为长度等长，也不可能有覆盖的情况，所以直接跑一遍，看最终是否有重复+数量够不够。</p>
+<h3 id="F-Polycarp’s-problems"><a href="#F-Polycarp’s-problems" class="headerlink" title="F Polycarp’s problems"></a>F Polycarp’s problems</h3><blockquote>
+<p>给出一个长度为$n$的数组$a_i$，然后起始的值为$b_i$，要求在起始的值为$b_i$的情况下，遇到一个$a_i$就相加，但不能有小于等于0的情况，问最后要去掉多少个值。现在有m个询问，对于每一个$b_i$都要求一次最小去掉的数量。</p>
+</blockquote>
+<p>二分取$1$到$n$个所要具备的最小值，然后在结果里面再次二分。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
 
 
     
@@ -1306,112 +1419,6 @@ Software Engineer Intern<br/>
 </blockquote>
 <p>树分治，首先找重心，然后考虑所有经过重心的有多少对。</p>
 <p>假设通过深搜u点的值为123，即在该重心为根的情况下，深度为3。另一个点v的值为45，深度为2。那么能够知道u和v形成的点对的值是12354和45321。那么假设$A$代表从根节点正着计算得到的值，像上面得到的123，45，$B$代表从根节点每一个节点深搜反着得到的值，像321，54。那么被M整除的条件为，<br>$$<br>A_u\times 10^{d_{v}}+B_v\equiv 0\ mod\ m<br>$$<br>推过来就有<br>$$<br>A_u\equiv -B_v \times \frac{1}{10^{d_v}}\ mod\ m<br>$$<br>那这样在深搜的时候就知道记录什么了，然后以重心为根，前后深搜两遍，就记录了经过该点的点对数量，之后再接着找重心，分治解。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/09/27/CP/Codeforces/Codeforces-373-Div2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="2997ms">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="2997ms">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 2997ms">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2016/09/27/CP/Codeforces/Codeforces-373-Div2/" class="post-title-link" itemprop="url">Codeforces 373 Div2</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2016-09-27 23:13:57" itemprop="dateCreated datePublished" datetime="2016-09-27T23:13:57+01:00">2016-09-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-09-04 20:37:24" itemprop="dateModified" datetime="2022-09-04T20:37:24+01:00">2022-09-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>还没有补373Div1的题。。。感觉好难。。。当睡前读物吧。。。</p>
-<p>这次Div2的D题出了问题，只有四道了。比的时候出了三道，所以想记的也就那么一道题。。。</p>
-<p><a target="_blank" rel="noopener" href="http://codeforces.com/contest/719">题目链接</a>与<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/373_Div2">代码链接</a></p>
-<h3 id="A-Vitya-in-the-Countryside"><a href="#A-Vitya-in-the-Countryside" class="headerlink" title="A. Vitya in the Countryside"></a>A. Vitya in the Countryside</h3><blockquote>
-<p>题意是给出了一个循环的规律，然后给了循环中的某一位置的数字，问能否通过这些信息判断上升还是下降。判断不出来输出-1。</p>
-</blockquote>
-<p><strong>栽在这上面啦，就算后面发现了也丢失了很多分。。。所谓物极必反，在极值上肯定是可以判断的啊。</strong></p>
-<h3 id="B-Anatoly-and-Cockroaches"><a href="#B-Anatoly-and-Cockroaches" class="headerlink" title="B. Anatoly and Cockroaches"></a>B. Anatoly and Cockroaches</h3><blockquote>
-<p>题意是给出了由’r’和‘b’组成的字符串，然后可以由两种操作，1.交换两个位置的字符；2.改变某一位置的字符。问要求最终的字符串是交替的’r’’b’，最小操作多少次。</p>
-</blockquote>
-<p>最终要么是rbrbrbr…，要么是brbrbr….</p>
-<p>考虑两种情况，然后算r变b的数量x，b变r的数量y，结果min(x,y)+abs(x-y).</p>
-<h3 id="C-Efim-and-Strange-Grade"><a href="#C-Efim-and-Strange-Grade" class="headerlink" title="C. Efim and Strange Grade"></a>C. Efim and Strange Grade</h3><blockquote>
-<p>题意是给出了一个长度为$n(n\leq200000)$的小数，然后最多在小数位进位t次，问最终结果的最大值。要求规范输出。</p>
-</blockquote>
-<p>贪心，找小数位第一个大于等于5的，之后就在这个5之前找连续的大于等于4的，碰到小于4的结束，因为已经进不了位了。注意一些细节。。。</p>
-<p>想了好久，写了好久。。。万幸没有fst。</p>
-<h3 id="E-Sasha-and-Array"><a href="#E-Sasha-and-Array" class="headerlink" title="E. Sasha and Array"></a>E. Sasha and Array</h3><blockquote>
-<p>题意是给出了n个数，m个操作，每个位置上的数字是$f[a_i]$，f[x]代表斐波那契数列的第x项。现在每个操作有两种情况，第一种查询区间和。第二种对区间的每一个值加上f[x]。</p>
-</blockquote>
-<p>很新颖的题，发现对每一个斐波那契值，是可以矩阵快速幂搞的，那对于区间加上一个值，相当于在矩阵的前面再乘以一个矩阵，所以构建线段树，打lz标记。</p>
-<p>这就完了？忽然感觉没啥可说的了，但是为什么做的时候还是觉得难啊。。。</p>
 
       
     </div>
