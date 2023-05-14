@@ -455,9 +455,15 @@ Software Engineer Intern<br/>
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2023-05-13 23:02:19 / Modified: 23:16:05" itemprop="dateCreated datePublished" datetime="2023-05-13T23:02:19+01:00">2023-05-13</time>
+      <time title="Created: 2023-05-13 23:02:19" itemprop="dateCreated datePublished" datetime="2023-05-13T23:02:19+01:00">2023-05-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-05-14 09:21:31" itemprop="dateModified" datetime="2023-05-14T09:21:31+01:00">2023-05-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -479,15 +485,26 @@ Software Engineer Intern<br/>
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><a target="_blank" rel="noopener" href="https://stermi.xyz/blog/ethernaut-challenge-12-solution-privacy">https://stermi.xyz/blog/ethernaut-challenge-12-solution-privacy</a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/05/13/Ethernaut/Ethernaut-Puzzle-12-Privacy/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <span id="more"></span>
+
+<p>In Solidity, variables are stored in different storage slots, and the specific rules are as follows:</p>
+<ul>
+<li>The size of a slot is 32 bytes (256 bits).</li>
+<li>If the size of a variable is less than or equal to 32 bytes, it will share a storage slot with other variables.</li>
+<li>If the size of a variable is greater than 32 bytes, it will occupy an independent storage slot.</li>
+<li>The order of variables affects the position of their storage slots.</li>
+</ul>
+<p>Given this contract, the allocation of storage slots for variables is as follows:</p>
+<ul>
+<li>“locked” occupies one 32-byte storage slot, and it is a boolean type.</li>
+<li>“ID” occupies one 32-byte storage slot, and it is a uint256 type.</li>
+<li>“flattening” and “denomination” are two 8-bit unsigned integers, so they will share one 32-byte storage slot.</li>
+<li>“awkwardness” is a 16-bit unsigned integer, and it will also share a 32-byte storage slot with “flattening” and “denomination”.</li>
+<li>“data” is an array containing 3 elements of type bytes32, each element occupying one 32-byte storage slot. Therefore, it will occupy 3 storage slots of 32 bytes each (i.e. 96 bytes).</li>
+</ul>
+<p>Therefore, the storage slot allocation for the variables is as follows:</p>
+<p>Slot 1: bool public locked &#x3D; true;<br>Slot 2: uint256 public ID &#x3D; block.timestamp;<br>Slot 3: uint8 private flattening &#x3D; 10;<br>uint8 private denomination &#x3D; 255;<br>uint16 private awkwardness &#x3D; uint16(block.timestamp);<br>Slot 4: bytes32[0] private data;<br>Slot 5: bytes32[1] private data;<br>Slot 6: bytes32[2] private data;</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
       
     </div>
 
