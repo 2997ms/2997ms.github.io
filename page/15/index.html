@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">156</span>
+          <span class="site-state-item-count">157</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -331,6 +331,106 @@ Software Engineer Intern<br/>
 </div>
 
 <h4 style="color:gray">🦸‍♂️ Contact me: wangchong756@gmail.com </h4>
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/09/03/CP/AtCoder/AtCoder-Regular-Contest-059/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="2997ms">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2997ms">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 2997ms">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2016/09/03/CP/AtCoder/AtCoder-Regular-Contest-059/" class="post-title-link" itemprop="url">AtCoder Regular Contest 059</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2016-09-03 23:23:16" itemprop="dateCreated datePublished" datetime="2016-09-03T23:23:16+01:00">2016-09-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-09-04 20:35:09" itemprop="dateModified" datetime="2022-09-04T20:35:09+01:00">2022-09-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>这一期的后两道DP很好玩。</p>
+<p>代码在<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/AtCoder/Regular_Contest_059">这里</a>。</p>
+<h3 id="C-Be-Together"><a href="#C-Be-Together" class="headerlink" title="C Be Together"></a>C Be Together</h3><hr>
+<p>题意是给出n个数，它们要统一变成同一个数，代价是差的平方，问最小代价。</p>
+<p>由于数量和范围都很小，直接暴力。</p>
+<h3 id="D-Unbalanced"><a href="#D-Unbalanced" class="headerlink" title="D Unbalanced"></a>D Unbalanced</h3><hr>
+<p>题意是给出一个字符串，找出这个字符串的子串中是否存在不平衡串，并输出其位置。所谓不平衡串，就是该串中一个字符的数量大于该串长度的一半。</p>
+<p>发现最小规模的不平衡串就是在三个以内有超过两个的相同字符，任何不平衡串都要以此为基础。所以一个一个字符暴力就好了。</p>
+<h3 id="E-Children-and-Candies"><a href="#E-Children-and-Candies" class="headerlink" title="E Children and Candies"></a>E Children and Candies</h3><hr>
+<p>题意是有n个小孩子，c个糖果，将c个糖果分配给n个小孩子，假设孩子得到的糖果数量为a，兴奋值为xi，这个小孩的快乐值为xi^a，幼儿园总的活动值为所有小孩子快乐值的乘积。</p>
+<p>现在每一个小孩的兴奋值取值范围为Ai~Bi，问所有情况的幼儿园活动值(…….)的和。</p>
+<p>dp[i][c]表示i个小孩分配c个糖果的活动值总和，那么仔细分析这个函数，当到i+1的时候，转移的情况为<br>$$<br>dp[i+1][c]&#x3D;\sum_{j&#x3D;0}^{c}dp[i][j]*(\sum_{x&#x3D;A[i+1]}^{B[i+1]}x^{c-j})<br>$$<br>所以预处理出x的前缀和，直接转移即可。</p>
+<h3 id="F-Unhappy-Hacking"><a href="#F-Unhappy-Hacking" class="headerlink" title="F Unhappy Hacking"></a>F Unhappy Hacking</h3><hr>
+<p>题意是这个电脑键盘上只有三个键：0，1和delete键，现在按了n次键盘，有一个字符串，问有多少种按键情况能够形成改字符串。</p>
+<p>dp[n][c]表示按了n次键盘，形成字符串长度为c的方法数，对第n+1次按键盘，可能是delete，转移方程为：<br>$$<br>dp[n+1][max(c-1,0)]+&#x3D;dp[n][c]<br>$$<br>如果是按0，转移方程为：<br>$$<br>dp[n+1][c+1]+&#x3D;dp[n][c]<br>$$<br>按1同理，在上式基础上再加一遍dp[n][c]。</p>
+<p>最终因为是固定了0、1，所以除以2^len。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
 
 
     
@@ -1248,101 +1348,6 @@ Software Engineer Intern<br/>
 <p>当然，还望以后的光速小子用行动打脸。。。</p>
 <p>2016进度条过去了1&#x2F;4，劝君莫惜金缕衣，劝君惜取少年时。花开堪折直须折，莫待无花空折枝。你我的生命都时日无多，望珍惜每刻。</p>
 <p>最后，四月的话希望我们能朝着自己想要的方向继续奔跑，就算青葱的背影已经消失在了辽远的苍穹。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/02/29/BB/2016/2016-2%E6%9C%88-%E4%B8%80%E4%B9%9D%E9%9B%B6%E9%9B%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="2997ms">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="2997ms">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 2997ms">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2016/02/29/BB/2016/2016-2%E6%9C%88-%E4%B8%80%E4%B9%9D%E9%9B%B6%E9%9B%B6/" class="post-title-link" itemprop="url">2016-2月-1900</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2016-02-29 14:35:03" itemprop="dateCreated datePublished" datetime="2016-02-29T14:35:03+00:00">2016-02-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-08-29 23:25:28" itemprop="dateModified" datetime="2022-08-29T23:25:28+01:00">2022-08-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>这次回家之前，自己一直有一个疑问，相较于之前的，打牌、烧烤、各种扯淡聊天，这个寒假能不能有一点不一样？想起大一时候在行李箱里面塞得满满的书，然后就是回家压根忘记自己带书回来的，怎么带回来怎么带回去，这叫一个沉。。。</p>
-<p>这么多年了，野心一直很大，能力一直很小，导致有的时候自己特别郁闷。。。</p>
-<p>但这次，从活表来看这29天吧，金色的还是很多的。也就是说。。。真的不一样了。。。</p>
-<p>K了好多水题。。。然后也看了一些算法，感觉平衡树那里自己会的就是一个皮毛，好多有趣的地方还没能领略。后来真的也不用担心这个寒假是否会有变化了，因为产生的变化也见得到，总结一句话，这个寒假真的做到了很充实，很爽。学也学得很爽，玩也玩得爽。当然玩也玩得爽很大一部分原因就是学得很爽，这两个感觉没什么分别了。。。(尽管在这之中不断慨叹智商真的是欠费，弱智儿童。。。)</p>
-<p>然后看了漫画 食戟之灵 ，主人公说 烹饪像是一片巨大的原野等待着自己去探索(可能不是什么原话，但大致就是这个意思)。。</p>
-<p>啦啦啦来了 原话是这样的：“哎呀……我也是很忙的，数不尽的食材和数不尽的烹饪手法，我想要全部都去试试看，我想要彻底的去探索这个烹饪的世界，那是一条即是穷尽一生也无法到达尽头的路(此处有省略号和男主坚毅的眼神……)”</p>
-<p>总而言之，很佩服日本漫画家的想象力，一个烹饪还搞出各种比赛叫食戟，把我看得这叫一个热血沸腾。当然烹饪本身也真的是另一个的奇妙世界了。</p>
-<p>我想表达的其实也和上面一样，Life is too short for learning the code, studying math and reading novels.(博主英文太渣请尽情嘲笑。。。)这些世界里的东西都好好玩啊，真的可惜自己只有一辈子，最多30000天，还让自己浪费掉了6000多天了。。。老天啊，再给我500年吧。。。</p>
-<p>晚上在看丹布朗的地狱，每次读丹布朗的书，除了故事本身紧张刺激的情节之外，最大的感受就是自身相对于这个世界的精华文化实在是太渺小了，这个世界太多奥秘值得去探索。</p>
-<p>许多许多个冬天都这样过去了，许多许多个春天就这样来临。</p>
-<p>2016年2月份，过得很爽。农历新年，希望老爸老妈身体健康。1900，加油。</p>
 
       
     </div>
