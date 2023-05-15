@@ -21,15 +21,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"2997ms.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","Muse | Mist":320,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="123">
+    <meta name="description" content="In ERC20, there is not only transfer function, but also transferfrom function.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ethernaut Puzzle 15 Naught Coin">
 <meta property="og:url" content="http://2997ms.github.io/2023/05/14/Ethernaut/Ethernaut-Puzzle-15-Naught_Coin/index.html">
 <meta property="og:site_name" content="2997ms">
-<meta property="og:description" content="123">
+<meta property="og:description" content="In ERC20, there is not only transfer function, but also transferfrom function.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-05-14T19:25:19.000Z">
-<meta property="article:modified_time" content="2023-05-14T19:32:46.942Z">
+<meta property="article:modified_time" content="2023-05-15T00:02:54.576Z">
 <meta property="article:author" content="2997ms">
 <meta property="article:tag" content="Ethernaut">
 <meta name="twitter:card" content="summary">
@@ -216,9 +216,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2023-05-14 20:25:19 / Modified: 20:32:46" itemprop="dateCreated datePublished" datetime="2023-05-14T20:25:19+01:00">2023-05-14</time>
+      <time title="Created: 2023-05-14 20:25:19" itemprop="dateCreated datePublished" datetime="2023-05-14T20:25:19+01:00">2023-05-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-05-15 01:02:54" itemprop="dateModified" datetime="2023-05-15T01:02:54+01:00">2023-05-15</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -240,11 +246,12 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <span id="more"></span>
+        <p>In ERC20, there is not only <code>transfer</code> function, but also <code>transferfrom</code> function.</p>
+<span id="more"></span>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">await contract.approve(player, &quot;1000000000000000000000000&quot;);</span><br></pre></td></tr></table></figure>
 
-
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">contract.transferFrom(player, &#x27;&#123;%ANOTHER_ADDRESS%&#125;&#x27;, &quot;1000000000000000000000000&quot;);</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -265,6 +272,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2023/05/14/damnvulnerabledefi/damn-vulnerable-defi-01-Unstoppable/" rel="next" title="Damn Vulnerable Defi 01 Unstoppable">
+                  Damn Vulnerable Defi 01 Unstoppable <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
