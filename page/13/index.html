@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">160</span>
+          <span class="site-state-item-count">161</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -331,6 +331,120 @@ Software Engineer Intern<br/>
 </div>
 
 <h4 style="color:gray">🦸‍♂️ Contact me: wangchong756@gmail.com </h4>
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/11/05/CP/CodeChef/CodeChef-October-Lunchtime-2016/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="2997ms">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2997ms">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 2997ms">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2016/11/05/CP/CodeChef/CodeChef-October-Lunchtime-2016/" class="post-title-link" itemprop="url">CodeChef October Lunchtime 2016</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2016-11-05 11:00:34" itemprop="dateCreated datePublished" datetime="2016-11-05T11:00:34+00:00">2016-11-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-09-04 20:36:08" itemprop="dateModified" datetime="2022-09-04T20:36:08+01:00">2022-09-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><a target="_blank" rel="noopener" href="https://www.codechef.com/LTIME41">题目链接</a>与<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/CodeChef/CodeChef-October-Lunchtime-2016">代码链接</a></p>
+<p>访问CodeChef好慢啊。。。</p>
+<h3 id="A-The-Largest-Bouquet"><a href="#A-The-Largest-Bouquet" class="headerlink" title="A The Largest Bouquet"></a>A The Largest Bouquet</h3><blockquote>
+<p>取树叶，要么是同一颜色的，要么是同一棵树上的。问最大值。</p>
+</blockquote>
+<p>矩阵里面同一行同一列的最大值。</p>
+<h3 id="B-FastFood-Combos"><a href="#B-FastFood-Combos" class="headerlink" title="B FastFood Combos"></a>B FastFood Combos</h3><blockquote>
+<p>商店里的每个物品有自己的单价，有各种优惠活动，花$P_i$钱可以购买$Q_i$个产品，问想要购买所有$N$个产品，最少需要花多少钱。</p>
+</blockquote>
+<p>其实这道题还是要枚举，但是怎么枚举是一个问题。</p>
+<p>首先$dp1[x]$表示只通过单一渠道购买到的(要么单买，要么优惠)，然后这里对优惠下有一个$2^n$枚举，得到各种情况下优惠上的最小值。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rep</span>(i, <span class="number">0</span>, n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%lld&quot;</span>, &amp;val[i]);</span><br><span class="line">        dp1[<span class="number">1</span> &lt;&lt; i] = val[i];</span><br><span class="line">    &#125;</span><br><span class="line">    dp1[<span class="number">0</span>] = dp2[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">repp</span>(i, <span class="number">1</span>, m)</span><br><span class="line">    &#123;</span><br><span class="line">        ll mask = <span class="number">0</span>;</span><br><span class="line">        ll p, q;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%lld%lld&quot;</span>, &amp;p, &amp;q);</span><br><span class="line">        <span class="built_in">rep</span>(j, <span class="number">0</span>, q)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> x; <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;x);</span><br><span class="line">            x--;</span><br><span class="line">            mask |= (<span class="number">1</span> &lt;&lt; x);</span><br><span class="line">        &#125;</span><br><span class="line">        dp1[mask] = <span class="built_in">min</span>(dp1[mask], (ll)p);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = (<span class="number">1</span> &lt;&lt; n) - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">0</span>; k &lt; n; k++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> ((i &gt;&gt; k) &amp; <span class="number">1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                dp1[i ^ (<span class="number">1</span> &lt;&lt; k)] = <span class="built_in">min</span>(dp1[i ^ (<span class="number">1</span> &lt;&lt; k)], dp1[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>$dp2[x]$表示两种方式混合的最小值，枚举子集也学到了新姿势。。。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> mask = <span class="number">0</span>; mask &lt; (<span class="number">1</span> &lt;&lt; n); mask++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> submask = (mask - <span class="number">1</span>)&amp;mask;</span><br><span class="line">    dp2[mask] = dp1[mask];</span><br><span class="line">    <span class="keyword">do</span></span><br><span class="line">    &#123;</span><br><span class="line">        dp2[mask] = <span class="built_in">min</span>(dp2[mask], dp2[submask] + dp1[mask^submask]);</span><br><span class="line">        submask = (submask - <span class="number">1</span>)&amp;mask;</span><br><span class="line">    &#125;<span class="keyword">while</span> (submask &gt; <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最终结果就是$dp2[(1&lt;&lt;n)-1]$。</p>
+<h3 id="C-Restore-the-Permutation"><a href="#C-Restore-the-Permutation" class="headerlink" title="C Restore the Permutation"></a>C Restore the Permutation</h3><blockquote>
+<p>$1$到$N$的排列，有两种询问：</p>
+<p>$1 \  X \  Y  \  D |A_x-A_y|能否被D整除$</p>
+<p>$2 \  X \  Y  \  X是否小于Y$</p>
+<p>最多可以提出$N*13$个1类询问，以及$N-1$个2类询问，要求还原数列。</p>
+</blockquote>
+<p>好难啊。。。$13*N$。。。$N$的范围是$10^4$级别的，很明显是要$log$一下，但是怎么分治呢。。。</p>
+<p>分治，先把所有数分成%2&#x3D;1的，以及%2&#x3D;0的，之后对%2&#x3D;0的那部分%4又有两种情况，按照这个分类有什么好处呢，就是比较每个序列的最小值，最后可以直接*2还原。</p>
+<h3 id="D-The-Counties"><a href="#D-The-Counties" class="headerlink" title="D The Counties"></a>D The Counties</h3><blockquote>
+<p>给出一棵树，这棵树上的点隶属于某个国家，有$Q$个询问，每次问距离某一点$V$最近的一个国家$C$的城市是多远。</p>
+</blockquote>
+<p>如果是在$10^5$级别，<a target="_blank" rel="noopener" href="http://codeforces.com/problemset/problem/342/E">CF_342E</a>给出了一个分块的。</p>
+<p>这个题离线解，树分治，每次找树的重心，深搜一遍，如果是在不同的子树上，每次的结果最小值就是国家$C$在子树上的最小深度与该城市的最小深度之和。如果是在相同的子树上，递归求解。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
 
 
     
@@ -1293,124 +1407,6 @@ Software Engineer Intern<br/>
 <p>首先先无脑将不包含$s$，$t$的边放进去。</p>
 <p>之后会发现是一个个的连通块，首先找有没有连通块连接着$s$和$t$的，没有的话，那么肯定有$s$，$t$这条边，连上。之后连$s$的连$s$，连$t$的连$t$。</p>
 <p>要是有连通块连接着$s$和$t$的，连上之后，能连$s$的连$s$，能连$t$的连$t$。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/10/06/CP/Codeforces/Codeforces-374-Div2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="2997ms">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="2997ms">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 2997ms">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2016/10/06/CP/Codeforces/Codeforces-374-Div2/" class="post-title-link" itemprop="url">Codeforces 374 Div2</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2016-10-06 18:05:07" itemprop="dateCreated datePublished" datetime="2016-10-06T18:05:07+01:00">2016-10-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-09-04 20:37:21" itemprop="dateModified" datetime="2022-09-04T20:37:21+01:00">2022-09-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>这一轮就过了A和B，C题看见直接懵了，不会做。xjb写了一个宽搜，然后又被叉掉了。D题有思路又没有写完。</p>
-<p><a target="_blank" rel="noopener" href="http://codeforces.com/contest/721">题目链接</a>与<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/374_Div2">代码链接</a></p>
-<h3 id="A-One-dimensional-Japanese-Crossword"><a href="#A-One-dimensional-Japanese-Crossword" class="headerlink" title="A One-dimensional Japanese Crossword"></a>A One-dimensional Japanese Crossword</h3><blockquote>
-<p>找成段的b的区间。</p>
-</blockquote>
-<h3 id="B-Passwords"><a href="#B-Passwords" class="headerlink" title="B Passwords"></a>B Passwords</h3><blockquote>
-<p>密码长度为k，从最小的长度开始试验，随机在该长度的字符串里面xjb找，问最小代价与最大代价。</p>
-</blockquote>
-<p>将所有字符按照长度排序，算小于k的与小于等于k的。</p>
-<h3 id="C-Journey"><a href="#C-Journey" class="headerlink" title="*C Journey"></a>*C Journey</h3><blockquote>
-<p>题意是给出每两点之间要通过的时间，给出起点是$1$，终点是$n$。问在给定T时间的范围内，能走过的最多的点数。(点数$n \leq 5000 $，边数$m \leq 5000$ 时间$T\leq 10^9$)</p>
-</blockquote>
-<p>现在来考虑这道题，$dp[x][y]$表示搜到$x$点时，经过$y$个点所用的最短时间。然后这个深搜搜到第$n$个点为止。在搜的过程中记录前一个节点，代码如下：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cal</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (vis[x])</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	vis[x] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span> (x == n)</span><br><span class="line">	&#123;</span><br><span class="line">		dp[x][<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = head[x]; i != <span class="number">-1</span>; i = edge[i].next)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> nxt = edge[i].to;</span><br><span class="line">		<span class="type">int</span> t = edge[i].tim;</span><br><span class="line">		<span class="built_in">cal</span>(nxt);</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (dp[x][j] &gt; t + dp[nxt][j - <span class="number">1</span>])</span><br><span class="line">			&#123;</span><br><span class="line">				dp[x][j] = t + dp[nxt][j - <span class="number">1</span>];</span><br><span class="line">				pre[x][j] = nxt;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>就这种问题肯定是要同时记录时间和数量的，考虑将其中一个作为数组下标，另一个作为变量。</p>
-<h3 id="D-Maxim-and-Array"><a href="#D-Maxim-and-Array" class="headerlink" title="*D Maxim and Array"></a>*D Maxim and Array</h3><blockquote>
-<p>给出$n$个数，可以对其中任意一个数做$+x$或者$-x$的操作，现在最多能够操作$k$次，问使得这$n$个数相乘的最小的情况下，这$n$个数分别是多少。</p>
-</blockquote>
-<p>首先判断0的数量$x$，$x&gt;k$，只能是$0$。</p>
-<blockquote>
-<p>之后判断正负号，负号不管。正号的话，考虑把正的最小的变到负的，或者把负的最大的变成正的。(后一种情况要考虑到)</p>
-</blockquote>
-<p>做完这些操作之后，会发现问题变成使得它们相乘的绝对值最大，可以推出来，有$n$个数，可以对任意一个操作的时候，一定是选绝对值最小的那个数$+x$。那么这样的话就维护队列中的最小值不断$+x$就可以了。</p>
-<p>自己打得时候完全懵逼，拿一个线段树去维护最小值也是。。。用优先队列啊。。。</p>
-<h3 id="E-Road-to-Home"><a href="#E-Road-to-Home" class="headerlink" title="*E Road to Home"></a>*E Road to Home</h3><blockquote>
-<p>题意是给出了$L$范围内的$n$段区间，小朋友在这$n$段区间可以唱歌，每次唱歌走过的路程为$p$，当然也可以不唱。唱完歌走出一个区间至少要隔$t$长度才可以再唱，问最多能够唱几次。</p>
-</blockquote>
-<p>考虑每一个区间，$dp[x]$表示到第$x$区间的右端点时最多唱过的歌数。$en[x]$记录其位置。如果有相同数量的情况，记录其最左边的位置。</p>
-<p>这个题巧妙在于每一次只需记录利用该区间之后的最大数量和最左位置就好了，而不用每一次从1开始转移，原因<a target="_blank" rel="noopener" href="http://www.cnblogs.com/sagitta/p/5925785.html">这篇博客</a>说得很清楚了。</p>
-<blockquote>
-<p>你如果认真读过转移方程的话会发现 转移的时候是每次先休息再连续唱几遍歌 （先一段休息 再一段唱歌） 我们考虑唱歌段 如果唱歌段能继续延长一个周期 那么如果此时延长了肯定会使得从起点到当前区间的答案更优 <strong>而起点到每个区间的最优答案都是从起点到之前某个区间的最优答案转移过来的 如果某一区间少唱一首歌 那么空余出来的时间在这之后运气好也只能用来唱一首歌</strong> 所以只要按这种贪心思路 维护从起点到当前区间的最优解 最后得到的便是从起点到终点的最优解。</p>
-</blockquote>
-<p>这个题$O(n)$的解法真的很巧妙啊，比题解的那个根据p的范围分类讨论各种情况的好多了。。。</p>
 
       
     </div>
