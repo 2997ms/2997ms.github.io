@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">162</span>
+          <span class="site-state-item-count">163</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -136,7 +136,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">66</span>
+        <span class="site-state-item-count">67</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -331,6 +331,112 @@ Software Engineer Intern<br/>
 </div>
 
 <h4 style="color:gray">🦸‍♂️ Contact me: wangchong756@gmail.com </h4>
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/07/30/CP/AtCoder/AtCoder-Regular-Contest-058/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="2997ms">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2997ms">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 2997ms">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2016/07/30/CP/AtCoder/AtCoder-Regular-Contest-058/" class="post-title-link" itemprop="url">AtCoder Regular Contest 058</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2016-07-30 14:02:24" itemprop="dateCreated datePublished" datetime="2016-07-30T14:02:24+01:00">2016-07-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-09-19 22:06:40" itemprop="dateModified" datetime="2022-09-19T22:06:40+01:00">2022-09-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>C、D、E的代码在<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/AtCoder/Regular_Contest_058">这里</a></p>
+<p>这周一直在忙老师要求写的一些东西，终于在周六的时候还是光荣地倒下了，太累了。</p>
+<p>原本是上周的比赛，自己一周的时间还是没有把F过掉，在Codeforces上面问了一些人，算是搞懂了原理，但是对于<a target="_blank" rel="noopener" href="http://codeforces.com/profile/yosupo">yosupo</a>所说的Z-algorithm还是没有学过，这个也加入到了<a href="http://2997ms.github.io/2016/07/30/To-do-list/">To_do_list</a>里面，我一定会回来的。。。</p>
+<h2 id="C-Iroha’s-Obsession"><a href="#C-Iroha’s-Obsession" class="headerlink" title="C Iroha’s Obsession"></a>C Iroha’s Obsession</h2><hr>
+<p>C题题意，找到一个数x，大于等于n，然后给出了k个数字是不能用的。</p>
+<p>暴力就好了，一个一个往上面涨，判断是否符合条件，自己做法有些麻烦。</p>
+<h2 id="D-roha-and-a-Grid"><a href="#D-roha-and-a-Grid" class="headerlink" title="D roha and a Grid"></a>D roha and a Grid</h2><hr>
+<p>D题题意是给出了一个长为H、宽为W的格子，要从左上角走到右下角，然后又给出了一块左下的区域，长为A、宽为B，不能到达，问最终的方法数。</p>
+<p>这个问题在于要考虑这个蓝色的区域，枚举蓝色线上面的点每一个从左上角到达该点有多少种方法，然后考虑这些点都是竖着穿过下面的横线，计算下面的点到终点有多少种方式，相加即可。</p>
+<p>起点(x,y)到终点(s,t)有c(x-s+y-t,x-s)种方法，算组合数就好了。</p>
+<p><img src="https://raw.githubusercontent.com/2997ms/My_Algorithm/master/source_pic/R058_D.png" alt="R058_D"></p>
+<h2 id="E-Iroha-and-Haiku"><a href="#E-Iroha-and-Haiku" class="headerlink" title="E Iroha and Haiku"></a>E Iroha and Haiku</h2><hr>
+<p>E题题意是给出了N个数(N&lt;&#x3D;40)，每个数由1到10构成，问这些构成里面能找到相邻的三个子段，第一段和为X，第二段和为Y，第三段和为Z，满足这样条件的叫Haiku，问一共有多少个Haiku。</p>
+<p>这个题好神。。。。</p>
+<p>做法是找不符合的，把1写成1，把2写成10，把3写成100，那么最后的这段数就能写成一个01串，然后这个串包含xyz-Haiku，相当于与xyz构成的01串做与运算，结果不为0.</p>
+<h2 id="F-Iroha-Loves-Strings"><a href="#F-Iroha-Loves-Strings" class="headerlink" title="F Iroha Loves Strings"></a>F Iroha Loves Strings</h2><hr>
+<p>F题题意是给出了N个串，按照顺序组合为长度为k的串，保证可以找到。然后问字典序最小的字符串是多少。</p>
+<p>问了yosupo，他是这么说的，大致看懂了，但是z-algorithm不会。。。</p>
+<p> <img src="https://raw.githubusercontent.com/2997ms/My_Algorithm/master/source_pic/R058_F_1.png" alt="R058_F_1"></p>
+<p>看了其他人AC的代码，有一些是水过去的，然后自己也按照思路写了一下。始终WA掉4个数据，不懂为什么啊啊啊。。。</p>
+<p>求路过的人解释一下这道题啊。。。</p>
+<p>WA代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//#pragma comment(linker, &quot;/STACK:102400000,102400000&quot;) </span></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> <span class="keyword">warning</span>(disable:4996)</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;fstream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;functional&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;deque&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;ctime&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;list&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> eps 1e-10</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LL_INF 0x33ffffffffffffff</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> INF 0x3f3f3f3f</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> mem(a, b) memset(a, b, sizeof(a))</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pper(i,n,m) for(int i = n;i &gt;= m; i--)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> repp(i, n, m) for (int i = n; i &lt;= m; i++)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> rep(i, n, m) for (int i = n; i &lt; m; i++)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> sa(n) scanf(<span class="string">&quot;%d&quot;</span>, &amp;(n))</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ff first</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ss second</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"> </span><br><span class="line"><span class="type">const</span> <span class="type">int</span> maxn = <span class="number">2e3</span> + <span class="number">10</span>;</span><br><span class="line"><span class="type">const</span> ll mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">double</span> PI = <span class="built_in">acos</span>(<span class="number">-1.0</span>);</span><br><span class="line"><span class="function">ll <span class="title">po</span><span class="params">(ll a, ll b)</span> </span>&#123; ll res = <span class="number">1</span>; a %= mod; <span class="keyword">for</span> (; b; b &gt;&gt;= <span class="number">1</span>) &#123; <span class="keyword">if</span> (b &amp; <span class="number">1</span>)res = res*a%mod; a = a*a%mod; &#125;<span class="keyword">return</span> res; &#125;</span><br><span class="line"> </span><br><span class="line"><span class="type">int</span> n, k;</span><br><span class="line">string val[maxn];</span><br><span class="line"><span class="type">int</span> vis[maxn];</span><br><span class="line"><span class="type">int</span> dp[maxn][<span class="number">10010</span>];</span><br><span class="line"><span class="type">int</span> loc[<span class="number">2</span>][<span class="number">3005</span>][<span class="number">2</span>];</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> i, j;</span><br><span class="line"> </span><br><span class="line">	set&lt;<span class="type">char</span>&gt;ch;</span><br><span class="line">	<span class="built_in">repp</span>(i, <span class="number">1</span>, n)</span><br><span class="line">	&#123;</span><br><span class="line">		cin &gt;&gt; val[i];</span><br><span class="line">		<span class="built_in">rep</span>(h, <span class="number">0</span>, val[i].<span class="built_in">length</span>())</span><br><span class="line">		&#123;</span><br><span class="line">			ch.<span class="built_in">insert</span>(val[i][h]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">mem</span>(dp, <span class="number">0</span>);</span><br><span class="line">	dp[n + <span class="number">1</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">for</span> (i = n; i &gt;= <span class="number">1</span>; i--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (j = <span class="number">0</span>; j &lt;= k; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (dp[i + <span class="number">1</span>][j])</span><br><span class="line">			&#123;</span><br><span class="line">				dp[i][j] = <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (dp[i + <span class="number">1</span>][j] &amp;&amp; j + val[i].<span class="built_in">length</span>() &lt;= k )</span><br><span class="line">			&#123;</span><br><span class="line">				dp[i][j + val[i].<span class="built_in">length</span>()] = <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">int</span> now = <span class="number">0</span>, pre = <span class="number">1</span>;</span><br><span class="line">	<span class="type">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (k - val[i].<span class="built_in">length</span>()&gt;=<span class="number">0</span> &amp;&amp; dp[i + <span class="number">1</span>][k - val[i].<span class="built_in">length</span>()])</span><br><span class="line">		&#123;</span><br><span class="line">			cnt++;</span><br><span class="line">			loc[pre][cnt][<span class="number">0</span>] = i;</span><br><span class="line">			loc[pre][cnt][<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	string res = <span class="string">&quot;&quot;</span>;</span><br><span class="line">	<span class="type">int</span> remain = k;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= k; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">mem</span>(vis, <span class="number">0</span>);</span><br><span class="line">		<span class="type">char</span> minx = <span class="string">&#x27;z&#x27;</span>;</span><br><span class="line">		<span class="keyword">for</span> (j = <span class="number">1</span>; j &lt;= cnt; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			minx = <span class="built_in">min</span>(minx, val[loc[pre][j][<span class="number">0</span>]][loc[pre][j][<span class="number">1</span>]]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="type">int</span> ncnt = <span class="number">0</span>;</span><br><span class="line">		<span class="type">int</span> mn = n;</span><br><span class="line">		<span class="keyword">for</span> (j = <span class="number">1</span>; j &lt;= cnt; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="type">char</span> x = val[loc[pre][j][<span class="number">0</span>]][loc[pre][j][<span class="number">1</span>]];</span><br><span class="line">			<span class="keyword">if</span> (x != minx)<span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">if</span> (loc[pre][j][<span class="number">1</span>] == val[loc[pre][j][<span class="number">0</span>]].<span class="built_in">length</span>() - <span class="number">1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				mn = <span class="built_in">min</span>(mn, loc[pre][j][<span class="number">0</span>]);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				vis[loc[pre][j][<span class="number">0</span>]] = <span class="number">1</span>;</span><br><span class="line">				++ncnt;</span><br><span class="line">				loc[now][ncnt][<span class="number">0</span>] = loc[pre][j][<span class="number">0</span>];</span><br><span class="line">				loc[now][ncnt][<span class="number">1</span>] = loc[pre][j][<span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		remain--;</span><br><span class="line">		<span class="keyword">for</span> (j = mn + <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (vis[j])<span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">if</span> (remain - val[j].<span class="built_in">length</span>() &gt;= <span class="number">0</span> &amp;&amp; dp[j + <span class="number">1</span>][remain - val[j].<span class="built_in">length</span>()])</span><br><span class="line">			&#123;</span><br><span class="line">				ncnt++;</span><br><span class="line">				loc[now][ncnt][<span class="number">0</span>] = j;</span><br><span class="line">				loc[now][ncnt][<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		res = res + minx;</span><br><span class="line">		cnt = ncnt;</span><br><span class="line">		pre = <span class="number">1</span> - pre;</span><br><span class="line">		now = <span class="number">1</span> - now;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; res &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span> (<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;n, &amp;k) != EOF)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">solve</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
 
 
     
@@ -1187,98 +1293,6 @@ Software Engineer Intern<br/>
 <p>发现就现在自己这个年岁了，老大不小了，能找一个事情让自己沉浸其中真的特别难。22岁这年遇上这个也很幸运。</p>
 <p>总而言之，10月自己过得很满意，很知足。2015年的第11局也要好好加油，好好生活，好好努力。上帝，愿您继续得到荣耀。</p>
 <p>最后，贴上自己高中时候很喜欢的王羲之《兰亭集序》里面的话，“夫人之相与，俯仰一世。或取诸怀抱，悟言一室之内；或因寄所托，放浪形骸之外。虽趣舍万殊，静噪不同，当其欣于所遇，暂得于己，快然自足，不知老之将至。及其所之既倦，情随事迁，感慨系之矣。向之所欣，俯仰之间，已为陈迹，犹不能不以之兴怀。况修短随化，终期于尽。古人云：生死亦大矣。岂不痛哉！”</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2015/09/30/BB/2015/2015-09-%E8%BF%9C%E6%96%B9%E4%B9%8B%E8%BF%9C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="2997ms">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="2997ms">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 2997ms">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2015/09/30/BB/2015/2015-09-%E8%BF%9C%E6%96%B9%E4%B9%8B%E8%BF%9C/" class="post-title-link" itemprop="url">2015-09-远方之远</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2015-09-30 22:35:28" itemprop="dateCreated datePublished" datetime="2015-09-30T22:35:28+01:00">2015-09-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-08-29 23:25:06" itemprop="dateModified" datetime="2022-08-29T23:25:06+01:00">2022-08-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>现在是9月30号20：24分，北京到了10月也开始渐渐变冷了。外面下着相对于北京来说是很大的雨了。</p>
-<p>9月我的感觉是这个月份我发现我在不断地思考，每个月都有那么几天很特殊，这个很特殊的意思是在我心里标记了记号的那种。7月份的毕业，大哥陪我弄牙。8月份的回家。9月份的重新开始。</p>
-<p>先说重新开始这事，早已经没有了一点点的期待、兴奋。10号完全就是走个过场，非常疲惫与厌倦。然后下一个节点是SQ的到来，聊了很多。再下一个节点，就是今天下午老爸的电话，我老爸最近看了很多书，说的最多的就是自己很后悔以前没有珍惜时间，留有很多遗憾。</p>
-<p>我在那边听，就一直想说后悔和遗憾我觉得是两码事，后悔是自己的心情，遗憾是客观事实。人这一辈子，无论怎么活，面前千百条路，走哪一条都会是不完美的，就留有遗憾的，这是不可避免的。但是后悔的意思就是当初没能走自己最想要走的那条路。我高中也留有了很多很多遗憾，但是再给我过一万遍高中生活我还是会那么活，反正那段时光是我这22年里面一点都不曾后悔的三年，尽管也还是留有了很多遗憾，让我在大学四年里动不动就睡不着觉。</p>
-<p>我上高中的时候有的时候特失望，对周围环境，当时觉得“远方是一方颓圮的墙”。那时我才认识“颓圮”两个字，为了装逼这么说。后来来到这么一个不上不下的环境，自己也堕落成了三流学生，真的是四年什么都没学会。</p>
-<p>中旬的时候去了hulu的宣讲会，感触颇颇颇颇深啊，不管在宣讲会上他们经过了多少的渲染，但是那个团队的氛围，真的是我所梦寐以求的，希望以后能够和一群有思想的人们工作，互相协作，相互之间慢慢变得更好。</p>
-<p>热血一些吧，别在意其他人的目光，我不希望2年之后就是后悔。所以，在渐渐变得复杂化的年纪，别失去那些做自己的勇敢。</p>
-<p>写月记对于时间的飞速流逝有感到了新的认识，感觉昨天才写的8月份的英雄不老，今天就写9月份的了，总而言之，2015年的第十局明天打响。</p>
 
       
     </div>
