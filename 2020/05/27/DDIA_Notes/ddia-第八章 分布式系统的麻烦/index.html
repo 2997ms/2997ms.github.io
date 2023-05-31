@@ -24,7 +24,7 @@
     <meta name="description" content="尽管我们已经谈了很多错误，但之前几章仍然过于乐观。现实更加黑暗。我们现在将悲观主义最大化，假设任何可能出错的东西都会出错">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ddia-第八章-分布式系统的麻烦">
-<meta property="og:url" content="http://2997ms.github.io/2020/05/27/Notes/ddia-%E7%AC%AC%E5%85%AB%E7%AB%A0%20%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E9%BA%BB%E7%83%A6/index.html">
+<meta property="og:url" content="http://2997ms.github.io/2020/05/27/DDIA_Notes/ddia-%E7%AC%AC%E5%85%AB%E7%AB%A0%20%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E9%BA%BB%E7%83%A6/index.html">
 <meta property="og:site_name" content="2997ms">
 <meta property="og:description" content="尽管我们已经谈了很多错误，但之前几章仍然过于乐观。现实更加黑暗。我们现在将悲观主义最大化，假设任何可能出错的东西都会出错">
 <meta property="og:locale" content="en_US">
@@ -35,11 +35,11 @@
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://2997ms.github.io/2020/05/27/Notes/ddia-%E7%AC%AC%E5%85%AB%E7%AB%A0%20%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E9%BA%BB%E7%83%A6/">
+<link rel="canonical" href="http://2997ms.github.io/2020/05/27/DDIA_Notes/ddia-%E7%AC%AC%E5%85%AB%E7%AB%A0%20%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E9%BA%BB%E7%83%A6/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://2997ms.github.io/2020/05/27/Notes/ddia-%E7%AC%AC%E5%85%AB%E7%AB%A0%20%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E9%BA%BB%E7%83%A6/","path":"2020/05/27/Notes/ddia-第八章 分布式系统的麻烦/","title":"ddia-第八章-分布式系统的麻烦"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://2997ms.github.io/2020/05/27/DDIA_Notes/ddia-%E7%AC%AC%E5%85%AB%E7%AB%A0%20%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E9%BA%BB%E7%83%A6/","path":"2020/05/27/DDIA_Notes/ddia-第八章 分布式系统的麻烦/","title":"ddia-第八章-分布式系统的麻烦"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>ddia-第八章-分布式系统的麻烦 | 2997ms</title>
@@ -131,7 +131,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">164</span>
+          <span class="site-state-item-count">165</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -142,7 +142,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">67</span>
+        <span class="site-state-item-count">69</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -189,7 +189,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2020/05/27/Notes/ddia-%E7%AC%AC%E5%85%AB%E7%AB%A0%20%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E9%BA%BB%E7%83%A6/">
+    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2020/05/27/DDIA_Notes/ddia-%E7%AC%AC%E5%85%AB%E7%AB%A0%20%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E9%BA%BB%E7%83%A6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -379,7 +379,7 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2020/05/18/Notes/ddia-%E7%AC%AC%E4%B8%83%E7%AB%A0%20%E4%BA%8B%E5%8A%A1/" rel="prev" title="ddia-第七章-事务">
+                <a href="/2020/05/18/DDIA_Notes/ddia-%E7%AC%AC%E4%B8%83%E7%AB%A0%20%E4%BA%8B%E5%8A%A1/" rel="prev" title="ddia-第七章-事务">
                   <i class="fa fa-chevron-left"></i> ddia-第七章-事务
                 </a>
             </div>

@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">164</span>
+          <span class="site-state-item-count">165</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -136,7 +136,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">67</span>
+        <span class="site-state-item-count">69</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -331,6 +331,98 @@ Software Engineer Intern<br/>
 </div>
 
 <h4 style="color:gray">🦸‍♂️ Contact me: wangchong756@gmail.com </h4>
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/09/21/CP/Leetcode/LeetCode-1-10/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="2997ms">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2997ms">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 2997ms">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2016/09/21/CP/Leetcode/LeetCode-1-10/" class="post-title-link" itemprop="url">LeetCode 1-10</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2016-09-21 10:15:24" itemprop="dateCreated datePublished" datetime="2016-09-21T10:15:24+01:00">2016-09-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-09-04 20:40:00" itemprop="dateModified" datetime="2022-09-04T20:40:00+01:00">2022-09-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>时维九月，序属三秋。然而，美好的九月都要过完啦。。。要做一做LeetCode上面的题啦，一直说要把这个做完，一直没有恒心做下去，马上十月了，一天三道，希望年底能把这些K完。昨天写日记的时候，又有一个日记本要写完了，然后就想起在家里的从七岁开始写下的十几个本子(好像到二十了？也不太清楚了)，突然莫名地觉得下一个本子是我人生的第二部了，希望下一部能够精彩吧。之前接触过一些acmer，其中好些人对LeetCode的态度是很鄙视的，觉得太简单。我对这些表示鄙视的人表示反鄙视，这里面的有些题过掉可能不难，但是在面试中，时常要求的是最低时间复杂度、空间复杂度，这样其实有些题(链表啊，各种STL的设计啊)很变态的，写的时候参考了很多discuss，还有csdn博客上面的内容。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2016/09/21/CP/Leetcode/LeetCode-1-10/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
 
 
     
@@ -1313,119 +1405,6 @@ Software Engineer Intern<br/>
 <h3 id="D题-Product-of-Diameters"><a href="#D题-Product-of-Diameters" class="headerlink" title="D题 Product of Diameters"></a>D题 Product of Diameters</h3><hr>
 <p>这个题目赞在要逆向考虑，往里面加边，然后输出结果。那么往里面加边，就是除以每颗树直径的直径的乘积，这个可以维护，然后求出这两棵树内部的直径，这个维护相当于需要维护一个集合里面的最远距离，想了一下和<a target="_blank" rel="noopener" href="http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1766">51nod 1766树上的最远点对</a>本质上是一样的题目，也是维护一个集合里面距离最远的两个点，然后两个集合的合并，只可能在这四个点里面出，倍增求lca，求距离。</p>
 <p>这个题思想还是挺简单的，要想清楚过程，自己写起来一些细节写得还是不够好。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/08/31/CP/Codeforces/Codeforces-369-Div2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="2997ms">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="2997ms">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 2997ms">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2016/08/31/CP/Codeforces/Codeforces-369-Div2/" class="post-title-link" itemprop="url">Codeforces 369 Div2</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2016-08-31 22:53:28" itemprop="dateCreated datePublished" datetime="2016-08-31T22:53:28+01:00">2016-08-31</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-09-04 20:37:33" itemprop="dateModified" datetime="2022-09-04T20:37:33+01:00">2022-09-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>刚刚做完51nod上面一道很恶心的<a target="_blank" rel="noopener" href="http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1607">题目</a>，各种情况各种搞，打算早晚要写一下51nod上面的一些题目了。之后把这轮的E题补了，这轮题目很简单，简单到我都做出了四道，并且第四道是在1:59:47完成提交的，可谓惊心动魄。自认为打得不错，很幸运。此役之后，Codeforces的rating变成了1758，涨了77分，还挺开心的。想把它记录下来也是因为好多事情在八月都没做，然而它就这么过去了。</p>
-<p>代码在<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/369_Div2">这里</a>。</p>
-<p>A题不用说，B题直接把数字求出来然后带进去验证四个方向是否满足条件。</p>
-<h3 id="C-Coloring-Trees"><a href="#C-Coloring-Trees" class="headerlink" title="C Coloring Trees"></a>C Coloring Trees</h3><hr>
-<p>C题题意是有n个点排成一排，每个点要么有颜色，要么没颜色，现在要你把所有没颜色的点都上一种颜色，要求是上完颜色之后按照颜色分成k段。每个点上一种颜色有相应的花销。</p>
-<p>让你求在满足k段的条件下，花销最少。如果不能满足，输出-1。</p>
-<p>dp[i][j][k]表示到第i个点时，分成j段，当前颜色为k的最小花销。</p>
-<p>转移还挺好转移的，不多说。</p>
-<p>其实自己做dp题特别弱，这个dp比较简单，很多人一眼直接看出来了。</p>
-<h3 id="D-Directed-Roads"><a href="#D-Directed-Roads" class="headerlink" title="D Directed Roads"></a>D Directed Roads</h3><hr>
-<p>D题题意给出n个点，建一个有向图，然后每个点给出一个出边，要求是你可以更改一些边的方向，使得这个图不存在环，问边有多少种方案的选择。</p>
-<p>这种每个点一个出边的题也是出了很多次，这种图是一定形成环的，对于一个块，有x个在环上的点，有y个不在环上的点，那么方案数就为:<br>$$<br>(2^x-2)*(2^y)<br>$$<br>减2代表空集和全集，剩下的你随便改方向。然后那y个边你也随便改方向，都不会形成环，画一画就出来了。</p>
-<h3 id="E-ZS-and-The-Birthday-Paradox"><a href="#E-ZS-and-The-Birthday-Paradox" class="headerlink" title="E ZS and The Birthday Paradox"></a>E ZS and The Birthday Paradox</h3><hr>
-<p><del>对于一些题目还是要像写日记一样趁热打铁，要不然过程中很多感受就忘得一干二净。</del></p>
-<p>E题题意是给出了一年有2^n天，然后k个人，问这些人中有生日相同的概率是多少。</p>
-<p><del>哇做到这里我发现这轮题目真的好，题意简洁易懂，代码也不是特别繁琐恶心的那种。</del></p>
-<p>首先由鸽笼原理，如果k&gt;(2^n)，那么肯定是有相同的情况，直接输出结果。</p>
-<p>然后呢，生日相同的概率很难算，算生日不同的概率为</p>
-<p>$$<br>\frac{(2^n-1)*(2^n-2)*\cdot\cdot\cdot*(2^n-(k-1))} {2^{(k-1)*n}}<br>$$</p>
-<p>先固定一个人，然后第2个人不和他相同的概率为(2^n-1)&#x2F;(2^n)，接下来考虑第3个人，不和前两个人相同，以此类推。</p>
-<p>由于结果要求最简分数，那么如果这个是最简分数的话，可以肯定1-x也是最简分数，因为1-a&#x2F;b&#x3D;(b-a)&#x2F;b,而gcd(a,b)&#x3D;gcd(b-a,b)，所以求上式的公约数，公约数明显是2^x。</p>
-<p>现在问题化为求</p>
-<p>$$<br>(2^n-1)*(2^n-2)*\cdot\cdot\cdot*(2^n-(k-1))<br>$$</p>
-<p>最多能够整除2的多少次方，而现在又有如果x(满足x&lt;(2^n))可以整除2^x，可知2^n-x也一定整除2^x，所以要求的也即1,2,3….k-1，变为(k-1)!最多能够整除2的多少次方，然后根据勒让德定理：</p>
-<p>$$<br>在正数n!的素因子标准分解式中，素数p的指数记作L_{p}(n!)  ，则 L_{p}(n!) &#x3D;\sum_{k&gt;&#x3D;1}{[\frac{n}{p^k}]}<br>$$</p>
-<p>知道了这个，最后的结果也就好求啦。另外对于</p>
-<p>$$<br>(2^n-1)*(2^n-2)*\cdot\cdot\cdot*(2^n-(k-1))<br>$$</p>
-<p>来说，可以发现，当k-1&gt;&#x3D;mod的时候，最后的结果一定是0，即一定有整除mod的数出现了。剩下的就没什么了。</p>
-<p>这个题真的挺好玩的。^—^</p>
 
       
     </div>
