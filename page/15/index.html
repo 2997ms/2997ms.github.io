@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">166</span>
+          <span class="site-state-item-count">164</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -136,7 +136,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">70</span>
+        <span class="site-state-item-count">67</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -331,198 +331,6 @@ Software Engineer Intern<br/>
 </div>
 
 <h4 style="color:gray">🦸‍♂️ Contact me: wangchong756@gmail.com </h4>
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/09/23/CP/Leetcode/LeetCode-11-20/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="2997ms">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="2997ms">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 2997ms">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2016/09/23/CP/Leetcode/LeetCode-11-20/" class="post-title-link" itemprop="url">LeetCode 11-20</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2016-09-23 10:31:39" itemprop="dateCreated datePublished" datetime="2016-09-23T10:31:39+01:00">2016-09-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-09-04 20:39:58" itemprop="dateModified" datetime="2022-09-04T20:39:58+01:00">2022-09-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="LeetCode11-Container-With-Most-Water"><a href="#LeetCode11-Container-With-Most-Water" class="headerlink" title="LeetCode11 Container With Most Water"></a>LeetCode11 Container With Most Water</h3><blockquote>
-<p>题意是给出$N$个整数$a_1,a_2…a_n$，代表在对应位置有一条$(i,0)$到$(i,a_i)$的边。问这里面两条边加x轴所围成的面积最大值。</p>
-</blockquote>
-<p>之后也有一道类似的题，左右贪心，每次将较小的边去掉，时间复杂度$O(n)$。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> </span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maxArea</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; height)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="type">int</span> sz=height.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">if</span>(sz==<span class="number">0</span>||sz==<span class="number">1</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> le=<span class="number">0</span>,ri=sz<span class="number">-1</span>;</span><br><span class="line">        <span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> weight=sz<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(le&lt;ri)</span><br><span class="line">        &#123;</span><br><span class="line">        	res=<span class="built_in">max</span>(res,<span class="built_in">min</span>(height[le],height[ri])*weight);</span><br><span class="line">        	<span class="type">int</span> h1=height[le];</span><br><span class="line">        	<span class="type">int</span> h2=height[ri];</span><br><span class="line">        	<span class="keyword">if</span>(h1&lt;h2)</span><br><span class="line">        	&#123;</span><br><span class="line">        		le++;</span><br><span class="line">        	&#125;</span><br><span class="line">        	<span class="keyword">else</span></span><br><span class="line">        	&#123;</span><br><span class="line">        		ri--;</span><br><span class="line">        	&#125;</span><br><span class="line">        	weight--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;t;</span><br></pre></td></tr></table></figure>
-
-<h3 id="LeetCode12-Integer-to-Roman"><a href="#LeetCode12-Integer-to-Roman" class="headerlink" title="LeetCode12 Integer to Roman"></a>LeetCode12 Integer to Roman</h3><blockquote>
-<p>题意是将整形数字转成罗马数字(字符串)。</p>
-</blockquote>
-<p>考虑每一位，0到3是一种，4是一种，5到8是一种，9是一种。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function">string <span class="title">intToRoman</span><span class="params">(<span class="type">int</span> num)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="type">int</span> n[<span class="number">4</span>] = &#123; <span class="number">1000</span>,<span class="number">100</span>,<span class="number">10</span>,<span class="number">1</span> &#125;;</span><br><span class="line">		<span class="type">char</span> r5[<span class="number">4</span>] = &#123; <span class="string">&#x27; &#x27;</span>,<span class="string">&#x27;D&#x27;</span>,<span class="string">&#x27;L&#x27;</span>,<span class="string">&#x27;V&#x27;</span> &#125;;</span><br><span class="line">		<span class="type">char</span> r1[<span class="number">4</span>] = &#123; <span class="string">&#x27;M&#x27;</span>,<span class="string">&#x27;C&#x27;</span>,<span class="string">&#x27;X&#x27;</span>,<span class="string">&#x27;I&#x27;</span> &#125;;</span><br><span class="line"></span><br><span class="line">		string res = <span class="string">&quot;&quot;</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="type">int</span> k = num / n[i];</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> (k == <span class="number">9</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				res = res + r1[i] + r1[i - <span class="number">1</span>];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (k == <span class="number">4</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				res = res + r1[i] + r5[i];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (k &gt;= <span class="number">5</span> &amp;&amp; k &lt;= <span class="number">8</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				res = res + r5[i];</span><br><span class="line">				<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; k - <span class="number">5</span>; j++)</span><br><span class="line">				&#123;</span><br><span class="line">					res = res + r1[i];</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; k; j++)</span><br><span class="line">				&#123;</span><br><span class="line">					res = res + r1[i];</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			num = num%n[i];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> res;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="LeetCode19-Remove-Nth-Node-From-End-of-List"><a href="#LeetCode19-Remove-Nth-Node-From-End-of-List" class="headerlink" title="LeetCode19 Remove Nth Node From End of List"></a>LeetCode19 Remove Nth Node From End of List</h3><blockquote>
-<p>移除链表结尾的第n个节点。</p>
-</blockquote>
-<p>一前一后距离为n-1，当后一个节点到了结尾的时候，那么前一个节点就是要删除的节点。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">removeNthFromEnd</span><span class="params">(ListNode* head, <span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">    	<span class="keyword">if</span>(head==<span class="literal">NULL</span>)</span><br><span class="line">    	&#123;</span><br><span class="line">    		<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    	&#125;</span><br><span class="line">    	ListNode *pre = <span class="literal">NULL</span>;</span><br><span class="line">    	ListNode *p = head;</span><br><span class="line">    	ListNode *q = head;</span><br><span class="line">    	ListNode *res = head;</span><br><span class="line">    	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n<span class="number">-1</span>;i++)</span><br><span class="line">    	&#123;</span><br><span class="line">    		q=q-&gt;next;</span><br><span class="line">    	&#125;</span><br><span class="line"></span><br><span class="line">    	<span class="keyword">while</span>(q-&gt;next)</span><br><span class="line">    	&#123;</span><br><span class="line">    		pre=p;</span><br><span class="line">    		p=p-&gt;next;</span><br><span class="line">    		q=q-&gt;next;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">if</span>(pre)</span><br><span class="line">    	&#123;</span><br><span class="line">    	     pre-&gt;next=p-&gt;next;   </span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">else</span></span><br><span class="line">    	&#123;</span><br><span class="line">    	     res=head-&gt;next;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">return</span> res;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/09/21/CP/Leetcode/LeetCode-1-10/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="2997ms">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="2997ms">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 2997ms">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2016/09/21/CP/Leetcode/LeetCode-1-10/" class="post-title-link" itemprop="url">LeetCode 1-10</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2016-09-21 10:15:24" itemprop="dateCreated datePublished" datetime="2016-09-21T10:15:24+01:00">2016-09-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-09-04 20:40:00" itemprop="dateModified" datetime="2022-09-04T20:40:00+01:00">2022-09-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>时维九月，序属三秋。然而，美好的九月都要过完啦。。。要做一做LeetCode上面的题啦，一直说要把这个做完，一直没有恒心做下去，马上十月了，一天三道，希望年底能把这些K完。昨天写日记的时候，又有一个日记本要写完了，然后就想起在家里的从七岁开始写下的十几个本子(好像到二十了？也不太清楚了)，突然莫名地觉得下一个本子是我人生的第二部了，希望下一部能够精彩吧。之前接触过一些acmer，其中好些人对LeetCode的态度是很鄙视的，觉得太简单。我对这些表示鄙视的人表示反鄙视，这里面的有些题过掉可能不难，但是在面试中，时常要求的是最低时间复杂度、空间复杂度，这样其实有些题(链表啊，各种STL的设计啊)很变态的，写的时候参考了很多discuss，还有csdn博客上面的内容。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2016/09/21/CP/Leetcode/LeetCode-1-10/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
 
 
     
@@ -1409,6 +1217,215 @@ Software Engineer Intern<br/>
 <p>题意是这个电脑键盘上只有三个键：0，1和delete键，现在按了n次键盘，有一个字符串，问有多少种按键情况能够形成改字符串。</p>
 <p>dp[n][c]表示按了n次键盘，形成字符串长度为c的方法数，对第n+1次按键盘，可能是delete，转移方程为：<br>$$<br>dp[n+1][max(c-1,0)]+&#x3D;dp[n][c]<br>$$<br>如果是按0，转移方程为：<br>$$<br>dp[n+1][c+1]+&#x3D;dp[n][c]<br>$$<br>按1同理，在上式基础上再加一遍dp[n][c]。</p>
 <p>最终因为是固定了0、1，所以除以2^len。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/09/03/CP/CodeChef/CodeChef-August-Lunchtime-2016/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="2997ms">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2997ms">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 2997ms">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2016/09/03/CP/CodeChef/CodeChef-August-Lunchtime-2016/" class="post-title-link" itemprop="url">CodeChef August Lunchtime 2016</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2016-09-03 14:54:44" itemprop="dateCreated datePublished" datetime="2016-09-03T14:54:44+01:00">2016-09-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-09-04 20:36:04" itemprop="dateModified" datetime="2022-09-04T20:36:04+01:00">2022-09-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>做了Codechef上面的<a target="_blank" rel="noopener" href="https://www.codechef.com/LTIME39">August Lunchtime 2016</a>，上面的题都有中文题面，还有解答，还有代码。觉得这个网站也不错呀。。。</p>
+<p>然后这次做完发现是三道easy，一道medium。一想也没用什么数据结构，好像是差不多哈，但是第四个树上直径这个和51nod上面树上最远点对是一样的想法，做得时候自己感觉还是挺难的。第三题数组开小了，然而一直返回WA，找了很久。第二个有相同的数字也WA了一个晚上。这样想来觉得也不那么简单了。</p>
+<p>代码在<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Codechef/August-Lunchtime-2016">这里</a>。</p>
+<p>A题Studying Alphabet不用写了。。。</p>
+<h3 id="B题Lock-Free-Stack"><a href="#B题Lock-Free-Stack" class="headerlink" title="B题Lock-Free Stack"></a>B题Lock-Free Stack</h3><hr>
+<p>因为有P &#x3D; (A1 + 1) × (A2 + 1) × … × (AN + 1)，然后P&lt;&#x3D;10^6，所以最多20个进程，那就对每个进程的输出都要符合压栈顺序。(一开始自己一位一位找，发现有相同的数字，所以WA了一晚上，后来还是对每个进程都满足顺序就可以了)。</p>
+<h3 id="C题-Short-in-Average"><a href="#C题-Short-in-Average" class="headerlink" title="C题 Short in Average"></a>C题 Short in Average</h3><hr>
+<p>这个题自己搞过原题，感触就是平均值问题很容易搞成二分，然后对每一个值减去二分的值，然后去判断。<a target="_blank" rel="noopener" href="http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1711">51nod 1711平均数</a>也是这样，二分这个平均数x，然后每个数减去x，那么这样的话就是算区间和&lt;0的个数与k去相比，区间和[le,ri]小于0，相当于前缀和sum[ri]-sum[le-1]&lt;0，sum[ri]&lt;sum[le-1]，这个不就是逆序对的数目嘛，发现离散化+树状数组就可以做了。</p>
+<p>这个题的思路也是这样，每个边减去二分值x，然后直接判环就好了。</p>
+<h3 id="D题-Product-of-Diameters"><a href="#D题-Product-of-Diameters" class="headerlink" title="D题 Product of Diameters"></a>D题 Product of Diameters</h3><hr>
+<p>这个题目赞在要逆向考虑，往里面加边，然后输出结果。那么往里面加边，就是除以每颗树直径的直径的乘积，这个可以维护，然后求出这两棵树内部的直径，这个维护相当于需要维护一个集合里面的最远距离，想了一下和<a target="_blank" rel="noopener" href="http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1766">51nod 1766树上的最远点对</a>本质上是一样的题目，也是维护一个集合里面距离最远的两个点，然后两个集合的合并，只可能在这四个点里面出，倍增求lca，求距离。</p>
+<p>这个题思想还是挺简单的，要想清楚过程，自己写起来一些细节写得还是不够好。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/08/31/CP/Codeforces/Codeforces-369-Div2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="2997ms">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2997ms">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 2997ms">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2016/08/31/CP/Codeforces/Codeforces-369-Div2/" class="post-title-link" itemprop="url">Codeforces 369 Div2</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2016-08-31 22:53:28" itemprop="dateCreated datePublished" datetime="2016-08-31T22:53:28+01:00">2016-08-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-09-04 20:37:33" itemprop="dateModified" datetime="2022-09-04T20:37:33+01:00">2022-09-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>刚刚做完51nod上面一道很恶心的<a target="_blank" rel="noopener" href="http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1607">题目</a>，各种情况各种搞，打算早晚要写一下51nod上面的一些题目了。之后把这轮的E题补了，这轮题目很简单，简单到我都做出了四道，并且第四道是在1:59:47完成提交的，可谓惊心动魄。自认为打得不错，很幸运。此役之后，Codeforces的rating变成了1758，涨了77分，还挺开心的。想把它记录下来也是因为好多事情在八月都没做，然而它就这么过去了。</p>
+<p>代码在<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/369_Div2">这里</a>。</p>
+<p>A题不用说，B题直接把数字求出来然后带进去验证四个方向是否满足条件。</p>
+<h3 id="C-Coloring-Trees"><a href="#C-Coloring-Trees" class="headerlink" title="C Coloring Trees"></a>C Coloring Trees</h3><hr>
+<p>C题题意是有n个点排成一排，每个点要么有颜色，要么没颜色，现在要你把所有没颜色的点都上一种颜色，要求是上完颜色之后按照颜色分成k段。每个点上一种颜色有相应的花销。</p>
+<p>让你求在满足k段的条件下，花销最少。如果不能满足，输出-1。</p>
+<p>dp[i][j][k]表示到第i个点时，分成j段，当前颜色为k的最小花销。</p>
+<p>转移还挺好转移的，不多说。</p>
+<p>其实自己做dp题特别弱，这个dp比较简单，很多人一眼直接看出来了。</p>
+<h3 id="D-Directed-Roads"><a href="#D-Directed-Roads" class="headerlink" title="D Directed Roads"></a>D Directed Roads</h3><hr>
+<p>D题题意给出n个点，建一个有向图，然后每个点给出一个出边，要求是你可以更改一些边的方向，使得这个图不存在环，问边有多少种方案的选择。</p>
+<p>这种每个点一个出边的题也是出了很多次，这种图是一定形成环的，对于一个块，有x个在环上的点，有y个不在环上的点，那么方案数就为:<br>$$<br>(2^x-2)*(2^y)<br>$$<br>减2代表空集和全集，剩下的你随便改方向。然后那y个边你也随便改方向，都不会形成环，画一画就出来了。</p>
+<h3 id="E-ZS-and-The-Birthday-Paradox"><a href="#E-ZS-and-The-Birthday-Paradox" class="headerlink" title="E ZS and The Birthday Paradox"></a>E ZS and The Birthday Paradox</h3><hr>
+<p><del>对于一些题目还是要像写日记一样趁热打铁，要不然过程中很多感受就忘得一干二净。</del></p>
+<p>E题题意是给出了一年有2^n天，然后k个人，问这些人中有生日相同的概率是多少。</p>
+<p><del>哇做到这里我发现这轮题目真的好，题意简洁易懂，代码也不是特别繁琐恶心的那种。</del></p>
+<p>首先由鸽笼原理，如果k&gt;(2^n)，那么肯定是有相同的情况，直接输出结果。</p>
+<p>然后呢，生日相同的概率很难算，算生日不同的概率为</p>
+<p>$$<br>\frac{(2^n-1)*(2^n-2)*\cdot\cdot\cdot*(2^n-(k-1))} {2^{(k-1)*n}}<br>$$</p>
+<p>先固定一个人，然后第2个人不和他相同的概率为(2^n-1)&#x2F;(2^n)，接下来考虑第3个人，不和前两个人相同，以此类推。</p>
+<p>由于结果要求最简分数，那么如果这个是最简分数的话，可以肯定1-x也是最简分数，因为1-a&#x2F;b&#x3D;(b-a)&#x2F;b,而gcd(a,b)&#x3D;gcd(b-a,b)，所以求上式的公约数，公约数明显是2^x。</p>
+<p>现在问题化为求</p>
+<p>$$<br>(2^n-1)*(2^n-2)*\cdot\cdot\cdot*(2^n-(k-1))<br>$$</p>
+<p>最多能够整除2的多少次方，而现在又有如果x(满足x&lt;(2^n))可以整除2^x，可知2^n-x也一定整除2^x，所以要求的也即1,2,3….k-1，变为(k-1)!最多能够整除2的多少次方，然后根据勒让德定理：</p>
+<p>$$<br>在正数n!的素因子标准分解式中，素数p的指数记作L_{p}(n!)  ，则 L_{p}(n!) &#x3D;\sum_{k&gt;&#x3D;1}{[\frac{n}{p^k}]}<br>$$</p>
+<p>知道了这个，最后的结果也就好求啦。另外对于</p>
+<p>$$<br>(2^n-1)*(2^n-2)*\cdot\cdot\cdot*(2^n-(k-1))<br>$$</p>
+<p>来说，可以发现，当k-1&gt;&#x3D;mod的时候，最后的结果一定是0，即一定有整除mod的数出现了。剩下的就没什么了。</p>
+<p>这个题真的挺好玩的。^—^</p>
 
       
     </div>
