@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">165</span>
+          <span class="site-state-item-count">166</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -331,340 +331,6 @@ Software Engineer Intern<br/>
 </div>
 
 <h4 style="color:gray">🦸‍♂️ Contact me: wangchong756@gmail.com </h4>
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/10/09/BB/2016/2016-9%E6%9C%88-%E5%90%AD%E5%93%A7%E5%92%94%E5%93%A7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="2997ms">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="2997ms">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 2997ms">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2016/10/09/BB/2016/2016-9%E6%9C%88-%E5%90%AD%E5%93%A7%E5%92%94%E5%93%A7/" class="post-title-link" itemprop="url">2016_9月_吭哧咔哧</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2016-10-09 14:40:55" itemprop="dateCreated datePublished" datetime="2016-10-09T14:40:55+01:00">2016-10-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-08-29 23:25:42" itemprop="dateModified" datetime="2022-08-29T23:25:42+01:00">2022-08-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>九月份开学，到现在为止一个月，总结一下最近这一个月都做了一些什么。话说，在10月都过了三分之一的时候写这个是有一些尴尬。。。</p>
-</blockquote>
-<p>现在做的这个东西希望监测未知程序的网络行为即其收发的信息，ip地址和端口。</p>
-<p>首先从网上找了一下Client端和Server端，简单改了改，主要代码如下：</p>
-<p>Server端:</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;WINSOCK2.H&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> comment(lib,<span class="string">&quot;ws2_32.lib&quot;</span>)</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    WORD myVersionRequest;</span><br><span class="line">    WSADATA wsaData;</span><br><span class="line">    myVersionRequest = <span class="built_in">MAKEWORD</span>(<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">    <span class="type">int</span> err;</span><br><span class="line">    err = <span class="built_in">WSAStartup</span>(myVersionRequest,&amp;wsaData);</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span>(!err)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Server success.\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Server failed.\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    SOCKET serSocket = <span class="built_in">socket</span>(AF_INET,SOCK_STREAM,<span class="number">0</span>);</span><br><span class="line">     </span><br><span class="line">    <span class="comment">//需要绑定的参数</span></span><br><span class="line">    SOCKADDR_IN addr;</span><br><span class="line">    addr.sin_family = AF_INET;</span><br><span class="line">    addr.sin_addr.S_un.S_addr=<span class="built_in">htonl</span>(INADDR_ANY);<span class="comment">//ip地址</span></span><br><span class="line">    addr.sin_port=<span class="built_in">htons</span>(<span class="number">6000</span>);<span class="comment">//绑定端口</span></span><br><span class="line">   </span><br><span class="line">    <span class="built_in">bind</span>(serSocket,(SOCKADDR*)&amp;addr,<span class="built_in">sizeof</span>(SOCKADDR));<span class="comment">//绑定完成</span></span><br><span class="line">    <span class="built_in">listen</span>(serSocket,<span class="number">5</span>);<span class="comment">//其中第二个参数代表能够接收的最多的连接数</span></span><br><span class="line">   </span><br><span class="line">    SOCKADDR_IN clientsocket;</span><br><span class="line">    <span class="type">int</span> len = <span class="built_in">sizeof</span>(SOCKADDR);</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        SOCKET serConn = <span class="built_in">accept</span>(serSocket,(SOCKADDR*)&amp;clientsocket,&amp;len);</span><br><span class="line">        <span class="type">char</span> sendBuf[<span class="number">100</span>];</span><br><span class="line">    </span><br><span class="line">        <span class="built_in">sprintf</span>(sendBuf,<span class="string">&quot;welcome %s to bejing&quot;</span>,<span class="built_in">inet_ntoa</span>(clientsocket.sin_addr));<span class="comment">//找对对应的IP并且将这行字打印到那里</span></span><br><span class="line">        <span class="built_in">send</span>(serConn,sendBuf,<span class="built_in">strlen</span>(sendBuf)+<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">        <span class="type">char</span> receiveBuf[<span class="number">100</span>];<span class="comment">//接收</span></span><br><span class="line">        <span class="built_in">recv</span>(serConn,receiveBuf,<span class="built_in">strlen</span>(receiveBuf)+<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>,receiveBuf);</span><br><span class="line">        <span class="built_in">closesocket</span>(serConn);<span class="comment">//关闭</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">WSACleanup</span>();<span class="comment">//释放资源的操作</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Client端：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;WINSOCK2.H&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> comment(lib,<span class="string">&quot;ws2_32.lib&quot;</span>)</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> err;</span><br><span class="line">    WORD versionRequired;</span><br><span class="line">    WSADATA wsaData;</span><br><span class="line">    versionRequired = <span class="built_in">MAKEWORD</span>(<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">    err = <span class="built_in">WSAStartup</span>(versionRequired,&amp;wsaData);<span class="comment">//协议库的版本信息</span></span><br><span class="line">    <span class="keyword">if</span> (!err)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Client success\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Client failed\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    SOCKET clientSocket = <span class="built_in">socket</span>(AF_INET,SOCK_STREAM,<span class="number">0</span>);</span><br><span class="line">    SOCKADDR_IN clientsock_in;</span><br><span class="line">    clientsock_in.sin_addr.S_un.S_addr=<span class="built_in">inet_addr</span>(<span class="string">&quot;127.0.0.1&quot;</span>);</span><br><span class="line">    clientsock_in.sin_family = AF_INET;</span><br><span class="line">    clientsock_in.sin_port = <span class="built_in">htons</span>(<span class="number">6000</span>);</span><br><span class="line">     </span><br><span class="line">    <span class="built_in">connect</span>(clientSocket,(SOCKADDR*)&amp;clientsock_in,<span class="built_in">sizeof</span>(SOCKADDR));</span><br><span class="line">     </span><br><span class="line">    <span class="type">char</span> receiveBuf[<span class="number">100</span>];</span><br><span class="line">    <span class="built_in">recv</span>(clientSocket,receiveBuf,<span class="number">101</span>,<span class="number">0</span>);</span><br><span class="line">     </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>,receiveBuf);</span><br><span class="line">     </span><br><span class="line">    <span class="built_in">send</span>(clientSocket,<span class="string">&quot;hello,this is client&quot;</span>,<span class="built_in">strlen</span>(<span class="string">&quot;hello,this is client&quot;</span>)+<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">     </span><br><span class="line">    <span class="built_in">closesocket</span>(clientSocket);</span><br><span class="line">    <span class="built_in">WSACleanup</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>之后上网查找资料得知，程序进行网络行为是通过调用Ring0层下的NtDeviceIoControlFile函数，关于这个函数的信息如下：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">NTSTATUS <span class="title">ZwDeviceIoControlFile</span></span></span><br><span class="line"><span class="function">       <span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">             _In_      HANDLE           FileHandle,</span></span></span><br><span class="line"><span class="params"><span class="function">             _In_opt_  HANDLE           Event,</span></span></span><br><span class="line"><span class="params"><span class="function">             _In_opt_  PIO_APC_ROUTINE  ApcRoutine,</span></span></span><br><span class="line"><span class="params"><span class="function">             _In_opt_  PVOID            ApcContext,</span></span></span><br><span class="line"><span class="params"><span class="function">             _Out_     PIO_STATUS_BLOCK IoStatusBlock,</span></span></span><br><span class="line"><span class="params"><span class="function">             _In_      ULONG            IoControlCode,<span class="comment">//行为类型，这个变量的值决定了InputBuffer和OutputBuffer的格式和长度</span></span></span></span><br><span class="line"><span class="params"><span class="function">             _In_opt_  PVOID            InputBuffer,</span></span></span><br><span class="line"><span class="params"><span class="function">             _In_      ULONG            InputBufferLength,</span></span></span><br><span class="line"><span class="params"><span class="function">             _Out_opt_ PVOID            OutputBuffer,</span></span></span><br><span class="line"><span class="params"><span class="function">             _In_      ULONG            OutputBufferLength</span></span></span><br><span class="line"><span class="params"><span class="function">       )</span></span>;</span><br></pre></td></tr></table></figure>
-
-<p>参数主要在第5个(从0算起)IoControlCode，分为很多行为：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*IoControlCode*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> IO_AFD_BIND 0x12003 </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> IO_AFD_CONNECT 0x12007 </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> IO_AFD_SET_CONTEXT 0x12047 </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> IO_AFD_RECV 0x12017 </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> IO_AFD_SEND 0x1201f </span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> IO_AFD_SELECT 0x12024</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> IO_AFD_SENDTO 0x12023</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> IO_AFD_RECVFROM 0x1201B</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> IO_AFD_GET_INFO 0x1207B</span></span><br></pre></td></tr></table></figure>
-
-<p>然后通过判断IO_AFD_RECV与IO_AFD_SEND就可以在未知程序执行时对其进行插桩，顺利地得到了它们收发的socket。其中RECV的socket是在函数执行之后的OutputBuffer里，SEND的socket在函数进入时的InputBuffer里。主要代码如下：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">this</span>-&gt;Device_io_con == IO_AFD_SEND)</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;\tEnter_IO_AFD_SEND&quot;</span> &lt;&lt; endl;</span><br><span class="line"> </span><br><span class="line">        PAFD_INFO input_buffer = (PAFD_INFO)<span class="built_in">PIN_GetSyscallArgument</span>(ctx, std, <span class="number">6</span>);</span><br><span class="line">        WINDOWS::ULONG input_buffer_len = (WINDOWS::ULONG)<span class="built_in">PIN_GetSyscallArgument</span>(ctx,std,<span class="number">7</span>);</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">if</span>(input_buffer)</span><br><span class="line">        &#123;</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;\tinput_buffer_length: &quot;</span> &lt;&lt; input_buffer_len &lt;&lt; endl;</span><br><span class="line">            <span class="keyword">if</span>(input_buffer-&gt;BufferArray)</span><br><span class="line">            &#123;</span><br><span class="line">                cout &lt;&lt; <span class="string">&quot;\tSend: &quot;</span> &lt;&lt; input_buffer-&gt;BufferArray-&gt;buf &lt;&lt; endl;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(val-&gt;IoControlCode == IO_AFD_RECV)</span><br><span class="line">      &#123;</span><br><span class="line">          cout &lt;&lt; <span class="string">&quot;\texit_IO_AFD_RECV&quot;</span> &lt;&lt; endl;</span><br><span class="line">          PAFD_INFO output_buffer = (PAFD_INFO)(val-&gt;OutputBuffer);</span><br><span class="line">          <span class="keyword">if</span>(output_buffer)</span><br><span class="line">          &#123;</span><br><span class="line">              <span class="keyword">if</span>(output_buffer-&gt;BufferArray)</span><br><span class="line">              &#123;</span><br><span class="line">                  cout &lt;&lt; <span class="string">&quot;\tRecv: &quot;</span> &lt;&lt; output_buffer-&gt;BufferArray-&gt;buf &lt;&lt; endl;</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
-
-<p>使用Pin进行二进制插桩之后的运行结果如下：</p>
-<p><img src="https://raw.githubusercontent.com/2997ms/My_Algorithm/master/source_pic/report/1.jpg" alt="image"></p>
-<p>到这里我都不禁为我强劲的学习能力鼓掌了，太TM牛cha了。之后找ip和端口很明显了嘛，就在bind或者connect里面喽，结果。。。令我痛不欲生的事情就接踵而至了。</p>
-<p><a target="_blank" rel="noopener" href="https://msdn.microsoft.com/en-us/library/windows/hardware/ff566441.aspx">msdn</a>给的信息极其有限，根据程序调用函数的日志中可以知晓，在程序的一个执行区间中多次调用NtDeviceIoControlFile，并且之前的行为与之后的行为都没有太多关联，所以ip与端口的信息只可能存在于NtDeviceIoControlFile里面。</p>
-<p><img src="https://raw.githubusercontent.com/2997ms/My_Algorithm/master/source_pic/report/2.jpg" alt="image"></p>
-<p>然后判断行为得知，信息应该存在于IO_AFD_BIND，IO_AFD_SET_CONNECT，IO_AFD_CONNECT之中。</p>
-<p>之前我对AFD这个东西是完全不了解的，直到发现了这篇<a target="_blank" rel="noopener" href="http://blog.csdn.net/lziog/article/details/6530501">blog</a>，了解到AFD这个东西是存在于socket接口与TDI接口令之间的结构，本质上是一个TDI的客户端，在底层通过调用TDI接口来实现网络部件的TCP&#x2F;IP功能。当然这篇文章是讲通过Hook对流量进行控制的，与我要做的没什么关系。</p>
-<p>好，现在发现BIND和CONNECT并没有合适的struct。。。在谷歌上搜索得到的信息寥寥，在论坛上发现了一篇<a target="_blank" rel="noopener" href="http://www.debugman.com/archiver/tid/3715">这个</a>。哇，这个就是AFD_BIND的struct？然后又在msdn上找到了<a target="_blank" rel="noopener" href="https://msdn.microsoft.com/en-us/library/windows/hardware/ff565674.aspx">TRANSPORT_ADDRESS</a>，最后又是这里面的<a target="_blank" rel="noopener" href="https://msdn.microsoft.com/en-us/library/windows/hardware/ff564240.aspx">TA_ADDRESS</a>，根据下面的说明将Address输出，发现结果是乱码。。。</p>
-<p>就在这时在论坛上找到了关于TDI过滤获取IP及端口的<a target="_blank" rel="noopener" href="http://www.lai18.com/content/8234443.html">帖子</a>，借鉴了一下取ip和端口的方法</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">PTDI_ADDRESS_IP TDI_data ;</span><br><span class="line">  <span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">_NETWORK_ADDRESS</span></span><br><span class="line">  &#123;</span><br><span class="line"> <span class="type">unsigned</span> <span class="type">char</span> address [<span class="number">4</span>];</span><br><span class="line"> <span class="type">unsigned</span> <span class="type">char</span> port [<span class="number">2</span>];</span><br><span class="line">  &#125; NETWORK_ADDRESS ;</span><br><span class="line"> </span><br><span class="line">  NETWORK_ADDRESS data ; </span><br><span class="line">  <span class="type">unsigned</span> <span class="type">short</span> Port =<span class="number">0</span>;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">long</span> Address =<span class="number">0</span>;</span><br><span class="line">  StackIrpPointer=<span class="built_in">IoGetCurrentIrpStackLocation</span>(Irp);</span><br><span class="line">  ....</span><br><span class="line">  <span class="comment">//这里判断如果StackIrpPointer-&gt;MinorFunction == TDI_CONNECT的话就输出IP及端口信息</span></span><br><span class="line">  ....</span><br><span class="line">  TDI_connectRequest =( PTDI_REQUEST_KERNEL_CONNECT )(&amp; StackIrpPointer -&gt; Parameters );</span><br><span class="line">  TA_Address_data =( ( PTRANSPORT_ADDRESS )( TDI_connectRequest -&gt; RequestConnectionInformation -&gt;RemoteAddress ))-&gt; Address ;</span><br><span class="line">  TDI_data = ( PTDI_ADDRESS_IP ) ( TA_Address_data -&gt; Address );</span><br><span class="line">  </span><br><span class="line">  Address = TDI_data -&gt; in_addr ;</span><br><span class="line">  Port = TDI_data -&gt; sin_port ;</span><br><span class="line"> </span><br><span class="line">  data . address [<span class="number">0</span>] = (( <span class="type">char</span> *)&amp; Address )[<span class="number">0</span>];</span><br><span class="line">  data . address [<span class="number">1</span>] = (( <span class="type">char</span> *)&amp; Address )[<span class="number">1</span>];</span><br><span class="line">  data . address [<span class="number">2</span>] = (( <span class="type">char</span> *)&amp; Address )[<span class="number">2</span>];</span><br><span class="line">  data . address [<span class="number">3</span>] = (( <span class="type">char</span> *)&amp; Address )[<span class="number">3</span>];</span><br><span class="line">   </span><br><span class="line">  data . port [<span class="number">0</span>] = (( <span class="type">char</span> *)&amp; Port )[<span class="number">0</span>];</span><br><span class="line">  data . port [<span class="number">1</span>] = (( <span class="type">char</span> *)&amp; Port )[<span class="number">1</span>];</span><br><span class="line">  Port = data . port [<span class="number">0</span>] + data . port [<span class="number">1</span>];</span><br></pre></td></tr></table></figure>
-
-<p>我个人是对这个代码有一处不懂的，data中的port如果是char类型的最后相加那一定在254以内啊，最终的port结果输出也确实是很小的数字，这么样的取法得到了ip和端口，但结果不对。</p>
-<p>再次搜，找到了这篇<a target="_blank" rel="noopener" href="http://bbs.pediy.com/archive/index.php?t-150693.html">帖子</a>，上面说的是使用ntohs将网络字节顺序转换为主机字节顺序，昨天看到的时候特别兴奋，觉得这个肯定可以，结果输出的还是不对&#x3D; &#x3D;。</p>
-<p>另外后面，还找到了一个<a target="_blank" rel="noopener" href="https://doxygen.reactos.org/d7/dd6/struct__AFD__MAPBUF.html">afd手册</a>，又像是发现了一个宝藏，里面包含了好多AFD的定义。根据这些我更加确信自己所使用的方法应该是正确的呀，然后也确实抓到了结果，但结果怎么试验都不正确&#x3D; &#x3D;。</p>
-<blockquote>
-<p>写到这里发现写得好少啊，第一个月这么过去了。马上要开题了，不知道菜如自己能否毕业。。。接下来的明天要学习DECAF，QEMU，一直叫嚣着要看要看一直没怎么看。每次在列计划的时候都充满希望，信心满满，仿佛一定可以背着好多行囊踏过终点，但每一次真到了终点的时候捧起的往往是失望的残骸，但虽说如此，自己还是很乐观的，在下一个跑道上依旧斗志盎然。这个月看了&lt;&lt;快乐的linux&gt;&gt;，发觉这本书真是好看啊。。。在玩codingame。九月份的大部分时间又是喂了狗，无论怎样，好的坏的，都是珍馐。十月继续战个痛。</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/10/07/CP/Leetcode/LeetCode-21-30/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="2997ms">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="2997ms">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 2997ms">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2016/10/07/CP/Leetcode/LeetCode-21-30/" class="post-title-link" itemprop="url">LeetCode 21-30</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2016-10-07 22:27:24" itemprop="dateCreated datePublished" datetime="2016-10-07T22:27:24+01:00">2016-10-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-09-04 20:39:55" itemprop="dateModified" datetime="2022-09-04T20:39:55+01:00">2022-09-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>这一期10道题好难啊。。。好多要记的。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2016/10/07/CP/Leetcode/LeetCode-21-30/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/10/06/CP/Codeforces/Intel-Code-Chanllenge-Elimination-Round/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="2997ms">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="2997ms">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 2997ms">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2016/10/06/CP/Codeforces/Intel-Code-Chanllenge-Elimination-Round/" class="post-title-link" itemprop="url">Intel Code Chanllenge Elimination Round</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2016-10-06 21:39:17" itemprop="dateCreated datePublished" datetime="2016-10-06T21:39:17+01:00">2016-10-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-09-04 20:36:46" itemprop="dateModified" datetime="2022-09-04T20:36:46+01:00">2022-09-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><a target="_blank" rel="noopener" href="http://codeforces.com/contest/722">题目链接</a>与<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/Intel%20Code%20Challenge%20Elimination%20Round">代码链接</a></p>
-<p>A题在自己知道坑的情况下还是挂了，D题在最后五分钟想出思路，又一次懵逼，没有时间敲完。。。</p>
-<h3 id="A-Broken-Clock"><a href="#A-Broken-Clock" class="headerlink" title="*A Broken Clock"></a>*A Broken Clock</h3><blockquote>
-<p>题意是给出表的12计时方式与24计时方式，12计时方式时钟在1<del>12的范围内，分钟在0</del>59的范围内。24计时方式时钟在0<del>23的范围内，分钟在0</del>59的范围内。问改动最少的数字，使得给出的时间符合要求。</p>
-</blockquote>
-<p>注意12计时方式下的20：00这种情况，不是变成01：00而是10：00。。。。</p>
-<h3 id="B-Verse-Pattern"><a href="#B-Verse-Pattern" class="headerlink" title="B Verse Pattern"></a>B Verse Pattern</h3><blockquote>
-<p>算每一个字符串数组中的元音字符数量是否与给定的数相等。。。</p>
-</blockquote>
-<h3 id="C-Destroying-Array"><a href="#C-Destroying-Array" class="headerlink" title="C Destroying Array"></a>C Destroying Array</h3><blockquote>
-<p>给定一个数组，每次删掉一个数字，问每次删掉之后剩下的连续数字的最大和。</p>
-</blockquote>
-<p>反过来考虑就是添加数字，每次添加用并查集来合并左右数字，维护最大值。</p>
-<h3 id="D-Generating-Sets"><a href="#D-Generating-Sets" class="headerlink" title="*D Generating Sets"></a>*D Generating Sets</h3><blockquote>
-<p>题意是有不同的$n$个数，可以任意选一个数$x$，有两种操作，1.$x*2$之后放回去。2.$x*2+1$之后放回去。经过若干次这样的变换之后，变成了给出的数组，要求就是找回最开始的n个数，使得这n个数里面最大的数最小。</p>
-</blockquote>
-<p>实际上是一颗二叉树，每一次选最大的数除以2，看可不可以占这个位子，不能的话再往上找，直到找不到向上的路径了。</p>
-<p>别人都是set就过了，我非得搞个优先队列+map。。。mdzz。</p>
-<h3 id="E-Research-Rover"><a href="#E-Research-Rover" class="headerlink" title="*E Research Rover"></a>*E Research Rover</h3><blockquote>
-<p>有$n*m$的格子，一开始站在$(1,1)$的点上，有$S$的油量，现在有一些点会让油量减半，问最终到达(n,m)这个格子所剩油的期望。化简之后分数表示成$\frac {P}{Q}$，给出$P*Q^{-1}$的结果，其中$Q^{-1}$代表$Q$模$10^9+7$的逆元。</p>
-</blockquote>
-<p>首先结果的分数是不用考虑化简的，因为假设$P$和$Q$都有公约数$d$，那么<br>$$<br>P_{d}*d*Q_{d}^{-1}*d^{-1}&#x3D;P*Q^{-1}<br>$$<br>所以$Q$就是从$(1,1)$到$(n,m)$的方案数，$P$即是所有情况下到达的油量总和。</p>
-<p>这道题还要发现一点就是$S$最大值是$10^6$，也就是说如果经过了超过20个消耗点，那么就会一直是1了。所以只需要考虑小于等于20个消耗点的情况。</p>
-<p>这样的话和<a target="_blank" rel="noopener" href="http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1486">51nod上大大走格子</a>(这个也是codeforces上的。。。)思路就类似了。dp[i][v]表示第$v$个点到终点经过$i$个消耗点的方案数量。从后往前考虑，等于<br>$$<br>dp[i][v] &#x3D; C(n+m-x_v-y_v,n-x_v) - \sum_{j&#x3D;v+1}^{k}C(x_j+y_j-x_v-y_v,x_j-x_v)*dp[i][j] - \sum_{j&#x3D;0}^{i-1} dp[j][v]<br>$$<br>解释一下上面的式子，$C(n+m-x_v-y_v,n-x_v) $是该点到终点的方案总数，减去前面的点经过$i$个点了乘以它到这里的方案数，这块和大大走格子的思路是一致的。这一部分等于它到终点经过$0$到$i$次的，减掉之前的，就是该点经过$i$个点的方案数。最后是(1,1)这个点的方案数乘以油量。</p>
-<p>最后考虑经过的数量大于20的情况，$C(n+m-2,n-1)$减去之前算出来的方案数就是剩下的情况，乘以1，添到结果内。</p>
-<p>最后这个题卡常，算逆元的话最好用递推式:<br>$$<br>inv[i]&#x3D;(Mod-\frac {Mod}{i})*inv[Mod %i]%Mod<br>$$</p>
-<h3 id="F-Cyclic-Cipher"><a href="#F-Cyclic-Cipher" class="headerlink" title="F Cyclic Cipher"></a>F Cyclic Cipher</h3><blockquote>
-<p>题意是给出了$n$个序列，每个序列$k_i(1 \leq k_i \leq 40 )$个数，每次序列向右不断循环一位，取每个序列的第一个数再从上到下组成一个序列，算每一个数的最长连续序列，一共进行$10^{100}$次，问在这些中，每个数的最长连续序列是多少。</p>
-</blockquote>
-<p>会发现如果$x$在连续序列中碰到一起了，假设是在第$S$秒，在第$i$个序列中的位置为$p_i$，第$i$序列的长度为$k_i$，那么会满足下面的条件<br>$$<br>S\equiv p_i (mod\ k_i)<br>$$</p>
-<p>$$<br>S\equiv p_j (mod\ k_j)<br>$$</p>
-<p>发现这样的话就是<a target="_blank" rel="noopener" href="http://blog.csdn.net/acdreamers/article/details/8050018">中国剩余定理</a>的内容，参考这个的<a target="_blank" rel="noopener" href="http://codeforces.com/blog/entry/47497#comment-318621">评论</a>，可以推出：<br>$$<br>p_i+k_i*x&#x3D;p_j+k_j*y<br>$$</p>
-<p>$$<br>\Rightarrow p_i-p_j\ &#x3D; k_j*y-k_i*x<br>$$</p>
-<p>$$<br>\Rightarrow p_i-p_j\equiv 0 (mod\ GCD(k_i,k_j))<br>$$</p>
-<p>因为在连续序列里面的任意两个都要满足这样的关系，所以枚举右端点，更新左端点即可。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
 
 
     
@@ -1419,6 +1085,323 @@ Software Engineer Intern<br/>
 </blockquote>
 <p>一前一后距离为n-1，当后一个节点到了结尾的时候，那么前一个节点就是要删除的节点。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">removeNthFromEnd</span><span class="params">(ListNode* head, <span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">    	<span class="keyword">if</span>(head==<span class="literal">NULL</span>)</span><br><span class="line">    	&#123;</span><br><span class="line">    		<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    	&#125;</span><br><span class="line">    	ListNode *pre = <span class="literal">NULL</span>;</span><br><span class="line">    	ListNode *p = head;</span><br><span class="line">    	ListNode *q = head;</span><br><span class="line">    	ListNode *res = head;</span><br><span class="line">    	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n<span class="number">-1</span>;i++)</span><br><span class="line">    	&#123;</span><br><span class="line">    		q=q-&gt;next;</span><br><span class="line">    	&#125;</span><br><span class="line"></span><br><span class="line">    	<span class="keyword">while</span>(q-&gt;next)</span><br><span class="line">    	&#123;</span><br><span class="line">    		pre=p;</span><br><span class="line">    		p=p-&gt;next;</span><br><span class="line">    		q=q-&gt;next;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">if</span>(pre)</span><br><span class="line">    	&#123;</span><br><span class="line">    	     pre-&gt;next=p-&gt;next;   </span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">else</span></span><br><span class="line">    	&#123;</span><br><span class="line">    	     res=head-&gt;next;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">return</span> res;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/09/21/CP/Leetcode/LeetCode-1-10/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="2997ms">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2997ms">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 2997ms">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2016/09/21/CP/Leetcode/LeetCode-1-10/" class="post-title-link" itemprop="url">LeetCode 1-10</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2016-09-21 10:15:24" itemprop="dateCreated datePublished" datetime="2016-09-21T10:15:24+01:00">2016-09-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-09-04 20:40:00" itemprop="dateModified" datetime="2022-09-04T20:40:00+01:00">2022-09-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>时维九月，序属三秋。然而，美好的九月都要过完啦。。。要做一做LeetCode上面的题啦，一直说要把这个做完，一直没有恒心做下去，马上十月了，一天三道，希望年底能把这些K完。昨天写日记的时候，又有一个日记本要写完了，然后就想起在家里的从七岁开始写下的十几个本子(好像到二十了？也不太清楚了)，突然莫名地觉得下一个本子是我人生的第二部了，希望下一部能够精彩吧。之前接触过一些acmer，其中好些人对LeetCode的态度是很鄙视的，觉得太简单。我对这些表示鄙视的人表示反鄙视，这里面的有些题过掉可能不难，但是在面试中，时常要求的是最低时间复杂度、空间复杂度，这样其实有些题(链表啊，各种STL的设计啊)很变态的，写的时候参考了很多discuss，还有csdn博客上面的内容。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2016/09/21/CP/Leetcode/LeetCode-1-10/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/09/19/CP/Google/Google-APAC-Test-2017-Round-C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="2997ms">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2997ms">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 2997ms">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2016/09/19/CP/Google/Google-APAC-Test-2017-Round-C/" class="post-title-link" itemprop="url">Google APAC Test 2017 Round C</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2016-09-19 14:16:11" itemprop="dateCreated datePublished" datetime="2016-09-19T14:16:11+01:00">2016-09-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-09-04 20:39:00" itemprop="dateModified" datetime="2022-09-04T20:39:00+01:00">2022-09-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><a target="_blank" rel="noopener" href="https://code.google.com/codejam/contest/6274486/dashboard#s=p0">题目链接</a>(需要翻墙)与<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Google/APAC%20Test%202017%20Round%20C">代码链接</a></p>
+<p>早就应该做一下笔试的原题了，也好体会一下题目的难度与区分度，结果一直拖延。。。</p>
+<p>前两场也都做了，成绩和这场一样不理想，做出三道，第四道的时候时间还剩一个多小时，正常来讲是应该要想出来的，但是当时特别特别困，还饿，加上本人智商有限，还剩半个小时的时候上床睡觉去了。。。</p>
+<hr>
+<h3 id="Problem-A-Monster-Path"><a href="#Problem-A-Monster-Path" class="headerlink" title="Problem A. Monster Path"></a>Problem A. Monster Path</h3><p>题意是给出R*C的格子，然后给你一个起点，走S步。每个点如果是’A’的话有P概率爆出怪兽，不是的话有Q概率爆出怪兽。一个点最多爆出一个怪兽。</p>
+<p>求你走S步之后，最大的怪兽数量期望。</p>
+<p>深搜，记录每一个点访问的次数x，每次加上该点爆出怪兽的期望，(1-P)^x*P或者(1-Q)^x*Q。最后记录最大值。</p>
+<hr>
+<h3 id="Problem-B-Safe-Squares"><a href="#Problem-B-Safe-Squares" class="headerlink" title="Problem B. Safe Squares"></a>Problem B. Safe Squares</h3><p>题意是求R*C矩形内，全为0的正方形数量之和。</p>
+<p>和<a href="http://2997ms.github.io/2016/09/19/Codeforces-371/">上一篇E题一样</a>，DP每一个点作为正方形右下角的最大边长，计算结果的时候加一起。</p>
+<hr>
+<h3 id="Problem-C-Evaluation"><a href="#Problem-C-Evaluation" class="headerlink" title="Problem C. Evaluation"></a>Problem C. Evaluation</h3><p>题意是给出变量之间的关系，就像C++语言看一个变量是否被定义。如果是没有参数变量的函数的返回值，那么该变量就是确定的，否则就依赖于其参数是否确定。函数执行的顺序是打乱的。</p>
+<p>其实就是拓扑排序嘛，O(n^2)搞一下，没有定义的变量为-1，找到这样的直接out。否则的话就看能不能有确定的拓扑排序。</p>
+<hr>
+<h3 id="Problem-D-Soldiers"><a href="#Problem-D-Soldiers" class="headerlink" title="Problem D. Soldiers"></a>Problem D. Soldiers</h3><p>题意是Alice和Bob做游戏，现在有n个士兵，每一个士兵有一个攻击力和一个防御力，要求每一个人选的士兵要么攻击力大于当前被选的所有士兵的攻击力，要么防御力大于当前被选的所有士兵的防御力，选择不到时游戏停止。现在给出n个士兵的攻击力和防御力，Alice先选，要求的是最终Alice选择的士兵要比Bob多。问两者都是最优选择的情况下，是否可行。</p>
+<p>给一个<a target="_blank" rel="noopener" href="http://codeforces.com/blog/entry/47181#comment-315896">链接</a>，说的还是挺明白的，将所有士兵按照攻击力排序，按照防御力排序，如果存在一个士兵特厉害，两个属性都冠绝群雄，那么Alice胜利，因为Bob没得选了。如果不存在，那么Alice一定不会去选攻击力最大的那个或者防御力最大的那个，因为万一选了这两个中的一个，那么Bob选择另一个，数量上是打平的，Alice赢不了。所以这样的数据就可以从可选的集合里面删去了，然后这样不断求解。</p>
+<blockquote>
+<p>这个题也让我学习到了一个新的函数。。。remove_if(a.begin(),a.end(),cmp) cmp里面放入if判别条件，删除容器内符合条件的元素，不符合条件的元素依次往前走，返回结束位置。</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/09/19/CP/Codeforces/Codeforces-371/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="2997ms">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2997ms">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 2997ms">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2016/09/19/CP/Codeforces/Codeforces-371/" class="post-title-link" itemprop="url">Codeforces 371</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2016-09-19 09:31:22" itemprop="dateCreated datePublished" datetime="2016-09-19T09:31:22+01:00">2016-09-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-09-04 20:37:31" itemprop="dateModified" datetime="2022-09-04T20:37:31+01:00">2022-09-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><a target="_blank" rel="noopener" href="http://codeforces.com/contest/713">题目链接</a>与<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/371">代码链接</a></p>
+<p>看到这次Div1是三个2000的(而不是2500)，另外看到叉姐在论坛上放出<a target="_blank" rel="noopener" href="https://async.icpc-camp.org/d/555-codeforces-round-371">题解</a>，莫名其妙自己也想做一做。。。</p>
+<h3 id="Div2A-Meeting-of-Old-Friends"><a href="#Div2A-Meeting-of-Old-Friends" class="headerlink" title="Div2A Meeting of Old Friends"></a>Div2A Meeting of Old Friends</h3><hr>
+<p>题意是给出两个区间，求交集的区间的长度，如果k在这个交集里面，那么结果再减1。</p>
+<h3 id="Div2B-Filya-and-Homework"><a href="#Div2B-Filya-and-Homework" class="headerlink" title="Div2B  Filya and Homework"></a>Div2B  Filya and Homework</h3><hr>
+<p>题意是给出n个数，现在能在一些数上(可以是0)上加x，也可以在一些数上减x，问能否最终的值是相等的。</p>
+<p>分析可知如果n个数的值只有小于三种的话，那么是一定可以的。如果是等于三种，要形成等差数列。如果是大于三种，那么没可能了。</p>
+<h3 id="DIV1A-Sonya-and-Queries"><a href="#DIV1A-Sonya-and-Queries" class="headerlink" title="DIV1A Sonya and Queries"></a>DIV1A Sonya and Queries</h3><hr>
+<p>题意是给出一种匹配方法，给出一个01串，将数字从右到左匹配。如果是0，要求该位置是偶数；如果是1，要求该位置是奇数。</p>
+<p>每次有三种操作，1.向该集合添加一个数字。2.向该集合删去一个数字。3.给定一个01串，询问该集合中符合该匹配的数字有多少个。</p>
+<p>因为这个01串最多是18位，开一个1&lt;&lt;18的数组，暴力记录就可以了。</p>
+<h3 id="DIV1B-Searching-Rectangles"><a href="#DIV1B-Searching-Rectangles" class="headerlink" title="DIV1B Searching Rectangles"></a>DIV1B Searching Rectangles</h3><hr>
+<p>交互题，题意是在n*n(2&lt;&#x3D;n&lt;&#x3D;2^16)的格子上有两个矩形，两个矩形不重合。现在叫你找这两个矩形的位置。</p>
+<p>每次你可以询问一个矩形，它会回答你里面有多少个完全在里面的矩形(0&lt;&#x3D;res&lt;&#x3D;2)。</p>
+<p>先二分在横轴上存在把两个矩形分开的x，不存在就找y。</p>
+<p>然后分别在分开的矩形内部，二分找四个边。</p>
+<p>这个题叉姐写的代码真的很👍。。。</p>
+<h3 id="DIV1C-Sonya-and-Problem-Wihtout-a-Legend"><a href="#DIV1C-Sonya-and-Problem-Wihtout-a-Legend" class="headerlink" title="DIV1C Sonya and Problem Wihtout a Legend"></a>DIV1C Sonya and Problem Wihtout a Legend</h3><hr>
+<p>题意是给出一个长度为n的序列，可以对每个数加上或减去一个数，将其改造成递增序列，问最小代价。</p>
+<p>他们都说这个题烂大街了，然而我没做过。。。<a target="_blank" rel="noopener" href="http://poj.org/problem?id=3666">POJ 3666</a>，<a target="_blank" rel="noopener" href="http://codeforces.com/contest/13/problem/C">CF Round13 C</a></p>
+<p>首先要求递增的话，那么A[i]-&#x3D;i，将A[i]排好序假设为B[i]。</p>
+<p>然后数据是3000的话，O(n^2)的DP也是可以过的，DP[i][j]表示前i个数里面变成单调递增，且最后一个数是B[j]的最小代价。说白了，就是暴力每个数作为一段区间的中位数，考虑其代价(后面的左偏树也是基于这个优化的)。因为如果这个序列单调递增，那么代价为0.单调递减，那么代价就是每个数-中位数的和。</p>
+<p>所以能够得到转移方程为<br>$$<br>dp[i][j]&#x3D;min(dp[i-1][k])+|A[i]-B[j]|  (k\leq i)<br>$$<br>O(nlogn)的方法是用左偏树，有专门的论文，题目接触的也比较少，只知道这个是一个可并堆，可以很方便最大最小值，这个题目维护的是中位数。。。</p>
+<p>对于递增的区间，把每一个数看成单独的堆，中位数就是自己。碰到递减的区间，合并这两个区间，维护其中位数。这里面的左偏树是一个最小堆，而不能是最大堆。拿第二个例子来说，如果维护的是最大堆的话，那么中位数到第二个时是4，因为你要处理的是比当前区间中位数小的区间，维护最大堆的话，那么中位数2这个信息就没了，被之前pop掉了。</p>
+<h3 id="DIV1D-Animals-and-Puzzle"><a href="#DIV1D-Animals-and-Puzzle" class="headerlink" title="DIV1D Animals and Puzzle"></a>DIV1D Animals and Puzzle</h3><hr>
+<p>题意是给出一个n*m的格子，格子上非0即1，现在有q个询问，询问当前矩形里面的最大的都是1的正方形的边长。</p>
+<p>首先dp来求当前位置作为正方形的右下角，其最大边长是多少。转移方程为<br>$$<br>dp[i][j]&#x3D;min({dp[i-1][j],dp[i][j-1],dp[i-1][j-1]})+1<br>$$<br><del>话说这个dp出来之后没过几天的Google APAC Test也出了这个dp，泪流满面</del></p>
+<p>然后构建一个二维的st表，对于每一个询问，二分答案mid，满足x1+mid-1,y1+mid-1,x2,y2这个区间里面有大于等于mid的值，就OK。否则就没有该边长的正方形。</p>
+<h3 id="DIV1E-Sonya-Partymaker"><a href="#DIV1E-Sonya-Partymaker" class="headerlink" title="DIV1E Sonya Partymaker"></a>DIV1E Sonya Partymaker</h3><hr>
+<p>题意(这个题意给的不好啊。。。不过这个dp倒是又有些神。。。也是见的少，啥都神。。。)给出1到m的环，有n个人坐在相应的位置上，每个人在事先选择好一个方向，顺时针还是逆时针，然后就开始走，每走一步，将所在位置的椅子扔掉，问最少多久之后扔完所有的椅子。</p>
+<p>先把这个位置整理成1到n之间空隙最大的位置，然后就像叉姐说的，会发现1和2一定有往左跑的，(假设都向右跑，那么一定不是最优)枚举这个往左跑的，dp[i]表示第i个人能够覆盖的最远位置。</p>
+<p>考虑各种情况：</p>
+<p>第i个人向右跑，要求dp[i-1]大于等于A[i]-1。dp[i]&#x3D;max(dp[i],A[i]+x)</p>
+<p>第i个人向左跑，可能会是第i-1个人向右跑，为了覆盖该段区间，要求dp[i-1]&gt;&#x3D;A[i]-x-1,dp[i]&#x3D;max(dp[i],A[i])</p>
+<p>第i个人向左跑，可能会是第i-2向右跑，为了覆盖该段区间，要求dp[i-2]&gt;&#x3D;A[i]-x-1，dp[i]&#x3D;max(dp[i],A[i-1]+x)</p>
+<blockquote>
+<p>学习到了rotate函数，rotate(begin,middle,end)把该数组[begin,middle) 与区间[middle,end]内的元素做了交换</p>
+</blockquote>
+
       
     </div>
 

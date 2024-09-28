@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">165</span>
+          <span class="site-state-item-count">166</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -331,346 +331,6 @@ Software Engineer Intern<br/>
 </div>
 
 <h4 style="color:gray">🦸‍♂️ Contact me: wangchong756@gmail.com </h4>
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/08/31/CP/Codeforces/Codeforces-369-Div2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="2997ms">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="2997ms">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 2997ms">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2016/08/31/CP/Codeforces/Codeforces-369-Div2/" class="post-title-link" itemprop="url">Codeforces 369 Div2</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2016-08-31 22:53:28" itemprop="dateCreated datePublished" datetime="2016-08-31T22:53:28+01:00">2016-08-31</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-09-04 20:37:33" itemprop="dateModified" datetime="2022-09-04T20:37:33+01:00">2022-09-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>刚刚做完51nod上面一道很恶心的<a target="_blank" rel="noopener" href="http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1607">题目</a>，各种情况各种搞，打算早晚要写一下51nod上面的一些题目了。之后把这轮的E题补了，这轮题目很简单，简单到我都做出了四道，并且第四道是在1:59:47完成提交的，可谓惊心动魄。自认为打得不错，很幸运。此役之后，Codeforces的rating变成了1758，涨了77分，还挺开心的。想把它记录下来也是因为好多事情在八月都没做，然而它就这么过去了。</p>
-<p>代码在<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/369_Div2">这里</a>。</p>
-<p>A题不用说，B题直接把数字求出来然后带进去验证四个方向是否满足条件。</p>
-<h3 id="C-Coloring-Trees"><a href="#C-Coloring-Trees" class="headerlink" title="C Coloring Trees"></a>C Coloring Trees</h3><hr>
-<p>C题题意是有n个点排成一排，每个点要么有颜色，要么没颜色，现在要你把所有没颜色的点都上一种颜色，要求是上完颜色之后按照颜色分成k段。每个点上一种颜色有相应的花销。</p>
-<p>让你求在满足k段的条件下，花销最少。如果不能满足，输出-1。</p>
-<p>dp[i][j][k]表示到第i个点时，分成j段，当前颜色为k的最小花销。</p>
-<p>转移还挺好转移的，不多说。</p>
-<p>其实自己做dp题特别弱，这个dp比较简单，很多人一眼直接看出来了。</p>
-<h3 id="D-Directed-Roads"><a href="#D-Directed-Roads" class="headerlink" title="D Directed Roads"></a>D Directed Roads</h3><hr>
-<p>D题题意给出n个点，建一个有向图，然后每个点给出一个出边，要求是你可以更改一些边的方向，使得这个图不存在环，问边有多少种方案的选择。</p>
-<p>这种每个点一个出边的题也是出了很多次，这种图是一定形成环的，对于一个块，有x个在环上的点，有y个不在环上的点，那么方案数就为:<br>$$<br>(2^x-2)*(2^y)<br>$$<br>减2代表空集和全集，剩下的你随便改方向。然后那y个边你也随便改方向，都不会形成环，画一画就出来了。</p>
-<h3 id="E-ZS-and-The-Birthday-Paradox"><a href="#E-ZS-and-The-Birthday-Paradox" class="headerlink" title="E ZS and The Birthday Paradox"></a>E ZS and The Birthday Paradox</h3><hr>
-<p><del>对于一些题目还是要像写日记一样趁热打铁，要不然过程中很多感受就忘得一干二净。</del></p>
-<p>E题题意是给出了一年有2^n天，然后k个人，问这些人中有生日相同的概率是多少。</p>
-<p><del>哇做到这里我发现这轮题目真的好，题意简洁易懂，代码也不是特别繁琐恶心的那种。</del></p>
-<p>首先由鸽笼原理，如果k&gt;(2^n)，那么肯定是有相同的情况，直接输出结果。</p>
-<p>然后呢，生日相同的概率很难算，算生日不同的概率为</p>
-<p>$$<br>\frac{(2^n-1)*(2^n-2)*\cdot\cdot\cdot*(2^n-(k-1))} {2^{(k-1)*n}}<br>$$</p>
-<p>先固定一个人，然后第2个人不和他相同的概率为(2^n-1)&#x2F;(2^n)，接下来考虑第3个人，不和前两个人相同，以此类推。</p>
-<p>由于结果要求最简分数，那么如果这个是最简分数的话，可以肯定1-x也是最简分数，因为1-a&#x2F;b&#x3D;(b-a)&#x2F;b,而gcd(a,b)&#x3D;gcd(b-a,b)，所以求上式的公约数，公约数明显是2^x。</p>
-<p>现在问题化为求</p>
-<p>$$<br>(2^n-1)*(2^n-2)*\cdot\cdot\cdot*(2^n-(k-1))<br>$$</p>
-<p>最多能够整除2的多少次方，而现在又有如果x(满足x&lt;(2^n))可以整除2^x，可知2^n-x也一定整除2^x，所以要求的也即1,2,3….k-1，变为(k-1)!最多能够整除2的多少次方，然后根据勒让德定理：</p>
-<p>$$<br>在正数n!的素因子标准分解式中，素数p的指数记作L_{p}(n!)  ，则 L_{p}(n!) &#x3D;\sum_{k&gt;&#x3D;1}{[\frac{n}{p^k}]}<br>$$</p>
-<p>知道了这个，最后的结果也就好求啦。另外对于</p>
-<p>$$<br>(2^n-1)*(2^n-2)*\cdot\cdot\cdot*(2^n-(k-1))<br>$$</p>
-<p>来说，可以发现，当k-1&gt;&#x3D;mod的时候，最后的结果一定是0，即一定有整除mod的数出现了。剩下的就没什么了。</p>
-<p>这个题真的挺好玩的。^—^</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/08/22/CP/Codeforces/Codeforces-362-Div2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="2997ms">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="2997ms">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 2997ms">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2016/08/22/CP/Codeforces/Codeforces-362-Div2/" class="post-title-link" itemprop="url">Codeforces 362 Div2</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2016-08-22 15:51:00" itemprop="dateCreated datePublished" datetime="2016-08-22T15:51:00+01:00">2016-08-22</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-09-04 20:37:35" itemprop="dateModified" datetime="2022-09-04T20:37:35+01:00">2022-09-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>很早的一轮了，一直没写，主要是因为笨，然后还有懒。。。</p>
-<p>仔细想想一个div2的题目，充其量够写的也就3道题，然后自己还一直补不完，我的天。。。</p>
-<p>代码在<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/362_Div2">这里</a></p>
-<h2 id="C-Lorenzo-Von-Matterhorn"><a href="#C-Lorenzo-Von-Matterhorn" class="headerlink" title="C:Lorenzo Von Matterhorn"></a>C:Lorenzo Von Matterhorn</h2><hr>
-<p>题意是对于一个图来说，该图每一个节点i会连接到 2 * i 与2 * i + 1。然后现在有两种操作，第一种操作是给出v、u、w，表示v到u的路径上所有边的权值都加上w，第二种操作是询问v和u路径上所有边的权值之和。</p>
-<p>这个问题就是map+暴力，不用考虑边，只考虑对于其父节点的权值相加。每次查询也是直接暴力查询。所以就是考虑如何标记点，找父节点就好了。</p>
-<h2 id="D-Puzzles"><a href="#D-Puzzles" class="headerlink" title="D:Puzzles"></a>D:Puzzles</h2><hr>
-<p>题意是给定一个树，根节点是1，然后从根节点开始dfs，对于每一个子节点来说，每次访问的先后概率是相等的，问最终每一个节点访问步数的期望。</p>
-<p>其实不是很理解这个做法，看答案的那个意思是说u和v都作为子节点的话，那么u排在v前面的概率和排在v后面的概率都是0.5，所以根据这个的话就有<br>$$<br>dp[i]&#x3D;\frac{num[fa[i]]-num[i]-1}{2}+dp[fa[i]]<br>$$</p>
-<p>num[x]表示包括节点x在内的x所有子节点的数量。</p>
-<h2 id="E-PLEASE"><a href="#E-PLEASE" class="headerlink" title="E:PLEASE"></a>E:PLEASE</h2><hr>
-<p>题意是有三个杯子，一开始把东西放到了中间的杯子下面。每一轮Barney随机选两边的某个杯子，与中间的杯子交换。在第n轮之后，问这个东西还在中间的概率。</p>
-<p>问题先到这里的话，可以假设dp[i]表示第i轮东西在中间的概率，然后有dp[1]&#x3D;0,对于i&gt;0有<br>$$<br>dp[i]&#x3D;\frac{1-dp[i-1]}{2}<br>$$<br>但是不幸的是，n不会这么轻易的告诉你，n用k个ai的乘积表示的，即<br>$$<br>n&#x3D;\prod_{i&#x3D;1}^{k}{a_i}<br>$$<br>然后最后的结果要输出分数的形式,p&#x2F;q，p和q互质，p和q本身对1e9+7取模。</p>
-<p>接下来就是变形了，对下面的式子<br>$$<br>dp[i]&#x3D;\frac{1-dp[i-1]}{2}<br>$$<br>这个式子是可以构造等比数列的，该法适用于递推式形如a(n+1)&#x3D;b*a(n)+c 或者a(n+1)&#x3D;b*a(n)+f(n)其中b、c为不相等的常数，f(n)为一次式</p>
-<p>所以假设</p>
-<p>$$<br>dp[i]+p&#x3D;-\frac{1}{2}*(dp[i-1]+p)<br>$$</p>
-<p>求解这个p，解得p&#x3D;-1&#x2F;3，即</p>
-<p>$$<br>dp[i]-\frac{1}{3}&#x3D;-\frac{1}{2}*(dp[i-1]-\frac{1}{3})<br>$$</p>
-<p>剩下来就好办了，dp[n]可以求通项公式了，有</p>
-<p>$$<br>dp[i]&#x3D;-\frac{1}{3}*(-\frac{1}{2})^{i-1}+\frac{1}{3}<br>$$</p>
-<p>考虑p和q互质，能够得到：</p>
-<p>当n是偶数时，</p>
-<p>$$<br>p&#x3D;\frac{2^{n-1}+1}{3} 然后q&#x3D;2^{n-1}<br>$$</p>
-<p>当n是奇数时，</p>
-<p>$$<br>p&#x3D;\frac{2^{n-1}-1}{3} 然后q&#x3D;2^{n-1}<br>$$</p>
-<p>易证p和q互质，p是奇数，q是2的幂，所以一定没有大于1的公约数。</p>
-<p>剩下的就是快速幂和费马小定理的东西了。</p>
-<h2 id="F-Legen…"><a href="#F-Legen…" class="headerlink" title="F:Legen…"></a>F:Legen…</h2><hr>
-<p>这个题个人觉得很SXBK。。。</p>
-<p>有n个单词，每个单词有相应的权值，然后你要组成一个长度为l的字符串，在这里面匹配到一个单词就加上相应的权值，可重叠匹配。问最终能够得到的最大值是多少。</p>
-<p>挺裸的AC自动机+矩阵快速幂。但还是很难写。。。</p>
-<p>多字符串模式的匹配根据我目前的水平，肯定是要往AC自动机上想。之后就把各个字符串插入到自动机中，然后构造转移矩阵。</p>
-<p>构造矩阵之后还是不够，l特别大(1e14)，考虑如何进行dp推倒，转移方程是dp[n]&#x3D;max(dp[i])+val[i][n]。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">mul</span><span class="params">(ma &amp;a, ma &amp;b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	res.sz = a.sz;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= res.sz; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= res.sz; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (i == j)</span><br><span class="line">			&#123;</span><br><span class="line">				res.val[i][j] = <span class="number">0</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				res.val[i][j] = <span class="number">-1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= a.sz; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= a.sz; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">1</span>; k &lt;= a.sz; k++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span> (a.val[i][k] == <span class="number">-1</span>)<span class="keyword">continue</span>;</span><br><span class="line">				<span class="keyword">if</span> (b.val[k][j] == <span class="number">-1</span>)<span class="keyword">continue</span>;</span><br><span class="line"></span><br><span class="line">				res.val[i][j] = <span class="built_in">max</span>(res.val[i][j], a.val[i][k] + b.val[k][j]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= a.sz; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= a.sz; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			a.val[i][j] = res.val[i][j];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>相乘的时候是这样乘的，因为函数的空间还不足，所以数组只能在外面开。</p>
-<p>好难啊。。。。还是觉得好难，好多地方还需要慢慢理解。。。。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/07/30/CP/AtCoder/AtCoder-Regular-Contest-058/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="2997ms">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="2997ms">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 2997ms">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2016/07/30/CP/AtCoder/AtCoder-Regular-Contest-058/" class="post-title-link" itemprop="url">AtCoder Regular Contest 058</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2016-07-30 14:02:24" itemprop="dateCreated datePublished" datetime="2016-07-30T14:02:24+01:00">2016-07-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-09-19 22:06:40" itemprop="dateModified" datetime="2022-09-19T22:06:40+01:00">2022-09-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>C、D、E的代码在<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/AtCoder/Regular_Contest_058">这里</a></p>
-<p>这周一直在忙老师要求写的一些东西，终于在周六的时候还是光荣地倒下了，太累了。</p>
-<p>原本是上周的比赛，自己一周的时间还是没有把F过掉，在Codeforces上面问了一些人，算是搞懂了原理，但是对于<a target="_blank" rel="noopener" href="http://codeforces.com/profile/yosupo">yosupo</a>所说的Z-algorithm还是没有学过，这个也加入到了<a href="http://2997ms.github.io/2016/07/30/To-do-list/">To_do_list</a>里面，我一定会回来的。。。</p>
-<h2 id="C-Iroha’s-Obsession"><a href="#C-Iroha’s-Obsession" class="headerlink" title="C Iroha’s Obsession"></a>C Iroha’s Obsession</h2><hr>
-<p>C题题意，找到一个数x，大于等于n，然后给出了k个数字是不能用的。</p>
-<p>暴力就好了，一个一个往上面涨，判断是否符合条件，自己做法有些麻烦。</p>
-<h2 id="D-roha-and-a-Grid"><a href="#D-roha-and-a-Grid" class="headerlink" title="D roha and a Grid"></a>D roha and a Grid</h2><hr>
-<p>D题题意是给出了一个长为H、宽为W的格子，要从左上角走到右下角，然后又给出了一块左下的区域，长为A、宽为B，不能到达，问最终的方法数。</p>
-<p>这个问题在于要考虑这个蓝色的区域，枚举蓝色线上面的点每一个从左上角到达该点有多少种方法，然后考虑这些点都是竖着穿过下面的横线，计算下面的点到终点有多少种方式，相加即可。</p>
-<p>起点(x,y)到终点(s,t)有c(x-s+y-t,x-s)种方法，算组合数就好了。</p>
-<p><img src="https://raw.githubusercontent.com/2997ms/My_Algorithm/master/source_pic/R058_D.png" alt="R058_D"></p>
-<h2 id="E-Iroha-and-Haiku"><a href="#E-Iroha-and-Haiku" class="headerlink" title="E Iroha and Haiku"></a>E Iroha and Haiku</h2><hr>
-<p>E题题意是给出了N个数(N&lt;&#x3D;40)，每个数由1到10构成，问这些构成里面能找到相邻的三个子段，第一段和为X，第二段和为Y，第三段和为Z，满足这样条件的叫Haiku，问一共有多少个Haiku。</p>
-<p>这个题好神。。。。</p>
-<p>做法是找不符合的，把1写成1，把2写成10，把3写成100，那么最后的这段数就能写成一个01串，然后这个串包含xyz-Haiku，相当于与xyz构成的01串做与运算，结果不为0.</p>
-<h2 id="F-Iroha-Loves-Strings"><a href="#F-Iroha-Loves-Strings" class="headerlink" title="F Iroha Loves Strings"></a>F Iroha Loves Strings</h2><hr>
-<p>F题题意是给出了N个串，按照顺序组合为长度为k的串，保证可以找到。然后问字典序最小的字符串是多少。</p>
-<p>问了yosupo，他是这么说的，大致看懂了，但是z-algorithm不会。。。</p>
-<p> <img src="https://raw.githubusercontent.com/2997ms/My_Algorithm/master/source_pic/R058_F_1.png" alt="R058_F_1"></p>
-<p>看了其他人AC的代码，有一些是水过去的，然后自己也按照思路写了一下。始终WA掉4个数据，不懂为什么啊啊啊。。。</p>
-<p>求路过的人解释一下这道题啊。。。</p>
-<p>WA代码：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//#pragma comment(linker, &quot;/STACK:102400000,102400000&quot;) </span></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> <span class="keyword">warning</span>(disable:4996)</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;fstream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;functional&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;deque&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;ctime&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;list&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> eps 1e-10</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LL_INF 0x33ffffffffffffff</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> INF 0x3f3f3f3f</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> mem(a, b) memset(a, b, sizeof(a))</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pper(i,n,m) for(int i = n;i &gt;= m; i--)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> repp(i, n, m) for (int i = n; i &lt;= m; i++)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> rep(i, n, m) for (int i = n; i &lt; m; i++)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> sa(n) scanf(<span class="string">&quot;%d&quot;</span>, &amp;(n))</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ff first</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ss second</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pb push_back</span></span><br><span class="line"> </span><br><span class="line"><span class="type">const</span> <span class="type">int</span> maxn = <span class="number">2e3</span> + <span class="number">10</span>;</span><br><span class="line"><span class="type">const</span> ll mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">double</span> PI = <span class="built_in">acos</span>(<span class="number">-1.0</span>);</span><br><span class="line"><span class="function">ll <span class="title">po</span><span class="params">(ll a, ll b)</span> </span>&#123; ll res = <span class="number">1</span>; a %= mod; <span class="keyword">for</span> (; b; b &gt;&gt;= <span class="number">1</span>) &#123; <span class="keyword">if</span> (b &amp; <span class="number">1</span>)res = res*a%mod; a = a*a%mod; &#125;<span class="keyword">return</span> res; &#125;</span><br><span class="line"> </span><br><span class="line"><span class="type">int</span> n, k;</span><br><span class="line">string val[maxn];</span><br><span class="line"><span class="type">int</span> vis[maxn];</span><br><span class="line"><span class="type">int</span> dp[maxn][<span class="number">10010</span>];</span><br><span class="line"><span class="type">int</span> loc[<span class="number">2</span>][<span class="number">3005</span>][<span class="number">2</span>];</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> i, j;</span><br><span class="line"> </span><br><span class="line">	set&lt;<span class="type">char</span>&gt;ch;</span><br><span class="line">	<span class="built_in">repp</span>(i, <span class="number">1</span>, n)</span><br><span class="line">	&#123;</span><br><span class="line">		cin &gt;&gt; val[i];</span><br><span class="line">		<span class="built_in">rep</span>(h, <span class="number">0</span>, val[i].<span class="built_in">length</span>())</span><br><span class="line">		&#123;</span><br><span class="line">			ch.<span class="built_in">insert</span>(val[i][h]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">mem</span>(dp, <span class="number">0</span>);</span><br><span class="line">	dp[n + <span class="number">1</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">for</span> (i = n; i &gt;= <span class="number">1</span>; i--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (j = <span class="number">0</span>; j &lt;= k; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (dp[i + <span class="number">1</span>][j])</span><br><span class="line">			&#123;</span><br><span class="line">				dp[i][j] = <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (dp[i + <span class="number">1</span>][j] &amp;&amp; j + val[i].<span class="built_in">length</span>() &lt;= k )</span><br><span class="line">			&#123;</span><br><span class="line">				dp[i][j + val[i].<span class="built_in">length</span>()] = <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">int</span> now = <span class="number">0</span>, pre = <span class="number">1</span>;</span><br><span class="line">	<span class="type">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (k - val[i].<span class="built_in">length</span>()&gt;=<span class="number">0</span> &amp;&amp; dp[i + <span class="number">1</span>][k - val[i].<span class="built_in">length</span>()])</span><br><span class="line">		&#123;</span><br><span class="line">			cnt++;</span><br><span class="line">			loc[pre][cnt][<span class="number">0</span>] = i;</span><br><span class="line">			loc[pre][cnt][<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	string res = <span class="string">&quot;&quot;</span>;</span><br><span class="line">	<span class="type">int</span> remain = k;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= k; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">mem</span>(vis, <span class="number">0</span>);</span><br><span class="line">		<span class="type">char</span> minx = <span class="string">&#x27;z&#x27;</span>;</span><br><span class="line">		<span class="keyword">for</span> (j = <span class="number">1</span>; j &lt;= cnt; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			minx = <span class="built_in">min</span>(minx, val[loc[pre][j][<span class="number">0</span>]][loc[pre][j][<span class="number">1</span>]]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="type">int</span> ncnt = <span class="number">0</span>;</span><br><span class="line">		<span class="type">int</span> mn = n;</span><br><span class="line">		<span class="keyword">for</span> (j = <span class="number">1</span>; j &lt;= cnt; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="type">char</span> x = val[loc[pre][j][<span class="number">0</span>]][loc[pre][j][<span class="number">1</span>]];</span><br><span class="line">			<span class="keyword">if</span> (x != minx)<span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">if</span> (loc[pre][j][<span class="number">1</span>] == val[loc[pre][j][<span class="number">0</span>]].<span class="built_in">length</span>() - <span class="number">1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				mn = <span class="built_in">min</span>(mn, loc[pre][j][<span class="number">0</span>]);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				vis[loc[pre][j][<span class="number">0</span>]] = <span class="number">1</span>;</span><br><span class="line">				++ncnt;</span><br><span class="line">				loc[now][ncnt][<span class="number">0</span>] = loc[pre][j][<span class="number">0</span>];</span><br><span class="line">				loc[now][ncnt][<span class="number">1</span>] = loc[pre][j][<span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		remain--;</span><br><span class="line">		<span class="keyword">for</span> (j = mn + <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (vis[j])<span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">if</span> (remain - val[j].<span class="built_in">length</span>() &gt;= <span class="number">0</span> &amp;&amp; dp[j + <span class="number">1</span>][remain - val[j].<span class="built_in">length</span>()])</span><br><span class="line">			&#123;</span><br><span class="line">				ncnt++;</span><br><span class="line">				loc[now][ncnt][<span class="number">0</span>] = j;</span><br><span class="line">				loc[now][ncnt][<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		res = res + minx;</span><br><span class="line">		cnt = ncnt;</span><br><span class="line">		pre = <span class="number">1</span> - pre;</span><br><span class="line">		now = <span class="number">1</span> - now;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; res &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span> (<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;n, &amp;k) != EOF)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">solve</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
 
 
     
@@ -1335,6 +995,290 @@ Software Engineer Intern<br/>
 <p>把后缀数组论文上的题目都搞了一遍，一开始看其算法真是给作者跪了，好厉害啊啊啊。。。后面要好好总结一下这些题目。。。</p>
 <p>然后就是终于回家了。。。每次回家都想象着能在家里做好多事情啊。。。但是每次结果都不太令人满意。。。好多时候书是怎么带回来的，又怎么带回去。以往的寒暑假自己属于各种作，到最后就是什么都没干。不知道这次的寒假能不能有一些不同。毕竟有一些兴趣和记录表的带领，这次应该能不同吧。</p>
 <p>2016应该能有所不同，另外想对光速小子说，你的一生如此有限，别把人生浪费在一些破烂的七七八八的事情上，每一天都要死得其所，make each day count。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2015/11/30/BB/2015/2015-11-%E6%9C%89%E7%94%9F%E4%B9%8B%E5%B9%B4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="2997ms">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2997ms">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 2997ms">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2015/11/30/BB/2015/2015-11-%E6%9C%89%E7%94%9F%E4%B9%8B%E5%B9%B4/" class="post-title-link" itemprop="url">2015-11-有生之年</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2015-11-30 23:15:41" itemprop="dateCreated datePublished" datetime="2015-11-30T23:15:41+00:00">2015-11-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-08-29 23:25:13" itemprop="dateModified" datetime="2022-08-29T23:25:13+01:00">2022-08-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>0)决定以后博客上只写我做不出来的，或是一个类型的总结吧，一些水题自己实在不好意思再往上面写了，当然可能这样显得我就更弱了(哇塞，这题你都不会？？？)。。。希望这里是自己的一个学习笔记吧，记录对于不会题的总结吧。所以这个月的博客数量变少了许多~ </p>
+<p> 1)那天我和C君聊天，聊到我俩在大学期间都经常熬夜。都知道熬夜很不好，第二天很没有精神，但还是一如既往地这么干，结果想了想原因，就是怕，怕来不及。急着看完一本小说，看完一部电影，甚至是大半夜在想一道算法题，看C++的某一章节，都会让我有这种感觉，这个世界如此精彩，在我身体没有残破不堪之前，我希望尽可能的去领略它。</p>
+<p>  2)刚刚终于想通了Hackerrank的一道题，现在看来又是很简单的一道题了，不过一个小dp，但是当时的自己就是没能想出来。11月份是我学习算法的第5个月，参加的一些小比赛又是被虐了，不过现在的我心态特别好，说真的，很多结果已经对于我接下来的行动构不成什么影响了。(换句话也可以说是脸皮越来越厚了。。。)</p>
+<p>  3)胡乱说吧，本来我写这些东西也没有一个思路，说到哪里算哪里。今天早上起来就看到了科比宣布这个赛季之后退役的消息，说真的都知道这个赛季基本上就是蜗壳的最后一个赛季了，但听到消息的时候还是难受得不行。感谢你唠嗑，你的很多言行激励了我初高中时候的很多瞬间，一些勇气选择等等等等。就像湖区说的，即使联盟出现下一个科比，我也没有下一个青春去追了。然后就是耳机里放了一天的&lt;&lt;讲不出再见&gt;&gt;：我最不忍看你\背向我转面\要走一刻\请不必诸多眷恋\浮沉浪似人潮\哪会没有思念\你我伤心到讲不出再见。</p>
+<p>  4)然后就是今天看了落落的&lt;&lt;有生之年&gt;&gt;这本书，当初买这本书的一个目的实际上想要提醒我自己，要有远方，别把眼光太局限。里面的图片和文字还是很搭的，尽管有朋友说插图那么多就是为了骗钱。。。但是感觉上还不错</p>
+<p>  摘抄几句。。。“想着，这已经成为最习以为常的画面了啊，从公司回到家，烂熟于心的景色，按部就班地等待在余生里，鱼鳞一般，精确地丈量着时光如何从身体上流泻而过。”“我果然还是会继续努力地活，就算这份努力在过往的标准里收效甚微，它太常和事倍功半连在一起了，看起来气喘吁吁，狼狈踉跄，决计不好看的姿势，但我还是会继续这样，因为这才是可以安心的，不管功如何，先把事情做到翻倍。”</p>
+<p>  5)北京最近的空气能杀人。 </p>
+<p>  6)最后说一句最近自己的感悟，努力本来就应该是兴趣的一种表现形式，用打鸡血的方式去努力是好的学习状态，但不是最好的学习状态。</p>
+<p>  7)代码真是越来越好玩了。</p>
+<p>  8)今年的最后一个月了，加油2015。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2015/11/01/BB/2015/2015-10-%E5%8F%BD%E9%87%8C%E5%92%95%E5%99%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="2997ms">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2997ms">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 2997ms">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2015/11/01/BB/2015/2015-10-%E5%8F%BD%E9%87%8C%E5%92%95%E5%99%9C/" class="post-title-link" itemprop="url">2015-10-叽里咕噜</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2015-11-01 16:23:56" itemprop="dateCreated datePublished" datetime="2015-11-01T16:23:56+00:00">2015-11-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-08-29 23:25:09" itemprop="dateModified" datetime="2022-08-29T23:25:09+01:00">2022-08-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>一看是11月1日才写的这个10月总结就知道这两天滚成球了。。。这周末codestorm、51nod算法马拉松、BC、CF、hihocoder，然后还有一个华山杯的CTF(。。。)，其实这些比赛自己比得有些超出自己预期，有的极其烂。像51，之前一直都是爆零大队大队长，这次一下子做出两个80分的题，尤其是选数字那题，自己深搜一直tle，最后搞出来的时候特别兴奋。但做题就常常有这种感觉，过一段时间看这道题，也不难啊，也不过如此啊，至于那么兴奋吗。。。就这种感觉。codestorm 查三角形与扔飞镖的做出来也是这种感觉，想了一个下午把扔飞镖给搞出来了。</p>
+<p>然后是BC，打得这个郁闷，直接rating掉150。。。关键是已经考虑到了1那种情况，那个时候脑袋真是糊涂了，把1也当成出不去的那种情况了，结果自己两个小时一直对着那道题干瞪眼。。。。都枉费我这次的几次hack。。。做出来直接去div1了，唉，还是慢慢努力吧。</p>
+<p>不能一直把时间放到比赛上面，一段时间的比赛有让自己反思并且总结的作用，长时间来看还是要按照自己的计划看书学习做oj题。现在发现写代码，算法和数据结构就想武林里面的内功，内功好了，头脑灵活了，再学其他的招式也就不再困难了，想必各大公司应该也都是看中这个原因才对程序员重视算法吧。</p>
+<p>总结起来的话，十月份自己在总结博客的时候思考了很多，觉得对算法有些部分知识的内容，变得渐渐立体了起来。果然题目不在于数量，在于好好总结，领悟其精髓。再感慨一句，这一个月看了一些代码，写得真是漂亮，让你觉得代码也可以变得很性感，刚刚的counting triangles O(n^2)就算一个。</p>
+<p>认真学习写代码4个月了，收获真的很大，对算法，对C++语言，对于数学上的一些证明想法都收获很多，也知道了很多牛人。知道了智商高真的是比我这样的节省了很多时间啊，像x君，人家2个小时ak了比赛，我想几个题目想了一天，结果x君第二天几个小时又把y比赛ak了，他是剩余了第三天完全自由的时光，我是哪个比赛都做得不好，然后时间还都搭在上面了。但是也并不后悔，毕竟心之所向，素履以往，生如逆旅，一苇以航。</p>
+<p>觉得人找到了自己喜欢的人是一件特别幸运的事情，找到了自己喜欢做的事情也同样是一件特别幸运的事情，很多人一生都没有找到自己挚爱的人，热爱的事情，我觉得这才算真正的悲剧。倒在路上的不算悲哀，从未开始始终仰望的才比较可悲吧。</p>
+<p>想起暑假自己一个激动决定从这里开始到现在，特别感谢那时踏出的第一步，不知未来会如何，但起码现在沉浸在里面是真的快乐。</p>
+<p>然后是想列一下这个月的计划吧，看看月底完成的情况：</p>
+<p>1.仔细看完《thinking in C++》 template那一章，总结出自己常用的一些模板。</p>
+<p>2.把自己做的那还有50多道题的”存货”总结了。</p>
+<p>3.继续做POJ分类上面中级算法的题目。</p>
+<p>发现就现在自己这个年岁了，老大不小了，能找一个事情让自己沉浸其中真的特别难。22岁这年遇上这个也很幸运。</p>
+<p>总而言之，10月自己过得很满意，很知足。2015年的第11局也要好好加油，好好生活，好好努力。上帝，愿您继续得到荣耀。</p>
+<p>最后，贴上自己高中时候很喜欢的王羲之《兰亭集序》里面的话，“夫人之相与，俯仰一世。或取诸怀抱，悟言一室之内；或因寄所托，放浪形骸之外。虽趣舍万殊，静噪不同，当其欣于所遇，暂得于己，快然自足，不知老之将至。及其所之既倦，情随事迁，感慨系之矣。向之所欣，俯仰之间，已为陈迹，犹不能不以之兴怀。况修短随化，终期于尽。古人云：生死亦大矣。岂不痛哉！”</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2015/09/30/BB/2015/2015-09-%E8%BF%9C%E6%96%B9%E4%B9%8B%E8%BF%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="2997ms">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2997ms">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 2997ms">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2015/09/30/BB/2015/2015-09-%E8%BF%9C%E6%96%B9%E4%B9%8B%E8%BF%9C/" class="post-title-link" itemprop="url">2015-09-远方之远</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2015-09-30 22:35:28" itemprop="dateCreated datePublished" datetime="2015-09-30T22:35:28+01:00">2015-09-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-08-29 23:25:06" itemprop="dateModified" datetime="2022-08-29T23:25:06+01:00">2022-08-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>现在是9月30号20：24分，北京到了10月也开始渐渐变冷了。外面下着相对于北京来说是很大的雨了。</p>
+<p>9月我的感觉是这个月份我发现我在不断地思考，每个月都有那么几天很特殊，这个很特殊的意思是在我心里标记了记号的那种。7月份的毕业，大哥陪我弄牙。8月份的回家。9月份的重新开始。</p>
+<p>先说重新开始这事，早已经没有了一点点的期待、兴奋。10号完全就是走个过场，非常疲惫与厌倦。然后下一个节点是SQ的到来，聊了很多。再下一个节点，就是今天下午老爸的电话，我老爸最近看了很多书，说的最多的就是自己很后悔以前没有珍惜时间，留有很多遗憾。</p>
+<p>我在那边听，就一直想说后悔和遗憾我觉得是两码事，后悔是自己的心情，遗憾是客观事实。人这一辈子，无论怎么活，面前千百条路，走哪一条都会是不完美的，就留有遗憾的，这是不可避免的。但是后悔的意思就是当初没能走自己最想要走的那条路。我高中也留有了很多很多遗憾，但是再给我过一万遍高中生活我还是会那么活，反正那段时光是我这22年里面一点都不曾后悔的三年，尽管也还是留有了很多遗憾，让我在大学四年里动不动就睡不着觉。</p>
+<p>我上高中的时候有的时候特失望，对周围环境，当时觉得“远方是一方颓圮的墙”。那时我才认识“颓圮”两个字，为了装逼这么说。后来来到这么一个不上不下的环境，自己也堕落成了三流学生，真的是四年什么都没学会。</p>
+<p>中旬的时候去了hulu的宣讲会，感触颇颇颇颇深啊，不管在宣讲会上他们经过了多少的渲染，但是那个团队的氛围，真的是我所梦寐以求的，希望以后能够和一群有思想的人们工作，互相协作，相互之间慢慢变得更好。</p>
+<p>热血一些吧，别在意其他人的目光，我不希望2年之后就是后悔。所以，在渐渐变得复杂化的年纪，别失去那些做自己的勇敢。</p>
+<p>写月记对于时间的飞速流逝有感到了新的认识，感觉昨天才写的8月份的英雄不老，今天就写9月份的了，总而言之，2015年的第十局明天打响。</p>
 
       
     </div>
