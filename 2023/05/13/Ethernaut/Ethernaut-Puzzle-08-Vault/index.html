@@ -29,7 +29,7 @@
 <meta property="og:description" content="This challenge made me realize again that all data on the blockchain is public. The challenge provided a password for us to guess. When we correctly guess the password, the locked value will become fa">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-05-13T15:24:19.000Z">
-<meta property="article:modified_time" content="2023-05-14T19:33:01.896Z">
+<meta property="article:modified_time" content="2024-10-20T06:06:53.152Z">
 <meta property="article:author" content="2997ms">
 <meta property="article:tag" content="Ethernaut">
 <meta name="twitter:card" content="summary">
@@ -224,7 +224,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-14 20:33:01" itemprop="dateModified" datetime="2023-05-14T20:33:01+01:00">2023-05-14</time>
+      <time title="Modified: 2024-10-20 07:06:53" itemprop="dateModified" datetime="2024-10-20T07:06:53+01:00">2024-10-20</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -251,7 +251,7 @@
 <span id="more"></span>
 
 <p>We can calculate the slot where a variable is stored based on the address of the smart contract. Then we can retrieve the value stored at that slot.</p>
-<p>In this smart contract, there is a bool and a bytes32 variable. A bool variable occupies 1 byte (8 bits), and a bytes32 variable occupies 4 bytes. One slot is 32 bytes, so the bytes32 variable is stored in the first slot, not the zeroth.</p>
+<p>In this smart contract, there is a bool and a bytes32 variable. A bool variable occupies 1 byte (8 bits), and a bytes32 variable occupies 32 bytes. One slot is 32 bytes, so the bytes32 variable is stored in the first slot, not the zeroth.</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">await web3.eth.getStorageAt(contract.address, 1)</span><br></pre></td></tr></table></figure>
 
 
