@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">165</span>
+          <span class="site-state-item-count">166</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -331,6 +331,113 @@ Software Engineer Intern<br/>
 </div>
 
 <h4 style="color:gray">🦸‍♂️ Contact me: wangchong756@gmail.com </h4>
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2017/02/07/CP/Hackerrank/Hackerrank-HourRank-17/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="2997ms">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="2997ms">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 2997ms">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2017/02/07/CP/Hackerrank/Hackerrank-HourRank-17/" class="post-title-link" itemprop="url">Hackerrank HourRank 17</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2017-02-07 19:03:50" itemprop="dateCreated datePublished" datetime="2017-02-07T19:03:50+00:00">2017-02-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-09-04 20:39:13" itemprop="dateModified" datetime="2022-09-04T20:39:13+01:00">2022-09-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>好久好久没有做题了。。。去年定的目标，自己不算不努力，但还是没能完成。。。今年继续加油吧。。。</p>
+<p>过去三个月总把LeetCode刷通了一遍，收获很大。但感觉一遍来说还不是很熟练，时间好紧啊。。。</p>
+<p><a target="_blank" rel="noopener" href="https://www.hackerrank.com/contests/hourrank-17/challenges">题目链接</a>与<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Hackerrank/HourRank_17">代码链接</a></p>
+<h3 id="The-Hurdle-Race"><a href="#The-Hurdle-Race" class="headerlink" title="The Hurdle Race"></a>The Hurdle Race</h3><blockquote>
+<p>水题不说了。。。</p>
+</blockquote>
+<h3 id="Organizing-Containers-of-Balls"><a href="#Organizing-Containers-of-Balls" class="headerlink" title="Organizing Containers of Balls"></a>Organizing Containers of Balls</h3><blockquote>
+<p>题意是给出$n(n&lt;100)$个颜色的球，$n$个盒子。每次可以对两个盒子中的一个球做一次交换，问最终能否达到一种状态—所有颜色的球在一个盒子里，一个盒子里只有一个颜色的球。</p>
+</blockquote>
+<p>对所有行和列排个序，判断是否相等。</p>
+<h3 id="GCD-Matrix"><a href="#GCD-Matrix" class="headerlink" title="GCD Matrix"></a>GCD Matrix</h3><blockquote>
+<p>题意是给出集合A、B，集合元素数量$n(n&lt;10^5)$，集合元素的数值范围$x&lt;10^5$。现在两个集合中各取一个元素，问可以得到的GCD的种类。</p>
+</blockquote>
+<p>因为数值范围小于$10^5$，容斥一发。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> A[maxn], count[maxn], Ma[maxn], n;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>; i&lt;=n; i++) </span><br><span class="line">    count[A[i]] ++;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>; i&lt;=<span class="number">100000</span>; i++) &#123;</span><br><span class="line">    <span class="type">int</span> j = i;</span><br><span class="line">    <span class="keyword">while</span>(j &lt;= <span class="number">100000</span>) &#123;</span><br><span class="line">        Ma[i] += count[j];</span><br><span class="line">        j += i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> Ma[maxn], Mb[maxn], ans[maxn];</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">100000</span>; i&gt;=<span class="number">1</span>; i--) &#123;</span><br><span class="line">    ans[i] = Ma[i] * Mb[i];</span><br><span class="line">    <span class="type">int</span> j = i;</span><br><span class="line">    <span class="keyword">while</span>( j &lt;= <span class="number">100000</span> ) &#123;</span><br><span class="line">        <span class="keyword">if</span>(j &gt; i) ans[i] -= ans[j];</span><br><span class="line">        j += i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Number-Game-on-a-Tree"><a href="#Number-Game-on-a-Tree" class="headerlink" title="Number Game on a Tree"></a>Number Game on a Tree</h3><blockquote>
+<p>题意是给出了一个游戏规则，有一堆数，A和B，分别从这里面去除一个数，但是这次去除的数一定要不大于上一次去除的数。不能继续去除数字的人输。然后现在有一颗树，$n$个节点($n&lt;5*10^5$)，将每两个叶子节点路径上的数字作为一个list，问有多少个list可以保证A赢这个游戏，A先手。</p>
+</blockquote>
+<p>首先考虑先手赢的条件，如果每一个数字都是偶数个，那么一定后手赢。因为无论先手去除哪一个，后手照做就好了。那么一旦出现奇数个元素的数字，就一定先手赢，先手把那个元素去除，就变成了前者说的情况了。</p>
+<p>现在就考虑有多少个两个叶子节点路径上的数字都是偶数个，考虑异或，把$color$变成$(1&lt;&lt;color)$作为每一个节点上的数值，这样可以保证当路径异或值为0的时候，就一定是偶数个。那么这里又有一个问题变成$(1&lt;&lt;color)$会有溢出的问题，哈希取模。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
 
 
     
@@ -1264,125 +1371,6 @@ Software Engineer Intern<br/>
             </div>
           <!--/noindex-->
         
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2016/10/06/CP/Codeforces/Intel-Code-Chanllenge-Elimination-Round/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="2997ms">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="2997ms">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 2997ms">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2016/10/06/CP/Codeforces/Intel-Code-Chanllenge-Elimination-Round/" class="post-title-link" itemprop="url">Intel Code Chanllenge Elimination Round</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2016-10-06 21:39:17" itemprop="dateCreated datePublished" datetime="2016-10-06T21:39:17+01:00">2016-10-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-09-04 20:36:46" itemprop="dateModified" datetime="2022-09-04T20:36:46+01:00">2022-09-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><a target="_blank" rel="noopener" href="http://codeforces.com/contest/722">题目链接</a>与<a target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/Intel%20Code%20Challenge%20Elimination%20Round">代码链接</a></p>
-<p>A题在自己知道坑的情况下还是挂了，D题在最后五分钟想出思路，又一次懵逼，没有时间敲完。。。</p>
-<h3 id="A-Broken-Clock"><a href="#A-Broken-Clock" class="headerlink" title="*A Broken Clock"></a>*A Broken Clock</h3><blockquote>
-<p>题意是给出表的12计时方式与24计时方式，12计时方式时钟在1<del>12的范围内，分钟在0</del>59的范围内。24计时方式时钟在0<del>23的范围内，分钟在0</del>59的范围内。问改动最少的数字，使得给出的时间符合要求。</p>
-</blockquote>
-<p>注意12计时方式下的20：00这种情况，不是变成01：00而是10：00。。。。</p>
-<h3 id="B-Verse-Pattern"><a href="#B-Verse-Pattern" class="headerlink" title="B Verse Pattern"></a>B Verse Pattern</h3><blockquote>
-<p>算每一个字符串数组中的元音字符数量是否与给定的数相等。。。</p>
-</blockquote>
-<h3 id="C-Destroying-Array"><a href="#C-Destroying-Array" class="headerlink" title="C Destroying Array"></a>C Destroying Array</h3><blockquote>
-<p>给定一个数组，每次删掉一个数字，问每次删掉之后剩下的连续数字的最大和。</p>
-</blockquote>
-<p>反过来考虑就是添加数字，每次添加用并查集来合并左右数字，维护最大值。</p>
-<h3 id="D-Generating-Sets"><a href="#D-Generating-Sets" class="headerlink" title="*D Generating Sets"></a>*D Generating Sets</h3><blockquote>
-<p>题意是有不同的$n$个数，可以任意选一个数$x$，有两种操作，1.$x*2$之后放回去。2.$x*2+1$之后放回去。经过若干次这样的变换之后，变成了给出的数组，要求就是找回最开始的n个数，使得这n个数里面最大的数最小。</p>
-</blockquote>
-<p>实际上是一颗二叉树，每一次选最大的数除以2，看可不可以占这个位子，不能的话再往上找，直到找不到向上的路径了。</p>
-<p>别人都是set就过了，我非得搞个优先队列+map。。。mdzz。</p>
-<h3 id="E-Research-Rover"><a href="#E-Research-Rover" class="headerlink" title="*E Research Rover"></a>*E Research Rover</h3><blockquote>
-<p>有$n*m$的格子，一开始站在$(1,1)$的点上，有$S$的油量，现在有一些点会让油量减半，问最终到达(n,m)这个格子所剩油的期望。化简之后分数表示成$\frac {P}{Q}$，给出$P*Q^{-1}$的结果，其中$Q^{-1}$代表$Q$模$10^9+7$的逆元。</p>
-</blockquote>
-<p>首先结果的分数是不用考虑化简的，因为假设$P$和$Q$都有公约数$d$，那么<br>$$<br>P_{d}*d*Q_{d}^{-1}*d^{-1}&#x3D;P*Q^{-1}<br>$$<br>所以$Q$就是从$(1,1)$到$(n,m)$的方案数，$P$即是所有情况下到达的油量总和。</p>
-<p>这道题还要发现一点就是$S$最大值是$10^6$，也就是说如果经过了超过20个消耗点，那么就会一直是1了。所以只需要考虑小于等于20个消耗点的情况。</p>
-<p>这样的话和<a target="_blank" rel="noopener" href="http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1486">51nod上大大走格子</a>(这个也是codeforces上的。。。)思路就类似了。dp[i][v]表示第$v$个点到终点经过$i$个消耗点的方案数量。从后往前考虑，等于<br>$$<br>dp[i][v] &#x3D; C(n+m-x_v-y_v,n-x_v) - \sum_{j&#x3D;v+1}^{k}C(x_j+y_j-x_v-y_v,x_j-x_v)*dp[i][j] - \sum_{j&#x3D;0}^{i-1} dp[j][v]<br>$$<br>解释一下上面的式子，$C(n+m-x_v-y_v,n-x_v) $是该点到终点的方案总数，减去前面的点经过$i$个点了乘以它到这里的方案数，这块和大大走格子的思路是一致的。这一部分等于它到终点经过$0$到$i$次的，减掉之前的，就是该点经过$i$个点的方案数。最后是(1,1)这个点的方案数乘以油量。</p>
-<p>最后考虑经过的数量大于20的情况，$C(n+m-2,n-1)$减去之前算出来的方案数就是剩下的情况，乘以1，添到结果内。</p>
-<p>最后这个题卡常，算逆元的话最好用递推式:<br>$$<br>inv[i]&#x3D;(Mod-\frac {Mod}{i})*inv[Mod %i]%Mod<br>$$</p>
-<h3 id="F-Cyclic-Cipher"><a href="#F-Cyclic-Cipher" class="headerlink" title="F Cyclic Cipher"></a>F Cyclic Cipher</h3><blockquote>
-<p>题意是给出了$n$个序列，每个序列$k_i(1 \leq k_i \leq 40 )$个数，每次序列向右不断循环一位，取每个序列的第一个数再从上到下组成一个序列，算每一个数的最长连续序列，一共进行$10^{100}$次，问在这些中，每个数的最长连续序列是多少。</p>
-</blockquote>
-<p>会发现如果$x$在连续序列中碰到一起了，假设是在第$S$秒，在第$i$个序列中的位置为$p_i$，第$i$序列的长度为$k_i$，那么会满足下面的条件<br>$$<br>S\equiv p_i (mod\ k_i)<br>$$</p>
-<p>$$<br>S\equiv p_j (mod\ k_j)<br>$$</p>
-<p>发现这样的话就是<a target="_blank" rel="noopener" href="http://blog.csdn.net/acdreamers/article/details/8050018">中国剩余定理</a>的内容，参考这个的<a target="_blank" rel="noopener" href="http://codeforces.com/blog/entry/47497#comment-318621">评论</a>，可以推出：<br>$$<br>p_i+k_i*x&#x3D;p_j+k_j*y<br>$$</p>
-<p>$$<br>\Rightarrow p_i-p_j\ &#x3D; k_j*y-k_i*x<br>$$</p>
-<p>$$<br>\Rightarrow p_i-p_j\equiv 0 (mod\ GCD(k_i,k_j))<br>$$</p>
-<p>因为在连续序列里面的任意两个都要满足这样的关系，所以枚举右端点，更新左端点即可。</p>
-
       
     </div>
 
