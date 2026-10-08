@@ -1,256 +1,456 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.2.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    
+    <meta name="author" content="Chong Wang">
+    
+    <!-- Completely eliminate flash of wrong theme -->
+    <script>
+        (function() {
+            const THEME_KEY = "REDEFINE-THEME-STATUS";
+            const DARK = "dark", LIGHT = "light";
+            
+            // Get preferred theme
+            function getTheme() {
+                try {
+                    const saved = localStorage.getItem(THEME_KEY);
+                    if (saved) {
+                        const { isDark } = JSON.parse(saved);
+                        return isDark ? DARK : LIGHT;
+                    }
+                } catch (e) {}
+                
+                return matchMedia("(prefers-color-scheme: dark)").matches ? DARK : LIGHT;
+            }
+            
+            // Apply theme to document
+            function applyTheme(theme) {
+                const isDark = theme === DARK;
+                const root = document.documentElement;
+                
+                // Set classes for compatibility
+                root.classList.add(theme);
+                root.classList.remove(isDark ? LIGHT : DARK);
+                root.style.colorScheme = theme;
+            }
+            
+            // Initial application
+            const theme = getTheme();
+            applyTheme(theme);
+            
+            // Listen for system preference changes
+            matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ({ matches }) => {
+                // Only update if using system preference (no localStorage entry)
+                if (!localStorage.getItem(THEME_KEY)) {
+                    applyTheme(matches ? DARK : LIGHT);
+                }
+            });
+            
+            // Set body classes ASAP (before DOMContentLoaded)
+            (function() {
+                const addBodyClass = () => {
+                    const b = document.body;
+                    if (!b) return false;
+                    b.classList.add(theme + "-mode");
+                    return true;
+                };
 
+                // Try immediately
+                if (addBodyClass()) return;
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+                // Observe until body exists
+                const mo = new MutationObserver(() => {
+                    if (addBodyClass()) mo.disconnect();
+                });
+                mo.observe(document.documentElement, { childList: true, subtree: true });
+            })();
+        })();
+    </script>
+    
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link rel="stylesheet" href="/css/main.css">
-
-
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-
-<script class="next-config" data-name="main" type="application/json">{"hostname":"2997ms.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","Muse | Mist":320,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-
-    <meta name="description" content="做了一下ARC073，又是好久没做题了。。。AtCoder的题怎么总是感觉不可做啊，每次解法都好神啊。。。">
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://2997ms.github.io/2017/05/06/cp/atcoder/atcoder-regular-contest-073/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+        
+        <meta name="description" content="Chong Wang — software engineer, smart contract security researcher, and competitive programmer.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AtCoder Regular Contest 073">
 <meta property="og:url" content="http://2997ms.github.io/2017/05/06/CP/AtCoder/AtCoder-Regular-Contest-073/index.html">
-<meta property="og:site_name" content="2997ms">
-<meta property="og:description" content="做了一下ARC073，又是好久没做题了。。。AtCoder的题怎么总是感觉不可做啊，每次解法都好神啊。。。">
+<meta property="og:site_name" content="Chong Wang">
+<meta property="og:description" content="Chong Wang — software engineer, smart contract security researcher, and competitive programmer.">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://2997ms.github.io/images/chong-wang.jpg">
 <meta property="article:published_time" content="2017-05-06T09:34:44.000Z">
 <meta property="article:modified_time" content="2022-09-04T19:35:20.988Z">
-<meta property="article:author" content="2997ms">
+<meta property="article:author" content="Chong Wang">
 <meta property="article:tag" content="AtCoder">
 <meta name="twitter:card" content="summary">
-
-
-<link rel="canonical" href="http://2997ms.github.io/2017/05/06/CP/AtCoder/AtCoder-Regular-Contest-073/">
-
-
-
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://2997ms.github.io/2017/05/06/CP/AtCoder/AtCoder-Regular-Contest-073/","path":"2017/05/06/CP/AtCoder/AtCoder-Regular-Contest-073/","title":"AtCoder Regular Contest 073"}</script>
-
-<script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>AtCoder Regular Contest 073 | 2997ms</title>
-  
-
-
-
-
-
-
-  <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
-  <div class="headband"></div>
-
-  <main class="main">
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <p class="site-title">2997ms</p>
-      <i class="logo-line"></i>
-    </a>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-
-<nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-user fa-fw"></i>Home</a></li><li class="menu-item menu-item-posts"><a href="/categories/BiWeeklyUpdate" rel="section"><i class="fa fa-th fa-fw"></i>posts</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-  </ul>
-</nav>
-
-
-
-
-</div>
+<meta name="twitter:image" content="http://2997ms.github.io/images/chong-wang.jpg">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/chong-wang-favicon.png" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/chong-wang-favicon.png">
+    <meta name="theme-color" content="#49b6b1">
+    <link rel="shortcut icon" href="/images/chong-wang-favicon.png">
+    <!--- Page Info-->
+    
+    <title>
         
-  
-  <div class="toggle sidebar-toggle" role="button">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
+            AtCoder Regular Contest 073 | Chong Wang
+        
+    </title>
 
-  <aside class="sidebar">
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          Table of Contents
-        </li>
-        <li class="sidebar-nav-overview">
-          Overview
-        </li>
-      </ul>
 
-      <div class="sidebar-panel-container">
-        <!--noindex-->
-        <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Sentou"><span class="nav-number">1.</span> <span class="nav-text">C - Sentou</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Simple-Knapsack"><span class="nav-number">2.</span> <span class="nav-text">D - Simple Knapsack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-Ball-Coloring"><span class="nav-number">3.</span> <span class="nav-text">E - Ball Coloring</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#F-Many-Moves"><span class="nav-number">4.</span> <span class="nav-text">F - Many Moves</span></a></li></ol></div>
-        </div>
-        <!--/noindex-->
+    <!--- Inject Part-->
+    
 
-        <div class="site-overview-wrap sidebar-panel">
-          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">2997ms</p>
-  <div class="site-description" itemprop="description"></div>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/build/tailwind.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"2997ms.github.io","root":"/","language":"en"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":false,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":false,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#49b6b1","secondary":null,"default_mode":"dark"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1080px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":false,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":false,"preloader":{"enable":false,"custom_message":null},"side_tools":{"gear_rotation":true,"auto_expand":false},"open_graph":{"enable":true,"image":"/images/chong-wang.jpg","description":"Chong Wang — software engineer, smart contract security researcher, and competitive programmer."},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":false,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"Theme Redefine","subtitle":{"text":[],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":[{"icon":"fa-brands fa-github","url":null},{"icon":"fa-brands fa-twitter","url":null},{"icon":"fa-solid fa-at","url":"you@example.com"},{"icon":"fa-brands fa-telegram","url":null},{"icon":"/images/custom-icon.svg","url":null}],"qrs":[{"icon":"fa-brands fa-weixin","qr":null},{"icon":"/images/custom-icon.svg","qr":null}]}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1","theme":{"light":"default","dark":"dark"}}},"version":"2.9.0","navbar":{"auto_hide":false,"color":{"left":"#101923","right":"#1b3b47","transparency":24},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Posts":{"path":"/archives","icon":"fa-regular fa-pen-to-square"},"About":{"path":"/about/","icon":"fa-regular fa-user"}},"search":{"enable":false,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur","masonry":{"batch_size":12,"initial_batch_size":24}},"home":{"sidebar":{"enable":false,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":null},"article_date_format":"YYYY-MM-DD","excerpt_length":180,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footer":{"runtime":false,"icon":"<i class=\"fa-solid fa-heart fa-beat\" style=\"--fa-animation-duration: 0.5s; color: #f54545\"></i>","start":"2022/8/17 11:45:14","statistics":false,"customize":"© Chong Wang","icp":{"enable":false,"number":null,"url":null}},"footerStart":"2022/8/17 11:45:14","mermaid":{"style":{"light":"default","dark":"dark"}}};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.i18n = {"search":"Search...","toc":"On this page","prev":"Prev","next":"Next","prev_posts":"Prev posts","next_posts":"Next posts","page":"Page %d","recent_posts":"Recent Posts","share":"Share","powered_by":"POWERED BY %s","theme":"THEME","rss_feed":"RSS Feed","category":"Category","categories":"Categories","tag":"Tag","tags":"Tags","post":"Post","posts":"Posts","tagcloud":"Tag Cloud","comment":"Comment","comments":"Comments","home":"Home","archive":"Archive","archives":"Archives","top":"TOP","sticky":"Sticky","go-back-home":"Go Back Home","masonry_loading":"Loading photos...","image_viewer":"Image viewer","close":"Close","exif":{"title":"EXIF","cards":{"camera":"Camera","lens":"Lens","exposure":"Exposure","other":"Other"},"fields":{"make":"Brand","model":"Model","date_taken":"Date taken","lens_model":"Lens","focal_length":"Focal length","focus_mode":"Focus mode","shutter":"Shutter","aperture":"Aperture","iso":"ISO","exposure_program":"Exposure program","exposure_compensation":"Exposure compensation","metering_mode":"Metering mode","flash":"Flash","white_balance":"White balance","latitude":"Latitude","longitude":"Longitude","altitude":"Altitude"},"status":{"loading":"Loading...","no_exif":"No EXIF available","library_missing":"EXIF library not loaded","image_source_missing":"Image source unavailable","unavailable":"EXIF unavailable (blocked by CORS or missing metadata)","flag_unavailable":"EXIF unavailable"}},"about":"About","changelog":"Changelog","links":"Links","link":"Link","friends":"Friends","friend":"Friend","timeline":"Timeline","shuoshuo":"Shuoshuo","bookmarks":"Bookmarks","site_uv":"VISITOR COUNT","site_pv":"TOTAL PAGE VIEWS","read_more":"Read more","wordcount":"Words","min2read":"Mins","status":"Status","runtime":"Blog up for","days":"days","hours":"hrs","minutes":"Min","seconds":"Sec","optimized_by":"and Optimized by Evan","rights":"All Rights Reserved","site_posts":"%s posts in total","site_wordcount":"%s words in total","copyright":{"author":"Author","title":"Title","link":"Link","create_time":"Created at","update_time":"Updated at","license_title":"License","license_content":"This work is licensed under %s.","all_rights_reserved":"All Rights Reserved &#169; %s","public_domain":"This work is in the public domain."},"ago":{"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"},"create_time":"Created","update_time":"Updated","expired":"This post is written %s days ago, and the content may not be up to date."};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+	<div class="progress-bar-container">
+	
+
+	
 </div>
-<div class="site-state-wrap site-overview-item animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-        <a href="/archives/">
-          <span class="site-state-item-count">165</span>
-          <span class="site-state-item-name">posts</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-          <a href="/categories/">
-        <span class="site-state-item-count">2</span>
-        <span class="site-state-item-name">categories</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-          <a href="/tags/">
-        <span class="site-state-item-count">67</span>
-        <span class="site-state-item-name">tags</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author site-overview-item animated">
-      <span class="links-of-author-item">
-        <a href="https://github.com/2997ms" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;2997ms" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="mailto:wangchong756@gmail.com" title="E-Mail → mailto:wangchong756@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
-      </span>
-  </div>
 
+<main class="page-container" id="swup">
 
+	
 
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                Chong Wang
+                
+            </a>
         </div>
-      </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-pen-to-square fa-fw"></i>
+                                    POSTS
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/about/"
+                                        >
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    ABOUT
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
     </div>
-  </aside>
-  <div class="sidebar-dimmer"></div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                POSTS
+                            </span>
+                            
+                                <i class="fa-regular fa-pen-to-square fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/about/"
+                        >
+                            <span>
+                                ABOUT
+                            </span>
+                            
+                                <i class="fa-regular fa-user fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">67</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">165</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
 
 
-    </header>
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">AtCoder Regular Contest 073</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] shrink-0 rounded-medium border border-border-color p-px">
+				<img src="/images/chong-wang.jpg">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">Chong Wang</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv6</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2017-05-06 10:34:44</span>
+        <span class="mobile">2017-05-06 10:34:44</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2022-09-04 20:35:20</span>
+            <span class="mobile">2022-09-04 20:35:20</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
 
     
-  <div class="back-to-top" role="button" aria-label="Back to top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
-
-
-    <div class="main-inner post posts-expand">
-
-
-  
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://2997ms.github.io/2017/05/06/CP/AtCoder/AtCoder-Regular-Contest-073/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="2997ms">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="2997ms">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="AtCoder Regular Contest 073 | 2997ms">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          AtCoder Regular Contest 073
-        </h1>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2017-05-06 17:34:44" itemprop="dateCreated datePublished" datetime="2017-05-06T17:34:44+08:00">2017-05-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-09-05 03:35:20" itemprop="dateModified" datetime="2022-09-05T03:35:20+08:00">2022-09-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Chinese/" itemprop="url" rel="index"><span itemprop="name">Chinese</span></a>
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/Chinese/">Chinese</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
         </span>
-    </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/AtCoder/">AtCoder</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
 
-  
+    
+    
+    
+    
 </div>
 
-        </div>
-      </header>
+				</div>
+			</div>
+		</div>
+		
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-        <p>做了一下ARC073，又是好久没做题了。。。AtCoder的题怎么总是感觉不可做啊，每次解法都好神啊。。。</p>
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<p>做了一下ARC073，又是好久没做题了。。。AtCoder的题怎么总是感觉不可做啊，每次解法都好神啊。。。</p>
 <span id="more"></span>
 
-<h3 id="C-Sentou"><a href="#C-Sentou" class="headerlink" title="C - Sentou"></a>C - Sentou</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> n,t;</span><br><span class="line"><span class="type">int</span> val[maxn];</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ll res = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">sa</span>(n),<span class="built_in">sa</span>(t);</span><br><span class="line">	<span class="built_in">sa</span>(val[<span class="number">1</span>]);</span><br><span class="line"> </span><br><span class="line">	<span class="built_in">repp</span>(i,<span class="number">2</span>,n)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">sa</span>(val[i]);</span><br><span class="line">		<span class="keyword">if</span>(val[i]&gt;=val[i<span class="number">-1</span>]+t)res+=t;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			res+=val[i]-val[i<span class="number">-1</span>];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	res+=t;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, res);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="C-Sentou"><a href="#C-Sentou" class="headerlink" title="C - Sentou"></a>C - Sentou</h3><div class="code-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> n,t;</span><br><span class="line"><span class="type">int</span> val[maxn];</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ll res = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">sa</span>(n),<span class="built_in">sa</span>(t);</span><br><span class="line">	<span class="built_in">sa</span>(val[<span class="number">1</span>]);</span><br><span class="line"> </span><br><span class="line">	<span class="built_in">repp</span>(i,<span class="number">2</span>,n)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">sa</span>(val[i]);</span><br><span class="line">		<span class="keyword">if</span>(val[i]&gt;=val[i<span class="number">-1</span>]+t)res+=t;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			res+=val[i]-val[i<span class="number">-1</span>];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	res+=t;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, res);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
 
 
@@ -259,7 +459,7 @@
 </blockquote>
 <p>可以DP的，背包状态最多$3*N$的。</p>
 <p>然后可以对每种重量(一共就4种)做贪心的，复杂度最坏是($\frac{N^4}{4}$)。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> N, W;</span><br><span class="line"><span class="type">int</span> w[maxn], v[maxn];</span><br><span class="line">vector&lt;ll&gt;val[<span class="number">10</span>];</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ll res = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">sa</span>(N), <span class="built_in">sa</span>(W);</span><br><span class="line">	ll ind;</span><br><span class="line">	<span class="built_in">repp</span>(i, <span class="number">1</span>, N)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">sa</span>(w[i]), <span class="built_in">sa</span>(v[i]);</span><br><span class="line">		<span class="keyword">if</span> (i == <span class="number">1</span>)ind = w[i];</span><br><span class="line">		val[w[i] - w[<span class="number">1</span>]].<span class="built_in">push_back</span>(v[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">rep</span>(i, <span class="number">0</span>, <span class="number">4</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">sort</span>(val[i].<span class="built_in">begin</span>(), val[i].<span class="built_in">end</span>(), <span class="built_in">greater</span>&lt;ll&gt;());</span><br><span class="line">	&#125;</span><br><span class="line">	ll s1 = <span class="number">0</span>, s2 = <span class="number">0</span>, s3 = <span class="number">0</span>, s4 = <span class="number">0</span>;</span><br><span class="line">	ll ans = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt;= val[<span class="number">0</span>].<span class="built_in">size</span>(); )</span><br><span class="line">	&#123;</span><br><span class="line">		s2 = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt;= val[<span class="number">1</span>].<span class="built_in">size</span>(); )</span><br><span class="line">		&#123;</span><br><span class="line">			s3 = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">0</span>; k &lt;= val[<span class="number">2</span>].<span class="built_in">size</span>();)</span><br><span class="line">			&#123;</span><br><span class="line">				s4 = <span class="number">0</span>;</span><br><span class="line">				<span class="keyword">for</span> (<span class="type">int</span> h = <span class="number">0</span>; h &lt;= val[<span class="number">3</span>].<span class="built_in">size</span>();)</span><br><span class="line">				&#123;</span><br><span class="line">					ll sum = <span class="number">1LL</span> * i*(ind)+<span class="number">1LL</span> * j*(ind + <span class="number">1</span>) + <span class="number">1LL</span> * k*(ind + <span class="number">2</span>) + <span class="number">1LL</span> * h*(ind + <span class="number">3</span>);</span><br><span class="line">					<span class="keyword">if</span> (sum &lt;= W)</span><br><span class="line">					&#123;</span><br><span class="line">						ans = <span class="built_in">max</span>(ans, s1 + s2 + s3 + s4);</span><br><span class="line">					&#125;</span><br><span class="line">					h++;</span><br><span class="line">					<span class="keyword">if</span> (h &gt;= <span class="number">1</span>&amp;&amp;h&lt;=val[<span class="number">3</span>].<span class="built_in">size</span>())s4 += val[<span class="number">3</span>][h - <span class="number">1</span>];</span><br><span class="line">				&#125;</span><br><span class="line">				k++;</span><br><span class="line">				<span class="keyword">if</span> (k &gt;= <span class="number">1</span> &amp;&amp; k &lt;= val[<span class="number">2</span>].<span class="built_in">size</span>())s3 += val[<span class="number">2</span>][k - <span class="number">1</span>];</span><br><span class="line">			&#125;</span><br><span class="line">			j++;</span><br><span class="line">			<span class="keyword">if</span> (j &gt;= <span class="number">1</span> &amp;&amp; j &lt;= val[<span class="number">1</span>].<span class="built_in">size</span>())s2 += val[<span class="number">1</span>][j - <span class="number">1</span>];</span><br><span class="line">		&#125;</span><br><span class="line">		i++;</span><br><span class="line">		<span class="keyword">if</span> (i &gt;= <span class="number">1</span>&amp;&amp;i&lt;=val[<span class="number">0</span>].<span class="built_in">size</span>())s1 += val[<span class="number">0</span>][i - <span class="number">1</span>];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div class="code-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> N, W;</span><br><span class="line"><span class="type">int</span> w[maxn], v[maxn];</span><br><span class="line">vector&lt;ll&gt;val[<span class="number">10</span>];</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ll res = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">sa</span>(N), <span class="built_in">sa</span>(W);</span><br><span class="line">	ll ind;</span><br><span class="line">	<span class="built_in">repp</span>(i, <span class="number">1</span>, N)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">sa</span>(w[i]), <span class="built_in">sa</span>(v[i]);</span><br><span class="line">		<span class="keyword">if</span> (i == <span class="number">1</span>)ind = w[i];</span><br><span class="line">		val[w[i] - w[<span class="number">1</span>]].<span class="built_in">push_back</span>(v[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">rep</span>(i, <span class="number">0</span>, <span class="number">4</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">sort</span>(val[i].<span class="built_in">begin</span>(), val[i].<span class="built_in">end</span>(), <span class="built_in">greater</span>&lt;ll&gt;());</span><br><span class="line">	&#125;</span><br><span class="line">	ll s1 = <span class="number">0</span>, s2 = <span class="number">0</span>, s3 = <span class="number">0</span>, s4 = <span class="number">0</span>;</span><br><span class="line">	ll ans = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt;= val[<span class="number">0</span>].<span class="built_in">size</span>(); )</span><br><span class="line">	&#123;</span><br><span class="line">		s2 = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt;= val[<span class="number">1</span>].<span class="built_in">size</span>(); )</span><br><span class="line">		&#123;</span><br><span class="line">			s3 = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">0</span>; k &lt;= val[<span class="number">2</span>].<span class="built_in">size</span>();)</span><br><span class="line">			&#123;</span><br><span class="line">				s4 = <span class="number">0</span>;</span><br><span class="line">				<span class="keyword">for</span> (<span class="type">int</span> h = <span class="number">0</span>; h &lt;= val[<span class="number">3</span>].<span class="built_in">size</span>();)</span><br><span class="line">				&#123;</span><br><span class="line">					ll sum = <span class="number">1LL</span> * i*(ind)+<span class="number">1LL</span> * j*(ind + <span class="number">1</span>) + <span class="number">1LL</span> * k*(ind + <span class="number">2</span>) + <span class="number">1LL</span> * h*(ind + <span class="number">3</span>);</span><br><span class="line">					<span class="keyword">if</span> (sum &lt;= W)</span><br><span class="line">					&#123;</span><br><span class="line">						ans = <span class="built_in">max</span>(ans, s1 + s2 + s3 + s4);</span><br><span class="line">					&#125;</span><br><span class="line">					h++;</span><br><span class="line">					<span class="keyword">if</span> (h &gt;= <span class="number">1</span>&amp;&amp;h&lt;=val[<span class="number">3</span>].<span class="built_in">size</span>())s4 += val[<span class="number">3</span>][h - <span class="number">1</span>];</span><br><span class="line">				&#125;</span><br><span class="line">				k++;</span><br><span class="line">				<span class="keyword">if</span> (k &gt;= <span class="number">1</span> &amp;&amp; k &lt;= val[<span class="number">2</span>].<span class="built_in">size</span>())s3 += val[<span class="number">2</span>][k - <span class="number">1</span>];</span><br><span class="line">			&#125;</span><br><span class="line">			j++;</span><br><span class="line">			<span class="keyword">if</span> (j &gt;= <span class="number">1</span> &amp;&amp; j &lt;= val[<span class="number">1</span>].<span class="built_in">size</span>())s2 += val[<span class="number">1</span>][j - <span class="number">1</span>];</span><br><span class="line">		&#125;</span><br><span class="line">		i++;</span><br><span class="line">		<span class="keyword">if</span> (i &gt;= <span class="number">1</span>&amp;&amp;i&lt;=val[<span class="number">0</span>].<span class="built_in">size</span>())s1 += val[<span class="number">0</span>][i - <span class="number">1</span>];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
 
 
@@ -270,100 +470,249 @@
 <p>这$2*N$的球会有$MAX、MIN$，那么最终结果会有两种情况，</p>
 <p>1.$R_{min}&#x3D;MIN，B_{max}&#x3D;MAX$，那么这种情况就很简单了，让每一对较小的给染成红球，较大的给蓝球。</p>
 <p>2.$R_{min}&#x3D;MIN，R_{max}&#x3D;MAX$，将较小的排序，然后不断换成大的，利用单调性，发现这样就可以遍历所有情况了。这种做法给跪了。。。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> n;</span><br><span class="line">pair&lt;ll,ll&gt;val[maxn];</span><br><span class="line">multiset&lt;ll&gt;v1,v2;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">sa</span>(n);</span><br><span class="line">	<span class="keyword">if</span>(n==<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">puts</span>(<span class="string">&quot;0&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">repp</span>(i,<span class="number">1</span>,n)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> x,y;</span><br><span class="line">		<span class="built_in">sa</span>(x),<span class="built_in">sa</span>(y);</span><br><span class="line">		<span class="keyword">if</span>(x&gt;y)<span class="built_in">swap</span>(x,y);<span class="comment">//x&lt;=y</span></span><br><span class="line">		val[i].first = x;</span><br><span class="line">		val[i].second = y;</span><br><span class="line">		v1.<span class="built_in">insert</span>(x);</span><br><span class="line">		v2.<span class="built_in">insert</span>(y);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">sort</span>(val+<span class="number">1</span>,val+n+<span class="number">1</span>);</span><br><span class="line">	ll ans = <span class="number">1LL</span>*(*v1.<span class="built_in">rbegin</span>()-*v1.<span class="built_in">begin</span>())*(*v2.<span class="built_in">rbegin</span>()-*v2.<span class="built_in">begin</span>());</span><br><span class="line">	<span class="built_in">repp</span>(i,<span class="number">1</span>,n)</span><br><span class="line">	&#123;</span><br><span class="line">		v1.<span class="built_in">erase</span>(v1.<span class="built_in">find</span>(val[i].first));</span><br><span class="line">		v2.<span class="built_in">erase</span>(v2.<span class="built_in">find</span>(val[i].second));</span><br><span class="line"> </span><br><span class="line">		v1.<span class="built_in">insert</span>(val[i].second);</span><br><span class="line">		v2.<span class="built_in">insert</span>(val[i].first);</span><br><span class="line">		ans = <span class="built_in">min</span>(ans,<span class="number">1LL</span>*(*v1.<span class="built_in">rbegin</span>()-*v1.<span class="built_in">begin</span>())*(*v2.<span class="built_in">rbegin</span>()-*v2.<span class="built_in">begin</span>()));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div class="code-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> n;</span><br><span class="line">pair&lt;ll,ll&gt;val[maxn];</span><br><span class="line">multiset&lt;ll&gt;v1,v2;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">sa</span>(n);</span><br><span class="line">	<span class="keyword">if</span>(n==<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">puts</span>(<span class="string">&quot;0&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">repp</span>(i,<span class="number">1</span>,n)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> x,y;</span><br><span class="line">		<span class="built_in">sa</span>(x),<span class="built_in">sa</span>(y);</span><br><span class="line">		<span class="keyword">if</span>(x&gt;y)<span class="built_in">swap</span>(x,y);<span class="comment">//x&lt;=y</span></span><br><span class="line">		val[i].first = x;</span><br><span class="line">		val[i].second = y;</span><br><span class="line">		v1.<span class="built_in">insert</span>(x);</span><br><span class="line">		v2.<span class="built_in">insert</span>(y);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">sort</span>(val+<span class="number">1</span>,val+n+<span class="number">1</span>);</span><br><span class="line">	ll ans = <span class="number">1LL</span>*(*v1.<span class="built_in">rbegin</span>()-*v1.<span class="built_in">begin</span>())*(*v2.<span class="built_in">rbegin</span>()-*v2.<span class="built_in">begin</span>());</span><br><span class="line">	<span class="built_in">repp</span>(i,<span class="number">1</span>,n)</span><br><span class="line">	&#123;</span><br><span class="line">		v1.<span class="built_in">erase</span>(v1.<span class="built_in">find</span>(val[i].first));</span><br><span class="line">		v2.<span class="built_in">erase</span>(v2.<span class="built_in">find</span>(val[i].second));</span><br><span class="line"> </span><br><span class="line">		v1.<span class="built_in">insert</span>(val[i].second);</span><br><span class="line">		v2.<span class="built_in">insert</span>(val[i].first);</span><br><span class="line">		ans = <span class="built_in">min</span>(ans,<span class="number">1LL</span>*(*v1.<span class="built_in">rbegin</span>()-*v1.<span class="built_in">begin</span>())*(*v2.<span class="built_in">rbegin</span>()-*v2.<span class="built_in">begin</span>()));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
 
 
 <h3 id="F-Many-Moves"><a href="#F-Many-Moves" class="headerlink" title="F - Many Moves"></a>F - Many Moves</h3><blockquote>
 <p>两个机器人，起始位置分别为$A、B$，然后有相关的命令，$x_{i}$，要求必须有一个机器人在位置$x_{i}$，然后每一次机器人到$x_{i}$会有一个移动距离，问执行所有命令之后，移动距离最少为多少。</p>
 </blockquote>
-<p>F题有一道很类似的题目，在hackerrank上，<a target="_blank" rel="noopener" href="https://www.hackerrank.com/contests/w19/challenges/two-robots">题目链接</a>。</p>
+<p>F题有一道很类似的题目，在hackerrank上，<a class="link"   target="_blank" rel="noopener" href="https://www.hackerrank.com/contests/w19/challenges/two-robots" >题目链接<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>。</p>
 <p>先从最暴力的DP考虑，$dp[i][x][y]$表示到第i次命令，一个球在位置$x$，一个球在位置$y$，然后转移。复杂度$O(Q*N^2)$。</p>
 <p>然后考虑在执行$x[i]$命令时，一个球位置一定在$x[i-1]$，所以枚举另一个球位置就好了，这也就是Hackerrank的那道题。$O(Q*N)$。</p>
 <p>复杂度还是不够，假设你已知$dp[i-1][k]$，考虑就两种转移方式到$dp[i][k]$：</p>
 <p>1.从$x[i-1]$转移过来，对所有的$dp[i][k]$都加上$abs(x[i]-x[i-1])$。</p>
 <p>2.$dp[i][x[i-1]]&#x3D;min(dp[i-1][j]+abs(j-x[i])) {for \ j \ in \ range(1,N)}$，然后把$abs$脱下，会发现是两棵线段树，维护一下$dp[i-1][j]+j$和$dp[i-1][j]-j$就好了。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br></pre></td><td class="code"><pre><span class="line">ll seq[maxn];</span><br><span class="line"> </span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Segtree</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">Node</span></span><br><span class="line">	&#123;</span><br><span class="line">		ll val, add;</span><br><span class="line">	&#125;;</span><br><span class="line">	Node tree[maxn * <span class="number">4</span>];</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">modify_add_Node</span><span class="params">(<span class="type">int</span> node, ll val)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		tree[node].val += val;</span><br><span class="line">		tree[node].add += val;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">pushup</span><span class="params">(<span class="type">int</span> node)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		tree[node].val = <span class="built_in">min</span>(tree[node &lt;&lt; <span class="number">1</span>].val, tree[node &lt;&lt; <span class="number">1</span> | <span class="number">1</span>].val);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">pushdown</span><span class="params">(<span class="type">int</span> node)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (tree[node].add)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">modify_add_Node</span>(node &lt;&lt; <span class="number">1</span>, tree[node].add);</span><br><span class="line">			<span class="built_in">modify_add_Node</span>(node &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, tree[node].add);</span><br><span class="line">			tree[node].add = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">build</span><span class="params">(<span class="type">int</span> l, <span class="type">int</span> r, <span class="type">int</span> node)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (l == r)</span><br><span class="line">		&#123;</span><br><span class="line">			tree[node].val = seq[l];</span><br><span class="line">			tree[node].add = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="type">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">		<span class="built_in">build</span>(l, mid, node &lt;&lt; <span class="number">1</span>);</span><br><span class="line">		<span class="built_in">build</span>(mid + <span class="number">1</span>, r, node &lt;&lt; <span class="number">1</span> | <span class="number">1</span>);</span><br><span class="line">		<span class="built_in">pushup</span>(node);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">modify_add</span><span class="params">(<span class="type">int</span> L, <span class="type">int</span> R, <span class="type">int</span> l, <span class="type">int</span> r, <span class="type">int</span> node, <span class="type">int</span> val)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (r &lt; L || R &lt; l) <span class="keyword">return</span>;</span><br><span class="line">		<span class="keyword">if</span> (L &lt;= l&amp;&amp;r &lt;= R)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">modify_add_Node</span>(node, val);</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">pushdown</span>(node);</span><br><span class="line">		<span class="type">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">		<span class="built_in">modify_add</span>(L, R, l, mid, node &lt;&lt; <span class="number">1</span>, val);</span><br><span class="line">		<span class="built_in">modify_add</span>(L, R, mid + <span class="number">1</span>, r, node &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, val);</span><br><span class="line">		<span class="built_in">pushup</span>(node);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">modify_min</span><span class="params">(<span class="type">int</span> pos, <span class="type">int</span> l, <span class="type">int</span> r, <span class="type">int</span> node, ll val)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (l == r)</span><br><span class="line">		&#123;</span><br><span class="line">			tree[node].val = <span class="built_in">min</span>(tree[node].val, val);</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">pushdown</span>(node);</span><br><span class="line">		<span class="type">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span> (pos &lt;= mid) <span class="built_in">modify_min</span>(pos, l, mid, node &lt;&lt; <span class="number">1</span>, val);</span><br><span class="line">		<span class="keyword">else</span> <span class="built_in">modify_min</span>(pos, mid + <span class="number">1</span>, r, node &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, val);</span><br><span class="line">		<span class="built_in">pushup</span>(node);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function">ll <span class="title">query_min</span><span class="params">(<span class="type">int</span> L, <span class="type">int</span> R, <span class="type">int</span> l, <span class="type">int</span> r, <span class="type">int</span> node)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (r&lt;L || R&lt;l) <span class="keyword">return</span> INF;</span><br><span class="line">		<span class="keyword">if</span> (L &lt;= l&amp;&amp;r &lt;= R) <span class="keyword">return</span> tree[node].val;</span><br><span class="line">		<span class="built_in">pushdown</span>(node);</span><br><span class="line">		<span class="type">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">min</span>(<span class="built_in">query_min</span>(L, R, l, mid, node &lt;&lt; <span class="number">1</span>), <span class="built_in">query_min</span>(L, R, mid + <span class="number">1</span>, r, node &lt;&lt; <span class="number">1</span> | <span class="number">1</span>));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function">ll <span class="title">dfs</span><span class="params">(<span class="type">int</span> l, <span class="type">int</span> r, <span class="type">int</span> node)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (l == r) <span class="keyword">return</span> tree[node].val + l;</span><br><span class="line">		<span class="built_in">pushdown</span>(node);</span><br><span class="line">		<span class="type">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">min</span>(<span class="built_in">dfs</span>(l, mid, node &lt;&lt; <span class="number">1</span>), <span class="built_in">dfs</span>(mid + <span class="number">1</span>, r, node &lt;&lt; <span class="number">1</span> | <span class="number">1</span>));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;s,t;</span><br><span class="line"> </span><br><span class="line"><span class="type">int</span> N, Q, A, B;</span><br><span class="line"><span class="type">int</span> x[maxn];</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">sa</span>(N), <span class="built_in">sa</span>(Q), <span class="built_in">sa</span>(A), <span class="built_in">sa</span>(B);</span><br><span class="line">	<span class="built_in">repp</span>(i, <span class="number">1</span>, Q)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">sa</span>(x[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">repp</span>(i, <span class="number">1</span>, N)</span><br><span class="line">	&#123;</span><br><span class="line">		seq[i] = INF;</span><br><span class="line">	&#125;</span><br><span class="line">	seq[B] = -B;</span><br><span class="line">	s.<span class="built_in">build</span>(<span class="number">1</span>, N, <span class="number">1</span>);</span><br><span class="line"> </span><br><span class="line">	seq[B] = B;</span><br><span class="line">	t.<span class="built_in">build</span>(<span class="number">1</span>, N, <span class="number">1</span>);</span><br><span class="line"> </span><br><span class="line">	x[<span class="number">0</span>] = A;</span><br><span class="line">	<span class="built_in">repp</span>(i, <span class="number">1</span>, Q)</span><br><span class="line">	&#123;</span><br><span class="line">		ll tmp = <span class="built_in">min</span>(s.<span class="built_in">query_min</span>(<span class="number">1</span>, x[i], <span class="number">1</span>, N, <span class="number">1</span>) + x[i], t.<span class="built_in">query_min</span>(x[i], N, <span class="number">1</span>, N, <span class="number">1</span>) - x[i]);</span><br><span class="line"> </span><br><span class="line">		s.<span class="built_in">modify_add</span>(<span class="number">1</span>, N, <span class="number">1</span>, N, <span class="number">1</span>, <span class="built_in">abs</span>(x[i] - x[i - <span class="number">1</span>]));</span><br><span class="line">		t.<span class="built_in">modify_add</span>(<span class="number">1</span>, N, <span class="number">1</span>, N, <span class="number">1</span>, <span class="built_in">abs</span>(x[i] - x[i - <span class="number">1</span>]));</span><br><span class="line"> </span><br><span class="line">		s.<span class="built_in">modify_min</span>(x[i - <span class="number">1</span>], <span class="number">1</span>, N, <span class="number">1</span>, tmp - x[i - <span class="number">1</span>]);</span><br><span class="line">		t.<span class="built_in">modify_min</span>(x[i - <span class="number">1</span>], <span class="number">1</span>, N, <span class="number">1</span>, tmp + x[i - <span class="number">1</span>]);</span><br><span class="line">	&#125;</span><br><span class="line">	ll ans = s.<span class="built_in">dfs</span>(<span class="number">1</span>, N, <span class="number">1</span>);</span><br><span class="line"> </span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div class="code-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br></pre></td><td class="code"><pre><span class="line">ll seq[maxn];</span><br><span class="line"> </span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Segtree</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">Node</span></span><br><span class="line">	&#123;</span><br><span class="line">		ll val, add;</span><br><span class="line">	&#125;;</span><br><span class="line">	Node tree[maxn * <span class="number">4</span>];</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">modify_add_Node</span><span class="params">(<span class="type">int</span> node, ll val)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		tree[node].val += val;</span><br><span class="line">		tree[node].add += val;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">pushup</span><span class="params">(<span class="type">int</span> node)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		tree[node].val = <span class="built_in">min</span>(tree[node &lt;&lt; <span class="number">1</span>].val, tree[node &lt;&lt; <span class="number">1</span> | <span class="number">1</span>].val);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">pushdown</span><span class="params">(<span class="type">int</span> node)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (tree[node].add)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">modify_add_Node</span>(node &lt;&lt; <span class="number">1</span>, tree[node].add);</span><br><span class="line">			<span class="built_in">modify_add_Node</span>(node &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, tree[node].add);</span><br><span class="line">			tree[node].add = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">build</span><span class="params">(<span class="type">int</span> l, <span class="type">int</span> r, <span class="type">int</span> node)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (l == r)</span><br><span class="line">		&#123;</span><br><span class="line">			tree[node].val = seq[l];</span><br><span class="line">			tree[node].add = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="type">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">		<span class="built_in">build</span>(l, mid, node &lt;&lt; <span class="number">1</span>);</span><br><span class="line">		<span class="built_in">build</span>(mid + <span class="number">1</span>, r, node &lt;&lt; <span class="number">1</span> | <span class="number">1</span>);</span><br><span class="line">		<span class="built_in">pushup</span>(node);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">modify_add</span><span class="params">(<span class="type">int</span> L, <span class="type">int</span> R, <span class="type">int</span> l, <span class="type">int</span> r, <span class="type">int</span> node, <span class="type">int</span> val)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (r &lt; L || R &lt; l) <span class="keyword">return</span>;</span><br><span class="line">		<span class="keyword">if</span> (L &lt;= l&amp;&amp;r &lt;= R)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">modify_add_Node</span>(node, val);</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">pushdown</span>(node);</span><br><span class="line">		<span class="type">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">		<span class="built_in">modify_add</span>(L, R, l, mid, node &lt;&lt; <span class="number">1</span>, val);</span><br><span class="line">		<span class="built_in">modify_add</span>(L, R, mid + <span class="number">1</span>, r, node &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, val);</span><br><span class="line">		<span class="built_in">pushup</span>(node);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">modify_min</span><span class="params">(<span class="type">int</span> pos, <span class="type">int</span> l, <span class="type">int</span> r, <span class="type">int</span> node, ll val)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (l == r)</span><br><span class="line">		&#123;</span><br><span class="line">			tree[node].val = <span class="built_in">min</span>(tree[node].val, val);</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">pushdown</span>(node);</span><br><span class="line">		<span class="type">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span> (pos &lt;= mid) <span class="built_in">modify_min</span>(pos, l, mid, node &lt;&lt; <span class="number">1</span>, val);</span><br><span class="line">		<span class="keyword">else</span> <span class="built_in">modify_min</span>(pos, mid + <span class="number">1</span>, r, node &lt;&lt; <span class="number">1</span> | <span class="number">1</span>, val);</span><br><span class="line">		<span class="built_in">pushup</span>(node);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function">ll <span class="title">query_min</span><span class="params">(<span class="type">int</span> L, <span class="type">int</span> R, <span class="type">int</span> l, <span class="type">int</span> r, <span class="type">int</span> node)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (r&lt;L || R&lt;l) <span class="keyword">return</span> INF;</span><br><span class="line">		<span class="keyword">if</span> (L &lt;= l&amp;&amp;r &lt;= R) <span class="keyword">return</span> tree[node].val;</span><br><span class="line">		<span class="built_in">pushdown</span>(node);</span><br><span class="line">		<span class="type">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">min</span>(<span class="built_in">query_min</span>(L, R, l, mid, node &lt;&lt; <span class="number">1</span>), <span class="built_in">query_min</span>(L, R, mid + <span class="number">1</span>, r, node &lt;&lt; <span class="number">1</span> | <span class="number">1</span>));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function">ll <span class="title">dfs</span><span class="params">(<span class="type">int</span> l, <span class="type">int</span> r, <span class="type">int</span> node)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (l == r) <span class="keyword">return</span> tree[node].val + l;</span><br><span class="line">		<span class="built_in">pushdown</span>(node);</span><br><span class="line">		<span class="type">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">min</span>(<span class="built_in">dfs</span>(l, mid, node &lt;&lt; <span class="number">1</span>), <span class="built_in">dfs</span>(mid + <span class="number">1</span>, r, node &lt;&lt; <span class="number">1</span> | <span class="number">1</span>));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;s,t;</span><br><span class="line"> </span><br><span class="line"><span class="type">int</span> N, Q, A, B;</span><br><span class="line"><span class="type">int</span> x[maxn];</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">sa</span>(N), <span class="built_in">sa</span>(Q), <span class="built_in">sa</span>(A), <span class="built_in">sa</span>(B);</span><br><span class="line">	<span class="built_in">repp</span>(i, <span class="number">1</span>, Q)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">sa</span>(x[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">repp</span>(i, <span class="number">1</span>, N)</span><br><span class="line">	&#123;</span><br><span class="line">		seq[i] = INF;</span><br><span class="line">	&#125;</span><br><span class="line">	seq[B] = -B;</span><br><span class="line">	s.<span class="built_in">build</span>(<span class="number">1</span>, N, <span class="number">1</span>);</span><br><span class="line"> </span><br><span class="line">	seq[B] = B;</span><br><span class="line">	t.<span class="built_in">build</span>(<span class="number">1</span>, N, <span class="number">1</span>);</span><br><span class="line"> </span><br><span class="line">	x[<span class="number">0</span>] = A;</span><br><span class="line">	<span class="built_in">repp</span>(i, <span class="number">1</span>, Q)</span><br><span class="line">	&#123;</span><br><span class="line">		ll tmp = <span class="built_in">min</span>(s.<span class="built_in">query_min</span>(<span class="number">1</span>, x[i], <span class="number">1</span>, N, <span class="number">1</span>) + x[i], t.<span class="built_in">query_min</span>(x[i], N, <span class="number">1</span>, N, <span class="number">1</span>) - x[i]);</span><br><span class="line"> </span><br><span class="line">		s.<span class="built_in">modify_add</span>(<span class="number">1</span>, N, <span class="number">1</span>, N, <span class="number">1</span>, <span class="built_in">abs</span>(x[i] - x[i - <span class="number">1</span>]));</span><br><span class="line">		t.<span class="built_in">modify_add</span>(<span class="number">1</span>, N, <span class="number">1</span>, N, <span class="number">1</span>, <span class="built_in">abs</span>(x[i] - x[i - <span class="number">1</span>]));</span><br><span class="line"> </span><br><span class="line">		s.<span class="built_in">modify_min</span>(x[i - <span class="number">1</span>], <span class="number">1</span>, N, <span class="number">1</span>, tmp - x[i - <span class="number">1</span>]);</span><br><span class="line">		t.<span class="built_in">modify_min</span>(x[i - <span class="number">1</span>], <span class="number">1</span>, N, <span class="number">1</span>, tmp + x[i - <span class="number">1</span>]);</span><br><span class="line">	&#125;</span><br><span class="line">	ll ans = s.<span class="built_in">dfs</span>(<span class="number">1</span>, N, <span class="number">1</span>);</span><br><span class="line"> </span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
 
 
 
-    </div>
+		</div>
 
-    
-    
-    
+		
 
-    <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/AtCoder/" rel="tag"># AtCoder</a>
-          </div>
+		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/AtCoder/">#AtCoder</a>&nbsp;
+			</li>
+			
+		</ul>
+		
 
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="prev" rel="prev" href="/2017/05/16/Topic/%E4%B8%8D%E4%BC%9AC++(%E4%B8%80)/">
+					<span class="left arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-left"></i>
+					</span>
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item truncate max-w-48">不会C++(一)(explicit,new与malloc,union)</span>
+						<span class="post-nav-item">Prev posts</span>
+					</span>
+				</a>
+			</div>
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2017/05/01/CP/Codeforces/2017-ACM-Arabella-Collegiate-Programming-Contest/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item truncate max-w-48">2017 ACM Arabella Collegiate Programming Contest</span>
+						<span class="post-nav-item">Next posts</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">On this page</div>
+		<div class="page-title">AtCoder Regular Contest 073</div>
+		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Sentou"><span class="nav-text">C - Sentou</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Simple-Knapsack"><span class="nav-text">D - Simple Knapsack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-Ball-Coloring"><span class="nav-text">E - Ball Coloring</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#F-Many-Moves"><span class="nav-text">F - Many Moves</span></a></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
         
+            <div class="customize-info my-1">© Chong Wang</div>
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2026&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">Chong Wang</a>
+            
+        </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.9.0</a></span>
+        </div>
+        
+        
+        
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
 
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/2017/05/03/BB/2017/2017_4%E6%9C%88_%E4%B8%AD%E5%B9%B4%E5%8D%B1%E6%9C%BA/" rel="prev" title="2017_4月_中年危机">
-                  <i class="fa fa-chevron-left"></i> 2017_4月_中年危机
-                </a>
-            </div>
-            <div class="post-nav-item">
-                <a href="/2017/05/16/Topic/%E4%B8%8D%E4%BC%9AC++(%E4%B8%80)/" rel="next" title="不会C++(一)(explicit,new与malloc,union)">
-                  不会C++(一)(explicit,new与malloc,union) <i class="fa fa-chevron-right"></i>
-                </a>
-            </div>
-          </div>
-    </footer>
-  </article>
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container" role="dialog" aria-modal="true" aria-label="Image viewer">
+	<button class="image-viewer-close" type="button" aria-label="Close">
+		<i class="fa-solid fa-xmark"></i>
+	</button>
+	<button class="image-viewer-prev" type="button" aria-label="Prev">
+		<i class="fa-solid fa-chevron-left"></i>
+	</button>
+	<div class="image-viewer-frame">
+		<img src="" alt="">
+	</div>
+	<div class="image-viewer-exif-panel hidden absolute left-1/2 bottom-20 -translate-x-1/2 w-[min(92vw,420px)] max-h-[60vh] overflow-hidden rounded-2xl bg-background-color-transparent-80 p-4 text-left shadow-redefine-flat backdrop-blur-md" role="dialog" aria-label="EXIF" aria-hidden="true">
+		<div class="flex items-center justify-between mb-3">
+			<span class="text-sm font-semibold text-first-text-color">EXIF</span>
+			<button class="image-viewer-exif-close flex h-8 w-8 items-center justify-center rounded-full bg-background-color-transparent-80 text-first-text-color transition hover:bg-background-color-transparent-40" type="button" aria-label="Close">
+				<i class="fa-solid fa-xmark text-[0.65rem]"></i>
+			</button>
+		</div>
+		<div class="image-viewer-exif-cards grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[50vh] overflow-y-auto pr-1 scrollbar-hide"></div>
+		<template class="image-viewer-exif-card-template">
+			<div class="rounded-lg bg-background-color-transparent-40 px-3 py-2">
+				<div class="image-viewer-exif-card-header flex items-center gap-2 mb-1">
+					<i class="image-viewer-exif-card-icon fa-solid fa-circle-info text-xs text-third-text-color"></i>
+					<div class="image-viewer-exif-card-title text-xs font-semibold text-first-text-color"></div>
+				</div>
+				<div class="image-viewer-exif-card-items flex flex-col gap-1"></div>
+			</div>
+		</template>
+	</div>
+	<button class="image-viewer-exif-toggle flex items-center gap-2 hidden absolute left-1/2 bottom-6 -translate-x-1/2 rounded-full border border-border-color bg-background-color-transparent-80 px-4 py-2 text-first-text-color backdrop-blur-md transition hover:bg-background-color-transparent-40" type="button" aria-label="EXIF" aria-expanded="false">
+		<i class="fa-solid fa-circle-info text-xs"></i>
+		<span class="text-xs font-semibold uppercase tracking-wider">EXIF</span>
+	</button>
+	<button class="image-viewer-next" type="button" aria-label="Next">
+		<i class="fa-solid fa-chevron-right"></i>
+	</button>
 </div>
 
 
+	
+
+</main>
 
 
 
-
-</div>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-inner">
-
-
-<div class="copyright">
-  &copy; 
-  <span itemprop="copyrightYear">2025</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">2997ms</span>
-</div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
-  </div>
-
-    </div>
-  </footer>
-
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
-
-  
+	
+<script src="/js/build/main.js" type="module"></script>
 
 
 
 
 
-  
 
 
 
 
-  
-
-  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
-<script src="/js/third-party/math/mathjax.js"></script>
 
 
 
+
+
+
+
+<script src="/js/build/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+
+	
 </body>
+
 </html>

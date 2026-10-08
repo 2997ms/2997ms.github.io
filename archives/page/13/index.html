@@ -1,447 +1,2448 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.2.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    
+    <meta name="author" content="Chong Wang">
+    
+    <!-- Completely eliminate flash of wrong theme -->
+    <script>
+        (function() {
+            const THEME_KEY = "REDEFINE-THEME-STATUS";
+            const DARK = "dark", LIGHT = "light";
+            
+            // Get preferred theme
+            function getTheme() {
+                try {
+                    const saved = localStorage.getItem(THEME_KEY);
+                    if (saved) {
+                        const { isDark } = JSON.parse(saved);
+                        return isDark ? DARK : LIGHT;
+                    }
+                } catch (e) {}
+                
+                return matchMedia("(prefers-color-scheme: dark)").matches ? DARK : LIGHT;
+            }
+            
+            // Apply theme to document
+            function applyTheme(theme) {
+                const isDark = theme === DARK;
+                const root = document.documentElement;
+                
+                // Set classes for compatibility
+                root.classList.add(theme);
+                root.classList.remove(isDark ? LIGHT : DARK);
+                root.style.colorScheme = theme;
+            }
+            
+            // Initial application
+            const theme = getTheme();
+            applyTheme(theme);
+            
+            // Listen for system preference changes
+            matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ({ matches }) => {
+                // Only update if using system preference (no localStorage entry)
+                if (!localStorage.getItem(THEME_KEY)) {
+                    applyTheme(matches ? DARK : LIGHT);
+                }
+            });
+            
+            // Set body classes ASAP (before DOMContentLoaded)
+            (function() {
+                const addBodyClass = () => {
+                    const b = document.body;
+                    if (!b) return false;
+                    b.classList.add(theme + "-mode");
+                    return true;
+                };
 
+                // Try immediately
+                if (addBodyClass()) return;
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-
-<script class="next-config" data-name="main" type="application/json">{"hostname":"2997ms.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","Muse | Mist":320,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-
-    <meta property="og:type" content="website">
-<meta property="og:title" content="2997ms">
-<meta property="og:url" content="http://2997ms.github.io/archives/page/13/index.html">
-<meta property="og:site_name" content="2997ms">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="2997ms">
-<meta name="twitter:card" content="summary">
-
-
-<link rel="canonical" href="http://2997ms.github.io/archives/page/13/">
-
-
-
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"en","comments":"","permalink":"","path":"archives/page/13/index.html","title":""}</script>
-
-<script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Archive | 2997ms</title>
-  
-
-
-
-
-
-
-  <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
-  <div class="headband"></div>
-
-  <main class="main">
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <h1 class="site-title">2997ms</h1>
-      <i class="logo-line"></i>
-    </a>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-
-<nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-user fa-fw"></i>Home</a></li><li class="menu-item menu-item-posts"><a href="/categories/BiWeeklyUpdate" rel="section"><i class="fa fa-th fa-fw"></i>posts</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-  </ul>
-</nav>
-
-
-
-
-</div>
-        
-  
-  <div class="toggle sidebar-toggle" role="button">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
-
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-overview-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          Table of Contents
-        </li>
-        <li class="sidebar-nav-overview">
-          Overview
-        </li>
-      </ul>
-
-      <div class="sidebar-panel-container">
-        <!--noindex-->
-        <div class="post-toc-wrap sidebar-panel">
-        </div>
-        <!--/noindex-->
-
-        <div class="site-overview-wrap sidebar-panel">
-          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">2997ms</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap site-overview-item animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-        <a href="/archives/">
-          <span class="site-state-item-count">165</span>
-          <span class="site-state-item-name">posts</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-          <a href="/categories/">
-        <span class="site-state-item-count">2</span>
-        <span class="site-state-item-name">categories</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-          <a href="/tags/">
-        <span class="site-state-item-count">67</span>
-        <span class="site-state-item-name">tags</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author site-overview-item animated">
-      <span class="links-of-author-item">
-        <a href="https://github.com/2997ms" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;2997ms" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="mailto:wangchong756@gmail.com" title="E-Mail → mailto:wangchong756@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
-      </span>
-  </div>
-
-
-
-        </div>
-      </div>
-    </div>
-  </aside>
-  <div class="sidebar-dimmer"></div>
-
-
-    </header>
+                // Observe until body exists
+                const mo = new MutationObserver(() => {
+                    if (addBodyClass()) mo.disconnect();
+                });
+                mo.observe(document.documentElement, { childList: true, subtree: true });
+            })();
+        })();
+    </script>
+    
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     
-  <div class="back-to-top" role="button" aria-label="Back to top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
-
-
-    <div class="main-inner archive posts-collapse">
-
-
-  
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://2997ms.github.io/archives/page/13/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
         
-        <span class="collection-header">Great! 165 posts in total. Keep on posting.</span>
-      </div>
+        <meta name="description" content="Chong Wang — software engineer, smart contract security researcher, and competitive programmer.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Chong Wang">
+<meta property="og:url" content="http://2997ms.github.io/archives/page/13/index.html">
+<meta property="og:site_name" content="Chong Wang">
+<meta property="og:description" content="Chong Wang — software engineer, smart contract security researcher, and competitive programmer.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://2997ms.github.io/images/chong-wang.jpg">
+<meta property="article:author" content="Chong Wang">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://2997ms.github.io/images/chong-wang.jpg">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/chong-wang-favicon.png" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/chong-wang-favicon.png">
+    <meta name="theme-color" content="#49b6b1">
+    <link rel="shortcut icon" href="/images/chong-wang-favicon.png">
+    <!--- Page Info-->
+    
+    <title>
+        
+            Archive | Chong Wang
+        
+    </title>
 
-      
-    <div class="collection-year">
-      <span class="collection-header">2016</span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2016-12-13T04:43:11+08:00"
-              content="2016-12-13">
-          12-13
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2016/12/13/CP/Leetcode/LeetCode-41-50/" itemprop="url">
-            <span itemprop="name">LeetCode 41-50</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2016-11-05T19:00:34+08:00"
-              content="2016-11-05">
-          11-05
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2016/11/05/CP/CodeChef/CodeChef-October-Lunchtime-2016/" itemprop="url">
-            <span itemprop="name">CodeChef October Lunchtime 2016</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2016-10-25T06:34:16+08:00"
-              content="2016-10-25">
-          10-25
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2016/10/25/CP/Leetcode/LeetCode-31-40/" itemprop="url">
-            <span itemprop="name">LeetCode 31-40</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2016-10-25T02:22:01+08:00"
-              content="2016-10-25">
-          10-25
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2016/10/25/CP/Codeforces/Codeforces-376-Div2/" itemprop="url">
-            <span itemprop="name">Codeforces 376 Div2</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2016-10-20T01:03:25+08:00"
-              content="2016-10-20">
-          10-20
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2016/10/20/CP/Codeforces/Technocup-2017-Elimination-Round-1/" itemprop="url">
-            <span itemprop="name">Technocup 2017 - Elimination Round 1</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2016-10-14T04:07:20+08:00"
-              content="2016-10-14">
-          10-14
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2016/10/14/CP/AtCoder/CODE-FESTIVAL-2016-Qualification-Round-B/" itemprop="url">
-            <span itemprop="name">CODE FESTIVAL 2016 Qualification Round B</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2016-10-13T05:37:08+08:00"
-              content="2016-10-13">
-          10-13
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2016/10/13/CP/Google/Google-Code-Jam-Round-1A-2008/" itemprop="url">
-            <span itemprop="name">Google Code Jam Round 1A 2008</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2016-10-09T21:40:55+08:00"
-              content="2016-10-09">
-          10-09
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2016/10/09/BB/2016/2016-9%E6%9C%88-%E5%90%AD%E5%93%A7%E5%92%94%E5%93%A7/" itemprop="url">
-            <span itemprop="name">2016_9月_吭哧咔哧</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2016-10-08T05:27:24+08:00"
-              content="2016-10-08">
-          10-08
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2016/10/08/CP/Leetcode/LeetCode-21-30/" itemprop="url">
-            <span itemprop="name">LeetCode 21-30</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2016-10-07T04:39:17+08:00"
-              content="2016-10-07">
-          10-07
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2016/10/07/CP/Codeforces/Intel-Code-Chanllenge-Elimination-Round/" itemprop="url">
-            <span itemprop="name">Intel Code Chanllenge Elimination Round</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
 
 
-    </div>
-  </div>
-  
-  
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/page/12/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/archives/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/17/">17</a><a class="extend next" rel="next" href="/archives/page/14/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
-  </nav>
+    <!--- Inject Part-->
+    
 
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/build/tailwind.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"2997ms.github.io","root":"/","language":"en"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":false,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":false,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#49b6b1","secondary":null,"default_mode":"dark"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1080px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":false,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":false,"preloader":{"enable":false,"custom_message":null},"side_tools":{"gear_rotation":true,"auto_expand":false},"open_graph":{"enable":true,"image":"/images/chong-wang.jpg","description":"Chong Wang — software engineer, smart contract security researcher, and competitive programmer."},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":false,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"Theme Redefine","subtitle":{"text":[],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":[{"icon":"fa-brands fa-github","url":null},{"icon":"fa-brands fa-twitter","url":null},{"icon":"fa-solid fa-at","url":"you@example.com"},{"icon":"fa-brands fa-telegram","url":null},{"icon":"/images/custom-icon.svg","url":null}],"qrs":[{"icon":"fa-brands fa-weixin","qr":null},{"icon":"/images/custom-icon.svg","qr":null}]}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1","theme":{"light":"default","dark":"dark"}}},"version":"2.9.0","navbar":{"auto_hide":false,"color":{"left":"#101923","right":"#1b3b47","transparency":24},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Posts":{"path":"/archives","icon":"fa-regular fa-pen-to-square"},"About":{"path":"/about/","icon":"fa-regular fa-user"}},"search":{"enable":false,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur","masonry":{"batch_size":12,"initial_batch_size":24}},"home":{"sidebar":{"enable":false,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":null},"article_date_format":"YYYY-MM-DD","excerpt_length":180,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footer":{"runtime":false,"icon":"<i class=\"fa-solid fa-heart fa-beat\" style=\"--fa-animation-duration: 0.5s; color: #f54545\"></i>","start":"2022/8/17 11:45:14","statistics":false,"customize":"© Chong Wang","icp":{"enable":false,"number":null,"url":null}},"footerStart":"2022/8/17 11:45:14","mermaid":{"style":{"light":"default","dark":"dark"}}};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.i18n = {"search":"Search...","toc":"On this page","prev":"Prev","next":"Next","prev_posts":"Prev posts","next_posts":"Next posts","page":"Page %d","recent_posts":"Recent Posts","share":"Share","powered_by":"POWERED BY %s","theme":"THEME","rss_feed":"RSS Feed","category":"Category","categories":"Categories","tag":"Tag","tags":"Tags","post":"Post","posts":"Posts","tagcloud":"Tag Cloud","comment":"Comment","comments":"Comments","home":"Home","archive":"Archive","archives":"Archives","top":"TOP","sticky":"Sticky","go-back-home":"Go Back Home","masonry_loading":"Loading photos...","image_viewer":"Image viewer","close":"Close","exif":{"title":"EXIF","cards":{"camera":"Camera","lens":"Lens","exposure":"Exposure","other":"Other"},"fields":{"make":"Brand","model":"Model","date_taken":"Date taken","lens_model":"Lens","focal_length":"Focal length","focus_mode":"Focus mode","shutter":"Shutter","aperture":"Aperture","iso":"ISO","exposure_program":"Exposure program","exposure_compensation":"Exposure compensation","metering_mode":"Metering mode","flash":"Flash","white_balance":"White balance","latitude":"Latitude","longitude":"Longitude","altitude":"Altitude"},"status":{"loading":"Loading...","no_exif":"No EXIF available","library_missing":"EXIF library not loaded","image_source_missing":"Image source unavailable","unavailable":"EXIF unavailable (blocked by CORS or missing metadata)","flag_unavailable":"EXIF unavailable"}},"about":"About","changelog":"Changelog","links":"Links","link":"Link","friends":"Friends","friend":"Friend","timeline":"Timeline","shuoshuo":"Shuoshuo","bookmarks":"Bookmarks","site_uv":"VISITOR COUNT","site_pv":"TOTAL PAGE VIEWS","read_more":"Read more","wordcount":"Words","min2read":"Mins","status":"Status","runtime":"Blog up for","days":"days","hours":"hrs","minutes":"Min","seconds":"Sec","optimized_by":"and Optimized by Evan","rights":"All Rights Reserved","site_posts":"%s posts in total","site_wordcount":"%s words in total","copyright":{"author":"Author","title":"Title","link":"Link","create_time":"Created at","update_time":"Updated at","license_title":"License","license_content":"This work is licensed under %s.","all_rights_reserved":"All Rights Reserved &#169; %s","public_domain":"This work is in the public domain."},"ago":{"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"},"create_time":"Created","update_time":"Updated","expired":"This post is written %s days ago, and the content may not be up to date."};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+	<div class="progress-bar-container">
+	
+
+	
 </div>
-  </main>
 
-  <footer class="footer">
-    <div class="footer-inner">
+<main class="page-container" id="swup">
 
+	
 
-<div class="copyright">
-  &copy; 
-  <span itemprop="copyrightYear">2025</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">2997ms</span>
-</div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
-  </div>
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                Chong Wang
+                
+            </a>
+        </div>
 
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="active"
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-pen-to-square fa-fw"></i>
+                                    POSTS
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/about/"
+                                        >
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    ABOUT
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
     </div>
-  </footer>
 
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
 
-  
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/archives"
+                        >
+                            <span>
+                                POSTS
+                            </span>
+                            
+                                <i class="fa-regular fa-pen-to-square fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/about/"
+                        >
+                            <span>
+                                ABOUT
+                            </span>
+                            
+                                <i class="fa-regular fa-user fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">67</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">165</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="archive-container shadow-none hover:shadow-none sm:shadow-redefine sm:hover:shadow-redefine-hover">
+	
+<div class="archive-list-container">
+    
+        <section class="archive-item mb-spacing-unit last:mb-0">
+            <div class="archive-item-header flex flex-row items-center mb-2">
+                <span class="archive-year font-semibold text-3xl mr-2">2024</span>
+                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color">1</span>
+            </div>
+            
+            <ul class="article-list pl-0 md:pl-8 text-lg leading-[1.5]">
+                
+                    
+                    
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-30'>
+                    
+                    <a href="/2024/05/30/BB/2024/2024-5%E6%9C%88-%E5%9C%A8%E5%B8%8C%E6%9C%9B%E7%9A%84%E7%94%B0%E9%87%8E%E4%B8%8A_%E5%89%AF%E6%9C%AC/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2024-5月-在希望的田野上</span>
+                    </a>
+                    
+                
+                </li> <!-- Ensure the last item is properly closed -->
+            </ul>
+        </section>
+    
+        <section class="archive-item mb-spacing-unit last:mb-0">
+            <div class="archive-item-header flex flex-row items-center mb-2">
+                <span class="archive-year font-semibold text-3xl mr-2">2023</span>
+                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color">19</span>
+            </div>
+            
+            <ul class="article-list pl-0 md:pl-8 text-lg leading-[1.5]">
+                
+                    
+                    
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='10-01'>
+                    
+                    <a href="/2023/10/01/BB/2015/2023-10%E6%9C%88-%E4%BA%9B%E4%BA%9B%E7%A2%8E%E7%89%87/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2023-10月-些些碎片</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-31'>
+                    
+                    <a href="/2023/05/31/EVM_Puzzles/EVM-Puzzle-2/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">EVM Puzzle 2</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-30'>
+                    
+                    <a href="/2023/05/30/EVM_Puzzles/EVM-Puzzle-1/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">EVM Puzzle 1</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-23'>
+                    
+                    <a href="/2023/05/23/Ethernaut/Ethernaut-Puzzle-17-Recovery/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Ethernaut Puzzle 17 Recovery</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-20'>
+                    
+                    <a href="/2023/05/20/Ethernaut/Ethernaut-Puzzle-16-Preservation/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Ethernaut Puzzle 16 Preservation</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-14'>
+                    
+                    <a href="/2023/05/14/damnvulnerabledefi/damn-vulnerable-defi-01-Unstoppable/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Damn Vulnerable Defi 01 Unstoppable</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2023/05/14/Ethernaut/Ethernaut-Puzzle-15-Naught_Coin/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Ethernaut Puzzle 15 Naught Coin</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2023/05/14/Ethernaut/Ethernaut-Puzzle-14-GateKeeper_two/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Ethernaut Puzzle 14 GateKeeper Two</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2023/05/14/Ethernaut/Ethernaut-Puzzle-13-GateKeeper_one/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Ethernaut Puzzle 13 GateKeeper One</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-13'>
+                    
+                    <a href="/2023/05/13/Ethernaut/Ethernaut-Puzzle-12-Privacy/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Ethernaut Puzzle 12 Privacy</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2023/05/13/Ethernaut/Ethernaut-Puzzle-11-Elevator/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Ethernaut Puzzle 11 Elevator</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2023/05/13/Ethernaut/Ethernaut-Puzzle-10-Re_entrancy/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Ethernaut Puzzle 10 Re-entrancy</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2023/05/13/Ethernaut/Ethernaut-Puzzle-09-King/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Ethernaut Puzzle 09 King</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2023/05/13/Ethernaut/Ethernaut-Puzzle-08-Vault/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Ethernaut Puzzle 08 Vault</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2023/05/13/Ethernaut/Ethernaut-Puzzle-07-Force/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Ethernaut Puzzle 07 Force</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='04-04'>
+                    
+                    <a href="/2023/04/04/Ethernaut/Ethernaut-Puzzle-06-Delegation/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Ethernaut Puzzle 06 Delegation</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='04-01'>
+                    
+                    <a href="/2023/04/01/BB/2015/2023-4%E6%9C%88-%E5%86%99%E7%BB%9930%E5%B2%81(%E4%B8%8B)/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2023年-4月-写在30岁(下)</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='03-01'>
+                    
+                    <a href="/2023/03/01/BB/2015/2023-3%E6%9C%88-%E5%86%99%E7%BB%9930%E5%B2%81(%E4%B8%8A)/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2023年-3月-写在30岁(上)</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='01-01'>
+                    
+                    <a href="/2023/01/01/BB/2023/2023-1%E6%9C%88-%E6%88%91%E4%BB%AC%E7%9A%84%E5%91%BD%E8%BF%90%E5%88%BB%E5%9C%A8%E6%98%9F%E8%BE%B0%E4%B9%8B%E4%B8%8A/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2023年-1月-我们的命运刻在星辰之上</span>
+                    </a>
+                    
+                
+                </li> <!-- Ensure the last item is properly closed -->
+            </ul>
+        </section>
+    
+        <section class="archive-item mb-spacing-unit last:mb-0">
+            <div class="archive-item-header flex flex-row items-center mb-2">
+                <span class="archive-year font-semibold text-3xl mr-2">2022</span>
+                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color">17</span>
+            </div>
+            
+            <ul class="article-list pl-0 md:pl-8 text-lg leading-[1.5]">
+                
+                    
+                    
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='12-31'>
+                    
+                    <a href="/2022/12/31/BB/2022/2022-12%E6%9C%88-%E5%BD%93%E6%88%91%E8%87%AA%E7%94%B1%E6%97%B6/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2022年-12月-当我自由时</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='12-08'>
+                    
+                    <a href="/2022/12/08/BB/2022/Progress-Report-in-November-2022/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Progress Report in November, 2022</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='11-30'>
+                    
+                    <a href="/2022/11/30/BB/2022/2022-11%E6%9C%88-After-the-legends/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2022-11月-在传奇之后</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='10-15'>
+                    
+                    <a href="/2022/10/15/Ethernaut/Ethernaut-Puzzle-05-Token/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Ethernaut Puzzle 05 Token</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2022/10/15/Ethernaut/Ethernaut-Puzzle-04-Telephone/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Ethernaut Puzzle 04 Telephone</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='10-03'>
+                    
+                    <a href="/2022/10/03/Ethernaut/Ethernaut-Puzzle-03-Coin-Flip/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Ethernaut Puzzle 03 Coin Flip</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='10-01'>
+                    
+                    <a href="/2022/10/01/Ethernaut/Ethernaut-Puzzle-02-Fallout/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Ethernaut Puzzle 02 Fallout</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-21'>
+                    
+                    <a href="/2022/09/21/BB/2022/Progress-Report-in-October-2022/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Progress Report in October, 2022</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-19'>
+                    
+                    <a href="/2022/09/19/BB/2022/Progress%20Report%20in%20September%202022/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Progress Report in September, 2022</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-15'>
+                    
+                    <a href="/2022/09/15/CP/ProjectEuler/Project-Euler-700-Eulercoin/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Project-Euler-700 Eulercoin</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-11'>
+                    
+                    <a href="/2022/09/11/Ethernaut/Ethernaut-Puzzle-01-Fallback/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Ethernaut Puzzle 01 Fallback</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-08'>
+                    
+                    <a href="/2022/09/08/Ethernaut/Ethernaut-Puzzle-00-Hello-Ethernaut/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Ethernaut Puzzle 00 Hello Ethernaut!</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='08-29'>
+                    
+                    <a href="/2022/08/29/BB/2022/Progress%20Report%20in%20August,%202022/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Progress Report in August, 2022</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-29'>
+                    
+                    <a href="/2022/05/29/BB/2022/2022-5%E6%9C%88-%E8%BF%99%E4%B8%A4%E5%B9%B4/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2022-5月-这两年</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='04-17'>
+                    
+                    <a href="/2022/04/17/BB/2022/2022-4%E6%9C%88-%E5%B7%A5%E4%BD%9C%E4%B8%8E%E6%88%91/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2022-4月-工作与我</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='03-17'>
+                    
+                    <a href="/2022/03/17/BB/2022/2022-3%E6%9C%88-%E7%99%BE%E4%BA%8B%E6%97%A0%E7%B3%96/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2022-3月-百事无糖</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='02-02'>
+                    
+                    <a href="/2022/02/02/BB/2022/2022-2%E6%9C%88-%E6%9C%80%E8%BF%91%E5%9C%A8%E5%B9%B2%E5%98%9B/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2022-2月-最近在干嘛</span>
+                    </a>
+                    
+                
+                </li> <!-- Ensure the last item is properly closed -->
+            </ul>
+        </section>
+    
+        <section class="archive-item mb-spacing-unit last:mb-0">
+            <div class="archive-item-header flex flex-row items-center mb-2">
+                <span class="archive-year font-semibold text-3xl mr-2">2021</span>
+                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color">4</span>
+            </div>
+            
+            <ul class="article-list pl-0 md:pl-8 text-lg leading-[1.5]">
+                
+                    
+                    
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='04-11'>
+                    
+                    <a href="/2021/04/11/BB/2021/2021-4%E6%9C%88-%E4%B8%80%E4%B8%AA%E5%91%A8%E6%9C%AB/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2021-4月-一个周末</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='03-26'>
+                    
+                    <a href="/2021/03/26/BB/2021/2021-3%E6%9C%88-%E5%A4%A7%E5%8F%AF%E4%B8%80%E8%AF%95/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2021-3月-大可一试</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='02-21'>
+                    
+                    <a href="/2021/02/21/BB/2021/2021-2%E6%9C%88-%E8%BF%98%E6%98%AF%E8%A6%81%E7%9B%B8%E4%BF%A1/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2021-2月-还是要相信</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='01-03'>
+                    
+                    <a href="/2021/01/03/BB/2021/2021-1%E6%9C%88-%E9%A3%9E%E9%B8%BF%E9%9B%AA%E6%B3%A5/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2021-1月-飞鸿雪泥</span>
+                    </a>
+                    
+                
+                </li> <!-- Ensure the last item is properly closed -->
+            </ul>
+        </section>
+    
+        <section class="archive-item mb-spacing-unit last:mb-0">
+            <div class="archive-item-header flex flex-row items-center mb-2">
+                <span class="archive-year font-semibold text-3xl mr-2">2020</span>
+                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color">23</span>
+            </div>
+            
+            <ul class="article-list pl-0 md:pl-8 text-lg leading-[1.5]">
+                
+                    
+                    
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='12-31'>
+                    
+                    <a href="/2020/12/31/CP/2020%20plan%20and%20summary/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2020 plan and summary</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='12-25'>
+                    
+                    <a href="/2020/12/25/DDIA_Notes/ddia-%E7%AC%AC%E4%B9%9D%E7%AB%A0-%E4%B8%80%E8%87%B4%E6%80%A7%E4%B8%8E%E5%85%B1%E8%AF%86/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">ddia-第九章-一致性与共识</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='12-12'>
+                    
+                    <a href="/2020/12/12/BB/2020/2020-12%E6%9C%88-%E7%BC%93%E6%85%A2%E5%8F%88%E8%89%B0%E9%9A%BE/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2020-12月-缓慢又艰难</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='11-11'>
+                    
+                    <a href="/2020/11/11/BB/2020/2020-11%E6%9C%88-%E6%B5%AA%E6%BD%AE%E4%B8%8E%E6%B5%B7/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2020-11月-浪潮与海</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='10-26'>
+                    
+                    <a href="/2020/10/26/BB/2020/2020-10%E6%9C%88-%E5%86%99%E4%BA%8E%E7%9B%9B%E5%A4%8F%20%E5%86%99%E4%BA%8E%E5%AF%92%E5%86%AC/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2020-10月-写于盛夏 写于寒冬</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-24'>
+                    
+                    <a href="/2020/09/24/BB/2020/2020-9%E6%9C%88-%E5%9B%9E%E5%88%B0%E6%9C%80%E5%88%9D%E7%9A%84%E5%9C%B0%E6%96%B9/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2020-9月-回到最初的地方</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='08-09'>
+                    
+                    <a href="/2020/08/09/BB/2020/2020%E5%B9%B4-8%E6%9C%88-%E8%87%B4%E6%9C%AA%E6%9D%A5%E4%B8%89%E5%B9%B4%E7%9A%84%E4%BD%A0/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2020年-08月-五年高考三年计划</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='07-15'>
+                    
+                    <a href="/2020/07/15/BB/2020/2020%E5%B9%B4-7%E6%9C%88-OnTheWay/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2020年-07月-在路上</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='06-13'>
+                    
+                    <a href="/2020/06/13/BB/2020/2020%E5%B9%B4-6%E6%9C%88-AHalf/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2020年-06月-九局下半</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-30'>
+                    
+                    <a href="/2020/05/30/CP/Codeforces/Codeforces-645-Div2/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Codeforces 645 Div2</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-27'>
+                    
+                    <a href="/2020/05/27/DDIA_Notes/ddia-%E7%AC%AC%E5%85%AB%E7%AB%A0%20%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E9%BA%BB%E7%83%A6/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">ddia-第八章-分布式系统的麻烦</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-18'>
+                    
+                    <a href="/2020/05/18/DDIA_Notes/ddia-%E7%AC%AC%E4%B8%83%E7%AB%A0%20%E4%BA%8B%E5%8A%A1/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">ddia-第七章-事务</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2020/05/18/CP/POJ/POJ-2689/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">POJ 2689</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2020/05/18/BB/2020/2020%E5%B9%B4-5%E6%9C%88-%E4%B8%80%E5%AE%9A%E4%B8%80%E5%AE%9A/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2020年-5月-一定一定</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-17'>
+                    
+                    <a href="/2020/05/17/CP/Codeforces/Codeforces-1355E/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Codeforces 1355E</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-16'>
+                    
+                    <a href="/2020/05/16/CP/Codeforces/Codeforces-1343E/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Codeforces 1343E</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2020/05/16/CP/Codeforces/Codeforces-768E/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Codeforces 768E</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='04-12'>
+                    
+                    <a href="/2020/04/12/CP/AtCoder/AtCoder-Beginner-Contest-160/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">AtCoder Beginner Contest 160</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2020/04/12/BB/2020/2020%E5%B9%B4-4%E6%9C%88-%E8%80%8C%E4%BB%8A%E7%9A%84%E6%88%91%E4%BB%AC%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%99%E4%B9%88%E7%B4%AF%E8%BF%99%E4%B9%88%E4%B8%A7/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2020年-4月-而今的我们为什么这么累这么丧</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='03-22'>
+                    
+                    <a href="/2020/03/22/Topic/%E7%8E%AF%E7%9A%84%E9%97%AE%E9%A2%98/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">环路问题</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2020/03/22/CP/Google/Kickstart-A-Round-2020/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Kickstart A Round 2020</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='03-21'>
+                    
+                    <a href="/2020/03/21/CP/AtCoder/Panasonic-Programming-Contest-2020/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Panasonic Programming Contest 2020</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='02-19'>
+                    
+                    <a href="/2020/02/19/BB/2020/2020%E5%B9%B4-2%E6%9C%88/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2020年-2月-春生夏长，秋收冬藏</span>
+                    </a>
+                    
+                
+                </li> <!-- Ensure the last item is properly closed -->
+            </ul>
+        </section>
+    
+        <section class="archive-item mb-spacing-unit last:mb-0">
+            <div class="archive-item-header flex flex-row items-center mb-2">
+                <span class="archive-year font-semibold text-3xl mr-2">2019</span>
+                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color">10</span>
+            </div>
+            
+            <ul class="article-list pl-0 md:pl-8 text-lg leading-[1.5]">
+                
+                    
+                    
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='12-30'>
+                    
+                    <a href="/2019/12/30/BB/2019/2019%E5%B9%B4-12%E6%9C%88-%E4%BC%A6%E6%95%A6%E4%B9%8B%E8%A1%8C/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2019年-12月-伦敦之行</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='11-18'>
+                    
+                    <a href="/2019/11/18/CP/Codeforces/Eductional-Codeforces-Round-1/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Educational Codeforces Round 1</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='11-10'>
+                    
+                    <a href="/2019/11/10/BB/2019/2019%E5%B9%B4-11%E6%9C%88-%E6%9C%80%E5%90%8E%E4%B8%80%E5%B9%B4/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2019年-11月-最后一年</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='10-27'>
+                    
+                    <a href="/2019/10/27/BB/2019/2019%E5%B9%B4-10%E6%9C%88-%E8%BF%99%E4%B8%A4%E5%B9%B4%E6%9D%A5/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2019年-10月-这两年来</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='08-04'>
+                    
+                    <a href="/2019/08/04/CP/Leetcode/LeetCode-1051-1100/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">LeetCode 1051-1100</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2019/08/04/CP/Leetcode/LeetCode-1101-1150/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">LeetCode 1101-1150</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2019/08/04/CP/Hackerrank/Hackerrank%E9%80%89%E5%81%9A/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Hackerrank选做</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2019/08/04/BB/2019/2019%E5%B9%B4-8%E6%9C%88-%E9%B2%9C%E8%8A%B1%E8%8D%86%E6%A3%98/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2019年-8月-鲜花荆棘</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-02'>
+                    
+                    <a href="/2019/05/02/CP/TopCoder/2019-TCO-Round-1B/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2019 TCO Round 1B</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='04-13'>
+                    
+                    <a href="/2019/04/13/CP/Google/Google-Code-Jam-2019-Round-1A/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Google Code Jam 2019 Round 1A</span>
+                    </a>
+                    
+                
+                </li> <!-- Ensure the last item is properly closed -->
+            </ul>
+        </section>
+    
+        <section class="archive-item mb-spacing-unit last:mb-0">
+            <div class="archive-item-header flex flex-row items-center mb-2">
+                <span class="archive-year font-semibold text-3xl mr-2">2018</span>
+                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color">17</span>
+            </div>
+            
+            <ul class="article-list pl-0 md:pl-8 text-lg leading-[1.5]">
+                
+                    
+                    
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='12-09'>
+                    
+                    <a href="/2018/12/09/CP/51nod/51nod-1290/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">51nod 1290</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2018/12/09/CP/51nod/51nod-1594/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">51nod 1594</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2018/12/09/CP/51nod/51nod%E5%A1%AB%E5%9D%91%E8%AE%B0-%E4%B8%89/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">51nod填坑记(三)(1203,1695)</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='12-02'>
+                    
+                    <a href="/2018/12/02/CP/51nod/51nod%E5%A1%AB%E5%9D%91%E8%AE%B0-%E4%BA%8C/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">51nod填坑记(二)(1048, 1167)</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-15'>
+                    
+                    <a href="/2018/09/15/CP/ProjectEuler/PE-243-Resilience/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">PE#243 Resilience</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-05'>
+                    
+                    <a href="/2018/09/05/CP/ProjectEuler/PE-12-Highly-divisible-triangular-number/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">PE#12 Highly divisible triangular number</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='08-12'>
+                    
+                    <a href="/2018/08/12/BB/2018/2018_8_Present_is_a_gift/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2018年_8月_时至今日</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2018/08/12/CP/POJ/POJ-1821/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">POJ 1821</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='03-21'>
+                    
+                    <a href="/2018/03/21/CP/AtCoder/AtCoder-Regular-Contest-091/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">AtCoder Regular Contest 091</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='03-05'>
+                    
+                    <a href="/2018/03/05/BB/2018/2018_3_%E8%87%AA%E7%94%B1%E8%87%AA%E5%9C%A8%E6%94%BE%E6%B5%AA%E5%BD%A2%E9%AA%B8/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2018_3月_自由自在 放浪形骸</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='03-03'>
+                    
+                    <a href="/2018/03/03/CP/CS-academy/CS-academy-Round-71/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">CS academy Round 71</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='02-21'>
+                    
+                    <a href="/2018/02/21/CP/CS-academy/CS-academy-Round-66/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">CS academy Round 66</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='02-09'>
+                    
+                    <a href="/2018/02/09/CP/CS-academy/CS-academy-Round-68/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">CS academy Round 68</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='02-04'>
+                    
+                    <a href="/2018/02/04/BB/2018/2018_2_MomentsOfLife/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2018年_2月_生命里的好时刻</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='01-26'>
+                    
+                    <a href="/2018/01/26/CP/AtCoder/AtCoder-Regular-Contest-088/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">AtCoder Regular Contest 088</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='01-23'>
+                    
+                    <a href="/2018/01/23/BB/2018/2018_1_%E6%B3%A5%E6%AD%A5%E4%BF%AE%E8%A1%8C/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2018年_1月_泥步修行</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='01-11'>
+                    
+                    <a href="/2018/01/11/CP/TopCoder/TopCoder%E9%80%89%E5%81%9A/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Topcoder选做</span>
+                    </a>
+                    
+                
+                </li> <!-- Ensure the last item is properly closed -->
+            </ul>
+        </section>
+    
+        <section class="archive-item mb-spacing-unit last:mb-0">
+            <div class="archive-item-header flex flex-row items-center mb-2">
+                <span class="archive-year font-semibold text-3xl mr-2">2017</span>
+                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color">32</span>
+            </div>
+            
+            <ul class="article-list pl-0 md:pl-8 text-lg leading-[1.5]">
+                
+                    
+                    
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='12-26'>
+                    
+                    <a href="/2017/12/26/CP/Codeforces/Codeforces-451-Div2/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Codeforces 451 Div2</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='12-25'>
+                    
+                    <a href="/2017/12/25/BB/2017/2017%E5%B9%B4-12%E6%9C%88-%E6%88%91%E7%9A%84%E5%A4%B1%E8%B4%A5%E4%B8%8E%E7%BB%A7%E7%BB%AD/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2017_12月_我的失败与继续</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='12-21'>
+                    
+                    <a href="/2017/12/21/CP/Codeforces/Codeforces-452-Div2/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Codeforces 452 Div2</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='11-09'>
+                    
+                    <a href="/2017/11/09/CP/AtCoder/CODE-FESTIVAL%20-2017-qual-D%20/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">CODE FESTIVAL 2017 qual D</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='11-04'>
+                    
+                    <a href="/2017/11/04/CP/AtCoder/CODE-FESTIVAL-2017-qual-B/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">CODE FESTIVAL 2017 qual B</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='10-22'>
+                    
+                    <a href="/2017/10/22/BB/2017/2017-10%E6%9C%88-%E5%91%8A%E5%88%AB%E5%A4%A9%E5%A0%82/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2017-10月-告别天堂</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='10-08'>
+                    
+                    <a href="/2017/10/08/Topic/%E7%AC%94%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%861/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">笔试题整理</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='10-04'>
+                    
+                    <a href="/2017/10/04/CP/University-CodeSprint-3-%E5%BE%85%E5%A1%AB/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">University CodeSprint 3(待填)</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='10-02'>
+                    
+                    <a href="/2017/10/02/CP/51nod/51nod%E5%A1%AB%E5%9D%91%E8%AE%B0-%E4%B8%80/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">51nod填坑记(一)(1742,1810,1753,1291,1296)</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-29'>
+                    
+                    <a href="/2017/09/29/BB/2017/2017%E5%B9%B4-9%E6%9C%88-Time%20Travel/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2017_9月_Time Travel</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='08-30'>
+                    
+                    <a href="/2017/08/30/BB/2017/2017%E5%B9%B4-8%E6%9C%88-%E8%8D%92%E8%85%94%E8%B5%B0%E6%9D%BF/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2017_8月_荒腔走板</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='08-05'>
+                    
+                    <a href="/2017/08/05/CP/CS-academy/CS-academy-Round-40/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">CS academy Round 40</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='07-31'>
+                    
+                    <a href="/2017/07/31/BB/2017/2017-7%E6%9C%88-%E8%AF%B7%E5%9B%9E%E7%AD%947%E6%9C%88/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2017_7月_请回答七月</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='07-30'>
+                    
+                    <a href="/2017/07/30/CP/AtCoder/AtCoder-Regular-Contest-077/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">AtCoder Regular Contest 077</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='06-30'>
+                    
+                    <a href="/2017/06/30/Topic/%E4%B8%8D%E4%BC%9AC++(%E4%BA%8C)/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">不会C++(二)(继承和组合)</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='06-16'>
+                    
+                    <a href="/2017/06/16/CP/Codeforces/Codeforces-418-Div2/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Codeforces 418 Div2</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2017/06/16/CP/Codeforces/Codeforces-417-Div2/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Codeforces 417 Div2</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='06-15'>
+                    
+                    <a href="/2017/06/15/CP/CS-academy/CS-academy-Round-33/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">CS academy Round 33</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='06-09'>
+                    
+                    <a href="/2017/06/09/CP/AtCoder/AtCoder-Regular-Contest-075/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">AtCoder Regular Contest 075</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-30'>
+                    
+                    <a href="/2017/05/30/CP/CS-academy/CS-academy-Round-29/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">CS academy Round 29</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2017/05/30/CP/Codeforces/Codeforces-416-Div2/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Codeforces 416 Div2</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-21'>
+                    
+                    <a href="/2017/05/21/BB/2017/2017_5%E6%9C%88_%E5%A6%82%E6%AD%A4%E6%BC%AB%E9%95%BF/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2017_5月_很多很多</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-16'>
+                    
+                    <a href="/2017/05/16/Topic/%E4%B8%8D%E4%BC%9AC++(%E4%B8%80)/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">不会C++(一)(explicit,new与malloc,union)</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-06'>
+                    
+                    <a href="/2017/05/06/CP/AtCoder/AtCoder-Regular-Contest-073/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">AtCoder Regular Contest 073</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-01'>
+                    
+                    <a href="/2017/05/01/CP/Codeforces/2017-ACM-Arabella-Collegiate-Programming-Contest/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2017 ACM Arabella Collegiate Programming Contest</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='04-03'>
+                    
+                    <a href="/2017/04/03/BB/2017/2017_4%E6%9C%88_%E4%B8%AD%E5%B9%B4%E5%8D%B1%E6%9C%BA/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2017_4月_中年危机</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='03-16'>
+                    
+                    <a href="/2017/03/16/Topic/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%863/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">面试题整理3</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='03-15'>
+                    
+                    <a href="/2017/03/15/Topic/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%862/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">面试题整理2</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='03-12'>
+                    
+                    <a href="/2017/03/12/Topic/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%861/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">面试题整理1</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='03-11'>
+                    
+                    <a href="/2017/03/11/CP/Google/Kickstart-A-Round-2017/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Kickstart A Round 2017</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='03-03'>
+                    
+                    <a href="/2017/03/03/CP/Google/Kickstart-Practice-Round-2017/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Kickstart Practice Round 2017</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='02-07'>
+                    
+                    <a href="/2017/02/07/CP/Hackerrank/Hackerrank-HourRank-17/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Hackerrank HourRank 17</span>
+                    </a>
+                    
+                
+                </li> <!-- Ensure the last item is properly closed -->
+            </ul>
+        </section>
+    
+        <section class="archive-item mb-spacing-unit last:mb-0">
+            <div class="archive-item-header flex flex-row items-center mb-2">
+                <span class="archive-year font-semibold text-3xl mr-2">2016</span>
+                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color">37</span>
+            </div>
+            
+            <ul class="article-list pl-0 md:pl-8 text-lg leading-[1.5]">
+                
+                    
+                    
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='12-12'>
+                    
+                    <a href="/2016/12/12/CP/Leetcode/LeetCode-41-50/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">LeetCode 41-50</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='11-05'>
+                    
+                    <a href="/2016/11/05/CP/CodeChef/CodeChef-October-Lunchtime-2016/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">CodeChef October Lunchtime 2016</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='10-24'>
+                    
+                    <a href="/2016/10/24/CP/Leetcode/LeetCode-31-40/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">LeetCode 31-40</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2016/10/24/CP/Codeforces/Codeforces-376-Div2/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Codeforces 376 Div2</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='10-19'>
+                    
+                    <a href="/2016/10/19/CP/Codeforces/Technocup-2017-Elimination-Round-1/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Technocup 2017 - Elimination Round 1</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='10-13'>
+                    
+                    <a href="/2016/10/13/CP/AtCoder/CODE-FESTIVAL-2016-Qualification-Round-B/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">CODE FESTIVAL 2016 Qualification Round B</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='10-12'>
+                    
+                    <a href="/2016/10/12/CP/Google/Google-Code-Jam-Round-1A-2008/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Google Code Jam Round 1A 2008</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='10-07'>
+                    
+                    <a href="/2016/10/07/CP/Leetcode/LeetCode-21-30/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">LeetCode 21-30</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='10-06'>
+                    
+                    <a href="/2016/10/06/CP/Codeforces/Intel-Code-Chanllenge-Elimination-Round/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Intel Code Chanllenge Elimination Round</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2016/10/06/CP/Codeforces/Codeforces-375-Div2/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Codeforces 375 Div2</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2016/10/06/CP/Codeforces/Codeforces-374-Div2/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Codeforces 374 Div2</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2016/10/06/CP/Hackerrank/Hackerrank-HourRank-13/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Hackerrank HourRank 13</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-28'>
+                    
+                    <a href="/2016/09/28/CP/Codeforces/Codeforces-372-Div2/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Codeforces 372 Div2</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-27'>
+                    
+                    <a href="/2016/09/27/CP/Codeforces/Codeforces-373-Div2/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Codeforces 373 Div2</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2016/09/27/CP/AtCoder/CODE-FESTIVAL-2016-Qualification-Round-A/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">CODE FESTIVAL 2016 Qualification Round A</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-23'>
+                    
+                    <a href="/2016/09/23/CP/Leetcode/LeetCode-11-20/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">LeetCode 11-20</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-21'>
+                    
+                    <a href="/2016/09/21/CP/Leetcode/LeetCode-1-10/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">LeetCode 1-10</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-19'>
+                    
+                    <a href="/2016/09/19/CP/Google/Google-APAC-Test-2017-Round-C/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Google APAC Test 2017 Round C</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2016/09/19/CP/Codeforces/Codeforces-371/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Codeforces 371</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-15'>
+                    
+                    <a href="/2016/09/15/CP/AtCoder/AtCoder-Regular-Contest-061/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">AtCoder Regular Contest 061</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-14'>
+                    
+                    <a href="/2016/09/14/CP/AtCoder/AtCoder-Grand-Contest-004/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">AtCoder Grand Contest 004</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-13'>
+                    
+                    <a href="/2016/09/13/CP/AtCoder/AtCoder-Grand-Contest-003/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">AtCoder Grand Contest 003</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-09'>
+                    
+                    <a href="/2016/09/09/BB/2016/2016-9%E6%9C%88-%E5%90%AD%E5%93%A7%E5%92%94%E5%93%A7/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2016_9月_吭哧咔哧</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-07'>
+                    
+                    <a href="/2016/09/07/CP/AtCoder/AtCoder-Grand-Contest-002/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">AtCoder Grand Contest 002</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-05'>
+                    
+                    <a href="/2016/09/05/CP/AtCoder/AtCoder-Regular-Contest-060/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">AtCoder Regular Contest 060</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-03'>
+                    
+                    <a href="/2016/09/03/CP/AtCoder/AtCoder-Regular-Contest-059/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">AtCoder Regular Contest 059</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2016/09/03/CP/CodeChef/CodeChef-August-Lunchtime-2016/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">CodeChef August Lunchtime 2016</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='08-31'>
+                    
+                    <a href="/2016/08/31/CP/Codeforces/Codeforces-369-Div2/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Codeforces 369 Div2</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='08-22'>
+                    
+                    <a href="/2016/08/22/CP/Codeforces/Codeforces-362-Div2/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Codeforces 362 Div2</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='07-30'>
+                    
+                    <a href="/2016/07/30/CP/AtCoder/AtCoder-Regular-Contest-058/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">AtCoder Regular Contest 058</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='07-20'>
+                    
+                    <a href="/2016/07/20/CP/AtCoder/AtCoder-Grand-Contest-001/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">AtCoder Grand Contest 001</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='07-17'>
+                    
+                    <a href="/2016/07/17/BB/2016/2016-2%E6%9C%88-%E6%98%AF%E7%9A%84%E6%98%AF%E7%9A%84/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2016_7月_是的是的</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='06-30'>
+                    
+                    <a href="/2016/06/30/BB/2016/2016-6%E6%9C%88-%E7%83%AB%E7%83%AB%E7%83%AB%E7%83%AB/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2016-6月-烫烫烫烫</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-18'>
+                    
+                    <a href="/2016/05/18/CP/HDU/HDU%205668/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">HDU 5668 Circle</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='03-31'>
+                    
+                    <a href="/2016/03/31/BB/2016/2016-3%E6%9C%88-%E5%A3%AE%E6%80%80%E6%BF%80%E7%83%88/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2016-3月-壮怀激烈</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='02-29'>
+                    
+                    <a href="/2016/02/29/BB/2016/2016-2%E6%9C%88-%E4%B8%80%E4%B9%9D%E9%9B%B6%E9%9B%B6/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2016-2月-1900</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='01-31'>
+                    
+                    <a href="/2016/01/31/BB/2016/2016-1%E6%9C%88-make%20each%20day%20count/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2016-1月-make each day count</span>
+                    </a>
+                    
+                
+                </li> <!-- Ensure the last item is properly closed -->
+            </ul>
+        </section>
+    
+        <section class="archive-item mb-spacing-unit last:mb-0">
+            <div class="archive-item-header flex flex-row items-center mb-2">
+                <span class="archive-year font-semibold text-3xl mr-2">2015</span>
+                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color">5</span>
+            </div>
+            
+            <ul class="article-list pl-0 md:pl-8 text-lg leading-[1.5]">
+                
+                    
+                    
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='11-30'>
+                    
+                    <a href="/2015/11/30/BB/2015/2015-11-%E6%9C%89%E7%94%9F%E4%B9%8B%E5%B9%B4/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2015-11-有生之年</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='11-01'>
+                    
+                    <a href="/2015/11/01/BB/2015/2015-10-%E5%8F%BD%E9%87%8C%E5%92%95%E5%99%9C/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2015-10-叽里咕噜</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-30'>
+                    
+                    <a href="/2015/09/30/BB/2015/2015-09-%E8%BF%9C%E6%96%B9%E4%B9%8B%E8%BF%9C/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2015-09-远方之远</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='08-31'>
+                    
+                    <a href="/2015/08/31/BB/2015/2015-08-%E8%8B%B1%E9%9B%84%E4%B8%8D%E8%80%81/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2015-08-英雄不老</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='07-31'>
+                    
+                    <a href="/2015/07/31/BB/2015/2015-07-%E8%A3%85%E8%AE%A2%E7%A9%BA%E7%99%BD/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2015-07-装订空白</span>
+                    </a>
+                    
+                
+                </li> <!-- Ensure the last item is properly closed -->
+            </ul>
+        </section>
+    
+</div>
+</div>
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+            <div class="customize-info my-1">© Chong Wang</div>
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2026&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">Chong Wang</a>
+            
+        </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.9.0</a></span>
+        </div>
+        
+        
+        
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container" role="dialog" aria-modal="true" aria-label="Image viewer">
+	<button class="image-viewer-close" type="button" aria-label="Close">
+		<i class="fa-solid fa-xmark"></i>
+	</button>
+	<button class="image-viewer-prev" type="button" aria-label="Prev">
+		<i class="fa-solid fa-chevron-left"></i>
+	</button>
+	<div class="image-viewer-frame">
+		<img src="" alt="">
+	</div>
+	<div class="image-viewer-exif-panel hidden absolute left-1/2 bottom-20 -translate-x-1/2 w-[min(92vw,420px)] max-h-[60vh] overflow-hidden rounded-2xl bg-background-color-transparent-80 p-4 text-left shadow-redefine-flat backdrop-blur-md" role="dialog" aria-label="EXIF" aria-hidden="true">
+		<div class="flex items-center justify-between mb-3">
+			<span class="text-sm font-semibold text-first-text-color">EXIF</span>
+			<button class="image-viewer-exif-close flex h-8 w-8 items-center justify-center rounded-full bg-background-color-transparent-80 text-first-text-color transition hover:bg-background-color-transparent-40" type="button" aria-label="Close">
+				<i class="fa-solid fa-xmark text-[0.65rem]"></i>
+			</button>
+		</div>
+		<div class="image-viewer-exif-cards grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[50vh] overflow-y-auto pr-1 scrollbar-hide"></div>
+		<template class="image-viewer-exif-card-template">
+			<div class="rounded-lg bg-background-color-transparent-40 px-3 py-2">
+				<div class="image-viewer-exif-card-header flex items-center gap-2 mb-1">
+					<i class="image-viewer-exif-card-icon fa-solid fa-circle-info text-xs text-third-text-color"></i>
+					<div class="image-viewer-exif-card-title text-xs font-semibold text-first-text-color"></div>
+				</div>
+				<div class="image-viewer-exif-card-items flex flex-col gap-1"></div>
+			</div>
+		</template>
+	</div>
+	<button class="image-viewer-exif-toggle flex items-center gap-2 hidden absolute left-1/2 bottom-6 -translate-x-1/2 rounded-full border border-border-color bg-background-color-transparent-80 px-4 py-2 text-first-text-color backdrop-blur-md transition hover:bg-background-color-transparent-40" type="button" aria-label="EXIF" aria-expanded="false">
+		<i class="fa-solid fa-circle-info text-xs"></i>
+		<span class="text-xs font-semibold uppercase tracking-wider">EXIF</span>
+	</button>
+	<button class="image-viewer-next" type="button" aria-label="Next">
+		<i class="fa-solid fa-chevron-right"></i>
+	</button>
+</div>
+
+
+	
+
+</main>
+
+
+	
+<script src="/js/build/main.js" type="module"></script>
 
 
 
 
 
-  
 
 
 
 
-  
-
-  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
-<script src="/js/third-party/math/mathjax.js"></script>
 
 
 
+
+
+
+
+<script src="/js/build/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+
+	
 </body>
+
 </html>
