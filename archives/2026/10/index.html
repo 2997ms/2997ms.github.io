@@ -1,0 +1,2336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    
+    <meta name="author" content="Chong Wang">
+    
+    <!-- Completely eliminate flash of wrong theme -->
+    <script>
+        (function() {
+            const THEME_KEY = "REDEFINE-THEME-STATUS";
+            const DARK = "dark", LIGHT = "light";
+            
+            // Get preferred theme
+            function getTheme() {
+                try {
+                    const saved = localStorage.getItem(THEME_KEY);
+                    if (saved) {
+                        const { isDark } = JSON.parse(saved);
+                        return isDark ? DARK : LIGHT;
+                    }
+                } catch (e) {}
+                
+                return matchMedia("(prefers-color-scheme: dark)").matches ? DARK : LIGHT;
+            }
+            
+            // Apply theme to document
+            function applyTheme(theme) {
+                const isDark = theme === DARK;
+                const root = document.documentElement;
+                
+                // Set classes for compatibility
+                root.classList.add(theme);
+                root.classList.remove(isDark ? LIGHT : DARK);
+                root.style.colorScheme = theme;
+            }
+            
+            // Initial application
+            const theme = getTheme();
+            applyTheme(theme);
+            
+            // Listen for system preference changes
+            matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ({ matches }) => {
+                // Only update if using system preference (no localStorage entry)
+                if (!localStorage.getItem(THEME_KEY)) {
+                    applyTheme(matches ? DARK : LIGHT);
+                }
+            });
+            
+            // Set body classes ASAP (before DOMContentLoaded)
+            (function() {
+                const addBodyClass = () => {
+                    const b = document.body;
+                    if (!b) return false;
+                    b.classList.add(theme + "-mode");
+                    return true;
+                };
+
+                // Try immediately
+                if (addBodyClass()) return;
+
+                // Observe until body exists
+                const mo = new MutationObserver(() => {
+                    if (addBodyClass()) mo.disconnect();
+                });
+                mo.observe(document.documentElement, { childList: true, subtree: true });
+            })();
+        })();
+    </script>
+    
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://2997ms.github.io/archives/2026/10/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+        
+        <meta name="description" content="Chong Wang — software engineer, smart contract security researcher, and competitive programmer.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Chong Wang">
+<meta property="og:url" content="http://2997ms.github.io/archives/2026/10/index.html">
+<meta property="og:site_name" content="Chong Wang">
+<meta property="og:description" content="Chong Wang — software engineer, smart contract security researcher, and competitive programmer.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://2997ms.github.io/images/chong-wang.jpg">
+<meta property="article:author" content="Chong Wang">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://2997ms.github.io/images/chong-wang.jpg">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/chong-wang-favicon.png" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/chong-wang-favicon.png">
+    <meta name="theme-color" content="#49b6b1">
+    <link rel="shortcut icon" href="/images/chong-wang-favicon.png">
+    <!--- Page Info-->
+    
+    <title>
+        
+            Archive: 2026/10 | Chong Wang
+        
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/build/tailwind.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"2997ms.github.io","root":"/","language":"en"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":false,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":false,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#49b6b1","secondary":null,"default_mode":"dark"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1080px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":false,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":false,"preloader":{"enable":false,"custom_message":null},"side_tools":{"gear_rotation":true,"auto_expand":false},"open_graph":{"enable":true,"image":"/images/chong-wang.jpg","description":"Chong Wang — software engineer, smart contract security researcher, and competitive programmer."},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":false,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"Theme Redefine","subtitle":{"text":[],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":[{"icon":"fa-brands fa-github","url":null},{"icon":"fa-brands fa-twitter","url":null},{"icon":"fa-solid fa-at","url":"you@example.com"},{"icon":"fa-brands fa-telegram","url":null},{"icon":"/images/custom-icon.svg","url":null}],"qrs":[{"icon":"fa-brands fa-weixin","qr":null},{"icon":"/images/custom-icon.svg","qr":null}]}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1","theme":{"light":"default","dark":"dark"}}},"version":"2.9.0","navbar":{"auto_hide":false,"color":{"left":"#101923","right":"#1b3b47","transparency":24},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Posts":{"path":"/archives","icon":"fa-regular fa-pen-to-square"},"About":{"path":"/about/","icon":"fa-regular fa-user"}},"search":{"enable":false,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur","masonry":{"batch_size":12,"initial_batch_size":24}},"home":{"sidebar":{"enable":false,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":null},"article_date_format":"YYYY-MM-DD","excerpt_length":180,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footer":{"runtime":false,"icon":"<i class=\"fa-solid fa-heart fa-beat\" style=\"--fa-animation-duration: 0.5s; color: #f54545\"></i>","start":"2022/8/17 11:45:14","statistics":false,"customize":"© Chong Wang","icp":{"enable":false,"number":null,"url":null}},"footerStart":"2022/8/17 11:45:14","mermaid":{"style":{"light":"default","dark":"dark"}}};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.i18n = {"search":"Search...","toc":"On this page","prev":"Prev","next":"Next","prev_posts":"Prev posts","next_posts":"Next posts","page":"Page %d","recent_posts":"Recent Posts","share":"Share","powered_by":"POWERED BY %s","theme":"THEME","rss_feed":"RSS Feed","category":"Category","categories":"Categories","tag":"Tag","tags":"Tags","post":"Post","posts":"Posts","tagcloud":"Tag Cloud","comment":"Comment","comments":"Comments","home":"Home","archive":"Archive","archives":"Archives","top":"TOP","sticky":"Sticky","go-back-home":"Go Back Home","masonry_loading":"Loading photos...","image_viewer":"Image viewer","close":"Close","exif":{"title":"EXIF","cards":{"camera":"Camera","lens":"Lens","exposure":"Exposure","other":"Other"},"fields":{"make":"Brand","model":"Model","date_taken":"Date taken","lens_model":"Lens","focal_length":"Focal length","focus_mode":"Focus mode","shutter":"Shutter","aperture":"Aperture","iso":"ISO","exposure_program":"Exposure program","exposure_compensation":"Exposure compensation","metering_mode":"Metering mode","flash":"Flash","white_balance":"White balance","latitude":"Latitude","longitude":"Longitude","altitude":"Altitude"},"status":{"loading":"Loading...","no_exif":"No EXIF available","library_missing":"EXIF library not loaded","image_source_missing":"Image source unavailable","unavailable":"EXIF unavailable (blocked by CORS or missing metadata)","flag_unavailable":"EXIF unavailable"}},"about":"About","changelog":"Changelog","links":"Links","link":"Link","friends":"Friends","friend":"Friend","timeline":"Timeline","shuoshuo":"Shuoshuo","bookmarks":"Bookmarks","site_uv":"VISITOR COUNT","site_pv":"TOTAL PAGE VIEWS","read_more":"Read more","wordcount":"Words","min2read":"Mins","status":"Status","runtime":"Blog up for","days":"days","hours":"hrs","minutes":"Min","seconds":"Sec","optimized_by":"and Optimized by Evan","rights":"All Rights Reserved","site_posts":"%s posts in total","site_wordcount":"%s words in total","copyright":{"author":"Author","title":"Title","link":"Link","create_time":"Created at","update_time":"Updated at","license_title":"License","license_content":"This work is licensed under %s.","all_rights_reserved":"All Rights Reserved &#169; %s","public_domain":"This work is in the public domain."},"ago":{"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"},"create_time":"Created","update_time":"Updated","expired":"This post is written %s days ago, and the content may not be up to date."};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+	<div class="progress-bar-container">
+	
+
+	
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                Chong Wang
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="active"
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-pen-to-square fa-fw"></i>
+                                    POSTS
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/about/"
+                                        >
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    ABOUT
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/archives"
+                        >
+                            <span>
+                                POSTS
+                            </span>
+                            
+                                <i class="fa-regular fa-pen-to-square fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/about/"
+                        >
+                            <span>
+                                ABOUT
+                            </span>
+                            
+                                <i class="fa-regular fa-user fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">28</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">1</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">154</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="archive-container shadow-none hover:shadow-none sm:shadow-redefine sm:hover:shadow-redefine-hover">
+	
+<div class="archive-list-container">
+    
+        <section class="archive-item mb-spacing-unit last:mb-0">
+            <div class="archive-item-header flex flex-row items-center mb-2">
+                <span class="archive-year font-semibold text-3xl mr-2">2026</span>
+                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color">1</span>
+            </div>
+            
+            <ul class="article-list pl-0 md:pl-8 text-lg leading-[1.5]">
+                
+                    
+                    
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='10-09'>
+                    
+                    <a href="/2026/10/09/copy-trading-is-a-total-scam/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Copy Trading Is a Total Scam</span>
+                    </a>
+                    
+                
+                </li> <!-- Ensure the last item is properly closed -->
+            </ul>
+        </section>
+    
+        <section class="archive-item mb-spacing-unit last:mb-0">
+            <div class="archive-item-header flex flex-row items-center mb-2">
+                <span class="archive-year font-semibold text-3xl mr-2">2023</span>
+                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color">19</span>
+            </div>
+            
+            <ul class="article-list pl-0 md:pl-8 text-lg leading-[1.5]">
+                
+                    
+                    
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='10-01'>
+                    
+                    <a href="/2023/10/01/BB/2015/2023-10-01-fragments/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">October 2023: Fragments</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-31'>
+                    
+                    <a href="/2023/05/31/EVM_Puzzles/EVM-Puzzle-2/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">EVM Puzzle 2</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-30'>
+                    
+                    <a href="/2023/05/30/EVM_Puzzles/EVM-Puzzle-1/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">EVM Puzzle 1</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-23'>
+                    
+                    <a href="/2023/05/23/Ethernaut/Ethernaut-Puzzle-17-Recovery/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Ethernaut Puzzle 17 Recovery</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-20'>
+                    
+                    <a href="/2023/05/20/Ethernaut/Ethernaut-Puzzle-16-Preservation/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Ethernaut Puzzle 16 Preservation</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-14'>
+                    
+                    <a href="/2023/05/14/damnvulnerabledefi/damn-vulnerable-defi-01-Unstoppable/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Damn Vulnerable Defi 01 Unstoppable</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2023/05/14/Ethernaut/Ethernaut-Puzzle-15-Naught_Coin/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Ethernaut Puzzle 15 Naught Coin</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2023/05/14/Ethernaut/Ethernaut-Puzzle-14-GateKeeper_two/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Ethernaut Puzzle 14 GateKeeper Two</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2023/05/14/Ethernaut/Ethernaut-Puzzle-13-GateKeeper_one/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Ethernaut Puzzle 13 GateKeeper One</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-13'>
+                    
+                    <a href="/2023/05/13/Ethernaut/Ethernaut-Puzzle-12-Privacy/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Ethernaut Puzzle 12 Privacy</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2023/05/13/Ethernaut/Ethernaut-Puzzle-11-Elevator/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Ethernaut Puzzle 11 Elevator</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2023/05/13/Ethernaut/Ethernaut-Puzzle-10-Re_entrancy/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Ethernaut Puzzle 10 Re-entrancy</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2023/05/13/Ethernaut/Ethernaut-Puzzle-09-King/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Ethernaut Puzzle 09 King</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2023/05/13/Ethernaut/Ethernaut-Puzzle-08-Vault/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Ethernaut Puzzle 08 Vault</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2023/05/13/Ethernaut/Ethernaut-Puzzle-07-Force/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Ethernaut Puzzle 07 Force</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='04-04'>
+                    
+                    <a href="/2023/04/04/Ethernaut/Ethernaut-Puzzle-06-Delegation/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Ethernaut Puzzle 06 Delegation</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='04-01'>
+                    
+                    <a href="/2023/04/01/BB/2015/2023-04-01-written-at-thirty-part-2/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">April 2023: Written at Thirty (Part 2)</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='03-01'>
+                    
+                    <a href="/2023/03/01/BB/2015/2023-03-01-written-at-thirty-part-1/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">March 2023: Written at Thirty (Part 1)</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='01-01'>
+                    
+                    <a href="/2023/01/01/BB/2023/2023-01-01-our-destiny-is-engraved-in-the-stars/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">January 2023: Our Destiny Is Engraved in the Stars</span>
+                    </a>
+                    
+                
+                </li> <!-- Ensure the last item is properly closed -->
+            </ul>
+        </section>
+    
+        <section class="archive-item mb-spacing-unit last:mb-0">
+            <div class="archive-item-header flex flex-row items-center mb-2">
+                <span class="archive-year font-semibold text-3xl mr-2">2022</span>
+                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color">17</span>
+            </div>
+            
+            <ul class="article-list pl-0 md:pl-8 text-lg leading-[1.5]">
+                
+                    
+                    
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='12-31'>
+                    
+                    <a href="/2022/12/31/BB/2022/2022-12-31-when-i-am-free/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">December 2022: When I Am Free</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='12-08'>
+                    
+                    <a href="/2022/12/08/BB/2022/Progress-Report-in-November-2022/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Progress Report in November, 2022</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='11-30'>
+                    
+                    <a href="/2022/11/30/BB/2022/2022-11-30-after-the-legend/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">November 2022: After the Legend</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='10-15'>
+                    
+                    <a href="/2022/10/15/Ethernaut/Ethernaut-Puzzle-05-Token/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Ethernaut Puzzle 05 Token</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2022/10/15/Ethernaut/Ethernaut-Puzzle-04-Telephone/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Ethernaut Puzzle 04 Telephone</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='10-03'>
+                    
+                    <a href="/2022/10/03/Ethernaut/Ethernaut-Puzzle-03-Coin-Flip/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Ethernaut Puzzle 03 Coin Flip</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='10-01'>
+                    
+                    <a href="/2022/10/01/Ethernaut/Ethernaut-Puzzle-02-Fallout/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Ethernaut Puzzle 02 Fallout</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-21'>
+                    
+                    <a href="/2022/09/21/BB/2022/Progress-Report-in-October-2022/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Progress Report in October, 2022</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-19'>
+                    
+                    <a href="/2022/09/19/BB/2022/Progress%20Report%20in%20September%202022/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Progress Report in September, 2022</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-15'>
+                    
+                    <a href="/2022/09/15/CP/ProjectEuler/Project-Euler-700-Eulercoin/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Project-Euler-700 Eulercoin</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-11'>
+                    
+                    <a href="/2022/09/11/Ethernaut/Ethernaut-Puzzle-01-Fallback/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Ethernaut Puzzle 01 Fallback</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-08'>
+                    
+                    <a href="/2022/09/08/Ethernaut/Ethernaut-Puzzle-00-Hello-Ethernaut/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Ethernaut Puzzle 00 Hello Ethernaut!</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='08-29'>
+                    
+                    <a href="/2022/08/29/BB/2022/Progress%20Report%20in%20August,%202022/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Progress Report in August, 2022</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-29'>
+                    
+                    <a href="/2022/05/29/BB/2022/2022-05-29-the-past-two-years/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">May 2022: The Past Two Years</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='04-17'>
+                    
+                    <a href="/2022/04/17/BB/2022/2022-04-17-work-and-me/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">April 2022: Work and Me</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='03-17'>
+                    
+                    <a href="/2022/03/17/BB/2022/2022-03-17-pepsi-zero-sugar/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">March 2022: Pepsi Zero Sugar</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='02-02'>
+                    
+                    <a href="/2022/02/02/BB/2022/2022-02-02-what-have-you-been-up-to/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">February 2022: What Have You Been Up To?</span>
+                    </a>
+                    
+                
+                </li> <!-- Ensure the last item is properly closed -->
+            </ul>
+        </section>
+    
+        <section class="archive-item mb-spacing-unit last:mb-0">
+            <div class="archive-item-header flex flex-row items-center mb-2">
+                <span class="archive-year font-semibold text-3xl mr-2">2021</span>
+                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color">4</span>
+            </div>
+            
+            <ul class="article-list pl-0 md:pl-8 text-lg leading-[1.5]">
+                
+                    
+                    
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='04-11'>
+                    
+                    <a href="/2021/04/11/BB/2021/2021-04-11-one-weekend/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">April 2021: One Weekend</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='03-26'>
+                    
+                    <a href="/2021/03/26/BB/2021/2021-03-26-you-can-give-it-a-try/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">March 2021: You Can Give It a Try</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='02-21'>
+                    
+                    <a href="/2021/02/21/BB/2021/2021-02-21-still-believe/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">February 2021: Still Believe</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='01-03'>
+                    
+                    <a href="/2021/01/03/BB/2021/2021-01-03-a-swans-trace-in-snow/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">January 2021: A Swan&#39;s Trace in Snow</span>
+                    </a>
+                    
+                
+                </li> <!-- Ensure the last item is properly closed -->
+            </ul>
+        </section>
+    
+        <section class="archive-item mb-spacing-unit last:mb-0">
+            <div class="archive-item-header flex flex-row items-center mb-2">
+                <span class="archive-year font-semibold text-3xl mr-2">2020</span>
+                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color">22</span>
+            </div>
+            
+            <ul class="article-list pl-0 md:pl-8 text-lg leading-[1.5]">
+                
+                    
+                    
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='12-31'>
+                    
+                    <a href="/2020/12/31/CP/2020%20plan%20and%20summary/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2020 plan and summary</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='12-25'>
+                    
+                    <a href="/2020/12/25/DDIA_Notes/2020-12-25-ddia-chapter-9-consistency-and-consensus/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">ddia-Chapter 9-Consistency and Consensus</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='12-12'>
+                    
+                    <a href="/2020/12/12/BB/2020/2020-12-12-slow-and-difficult/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">December 2020: Slow and Difficult</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='11-11'>
+                    
+                    <a href="/2020/11/11/BB/2020/2020-11-11-waves-and-the-sea/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">November 2020: Waves and the Sea</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='10-26'>
+                    
+                    <a href="/2020/10/26/BB/2020/2020-10-26-written-in-midsummer-written-in-midwinter/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">October 2020: Written in Midsummer, Written in Midwinter</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-24'>
+                    
+                    <a href="/2020/09/24/BB/2020/2020-09-24-back-to-where-it-began/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">September 2020: Back to Where It Began</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='08-09'>
+                    
+                    <a href="/2020/08/09/BB/2020/2020-08-09-a-five-year-gaokao-a-three-year-plan/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">August 2020: A Five-Year Gaokao, a Three-Year Plan</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='07-15'>
+                    
+                    <a href="/2020/07/15/BB/2020/2020-07-15-on-the-road/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">July 2020: On the Road</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='06-13'>
+                    
+                    <a href="/2020/06/13/BB/2020/2020-06-13-the-second-half-of-the-ninth-inning/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">June 2020: The Second Half of the Ninth Inning</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-30'>
+                    
+                    <a href="/2020/05/30/CP/Codeforces/Codeforces-645-Div2/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Codeforces 645 Div2</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-27'>
+                    
+                    <a href="/2020/05/27/DDIA_Notes/2020-05-27-ddia-chapter-8-the-trouble-with-distributed-systems/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">DDIA Chapter 8: The Trouble with Distributed Systems</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-18'>
+                    
+                    <a href="/2020/05/18/DDIA_Notes/2020-05-18-ddia-chapter-7-transactions/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">DDIA Chapter 7: Transactions</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2020/05/18/BB/2020/2020-05-18-absolutely/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">May 2020: Absolutely</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-17'>
+                    
+                    <a href="/2020/05/17/CP/Codeforces/Codeforces-1355E/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Codeforces 1355E</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-16'>
+                    
+                    <a href="/2020/05/16/CP/Codeforces/Codeforces-1343E/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Codeforces 1343E</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2020/05/16/CP/Codeforces/Codeforces-768E/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Codeforces 768E</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='04-12'>
+                    
+                    <a href="/2020/04/12/CP/AtCoder/AtCoder-Beginner-Contest-160/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">AtCoder Beginner Contest 160</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2020/04/12/BB/2020/2020-04-12-why-are-we-so-tired-and-depressed/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">April 2020: Why Are We So Tired and Depressed?</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='03-22'>
+                    
+                    <a href="/2020/03/22/Topic/2020-03-22-problems-on-cycles/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Problems on Cycles</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2020/03/22/CP/Google/Kickstart-A-Round-2020/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Kickstart A Round 2020</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='03-21'>
+                    
+                    <a href="/2020/03/21/CP/AtCoder/Panasonic-Programming-Contest-2020/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Panasonic Programming Contest 2020</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='02-19'>
+                    
+                    <a href="/2020/02/19/BB/2020/2020-02-19-spring-is-born-summer-grows-autumn-harvests-winter-stores/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">February 2020: Spring Is Born, Summer Grows; Autumn Harvests, Winter Stores</span>
+                    </a>
+                    
+                
+                </li> <!-- Ensure the last item is properly closed -->
+            </ul>
+        </section>
+    
+        <section class="archive-item mb-spacing-unit last:mb-0">
+            <div class="archive-item-header flex flex-row items-center mb-2">
+                <span class="archive-year font-semibold text-3xl mr-2">2019</span>
+                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color">8</span>
+            </div>
+            
+            <ul class="article-list pl-0 md:pl-8 text-lg leading-[1.5]">
+                
+                    
+                    
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='11-18'>
+                    
+                    <a href="/2019/11/18/CP/Codeforces/Eductional-Codeforces-Round-1/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Educational Codeforces Round 1</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='11-10'>
+                    
+                    <a href="/2019/11/10/BB/2019/2019-11-10-the-last-year/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">November 2019: The Last Year</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='10-27'>
+                    
+                    <a href="/2019/10/27/BB/2019/2019-10-27-the-past-two-years/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">October 2019: The Past Two Years</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='08-04'>
+                    
+                    <a href="/2019/08/04/CP/Leetcode/LeetCode-1101-1150/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">LeetCode 1101-1150</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2019/08/04/CP/Hackerrank/2019-08-04-hackerrank-selected-problems/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Hackerrank option</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2019/08/04/BB/2019/2019-08-04-flowers-and-thorns/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">August 2019: Flowers and Thorns</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-02'>
+                    
+                    <a href="/2019/05/02/CP/TopCoder/2019-TCO-Round-1B/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2019 TCO Round 1B</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='04-13'>
+                    
+                    <a href="/2019/04/13/CP/Google/Google-Code-Jam-2019-Round-1A/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Google Code Jam 2019 Round 1A</span>
+                    </a>
+                    
+                
+                </li> <!-- Ensure the last item is properly closed -->
+            </ul>
+        </section>
+    
+        <section class="archive-item mb-spacing-unit last:mb-0">
+            <div class="archive-item-header flex flex-row items-center mb-2">
+                <span class="archive-year font-semibold text-3xl mr-2">2018</span>
+                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color">13</span>
+            </div>
+            
+            <ul class="article-list pl-0 md:pl-8 text-lg leading-[1.5]">
+                
+                    
+                    
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='12-09'>
+                    
+                    <a href="/2018/12/09/CP/51nod/2018-12-09-51nod-problem-notes-3/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">51nod filling in holes (3)(1203,1695)</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='12-02'>
+                    
+                    <a href="/2018/12/02/CP/51nod/2018-12-02-51nod-problem-notes-2/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">51nod Problem Notes II (1048, 1167)</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='08-12'>
+                    
+                    <a href="/2018/08/12/BB/2018/2018_8_Present_is_a_gift/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">August 2018: To This Day</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2018/08/12/CP/POJ/POJ-1821/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">POJ 1821</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='03-21'>
+                    
+                    <a href="/2018/03/21/CP/AtCoder/AtCoder-Regular-Contest-091/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">AtCoder Regular Contest 091</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='03-05'>
+                    
+                    <a href="/2018/03/05/BB/2018/2018-03-05-free-and-uninhibited/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">March 2018: Free and Uninhibited</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='03-03'>
+                    
+                    <a href="/2018/03/03/CP/CS-academy/CS-academy-Round-71/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">CS academy Round 71</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='02-21'>
+                    
+                    <a href="/2018/02/21/CP/CS-academy/CS-academy-Round-66/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">CS academy Round 66</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='02-09'>
+                    
+                    <a href="/2018/02/09/CP/CS-academy/CS-academy-Round-68/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">CS academy Round 68</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='02-04'>
+                    
+                    <a href="/2018/02/04/BB/2018/2018_2_MomentsOfLife/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">February 2018: Good Moments in Life</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='01-26'>
+                    
+                    <a href="/2018/01/26/CP/AtCoder/AtCoder-Regular-Contest-088/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">AtCoder Regular Contest 088</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='01-23'>
+                    
+                    <a href="/2018/01/23/BB/2018/2018-01-23-treading-through-mud/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">January 2018: Treading Through Mud</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='01-11'>
+                    
+                    <a href="/2018/01/11/CP/TopCoder/2018-01-11-topcoder-selected-problems/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Selected TopCoder Problems</span>
+                    </a>
+                    
+                
+                </li> <!-- Ensure the last item is properly closed -->
+            </ul>
+        </section>
+    
+        <section class="archive-item mb-spacing-unit last:mb-0">
+            <div class="archive-item-header flex flex-row items-center mb-2">
+                <span class="archive-year font-semibold text-3xl mr-2">2017</span>
+                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color">30</span>
+            </div>
+            
+            <ul class="article-list pl-0 md:pl-8 text-lg leading-[1.5]">
+                
+                    
+                    
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='12-26'>
+                    
+                    <a href="/2017/12/26/CP/Codeforces/Codeforces-451-Div2/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Codeforces 451 Div2</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='12-25'>
+                    
+                    <a href="/2017/12/25/BB/2017/2017-12-25-failure-and-carrying-on/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">December 2017: Failure and Carrying On</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='12-21'>
+                    
+                    <a href="/2017/12/21/CP/Codeforces/Codeforces-452-Div2/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Codeforces 452 Div2</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='11-04'>
+                    
+                    <a href="/2017/11/04/CP/AtCoder/CODE-FESTIVAL-2017-qual-B/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">CODE FESTIVAL 2017 qual B</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='10-22'>
+                    
+                    <a href="/2017/10/22/BB/2017/2017-10-22-farewell-to-paradise/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">October 2017: Farewell to Paradise</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='10-04'>
+                    
+                    <a href="/2017/10/04/CP/2017-10-04-university-codesprint-3/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">University CodeSprint 3(to be filled in)</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='10-02'>
+                    
+                    <a href="/2017/10/02/CP/51nod/2017-10-02-51nod-problem-notes-1/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">51nod pit filling record (1) (1742,1810,1753,1291,1296)</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-29'>
+                    
+                    <a href="/2017/09/29/BB/2017/2017-09-29-time-travel/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">September 2017: Time Travel</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='08-30'>
+                    
+                    <a href="/2017/08/30/BB/2017/2017-08-30-out-of-tune/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">August 2017: Out of Tune</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='08-05'>
+                    
+                    <a href="/2017/08/05/CP/CS-academy/CS-academy-Round-40/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">CS academy Round 40</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='07-31'>
+                    
+                    <a href="/2017/07/31/BB/2017/2017-07-31-answer-me-july/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">July 2017: Answer Me, July</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='07-30'>
+                    
+                    <a href="/2017/07/30/CP/AtCoder/AtCoder-Regular-Contest-077/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">AtCoder Regular Contest 077</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='06-30'>
+                    
+                    <a href="/2017/06/30/Topic/2017-06-30-cpp-notes-2/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Don&#39;t know C++ (2) (inheritance and composition)</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='06-16'>
+                    
+                    <a href="/2017/06/16/CP/Codeforces/Codeforces-418-Div2/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Codeforces 418 Div2</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2017/06/16/CP/Codeforces/Codeforces-417-Div2/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Codeforces 417 Div2</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='06-15'>
+                    
+                    <a href="/2017/06/15/CP/CS-academy/CS-academy-Round-33/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">CS academy Round 33</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='06-09'>
+                    
+                    <a href="/2017/06/09/CP/AtCoder/AtCoder-Regular-Contest-075/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">AtCoder Regular Contest 075</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-30'>
+                    
+                    <a href="/2017/05/30/CP/CS-academy/CS-academy-Round-29/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">CS academy Round 29</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2017/05/30/CP/Codeforces/Codeforces-416-Div2/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Codeforces 416 Div2</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-21'>
+                    
+                    <a href="/2017/05/21/BB/2017/2017-05-21-so-much-to-do/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">May 2017: So Much to Do</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-16'>
+                    
+                    <a href="/2017/05/16/Topic/2017-05-16-cpp-notes-1/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Don&#39;t know C++ (1) (explicit, new and malloc, union)</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-06'>
+                    
+                    <a href="/2017/05/06/CP/AtCoder/AtCoder-Regular-Contest-073/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">AtCoder Regular Contest 073</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-01'>
+                    
+                    <a href="/2017/05/01/CP/Codeforces/2017-ACM-Arabella-Collegiate-Programming-Contest/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">2017 ACM Arabella Collegiate Programming Contest</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='04-03'>
+                    
+                    <a href="/2017/04/03/BB/2017/2017-04-03-a-midlife-crisis/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">April 2017: A Midlife Crisis</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='03-16'>
+                    
+                    <a href="/2017/03/16/Topic/2017-03-16-interview-question-notes-3/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Interview Problem Notes 3</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='03-15'>
+                    
+                    <a href="/2017/03/15/Topic/2017-03-15-interview-question-notes-2/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Interview question compilation 2</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='03-12'>
+                    
+                    <a href="/2017/03/12/Topic/2017-03-12-interview-question-notes-1/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Compilation of interview questions 1</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='03-11'>
+                    
+                    <a href="/2017/03/11/CP/Google/Kickstart-A-Round-2017/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Kickstart A Round 2017</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='03-03'>
+                    
+                    <a href="/2017/03/03/CP/Google/Kickstart-Practice-Round-2017/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Kickstart Practice Round 2017</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='02-07'>
+                    
+                    <a href="/2017/02/07/CP/Hackerrank/Hackerrank-HourRank-17/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Hackerrank HourRank 17</span>
+                    </a>
+                    
+                
+                </li> <!-- Ensure the last item is properly closed -->
+            </ul>
+        </section>
+    
+        <section class="archive-item mb-spacing-unit last:mb-0">
+            <div class="archive-item-header flex flex-row items-center mb-2">
+                <span class="archive-year font-semibold text-3xl mr-2">2016</span>
+                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color">35</span>
+            </div>
+            
+            <ul class="article-list pl-0 md:pl-8 text-lg leading-[1.5]">
+                
+                    
+                    
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='12-12'>
+                    
+                    <a href="/2016/12/12/CP/Leetcode/LeetCode-41-50/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">LeetCode 41-50</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='11-05'>
+                    
+                    <a href="/2016/11/05/CP/CodeChef/CodeChef-October-Lunchtime-2016/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">CodeChef October Lunchtime 2016</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='10-24'>
+                    
+                    <a href="/2016/10/24/CP/Leetcode/LeetCode-31-40/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">LeetCode 31-40</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2016/10/24/CP/Codeforces/Codeforces-376-Div2/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Codeforces 376 Div2</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='10-19'>
+                    
+                    <a href="/2016/10/19/CP/Codeforces/Technocup-2017-Elimination-Round-1/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Technocup 2017 - Elimination Round 1</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='10-13'>
+                    
+                    <a href="/2016/10/13/CP/AtCoder/CODE-FESTIVAL-2016-Qualification-Round-B/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">CODE FESTIVAL 2016 Qualification Round B</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='10-12'>
+                    
+                    <a href="/2016/10/12/CP/Google/Google-Code-Jam-Round-1A-2008/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Google Code Jam Round 1A 2008</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='10-07'>
+                    
+                    <a href="/2016/10/07/CP/Leetcode/LeetCode-21-30/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">LeetCode 21-30</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='10-06'>
+                    
+                    <a href="/2016/10/06/CP/Codeforces/Intel-Code-Chanllenge-Elimination-Round/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Intel Code Chanllenge Elimination Round</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2016/10/06/CP/Codeforces/Codeforces-375-Div2/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Codeforces 375 Div2</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2016/10/06/CP/Codeforces/Codeforces-374-Div2/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Codeforces 374 Div2</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2016/10/06/CP/Hackerrank/Hackerrank-HourRank-13/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Hackerrank HourRank 13</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-28'>
+                    
+                    <a href="/2016/09/28/CP/Codeforces/Codeforces-372-Div2/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Codeforces 372 Div2</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-27'>
+                    
+                    <a href="/2016/09/27/CP/Codeforces/Codeforces-373-Div2/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Codeforces 373 Div2</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2016/09/27/CP/AtCoder/CODE-FESTIVAL-2016-Qualification-Round-A/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">CODE FESTIVAL 2016 Qualification Round A</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-23'>
+                    
+                    <a href="/2016/09/23/CP/Leetcode/LeetCode-11-20/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">LeetCode 11-20</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-21'>
+                    
+                    <a href="/2016/09/21/CP/Leetcode/LeetCode-1-10/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">LeetCode 1-10</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-19'>
+                    
+                    <a href="/2016/09/19/CP/Google/Google-APAC-Test-2017-Round-C/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Google APAC Test 2017 Round C</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2016/09/19/CP/Codeforces/Codeforces-371/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Codeforces 371</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-15'>
+                    
+                    <a href="/2016/09/15/CP/AtCoder/AtCoder-Regular-Contest-061/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">AtCoder Regular Contest 061</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-14'>
+                    
+                    <a href="/2016/09/14/CP/AtCoder/AtCoder-Grand-Contest-004/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">AtCoder Grand Contest 004</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-13'>
+                    
+                    <a href="/2016/09/13/CP/AtCoder/AtCoder-Grand-Contest-003/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">AtCoder Grand Contest 003</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-09'>
+                    
+                    <a href="/2016/09/09/BB/2016/2016-09-09-working-away/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">September 2016: Working Away</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-07'>
+                    
+                    <a href="/2016/09/07/CP/AtCoder/AtCoder-Grand-Contest-002/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">AtCoder Grand Contest 002</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-05'>
+                    
+                    <a href="/2016/09/05/CP/AtCoder/AtCoder-Regular-Contest-060/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">AtCoder Regular Contest 060</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-03'>
+                    
+                    <a href="/2016/09/03/CP/AtCoder/AtCoder-Regular-Contest-059/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">AtCoder Regular Contest 059</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2016/09/03/CP/CodeChef/CodeChef-August-Lunchtime-2016/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">CodeChef August Lunchtime 2016</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='08-31'>
+                    
+                    <a href="/2016/08/31/CP/Codeforces/Codeforces-369-Div2/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Codeforces 369 Div2</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='08-22'>
+                    
+                    <a href="/2016/08/22/CP/Codeforces/Codeforces-362-Div2/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">Codeforces 362 Div2</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='07-30'>
+                    
+                    <a href="/2016/07/30/CP/AtCoder/AtCoder-Regular-Contest-058/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">AtCoder Regular Contest 058</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='07-20'>
+                    
+                    <a href="/2016/07/20/CP/AtCoder/AtCoder-Grand-Contest-001/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">AtCoder Grand Contest 001</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='07-17'>
+                    
+                    <a href="/2016/07/17/BB/2016/2016-07-17-yes-yes/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">July 2016: Yes, Yes</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='03-31'>
+                    
+                    <a href="/2016/03/31/BB/2016/2016-03-31-intense-love/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">March 2016: Intense Love</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='02-29'>
+                    
+                    <a href="/2016/02/29/BB/2016/2016-02-29-1900/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">February 2016: 1900</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='01-31'>
+                    
+                    <a href="/2016/01/31/BB/2016/2016-01-31-make-each-day-count/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">January 2016: Make Each Day Count</span>
+                    </a>
+                    
+                
+                </li> <!-- Ensure the last item is properly closed -->
+            </ul>
+        </section>
+    
+        <section class="archive-item mb-spacing-unit last:mb-0">
+            <div class="archive-item-header flex flex-row items-center mb-2">
+                <span class="archive-year font-semibold text-3xl mr-2">2015</span>
+                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color">5</span>
+            </div>
+            
+            <ul class="article-list pl-0 md:pl-8 text-lg leading-[1.5]">
+                
+                    
+                    
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='11-30'>
+                    
+                    <a href="/2015/11/30/BB/2015/2015-11-30-in-this-lifetime/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">November 2015: In This Lifetime</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='11-01'>
+                    
+                    <a href="/2015/11/01/BB/2015/2015-11-01-a-stream-of-thoughts/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">October 2015: A Stream of Thoughts</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='09-30'>
+                    
+                    <a href="/2015/09/30/BB/2015/2015-09-30-far-beyond/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">September 2015: Far Beyond</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='08-31'>
+                    
+                    <a href="/2015/08/31/BB/2015/2015-08-31-heroes-do-not-grow-old/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">August 2015: Heroes Do Not Grow Old</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='07-31'>
+                    
+                    <a href="/2015/07/31/BB/2015/2015-07-31-binding-blank-pages/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">July 2015: Binding Blank Pages</span>
+                    </a>
+                    
+                
+                </li> <!-- Ensure the last item is properly closed -->
+            </ul>
+        </section>
+    
+</div>
+</div>
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+            <div class="customize-info my-1">© Chong Wang</div>
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2026&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">Chong Wang</a>
+            
+        </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.9.0</a></span>
+        </div>
+        
+        
+        
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container" role="dialog" aria-modal="true" aria-label="Image viewer">
+	<button class="image-viewer-close" type="button" aria-label="Close">
+		<i class="fa-solid fa-xmark"></i>
+	</button>
+	<button class="image-viewer-prev" type="button" aria-label="Prev">
+		<i class="fa-solid fa-chevron-left"></i>
+	</button>
+	<div class="image-viewer-frame">
+		<img src="" alt="">
+	</div>
+	<div class="image-viewer-exif-panel hidden absolute left-1/2 bottom-20 -translate-x-1/2 w-[min(92vw,420px)] max-h-[60vh] overflow-hidden rounded-2xl bg-background-color-transparent-80 p-4 text-left shadow-redefine-flat backdrop-blur-md" role="dialog" aria-label="EXIF" aria-hidden="true">
+		<div class="flex items-center justify-between mb-3">
+			<span class="text-sm font-semibold text-first-text-color">EXIF</span>
+			<button class="image-viewer-exif-close flex h-8 w-8 items-center justify-center rounded-full bg-background-color-transparent-80 text-first-text-color transition hover:bg-background-color-transparent-40" type="button" aria-label="Close">
+				<i class="fa-solid fa-xmark text-[0.65rem]"></i>
+			</button>
+		</div>
+		<div class="image-viewer-exif-cards grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[50vh] overflow-y-auto pr-1 scrollbar-hide"></div>
+		<template class="image-viewer-exif-card-template">
+			<div class="rounded-lg bg-background-color-transparent-40 px-3 py-2">
+				<div class="image-viewer-exif-card-header flex items-center gap-2 mb-1">
+					<i class="image-viewer-exif-card-icon fa-solid fa-circle-info text-xs text-third-text-color"></i>
+					<div class="image-viewer-exif-card-title text-xs font-semibold text-first-text-color"></div>
+				</div>
+				<div class="image-viewer-exif-card-items flex flex-col gap-1"></div>
+			</div>
+		</template>
+	</div>
+	<button class="image-viewer-exif-toggle flex items-center gap-2 hidden absolute left-1/2 bottom-6 -translate-x-1/2 rounded-full border border-border-color bg-background-color-transparent-80 px-4 py-2 text-first-text-color backdrop-blur-md transition hover:bg-background-color-transparent-40" type="button" aria-label="EXIF" aria-expanded="false">
+		<i class="fa-solid fa-circle-info text-xs"></i>
+		<span class="text-xs font-semibold uppercase tracking-wider">EXIF</span>
+	</button>
+	<button class="image-viewer-next" type="button" aria-label="Next">
+		<i class="fa-solid fa-chevron-right"></i>
+	</button>
+</div>
+
+
+	
+
+</main>
+
+
+	
+<script src="/js/build/main.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/build/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+
+	
+</body>
+
+</html>
