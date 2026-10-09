@@ -94,7 +94,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://2997ms.github.io/images/chong-wang.jpg">
 <meta property="article:published_time" content="2016-09-19T13:16:11.000Z">
-<meta property="article:modified_time" content="2026-10-09T07:58:53.962Z">
+<meta property="article:modified_time" content="2026-10-09T08:10:28.496Z">
 <meta property="article:author" content="Chong Wang">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://2997ms.github.io/images/chong-wang.jpg">
@@ -395,8 +395,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2026-10-09 08:58:53</span>
-            <span class="mobile">2026-10-09 08:58:53</span>
+            <span class="desktop">2026-10-09 09:10:28</span>
+            <span class="mobile">2026-10-09 09:10:28</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -419,24 +419,24 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<p><a class="link"   target="_blank" rel="noopener" href="https://code.google.com/codejam/contest/6274486/dashboard#s=p0" >题目链接<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>(需要翻墙)与<a class="link"   target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Google/APAC%20Test%202017%20Round%20C" >代码链接<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
-<p>早就应该做一下笔试的原题了，也好体会一下题目的难度与区分度，结果一直拖延。。。</p>
-<p>前两场也都做了，成绩和这场一样不理想，做出三道，第四道的时候时间还剩一个多小时，正常来讲是应该要想出来的，但是当时特别特别困，还饿，加上本人智商有限，还剩半个小时的时候上床睡觉去了。。。</p>
+			<p><a class="link"   target="_blank" rel="noopener" href="https://code.google.com/codejam/contest/6274486/dashboard#s=p0" >Problem link<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> (may require a proxy) · <a class="link"   target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Google/APAC%20Test%202017%20Round%20C" >Code<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p>I should have worked through original written-test problems long ago, to get a sense of their difficulty and discrimination, but I kept procrastinating.</p>
+<p>I also did the first two rounds, with similarly disappointing results. I solved three problems; with more than an hour left on the fourth, I should normally have figured it out. But I was exhausted and hungry, and with half an hour remaining, I went to bed.</p>
 <hr>
-<h3 id="Problem-A-Monster-Path"><a href="#Problem-A-Monster-Path" class="headerlink" title="Problem A. Monster Path"></a>Problem A. Monster Path</h3><p>题意是给出R*C的格子，然后给你一个起点，走S步。每个点如果是’A’的话有P概率爆出怪兽，不是的话有Q概率爆出怪兽。一个点最多爆出一个怪兽。</p>
-<p>求你走S步之后，最大的怪兽数量期望。</p>
-<p>深搜，记录每一个点访问的次数x，每次加上该点爆出怪兽的期望，(1-P)^x*P或者(1-Q)^x*Q。最后记录最大值。</p>
+<h3 id="Problem-A-Monster-Path"><a href="#Problem-A-Monster-Path" class="headerlink" title="Problem A. Monster Path"></a>Problem A. Monster Path</h3><p>Given an $R * C$ grid, a starting point, and $S$ steps, every <code>A</code> cell spawns a monster with probability $P$ and every other cell with probability $Q$. Each cell can spawn at most one monster.</p>
+<p>Find the maximum expected number of monsters after $S$ steps.</p>
+<p>Use DFS and record the number of visits $x$ to each cell. Each visit adds expected value $(1-P)^x * P$ or $(1-Q)^x * Q$; retain the maximum.</p>
 <hr>
-<h3 id="Problem-B-Safe-Squares"><a href="#Problem-B-Safe-Squares" class="headerlink" title="Problem B. Safe Squares"></a>Problem B. Safe Squares</h3><p>题意是求R*C矩形内，全为0的正方形数量之和。</p>
-<p>和<a href="http://2997ms.github.io/2016/09/19/Codeforces-371/">上一篇E题一样</a>，DP每一个点作为正方形右下角的最大边长，计算结果的时候加一起。</p>
+<h3 id="Problem-B-Safe-Squares"><a href="#Problem-B-Safe-Squares" class="headerlink" title="Problem B. Safe Squares"></a>Problem B. Safe Squares</h3><p>Count all-zero squares in an $R * C$ rectangle.</p>
+<p>As in <a href="http://2997ms.github.io/2016/09/19/Codeforces-371/">the previous Problem E</a>, use DP to calculate the maximum square side length ending at every bottom-right corner, then sum them.</p>
 <hr>
-<h3 id="Problem-C-Evaluation"><a href="#Problem-C-Evaluation" class="headerlink" title="Problem C. Evaluation"></a>Problem C. Evaluation</h3><p>题意是给出变量之间的关系，就像C++语言看一个变量是否被定义。如果是没有参数变量的函数的返回值，那么该变量就是确定的，否则就依赖于其参数是否确定。函数执行的顺序是打乱的。</p>
-<p>其实就是拓扑排序嘛，O(n^2)搞一下，没有定义的变量为-1，找到这样的直接out。否则的话就看能不能有确定的拓扑排序。</p>
+<h3 id="Problem-C-Evaluation"><a href="#Problem-C-Evaluation" class="headerlink" title="Problem C. Evaluation"></a>Problem C. Evaluation</h3><p>Given dependencies between variables, determine whether each variable is defined, as in C++. A variable assigned from a no-argument function is defined; otherwise it depends on whether its parameters are defined. Function execution order is arbitrary.</p>
+<p>This is topological sorting in $O(n^2)$. Mark undefined variables as <code>-1</code> and reject them immediately; otherwise determine whether a valid topological order exists.</p>
 <hr>
-<h3 id="Problem-D-Soldiers"><a href="#Problem-D-Soldiers" class="headerlink" title="Problem D. Soldiers"></a>Problem D. Soldiers</h3><p>题意是Alice和Bob做游戏，现在有n个士兵，每一个士兵有一个攻击力和一个防御力，要求每一个人选的士兵要么攻击力大于当前被选的所有士兵的攻击力，要么防御力大于当前被选的所有士兵的防御力，选择不到时游戏停止。现在给出n个士兵的攻击力和防御力，Alice先选，要求的是最终Alice选择的士兵要比Bob多。问两者都是最优选择的情况下，是否可行。</p>
-<p>给一个<a class="link"   target="_blank" rel="noopener" href="http://codeforces.com/blog/entry/47181#comment-315896" >链接<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>，说的还是挺明白的，将所有士兵按照攻击力排序，按照防御力排序，如果存在一个士兵特厉害，两个属性都冠绝群雄，那么Alice胜利，因为Bob没得选了。如果不存在，那么Alice一定不会去选攻击力最大的那个或者防御力最大的那个，因为万一选了这两个中的一个，那么Bob选择另一个，数量上是打平的，Alice赢不了。所以这样的数据就可以从可选的集合里面删去了，然后这样不断求解。</p>
+<h3 id="Problem-D-Soldiers"><a href="#Problem-D-Soldiers" class="headerlink" title="Problem D. Soldiers"></a>Problem D. Soldiers</h3><p>Alice and Bob play a game with $n$ soldiers. Each has attack and defence. Every chosen soldier must exceed the attack or defence of every soldier already chosen. The game ends when no soldier can be chosen. Alice moves first and must select more soldiers than Bob. Determine whether this is possible under optimal play.</p>
+<p>This <a class="link"   target="_blank" rel="noopener" href="http://codeforces.com/blog/entry/47181#comment-315896" >comment<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> explains it clearly. Sort soldiers by attack and defence. If one soldier is best in both, Alice wins because Bob has no valid choice. Otherwise, Alice cannot choose the maximum-attack or maximum-defence soldier: Bob would choose the other one and tie the count. Remove such choices and repeat.</p>
 <blockquote>
-<p>这个题也让我学习到了一个新的函数。。。remove_if(a.begin(),a.end(),cmp) cmp里面放入if判别条件，删除容器内符合条件的元素，不符合条件的元素依次往前走，返回结束位置。</p>
+<p>This problem taught me a new function: <code>remove_if(a.begin(), a.end(), cmp)</code>. Put the predicate in <code>cmp</code>; matching elements are removed, non-matching elements move forward, and the end position is returned.</p>
 </blockquote>
 
 		</div>
