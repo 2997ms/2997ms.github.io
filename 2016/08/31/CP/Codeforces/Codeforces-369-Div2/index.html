@@ -94,7 +94,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://2997ms.github.io/images/chong-wang.jpg">
 <meta property="article:published_time" content="2016-08-31T21:53:28.000Z">
-<meta property="article:modified_time" content="2026-10-09T07:40:44.020Z">
+<meta property="article:modified_time" content="2026-10-09T07:52:35.575Z">
 <meta property="article:author" content="Chong Wang">
 <meta property="article:tag" content="Codeforces">
 <meta name="twitter:card" content="summary">
@@ -337,7 +337,7 @@
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">62</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">28</div>
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
@@ -396,8 +396,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2026-10-09 08:40:44</span>
-            <span class="mobile">2026-10-09 08:40:44</span>
+            <span class="desktop">2026-10-09 08:52:35</span>
+            <span class="mobile">2026-10-09 08:52:35</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -431,35 +431,35 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<p>刚刚做完51nod上面一道很恶心的<a class="link"   target="_blank" rel="noopener" href="http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1607" >题目<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>，各种情况各种搞，打算早晚要写一下51nod上面的一些题目了。之后把这轮的E题补了，这轮题目很简单，简单到我都做出了四道，并且第四道是在1:59:47完成提交的，可谓惊心动魄。自认为打得不错，很幸运。此役之后，Codeforces的rating变成了1758，涨了77分，还挺开心的。想把它记录下来也是因为好多事情在八月都没做，然而它就这么过去了。</p>
-<p>代码在<a class="link"   target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/369_Div2" >这里<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>。</p>
-<p>A题不用说，B题直接把数字求出来然后带进去验证四个方向是否满足条件。</p>
+			<p>I have just finished a very disgusting [question] (<a class="link"   target="_blank" rel="noopener" href="http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1607" >http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1607<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>) on 51nod. I have done it in various situations and I plan to write about some of the questions on 51nod sooner or later. After that, I made up questions E in this round. The questions in this round were very simple, so simple that I solved four of them, and the fourth question was submitted in 1:59:47, which was thrilling. I think I played well and was very lucky. After this battle, Codeforces’ rating became 1758, an increase of 77 points, which is quite happy. I wanted to record it because I didn’t do a lot of things in August, but it just passed.</p>
+<p>The code is <a class="link"   target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/369_Div2" >here<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>.</p>
+<p>Needless to say for question A, for question B, just find out the numbers and bring them in to verify whether the four directions meet the conditions.</p>
 <h3 id="C-Coloring-Trees"><a href="#C-Coloring-Trees" class="headerlink" title="C Coloring Trees"></a>C Coloring Trees</h3><hr>
-<p>C题题意是有n个点排成一排，每个点要么有颜色，要么没颜色，现在要你把所有没颜色的点都上一种颜色，要求是上完颜色之后按照颜色分成k段。每个点上一种颜色有相应的花销。</p>
-<p>让你求在满足k段的条件下，花销最少。如果不能满足，输出-1。</p>
-<p>dp[i][j][k]表示到第i个点时，分成j段，当前颜色为k的最小花销。</p>
-<p>转移还挺好转移的，不多说。</p>
-<p>其实自己做dp题特别弱，这个dp比较简单，很多人一眼直接看出来了。</p>
+<p>Question C means that there are n points lined up in a row, and each point either has a color or no color. Now you are asked to color all the colorless points with a color. The requirement is that after coloring, they are divided into k segments according to color. Each point on a color has a corresponding cost.</p>
+<p>Let you find the minimum cost while meeting the conditions of segment k. If it cannot be satisfied, -1 is output.</p>
+<p>dp[i][j][k] represents the minimum cost when reaching the i-th point, divided into j segments, and the current color is k.</p>
+<p>The transfer is quite easy, not much to say.</p>
+<p>In fact, it is very weak to do dp questions by yourself. This dp is relatively simple, and many people can see it directly at a glance.</p>
 <h3 id="D-Directed-Roads"><a href="#D-Directed-Roads" class="headerlink" title="D Directed Roads"></a>D Directed Roads</h3><hr>
-<p>D题题意给出n个点，建一个有向图，然后每个点给出一个出边，要求是你可以更改一些边的方向，使得这个图不存在环，问边有多少种方案的选择。</p>
-<p>这种每个点一个出边的题也是出了很多次，这种图是一定形成环的，对于一个块，有x个在环上的点，有y个不在环上的点，那么方案数就为:<br>$$<br>(2^x-2)*(2^y)<br>$$<br>减2代表空集和全集，剩下的你随便改方向。然后那y个边你也随便改方向，都不会形成环，画一画就出来了。</p>
+<p>The purpose of question D is to give n points, build a directed graph, and then give an outgoing edge for each point. The requirement is that you can change the direction of some edges so that there is no cycle in the graph. How many options are there for the edge?</p>
+<p>This kind of question where each point has an edge has been asked many times. This kind of graph must form a ring. For a block, there are x points on the ring and y points not on the ring. Then the number of solutions is:<br>$$<br>(2^x-2)*(2^y)<br>$$<br>Subtract 2 to represent the empty set and the complete set, and you can change the direction for the rest. Then you can change the direction of the y side at will, and it will not form a loop. Just draw it and it will appear.</p>
 <h3 id="E-ZS-and-The-Birthday-Paradox"><a href="#E-ZS-and-The-Birthday-Paradox" class="headerlink" title="E ZS and The Birthday Paradox"></a>E ZS and The Birthday Paradox</h3><hr>
-<p><del>对于一些题目还是要像写日记一样趁热打铁，要不然过程中很多感受就忘得一干二净。</del></p>
-<p>E题题意是给出了一年有2^n天，然后k个人，问这些人中有生日相同的概率是多少。</p>
-<p><del>哇做到这里我发现这轮题目真的好，题意简洁易懂，代码也不是特别繁琐恶心的那种。</del></p>
-<p>首先由鸽笼原理，如果k&gt;(2^n)，那么肯定是有相同的情况，直接输出结果。</p>
-<p>然后呢，生日相同的概率很难算，算生日不同的概率为</p>
+<p>~~For some topics, you still have to strike while the iron is hot like writing a diary, otherwise you will forget many of your feelings in the process. ~~</p>
+<p>The meaning of question E is that given that there are 2^n days in a year and k people, what is the probability that these people have the same birthday.</p>
+<p>~~Wow, after reaching this point, I found that this round of questions is really good, the meaning of the questions is concise and easy to understand, and the code is not particularly complicated and disgusting. ~~</p>
+<p>First, based on the pigeonhole principle, if k&gt;(2^n), then there must be the same situation and the result will be output directly.</p>
+<p>Then, the probability of having the same birthday is difficult to calculate. The probability of having different birthdays is</p>
 <p>$$<br>\frac{(2^n-1)*(2^n-2)*\cdot\cdot\cdot*(2^n-(k-1))} {2^{(k-1)*n}}<br>$$</p>
-<p>先固定一个人，然后第2个人不和他相同的概率为(2^n-1)&#x2F;(2^n)，接下来考虑第3个人，不和前两个人相同，以此类推。</p>
-<p>由于结果要求最简分数，那么如果这个是最简分数的话，可以肯定1-x也是最简分数，因为1-a&#x2F;b&#x3D;(b-a)&#x2F;b,而gcd(a,b)&#x3D;gcd(b-a,b)，所以求上式的公约数，公约数明显是2^x。</p>
-<p>现在问题化为求</p>
+<p>First fix one person, and then the probability that the second person is not the same as him is (2^n-1)&#x2F;(2^n). Next, consider the third person and not be the same as the first two people, and so on.</p>
+<p>Since the result requires the simplest fraction, if this is the simplest fraction, you can be sure that 1-x is also the simplest fraction, because 1-a&#x2F;b&#x3D;(b-a)&#x2F;b, and gcd(a,b)&#x3D;gcd(b-a,b), so when finding the common denominator of the above formula, the common denominator is obviously 2^x.</p>
+<p>Now the problem turns into a request</p>
 <p>$$<br>(2^n-1)*(2^n-2)*\cdot\cdot\cdot*(2^n-(k-1))<br>$$</p>
-<p>最多能够整除2的多少次方，而现在又有如果x(满足x&lt;(2^n))可以整除2^x，可知2^n-x也一定整除2^x，所以要求的也即1,2,3….k-1，变为(k-1)!最多能够整除2的多少次方，然后根据勒让德定理：</p>
-<p>$$<br>在正数n!的素因子标准分解式中，素数p的指数记作L_{p}(n!)  ，则 L_{p}(n!) &#x3D;\sum_{k&gt;&#x3D;1}{[\frac{n}{p^k}]}<br>$$</p>
-<p>知道了这个，最后的结果也就好求啦。另外对于</p>
+<p>What is the maximum number of powers that can be divided by 2, and now if x (satisfies</p>
+<p>$$<br>In the standard decomposition formula of prime factors of positive number n!, the exponent of prime number p is recorded as L_{p}(n!), then L_{p}(n!) &#x3D;\sum_{k&gt;&#x3D;1}{[\frac{n}{p^k}]}<br>$$</p>
+<p>Knowing this, the final result will be easier to obtain. Also for</p>
 <p>$$<br>(2^n-1)*(2^n-2)*\cdot\cdot\cdot*(2^n-(k-1))<br>$$</p>
-<p>来说，可以发现，当k-1&gt;&#x3D;mod的时候，最后的结果一定是0，即一定有整除mod的数出现了。剩下的就没什么了。</p>
-<p>这个题真的挺好玩的。^—^</p>
+<p>For example, it can be found that when k-1&gt;&#x3D;mod, the final result must be 0, that is, there must be a number that is evenly divisible by mod. There’s not much left.</p>
+<p>This question is really fun. ^—^</p>
 
 		</div>
 

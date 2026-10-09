@@ -94,11 +94,8 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://2997ms.github.io/images/chong-wang.jpg">
 <meta property="article:published_time" content="2016-10-06T17:05:07.000Z">
-<meta property="article:modified_time" content="2026-10-09T07:40:49.230Z">
+<meta property="article:modified_time" content="2026-10-09T07:58:54.150Z">
 <meta property="article:author" content="Chong Wang">
-<meta property="article:tag" content="Codeforces">
-<meta property="article:tag" content="DP">
-<meta property="article:tag" content="优先队列">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://2997ms.github.io/images/chong-wang.jpg">
     
@@ -339,7 +336,7 @@
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">62</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">28</div>
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
@@ -398,32 +395,13 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2026-10-09 08:40:49</span>
-            <span class="mobile">2026-10-09 08:40:49</span>
+            <span class="desktop">2026-10-09 08:58:54</span>
+            <span class="mobile">2026-10-09 08:58:54</span>
             <span class="hover-info">Updated</span>
         </span>
     
 
     
-    
-        <span class="article-tags article-meta-item">
-            <i class="fa-regular fa-tags"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/tags/Codeforces/">Codeforces</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/DP/">DP</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/">优先队列</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
     
 
     
@@ -441,61 +419,45 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<p>这一轮就过了A和B，C题看见直接懵了，不会做。xjb写了一个宽搜，然后又被叉掉了。D题有思路又没有写完。</p>
-<p><a class="link"   target="_blank" rel="noopener" href="http://codeforces.com/contest/721" >题目链接<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>与<a class="link"   target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/374_Div2" >代码链接<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+			<p>I passed A and B in this round. When I saw question C, I was confused and couldn’t do it. xjb wrote a Kuansou, and then it was forked. Question D has ideas but has not been finished.</p>
+<p><a class="link"   target="_blank" rel="noopener" href="http://codeforces.com/contest/721" >Title link<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> and <a class="link"   target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/374_Div2" >Code link<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
 <h3 id="A-One-dimensional-Japanese-Crossword"><a href="#A-One-dimensional-Japanese-Crossword" class="headerlink" title="A One-dimensional Japanese Crossword"></a>A One-dimensional Japanese Crossword</h3><blockquote>
-<p>找成段的b的区间。</p>
+<p>Find the interval of b into segments.</p>
 </blockquote>
 <h3 id="B-Passwords"><a href="#B-Passwords" class="headerlink" title="B Passwords"></a>B Passwords</h3><blockquote>
-<p>密码长度为k，从最小的长度开始试验，随机在该长度的字符串里面xjb找，问最小代价与最大代价。</p>
+<p>The password length is k, start the experiment from the smallest length, randomly search xjb in the string of this length, and ask the minimum cost and maximum cost.</p>
 </blockquote>
-<p>将所有字符按照长度排序，算小于k的与小于等于k的。</p>
+<p>Sort all characters by length, counting those less than k and those less than or equal to k.</p>
 <h3 id="C-Journey"><a href="#C-Journey" class="headerlink" title="*C Journey"></a>*C Journey</h3><blockquote>
-<p>题意是给出每两点之间要通过的时间，给出起点是$1$，终点是$n$。问在给定T时间的范围内，能走过的最多的点数。(点数$n \leq 5000 $，边数$m \leq 5000$ 时间$T\leq 10^9$)</p>
+<p>The meaning of the question is to give the time to pass between each two points. The starting point is $1$ and the end point is $n$. Ask the maximum number of points that can be traveled within a given T time range. (Point $n \leq 5000 $, edge $m \leq 5000$ time $T\leq 10^9$)</p>
 </blockquote>
-<p>现在来考虑这道题，$dp[x][y]$表示搜到$x$点时，经过$y$个点所用的最短时间。然后这个深搜搜到第$n$个点为止。在搜的过程中记录前一个节点，代码如下：</p>
+<p>Now consider this question. $dp[x][y]$ means the shortest time it takes to pass $y$ points when $x$ points are found. Then this deep search reaches the $n$ point. Record the previous node during the search process. The code is as follows:</p>
 <div class="code-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cal</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (vis[x])</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	vis[x] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span> (x == n)</span><br><span class="line">	&#123;</span><br><span class="line">		dp[x][<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = head[x]; i != <span class="number">-1</span>; i = edge[i].next)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> nxt = edge[i].to;</span><br><span class="line">		<span class="type">int</span> t = edge[i].tim;</span><br><span class="line">		<span class="built_in">cal</span>(nxt);</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (dp[x][j] &gt; t + dp[nxt][j - <span class="number">1</span>])</span><br><span class="line">			&#123;</span><br><span class="line">				dp[x][j] = t + dp[nxt][j - <span class="number">1</span>];</span><br><span class="line">				pre[x][j] = nxt;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
-<p>就这种问题肯定是要同时记录时间和数量的，考虑将其中一个作为数组下标，另一个作为变量。</p>
+<p>For this kind of problem, it is definitely necessary to record the time and quantity at the same time. Consider using one as an array subscript and the other as a variable.</p>
 <h3 id="D-Maxim-and-Array"><a href="#D-Maxim-and-Array" class="headerlink" title="*D Maxim and Array"></a>*D Maxim and Array</h3><blockquote>
-<p>给出$n$个数，可以对其中任意一个数做$+x$或者$-x$的操作，现在最多能够操作$k$次，问使得这$n$个数相乘的最小的情况下，这$n$个数分别是多少。</p>
+<p>Given the number of $n$, you can perform $+x$ or $-x$ operations on any one of them. Now you can operate $k$ times at most. What are the $n$ numbers in the case where the $n$ numbers are multiplied to the minimum.</p>
 </blockquote>
-<p>首先判断0的数量$x$，$x&gt;k$，只能是$0$。</p>
+<p>First determine the number of 0s $x$, $x&gt;k$, which can only be $0$.</p>
 <blockquote>
-<p>之后判断正负号，负号不管。正号的话，考虑把正的最小的变到负的，或者把负的最大的变成正的。(后一种情况要考虑到)</p>
+<p>Then judge the positive and negative signs and ignore the negative signs. If the sign is positive, consider changing the smallest positive one to a negative one, or changing the largest negative one to a positive one. (The latter situation should be taken into consideration)</p>
 </blockquote>
-<p>做完这些操作之后，会发现问题变成使得它们相乘的绝对值最大，可以推出来，有$n$个数，可以对任意一个操作的时候，一定是选绝对值最小的那个数$+x$。那么这样的话就维护队列中的最小值不断$+x$就可以了。</p>
-<p>自己打得时候完全懵逼，拿一个线段树去维护最小值也是。。。用优先队列啊。。。</p>
+<p>After completing these operations, you will find that the problem becomes making the absolute value of their multiplication be the largest. It can be deduced that there are $n$ numbers. When operating on any one, you must choose the number $+x$ with the smallest absolute value. In this case, just maintain the minimum value in the queue continuously $+x$.</p>
+<p>I was completely confused when I played it myself, and I was also confused when I used a line segment tree to maintain the minimum value. . . Use priority queue. . .</p>
 <h3 id="E-Road-to-Home"><a href="#E-Road-to-Home" class="headerlink" title="*E Road to Home"></a>*E Road to Home</h3><blockquote>
-<p>题意是给出了$L$范围内的$n$段区间，小朋友在这$n$段区间可以唱歌，每次唱歌走过的路程为$p$，当然也可以不唱。唱完歌走出一个区间至少要隔$t$长度才可以再唱，问最多能够唱几次。</p>
+<p>The meaning of the question is that the $n$ section within the range of $L$ is given. Children can sing in this $n$ section. The distance covered each time they sing is $p$. Of course, they do not need to sing. After singing a song, you have to leave a section at least $t$ long before you can sing again. How many times can you sing at most?</p>
 </blockquote>
-<p>考虑每一个区间，$dp[x]$表示到第$x$区间的右端点时最多唱过的歌数。$en[x]$记录其位置。如果有相同数量的情况，记录其最左边的位置。</p>
-<p>这个题巧妙在于每一次只需记录利用该区间之后的最大数量和最左位置就好了，而不用每一次从1开始转移，原因<a class="link"   target="_blank" rel="noopener" href="http://www.cnblogs.com/sagitta/p/5925785.html" >这篇博客<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>说得很清楚了。</p>
+<p>Considering each interval, $dp[x]$ represents the maximum number of songs sung to the right end point of the $x$ interval. $en[x]$ records its location. If there are the same number of cases, record its leftmost position.</p>
+<p>The cleverness of this question is that you only need to record the maximum number and leftmost position after using the interval each time, instead of starting from 1 every time. The reason [this blog] (<a class="link"   target="_blank" rel="noopener" href="http://www.cnblogs.com/sagitta/p/5925785.html" >http://www.cnblogs.com/sagitta/p/5925785.html<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>) makes it very clear.</p>
 <blockquote>
-<p>你如果认真读过转移方程的话会发现 转移的时候是每次先休息再连续唱几遍歌 （先一段休息 再一段唱歌） 我们考虑唱歌段 如果唱歌段能继续延长一个周期 那么如果此时延长了肯定会使得从起点到当前区间的答案更优 <strong>而起点到每个区间的最优答案都是从起点到之前某个区间的最优答案转移过来的 如果某一区间少唱一首歌 那么空余出来的时间在这之后运气好也只能用来唱一首歌</strong> 所以只要按这种贪心思路 维护从起点到当前区间的最优解 最后得到的便是从起点到终点的最优解。</p>
+<p>If you read the transfer equation carefully, you will find that when transferring, you need to rest first and then sing several times in a row (rest first, then sing). We consider the singing section. If the singing section can continue to be extended by one cycle, then if it is extended at this time, it will definitely make the answer from the starting point to the current interval more optimal. <strong>The optimal answer from the starting point to each interval is transferred from the optimal answer from the starting point to the previous interval. If one less song is sung in a certain interval, Then the free time can only be used to sing one song if you are lucky</strong> So as long as you follow this greedy idea and maintain the optimal solution from the starting point to the current interval, the final result will be the optimal solution from the starting point to the end point.</p>
 </blockquote>
-<p>这个题$O(n)$的解法真的很巧妙啊，比题解的那个根据p的范围分类讨论各种情况的好多了。。。</p>
+<p>The solution to this question $O(n)$ is really clever. It is much better than the one in the solution that discusses various situations according to the range of p. . .</p>
 
 		</div>
 
 		
 
-		
-		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
-			
-			<li class="tag-item mx-0.5">
-				<a href="/tags/Codeforces/">#Codeforces</a>&nbsp;
-			</li>
-			
-			<li class="tag-item mx-0.5">
-				<a href="/tags/DP/">#DP</a>&nbsp;
-			</li>
-			
-			<li class="tag-item mx-0.5">
-				<a href="/tags/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/">#优先队列</a>&nbsp;
-			</li>
-			
-		</ul>
 		
 
 		

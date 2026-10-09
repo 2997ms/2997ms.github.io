@@ -94,7 +94,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://2997ms.github.io/images/chong-wang.jpg">
 <meta property="article:published_time" content="2016-10-06T20:39:17.000Z">
-<meta property="article:modified_time" content="2026-10-09T07:40:48.678Z">
+<meta property="article:modified_time" content="2026-10-09T07:52:47.489Z">
 <meta property="article:author" content="Chong Wang">
 <meta property="article:tag" content="Codeforces">
 <meta name="twitter:card" content="summary">
@@ -337,7 +337,7 @@
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">62</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">28</div>
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
@@ -396,8 +396,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2026-10-09 08:40:48</span>
-            <span class="mobile">2026-10-09 08:40:48</span>
+            <span class="desktop">2026-10-09 08:52:47</span>
+            <span class="mobile">2026-10-09 08:52:47</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -431,41 +431,41 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<p><a class="link"   target="_blank" rel="noopener" href="http://codeforces.com/contest/722" >题目链接<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>与<a class="link"   target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/Intel%20Code%20Challenge%20Elimination%20Round" >代码链接<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
-<p>A题在自己知道坑的情况下还是挂了，D题在最后五分钟想出思路，又一次懵逼，没有时间敲完。。。</p>
+			<p><a class="link"   target="_blank" rel="noopener" href="http://codeforces.com/contest/722" >Title link<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> and <a class="link"   target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/Intel%20Code%20Challenge%20Elimination%20Round" >Code link<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p>Question A failed even though I knew it was a pitfall. Question D took me the last five minutes to come up with an idea, but I was confused again and had no time to finish. . .</p>
 <h3 id="A-Broken-Clock"><a href="#A-Broken-Clock" class="headerlink" title="*A Broken Clock"></a>*A Broken Clock</h3><blockquote>
-<p>题意是给出表的12计时方式与24计时方式，12计时方式时钟在1<del>12的范围内，分钟在0</del>59的范围内。24计时方式时钟在0<del>23的范围内，分钟在0</del>59的范围内。问改动最少的数字，使得给出的时间符合要求。</p>
+<p>The meaning of the question is to give the 12-timing mode and the 24-timing mode of the watch. In the 12-timing mode, the clock is in the range of 1<del>12, and the minutes are in the range of 0</del>59. In 24-hour timing mode, the clock is in the range of 0<del>23, and the minutes are in the range of 0</del>59. Ask for the smallest number to change so that the given time meets the requirements.</p>
 </blockquote>
-<p>注意12计时方式下的20：00这种情况，不是变成01：00而是10：00。。。。</p>
+<p>Note that in the case of 20:00 in the 12-timer mode, it does not become 01:00 but 10:00. . . .</p>
 <h3 id="B-Verse-Pattern"><a href="#B-Verse-Pattern" class="headerlink" title="B Verse Pattern"></a>B Verse Pattern</h3><blockquote>
-<p>算每一个字符串数组中的元音字符数量是否与给定的数相等。。。</p>
+<p>Calculate whether the number of vowel characters in each string array is equal to the given number. . .</p>
 </blockquote>
 <h3 id="C-Destroying-Array"><a href="#C-Destroying-Array" class="headerlink" title="C Destroying Array"></a>C Destroying Array</h3><blockquote>
-<p>给定一个数组，每次删掉一个数字，问每次删掉之后剩下的连续数字的最大和。</p>
+<p>Given an array, delete one number at a time and ask for the maximum sum of the remaining consecutive numbers after each deletion.</p>
 </blockquote>
-<p>反过来考虑就是添加数字，每次添加用并查集来合并左右数字，维护最大值。</p>
+<p>The other way around is to add numbers. Each time you add, use union-find to combine the left and right numbers and maintain the maximum value.</p>
 <h3 id="D-Generating-Sets"><a href="#D-Generating-Sets" class="headerlink" title="*D Generating Sets"></a>*D Generating Sets</h3><blockquote>
-<p>题意是有不同的$n$个数，可以任意选一个数$x$，有两种操作，1.$x*2$之后放回去。2.$x*2+1$之后放回去。经过若干次这样的变换之后，变成了给出的数组，要求就是找回最开始的n个数，使得这n个数里面最大的数最小。</p>
+<p>The meaning of the question is that there are different numbers of $n$. You can choose any number $x$. There are two operations. 1. Put it back after $x*2$. 2.Put it back after $x*2+1$. After several such transformations, it becomes the given array. The requirement is to find the first n numbers so that the largest number among these n numbers is the smallest.</p>
 </blockquote>
-<p>实际上是一颗二叉树，每一次选最大的数除以2，看可不可以占这个位子，不能的话再往上找，直到找不到向上的路径了。</p>
-<p>别人都是set就过了，我非得搞个优先队列+map。。。mdzz。</p>
+<p>In fact, it is a binary tree. Each time, the largest number is selected and divided by 2 to see if it can occupy this position. If not, then search upwards until no upward path can be found.</p>
+<p>Others just get by with set, but I have to create a priority queue + map. . . mdzz.</p>
 <h3 id="E-Research-Rover"><a href="#E-Research-Rover" class="headerlink" title="*E Research Rover"></a>*E Research Rover</h3><blockquote>
-<p>有$n*m$的格子，一开始站在$(1,1)$的点上，有$S$的油量，现在有一些点会让油量减半，问最终到达(n,m)这个格子所剩油的期望。化简之后分数表示成$\frac {P}{Q}$，给出$P*Q^{-1}$的结果，其中$Q^{-1}$代表$Q$模$10^9+7$的逆元。</p>
+<p>There is a grid of $n*m$. Initially, when standing at the point of $(1,1)$, there is an amount of oil of $S$. Now there are some points that will reduce the amount of oil by half. Ask about the expectation of the remaining oil in the grid of (n, m). After simplification, the fraction is expressed as $\frac {P}{Q}$, giving the result of $P*Q^{-1}$, where $Q^{-1}$ represents the inverse element of $Q$ module $10^9+7$.</p>
 </blockquote>
-<p>首先结果的分数是不用考虑化简的，因为假设$P$和$Q$都有公约数$d$，那么<br>$$<br>P_{d}*d*Q_{d}^{-1}*d^{-1}&#x3D;P*Q^{-1}<br>$$<br>所以$Q$就是从$(1,1)$到$(n,m)$的方案数，$P$即是所有情况下到达的油量总和。</p>
-<p>这道题还要发现一点就是$S$最大值是$10^6$，也就是说如果经过了超过20个消耗点，那么就会一直是1了。所以只需要考虑小于等于20个消耗点的情况。</p>
-<p>这样的话和<a class="link"   target="_blank" rel="noopener" href="http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1486" >51nod上大大走格子<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>(这个也是codeforces上的。。。)思路就类似了。dp[i][v]表示第$v$个点到终点经过$i$个消耗点的方案数量。从后往前考虑，等于<br>$$<br>dp[i][v] &#x3D; C(n+m-x_v-y_v,n-x_v) - \sum_{j&#x3D;v+1}^{k}C(x_j+y_j-x_v-y_v,x_j-x_v)*dp[i][j] - \sum_{j&#x3D;0}^{i-1} dp[j][v]<br>$$<br>解释一下上面的式子，$C(n+m-x_v-y_v,n-x_v) $是该点到终点的方案总数，减去前面的点经过$i$个点了乘以它到这里的方案数，这块和大大走格子的思路是一致的。这一部分等于它到终点经过$0$到$i$次的，减掉之前的，就是该点经过$i$个点的方案数。最后是(1,1)这个点的方案数乘以油量。</p>
-<p>最后考虑经过的数量大于20的情况，$C(n+m-2,n-1)$减去之前算出来的方案数就是剩下的情况，乘以1，添到结果内。</p>
-<p>最后这个题卡常，算逆元的话最好用递推式:<br>$$<br>inv[i]&#x3D;(Mod-\frac {Mod}{i})*inv[Mod %i]%Mod<br>$$</p>
+<p>First of all, the score of the result does not need to be considered for simplification, because assuming that $P$ and $Q$ both have a common divisor $d$, then<br>$$<br>P_{d}*d*Q_{d}^{-1}*d^{-1}&#x3D;P*Q^{-1}<br>$$<br>So $Q$ is the number of plans from $(1,1)$ to $(n,m)$, and $P$ is the total amount of oil achieved in all situations.</p>
+<p>Another thing to note about this question is that the maximum value of $S$ is $10^6$, which means that if more than 20 consumption points have passed, it will always be 1. So only the situation with less than or equal to 20 consumption points needs to be considered.</p>
+<p>In this case, the idea is similar to [51nod’s big grid] (<a class="link"   target="_blank" rel="noopener" href="http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1486" >http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1486<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>) (this is also on codeforces…). dp[i][v] represents the number of plans from the $v$ point to the end point through $i$ consumption points. Thinking from back to front is equal to<br>$$<br>dp[i][v] &#x3D; C(n+m-x_v-y_v,n-x_v) - \sum_{j&#x3D;v+1}^{k}C(x_j+y_j-x_v-y_v,x_j-x_v)*dp[i][j] - \sum_{j&#x3D;0}^{i-1} dp[j][v]<br>$$<br>To explain the above formula, $C(n+m-x_v-y_v,n-x_v) $ is the total number of plans from this point to the end point, minus the previous point that passed through $i$ points, multiplied by the number of plans it has to here. This is consistent with the idea of ​​taking a grid. This part is equal to the number of times it passes from $0$ to $i$ times to the end point. Subtracting the previous one is the number of plans that this point passes through $i$ points. Finally, it is the number of solutions at point (1,1) multiplied by the amount of oil.</p>
+<p>Finally, considering the case where the number of passes is greater than 20, $C(n+m-2,n-1)$ subtracts the number of previously calculated solutions to get the remaining situation, multiplies it by 1, and adds it to the result.</p>
+<p>The last question is often stuck. When calculating inverse elements, it is best to use recursion:<br>$$<br>inv[i]&#x3D;(Mod-\frac {Mod}{i})*inv[Mod %i]%Mod<br>$$</p>
 <h3 id="F-Cyclic-Cipher"><a href="#F-Cyclic-Cipher" class="headerlink" title="F Cyclic Cipher"></a>F Cyclic Cipher</h3><blockquote>
-<p>题意是给出了$n$个序列，每个序列$k_i(1 \leq k_i \leq 40 )$个数，每次序列向右不断循环一位，取每个序列的第一个数再从上到下组成一个序列，算每一个数的最长连续序列，一共进行$10^{100}$次，问在这些中，每个数的最长连续序列是多少。</p>
+<p>The meaning of the question is that $n$ sequences are given, and each sequence has $k_i(1 \leq k_i \leq 40 )$ numbers. Each sequence continuously cycles one bit to the right. Take the first number of each sequence and form a sequence from top to bottom. Calculate the longest continuous sequence of each number. Perform $10^{100}$ times in total. Among these, what is the longest continuous sequence of each number.</p>
 </blockquote>
-<p>会发现如果$x$在连续序列中碰到一起了，假设是在第$S$秒，在第$i$个序列中的位置为$p_i$，第$i$序列的长度为$k_i$，那么会满足下面的条件<br>$$<br>S\equiv p_i (mod\ k_i)<br>$$</p>
+<p>It will be found that if $x$ meet together in a continuous sequence, assuming it is at the $S$ second, the position in the $i$ sequence is $p_i$, and the length of the $i$ sequence is $k_i$, then the following conditions will be met<br>$$<br>S\equiv p_i (mod\ k_i)<br>$$</p>
 <p>$$<br>S\equiv p_j (mod\ k_j)<br>$$</p>
-<p>发现这样的话就是<a class="link"   target="_blank" rel="noopener" href="http://blog.csdn.net/acdreamers/article/details/8050018" >中国剩余定理<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>的内容，参考这个的<a class="link"   target="_blank" rel="noopener" href="http://codeforces.com/blog/entry/47497#comment-318621" >评论<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>，可以推出：<br>$$<br>p_i+k_i*x&#x3D;p_j+k_j*y<br>$$</p>
+<p>It is found that this is the content of <a class="link"   target="_blank" rel="noopener" href="http://blog.csdn.net/acdreamers/article/details/8050018" >Chinese Remainder Theorem<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>. Referring to this <a class="link"   target="_blank" rel="noopener" href="http://codeforces.com/blog/entry/47497#comment-318621" >Comment<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>, it can be deduced:<br>$$<br>p_i+k_i*x&#x3D;p_j+k_j*y<br>$$</p>
 <p>$$<br>\Rightarrow p_i-p_j\ &#x3D; k_j*y-k_i*x<br>$$</p>
 <p>$$<br>\Rightarrow p_i-p_j\equiv 0 (mod\ GCD(k_i,k_j))<br>$$</p>
-<p>因为在连续序列里面的任意两个都要满足这样的关系，所以枚举右端点，更新左端点即可。</p>
+<p>Because any two in the continuous sequence must satisfy such a relationship, just enumerate the right endpoint and update the left endpoint.</p>
 
 		</div>
 

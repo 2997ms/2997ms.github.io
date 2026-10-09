@@ -94,11 +94,8 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://2997ms.github.io/images/chong-wang.jpg">
 <meta property="article:published_time" content="2016-09-03T13:54:44.000Z">
-<meta property="article:modified_time" content="2026-10-09T07:40:43.508Z">
+<meta property="article:modified_time" content="2026-10-09T07:56:20.645Z">
 <meta property="article:author" content="Chong Wang">
-<meta property="article:tag" content="51nod">
-<meta property="article:tag" content="CodeChef">
-<meta property="article:tag" content="树上直径">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://2997ms.github.io/images/chong-wang.jpg">
     
@@ -339,7 +336,7 @@
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">62</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">28</div>
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
@@ -398,32 +395,13 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2026-10-09 08:40:43</span>
-            <span class="mobile">2026-10-09 08:40:43</span>
+            <span class="desktop">2026-10-09 08:56:20</span>
+            <span class="mobile">2026-10-09 08:56:20</span>
             <span class="hover-info">Updated</span>
         </span>
     
 
     
-    
-        <span class="article-tags article-meta-item">
-            <i class="fa-regular fa-tags"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/tags/51nod/">51nod</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/CodeChef/">CodeChef</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/%E6%A0%91%E4%B8%8A%E7%9B%B4%E5%BE%84/">树上直径</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
     
 
     
@@ -441,39 +419,23 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<p>做了Codechef上面的<a class="link"   target="_blank" rel="noopener" href="https://www.codechef.com/LTIME39" >August Lunchtime 2016<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>，上面的题都有中文题面，还有解答，还有代码。觉得这个网站也不错呀。。。</p>
-<p>然后这次做完发现是三道easy，一道medium。一想也没用什么数据结构，好像是差不多哈，但是第四个树上直径这个和51nod上面树上最远点对是一样的想法，做得时候自己感觉还是挺难的。第三题数组开小了，然而一直返回WA，找了很久。第二个有相同的数字也WA了一个晚上。这样想来觉得也不那么简单了。</p>
-<p>代码在<a class="link"   target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Codechef/August-Lunchtime-2016" >这里<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>。</p>
-<p>A题Studying Alphabet不用写了。。。</p>
-<h3 id="B题Lock-Free-Stack"><a href="#B题Lock-Free-Stack" class="headerlink" title="B题Lock-Free Stack"></a>B题Lock-Free Stack</h3><hr>
-<p>因为有P &#x3D; (A1 + 1) × (A2 + 1) × … × (AN + 1)，然后P&lt;&#x3D;10^6，所以最多20个进程，那就对每个进程的输出都要符合压栈顺序。(一开始自己一位一位找，发现有相同的数字，所以WA了一晚上，后来还是对每个进程都满足顺序就可以了)。</p>
-<h3 id="C题-Short-in-Average"><a href="#C题-Short-in-Average" class="headerlink" title="C题 Short in Average"></a>C题 Short in Average</h3><hr>
-<p>这个题自己搞过原题，感触就是平均值问题很容易搞成二分，然后对每一个值减去二分的值，然后去判断。<a class="link"   target="_blank" rel="noopener" href="http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1711" >51nod 1711平均数<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>也是这样，二分这个平均数x，然后每个数减去x，那么这样的话就是算区间和&lt;0的个数与k去相比，区间和[le,ri]小于0，相当于前缀和sum[ri]-sum[le-1]&lt;0，sum[ri]&lt;sum[le-1]，这个不就是逆序对的数目嘛，发现离散化+树状数组就可以做了。</p>
-<p>这个题的思路也是这样，每个边减去二分值x，然后直接判环就好了。</p>
-<h3 id="D题-Product-of-Diameters"><a href="#D题-Product-of-Diameters" class="headerlink" title="D题 Product of Diameters"></a>D题 Product of Diameters</h3><hr>
-<p>这个题目赞在要逆向考虑，往里面加边，然后输出结果。那么往里面加边，就是除以每颗树直径的直径的乘积，这个可以维护，然后求出这两棵树内部的直径，这个维护相当于需要维护一个集合里面的最远距离，想了一下和<a class="link"   target="_blank" rel="noopener" href="http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1766" >51nod 1766树上的最远点对<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>本质上是一样的题目，也是维护一个集合里面距离最远的两个点，然后两个集合的合并，只可能在这四个点里面出，倍增求lca，求距离。</p>
-<p>这个题思想还是挺简单的，要想清楚过程，自己写起来一些细节写得还是不够好。</p>
+			<p>I did <a class="link"   target="_blank" rel="noopener" href="https://www.codechef.com/LTIME39" >August Lunchtime 2016<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> on Codechef. The above questions all have Chinese questions, answers, and codes. I think this website is also good. . .</p>
+<p>Then after finishing this time, I found that there were three easy courses and one medium course. I didn’t use any data structure at first thought, it seems to be similar, but the diameter of the fourth tree has the same idea as the farthest point pair of the tree on 51nod. When I did it, I felt it was quite difficult. In the third question, the array size is too small, but it keeps returning to WA, and I have been looking for it for a long time. The second one with the same number also WA’d one night. Thinking about it this way, it seems that it is not that simple.</p>
+<p>The code is <a class="link"   target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Codechef/August-Lunchtime-2016" >here<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>.</p>
+<p>There is no need to write question A, Studying Alphabet. . .</p>
+<h3 id="Question-B-Lock-Free-Stack"><a href="#Question-B-Lock-Free-Stack" class="headerlink" title="Question B Lock-Free Stack"></a>Question B Lock-Free Stack</h3><hr>
+<p>Because there is P &#x3D; (A1 + 1) × (A2 + 1) × … × (AN + 1), and P&lt;&#x3D;10^6, so there are at most 20 processes, then the output of each process must comply with the stacking order. (At first, I searched one by one and found that there were the same numbers, so I waited all night. Later, I just needed to satisfy the order for each process).</p>
+<h3 id="Question-C-Short-in-Average"><a href="#Question-C-Short-in-Average" class="headerlink" title="Question C Short in Average"></a>Question C Short in Average</h3><hr>
+<p>I have done the original question of this question myself, and my impression is that the average value problem can easily be divided into two points, and then subtract the two points from each value, and then judge. [51nod The same is true for 1711 average] (<a class="link"   target="_blank" rel="noopener" href="http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1711" >http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1711<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>). Divide the average number</p>
+<p>The idea of ​​​​this question is also the same. Subtract the dichotomy value x from each edge, and then directly judge the ring.</p>
+<h3 id="Question-D-Product-of-Diameters"><a href="#Question-D-Product-of-Diameters" class="headerlink" title="Question D Product of Diameters"></a>Question D Product of Diameters</h3><hr>
+<p>The great thing about this question is that you need to think backwards, add edges to it, and then output the result. Then adding edges to it is the product of the diameter divided by the diameter of each tree. This can be maintained, and then the internal diameters of the two trees are found. This maintenance is equivalent to maintaining the farthest distance in a set. I thought about it and [51nod 1766 The farthest point pair on the tree] (<a class="link"   target="_blank" rel="noopener" href="http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1766" >http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1766<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>) is essentially the same question. It also maintains the two farthest points in a set. Then the merger of the two sets can only be found among these four points. Find lca by doubling and find the distance.</p>
+<p>The idea of ​​​​this question is quite simple. If you want to think clearly about the process, you still can’t write some details well enough.</p>
 
 		</div>
 
 		
 
-		
-		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
-			
-			<li class="tag-item mx-0.5">
-				<a href="/tags/51nod/">#51nod</a>&nbsp;
-			</li>
-			
-			<li class="tag-item mx-0.5">
-				<a href="/tags/CodeChef/">#CodeChef</a>&nbsp;
-			</li>
-			
-			<li class="tag-item mx-0.5">
-				<a href="/tags/%E6%A0%91%E4%B8%8A%E7%9B%B4%E5%BE%84/">#树上直径</a>&nbsp;
-			</li>
-			
-		</ul>
 		
 
 		
@@ -519,7 +481,7 @@
 	<div class="post-toc">
 		<div class="toc-title">On this page</div>
 		<div class="page-title">CodeChef August Lunchtime 2016</div>
-		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#B%E9%A2%98Lock-Free-Stack"><span class="nav-text">B题Lock-Free Stack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C%E9%A2%98-Short-in-Average"><span class="nav-text">C题 Short in Average</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D%E9%A2%98-Product-of-Diameters"><span class="nav-text">D题 Product of Diameters</span></a></li></ol>
+		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Question-B-Lock-Free-Stack"><span class="nav-text">Question B Lock-Free Stack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Question-C-Short-in-Average"><span class="nav-text">Question C Short in Average</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Question-D-Product-of-Diameters"><span class="nav-text">Question D Product of Diameters</span></a></li></ol>
 
 	</div>
 </div>
