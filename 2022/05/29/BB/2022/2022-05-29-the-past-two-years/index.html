@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    
+    <meta name="author" content="Chong Wang">
+    
+    <!-- Completely eliminate flash of wrong theme -->
+    <script>
+        (function() {
+            const THEME_KEY = "REDEFINE-THEME-STATUS";
+            const DARK = "dark", LIGHT = "light";
+            
+            // Get preferred theme
+            function getTheme() {
+                try {
+                    const saved = localStorage.getItem(THEME_KEY);
+                    if (saved) {
+                        const { isDark } = JSON.parse(saved);
+                        return isDark ? DARK : LIGHT;
+                    }
+                } catch (e) {}
+                
+                return matchMedia("(prefers-color-scheme: dark)").matches ? DARK : LIGHT;
+            }
+            
+            // Apply theme to document
+            function applyTheme(theme) {
+                const isDark = theme === DARK;
+                const root = document.documentElement;
+                
+                // Set classes for compatibility
+                root.classList.add(theme);
+                root.classList.remove(isDark ? LIGHT : DARK);
+                root.style.colorScheme = theme;
+            }
+            
+            // Initial application
+            const theme = getTheme();
+            applyTheme(theme);
+            
+            // Listen for system preference changes
+            matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ({ matches }) => {
+                // Only update if using system preference (no localStorage entry)
+                if (!localStorage.getItem(THEME_KEY)) {
+                    applyTheme(matches ? DARK : LIGHT);
+                }
+            });
+            
+            // Set body classes ASAP (before DOMContentLoaded)
+            (function() {
+                const addBodyClass = () => {
+                    const b = document.body;
+                    if (!b) return false;
+                    b.classList.add(theme + "-mode");
+                    return true;
+                };
+
+                // Try immediately
+                if (addBodyClass()) return;
+
+                // Observe until body exists
+                const mo = new MutationObserver(() => {
+                    if (addBodyClass()) mo.disconnect();
+                });
+                mo.observe(document.documentElement, { childList: true, subtree: true });
+            })();
+        })();
+    </script>
+    
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://2997ms.github.io/2022/05/29/bb/2022/2022-05-29-the-past-two-years/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+        
+        <meta name="description" content="Chong Wang — software engineer, smart contract security researcher, and competitive programmer.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="May 2022: The Past Two Years">
+<meta property="og:url" content="http://2997ms.github.io/2022/05/29/BB/2022/2022-05-29-the-past-two-years/index.html">
+<meta property="og:site_name" content="Chong Wang">
+<meta property="og:description" content="Chong Wang — software engineer, smart contract security researcher, and competitive programmer.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://2997ms.github.io/images/chong-wang.jpg">
+<meta property="article:published_time" content="2022-05-29T19:50:01.000Z">
+<meta property="article:modified_time" content="2026-10-09T13:45:28.838Z">
+<meta property="article:author" content="Chong Wang">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://2997ms.github.io/images/chong-wang.jpg">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/chong-wang-favicon.png" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/chong-wang-favicon.png">
+    <meta name="theme-color" content="#49b6b1">
+    <link rel="shortcut icon" href="/images/chong-wang-favicon.png">
+    <!--- Page Info-->
+    
+    <title>
+        
+            May 2022: The Past Two Years | Chong Wang
+        
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/build/tailwind.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"2997ms.github.io","root":"/","language":"en"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":false,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":false,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#49b6b1","secondary":null,"default_mode":"dark"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1080px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":false,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":false,"preloader":{"enable":false,"custom_message":null},"side_tools":{"gear_rotation":true,"auto_expand":false},"open_graph":{"enable":true,"image":"/images/chong-wang.jpg","description":"Chong Wang — software engineer, smart contract security researcher, and competitive programmer."},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":false,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"Theme Redefine","subtitle":{"text":[],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":[{"icon":"fa-brands fa-github","url":null},{"icon":"fa-brands fa-twitter","url":null},{"icon":"fa-solid fa-at","url":"you@example.com"},{"icon":"fa-brands fa-telegram","url":null},{"icon":"/images/custom-icon.svg","url":null}],"qrs":[{"icon":"fa-brands fa-weixin","qr":null},{"icon":"/images/custom-icon.svg","qr":null}]}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1","theme":{"light":"default","dark":"dark"}}},"version":"2.9.0","navbar":{"auto_hide":false,"color":{"left":"#101923","right":"#1b3b47","transparency":24},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Posts":{"path":"/archives","icon":"fa-regular fa-pen-to-square"},"About":{"path":"/about/","icon":"fa-regular fa-user"}},"search":{"enable":false,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur","masonry":{"batch_size":12,"initial_batch_size":24}},"home":{"sidebar":{"enable":false,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":null},"article_date_format":"YYYY-MM-DD","excerpt_length":180,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footer":{"runtime":false,"icon":"<i class=\"fa-solid fa-heart fa-beat\" style=\"--fa-animation-duration: 0.5s; color: #f54545\"></i>","start":"2022/8/17 11:45:14","statistics":false,"customize":"© Chong Wang","icp":{"enable":false,"number":null,"url":null}},"footerStart":"2022/8/17 11:45:14","mermaid":{"style":{"light":"default","dark":"dark"}}};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.i18n = {"search":"Search...","toc":"On this page","prev":"Prev","next":"Next","prev_posts":"Prev posts","next_posts":"Next posts","page":"Page %d","recent_posts":"Recent Posts","share":"Share","powered_by":"POWERED BY %s","theme":"THEME","rss_feed":"RSS Feed","category":"Category","categories":"Categories","tag":"Tag","tags":"Tags","post":"Post","posts":"Posts","tagcloud":"Tag Cloud","comment":"Comment","comments":"Comments","home":"Home","archive":"Archive","archives":"Archives","top":"TOP","sticky":"Sticky","go-back-home":"Go Back Home","masonry_loading":"Loading photos...","image_viewer":"Image viewer","close":"Close","exif":{"title":"EXIF","cards":{"camera":"Camera","lens":"Lens","exposure":"Exposure","other":"Other"},"fields":{"make":"Brand","model":"Model","date_taken":"Date taken","lens_model":"Lens","focal_length":"Focal length","focus_mode":"Focus mode","shutter":"Shutter","aperture":"Aperture","iso":"ISO","exposure_program":"Exposure program","exposure_compensation":"Exposure compensation","metering_mode":"Metering mode","flash":"Flash","white_balance":"White balance","latitude":"Latitude","longitude":"Longitude","altitude":"Altitude"},"status":{"loading":"Loading...","no_exif":"No EXIF available","library_missing":"EXIF library not loaded","image_source_missing":"Image source unavailable","unavailable":"EXIF unavailable (blocked by CORS or missing metadata)","flag_unavailable":"EXIF unavailable"}},"about":"About","changelog":"Changelog","links":"Links","link":"Link","friends":"Friends","friend":"Friend","timeline":"Timeline","shuoshuo":"Shuoshuo","bookmarks":"Bookmarks","site_uv":"VISITOR COUNT","site_pv":"TOTAL PAGE VIEWS","read_more":"Read more","wordcount":"Words","min2read":"Mins","status":"Status","runtime":"Blog up for","days":"days","hours":"hrs","minutes":"Min","seconds":"Sec","optimized_by":"and Optimized by Evan","rights":"All Rights Reserved","site_posts":"%s posts in total","site_wordcount":"%s words in total","copyright":{"author":"Author","title":"Title","link":"Link","create_time":"Created at","update_time":"Updated at","license_title":"License","license_content":"This work is licensed under %s.","all_rights_reserved":"All Rights Reserved &#169; %s","public_domain":"This work is in the public domain."},"ago":{"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"},"create_time":"Created","update_time":"Updated","expired":"This post is written %s days ago, and the content may not be up to date."};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+	<div class="progress-bar-container">
+	
+
+	
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                Chong Wang
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-pen-to-square fa-fw"></i>
+                                    POSTS
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/about/"
+                                        >
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    ABOUT
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                POSTS
+                            </span>
+                            
+                                <i class="fa-regular fa-pen-to-square fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/about/"
+                        >
+                            <span>
+                                ABOUT
+                            </span>
+                            
+                                <i class="fa-regular fa-user fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">28</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">1</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">153</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">May 2022: The Past Two Years</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] shrink-0 rounded-medium border border-border-color p-px">
+				<img src="/images/chong-wang.jpg">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">Chong Wang</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv6</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2022-05-29 20:50:01</span>
+        <span class="mobile">2022-05-29 20:50:01</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2026-10-09 14:45:28</span>
+            <span class="mobile">2026-10-09 14:45:28</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+    
+
+    
+    
+    
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<p>Reading what I said over these two years: another two years that are hard to look at.</p>
+<span id="more"></span>
+
+<p>2021-10-10</p>
+<blockquote>
+<p>In this age full of temptations, I notice that people around me—including myself—often rely on outside forces to discipline themselves: join a daily check-in group or pay for a course with a fixed schedule.</p>
+<p>But external dependence does not work for long. A real change of state still requires stronger inner resources.</p>
+</blockquote>
+<p>2021-09-16</p>
+<blockquote>
+<p>Technical skills must be strong enough.</p>
+<p>Do not stop moving every day.</p>
+</blockquote>
+<p>2021-04-21</p>
+<blockquote>
+<p>While making a plan, I remembered all the earlier plans I never carried out properly. I had forgotten about writing a weekly summary.</p>
+<p>Four problems a day on weekends. I wanted to reach 1,000 before the end of the year—a kind of ten-year promise.</p>
+<p>Current goals: a public WeChat account, weekly reports, and 1,000.</p>
+</blockquote>
+<p>2021-04-04</p>
+<blockquote>
+<p>3.23 - 4.4</p>
+<p>With more holiday time, perhaps I can find myself again—but perhaps only for today.</p>
+<p>I caught up on all eight LeetCode problems.</p>
+<p>I finally fulfilled a long-standing promise: <a class="link"   target="_blank" rel="noopener" href="http://2997ms.com/2997ms_me" >http://2997ms.com/2997ms_me<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> was nearly done. Many parts were still empty because I had no work to show—very embarrassing. Precisely because it was incomplete, its purpose was not to summarize, but more to guide myself.</p>
+<p>I will not say “I hope my future self can XXXX” anymore. I have said it far too many times and become numb to it. I do not even know what effect saying it has.</p>
+<p>In a moment I will put together an article for my WeChat Official Account. I hope it goes smoothly.</p>
+<p>The day before yesterday I went to the seaside. The wind was so strong that I could not stop shivering.</p>
+<p>Yet the sea always embraces everything; it truly turns decay into legend.</p>
+<p>May I become wealthy enough to buy a sea of advancing and retreating tides.</p>
+<p>The point of writing weekly reports is not to drift through life in a daze, but to move toward a goal.</p>
+<p>Not now, not now. Ten years of black hair exchanged for blah blah.</p>
+</blockquote>
+<p>2021-03-31</p>
+<blockquote>
+<p>Everyone trying to save the nation by a roundabout route ends up circling so long that they forget the original direction completely.</p>
+<p>I love reading, stories, and algorithm contests. I also want to tell my own story. That is all.</p>
+</blockquote>
+<p>2021-03-28</p>
+<blockquote>
+<p>I firmly believe this era belongs to brave and fearless people. Every era does.</p>
+<p>Look: I failed to keep this weekly report going even through this week. The only thing I have persisted in is the record itself.</p>
+<p>3.22 - 3.28</p>
+<p>This week I competed in this <a class="link"   target="_blank" rel="noopener" href="https://atcoder.jp/contests/abc197" >AtCoder contest<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> and lost rating points. I was truly weak.</p>
+<p>I wrote a little for my WeChat Official Account; the rest of the time, anxiety itself left me doing nothing and panicking.</p>
+</blockquote>
+<p>2021-03-21 </p>
+<blockquote>
+<p>3.15 - 3.21</p>
+<p>This week I finished two books.</p>
+<p>In <em>Those Sad Young People</em>, Xu’s later writing was genuinely brilliant—his understanding of university and his criticism of society. I came to see him as an intellectual, and as an idealist.</p>
+<p><em>The Book of Lost Things</em> landed below my expectations. It was not as stunning as I had expected; its final few pages moved me a little, but overall it felt ordinary.</p>
+<p>One film: <em>Dead Poets Society</em>. It needs little introduction—“O Captain! My Captain!” Many people see it as an idealistic film and praise the teacher. But the director’s meaning seems clear: reality ultimately crushes idealism. The teacher leaves the school; a student leaves this world. What remains for us to consider is what education itself gives us: should it reduce constraints and help us discover ourselves, or add constraints and make us accept the rules of reality earlier?</p>
+<p>This is an eternal question: it has no answer, yet we keep arguing about it.</p>
+</blockquote>
+<p>2021-03-14 </p>
+<blockquote>
+<p>3.8 - 3.14</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/make-the-xor-of-all-segments-equal-to-zero/solution/" >https://leetcode-cn.com/problems/make-the-xor-of-all-segments-equal-to-zero/solution/<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/string-compression-ii/solution/ya-suo-zi-fu-chuan-ii-by-leetcode-solution/" >https://leetcode-cn.com/problems/string-compression-ii/solution/ya-suo-zi-fu-chuan-ii-by-leetcode-solution/<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p>These two DP problems are worth studying.</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html" >https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<p>2021-03-07 </p>
+<blockquote>
+<p>3.1 - 3.7</p>
+<p>I cleared more than ten LeetCode problems.</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/count-ways-to-make-array-with-product/" >https://leetcode-cn.com/problems/count-ways-to-make-array-with-product/<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/maximum-score-from-performing-multiplication-operations/" >https://leetcode-cn.com/problems/maximum-score-from-performing-multiplication-operations/<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p>Dynamic metric learning</p>
+<p>AWS Auto Scaling</p>
+<p>Amazon Route 53</p>
+<p>Amazon Relational Database Service(RDS)</p>
+<p>AWS lambda</p>
+</blockquote>
+<p>2021-01-30 22:09</p>
+<blockquote>
+<p>If Confucius lived today, would he be a livestreamer or a video creator, spreading the Chinese virtues of benevolence, righteousness, propriety, wisdom, trustworthiness, loyalty, filial piety, integrity, shame, and courage? Given today’s fast pace of life, he would probably be shouting himself hoarse.</p>
+<p>His income would come from tips and sponsored content.</p>
+<p>“Please follow, share, comment, and give the three-in-one support. Your support is always my greatest motivation for making videos.”</p>
+<p>“Smash that 666! Thanks for the rocket, my friend.”</p>
+</blockquote>
+<p>2021-01-28 22:09</p>
+<blockquote>
+<p>Our generation lives in an atomized way. Late at night, we lie in bed, open our phones, and express every kind of opinion about society, while barely valuing our connections with the people around us—selfish and self-absorbed.</p>
+<p>Looking through Zheng Shuang’s Weibo, the obvious impression is of a person with an “authentic temperament” who worries about social hot topics, loves her country, and follows current affairs. I believe she sincerely cared about these things and enjoyed other people’s gossip like we do. But in her own life, this apparently extended to not even wanting her children.</p>
+<p>At the end of Feng Xiaogang’s <em>Personal Tailor</em>, there is a memorable scene: “Why? You were willing to donate one billion earlier, so why not the car?”</p>
+<p>Ge You says: “Anything else is fine, but not the car. I really do have a car.”</p>
+<p>Li Dan said something similar: “The truth of life is this: I dare curse the world, blaspheme Buddha and ancestors, and look down on everything under heaven—but I do not dare curse the neighbor upstairs who renovates every weekend.”</p>
+</blockquote>
+<p>2021-01-17 23:01</p>
+<blockquote>
+<p>I talked with a high-school teacher who mentioned a conversation with a student. The student had been sleeping in class instead of listening.</p>
+<p>Teacher: “Why can’t you work a little harder?”</p>
+<p>Student: “Teacher, if I study any more, I will lose the joy of learning. What is most important in life? Happiness. And I only want to attend a military academy; my current grades are almost enough, so there is no need to work for extra points.”</p>
+<p>So young, yet living with genuine clarity. ^ - ^</p>
+</blockquote>
+<p>2021-01-07 21:17</p>
+<blockquote>
+<p>Scrolling through my phone and information before bed is, at its root, a sign that I have not immersed myself completely in something absorbing; my focus is nowhere near enough.</p>
+<p>What you think about and do before bed each day also shapes who you are, to some extent.</p>
+<p>Be around strong people, and you grow stronger; be around hard workers, and you work harder.</p>
+</blockquote>
+<p>2020-12-28 23:10</p>
+<blockquote>
+<p>I teared up again when I reached the extra chapter of <em>Hello, Old Times</em>.</p>
+<p>“Do not envy what others have or mock what you lack. If you have the ability, go earn it yourself.”</p>
+<p>“Bad days, hard days, good days.”</p>
+<p>“Life itself is losing one wager after another, but since there is always another second and another chance, I will not lose forever.”</p>
+<p>In 2021: take the initiative, improve without limit, keep going.</p>
+</blockquote>
+<p>2020-12-22 21:55</p>
+<blockquote>
+<p>I once saw a saying that a perfect life is one in which “you can always choose, and every road offers a way back.” A good life preserves as much choice as possible at every moment.</p>
+<p>As someone now stuck abroad, I could not agree more.</p>
+</blockquote>
+<p>2020-11-18 21:28</p>
+<blockquote>
+<p>It seems every Monday is spent repaying the previous Friday’s debts.</p>
+</blockquote>
+<p>2020-11-17 22:22</p>
+<blockquote>
+<p>The tiles outside the school gate once read, “Lift up tomorrow’s sun.” The tile with “lift” was replaced, and the new one had no character. Someone said it had become “Hold tomorrow’s sun.” Fair enough—nothing wrong with that.</p>
+</blockquote>
+<p>2020-08-15 22:14</p>
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1EV411C77B?from=search&seid=5485345878343557967" >https://www.bilibili.com/video/BV1EV411C77B?from=search&seid=5485345878343557967<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p>Life has lit hope again.</p>
+<p>In August 2020, finish LeetCode and the tutorial above.</p>
+</blockquote>
+<p>2020-07-15 17:31</p>
+<blockquote>
+<p>I am hot and cold in everything I do. I want too many things, so all my goals become scattered.</p>
+</blockquote>
+<p>2020-07-15 17:30</p>
+<blockquote>
+<p>Most of the time, I dislike myself and set limits on myself.</p>
+<p>Occasionally I think some people are just as weak, perhaps even weaker than me. Of course, most people are still far better than I am.</p>
+</blockquote>
+<p>2020-07-15 17:29</p>
+<blockquote>
+<p>Produce something, hey.</p>
+</blockquote>
+<p>2020-07-15 17:28</p>
+<blockquote>
+<p>Be wary of things that pull you into immersion.</p>
+</blockquote>
+<p>2020-07-12 00:15</p>
+<blockquote>
+<p>When there is no hope, actively look for it.</p>
+<p>“Go learn” is a door; behind it may be hope.</p>
+</blockquote>
+<p>2020-06-13 20:41</p>
+<blockquote>
+<p>I had planned to write one myself, but this Zhihu article was already very complete: TCP three-way handshake: <a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/53374516" >https://zhuanlan.zhihu.com/p/53374516<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<p>2020-06-13 09:19</p>
+<blockquote>
+<p>A common, ridiculous belief rooted deep in my mind is that once I make a plan, I will eventually do it.</p>
+<p>What I fail to realize is that between “thinking of it” and “achieving it” lies “doing it.” That line comes from <em>Soldiers Sortie</em>.</p>
+</blockquote>
+<p>2020-06-13 00:12</p>
+<blockquote>
+<p>One benefit of physical books is the pause they demand; the process of pausing clears the mind.</p>
+</blockquote>
+<p>2020-06-12 19:18</p>
+<blockquote>
+<p>The power of believing that you can improve</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=_X0mgOOSpLU" >https://www.youtube.com/watch?v=_X0mgOOSpLU<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<p>2020-06-12 19:00</p>
+<blockquote>
+<p>Choose the thing most needed and do it.</p>
+</blockquote>
+<p>2020-06-12 18:41</p>
+<blockquote>
+<p>“Everything a person possesses can be taken away, except the last of human freedoms—the freedom to choose one’s attitude and way of life in any circumstance.”</p>
+</blockquote>
+<p>2020-06-12 18:40</p>
+<blockquote>
+<p>Attention &gt; time &gt; money</p>
+</blockquote>
+<p>2020-06-12 18:37</p>
+<blockquote>
+<p>Perhaps I will never be able to live my ideal life.</p>
+</blockquote>
+<p>2020-06-12 18:36</p>
+<blockquote>
+<p>“What they call empty inspiration is often the simple, sharp methodology sincerely believed in by another species.”</p>
+</blockquote>
+<p>2020-06-08 10:52</p>
+<blockquote>
+<p>“The world is this real, but we all possess the right to dispose of ourselves. When this thing becomes moth-eaten paper, may you still remember the journey of adventure you once took.” — Han Han, <em>Solo Group</em></p>
+</blockquote>
+<p>2020-06-05 22:25</p>
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://lyric.im/my-self-teaching-stories" >https://lyric.im/my-self-teaching-stories<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<p>2020-06-03 00:33</p>
+<blockquote>
+<p>By 2020, I had watched only <em>Lost in Russia</em> and <em>Knives Out</em>, and no other television series or films.</p>
+</blockquote>
+<p>2020-06-03 00:26</p>
+<blockquote>
+<p>“When you look at a star in the sky, do not see it as unreachable; see it as a planet you will visit one day.”</p>
+</blockquote>
+<p>2020-06-02 23:37</p>
+<blockquote>
+<p>I read <em>Peak</em> and watched Maven videos that night, and was completely shaken. The world outside is vast; my perspective had been too narrow. (Damn, I get shaken every day.)</p>
+<p>Read more, learn more, and find ways to turn learning into output and output back into learning.</p>
+<p>Strengthen the original reason for doing something; weaken the reasons that make you stop.</p>
+</blockquote>
+<p>2020-05-31 10:37</p>
+<blockquote>
+<p>My first Div. 1: I ran into the original 51nod “approximately increasing sequence” problem. I debugged for a long time and passed it.</p>
+<p>I luckily won my first Div. 1. At last I had an online account with a yellow name; this year I hoped for a second.</p>
+</blockquote>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://raw.githubusercontent.com/2997ms/My_Algorithm/master/source_pic/Codechef1.png"
+                      alt="D_1"
+                ></p>
+<p>2020-05-27 21:21</p>
+<blockquote>
+<p>This certificate was actually pretty easy to get.</p>
+</blockquote>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://raw.githubusercontent.com/2997ms/My_Algorithm/master/source_pic/hackerrank/C1.jpeg"
+                      alt="D_1"
+                ></p>
+<p>2020-05-27 08:50</p>
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.quora.com/How-do-I-find-the-sum-of-a-sequence-whose-common-difference-is-in-a-p" >https://www.quora.com/How-do-I-find-the-sum-of-a-sequence-whose-common-difference-is-in-a-p<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<p>2020-05-19 20:01</p>
+<blockquote>
+<p>At six, the company building began clearing people out. When I left, the sky was still bright; it felt like the long-forgotten end of a school day.</p>
+</blockquote>
+<p>2020-05-18 09:09</p>
+<blockquote>
+<p>Because my mood had been wrong lately—due to company layoffs and personal matters—I took two days off.</p>
+<p>I realized that when someone has remained in one state for too long, they need to step outside it, talk to different people, and inspect from the outside what they are doing and what their core competitiveness is.</p>
+<p>I thought a great deal over those two days, largely because I had been beaten down.</p>
+<p>If I want to do things independently for a long time in the future, I first have to prove myself.</p>
+</blockquote>
+<p>2020-05-18 08:54</p>
+<blockquote>
+<p>Other people’s matters are their own. Hold your own work output to a high standard.</p>
+<p>“At work, hold every piece of your output to higher requirements and higher standards. Never be perfunctory. You work at a company, but the time is your own: drifting through a day and pursuing excellence both take a day. The former leaves you unemployed at 35; the latter lets you advance one step at a time and retain the confidence to say no.”</p>
+</blockquote>
+<p>2020-05-17 11:32</p>
+<blockquote>
+<p>The day before yesterday I shut down completely. Better to read and learn more.</p>
+<p>No damn career plan is better than learning every day. Daily learning is the best career plan and development.</p>
+<p>Remember today’s discomfort and pain forever. Do not forget them in a few days and fall back into a degraded life.</p>
+</blockquote>
+<p>2020-05-17 10:56</p>
+<blockquote>
+<p>If only I could solve problems continuously forever.</p>
+</blockquote>
+<p>2020-05-17 10:55</p>
+<blockquote>
+<p>One plan after another now looks embarrassingly pathetic.</p>
+</blockquote>
+<p>2020-05-17 10:54</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://raw.githubusercontent.com/2997ms/My_Algorithm/master/source_pic/lastMinute.png"
+                      alt="lastMinute"
+                ></p>
+<p>2020-05-16 15:55</p>
+<blockquote>
+<p>Train yourself as if you were training a machine-learning model.</p>
+<p>I have found that, when I fall into a sad kind of life, I need to talk to capable people and bring my physical state to its best. But to improve my physical state, I still need a mind free from anxiety.</p>
+<p>The reason for my decline is too much contact with entertainment, which makes it hard to escape. The remedy is to expose myself to more good things, or find a hardware-based way to block the paths to entertainment.</p>
+<p>Another is to meet outstanding people and let them push me.</p>
+<p>Reading motivational books is another method, and it works very well too.</p>
+<p>Then a virtuous cycle forms; otherwise it is a vicious cycle that you cannot escape.</p>
+<p>Troublesome things at work often turn into that vicious cycle.</p>
+<p>At midnight I read <em>Peak</em>. Books like this contain a lot of filler, but their ideas are good and they can still spur me into action.</p>
+</blockquote>
+<p>2020-05-16 15:28</p>
+<blockquote>
+<p>For me, emotional state has far too much influence on learning itself. When both physical and mental states are in order, learning becomes dramatically more efficient.</p>
+</blockquote>
+<p>2020-05-16 15:19</p>
+<blockquote>
+<p>I will decide what kind of life to live. This is my life; the decision belongs to me, not anyone else.</p>
+</blockquote>
+<p>2020-05-16 14:56</p>
+<blockquote>
+<p>“If not this time, perhaps next time for sure.” — a <em>Daoyueshe</em> video</p>
+</blockquote>
+<p>2020-03-18 09:01</p>
+<blockquote>
+<p>Silent before three drinks; unconscious after seven.</p>
+<p>For a friend who loves drinking and can drink.</p>
+<p>Before 21, so many people could drink; now very few can.</p>
+</blockquote>
+<p>2019-11-30 23:59</p>
+<blockquote>
+<p>Familiarity.</p>
+<p>Formally, it seems nothing has changed: today and yesterday, this week and last, this year and last. Familiarity often loses its charm. Xu Zhiyuan said, “Only in unfamiliar environments do I feel that life has not been wasted.”</p>
+<p>A few ideas in the first three chapters of <em>Poor Economics</em> were quite interesting, but it contained too much filler and repeated each point again and again.</p>
+<p>“The disadvantages of aid outweigh its benefits. Aid makes people stop looking for their own solutions, corrodes local institutions and weakens their role, leaving some aid organizations existing in name only.”</p>
+<p>“There is another underlying reason why poor people persist in beliefs that seem full of holes: when they are powerless, hope becomes crucial.”</p>
+<p>Today I slept until 16:00. No update.</p>
+</blockquote>
+<p>2019-11-26 23:58</p>
+<blockquote>
+<p>A sense of powerlessness.</p>
+<p>I spent an entire afternoon on configuration. It worked on everyone else’s computer, and I followed the documentation step by step, yet in the end I still could not add the index. The longer it went on, the more irritated I became, unable to focus on anything else. I just held on stubbornly, ate too much again that night. I have spent too many years in this state—deeply frustrated and powerless before myself.</p>
+<p>This frustration is a sharp contrast to my usual fiery mood. When my mind is in good shape, I feel I can take on the world; when it is bad, as now, life pounds me into the dirt. My biggest change over these years is how much less I joke about or mock life. Often I make a cheerful joke about life, and then life cuts me down until I cannot laugh or cry.</p>
+<p>I once sighed, “How I want to escape this life, how I want interesting days.” But where would I go after escaping? Where could I go? Leave this life and I still have no better choice. Like a struggling ball, I eventually fall back to the ground.</p>
+<p>“Life does not return to its starting point at any moment because it grows in a spiral. In every cycle, you meet an upgraded version of some challenge again; that too is a sign of progress.”</p>
+</blockquote>
+
+		</div>
+
+		
+
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="prev" rel="prev" href="/2022/08/29/BB/2022/Progress%20Report%20in%20August,%202022/">
+					<span class="left arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-left"></i>
+					</span>
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item truncate max-w-48">Progress Report in August, 2022</span>
+						<span class="post-nav-item">Prev posts</span>
+					</span>
+				</a>
+			</div>
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2022/04/17/BB/2022/2022-04-17-work-and-me/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item truncate max-w-48">April 2022: Work and Me</span>
+						<span class="post-nav-item">Next posts</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">On this page</div>
+		<div class="page-title">May 2022: The Past Two Years</div>
+		
+
+	</div>
+</div>
+	</div>
+	
+</div>
+
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+            <div class="customize-info my-1">© Chong Wang</div>
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2026&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">Chong Wang</a>
+            
+        </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.9.0</a></span>
+        </div>
+        
+        
+        
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container" role="dialog" aria-modal="true" aria-label="Image viewer">
+	<button class="image-viewer-close" type="button" aria-label="Close">
+		<i class="fa-solid fa-xmark"></i>
+	</button>
+	<button class="image-viewer-prev" type="button" aria-label="Prev">
+		<i class="fa-solid fa-chevron-left"></i>
+	</button>
+	<div class="image-viewer-frame">
+		<img src="" alt="">
+	</div>
+	<div class="image-viewer-exif-panel hidden absolute left-1/2 bottom-20 -translate-x-1/2 w-[min(92vw,420px)] max-h-[60vh] overflow-hidden rounded-2xl bg-background-color-transparent-80 p-4 text-left shadow-redefine-flat backdrop-blur-md" role="dialog" aria-label="EXIF" aria-hidden="true">
+		<div class="flex items-center justify-between mb-3">
+			<span class="text-sm font-semibold text-first-text-color">EXIF</span>
+			<button class="image-viewer-exif-close flex h-8 w-8 items-center justify-center rounded-full bg-background-color-transparent-80 text-first-text-color transition hover:bg-background-color-transparent-40" type="button" aria-label="Close">
+				<i class="fa-solid fa-xmark text-[0.65rem]"></i>
+			</button>
+		</div>
+		<div class="image-viewer-exif-cards grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[50vh] overflow-y-auto pr-1 scrollbar-hide"></div>
+		<template class="image-viewer-exif-card-template">
+			<div class="rounded-lg bg-background-color-transparent-40 px-3 py-2">
+				<div class="image-viewer-exif-card-header flex items-center gap-2 mb-1">
+					<i class="image-viewer-exif-card-icon fa-solid fa-circle-info text-xs text-third-text-color"></i>
+					<div class="image-viewer-exif-card-title text-xs font-semibold text-first-text-color"></div>
+				</div>
+				<div class="image-viewer-exif-card-items flex flex-col gap-1"></div>
+			</div>
+		</template>
+	</div>
+	<button class="image-viewer-exif-toggle flex items-center gap-2 hidden absolute left-1/2 bottom-6 -translate-x-1/2 rounded-full border border-border-color bg-background-color-transparent-80 px-4 py-2 text-first-text-color backdrop-blur-md transition hover:bg-background-color-transparent-40" type="button" aria-label="EXIF" aria-expanded="false">
+		<i class="fa-solid fa-circle-info text-xs"></i>
+		<span class="text-xs font-semibold uppercase tracking-wider">EXIF</span>
+	</button>
+	<button class="image-viewer-next" type="button" aria-label="Next">
+		<i class="fa-solid fa-chevron-right"></i>
+	</button>
+</div>
+
+
+	
+
+</main>
+
+
+
+	
+<script src="/js/build/main.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/build/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+
+	
+</body>
+
+</html>

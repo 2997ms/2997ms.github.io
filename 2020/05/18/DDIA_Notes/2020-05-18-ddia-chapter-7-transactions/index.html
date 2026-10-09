@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    
+    <meta name="author" content="Chong Wang">
+    
+    <!-- Completely eliminate flash of wrong theme -->
+    <script>
+        (function() {
+            const THEME_KEY = "REDEFINE-THEME-STATUS";
+            const DARK = "dark", LIGHT = "light";
+            
+            // Get preferred theme
+            function getTheme() {
+                try {
+                    const saved = localStorage.getItem(THEME_KEY);
+                    if (saved) {
+                        const { isDark } = JSON.parse(saved);
+                        return isDark ? DARK : LIGHT;
+                    }
+                } catch (e) {}
+                
+                return matchMedia("(prefers-color-scheme: dark)").matches ? DARK : LIGHT;
+            }
+            
+            // Apply theme to document
+            function applyTheme(theme) {
+                const isDark = theme === DARK;
+                const root = document.documentElement;
+                
+                // Set classes for compatibility
+                root.classList.add(theme);
+                root.classList.remove(isDark ? LIGHT : DARK);
+                root.style.colorScheme = theme;
+            }
+            
+            // Initial application
+            const theme = getTheme();
+            applyTheme(theme);
+            
+            // Listen for system preference changes
+            matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ({ matches }) => {
+                // Only update if using system preference (no localStorage entry)
+                if (!localStorage.getItem(THEME_KEY)) {
+                    applyTheme(matches ? DARK : LIGHT);
+                }
+            });
+            
+            // Set body classes ASAP (before DOMContentLoaded)
+            (function() {
+                const addBodyClass = () => {
+                    const b = document.body;
+                    if (!b) return false;
+                    b.classList.add(theme + "-mode");
+                    return true;
+                };
+
+                // Try immediately
+                if (addBodyClass()) return;
+
+                // Observe until body exists
+                const mo = new MutationObserver(() => {
+                    if (addBodyClass()) mo.disconnect();
+                });
+                mo.observe(document.documentElement, { childList: true, subtree: true });
+            })();
+        })();
+    </script>
+    
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://2997ms.github.io/2020/05/18/ddia_notes/2020-05-18-ddia-chapter-7-transactions/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+        
+        <meta name="description" content="Chong Wang — software engineer, smart contract security researcher, and competitive programmer.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DDIA Chapter 7: Transactions">
+<meta property="og:url" content="http://2997ms.github.io/2020/05/18/DDIA_Notes/2020-05-18-ddia-chapter-7-transactions/index.html">
+<meta property="og:site_name" content="Chong Wang">
+<meta property="og:description" content="Chong Wang — software engineer, smart contract security researcher, and competitive programmer.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://2997ms.github.io/images/chong-wang.jpg">
+<meta property="article:published_time" content="2020-05-18T21:24:47.000Z">
+<meta property="article:modified_time" content="2026-10-09T13:41:22.723Z">
+<meta property="article:author" content="Chong Wang">
+<meta property="article:tag" content="ddia">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://2997ms.github.io/images/chong-wang.jpg">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/chong-wang-favicon.png" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/chong-wang-favicon.png">
+    <meta name="theme-color" content="#49b6b1">
+    <link rel="shortcut icon" href="/images/chong-wang-favicon.png">
+    <!--- Page Info-->
+    
+    <title>
+        
+            DDIA Chapter 7: Transactions | Chong Wang
+        
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/build/tailwind.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"2997ms.github.io","root":"/","language":"en"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":false,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":false,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#49b6b1","secondary":null,"default_mode":"dark"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1080px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":false,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":false,"preloader":{"enable":false,"custom_message":null},"side_tools":{"gear_rotation":true,"auto_expand":false},"open_graph":{"enable":true,"image":"/images/chong-wang.jpg","description":"Chong Wang — software engineer, smart contract security researcher, and competitive programmer."},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":false,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"Theme Redefine","subtitle":{"text":[],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":[{"icon":"fa-brands fa-github","url":null},{"icon":"fa-brands fa-twitter","url":null},{"icon":"fa-solid fa-at","url":"you@example.com"},{"icon":"fa-brands fa-telegram","url":null},{"icon":"/images/custom-icon.svg","url":null}],"qrs":[{"icon":"fa-brands fa-weixin","qr":null},{"icon":"/images/custom-icon.svg","qr":null}]}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1","theme":{"light":"default","dark":"dark"}}},"version":"2.9.0","navbar":{"auto_hide":false,"color":{"left":"#101923","right":"#1b3b47","transparency":24},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Posts":{"path":"/archives","icon":"fa-regular fa-pen-to-square"},"About":{"path":"/about/","icon":"fa-regular fa-user"}},"search":{"enable":false,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur","masonry":{"batch_size":12,"initial_batch_size":24}},"home":{"sidebar":{"enable":false,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":null},"article_date_format":"YYYY-MM-DD","excerpt_length":180,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footer":{"runtime":false,"icon":"<i class=\"fa-solid fa-heart fa-beat\" style=\"--fa-animation-duration: 0.5s; color: #f54545\"></i>","start":"2022/8/17 11:45:14","statistics":false,"customize":"© Chong Wang","icp":{"enable":false,"number":null,"url":null}},"footerStart":"2022/8/17 11:45:14","mermaid":{"style":{"light":"default","dark":"dark"}}};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.i18n = {"search":"Search...","toc":"On this page","prev":"Prev","next":"Next","prev_posts":"Prev posts","next_posts":"Next posts","page":"Page %d","recent_posts":"Recent Posts","share":"Share","powered_by":"POWERED BY %s","theme":"THEME","rss_feed":"RSS Feed","category":"Category","categories":"Categories","tag":"Tag","tags":"Tags","post":"Post","posts":"Posts","tagcloud":"Tag Cloud","comment":"Comment","comments":"Comments","home":"Home","archive":"Archive","archives":"Archives","top":"TOP","sticky":"Sticky","go-back-home":"Go Back Home","masonry_loading":"Loading photos...","image_viewer":"Image viewer","close":"Close","exif":{"title":"EXIF","cards":{"camera":"Camera","lens":"Lens","exposure":"Exposure","other":"Other"},"fields":{"make":"Brand","model":"Model","date_taken":"Date taken","lens_model":"Lens","focal_length":"Focal length","focus_mode":"Focus mode","shutter":"Shutter","aperture":"Aperture","iso":"ISO","exposure_program":"Exposure program","exposure_compensation":"Exposure compensation","metering_mode":"Metering mode","flash":"Flash","white_balance":"White balance","latitude":"Latitude","longitude":"Longitude","altitude":"Altitude"},"status":{"loading":"Loading...","no_exif":"No EXIF available","library_missing":"EXIF library not loaded","image_source_missing":"Image source unavailable","unavailable":"EXIF unavailable (blocked by CORS or missing metadata)","flag_unavailable":"EXIF unavailable"}},"about":"About","changelog":"Changelog","links":"Links","link":"Link","friends":"Friends","friend":"Friend","timeline":"Timeline","shuoshuo":"Shuoshuo","bookmarks":"Bookmarks","site_uv":"VISITOR COUNT","site_pv":"TOTAL PAGE VIEWS","read_more":"Read more","wordcount":"Words","min2read":"Mins","status":"Status","runtime":"Blog up for","days":"days","hours":"hrs","minutes":"Min","seconds":"Sec","optimized_by":"and Optimized by Evan","rights":"All Rights Reserved","site_posts":"%s posts in total","site_wordcount":"%s words in total","copyright":{"author":"Author","title":"Title","link":"Link","create_time":"Created at","update_time":"Updated at","license_title":"License","license_content":"This work is licensed under %s.","all_rights_reserved":"All Rights Reserved &#169; %s","public_domain":"This work is in the public domain."},"ago":{"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"},"create_time":"Created","update_time":"Updated","expired":"This post is written %s days ago, and the content may not be up to date."};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+	<div class="progress-bar-container">
+	
+
+	
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                Chong Wang
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-pen-to-square fa-fw"></i>
+                                    POSTS
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/about/"
+                                        >
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    ABOUT
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                POSTS
+                            </span>
+                            
+                                <i class="fa-regular fa-pen-to-square fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/about/"
+                        >
+                            <span>
+                                ABOUT
+                            </span>
+                            
+                                <i class="fa-regular fa-user fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">28</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">1</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">153</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">DDIA Chapter 7: Transactions</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] shrink-0 rounded-medium border border-border-color p-px">
+				<img src="/images/chong-wang.jpg">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">Chong Wang</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv6</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2020-05-18 22:24:47</span>
+        <span class="mobile">2020-05-18 22:24:47</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2026-10-09 14:41:22</span>
+            <span class="mobile">2026-10-09 14:41:22</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/ddia/">ddia</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<p><a class="link"   target="_blank" rel="noopener" href="https://github.com/Vonng/ddia/blob/master/ch7.md" >Reading link<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<span id="more"></span>
+
+<p>This chapter covers database-level ACID, focusing on the levels of the “I” in ACID: the trade-offs of different isolation approaches and how isolation is implemented.</p>
+<h3 id="ACID"><a href="#ACID" class="headerlink" title="ACID"></a>ACID</h3><p><strong>Atomicity</strong> means indivisibility.</p>
+<p>It makes a transaction appear to be either before or after its operation. In implementation, this is part of what the “I” handles. If a transaction aborts, atomicity lets the application retry it without other concerns.</p>
+<p><strong>Consistency</strong> is an application-level property: the data contains no invalid state.</p>
+<p><strong>Isolation</strong> means concurrently executing transactions do not interfere with one another.</p>
+<p><strong>Durability</strong></p>
+<p>Store data somewhere safe so it is not lost.</p>
+<h3 id="Single-object-and-multi-object-operations"><a href="#Single-object-and-multi-object-operations" class="headerlink" title="Single-object and multi-object operations"></a>Single-object and multi-object operations</h3><h4 id="Single-object-writes"><a href="#Single-object-writes" class="headerlink" title="Single-object writes"></a>Single-object writes</h4><p>Atomicity and isolation also apply when a single object changes. For example, suppose you are writing a 20 KB JSON document to a database:</p>
+<ul>
+<li>If the network disconnects after the first 10 KB is sent, does the database store an unparsable 10 KB JSON fragment?</li>
+<li>If power fails while the database overwrites the previous value on disk, does it end up with a mixture of old and new data?</li>
+<li>If another client reads the document during the write, can it see a partially updated value?</li>
+</ul>
+<p>Transactions are commonly understood as <strong>a mechanism for grouping multiple operations on multiple objects into one unit of execution</strong>.</p>
+<h4 id="Why-multi-object-transactions-are-needed"><a href="#Why-multi-object-transactions-are-needed" class="headerlink" title="Why multi-object transactions are needed"></a>Why multi-object transactions are needed</h4><p><strong>Without atomicity, error handling becomes much more complex; without isolation, concurrency problems follow.</strong></p>
+<h4 id="Handling-errors-and-aborts"><a href="#Handling-errors-and-aborts" class="headerlink" title="Handling errors and aborts"></a>Handling errors and aborts</h4><p>Retrying an aborted transaction is a simple and effective error-handling mechanism, but it is not perfect:</p>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Approach</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>The transaction may have succeeded, but a network interruption makes it appear to have failed. Retrying can duplicate work.</td>
+<td>Deduplicate at the application layer.</td>
+</tr>
+<tr>
+<td>Retrying can worsen an error caused by system overload.</td>
+<td>Limit retry attempts.</td>
+</tr>
+<tr>
+<td>Retrying a permanent failure, such as a constraint violation, is pointless.</td>
+<td>Do not retry.</td>
+</tr>
+<tr>
+<td>Side effects outside the database may already have occurred even when the transaction aborts.</td>
+<td>Consider two-phase commit.</td>
+</tr>
+<tr>
+<td>The client may fail during retries, leaving no application responsible for retrying.</td>
+<td>No general solution.</td>
+</tr>
+</tbody></table>
+<h3 id="Weak-Isolation-Levels"><a href="#Weak-Isolation-Levels" class="headerlink" title="Weak Isolation Levels"></a>Weak Isolation Levels</h3><p>Concurrency problems (race conditions) arise when a transaction reads data that another transaction is modifying at the same time, or when two transactions try to modify the same data concurrently.</p>
+<h4 id="Read-Committed"><a href="#Read-Committed" class="headerlink" title="Read Committed"></a>Read Committed</h4><p>The most basic transaction isolation level is <strong>read committed</strong>, which provides two guarantees:</p>
+<ol>
+<li>When reading from the database, you see only committed data (no <strong>dirty reads</strong>).</li>
+<li>When writing to the database, you do not overwrite another transaction’s uncommitted changes (no <strong>dirty writes</strong>).</li>
+</ol>
+<p><strong>Implementing read committed</strong>:</p>
+<p>Preventing dirty writes: row-level locks. When a transaction wants to modify a particular object (row or document), it must first acquire that object’s lock and hold it until the transaction commits or aborts.</p>
+<p>Preventing dirty reads: one option is to use the same locks, but that harms performance. Most databases keep two versions: the old value and the new value that the lock-holding transaction intends to set. Other reads see the old value before commit and the new value afterward.</p>
+<h4 id="Read-Uncommitted"><a href="#Read-Uncommitted" class="headerlink" title="Read Uncommitted"></a>Read Uncommitted</h4><p>It prevents dirty writes, but not dirty reads.</p>
+<p>Imagine that a transaction has written data to the database but has not yet committed or aborted. Can another transaction see that uncommitted data? If so, it is a <strong>dirty read</strong>.</p>
+<p>What if a later write overwrites a value written by an earlier uncommitted transaction? That is a <strong>dirty write</strong>.</p>
+<h4 id="Snapshot-isolation-and-repeatable-reads"><a href="#Snapshot-isolation-and-repeatable-reads" class="headerlink" title="Snapshot isolation and repeatable reads"></a>Snapshot isolation and repeatable reads</h4><p>Alice has $1,000 in savings split across two bank accounts, $500 each. A transaction transfers $100 from one account to the other. If she views the balance list during the transaction, she may see the recipient account before the transfer completes ($500) and the source account after it completes ($400). To Alice, her accounts seem to contain only $900—the $100 appears to have vanished.</p>
+<p>This anomaly is called a <strong>non-repeatable read</strong> or <strong>read skew</strong>. If Alice reads account 1 again when the transaction ends, she sees a different value ($600) from the one in her earlier query. Under read-committed isolation, this is acceptable: each balance Alice saw had indeed been committed when read.</p>
+<p><strong>Snapshot isolation</strong>: each transaction reads from a <strong>consistent snapshot</strong> of the database—every value committed when the transaction began. Even if another transaction changes those values later, the transaction sees only the data from that specific point in time.</p>
+<p><strong>Implementing snapshot isolation:</strong> use <strong>multi-version concurrency control (MVCC)</strong>. A typical implementation gives <strong>read committed</strong> a separate snapshot per query, while <strong>snapshot isolation</strong> uses the same snapshot for the entire transaction.</p>
+<p>Every table row has a <code>created_by</code> field containing the ID of the transaction that inserted it, and an initially empty <code>deleted_by</code> field. Deleting a row does not immediately remove it; the database marks it deleted by setting <code>deleted_by</code> to the deleting transaction ID. Later, once no transaction can access the deleted data, garbage collection removes marked rows and frees their space.</p>
+<p><strong>Visibility rules for a consistent snapshot:</strong></p>
+<ul>
+<li>When the read transaction began, the transaction that created the object had committed.</li>
+<li>The object is not marked deleted, or, if it is, the deleting transaction had not committed when the read transaction began.</li>
+</ul>
+<h4 id="Indexes-and-snapshot-isolation"><a href="#Indexes-and-snapshot-isolation" class="headerlink" title="Indexes and snapshot isolation"></a>Indexes and snapshot isolation</h4><p>How do indexes work in a multi-version database?</p>
+<ul>
+<li>One option is for an index to point to every version of an object, with index queries filtering versions invisible to the current transaction. When garbage collection removes versions no longer visible to any transaction, it can remove their index entries too.</li>
+<li>Each write transaction, or batch of transactions, creates a new B-tree. The tree grown from that root is a consistent database snapshot. There is no need to filter objects by transaction ID because later writes cannot modify an existing B-tree; they can only create a new root. This approach still needs a background process for compaction and garbage collection.</li>
+</ul>
+<h4 id="Preventing-Lost-Updates"><a href="#Preventing-Lost-Updates" class="headerlink" title="Preventing Lost Updates"></a>Preventing Lost Updates</h4><p>Lost updates can occur when an application reads a value from the database, modifies it, and writes the modified value back—a read-modify-write sequence.</p>
+<p><strong>Solutions</strong></p>
+<ul>
+<li><p>Atomic writes</p>
+<ul>
+<li><p>Many databases provide atomic update operations, eliminating the need for an application-level read-modify-write sequence. If your logic can be expressed with these operations, that is usually the best solution. For example, the following statement is concurrency-safe in most relational databases:</p>
+</li>
+<li><p>&#96;&#96;&#96;sql<br>UPDATE counters SET value &#x3D; value + 1 WHERE key &#x3D; ‘foo’;</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- Explicit locking</span><br><span class="line"></span><br><span class="line">  - If the database&#x27;s built-in atomic operations do not provide the needed functionality, another option is for the application to explicitly lock the object to be updated. The application can then perform its read-modify-write sequence, forcing any concurrent transaction that tries to update the same object to wait until the first **read-modify-write sequence** completes.</span><br><span class="line"></span><br><span class="line">  - ```sql</span><br><span class="line">    BEGIN TRANSACTION;</span><br><span class="line">    SELECT * FROM figures</span><br><span class="line">    	WHERE name = &#x27;robot&#x27; AND game_id = 222</span><br><span class="line">    FOR UPDATE;</span><br><span class="line"></span><br><span class="line">    UPDATE figures SET position = &#x27;c4&#x27; WHERE id = 1234;</span><br><span class="line">    COMMIT;</span><br></pre></td></tr></table></figure></div>
+
+<p>The <code>FOR UPDATE</code> clause tells the database to lock every row returned by the query.</p>
+</li>
+</ul>
+</li>
+<li><p>Automatic detection</p>
+<ul>
+<li>Another approach is to let them run in parallel; if the transaction manager detects a lost update, it aborts the transaction and forces it to retry its <strong>read-modify-write sequence</strong>.</li>
+</ul>
+</li>
+<li><p>Compare-and-set (CAS)</p>
+<ul>
+<li>Permit an update only if the current value has not changed since it was last read. If the current value does not match the previously read value, the update has no effect and the read-modify-write sequence must be retried.</li>
+</ul>
+</li>
+</ul>
+<h4 id="Conflict-Resolution-and-Replication"><a href="#Conflict-Resolution-and-Replication" class="headerlink" title="Conflict Resolution and Replication"></a>Conflict Resolution and Replication</h4><p>Because data replicas exist on multiple nodes and data on different nodes may be modified concurrently, additional steps are necessary to prevent lost updates.</p>
+<p>A common approach in replicated databases is to let concurrent writes create multiple conflicting versions of a value (also called siblings), then resolve and merge them afterward using application code or special data structures.</p>
+<p>Atomic operations work well with replication, especially when they are commutative—that is, they can be applied in different orders on different replicas and still yield the same result. Incrementing a counter and adding elements to a set are commutative operations. This is the idea behind Riak 2.0 data types, which prevent lost updates across replicas: when different clients update a value concurrently, Riak automatically merges those updates.</p>
+<h4 id="Write-Skew-and-Phantom-Reads"><a href="#Write-Skew-and-Phantom-Reads" class="headerlink" title="Write Skew and Phantom Reads"></a>Write Skew and Phantom Reads</h4><p>First, imagine this example: you are writing a doctor-shift scheduling program for a hospital. A hospital usually requires several doctors to be on call at once, but the minimum is one doctor on call. A doctor can give up a shift (for example, if they are ill), as long as at least one colleague remains on duty.</p>
+<p><strong>Write skew</strong> is neither a <strong>dirty write</strong> nor a <strong>lost update</strong>, because the two transactions update different objects (Alice’s and Bob’s on-call records). The conflict is less obvious, but it is clearly a race condition: if the two transactions ran one after another, the second doctor could not take leave. The anomalous behavior is possible only when the transactions run concurrently.</p>
+<p>A write in one transaction that changes the result of another transaction’s search query is called a <strong>phantom read</strong>. Snapshot isolation avoids phantoms in read-only queries, but in read-write transactions such as the example above, phantoms can cause particularly difficult write-skew cases.</p>
+<blockquote>
+<p>If the transaction is read-only, snapshot isolation solves the problem. If it also writes, write skew occurs and true serializable isolation is needed.</p>
+<p>From the perspective of reads, write skew is a phantom read. From the perspective of writes, it is a lost update.</p>
+<p>—from Chong Wang’s notes</p>
+</blockquote>
+<h3 id="Serializable-Isolation"><a href="#Serializable-Isolation" class="headerlink" title="Serializable Isolation"></a>Serializable Isolation</h3><p><strong>Serializable isolation</strong> is generally considered the strongest isolation level. It guarantees that even if transactions execute in parallel, the final result is the same as if they had run one at a time without any concurrency. Thus, if transactions work correctly in isolation, the database guarantees they remain correct when run concurrently—in other words, it prevents every possible race condition.</p>
+<p>Most databases that provide serializability currently use one of three techniques:</p>
+<ul>
+<li>Literally execute transactions serially, in order.</li>
+<li><strong>Two-phase locking (2PL)</strong>, for decades the only viable option.</li>
+<li>Optimistic concurrency-control techniques, such as <strong>serializable snapshot isolation (SSI)</strong>.</li>
+</ul>
+<h4 id="Literal-Serial-Execution"><a href="#Literal-Serial-Execution" class="headerlink" title="Literal Serial Execution"></a>Literal Serial Execution</h4><p>Execute only one transaction at a time, in order, on a single thread. This entirely sidesteps detecting and preventing inter-transaction conflicts, and the resulting isolation is exactly the definition of serializability.</p>
+<ul>
+<li>Every transaction must be small and fast; one slow transaction delays all transaction processing.</li>
+<li>This is limited to cases where the active data set fits in memory. Rarely accessed data can move to disk, but the system becomes very slow if a single-threaded transaction needs to access it.</li>
+<li>Write throughput must be low enough for a single CPU core, or transactions must be partitionable into a single partition without cross-partition coordination.</li>
+<li>Cross-partition transactions are possible, but their use is heavily constrained.</li>
+</ul>
+<h4 id="Two-Phase-Locking-2PL"><a href="#Two-Phase-Locking-2PL" class="headerlink" title="Two-Phase Locking (2PL)"></a>Two-Phase Locking (2PL)</h4><p>Two-phase locking is similar to read committed, but imposes stronger locking requirements. As long as there is no write, multiple transactions may read the same object simultaneously. But once an object is written (modified or deleted), <strong>exclusive access</strong> is required:</p>
+<ul>
+<li>If transaction A reads an object and transaction B wants to write it, B must wait until A commits or aborts. (This ensures B cannot change the object unexpectedly underneath A.)</li>
+<li>If transaction A writes an object and transaction B wants to read it, B must wait until A commits or aborts.</li>
+</ul>
+<h4 id="Implementing-Two-Phase-Locks"><a href="#Implementing-Two-Phase-Locks" class="headerlink" title="Implementing Two-Phase Locks"></a>Implementing Two-Phase Locks</h4><p>Blocking reads and writes is implemented by adding a lock to every database object. A lock may be in <strong>shared mode</strong> or <strong>exclusive mode</strong>. It works as follows:</p>
+<ul>
+<li>To read an object, a transaction must first acquire a shared lock. Multiple transactions may hold shared locks at the same time, but if another transaction already holds an exclusive lock, they must wait.</li>
+<li>To write an object, a transaction must first acquire an exclusive lock. No other transaction may hold either a shared or exclusive lock simultaneously, so the transaction must wait if the object has any lock.</li>
+<li>If a transaction reads and then writes an object, it may upgrade its shared lock to an exclusive one. Upgrading works the same as acquiring an exclusive lock directly.</li>
+<li>After acquiring a lock, a transaction must hold it until the transaction ends (commits or aborts). This is the source of the name “two-phase”: acquire locks in the first phase while the transaction executes, then release all locks in the second phase when it ends.</li>
+</ul>
+<h4 id="Performance"><a href="#Performance" class="headerlink" title="Performance"></a>Performance</h4><p>Performance is poor. This is partly due to the overhead of acquiring and releasing all those locks, but more importantly to reduced concurrency. By design, if two concurrent transactions attempt anything that could lead to a race condition, one must wait for the other to finish.</p>
+<h4 id="Predicate-Locks"><a href="#Predicate-Locks" class="headerlink" title="Predicate Locks"></a>Predicate Locks</h4><p>Predicate locks are similar to the shared&#x2F;exclusive locks described above, but they do not belong to a particular object (such as a table row). They belong to all objects matching a certain search condition.</p>
+<p>The key idea is that predicate locks also apply to objects that do not yet exist in the database but may be added in the future (phantoms). If two-phase locking includes predicate locks, the database prevents all forms of write skew and other race conditions, achieving serializable isolation.</p>
+<h4 id="Index-Range-Locks"><a href="#Index-Range-Locks" class="headerlink" title="Index-Range Locks"></a>Index-Range Locks</h4><p>Unfortunately, predicate locks perform poorly: <strong>if active transactions hold many locks, checking for matching locks can be very expensive. Therefore, most databases using 2PL actually implement index-range locks (also called next-key locking)</strong>, a simplified approximation of predicate locks.</p>
+<h3 id="Serializable-Snapshot-Isolation-SSI"><a href="#Serializable-Snapshot-Isolation-SSI" class="headerlink" title="Serializable Snapshot Isolation (SSI)"></a>Serializable Snapshot Isolation (SSI)</h3><h4 id="Pessimistic-and-Optimistic-Concurrency-Control"><a href="#Pessimistic-and-Optimistic-Concurrency-Control" class="headerlink" title="Pessimistic and Optimistic Concurrency Control"></a>Pessimistic and Optimistic Concurrency Control</h4><p>Two-phase locking is a <strong>pessimistic concurrency-control mechanism</strong>. It follows the principle that if something might go wrong—as indicated by a lock held by another transaction—it is best to wait until the situation is safe before doing anything. This resembles mutexes used to protect data structures in multithreaded programming.</p>
+<p><strong>Serializable snapshot isolation</strong> is an <strong>optimistic</strong> concurrency-control technique. Here, optimistic means not blocking a transaction even when danger is possible, but letting it continue in the hope that everything works out. When a transaction wants to commit, the database checks whether anything bad happened—that is, whether isolation was violated. If so, it aborts the transaction and it must retry. Only serializable transactions may commit.</p>
+<p>If there is a great deal of <strong>contention</strong> (many transactions trying to access the same object), performance is poor because a large fraction of transactions must abort. If the system is already near maximum throughput, the additional load from retried transactions can make it worse.</p>
+<p>However, if there is enough spare capacity and contention between transactions is not too high, optimistic concurrency control is often better than pessimistic control. Commutative atomic operations can reduce contention: for example, if multiple transactions increment a counter concurrently, the order of those increments does not matter (as long as the counter is not read within the same transaction), so every concurrent increment can be applied without conflict.</p>
+<h4 id="Making-Decisions-Based-on-Stale-Preconditions"><a href="#Making-Decisions-Based-on-Stale-Preconditions" class="headerlink" title="Making Decisions Based on Stale Preconditions"></a>Making Decisions Based on Stale Preconditions</h4><p>How does a database know whether a query result may have changed? There are two cases to consider:</p>
+<ul>
+<li>Detecting reads of stale MVCC object versions (an uncommitted write existed before the read).</li>
+<li>Detecting writes that affect earlier reads (a write occurred after the read).</li>
+</ul>
+<h4 id="Detecting-Reads-of-Stale-MVCC-Objects"><a href="#Detecting-Reads-of-Stale-MVCC-Objects" class="headerlink" title="Detecting Reads of Stale MVCC Objects"></a>Detecting Reads of Stale MVCC Objects</h4><p>To prevent this anomaly, the database must track when a transaction ignored another transaction’s writes due to MVCC visibility rules. When the transaction wants to commit, the database checks whether any ignored writes have now committed. If so, the transaction must abort.</p>
+<p>Why wait until commit? When a stale read is detected, why not abort the transaction immediately?</p>
+<ul>
+<li>If the transaction is read-only, it need not abort because there is no risk of write skew.</li>
+<li>The other transaction may abort at commit time or may still be uncommitted, so the read may not ultimately be stale.</li>
+</ul>
+<h4 id="Detecting-Whether-Writes-Affect-Earlier-Reads"><a href="#Detecting-Whether-Writes-Affect-Earlier-Reads" class="headerlink" title="Detecting Whether Writes Affect Earlier Reads"></a>Detecting Whether Writes Affect Earlier Reads</h4><p>When a transaction writes to the database, it must look up in the index other transactions that recently read the affected data. This is similar to acquiring a write lock on the affected key range, but it does not block the writer while those read transactions finish; it merely warns them that the data they read may no longer be current.</p>
+<h4 id="Performance-of-Serializable-Snapshot-Isolation"><a href="#Performance-of-Serializable-Snapshot-Isolation" class="headerlink" title="Performance of Serializable Snapshot Isolation"></a>Performance of Serializable Snapshot Isolation</h4><p>As usual, many engineering details affect an algorithm’s real-world performance. One trade-off is the <strong>granularity</strong> of tracking transaction reads and writes. If a database tracks each transaction’s activity in detail (fine-grained), it can accurately determine which transactions must abort, but bookkeeping overhead can become significant. Coarser tracking is faster but may cause more unnecessary transaction aborts.</p>
+<p>The greatest advantage of SSI is that one transaction does not need to block waiting for a lock held by another. As with snapshot isolation, writes do not block reads and vice versa. This design makes query latency more predictable, with fewer variables. In particular, read-only queries can run on a consistent snapshot without any locks, which is very attractive for read-heavy workloads.</p>
+<p>Compared with serial execution, SSI is not limited to the throughput of a single CPU core.</p>
+<p>Abort rate significantly affects SSI’s overall performance. For example, transactions that read and write data for a long time are likely to conflict and abort, so SSI requires read-write transactions to be as short as possible (long read-only transactions may be fine). For slow transactions, SSI may be less sensitive than two-phase locking or serial execution.</p>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>Dirty reads</th>
+<th>Dirty writes</th>
+<th>Non-repeatable reads</th>
+<th>Write skew</th>
+<th>Phantoms</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Read uncommitted</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>Read committed</td>
+<td>√</td>
+<td>√</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>Snapshot isolation (repeatable read)</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>Serializable</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+</tbody></table>
+
+		</div>
+
+		
+
+		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/ddia/">#ddia</a>&nbsp;
+			</li>
+			
+		</ul>
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="prev" rel="prev" href="/2020/05/27/DDIA_Notes/2020-05-27-ddia-chapter-8-the-trouble-with-distributed-systems/">
+					<span class="left arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-left"></i>
+					</span>
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item truncate max-w-48">DDIA Chapter 8: The Trouble with Distributed Systems</span>
+						<span class="post-nav-item">Prev posts</span>
+					</span>
+				</a>
+			</div>
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2020/05/18/BB/2020/2020-05-18-absolutely/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item truncate max-w-48">May 2020: Absolutely</span>
+						<span class="post-nav-item">Next posts</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">On this page</div>
+		<div class="page-title">DDIA Chapter 7: Transactions</div>
+		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ACID"><span class="nav-text">ACID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Single-object-and-multi-object-operations"><span class="nav-text">Single-object and multi-object operations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Weak-Isolation-Levels"><span class="nav-text">Weak Isolation Levels</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Serializable-Isolation"><span class="nav-text">Serializable Isolation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Serializable-Snapshot-Isolation-SSI"><span class="nav-text">Serializable Snapshot Isolation (SSI)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Summary"><span class="nav-text">Summary</span></a></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+            <div class="customize-info my-1">© Chong Wang</div>
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2026&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">Chong Wang</a>
+            
+        </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.9.0</a></span>
+        </div>
+        
+        
+        
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container" role="dialog" aria-modal="true" aria-label="Image viewer">
+	<button class="image-viewer-close" type="button" aria-label="Close">
+		<i class="fa-solid fa-xmark"></i>
+	</button>
+	<button class="image-viewer-prev" type="button" aria-label="Prev">
+		<i class="fa-solid fa-chevron-left"></i>
+	</button>
+	<div class="image-viewer-frame">
+		<img src="" alt="">
+	</div>
+	<div class="image-viewer-exif-panel hidden absolute left-1/2 bottom-20 -translate-x-1/2 w-[min(92vw,420px)] max-h-[60vh] overflow-hidden rounded-2xl bg-background-color-transparent-80 p-4 text-left shadow-redefine-flat backdrop-blur-md" role="dialog" aria-label="EXIF" aria-hidden="true">
+		<div class="flex items-center justify-between mb-3">
+			<span class="text-sm font-semibold text-first-text-color">EXIF</span>
+			<button class="image-viewer-exif-close flex h-8 w-8 items-center justify-center rounded-full bg-background-color-transparent-80 text-first-text-color transition hover:bg-background-color-transparent-40" type="button" aria-label="Close">
+				<i class="fa-solid fa-xmark text-[0.65rem]"></i>
+			</button>
+		</div>
+		<div class="image-viewer-exif-cards grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[50vh] overflow-y-auto pr-1 scrollbar-hide"></div>
+		<template class="image-viewer-exif-card-template">
+			<div class="rounded-lg bg-background-color-transparent-40 px-3 py-2">
+				<div class="image-viewer-exif-card-header flex items-center gap-2 mb-1">
+					<i class="image-viewer-exif-card-icon fa-solid fa-circle-info text-xs text-third-text-color"></i>
+					<div class="image-viewer-exif-card-title text-xs font-semibold text-first-text-color"></div>
+				</div>
+				<div class="image-viewer-exif-card-items flex flex-col gap-1"></div>
+			</div>
+		</template>
+	</div>
+	<button class="image-viewer-exif-toggle flex items-center gap-2 hidden absolute left-1/2 bottom-6 -translate-x-1/2 rounded-full border border-border-color bg-background-color-transparent-80 px-4 py-2 text-first-text-color backdrop-blur-md transition hover:bg-background-color-transparent-40" type="button" aria-label="EXIF" aria-expanded="false">
+		<i class="fa-solid fa-circle-info text-xs"></i>
+		<span class="text-xs font-semibold uppercase tracking-wider">EXIF</span>
+	</button>
+	<button class="image-viewer-next" type="button" aria-label="Next">
+		<i class="fa-solid fa-chevron-right"></i>
+	</button>
+</div>
+
+
+	
+
+</main>
+
+
+
+	
+<script src="/js/build/main.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/build/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+
+	
+</body>
+
+</html>
