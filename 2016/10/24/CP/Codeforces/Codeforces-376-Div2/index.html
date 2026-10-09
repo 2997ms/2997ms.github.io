@@ -94,7 +94,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://2997ms.github.io/images/chong-wang.jpg">
 <meta property="article:published_time" content="2016-10-24T18:22:01.000Z">
-<meta property="article:modified_time" content="2022-09-04T19:37:16.583Z">
+<meta property="article:modified_time" content="2026-10-09T07:52:24.816Z">
 <meta property="article:author" content="Chong Wang">
 <meta property="article:tag" content="Codeforces">
 <meta property="article:tag" content="DP">
@@ -339,15 +339,15 @@
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">67</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">62</div>
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">1</div>
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">165</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">154</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -398,28 +398,12 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2022-09-04 20:37:16</span>
-            <span class="mobile">2022-09-04 20:37:16</span>
+            <span class="desktop">2026-10-09 08:52:24</span>
+            <span class="mobile">2026-10-09 08:52:24</span>
             <span class="hover-info">Updated</span>
         </span>
     
 
-    
-        <span class="article-categories article-meta-item">
-            <i class="fa-regular fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/Chinese/">Chinese</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
     
     
         <span class="article-tags article-meta-item">
@@ -457,38 +441,38 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<p><a class="link"   target="_blank" rel="noopener" href="http://codeforces.com/contest/731" >题目链接<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>与<a class="link"   target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/376_Div2" >代码链接<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
-<p>晚上VP了这一场，并查集写脑残了，TLE47。F题关于数据应该注意数据范围，然后根据每一个数字来进行枚举。</p>
+			<p><a class="link"   target="_blank" rel="noopener" href="http://codeforces.com/contest/731" >Title link<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> and <a class="link"   target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/376_Div2" >Code link<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p>I VP’d this game in the evening, checked the album and wrote about it, TLE47. Question F: Regarding the data, you should pay attention to the data range, and then enumerate according to each number.</p>
 <h3 id="A-Night-at-the-Museum"><a href="#A-Night-at-the-Museum" class="headerlink" title="A Night at the Museum"></a>A Night at the Museum</h3><blockquote>
-<p>$26$个字母放在一个圆盘上，然后可以顺时针逆时针方向找字母，问总和旋转次数最少是多少。</p>
+<p>$26$ letters are placed on a disk, and then the letters can be found clockwise and counterclockwise, and what is the minimum number of total rotations.</p>
 </blockquote>
-<p>每次贪心取最小值。res+&#x3D;min(abs(k-cur),26-abs(k-cur))</p>
+<p>Get the minimum value greedily every time. res+&#x3D;min(abs(k-cur),26-abs(k-cur))</p>
 <h3 id="B-Coupons-and-Discounts"><a href="#B-Coupons-and-Discounts" class="headerlink" title="B Coupons and Discounts"></a>B Coupons and Discounts</h3><blockquote>
-<p>有$n$天，对应每一天要购买相应数量的pizza，有两种购买方式，第一种一天买两个，第二种连续两天买一个。问该安排在这两种购买方式下是否可行。</p>
+<p>There are $n$ days, corresponding to the corresponding number of pizzas to be purchased on each day. There are two purchasing methods, the first is to buy two in one day, and the second is to buy one in two consecutive days. Ask whether the arrangement is feasible under these two purchasing methods.</p>
 </blockquote>
-<p>从第一天开始贪心，偶数不用管，如果是奇数，那么想要可行下一天必须减1。判断每一天的数量大于等于0，还有最后一天要是偶数。</p>
+<p>Be greedy from the first day, don’t worry about the even number. If it is an odd number, then you must decrease it by 1 the next day if you want it to work. Determine whether the number of each day is greater than or equal to 0, and the last day must be an even number.</p>
 <h3 id="C-Socks"><a href="#C-Socks" class="headerlink" title="C Socks"></a>C Socks</h3><blockquote>
-<p>有n个袜子，k种颜色，m个天。每一天有对应安排，要穿哪两只袜子。问想要满足每一天袜子都一致的情况下，最小更改袜子的颜色数量。</p>
+<p>There are n socks, k colors, and m days. There are corresponding arrangements for each day, which two socks to wear. Ask what is the minimum number of colors to change if you want the socks to be consistent every day.</p>
 </blockquote>
-<p>并查集，把要穿的袜子放在一个集合里面。然后再在每一个集合里面选取出现颜色最多的那种，其他的袜子就要去改成这个颜色。。。</p>
+<p>And check the collection and put the socks you want to wear in a collection. Then select the one with the most colors in each collection, and the other socks will be changed to this color. . .</p>
 <h3 id="D-80-th-Level-Archeology"><a href="#D-80-th-Level-Archeology" class="headerlink" title="D 80-th Level Archeology"></a>D 80-th Level Archeology</h3><blockquote>
-<p>题意是给出了$n$个序列，然后可以对所有序列向后移一位，最后一个$C$的话就变为$1$。问最少移多少位可以满足序列是呈现字典序递增的顺序。</p>
+<p>The meaning of the question is that $n$ sequences are given, and then all sequences can be shifted back by one bit. The last $C$ becomes $1$. Ask how many bits can be shifted at least so that the sequence is in lexicographically increasing order.</p>
 </blockquote>
-<p>对两个序列进行比较会发现，是一个合法区间。将所有合法区间进行合并，看有没有满足所有区间的数字。</p>
+<p>Comparing the two sequences, you will find that it is a legal interval. Combine all legal intervals to see if there are numbers that satisfy all intervals.</p>
 <h3 id="E-Funny-Game"><a href="#E-Funny-Game" class="headerlink" title="E Funny Game"></a>E Funny Game</h3><blockquote>
-<p>题意是有$n$个数，Petya和Gena对这$n$个数按照如下规则去取：每次至少选择数列中最左面前$2$个数，其和计入分数，然后把这个和再次放入该数列的最左面，直到该数列只剩下一个数为止。每个人都希望自己的分数-对手的分数最大，Petya先取，问最优解。</p>
+<p>The meaning of the question is that there are $n$ numbers. Petya and Gena follow the following rules to get the $n$ numbers: each time at least select the $2$ number in front of the leftmost number in the sequence, and the sum is included in the score, and then put the sum into the leftmost number of the sequence again until there is only one number left in the sequence. Everyone wants their own score - the opponent’s score is the largest, Petya takes it first and asks for the optimal solution.</p>
 </blockquote>
-<p>后来才知道这种博弈是有套路的。。。</p>
-<p>$DP[i]$表示对当前玩家来说，取前$[1..i]$数其最优值，那么这个最优值$DP[i]$从哪里转移过来，从左往右取的话，这个最优值是取决于对手取的最优值，即是从右面转移过来的。根据这个可以写一个$O(n^2)$的记忆化$DP$。</p>
+<p>Later I learned that this kind of game has a routine. . .</p>
+<p>$DP[i]$ means that for the current player, take the first $[1..i]$ to get the optimal value. Then where does this optimal value $DP[i]$ transfer from? If taken from left to right, this optimal value depends on the optimal value taken by the opponent, that is, it is transferred from the right. Based on this, you can write a memorized $DP$ of $O(n^2)$.</p>
 <div class="code-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> val[maxn],sum[maxn],dp[maxn];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">cal</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(dp[x]!=<span class="number">-1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> dp[x];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">int</span> res = -INF;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=x+<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		res=<span class="built_in">max</span>(res,<span class="built_in">cal</span>(i));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(res == -INF)</span><br><span class="line">		res = <span class="number">0</span>;</span><br><span class="line">	dp[x]=sum[x]-res;</span><br><span class="line">	<span class="keyword">return</span> dp[x];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(dp,<span class="number">-1</span>,<span class="built_in">sizeof</span>(dp));</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;val[i]);</span><br><span class="line">		sum[i]=sum[i<span class="number">-1</span>]+val[i];</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="type">int</span> res = -INF;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		res = <span class="built_in">max</span>(res,<span class="built_in">cal</span>(i));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,res);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
-<p>观察转移，从后转移的话，可以从后往前走，维护这个最大值，得到结果。</p>
+<p>Observe the transfer. If you transfer from the back, you can go from the back to the front to maintain the maximum value and get the result.</p>
 <div class="code-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">ll n;</span><br><span class="line">ll val[maxn], sum[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%lld&quot;</span>, &amp;n);</span><br><span class="line">	<span class="built_in">repp</span>(i, <span class="number">1</span>, n)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%lld&quot;</span>, &amp;val[i]);</span><br><span class="line">		sum[i] = sum[i - <span class="number">1</span>] + val[i];</span><br><span class="line">	&#125;</span><br><span class="line">	ll res = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = n; i &gt;= <span class="number">2</span>; i--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (i == n)res = sum[i];</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (res &lt; sum[i] - res)</span><br><span class="line">		&#123;</span><br><span class="line">			res = sum[i] - res;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, res);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
 
 <h3 id="F-Video-Cards"><a href="#F-Video-Cards" class="headerlink" title="F Video Cards"></a>F Video Cards</h3><blockquote>
-<p>有$n$个数，可以以任意一个数作为开头，其余的数必须减小到是这个数的整数倍，记这个数列的和。问所有情况下的和的最大值。</p>
+<p>There are $n$ numbers. You can start with any number. The remaining numbers must be reduced to an integer multiple of this number. Record the sum of this sequence. Ask for the maximum value of the sum in all cases.</p>
 </blockquote>
-<p>注意数的范围都是小于200000的，那么就可以求前缀和，枚举每一个数作为基底，其2倍,3倍…的数。复杂度$O(nlogn)$</p>
+<p>Note that the range of numbers is less than 200,000, then you can find the prefix sum and enumerate each number as the base, which is 2 times, 3 times… the number. Complexity$O(nlogn)$</p>
 
 		</div>
 

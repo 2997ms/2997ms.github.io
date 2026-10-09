@@ -94,7 +94,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://2997ms.github.io/images/chong-wang.jpg">
 <meta property="article:published_time" content="2020-05-30T14:15:31.000Z">
-<meta property="article:modified_time" content="2022-09-04T19:37:01.490Z">
+<meta property="article:modified_time" content="2026-10-09T07:40:43.220Z">
 <meta property="article:author" content="Chong Wang">
 <meta property="article:tag" content="Codeforces">
 <meta name="twitter:card" content="summary">
@@ -337,15 +337,15 @@
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">67</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">62</div>
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">1</div>
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">165</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">154</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -396,28 +396,12 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2022-09-04 20:37:01</span>
-            <span class="mobile">2022-09-04 20:37:01</span>
+            <span class="desktop">2026-10-09 08:40:43</span>
+            <span class="mobile">2026-10-09 08:40:43</span>
             <span class="hover-info">Updated</span>
         </span>
     
 
-    
-        <span class="article-categories article-meta-item">
-            <i class="fa-regular fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/Chinese/">Chinese</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
     
     
         <span class="article-tags article-meta-item">
@@ -447,35 +431,35 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<p>2020年还在做div2真是棒棒了呢。</p>
+			<p>Still doing Div. 2 in 2020—great.</p>
 <blockquote>
-<p>我就今年坚持打，我不信到不了的啊。</p>
+<p>I will keep competing this year. I refuse to believe I cannot get there.</p>
 </blockquote>
 <span id="more"></span>
 
 <blockquote>
 <p>C. Celex Update</p>
 </blockquote>
-<p>C题题意是给出了gaz-giz的那种数字网格，给出起点和终点，每一种走法计算路径上的和，算从起点到终点有多少种和。</p>
+<p>Problem C gives a number grid of the <code>gaz-giz</code> kind, a start, and an end. For each possible route, calculate the sum on the path and count how many distinct sums are possible from start to end.</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://raw.githubusercontent.com/2997ms/My_Algorithm/master/source_pic/CF645/C1.png"
                       alt="D_1"
                 ></p>
-<p>来，我在比赛中干了什么呢？算清楚了给出一个点具体的值。</p>
-<p>之后发现就是最大值到最小值的差值，然后我居然就开始考虑最小值怎么算，最大值怎么算。后来发现就算算清楚了也是要爆long long的，心态开始崩。。。</p>
-<p>这是结束后后面红旺发给我的。。。。。</p>
+<p>What did I do in the contest? I worked out the exact value at a given point.</p>
+<p>Then I realised the answer was simply the difference between the maximum and minimum. Yet I began working out how to calculate each of them. Later I saw that even doing that would overflow <code>long long</code>, and my mindset started to collapse.</p>
+<p>Someone sent me this after the contest.</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://raw.githubusercontent.com/2997ms/My_Algorithm/master/source_pic/CF645/C2.jpg"
                       alt="D_1"
                 ></p>
-<p>我就不清楚我当时在想什么。后续x*y+1也是可以猜出来的，但当时我自己莫名地搞出了一个反例觉得不对，后来是自己反例算错了。。。</p>
+<p>I do not know what I was thinking. The later formula, <code>x * y + 1</code>, was guessable too, but I somehow invented a counterexample that seemed to disprove it; later I found that I had calculated my own counterexample incorrectly.</p>
 <div class="code-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">SLLA</span>(xx1);</span><br><span class="line">    <span class="built_in">SLLA</span>(yy1);</span><br><span class="line">    <span class="built_in">SLLA</span>(xx2);</span><br><span class="line">    <span class="built_in">SLLA</span>(yy2);</span><br><span class="line"> </span><br><span class="line">    ll ans = (xx2 - xx1 ) *(yy2 - yy1) + <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
-<p>结束之后发现D题简单啊，二分一下就结束了，唯一需要注意的是一个地方爆了long long，自己用double给莽过去了。</p>
+<p>Afterward I found Problem D easy: binary search finishes it. The only thing to watch is one <code>long long</code> overflow; I pushed through it with <code>double</code>.</p>
 
 		</div>
 
@@ -502,7 +486,7 @@
 						<i class="fa-solid fa-chevron-left"></i>
 					</span>
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item truncate max-w-48">2020年-06月-九局下半</span>
+						<span class="post-nav-title-item truncate max-w-48">2020-June-The second half of the ninth inning</span>
 						<span class="post-nav-item">Prev posts</span>
 					</span>
 				</a>
@@ -512,7 +496,7 @@
 			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
 				<a class="next" rel="next" href="/2020/05/27/DDIA_Notes/ddia-%E7%AC%AC%E5%85%AB%E7%AB%A0%20%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E9%BA%BB%E7%83%A6/">
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item truncate max-w-48">ddia-第八章-分布式系统的麻烦</span>
+						<span class="post-nav-title-item truncate max-w-48">ddia-Chapter 8-Trouble with distributed systems</span>
 						<span class="post-nav-item">Next posts</span>
 					</span>
 					<span class="right arrow-icon flex justify-center items-center">

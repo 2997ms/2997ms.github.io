@@ -94,7 +94,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://2997ms.github.io/images/chong-wang.jpg">
 <meta property="article:published_time" content="2016-09-13T07:42:54.000Z">
-<meta property="article:modified_time" content="2022-09-04T19:34:11.346Z">
+<meta property="article:modified_time" content="2026-10-09T07:51:39.929Z">
 <meta property="article:author" content="Chong Wang">
 <meta property="article:tag" content="AtCoder">
 <meta name="twitter:card" content="summary">
@@ -337,15 +337,15 @@
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">67</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">62</div>
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">1</div>
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">165</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">154</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -396,28 +396,12 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2022-09-04 20:34:11</span>
-            <span class="mobile">2022-09-04 20:34:11</span>
+            <span class="desktop">2026-10-09 08:51:39</span>
+            <span class="mobile">2026-10-09 08:51:39</span>
             <span class="hover-info">Updated</span>
         </span>
     
 
-    
-        <span class="article-categories article-meta-item">
-            <i class="fa-regular fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/Chinese/">Chinese</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
     
     
         <span class="article-tags article-meta-item">
@@ -447,44 +431,44 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<p><a class="link"   target="_blank" rel="noopener" href="http://agc003.contest.atcoder.jp/assignments" >题目链接<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>与<a class="link"   target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/AtCoder/Grand_Contest_003" >代码链接<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
-<p>比的时候只做出三道，后来感觉这一期的D题是可以出的，E题的思路还是神，就感觉这种题也不靠什么特定的算法，靠思维把问题转换，跟前面Atcoder的很多题一样，挺看智商的。。。至于F题。。。那个矩阵的构造，从答案推出矩阵的正确性我是搞懂了，但是如何通过一些递推关系搞出矩阵，感觉自己还需要练习吧&#x3D; &#x3D;。</p>
+			<p><a class="link"   target="_blank" rel="noopener" href="http://agc003.contest.atcoder.jp/assignments" >Title link<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> and <a class="link"   target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/AtCoder/Grand_Contest_003" >Code link<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p>During the comparison, I only did three questions. Later, I felt that question D in this period was possible, and the idea of question E was still amazing. I felt that this kind of question did not rely on any specific algorithm, but relied on thinking to transform the question. Like many of the previous Atcoder questions, it depends on IQ. . . As for question F. . . I understand the structure of the matrix and the correctness of inferring the matrix from the answers, but I feel like I still need to practice how to create the matrix through some recursive relationships &#x3D; &#x3D;.</p>
 <h3 id="A-Wanna-go-back-home"><a href="#A-Wanna-go-back-home" class="headerlink" title="A Wanna go back home"></a>A Wanna go back home</h3><hr>
-<p>题意是Snuke走|s|次，每一次东西南北四个方向，任意距离，给出走的方向，问最终能否回到原点。</p>
-<p>相对的方向要都出现或者都不出现，这样就能够保证在这两个方向上移动的距离为0。</p>
+<p>The meaning of the question is that Snuke walks |s| times, each time in four directions, east, west, north, and south, at any distance. The direction of the walk is given, and the question is whether he can return to the original point in the end.</p>
+<p>The relative directions must all appear or not appear, so as to ensure that the distance moved in these two directions is 0.</p>
 <h3 id="B-Simplified-mahjong"><a href="#B-Simplified-mahjong" class="headerlink" title="B Simplified mahjong"></a>B Simplified mahjong</h3><hr>
-<p>题意是Snuke有一堆卡片，每张卡片上的数字为1~N，数字i的卡片有Ai个，两张卡片上数字相差不超过1的可以形成一对，问最多形成多少对。</p>
-<p>之前一直WA，后来就直接贪心，如果数字为i的为偶数，那就自己组成一对。如果为奇数，找后面的一个组成一对。</p>
-<h3 id="C-BBuBBBlesort"><a href="#C-BBuBBBlesort" class="headerlink" title="C BBuBBBlesort!"></a>C BBuBBBlesort!</h3><hr>
-<p>题意是给出N个数，想把这N个数按大小排成有序，交换方法有两种：1.交换相邻的2个;2.交换相邻的3个.</p>
-<p>问最少必须使用多少次操作1使得数字有序。</p>
-<p>能够发现将这N个数排序之后，如果一个数排序之前的位置与排序之后的位置之差如果是偶数的话，那么就可以通过操作2来实现，但如果是奇数的话，那没办法了，想要到达该状态就必须通过操作1来实现了。</p>
+<p>The meaning of the question is that Snuke has a pile of cards. The numbers on each card are 1~N. There are Ai cards with the number i. The numbers on the two cards that differ by no more than 1 can form a pair. How many pairs can be formed at most.</p>
+<p>I had always been WA before, but then I became greedy. If the number i is an even number, then I will form a pair. If it is an odd number, find the last one to form a pair.</p>
+<h3 id="C-BBuBBblesort"><a href="#C-BBuBBblesort" class="headerlink" title="C BBuBBblesort!"></a>C BBuBBblesort!</h3><hr>
+<p>The meaning of the question is to give N numbers and want to arrange these N numbers in order according to size. There are two exchange methods: 1. Exchange 2 adjacent numbers; 2. Exchange 3 adjacent numbers.</p>
+<p>Ask how many operations 1 must be used at least to make the numbers in order.</p>
+<p>It can be found that after sorting these N numbers, if the difference between the position before sorting and the position after sorting a number is an even number, then it can be achieved through operation 2, but if it is an odd number, there is no other way. To reach this state, it must be achieved through operation 1.</p>
 <h3 id="D-Anticube"><a href="#D-Anticube" class="headerlink" title="D Anticube"></a>D Anticube</h3><hr>
-<p>题意是给出N个数，求一个集合，该集合两两数字之前相乘不是立方数，问该集合元素的最大数量。</p>
-<p><a class="link"   target="_blank" rel="noopener" href="https://async.icpc-camp.org/d/528-atcoder-grand-contest-003-d-anticube" >叉姐题解<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
-<p>其实后来就是如何分解该数的问题，一直TLE。</p>
-<p>数字是在10^10级别的，将10^3级别的因子过滤一遍之后，就考虑只剩下了p,pq,p^2的形式了，考虑如何将它们处理。另外p^2形式还要注意一下精度问题。</p>
-<p>剩下的就是两者取大的问题了。</p>
+<p>The meaning of the question is to give N numbers and find a set. The multiplication of two numbers in the set is not a cubic number. Ask for the maximum number of elements in the set.</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://async.icpc-camp.org/d/528-atcoder-grand-contest-003-d-anticube" >Solution to Sister Fork<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p>In fact, the problem later became how to decompose the number, which has always been TLE.</p>
+<p>The numbers are at the 10^10 level. After filtering the 10^3 level factors, only p, pq, and p^2 are left. Consider how to process them. In addition, the p^2 ​​form also needs to pay attention to the accuracy issue.</p>
+<p>What remains is a matter of which of the two is greater.</p>
 <h3 id="E-Sequential-operations-on-Sequence"><a href="#E-Sequential-operations-on-Sequence" class="headerlink" title="E Sequential operations on Sequence"></a>E Sequential operations on Sequence</h3><hr>
-<p>题意是当前有一个序列1…N，有Q次操作，每次操作中，该序列被原来序列的前Qi个数不断地重复替代。问最终序列每个元素的出现次数。</p>
-<p>能够发现规律，如果Qi&gt;Q(i+1),那么之前的Qi就没有意义了。</p>
-<p>这样就会变成所有的操作是一个递增的序列。</p>
-<p>还是发现数字小的元素出现次数一定比数字大的元素出现次数多，所以最终问题考虑使用后缀和，那从后往前考虑，把最后一个元素标为1，即所有元素都是1了。</p>
-<p>从后往前每一次操作相当于做了一次折叠，考虑将后面位置的这些贡献分别贡献到那里了，如果该位置pos&gt;Qi，那么会发现Qi位置上的值+&#x3D;(pos&#x2F;Qi)*(该pos的值)，pos%Qi位置上的值+&#x3D;pos%Qi。</p>
-<p>这种问题感觉很难总结出一个系统的解决方法，每次碰到就靠跳大神，求问有没有类似的问题呢。。。？</p>
+<p>The meaning of the question is that there is currently a sequence 1…N, with Q operations. In each operation, the sequence is repeatedly replaced by the first Qi numbers of the original sequence. Ask the number of occurrences of each element in the final sequence.</p>
+<p>Able to discover patterns, if Qi&gt;Q(i+1), then the previous Qi is meaningless.</p>
+<p>This will turn all operations into an increasing sequence.</p>
+<p>It is still found that elements with small numbers must appear more frequently than elements with large numbers, so the final problem is to consider using the suffix sum. Then think from back to front and mark the last element as 1, that is, all elements are 1.</p>
+<p>Each operation from back to front is equivalent to a folding. Consider where the contributions of the subsequent positions are respectively contributed. If the position pos&gt;Qi, then you will find that the value at the Qi position +&#x3D; (pos&#x2F;Qi)*(the value of the pos), the value at the pos%Qi position +&#x3D;pos%Qi.</p>
+<p>It seems difficult to summarize a systematic solution to this kind of problem. Every time I encounter it, I rely on experts to ask if there are any similar problems. . . ?</p>
 <h3 id="F-Fraction-of-Fractal"><a href="#F-Fraction-of-Fractal" class="headerlink" title="F Fraction of Fractal"></a>F Fraction of Fractal</h3><hr>
-<p>题意是h*w的方格，每个格子要么是白点要么是黑点。所有这些黑点在上下左右四个方向是联通的。</p>
-<p>现在给出求第k等的图的方法，第k等的图从第k-1等的图来，如果该位置是白点，该位置替换成h*w的白点；如果是黑点，该位置替换成最开始的图。</p>
-<p>问第k等的图中黑点的联通块是多少个。</p>
-<p>先把其它简单的条件过滤掉，如果该图左右上下都可以连上，那么最终结果不管k多大都是1。</p>
-<p>如果该图左右上下都连不上，那么最终结果就是黑点数量a^(k-1)。</p>
-<p>现在只考虑一边连上，一边连不上的情况。比如说左右连通，上下不连通。</p>
-<p>现在这个图中黑点的数量为a，左右相连的点对数为b，边界上最左边和最右边都是黑点的对数为c。</p>
-<p>好，现在假设你已经知道了第k-1层有多少个连通块设为x，第k-1层有y个连接的数量，那么如何推出第k层？</p>
-<p>首先x*a，这个是完全不考虑相连的情况，假设每一个连通块就会分裂成a个，那么总和就是x*a个，之后减去x*b个，这b块不是新生成的连通块数量，要减去，是内部生成的。</p>
-<p>之后的这个y是上一轮连接的数量，那么上一轮如果连接上了的话，每一对y分裂而成就会有c对是新生成的连接着的块，这个是新的外部的连接的。</p>
-<p>这样总结得话可以得到一个矩阵，<br>$$<br>{\begin{pmatrix}<br>a&amp;-b\<br>0 &amp;c<br>\end{pmatrix}}^{k-1}<br>{\begin{pmatrix}<br>1\<br>1<br>\end{pmatrix}}<br>$$</p>
-<p>说的很乱很乱，也跑到论坛上面去问,发现讨论的东西和一开始想的也差不太多，给个<a class="link"   target="_blank" rel="noopener" href="https://async.icpc-camp.org/d/545-atcoder-grand-contest-003-f-fraction-of-fractal" >链接<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>，供参考。</p>
+<p>The meaning of the question is h*w square grid, each grid is either a white dot or a black dot. All these black spots are connected in four directions: up, down, left and right.</p>
+<p>Now give the method to find the k-th level picture. The k-th level picture comes from the k-1th level picture. If the position is a white point, the position is replaced with the white point of h*w; if it is a black point, the position is replaced with the original picture.</p>
+<p>Ask how many connected blocks the black dots in the k-th graph are.</p>
+<p>First filter out other simple conditions. If the graph can be connected to the left, right, top and bottom, then the final result will be 1 no matter how big k is.</p>
+<p>If the picture cannot be connected to the left, right, top and bottom, then the final result is the number of black points a^(k-1).</p>
+<p>Now we only consider the situation where one side is connected and the other side is not. For example, the left and right are connected, but the up and down are not connected.</p>
+<p>Now the number of black points in this picture is a, the number of pairs of points connected to the left and right is b, and the number of pairs of black points on the leftmost and rightmost edges of the boundary is c.</p>
+<p>Okay, now assuming that you already know how many connected blocks there are in the k-1th layer, set to x, and the number of y connections in the k-1th layer, then how to deduce the kth layer?</p>
+<p>First x*a, this does not consider the connection situation at all. Assume that each connected block will be split into a, then the total is x*a, and then subtract x*b. This b block is not the number of newly generated connected blocks. It is subtracted and is generated internally.</p>
+<p>The following y is the number of connections in the previous round. If it was connected in the previous round, each pair of y is split and there will be a pair of c pairs that are newly generated connected blocks. This is a new external connection.</p>
+<p>Summarized in this way, we can get a matrix,<br>$$<br>{\begin{pmatrix}<br>a&amp;-b\<br>0&amp;c<br>\end{pmatrix}}^{k-1}<br>{\begin{pmatrix}<br>1\<br>1<br>\end{pmatrix}}<br>$$</p>
+<p>It was very messy, and I went to the forum to ask, and found that what was discussed was not much different from what I thought at the beginning. I gave you a [link] (<a class="link"   target="_blank" rel="noopener" href="https://async.icpc-camp.org/d/545-atcoder-grand-contest-003-f-fraction-of-fractal" >https://async.icpc-camp.org/d/545-atcoder-grand-contest-003-f-fraction-of-fractal<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>) for reference.</p>
 
 		</div>
 
@@ -521,7 +505,7 @@
 			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
 				<a class="next" rel="next" href="/2016/09/09/BB/2016/2016-9%E6%9C%88-%E5%90%AD%E5%93%A7%E5%92%94%E5%93%A7/">
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item truncate max-w-48">2016_9月_吭哧咔哧</span>
+						<span class="post-nav-title-item truncate max-w-48">September 2016: Working Away</span>
 						<span class="post-nav-item">Next posts</span>
 					</span>
 					<span class="right arrow-icon flex justify-center items-center">
@@ -543,7 +527,7 @@
 	<div class="post-toc">
 		<div class="toc-title">On this page</div>
 		<div class="page-title">AtCoder Grand Contest 003</div>
-		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Wanna-go-back-home"><span class="nav-text">A Wanna go back home</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Simplified-mahjong"><span class="nav-text">B Simplified mahjong</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-BBuBBBlesort"><span class="nav-text">C BBuBBBlesort!</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Anticube"><span class="nav-text">D Anticube</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-Sequential-operations-on-Sequence"><span class="nav-text">E Sequential operations on Sequence</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#F-Fraction-of-Fractal"><span class="nav-text">F Fraction of Fractal</span></a></li></ol>
+		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Wanna-go-back-home"><span class="nav-text">A Wanna go back home</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Simplified-mahjong"><span class="nav-text">B Simplified mahjong</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-BBuBBblesort"><span class="nav-text">C BBuBBblesort!</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Anticube"><span class="nav-text">D Anticube</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-Sequential-operations-on-Sequence"><span class="nav-text">E Sequential operations on Sequence</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#F-Fraction-of-Fractal"><span class="nav-text">F Fraction of Fractal</span></a></li></ol>
 
 	</div>
 </div>

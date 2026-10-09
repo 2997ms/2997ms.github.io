@@ -94,7 +94,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://2997ms.github.io/images/chong-wang.jpg">
 <meta property="article:published_time" content="2016-09-23T09:31:39.000Z">
-<meta property="article:modified_time" content="2022-09-04T19:39:58.021Z">
+<meta property="article:modified_time" content="2026-10-09T07:40:46.905Z">
 <meta property="article:author" content="Chong Wang">
 <meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary">
@@ -337,15 +337,15 @@
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">67</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">62</div>
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">1</div>
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">165</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">154</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -396,28 +396,12 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2022-09-04 20:39:58</span>
-            <span class="mobile">2022-09-04 20:39:58</span>
+            <span class="desktop">2026-10-09 08:40:46</span>
+            <span class="mobile">2026-10-09 08:40:46</span>
             <span class="hover-info">Updated</span>
         </span>
     
 
-    
-        <span class="article-categories article-meta-item">
-            <i class="fa-regular fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/Chinese/">Chinese</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
     
     
         <span class="article-tags article-meta-item">
@@ -448,22 +432,23 @@
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
 			<h3 id="LeetCode11-Container-With-Most-Water"><a href="#LeetCode11-Container-With-Most-Water" class="headerlink" title="LeetCode11 Container With Most Water"></a>LeetCode11 Container With Most Water</h3><blockquote>
-<p>题意是给出$N$个整数$a_1,a_2…a_n$，代表在对应位置有一条$(i,0)$到$(i,a_i)$的边。问这里面两条边加x轴所围成的面积最大值。</p>
+<p>Given $N$ integers $a_1, a_2, \ldots, a_n$, where each defines a vertical line from $(i, 0)$ to $(i, a_i)$, find the maximum area enclosed by two such lines and the x-axis.</p>
 </blockquote>
-<p>之后也有一道类似的题，左右贪心，每次将较小的边去掉，时间复杂度$O(n)$。</p>
+<p>There is a similar problem later on. Use two-sided greediness: discard the shorter line each time for $O(n)$ time complexity.</p>
 <div class="code-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> </span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maxArea</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; height)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="type">int</span> sz=height.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">if</span>(sz==<span class="number">0</span>||sz==<span class="number">1</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> le=<span class="number">0</span>,ri=sz<span class="number">-1</span>;</span><br><span class="line">        <span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> weight=sz<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(le&lt;ri)</span><br><span class="line">        &#123;</span><br><span class="line">        	res=<span class="built_in">max</span>(res,<span class="built_in">min</span>(height[le],height[ri])*weight);</span><br><span class="line">        	<span class="type">int</span> h1=height[le];</span><br><span class="line">        	<span class="type">int</span> h2=height[ri];</span><br><span class="line">        	<span class="keyword">if</span>(h1&lt;h2)</span><br><span class="line">        	&#123;</span><br><span class="line">        		le++;</span><br><span class="line">        	&#125;</span><br><span class="line">        	<span class="keyword">else</span></span><br><span class="line">        	&#123;</span><br><span class="line">        		ri--;</span><br><span class="line">        	&#125;</span><br><span class="line">        	weight--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;t;</span><br></pre></td></tr></table></figure></div>
 
 <h3 id="LeetCode12-Integer-to-Roman"><a href="#LeetCode12-Integer-to-Roman" class="headerlink" title="LeetCode12 Integer to Roman"></a>LeetCode12 Integer to Roman</h3><blockquote>
-<p>题意是将整形数字转成罗马数字(字符串)。</p>
+<p>Convert an integer to its Roman-numeral string.</p>
 </blockquote>
-<p>考虑每一位，0到3是一种，4是一种，5到8是一种，9是一种。</p>
+<p>Process each digit: <code>0</code>–<code>3</code> follow one pattern, <code>4</code> another, <code>5</code>–<code>8</code> another, and <code>9</code> a final pattern.</p>
 <div class="code-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function">string <span class="title">intToRoman</span><span class="params">(<span class="type">int</span> num)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="type">int</span> n[<span class="number">4</span>] = &#123; <span class="number">1000</span>,<span class="number">100</span>,<span class="number">10</span>,<span class="number">1</span> &#125;;</span><br><span class="line">		<span class="type">char</span> r5[<span class="number">4</span>] = &#123; <span class="string">&#x27; &#x27;</span>,<span class="string">&#x27;D&#x27;</span>,<span class="string">&#x27;L&#x27;</span>,<span class="string">&#x27;V&#x27;</span> &#125;;</span><br><span class="line">		<span class="type">char</span> r1[<span class="number">4</span>] = &#123; <span class="string">&#x27;M&#x27;</span>,<span class="string">&#x27;C&#x27;</span>,<span class="string">&#x27;X&#x27;</span>,<span class="string">&#x27;I&#x27;</span> &#125;;</span><br><span class="line"></span><br><span class="line">		string res = <span class="string">&quot;&quot;</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="type">int</span> k = num / n[i];</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> (k == <span class="number">9</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				res = res + r1[i] + r1[i - <span class="number">1</span>];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (k == <span class="number">4</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				res = res + r1[i] + r5[i];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (k &gt;= <span class="number">5</span> &amp;&amp; k &lt;= <span class="number">8</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				res = res + r5[i];</span><br><span class="line">				<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; k - <span class="number">5</span>; j++)</span><br><span class="line">				&#123;</span><br><span class="line">					res = res + r1[i];</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; k; j++)</span><br><span class="line">				&#123;</span><br><span class="line">					res = res + r1[i];</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			num = num%n[i];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> res;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
 
 <h3 id="LeetCode19-Remove-Nth-Node-From-End-of-List"><a href="#LeetCode19-Remove-Nth-Node-From-End-of-List" class="headerlink" title="LeetCode19 Remove Nth Node From End of List"></a>LeetCode19 Remove Nth Node From End of List</h3><blockquote>
-<p>移除链表结尾的第n个节点。</p>
+<p>Remove the nth node from the end of a linked list.</p>
 </blockquote>
-<p>一前一后距离为n-1，当后一个节点到了结尾的时候，那么前一个节点就是要删除的节点。</p>
+<p>Keep two pointers <code>n - 1</code> nodes apart. When the trailing pointer reaches the end, the leading pointer is at the node to remove.</p>
 <div class="code-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">removeNthFromEnd</span><span class="params">(ListNode* head, <span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">    	<span class="keyword">if</span>(head==<span class="literal">NULL</span>)</span><br><span class="line">    	&#123;</span><br><span class="line">    		<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    	&#125;</span><br><span class="line">    	ListNode *pre = <span class="literal">NULL</span>;</span><br><span class="line">    	ListNode *p = head;</span><br><span class="line">    	ListNode *q = head;</span><br><span class="line">    	ListNode *res = head;</span><br><span class="line">    	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n<span class="number">-1</span>;i++)</span><br><span class="line">    	&#123;</span><br><span class="line">    		q=q-&gt;next;</span><br><span class="line">    	&#125;</span><br><span class="line"></span><br><span class="line">    	<span class="keyword">while</span>(q-&gt;next)</span><br><span class="line">    	&#123;</span><br><span class="line">    		pre=p;</span><br><span class="line">    		p=p-&gt;next;</span><br><span class="line">    		q=q-&gt;next;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">if</span>(pre)</span><br><span class="line">    	&#123;</span><br><span class="line">    	     pre-&gt;next=p-&gt;next;   </span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">else</span></span><br><span class="line">    	&#123;</span><br><span class="line">    	     res=head-&gt;next;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">return</span> res;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+
 		</div>
 
 		

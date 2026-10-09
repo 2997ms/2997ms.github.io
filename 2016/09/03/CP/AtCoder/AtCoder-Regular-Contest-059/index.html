@@ -94,7 +94,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://2997ms.github.io/images/chong-wang.jpg">
 <meta property="article:published_time" content="2016-09-03T22:23:16.000Z">
-<meta property="article:modified_time" content="2022-09-04T19:35:09.287Z">
+<meta property="article:modified_time" content="2026-10-09T07:49:37.534Z">
 <meta property="article:author" content="Chong Wang">
 <meta property="article:tag" content="DP">
 <meta property="article:tag" content="AtCoder">
@@ -338,15 +338,15 @@
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">67</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">62</div>
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">1</div>
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">165</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">154</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -397,28 +397,12 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2022-09-04 20:35:09</span>
-            <span class="mobile">2022-09-04 20:35:09</span>
+            <span class="desktop">2026-10-09 08:49:37</span>
+            <span class="mobile">2026-10-09 08:49:37</span>
             <span class="hover-info">Updated</span>
         </span>
     
 
-    
-        <span class="article-categories article-meta-item">
-            <i class="fa-regular fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/Chinese/">Chinese</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
     
     
         <span class="article-tags article-meta-item">
@@ -452,22 +436,22 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<p>这一期的后两道DP很好玩。</p>
-<p>代码在<a class="link"   target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/AtCoder/Regular_Contest_059" >这里<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>。</p>
+			<p>The last two DPs in this issue are very fun.</p>
+<p>The code is <a class="link"   target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/AtCoder/Regular_Contest_059" >here<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>.</p>
 <h3 id="C-Be-Together"><a href="#C-Be-Together" class="headerlink" title="C Be Together"></a>C Be Together</h3><hr>
-<p>题意是给出n个数，它们要统一变成同一个数，代价是差的平方，问最小代价。</p>
-<p>由于数量和范围都很小，直接暴力。</p>
+<p>The meaning of the question is to give n numbers and they must be unified into the same number. The cost is the square of the difference. Ask for the minimum cost.</p>
+<p>Due to the small number and scope, direct violence.</p>
 <h3 id="D-Unbalanced"><a href="#D-Unbalanced" class="headerlink" title="D Unbalanced"></a>D Unbalanced</h3><hr>
-<p>题意是给出一个字符串，找出这个字符串的子串中是否存在不平衡串，并输出其位置。所谓不平衡串，就是该串中一个字符的数量大于该串长度的一半。</p>
-<p>发现最小规模的不平衡串就是在三个以内有超过两个的相同字符，任何不平衡串都要以此为基础。所以一个一个字符暴力就好了。</p>
+<p>The purpose of the question is to give a string, find out whether there is an unbalanced string in the substring of this string, and output its position. The so-called unbalanced string means that the number of characters in the string is greater than half the length of the string.</p>
+<p>It is found that the smallest unbalanced string has more than two identical characters within three, and any unbalanced string must be based on this. So just be violent one character at a time.</p>
 <h3 id="E-Children-and-Candies"><a href="#E-Children-and-Candies" class="headerlink" title="E Children and Candies"></a>E Children and Candies</h3><hr>
-<p>题意是有n个小孩子，c个糖果，将c个糖果分配给n个小孩子，假设孩子得到的糖果数量为a，兴奋值为xi，这个小孩的快乐值为xi^a，幼儿园总的活动值为所有小孩子快乐值的乘积。</p>
-<p>现在每一个小孩的兴奋值取值范围为Ai~Bi，问所有情况的幼儿园活动值(…….)的和。</p>
-<p>dp[i][c]表示i个小孩分配c个糖果的活动值总和，那么仔细分析这个函数，当到i+1的时候，转移的情况为<br>$$<br>dp[i+1][c]&#x3D;\sum_{j&#x3D;0}^{c}dp[i][j]*(\sum_{x&#x3D;A[i+1]}^{B[i+1]}x^{c-j})<br>$$<br>所以预处理出x的前缀和，直接转移即可。</p>
+<p>The meaning of the question is that there are n children and c candies, and c candies are allocated to n children. Assume that the number of candies the child gets is a, the excitement value is xi, the child’s happiness value is xi^a, and the total activity value of the kindergarten is the product of the happiness values ​​of all children.</p>
+<p>Now the excitement value of each child ranges from Ai to Bi. Ask the sum of the kindergarten activity values ​​(…….) in all situations.</p>
+<p>dp[i][c] represents the total activity value of i children distributing c candies. Then analyze this function carefully. When it reaches i+1, the transfer situation is<br>$$<br>dp[i+1][c]&#x3D;\sum_{j&#x3D;0}^{c}dp[i][j]*(\sum_{x&#x3D;A[i+1]}^{B[i+1]}x^{c-j})<br>$$<br>Therefore, preprocess the prefix sum of x and transfer it directly.</p>
 <h3 id="F-Unhappy-Hacking"><a href="#F-Unhappy-Hacking" class="headerlink" title="F Unhappy Hacking"></a>F Unhappy Hacking</h3><hr>
-<p>题意是这个电脑键盘上只有三个键：0，1和delete键，现在按了n次键盘，有一个字符串，问有多少种按键情况能够形成改字符串。</p>
-<p>dp[n][c]表示按了n次键盘，形成字符串长度为c的方法数，对第n+1次按键盘，可能是delete，转移方程为：<br>$$<br>dp[n+1][max(c-1,0)]+&#x3D;dp[n][c]<br>$$<br>如果是按0，转移方程为：<br>$$<br>dp[n+1][c+1]+&#x3D;dp[n][c]<br>$$<br>按1同理，在上式基础上再加一遍dp[n][c]。</p>
-<p>最终因为是固定了0、1，所以除以2^len。</p>
+<p>The meaning of the question is that there are only three keys on this computer keyboard: 0, 1 and delete key. Now after pressing the keyboard n times, there is a string. How many key situations can form a changed string.</p>
+<p>dp[n][c] represents the number of ways to form a string of length c after pressing the keyboard n times. For the n+1th time the keyboard is pressed, it may be delete. The transfer equation is:<br>$$<br>dp[n+1][max(c-1,0)]+&#x3D;dp[n][c]<br>$$<br>If you press 0, the transfer equation is:<br>$$<br>dp[n+1][c+1]+&#x3D;dp[n][c]<br>$$<br>In the same way as 1, add dp[n][c] to the above formula.</p>
+<p>In the end, because 0 and 1 are fixed, it is divided by 2^len.</p>
 
 		</div>
 

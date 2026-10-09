@@ -94,7 +94,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://2997ms.github.io/images/chong-wang.jpg">
 <meta property="article:published_time" content="2016-09-28T08:29:44.000Z">
-<meta property="article:modified_time" content="2022-09-04T19:37:28.334Z">
+<meta property="article:modified_time" content="2026-10-09T07:52:17.351Z">
 <meta property="article:author" content="Chong Wang">
 <meta property="article:tag" content="Codeforces">
 <meta property="article:tag" content="二分">
@@ -342,15 +342,15 @@
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">67</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">62</div>
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">1</div>
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">165</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">154</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -401,28 +401,12 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2022-09-04 20:37:28</span>
-            <span class="mobile">2022-09-04 20:37:28</span>
+            <span class="desktop">2026-10-09 08:52:17</span>
+            <span class="mobile">2026-10-09 08:52:17</span>
             <span class="hover-info">Updated</span>
         </span>
     
 
-    
-        <span class="article-categories article-meta-item">
-            <i class="fa-regular fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/Chinese/">Chinese</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
     
     
         <span class="article-tags article-meta-item">
@@ -472,28 +456,28 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<p><a class="link"   target="_blank" rel="noopener" href="http://codeforces.com/contest/716" >题目链接<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>与<a class="link"   target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/372_Div2" >代码链接<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
-<p>这一次的D题二分收获很大，E题的树分治第一次做。</p>
+			<p><a class="link"   target="_blank" rel="noopener" href="http://codeforces.com/contest/716" >Title link<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> and <a class="link"   target="_blank" rel="noopener" href="https://github.com/2997ms/My_Algorithm/tree/master/Codeforces/372_Div2" >Code link<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p>This time, I gained a lot from the two points of question D. It was my first time to do the tree divide and conquer of question E.</p>
 <h3 id="A-Crazy-Computer"><a href="#A-Crazy-Computer" class="headerlink" title="A. Crazy Computer"></a>A. Crazy Computer</h3><blockquote>
-<p>题意是给出一个序列，前后差值大于$C$时，结果清空，否则+1，问最终结果。</p>
+<p>The meaning of the question is to give a sequence. When the difference before and after is greater than $C$, the result is cleared, otherwise +1, and the final result is asked.</p>
 </blockquote>
 <h3 id="B-Complete-the-Word"><a href="#B-Complete-the-Word" class="headerlink" title="B. Complete the Word"></a>B. Complete the Word</h3><blockquote>
-<p>给出一个字符串，找出含有26个不重复字母的子串，其中?可以替换成任意字符。</p>
+<p>Given a string, find a substring containing 26 non-repeating letters, where ? can be replaced with any character.</p>
 </blockquote>
 <h3 id="C-Plus-and-Square-Root"><a href="#C-Plus-and-Square-Root" class="headerlink" title="C. Plus and Square Root"></a>C. Plus and Square Root</h3><blockquote>
-<p>题意是一个游戏，当前数字是$x$，你可以在$x$的基础上添加任意倍数的$x$，使得在第$k$等上，你要变成的是一个完全平方数，并且它开根号之后，可以被$k+1$整除。</p>
+<p>The meaning of the question is a game. The current number is $x$. You can add any multiple of $x$ on the basis of $x$, so that at the first $k$, etc., what you want to become is a perfect square number, and after taking the root sign, it can be divisible by $k+1$.</p>
 </blockquote>
-<p>每一轮构造$k*k*(k+1)*(k+1)$，这样开过根号之后变成$k*(k+1)$可以被$k$整除，那么到下一轮，因为有$k+1$这个因子，就可以继续构造$(k+1)*(k+1)*(k+2)*(k+2)$。</p>
+<p>In each round, $k*k*(k+1)*(k+1)$ is constructed, so that after opening the root number, it becomes $k*(k+1)$, which can be divisible by $k$. Then in the next round, because of the factor $k+1$, you can continue to construct $(k+1)*(k+1)*(k+2)*(k+2)$.</p>
 <h3 id="D-Complete-The-Graph"><a href="#D-Complete-The-Graph" class="headerlink" title="D. Complete The Graph"></a>D. Complete The Graph</h3><blockquote>
-<p>题意是给定一个图，权值为0的边可以任意赋一个大于0的值，要求最终$s$到$t$的最短距离是一个固定长度$L$。</p>
+<p>The meaning of the question is that given a graph, the edge with a weight of 0 can be arbitrarily assigned a value greater than 0, and the shortest distance from $s$ to $t$ is required to be a fixed length $L$.</p>
 </blockquote>
-<p>看到这个题最终也可以二分搞，真的是跪服。</p>
-<p>二分所有权值为0的那些边的总和，首先如果都为0，那么最短路还大于$L$的GG。都为最大值，最短路还小于$L$的GG。剩下的会发现相当于二分在某一条边上的长度了，dijkstra求最短路。</p>
+<p>Seeing that this question can finally be solved in two parts, I really bowed down.</p>
+<p>Divide the sum of all edges with a value of 0 into two parts. First, if they are all 0, then the shortest path is greater than the GG of $L$. They are all maximum values, and the shortest path is smaller than GG of $L$. The rest will be found to be equivalent to the length of the bisection on a certain side, and Dijkstra finds the shortest path.</p>
 <h3 id="E-Digit-Tree"><a href="#E-Digit-Tree" class="headerlink" title="E. Digit Tree"></a>E. Digit Tree</h3><blockquote>
-<p>题意是给定一棵树，每一条边上有一个0到9的数，然后给定一个$M$，满足$gcd(M,10)&#x3D;1$。现在树上每两点通过边可以得到一个数值$\sum_{i&#x3D;1}^{k-1}d_{i}*10^{k-1-i}$，问树上任意两点能够被M整除的有多少对。</p>
+<p>The meaning of the question is that given a tree, each edge has a number from 0 to 9, and then given a $M$, it satisfies $gcd(M,10)&#x3D;1$. Now every two points on the tree can get a value $\sum_{i&#x3D;1}^{k-1}d_{i}*10^{k-1-i}$ through the edge. Ask how many pairs of any two points on the tree can be divisible by M.</p>
 </blockquote>
-<p>树分治，首先找重心，然后考虑所有经过重心的有多少对。</p>
-<p>假设通过深搜u点的值为123，即在该重心为根的情况下，深度为3。另一个点v的值为45，深度为2。那么能够知道u和v形成的点对的值是12354和45321。那么假设$A$代表从根节点正着计算得到的值，像上面得到的123，45，$B$代表从根节点每一个节点深搜反着得到的值，像321，54。那么被M整除的条件为，<br>$$<br>A_u\times 10^{d_{v}}+B_v\equiv 0\ mod\ m<br>$$<br>推过来就有<br>$$<br>A_u\equiv -B_v \times \frac{1}{10^{d_v}}\ mod\ m<br>$$<br>那这样在深搜的时候就知道记录什么了，然后以重心为根，前后深搜两遍，就记录了经过该点的点对数量，之后再接着找重心，分治解。</p>
+<p>To divide and conquer a tree, first find the center of gravity, and then consider how many pairs there are that pass through the center of gravity.</p>
+<p>Assume that the value of point u through deep search is 123, that is, when the center of gravity is the root, the depth is 3. Another point v has a value of 45 and a depth of 2. Then we can know that the values ​​of the point pair formed by u and v are 12354 and 45321. Then assume that $A$ represents the value calculated from the root node, like 123, 45 obtained above, and $B$ represents the value obtained from the deep search of each node of the root node, like 321, 54. Then the condition for being divisible by M is,<br>$$<br>A_u\times 10^{d_{v}}+B_v\equiv 0\ mod\ m<br>$$<br>Just push it over<br>$$<br>A_u\equiv -B_v \times \frac{1}{10^{d_v}}\ mod\ m<br>$$<br>In this way, you will know what to record when searching deeply, and then use the center of gravity as the root, search twice before and after, and record the number of point pairs that pass through that point, and then continue to find the center of gravity and divide and conquer the solution.</p>
 
 		</div>
 

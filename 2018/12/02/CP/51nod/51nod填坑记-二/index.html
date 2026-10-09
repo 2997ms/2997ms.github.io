@@ -87,14 +87,14 @@
         
         <meta name="description" content="Chong Wang — software engineer, smart contract security researcher, and competitive programmer.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="51nod填坑记(二)(1048, 1167)">
+<meta property="og:title" content="51nod Problem Notes II (1048, 1167)">
 <meta property="og:url" content="http://2997ms.github.io/2018/12/02/CP/51nod/51nod%E5%A1%AB%E5%9D%91%E8%AE%B0-%E4%BA%8C/index.html">
 <meta property="og:site_name" content="Chong Wang">
 <meta property="og:description" content="Chong Wang — software engineer, smart contract security researcher, and competitive programmer.">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://2997ms.github.io/images/chong-wang.jpg">
 <meta property="article:published_time" content="2018-12-02T23:45:32.000Z">
-<meta property="article:modified_time" content="2022-08-29T22:29:29.808Z">
+<meta property="article:modified_time" content="2026-10-09T07:40:41.758Z">
 <meta property="article:author" content="Chong Wang">
 <meta property="article:tag" content="51nod">
 <meta property="article:tag" content="DP">
@@ -111,7 +111,7 @@
     
     <title>
         
-            51nod填坑记(二)(1048, 1167) | Chong Wang
+            51nod Problem Notes II (1048, 1167) | Chong Wang
         
     </title>
 
@@ -338,15 +338,15 @@
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">67</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">62</div>
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">1</div>
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">165</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">154</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -369,7 +369,7 @@
 		<div class="article-title relative w-full">
 			
 			<div class="w-full flex items-center pt-6 justify-start">
-				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">51nod填坑记(二)(1048, 1167)</h1>
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">51nod Problem Notes II (1048, 1167)</h1>
 			</div>
 			
 		</div>
@@ -397,28 +397,12 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2022-08-29 23:29:29</span>
-            <span class="mobile">2022-08-29 23:29:29</span>
+            <span class="desktop">2026-10-09 08:40:41</span>
+            <span class="mobile">2026-10-09 08:40:41</span>
             <span class="hover-info">Updated</span>
         </span>
     
 
-    
-        <span class="article-categories article-meta-item">
-            <i class="fa-regular fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/Chinese/">Chinese</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
     
     
         <span class="article-tags article-meta-item">
@@ -452,24 +436,23 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<p>前一个还是2017年的事情，51nod填坑记二居然相差了一年多。主要是51nod这一年好像近期才做了一个很大的改变，之前bug太多了啊。。。</p>
-<p>这一年自己经历了很多，然而进步很小啊。。。心态有的时候也需要调整。</p>
+			<p>The previous entry was from 2017; surprisingly, more than a year has passed before this second 51nod note. 51nod seems to have made a major change only recently—there used to be far too many bugs.</p>
+<p>I have been through a lot this year, yet made very little progress. Sometimes my mindset needs adjusting too.</p>
 <span id="more"></span>
 
-<h3 id="51nod-1048"><a href="#51nod-1048" class="headerlink" title="51nod 1048"></a><a target="_blank" rel="noopener" href="http://www.51nod.com/Challenge/Problem.html#!#problemId=1048"><strong>51nod 1048</strong></a></h3><p>本来是$g[i][le][ri]$表示$2^i$用$2^{le}，2^{ri}$表示的种类数，这个时候可以得到。</p>
+<h3 id="51nod-1048"><a href="#51nod-1048" class="headerlink" title="51nod 1048"></a><a target="_blank" rel="noopener" href="http://www.51nod.com/Challenge/Problem.html#!#problemId=1048"><strong>51nod 1048</strong></a></h3><p>Let $g[i][le][ri]$ denote the number of ways to represent $2^i$ using $2^{le}$ through $2^{ri}$. Then</p>
 <p>$g[i][le][ri] &#x3D; \sum_{k&#x3D;le}^{ri}g[i-1][le][k] * g[i-1][k][ri]$</p>
-<p>然后发现$g[i][le][ri] &#x3D; g[i-k][le-k][ri-k]$所以可以省略一维。变成</p>
+<p>Then observe that $g[i][le][ri] &#x3D; g[i-k][le-k][ri-k]$, so one dimension can be removed:</p>
 <p>$g[i][j] &#x3D; \sum_{k&#x3D;0}^{j}g[i-1][k] * g[i-1-k][j-k]$</p>
-<p>同理，$f[i][j]$表示前$i$个$1$处理之后，最大的是$2^j$时的数量。可有：</p>
+<p>Similarly, $f[i][j]$ denotes the number of possibilities whose largest value is $2^j$ after processing the first $i$ ones:</p>
 <p>$f[i][j] &#x3D; \sum_{k&#x3D;0}^{j}f[i-1][k] * g[i-k][j-k]$</p>
-<p>另外，很想吐槽，这里为什么不能mod，一定要上高精度，没办法用的java，然后还卡常。</p>
+<p>One complaint: why is modular arithmetic not allowed here? I had to use arbitrary-precision Java integers and still optimise the constants.</p>
 <div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">import</span> java.math.*;</span><br><span class="line"><span class="keyword">import</span> java.math.BigInteger;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">cin</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="type">BigInteger</span> <span class="variable">N</span> <span class="operator">=</span> cin.nextBigInteger();</span><br><span class="line">        BigInteger f[][] = <span class="keyword">new</span> <span class="title class_">BigInteger</span>[<span class="number">155</span>][<span class="number">155</span>];</span><br><span class="line">        BigInteger g[][] = <span class="keyword">new</span> <span class="title class_">BigInteger</span>[<span class="number">155</span>][<span class="number">155</span>];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>;i&lt;=<span class="number">120</span>;i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>;j&lt;=<span class="number">120</span>;j++) &#123;</span><br><span class="line">                f[i][j] = BigInteger.ZERO; </span><br><span class="line">                g[i][j] = BigInteger.ZERO; </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        f[<span class="number">0</span>][<span class="number">0</span>] = BigInteger.ONE;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">120</span>;i++) &#123;</span><br><span class="line">            f[i][i] = BigInteger.ONE;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>;j&lt;i;j++) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> k=<span class="number">0</span>;k&lt;=j;k++) &#123;</span><br><span class="line">                    f[i][j] = f[i][j].add(f[i-<span class="number">1</span>][k].multiply(f[i-<span class="number">1</span>-k][j-k]));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">BigInteger</span> <span class="variable">Two</span> <span class="operator">=</span> BigInteger.ONE.add(BigInteger.ONE);</span><br><span class="line">        <span class="type">int</span> <span class="variable">tot</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>;i&lt;=<span class="number">120</span>;i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (N.mod(Two).toString().charAt(<span class="number">0</span>) == <span class="string">&#x27;1&#x27;</span>) &#123;</span><br><span class="line">                tot++;</span><br><span class="line">                <span class="keyword">if</span>(tot==<span class="number">1</span>) &#123;</span><br><span class="line">                    <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>;j&lt;=i;j++) &#123;</span><br><span class="line">                        g[<span class="number">1</span>][j] = f[i][j];</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>;j&lt;=i;j++) &#123;</span><br><span class="line">                        <span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">0</span>;k&lt;=j;k++) &#123;</span><br><span class="line">                            g[tot][j] = g[tot][j].add(g[tot-<span class="number">1</span>][k].multiply(f[i-k][j-k]));</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            N=N.divide(Two);</span><br><span class="line">        &#125;</span><br><span class="line">        BigInteger ans=BigInteger.ZERO;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>;i&lt;=<span class="number">120</span>;i++) &#123;</span><br><span class="line">            ans = ans.add(g[tot][i]);</span><br><span class="line">        &#125;</span><br><span class="line">         System.out.println(ans.toString());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
 
 
 
-<h3 id="51nod-1167"><a href="#51nod-1167" class="headerlink" title="51nod 1167"></a><a class="link"   target="_blank" rel="noopener" href="http://www.51nod.com/Challenge/Problem.html#!#problemId=1167" >51nod 1167<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></h3><p>1048的加强版。从01差别到每个位有k种可能。实际上是在最后的DP阶段需要多合并k次。</p>
+<h3 id="51nod-1167"><a href="#51nod-1167" class="headerlink" title="51nod 1167"></a><a class="link"   target="_blank" rel="noopener" href="http://www.51nod.com/Challenge/Problem.html#!#problemId=1167" >51nod 1167<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></h3><p>This is an enhanced version of 1048. Instead of binary digits, every position has $k$ possibilities. In practice, the final DP stage needs $k$ additional merges.</p>
 <div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">import</span> java.math.*;</span><br><span class="line"><span class="keyword">import</span> java.math.BigInteger;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">cin</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="type">BigInteger</span> <span class="variable">tmp1</span> <span class="operator">=</span> cin.nextBigInteger();</span><br><span class="line">        <span class="type">String</span> <span class="variable">tm</span> <span class="operator">=</span> tmp1.toString();</span><br><span class="line">        <span class="type">int</span> <span class="variable">K</span> <span class="operator">=</span>Integer.valueOf(tm);</span><br><span class="line">        <span class="type">BigInteger</span> <span class="variable">N</span> <span class="operator">=</span> cin.nextBigInteger();</span><br><span class="line">        BigInteger f[][] = <span class="keyword">new</span> <span class="title class_">BigInteger</span>[<span class="number">155</span>][<span class="number">155</span>];</span><br><span class="line">        BigInteger g[][] = <span class="keyword">new</span> <span class="title class_">BigInteger</span>[<span class="number">155</span>][<span class="number">155</span>];</span><br><span class="line">        BigInteger h[][] = <span class="keyword">new</span> <span class="title class_">BigInteger</span>[<span class="number">155</span>][<span class="number">155</span>];</span><br><span class="line">        <span class="type">int</span> <span class="variable">maxn</span> <span class="operator">=</span> <span class="number">50</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>;i&lt;=maxn;i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>;j&lt;=maxn;j++) &#123;</span><br><span class="line">                f[i][j] = BigInteger.ZERO;</span><br><span class="line">                g[i][j] = BigInteger.ZERO;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        f[<span class="number">0</span>][<span class="number">0</span>] = BigInteger.ONE;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">1</span>;i&lt;=maxn;i++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;=maxn;j++) &#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">0</span>;k&lt;=maxn;k++) &#123;</span><br><span class="line">                    g[j][k] = BigInteger.ZERO;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;=i-<span class="number">1</span>;j++) &#123;</span><br><span class="line">                g[<span class="number">1</span>][j] = f[i-<span class="number">1</span>][j];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">2</span>;j&lt;=K;j++) &#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">0</span>;k&lt;i;k++) &#123;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="type">int</span> x=<span class="number">0</span>;x&lt;=k;x++) &#123;</span><br><span class="line">                        g[j][k] = g[j][k].add(g[j-<span class="number">1</span>][x].multiply(f[i-<span class="number">1</span>-x][k-x]));</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;i;j++) &#123;</span><br><span class="line">                f[i][j] = g[K][j];</span><br><span class="line">            &#125;</span><br><span class="line">            f[i][i]=BigInteger.ONE;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> <span class="variable">tot</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">wz</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        g[<span class="number">0</span>][<span class="number">0</span>] = BigInteger.ONE;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>;i&lt;=maxn;i++) &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">tmp</span> <span class="operator">=</span> N.mod(tmp1).toString();</span><br><span class="line">            <span class="type">int</span> <span class="variable">s</span> <span class="operator">=</span>Integer.valueOf(tmp);</span><br><span class="line">    </span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> x=<span class="number">0</span>;x&lt;=maxn;x++) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>;j&lt;=maxn;j++) &#123;</span><br><span class="line">                     h[x][j] = BigInteger.ZERO;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;=i;j++) h[<span class="number">0</span>][j]=g[i][j];</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> x=<span class="number">1</span>;x&lt;=s;x++) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>;j&lt;=i;j++) &#123;</span><br><span class="line">                    h[x][j] = BigInteger.ZERO;</span><br><span class="line">                    <span class="keyword">for</span> (<span class="type">int</span> k=<span class="number">0</span>;k&lt;=j;k++) &#123;</span><br><span class="line">                        h[x][j]=h[x][j].add(h[x-<span class="number">1</span>][k].multiply(f[i-k][j-k]));</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">             <span class="keyword">for</span>(<span class="type">int</span> x=<span class="number">0</span>;x&lt;=maxn;x++) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>;j&lt;=maxn;j++) &#123;</span><br><span class="line">                     g[x][j] = BigInteger.ZERO;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j=<span class="number">0</span>;j&lt;=i;j++) g[i+<span class="number">1</span>][j]=h[s][j];</span><br><span class="line">            N=N.divide(tmp1);</span><br><span class="line">            <span class="keyword">if</span>(N.equals(BigInteger.ZERO)) &#123;</span><br><span class="line">                wz=i+<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        BigInteger ans=BigInteger.ZERO;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>;i&lt;=maxn;i++) &#123;</span><br><span class="line">            ans = ans.add(g[wz][i]);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(ans.toString());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-
 
 		</div>
 
@@ -500,7 +483,7 @@
 						<i class="fa-solid fa-chevron-left"></i>
 					</span>
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item truncate max-w-48">51nod填坑记(三)(1203,1695)</span>
+						<span class="post-nav-title-item truncate max-w-48">51nod filling in holes (3)(1203,1695)</span>
 						<span class="post-nav-item">Prev posts</span>
 					</span>
 				</a>
@@ -508,9 +491,9 @@
 			
 			
 			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="next" rel="next" href="/2018/09/15/CP/ProjectEuler/PE-243-Resilience/">
+				<a class="next" rel="next" href="/2018/08/12/BB/2018/2018_8_Present_is_a_gift/">
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item truncate max-w-48">PE#243 Resilience</span>
+						<span class="post-nav-title-item truncate max-w-48">August 2018: To This Day</span>
 						<span class="post-nav-item">Next posts</span>
 					</span>
 					<span class="right arrow-icon flex justify-center items-center">
@@ -531,7 +514,7 @@
 		<div class="post-toc-wrap">
 	<div class="post-toc">
 		<div class="toc-title">On this page</div>
-		<div class="page-title">51nod填坑记(二)(1048, 1167)</div>
+		<div class="page-title">51nod Problem Notes II (1048, 1167)</div>
 		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#51nod-1048"><span class="nav-text">51nod 1048</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#51nod-1167"><span class="nav-text">51nod 1167</span></a></li></ol>
 
 	</div>

@@ -94,7 +94,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://2997ms.github.io/images/chong-wang.jpg">
 <meta property="article:published_time" content="2017-12-26T15:15:31.000Z">
-<meta property="article:modified_time" content="2022-09-04T19:37:07.397Z">
+<meta property="article:modified_time" content="2026-10-09T07:40:47.565Z">
 <meta property="article:author" content="Chong Wang">
 <meta property="article:tag" content="Codeforces">
 <meta property="article:tag" content="Hash">
@@ -338,15 +338,15 @@
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">67</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">62</div>
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">1</div>
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">165</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">154</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -397,28 +397,12 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2022-09-04 20:37:07</span>
-            <span class="mobile">2022-09-04 20:37:07</span>
+            <span class="desktop">2026-10-09 08:40:47</span>
+            <span class="mobile">2026-10-09 08:40:47</span>
             <span class="hover-info">Updated</span>
         </span>
     
 
-    
-        <span class="article-categories article-meta-item">
-            <i class="fa-regular fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/Chinese/">Chinese</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
     
     
         <span class="article-tags article-meta-item">
@@ -452,18 +436,17 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<p>其实451和452两场就真的挺简单的了，但就是脑残了。</p>
-<p>写一下补的题目吧。其余的题目都很水了。</p>
+			<p>Rounds 451 and 452 were genuinely quite easy, but I made foolish mistakes.</p>
+<p>Here are notes on the problems I caught up on. The rest were very straightforward.</p>
 <span id="more"></span>
 
-<p>D题贪心，从左到右扫，不满足的时候就把最右边的删掉就好了。我居然写了个树状数组。。。(脑残。。。然后判断的时候一种情况没考虑到就WA掉了。。。</p>
-<p>E题就直接分情况讨论就好了，把多于n&#x2F;2的那部分贪心移过去。</p>
-<p>F题可以说一下哈。给定一个字符串，要写成X+Y&#x3D;Z的形式。字符串长度$10^6$级别。</p>
-<p>首先肯定是枚举第一个数的分隔的位置。。。然后，我就不知道怎么做了。。。</p>
-<p><strong>X+Y&#x3D;Z这种，Z的长度要么和X相同，要么比X多1，要么和Y相同，要么比Y多1。就这四种情况啊。这样就完了啊。</strong></p>
-<p><strong>然后怎么判断加法呢，前缀和哈希一下</strong>，这里我还是trick，运气好了过去了。比赛里面还是要写两个hash check的。。(当初惨痛的教训。。。</p>
+<p>For Problem D, use greediness: scan left to right and remove the rightmost element whenever the condition is violated. I somehow wrote a Fenwick tree, then missed one case in the check and got WA.</p>
+<p>For Problem E, simply split into cases and greedily move the part that exceeds $n&#x2F;2$.</p>
+<p>Problem F is worth discussing. Given a string of length around $10^6$, write it in the form <code>X + Y = Z</code>.</p>
+<p>First, of course, enumerate the split position of the first number. After that, I did not know what to do.</p>
+<p><strong>For <code>X + Y = Z</code>, the length of <code>Z</code> is either equal to the length of <code>X</code>, one more than the length of <code>X</code>, equal to the length of <code>Y</code>, or one more than the length of <code>Y</code>. There are only these four cases. That is enough.</strong></p>
+<p><strong>How do we check the addition? Use prefix hashing.</strong> I still got through with a trick and some luck; in a contest, two independent hashes should be used. A painful lesson.</p>
 <div class="code-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> len;</span><br><span class="line"><span class="type">char</span> val[maxn];</span><br><span class="line">ll inv[maxn], pre[maxn], f[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">check</span><span class="params">(<span class="type">int</span> st, <span class="type">int</span> en)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="type">int</span> len1 = st;</span><br><span class="line">	<span class="type">int</span> len2 = en - st;</span><br><span class="line">	<span class="type">int</span> len3 = len - en;</span><br><span class="line">	<span class="keyword">if</span> (len1 &gt; len3 || len2 &gt; len3)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">if</span> (len1 &lt;= <span class="number">0</span> || len2 &lt;= <span class="number">0</span> || len3 &lt;= <span class="number">0</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (len1&gt;<span class="number">1</span> &amp;&amp; val[<span class="number">1</span>] == <span class="string">&#x27;0&#x27;</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">if</span> (len2&gt;<span class="number">1</span> &amp;&amp; val[st + <span class="number">1</span>] == <span class="string">&#x27;0&#x27;</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">if</span> (len3&gt;<span class="number">1</span> &amp;&amp; val[en + <span class="number">1</span>] == <span class="string">&#x27;0&#x27;</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">	ll sum1 = pre[st];</span><br><span class="line">	ll sum2 = (pre[en] - pre[st] * f[en - st] % mod) % mod;</span><br><span class="line">	sum2 = (sum2%mod + mod) % mod;</span><br><span class="line">	ll sum3 = (pre[len] - pre[en] * f[len - en] % mod) % mod;</span><br><span class="line">	sum3 = (sum3%mod + mod) % mod;</span><br><span class="line">	<span class="keyword">if</span> ((sum1 + sum2)%mod != sum3)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= len; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%c&quot;</span>, val[i]);</span><br><span class="line">		<span class="keyword">if</span> (i == st)<span class="built_in">printf</span>(<span class="string">&quot;+&quot;</span>);</span><br><span class="line">		<span class="keyword">if</span> (i == en)<span class="built_in">printf</span>(<span class="string">&quot;=&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>, val + <span class="number">1</span>);</span><br><span class="line">	len = <span class="built_in">strlen</span>(val + <span class="number">1</span>);</span><br><span class="line">	inv[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">	f[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">	<span class="type">int</span> up = <span class="number">1e6</span>;</span><br><span class="line">	<span class="built_in">repp</span>(i, <span class="number">1</span>, up)</span><br><span class="line">	&#123;</span><br><span class="line">		f[i] = f[i<span class="number">-1</span>] * <span class="number">10</span> % mod;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">repp</span>(i, <span class="number">1</span>, len)</span><br><span class="line">	&#123;</span><br><span class="line">		pre[i] = pre[i - <span class="number">1</span>] * <span class="number">10</span> + val[i] - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">		pre[i] %= mod;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">repp</span>(i, <span class="number">1</span>, len)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (<span class="built_in">check</span>(i, len - i))</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (<span class="built_in">check</span>(i, len - i - <span class="number">1</span>))</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (<span class="built_in">check</span>(len - i - i, len - i))</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (<span class="built_in">check</span>(len - i - i - <span class="number">1</span>, len - i - <span class="number">1</span>))</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-
 
 		</div>
 
@@ -494,7 +477,7 @@
 						<i class="fa-solid fa-chevron-left"></i>
 					</span>
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item truncate max-w-48">Topcoder选做</span>
+						<span class="post-nav-title-item truncate max-w-48">Selected TopCoder Problems</span>
 						<span class="post-nav-item">Prev posts</span>
 					</span>
 				</a>
@@ -504,7 +487,7 @@
 			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
 				<a class="next" rel="next" href="/2017/12/25/BB/2017/2017%E5%B9%B4-12%E6%9C%88-%E6%88%91%E7%9A%84%E5%A4%B1%E8%B4%A5%E4%B8%8E%E7%BB%A7%E7%BB%AD/">
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item truncate max-w-48">2017_12月_我的失败与继续</span>
+						<span class="post-nav-title-item truncate max-w-48">2017_December_My failure and continuation</span>
 						<span class="post-nav-item">Next posts</span>
 					</span>
 					<span class="right arrow-icon flex justify-center items-center">

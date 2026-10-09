@@ -87,14 +87,14 @@
         
         <meta name="description" content="Chong Wang — software engineer, smart contract security researcher, and competitive programmer.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="51nod填坑记(一)(1742,1810,1753,1291,1296)">
+<meta property="og:title" content="51nod pit filling record (1) (1742,1810,1753,1291,1296)">
 <meta property="og:url" content="http://2997ms.github.io/2017/10/02/CP/51nod/51nod%E5%A1%AB%E5%9D%91%E8%AE%B0-%E4%B8%80/index.html">
 <meta property="og:site_name" content="Chong Wang">
 <meta property="og:description" content="Chong Wang — software engineer, smart contract security researcher, and competitive programmer.">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://2997ms.github.io/images/chong-wang.jpg">
 <meta property="article:published_time" content="2017-10-02T20:28:32.000Z">
-<meta property="article:modified_time" content="2022-08-29T22:29:37.670Z">
+<meta property="article:modified_time" content="2026-10-09T07:47:33.822Z">
 <meta property="article:author" content="Chong Wang">
 <meta property="article:tag" content="51nod">
 <meta name="twitter:card" content="summary">
@@ -110,7 +110,7 @@
     
     <title>
         
-            51nod填坑记(一)(1742,1810,1753,1291,1296) | Chong Wang
+            51nod pit filling record (1) (1742,1810,1753,1291,1296) | Chong Wang
         
     </title>
 
@@ -337,15 +337,15 @@
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">67</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">62</div>
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">1</div>
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">165</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">154</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -368,7 +368,7 @@
 		<div class="article-title relative w-full">
 			
 			<div class="w-full flex items-center pt-6 justify-start">
-				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">51nod填坑记(一)(1742,1810,1753,1291,1296)</h1>
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">51nod pit filling record (1) (1742,1810,1753,1291,1296)</h1>
 			</div>
 			
 		</div>
@@ -396,28 +396,12 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2022-08-29 23:29:37</span>
-            <span class="mobile">2022-08-29 23:29:37</span>
+            <span class="desktop">2026-10-09 08:47:33</span>
+            <span class="mobile">2026-10-09 08:47:33</span>
             <span class="hover-info">Updated</span>
         </span>
     
 
-    
-        <span class="article-categories article-meta-item">
-            <i class="fa-regular fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/Chinese/">Chinese</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
     
     
         <span class="article-tags article-meta-item">
@@ -478,7 +462,6 @@
 <p>dp[i][j]表示i个数字，j作为最后一个数字的合法排列数量。转移的时候很明显是一个前缀和的转移。</p>
 <div class="code-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> n,k1,k2;</span><br><span class="line"><span class="type">int</span> vis[<span class="number">5005</span>];</span><br><span class="line"><span class="type">int</span> dp[<span class="number">5005</span>][<span class="number">5005</span>];</span><br><span class="line"><span class="comment">// 1 xiaoyu</span></span><br><span class="line"><span class="type">int</span> sum[<span class="number">5005</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">sa</span>(n),<span class="built_in">sa</span>(k1),<span class="built_in">sa</span>(k2);</span><br><span class="line">	<span class="built_in">repp</span>(i,<span class="number">1</span>,k1)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> x;</span><br><span class="line">		<span class="built_in">sa</span>(x);</span><br><span class="line">		vis[x+<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">		vis[x+<span class="number">2</span>]=<span class="number">2</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">repp</span>(i,<span class="number">1</span>,k2)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">int</span> x;</span><br><span class="line">		<span class="built_in">sa</span>(x);</span><br><span class="line">		<span class="keyword">if</span>(vis[x+<span class="number">1</span>]==<span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">		    <span class="built_in">puts</span>(<span class="string">&quot;0&quot;</span>);</span><br><span class="line">		    <span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		vis[x+<span class="number">1</span>]=<span class="number">2</span>;</span><br><span class="line">		vis[x+<span class="number">2</span>]=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	dp[<span class="number">1</span>][<span class="number">1</span>] = sum[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">	<span class="built_in">repp</span>(i,<span class="number">2</span>,n)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">repp</span>(j,<span class="number">1</span>,i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(vis[i]==<span class="number">1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				dp[i][j] = sum[i<span class="number">-1</span>]-sum[j<span class="number">-1</span>];</span><br><span class="line">				dp[i][j] = (dp[i][j]%mod+mod)%mod;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(vis[i]==<span class="number">2</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				dp[i][j] = sum[j<span class="number">-1</span>];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				dp[i][j] = sum[i<span class="number">-1</span>];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">memset</span>(sum,<span class="number">0</span>,<span class="built_in">sizeof</span>(sum));</span><br><span class="line">		<span class="built_in">repp</span>(j,<span class="number">1</span>,i)</span><br><span class="line">		&#123;</span><br><span class="line">			sum[j]=sum[j<span class="number">-1</span>]+dp[i][j];</span><br><span class="line">			sum[j]=(sum[j]%mod+mod)%mod;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">repp</span>(i,<span class="number">1</span>,n)</span><br><span class="line">	&#123;</span><br><span class="line">		ans = ans + dp[n][i];</span><br><span class="line">		<span class="keyword">while</span>(ans&gt;=mod)ans-=mod;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
-
 		</div>
 
 		
@@ -504,7 +487,7 @@
 						<i class="fa-solid fa-chevron-left"></i>
 					</span>
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item truncate max-w-48">University CodeSprint 3(待填)</span>
+						<span class="post-nav-title-item truncate max-w-48">University CodeSprint 3(to be filled in)</span>
 						<span class="post-nav-item">Prev posts</span>
 					</span>
 				</a>
@@ -514,7 +497,7 @@
 			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
 				<a class="next" rel="next" href="/2017/09/29/BB/2017/2017%E5%B9%B4-9%E6%9C%88-Time%20Travel/">
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item truncate max-w-48">2017_9月_Time Travel</span>
+						<span class="post-nav-title-item truncate max-w-48">September 2017: Time Travel</span>
 						<span class="post-nav-item">Next posts</span>
 					</span>
 					<span class="right arrow-icon flex justify-center items-center">
@@ -535,7 +518,7 @@
 		<div class="post-toc-wrap">
 	<div class="post-toc">
 		<div class="toc-title">On this page</div>
-		<div class="page-title">51nod填坑记(一)(1742,1810,1753,1291,1296)</div>
+		<div class="page-title">51nod pit filling record (1) (1742,1810,1753,1291,1296)</div>
 		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#51nod-1742-%E5%BC%80%E5%BF%83%E7%9A%84%E5%B0%8FQ"><span class="nav-text">51nod 1742 开心的小Q</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#51nod-1810-%E8%BF%9E%E7%BB%AD%E5%8C%BA%E9%97%B4"><span class="nav-text">51nod 1810 连续区间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#51nod-1753-%E7%9B%B8%E4%BC%BC%E5%AD%90%E4%B8%B2"><span class="nav-text">51nod 1753 相似子串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#51nod-1291-Farmer"><span class="nav-text">51nod 1291 Farmer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#51nod1296-%E6%9C%89%E9%99%90%E5%88%B6%E7%9A%84%E6%8E%92%E5%88%97"><span class="nav-text">51nod1296 有限制的排列</span></a></li></ol>
 
 	</div>
